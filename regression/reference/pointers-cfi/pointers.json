@@ -57,6 +57,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -179,6 +197,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_inout_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -300,6 +336,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -461,6 +515,36 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "argin": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "arginout": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "argout": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "argin": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "arginout": {
+                            "stmt": "f_inout_native_*"
+                        },
+                        "argout": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -724,6 +808,36 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "in": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "out": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -933,6 +1047,36 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "in": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "out": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1151,6 +1295,36 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "in": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "out": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1361,6 +1535,36 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "in": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "out": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -1554,6 +1758,30 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nvalues": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nvalues": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1763,6 +1991,30 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "arg2": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg1": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "arg2": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1961,6 +2213,30 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nvar": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "values": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nvar": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "values": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2174,6 +2450,36 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "result": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "len": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "result": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "f_in_native_*_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2367,6 +2673,36 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "result": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "len": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "result": {
+                            "stmt": "f_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "f_in_native_*_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -2535,6 +2871,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "out": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2684,6 +3038,30 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "array": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "array": {
+                            "stmt": "f_inout_native_*_cfi"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2831,6 +3209,30 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "array": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "array": {
+                            "stmt": "f_inout_native_*_cfi"
+                        },
+                        "sizein": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2982,6 +3384,30 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "x": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "x_length": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "x": {
+                            "stmt": "f_inout_native_*_cfi"
+                        },
+                        "x_length": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3125,6 +3551,30 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "x": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "x_length": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "x": {
+                            "stmt": "f_inout_native_*_cfi"
+                        },
+                        "x_length": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3276,6 +3726,30 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arr": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arr": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "len": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3441,6 +3915,30 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arr": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arr": {
+                            "stmt": "f_in_native_*_cfi"
+                        },
+                        "len": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3610,6 +4108,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "names": {
+                            "stmt": "c_in_char_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "names": {
+                            "stmt": "f_in_char_**_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3745,6 +4261,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "names": {
+                            "stmt": "c_in_char_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "names": {
+                            "stmt": "f_in_char_**_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -3874,6 +4408,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "value": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "value": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3976,6 +4528,18 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4094,6 +4658,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4197,6 +4779,24 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4325,6 +4925,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4439,6 +5057,24 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4596,6 +5232,30 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        },
+                        "ncount": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4759,6 +5419,30 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        },
+                        "ncount": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -4921,6 +5605,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5036,6 +5738,24 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5166,6 +5886,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5270,6 +6008,24 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5396,6 +6152,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5508,6 +6282,24 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5663,6 +6455,30 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        },
+                        "ncount": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5824,6 +6640,30 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_pointer"
+                        },
+                        "ncount": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -5980,6 +6820,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_raw"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6113,6 +6971,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "f_out_native_**_raw"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6242,6 +7118,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_raw"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -6376,6 +7270,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_raw"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6509,6 +7421,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_out_native_***"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_native_***"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6638,6 +7568,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -6811,6 +7759,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6955,6 +7921,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_allocatable"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -7073,6 +8057,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "count": {
+                            "stmt": "f_out_native_**_cfi_allocatable"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -7186,6 +8188,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -7344,6 +8364,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -7504,6 +8542,24 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "c_out_void_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "f_out_void_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -7630,6 +8686,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "c_inout_void_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "f_inout_void_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -7758,6 +8832,24 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "addr": {
+                            "stmt": "c_in_void_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "addr": {
+                            "stmt": "f_in_void_**_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -7885,6 +8977,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "addr": {
+                            "stmt": "c_in_void_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "addr": {
+                            "stmt": "f_in_void_**_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -7994,6 +9104,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -8069,6 +9191,18 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -8170,6 +9304,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -8257,6 +9403,18 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -8359,6 +9517,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -8435,6 +9605,18 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -8537,6 +9719,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -8625,6 +9819,18 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -8729,6 +9935,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -8831,6 +10049,18 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_raw"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -8961,6 +10191,24 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "name": {
+                            "stmt": "c_in_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_raw"
+                        },
+                        "name": {
+                            "stmt": "f_in_char_*_cfi"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -9098,6 +10346,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "name": {
+                            "stmt": "c_in_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_raw"
+                        },
+                        "name": {
+                            "stmt": "f_in_char_*_cfi"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -9216,6 +10482,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -9322,6 +10600,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_allocatable"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -9412,6 +10702,18 @@
                 "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cfi_allocatable"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

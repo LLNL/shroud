@@ -48,6 +48,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -155,6 +167,18 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_buf_copy"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -244,6 +268,18 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_buf_copy"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

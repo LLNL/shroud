@@ -39,6 +39,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -112,6 +124,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -299,6 +318,13 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -373,6 +399,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -492,6 +530,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_pointer"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -635,6 +685,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -773,6 +833,24 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -965,6 +1043,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -1129,6 +1225,24 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_allocatable"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1324,6 +1438,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_allocatable"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -1490,6 +1622,24 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1680,6 +1830,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -1833,6 +2001,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1976,6 +2154,24 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2169,6 +2365,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -2325,6 +2539,16 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2510,6 +2734,24 @@
                 "wrap": {
                     "c": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2701,6 +2943,24 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3526,6 +3786,24 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3656,6 +3934,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr_library"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr_library"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3801,6 +4091,24 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr_caller"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr_caller"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

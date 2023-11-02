@@ -61,6 +61,18 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_cdesc_allocatable"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -169,6 +181,18 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_cdesc_allocatable"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -253,6 +277,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -648,6 +684,18 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {

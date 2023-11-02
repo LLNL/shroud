@@ -70,6 +70,9 @@ class FillFormat(object):
         fmtargs = node._fmtargs
         fmt_arg0 = fmtargs.setdefault("+result", {})
         fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+
+        bind = node._bind.setdefault(wlang, {})
+        bind_result = bind.setdefault("+result", statements.BindArg())
         
         node.eval_template("C_name")
         node.eval_template("F_C_name")
@@ -89,6 +92,7 @@ class FillFormat(object):
         func_cursor.stmt = result_stmt
         fmt_result.stmt_name = result_stmt.name
         stmt_indexes = [result_stmt.index]
+        bind_result.stmt = result_stmt
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -98,6 +102,7 @@ class FillFormat(object):
 
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            bind_arg = bind.setdefault(arg_name, statements.BindArg())
             if wlang == "c":
                 arg_stmt = statements.lookup_c_arg_stmt(node, arg)
             else:
@@ -105,6 +110,7 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             fmt_arg.stmt_name = arg_stmt.name
+            bind_arg.stmt = arg_stmt
 
         # --- End loop over function parameters
         func_cursor.arg = None

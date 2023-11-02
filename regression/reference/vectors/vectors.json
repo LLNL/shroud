@@ -72,6 +72,16 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_vector_&_buf_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_sum",
                     "F_name_api": "vector_sum",
@@ -144,6 +154,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_vector_&_buf_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -299,6 +319,16 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out",
                     "F_name_api": "vector_iota_out",
@@ -384,6 +414,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -549,6 +589,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num",
                     "F_name_api": "vector_iota_out_with_num",
@@ -662,6 +712,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -826,6 +886,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num2",
                     "F_name_api": "vector_iota_out_with_num2",
@@ -929,6 +999,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1076,6 +1156,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
@@ -1163,6 +1253,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1306,6 +1406,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",
@@ -1396,6 +1506,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1536,6 +1656,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_increment",
                     "F_name_api": "vector_increment",
@@ -1619,6 +1749,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1759,6 +1899,16 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_d",
                     "F_name_api": "vector_iota_out_d",
@@ -1843,6 +1993,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1993,6 +2153,19 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg1": {
+                            "stmt": "f_in_vector_&_buf_targ_native_*"
+                        },
+                        "num": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_of_pointers",
                     "F_name_api": "vector_of_pointers",
@@ -2091,6 +2264,19 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg1": {
+                            "stmt": "f_in_vector_&_buf_targ_native_*"
+                        },
+                        "num": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2270,6 +2456,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_vector_&_buf_targ_string_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_count",
                     "F_name_api": "vector_string_count",
@@ -2351,6 +2547,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_vector_&_buf_targ_string_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2516,6 +2722,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
                     "F_name_api": "vector_string_fill",
@@ -2602,6 +2818,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2741,6 +2967,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable",
                     "F_name_api": "vector_string_fill_allocatable",
@@ -2828,6 +3064,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2976,6 +3222,16 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable_len",
                     "F_name_api": "vector_string_fill_allocatable_len",
@@ -3064,6 +3320,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3274,6 +3540,16 @@
                 "name": "ReturnVectorAlloc",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                        },
+                        "n": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "ReturnVectorAlloc",
                     "F_name_api": "return_vector_alloc",
@@ -3354,6 +3630,16 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                        },
+                        "n": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3504,6 +3790,30 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_*"
+                        },
+                        "len": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

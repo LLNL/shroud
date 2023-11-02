@@ -393,6 +393,7 @@ class ToDict(visitor.Visitor):
             [
                 "_PTR_C_CXX_index",
                 "_PTR_F_C_index",
+                "_bind",
                 "_fmtargs",
                 "user_fmt",
                 "fmtdict",
@@ -545,8 +546,16 @@ class ToDict(visitor.Visitor):
     def visit_SymbolTable(self, node):
         return {}
 
+
+    def visit_BindArg(self, node):
+        d = {}
+        if node.stmt:
+            d["stmt"] = node.stmt.name
+        return d
+    
     # Rename some attributes so they sort to the bottom of the JSON dictionary.
     rename_fields = dict(
+        _bind="zz_bind",
         _fmtargs="zz_fmtargs",
         fmtdict="zz_fmtdict",
     )

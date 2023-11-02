@@ -32,6 +32,13 @@ from collections import OrderedDict
 # The dictionary of c and fortran statements.
 fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
+
+class BindArg(object):
+    def __init__(self):
+        self.stmt = None
+        self.meta = None
+        self.fmtdict = None
+
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for

@@ -132,6 +132,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -288,6 +300,24 @@
                             "fortran": true,
                             "lua": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -496,6 +526,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -566,6 +608,18 @@
                             "fortran": true,
                             "lua": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -716,6 +770,24 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_bool_scalar"
+                                },
+                                "obj2": {
+                                    "stmt": "c_in_shadow_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_bool_scalar"
+                                },
+                                "obj2": {
+                                    "stmt": "f_in_shadow_&"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -912,6 +984,18 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_shadow_*_this"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_shadow_*_this"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -1055,6 +1139,30 @@
                         },
                         "wrap": {
                             "c": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_shadow_*_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "c_in_bool_scalar"
+                                },
+                                "name": {
+                                    "stmt": "c_in_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_shadow_*_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "f_in_bool_scalar"
+                                },
+                                "name": {
+                                    "stmt": "f_in_string_&_buf"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -1238,6 +1346,30 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_shadow_*_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "c_in_bool_scalar"
+                                },
+                                "name": {
+                                    "stmt": "c_in_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_shadow_*_capptr"
+                                },
+                                "flag": {
+                                    "stmt": "f_in_bool_scalar"
+                                },
+                                "name": {
+                                    "stmt": "f_in_string_&_buf"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -1388,6 +1520,18 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_shadow_*_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_shadow_*_capptr"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -1529,6 +1673,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -1656,6 +1812,18 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -1762,6 +1930,24 @@
                             "fortran": true,
                             "lua": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_native_scalar"
+                                },
+                                "arg": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_native_scalar"
+                                },
+                                "arg": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -1980,6 +2166,13 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -2064,6 +2257,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -2168,6 +2368,16 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -2270,6 +2480,13 @@
                             "wrapped_name": "m_name"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_string_scalar_cdesc_allocatable"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_m_name",
                             "F_name_api": "get_m_name",
@@ -2326,6 +2543,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_string_scalar_cdesc_allocatable"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -2436,6 +2660,16 @@
                             "wrapped_name": "m_name"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_string_scalar_buf"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_m_name",
                             "F_name_api": "set_m_name",
@@ -2498,6 +2732,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_string_scalar_buf"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -2765,6 +3009,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -2891,6 +3147,18 @@
                         "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_string_&"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -3039,6 +3307,18 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_shadow_&_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_shadow_&_capptr"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -3221,6 +3501,18 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -3349,6 +3641,18 @@
                             "fortran": true,
                             "lua": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_function_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_function_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -3540,6 +3844,18 @@
                             "fortran": true,
                             "lua": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -3736,6 +4052,24 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "n": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "n": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -3840,6 +4174,18 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -3906,6 +4252,18 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -4003,6 +4361,18 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
@@ -4070,6 +4440,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -4173,6 +4550,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -4285,6 +4672,13 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_items",
                             "F_name_api": "get_items",
@@ -4350,6 +4744,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -4477,6 +4878,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_*"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -4710,6 +5121,24 @@
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4938,6 +5367,24 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_shadow_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_in_shadow_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5084,6 +5531,24 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_shadow_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_shadow_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5274,6 +5739,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5377,6 +5854,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5505,6 +5994,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capsule"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capsule"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5607,6 +6108,18 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capsule"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capsule"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -5705,6 +6218,18 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_&_capptr"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_&_capptr"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5806,6 +6331,18 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_&_capptr"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_&_capptr"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -5943,6 +6480,24 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_scalar_capptr"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_scalar_capptr"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -6100,6 +6655,24 @@
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6240,6 +6813,18 @@
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6375,6 +6960,18 @@
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_buf_copy"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -6492,6 +7089,18 @@
                 "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_buf_copy"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

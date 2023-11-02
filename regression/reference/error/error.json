@@ -41,6 +41,13 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -144,6 +151,16 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -235,6 +252,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -339,6 +363,16 @@
                         "wrap": {
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
@@ -430,6 +464,13 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -533,6 +574,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -783,6 +834,18 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -955,6 +1018,24 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "data": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "data": {
+                            "stmt": "f_inout_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1083,6 +1164,24 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "data": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "data": {
+                            "stmt": "f_inout_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
@@ -1195,6 +1294,24 @@
                 "options": {},
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "data": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "data": {
+                            "stmt": "f_inout_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1310,6 +1427,24 @@
                 "options": {},
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "data": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "data": {
+                            "stmt": "f_inout_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

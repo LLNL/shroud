@@ -1369,7 +1369,7 @@ class ClassNode(AstNode, NamespaceMixin):
 class FunctionNode(AstNode):
     """
 
-    - decl: template<typename T1, typename T2> foo(T1 arg, T2 arg)
+    - decl: template<typename T1, typename T2> foo(T1 arg1, T2 arg2)
       cxx_template:
       - instantiation: <int, long>
       - instantiation: <float, double>
@@ -1379,6 +1379,12 @@ class FunctionNode(AstNode):
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
+#     lang:
+#        f:
+#          decl:   (arg1 +attr, arg2+attr)  +attr
+#          attrs:
+#             +result:
+#             arg1:
       splicer:
          c: [ ]
          f: [ ]
@@ -1401,6 +1407,19 @@ class FunctionNode(AstNode):
         'fmtl': Scope(_fmtfunc)
         'fmtpy': Scope(_fmtfunc)
       }
+    }
+
+    _bind = {
+       'f': {
+          -----'args': {
+             '+result': { }
+             'arg1': {    statements.BindArg
+                stmt: Scope
+                meta: collections.defaultdict(lambda: None)
+                fmtdict:  Scope(_fmtfunc)
+              }
+          -----}
+        }
     }
 
     statements = {
@@ -1476,6 +1495,7 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
         self._gen_fortran_generic = False # An argument is assumed-rank.
+        self._bind = {}
         self.splicer = {}
         self.fstatements = {}
         self.splicer_group = None

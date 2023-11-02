@@ -571,6 +571,16 @@
                     "wrapped_name": "items"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_getter_native_*_cdesc_pointer"
+                        },
+                        "SH_this": {
+                            "stmt": "f_in_struct_*"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "DataPointer_get_items",
                     "F_name_api": "data_pointer_get_items",
@@ -655,6 +665,16 @@
                 },
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_getter_native_*_cdesc_pointer"
+                        },
+                        "SH_this": {
+                            "stmt": "f_in_struct_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -824,6 +844,19 @@
                 },
                 "wrap": {
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_setter"
+                        },
+                        "SH_this": {
+                            "stmt": "f_inout_struct_*"
+                        },
+                        "val": {
+                            "stmt": "f_setter_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1156,6 +1189,16 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_in_struct_*"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",
@@ -1241,6 +1284,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_in_struct_*"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -1410,6 +1463,19 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_inout_struct_*"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_*"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -1769,6 +1835,16 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_in_struct_*"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",
@@ -1854,6 +1930,16 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_in_struct_*"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -2023,6 +2109,19 @@
                         },
                         "wrap": {
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_setter"
+                                },
+                                "SH_this": {
+                                    "stmt": "f_inout_struct_*"
+                                },
+                                "val": {
+                                    "stmt": "f_setter_native_*"
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {

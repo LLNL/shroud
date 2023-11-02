@@ -56,6 +56,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -138,6 +148,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_inout_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -219,6 +239,16 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -340,6 +370,22 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "argin": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "arginout": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "argout": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -514,6 +560,22 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -691,6 +753,22 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -844,6 +922,19 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nvalues": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -984,6 +1075,19 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "arg2": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1110,6 +1214,19 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nvar": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "values": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1255,6 +1372,22 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "result": {
+                            "stmt": "c_out_native_*"
+                        },
+                        "values": {
+                            "stmt": "c_in_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1384,6 +1517,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "out": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1488,6 +1631,19 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "array": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "sizein": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1607,6 +1763,19 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "x": {
+                            "stmt": "c_inout_native_*"
+                        },
+                        "x_length": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1725,6 +1894,19 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arr": {
+                            "stmt": "c_in_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1847,6 +2029,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "names": {
+                            "stmt": "c_in_char_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1937,6 +2129,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "value": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -1999,6 +2201,13 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2080,6 +2289,16 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2175,6 +2394,16 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2295,6 +2524,19 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2412,6 +2654,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2502,6 +2754,16 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2595,6 +2857,16 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2713,6 +2985,19 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        },
+                        "ncount": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2824,6 +3109,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -2917,6 +3212,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "nitems": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3006,6 +3311,16 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3100,6 +3415,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3193,6 +3518,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_out_native_***"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3282,6 +3617,16 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3393,6 +3738,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3493,6 +3848,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "count": {
+                            "stmt": "c_out_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3576,6 +3941,16 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3673,6 +4048,16 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_void_*"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3772,6 +4157,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "c_out_void_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -3859,6 +4254,16 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "addr": {
+                            "stmt": "c_inout_void_**"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3948,6 +4353,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "addr": {
+                            "stmt": "c_in_void_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4027,6 +4442,13 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4094,6 +4516,13 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4155,6 +4584,13 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4224,6 +4660,13 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4287,6 +4730,13 @@
                 "options": {},
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4354,6 +4804,13 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -4443,6 +4900,16 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "name": {
+                            "stmt": "c_in_char_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4530,6 +4997,13 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_**"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
@@ -4599,6 +5073,13 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
