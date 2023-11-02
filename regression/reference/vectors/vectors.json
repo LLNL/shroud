@@ -72,16 +72,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "arg": {
-                            "stmt": "f_in_vector_&_buf_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_sum",
                     "F_name_api": "vector_sum",
@@ -319,16 +309,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out",
                     "F_name_api": "vector_iota_out",
@@ -589,16 +569,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num",
                     "F_name_api": "vector_iota_out_with_num",
@@ -886,16 +856,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num2",
                     "F_name_api": "vector_iota_out_with_num2",
@@ -1156,16 +1116,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
@@ -1406,16 +1356,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",
@@ -1656,16 +1596,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_increment",
                     "F_name_api": "vector_increment",
@@ -1899,16 +1829,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_d",
                     "F_name_api": "vector_iota_out_d",
@@ -2153,19 +2073,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "arg1": {
-                            "stmt": "f_in_vector_&_buf_targ_native_*"
-                        },
-                        "num": {
-                            "stmt": "f_in_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_of_pointers",
                     "F_name_api": "vector_of_pointers",
@@ -2456,16 +2363,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "arg": {
-                            "stmt": "f_in_vector_&_buf_targ_string_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_count",
                     "F_name_api": "vector_string_count",
@@ -2722,16 +2619,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
                     "F_name_api": "vector_string_fill",
@@ -2967,16 +2854,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable",
                     "F_name_api": "vector_string_fill_allocatable",
@@ -3222,16 +3099,6 @@
                     "wrap_python": false
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable_len",
                     "F_name_api": "vector_string_fill_allocatable_len",
@@ -3540,16 +3407,6 @@
                 "name": "ReturnVectorAlloc",
                 "options": {},
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
-                        },
-                        "n": {
-                            "stmt": "f_in_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "ReturnVectorAlloc",
                     "F_name_api": "return_vector_alloc",

@@ -1342,17 +1342,6 @@
                         "arg2": {
                             "stmt": "c_in_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_char_*_buf_copy"
-                        },
-                        "arg1": {
-                            "stmt": "f_in_char_*"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_char_*"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1590,17 +1579,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_char_*"
-                        },
-                        "arg1": {
-                            "stmt": "c_in_char_*"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_char_*_buf_copy"
@@ -1948,14 +1926,6 @@
                         "s": {
                             "stmt": "c_inout_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "s": {
-                            "stmt": "f_inout_char_*_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2088,14 +2058,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "s": {
-                            "stmt": "c_inout_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -2234,14 +2196,6 @@
                         "name1": {
                             "stmt": "c_out_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name1": {
-                            "stmt": "f_out_char_*_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2376,14 +2330,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "name1": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -2540,17 +2486,6 @@
                         },
                         "name2": {
                             "stmt": "c_out_char_*"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name1": {
-                            "stmt": "f_out_char_*_buf"
-                        },
-                        "name2": {
-                            "stmt": "f_out_char_*_buf"
                         }
                     }
                 },
@@ -2752,17 +2687,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "name1": {
-                            "stmt": "c_out_char_*"
-                        },
-                        "name2": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -2948,17 +2872,6 @@
                         },
                         "text": {
                             "stmt": "c_out_char_*"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "ltext": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "text": {
-                            "stmt": "f_out_char_*_buf"
                         }
                     }
                 },
@@ -3153,17 +3066,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "ltext": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "text": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -4611,14 +4513,6 @@
                         "outbuf": {
                             "stmt": "c_out_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "outbuf": {
-                            "stmt": "f_out_char_*_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4735,14 +4629,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "outbuf": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -5449,17 +5335,6 @@
                         "outbuf": {
                             "stmt": "c_out_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "arg": {
-                            "stmt": "f_in_void_*"
-                        },
-                        "outbuf": {
-                            "stmt": "f_out_char_*_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -5637,17 +5512,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "stmt": "c_in_void_*"
-                        },
-                        "outbuf": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_scalar"
@@ -6659,23 +6523,6 @@
                         "type": {
                             "stmt": "c_in_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "in": {
-                            "stmt": "f_in_void_*"
-                        },
-                        "incr": {
-                            "stmt": "f_in_void_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "f_out_char_*_buf"
-                        },
-                        "type": {
-                            "stmt": "f_in_char_*"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -6945,23 +6792,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "in": {
-                            "stmt": "c_in_void_*"
-                        },
-                        "incr": {
-                            "stmt": "c_in_void_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "c_out_char_*"
-                        },
-                        "type": {
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"

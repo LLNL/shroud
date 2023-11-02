@@ -571,16 +571,6 @@
                     "wrapped_name": "items"
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_getter_native_*_cdesc_pointer"
-                        },
-                        "SH_this": {
-                            "stmt": "f_in_struct_*"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "DataPointer_get_items",
                     "F_name_api": "data_pointer_get_items",
@@ -1189,16 +1179,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
-                                },
-                                "SH_this": {
-                                    "stmt": "f_in_struct_*"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",
@@ -1835,16 +1815,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
-                                },
-                                "SH_this": {
-                                    "stmt": "f_in_struct_*"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",

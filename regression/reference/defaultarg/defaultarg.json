@@ -74,12 +74,6 @@
                                 },
                                 "arg1": {
                                     "stmt": "c_in_native_scalar"
-                                },
-                                "arg2": {
-                                    "stmt": "c_in_native_scalar"
-                                },
-                                "arg3": {
-                                    "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
@@ -87,12 +81,6 @@
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 },
                                 "arg1": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg2": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg3": {
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -296,9 +284,6 @@
                                 },
                                 "arg2": {
                                     "stmt": "c_in_native_scalar"
-                                },
-                                "arg3": {
-                                    "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
@@ -309,9 +294,6 @@
                                     "stmt": "f_in_native_scalar"
                                 },
                                 "arg2": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg3": {
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -933,12 +915,6 @@
                                 },
                                 "arg1": {
                                     "stmt": "c_in_native_scalar"
-                                },
-                                "arg2": {
-                                    "stmt": "c_in_native_scalar"
-                                },
-                                "arg3": {
-                                    "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
@@ -946,12 +922,6 @@
                                     "stmt": "f_subroutine"
                                 },
                                 "arg1": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg2": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg3": {
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -1114,9 +1084,6 @@
                                 },
                                 "arg2": {
                                     "stmt": "c_in_native_scalar"
-                                },
-                                "arg3": {
-                                    "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
@@ -1127,9 +1094,6 @@
                                     "stmt": "f_in_native_scalar"
                                 },
                                 "arg2": {
-                                    "stmt": "f_in_native_scalar"
-                                },
-                                "arg3": {
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -2016,12 +1980,6 @@
                         },
                         "num_elems": {
                             "stmt": "c_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
@@ -2029,12 +1987,6 @@
                             "stmt": "f_subroutine"
                         },
                         "num_elems": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2197,9 +2149,6 @@
                         },
                         "offset": {
                             "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
@@ -2210,9 +2159,6 @@
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2700,12 +2646,6 @@
                         "num_elems": {
                             "stmt": "c_in_native_scalar"
                         },
-                        "offset": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
-                        },
                         "type": {
                             "stmt": "c_in_native_scalar"
                         }
@@ -2715,12 +2655,6 @@
                             "stmt": "f_subroutine"
                         },
                         "num_elems": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
@@ -2950,9 +2884,6 @@
                         "offset": {
                             "stmt": "c_in_native_scalar"
                         },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
-                        },
                         "type": {
                             "stmt": "c_in_native_scalar"
                         }
@@ -2965,9 +2896,6 @@
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {

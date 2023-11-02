@@ -66,11 +66,6 @@
                         "+result": {
                             "stmt": "c_function_string_&"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_&_cdesc_allocatable"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -182,11 +177,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_string_&_cdesc_allocatable"

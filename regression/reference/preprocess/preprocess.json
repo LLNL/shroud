@@ -190,17 +190,11 @@
                             "c": {
                                 "+result": {
                                     "stmt": "c_subroutine"
-                                },
-                                "i": {
-                                    "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
                                     "stmt": "f_subroutine"
-                                },
-                                "i": {
-                                    "stmt": "f_in_native_scalar"
                                 }
                             }
                         },

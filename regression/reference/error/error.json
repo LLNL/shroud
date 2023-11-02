@@ -1026,14 +1026,6 @@
                         "data": {
                             "stmt": "c_inout_native_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "data": {
-                            "stmt": "f_inout_native_*"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1165,14 +1157,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "data": {
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -1296,14 +1280,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "data": {
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -1429,14 +1405,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "data": {
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"

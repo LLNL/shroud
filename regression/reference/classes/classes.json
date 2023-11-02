@@ -1151,17 +1151,6 @@
                                 "name": {
                                     "stmt": "c_in_string_&"
                                 }
-                            },
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_function_shadow_*_capptr"
-                                },
-                                "flag": {
-                                    "stmt": "f_in_bool_scalar"
-                                },
-                                "name": {
-                                    "stmt": "f_in_string_&_buf"
-                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1347,17 +1336,6 @@
                             "fortran": true
                         },
                         "zz_bind": {
-                            "c": {
-                                "+result": {
-                                    "stmt": "c_function_shadow_*_capptr"
-                                },
-                                "flag": {
-                                    "stmt": "c_in_bool_scalar"
-                                },
-                                "name": {
-                                    "stmt": "c_in_string_&"
-                                }
-                            },
                             "f": {
                                 "+result": {
                                     "stmt": "f_function_shadow_*_capptr"
@@ -1678,11 +1656,6 @@
                                 "+result": {
                                     "stmt": "c_function_string_&"
                                 }
-                            },
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_function_string_&_cdesc_allocatable"
-                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1813,11 +1786,6 @@
                             "fortran": true
                         },
                         "zz_bind": {
-                            "c": {
-                                "+result": {
-                                    "stmt": "c_function_string_&"
-                                }
-                            },
                             "f": {
                                 "+result": {
                                     "stmt": "f_function_string_&_cdesc_allocatable"
@@ -2480,13 +2448,6 @@
                             "wrapped_name": "m_name"
                         },
                         "wrap": {},
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_getter_string_scalar_cdesc_allocatable"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_m_name",
                             "F_name_api": "get_m_name",
@@ -2660,16 +2621,6 @@
                             "wrapped_name": "m_name"
                         },
                         "wrap": {},
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_setter"
-                                },
-                                "val": {
-                                    "stmt": "f_setter_string_scalar_buf"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_m_name",
                             "F_name_api": "set_m_name",
@@ -3014,11 +2965,6 @@
                                 "+result": {
                                     "stmt": "c_function_string_&"
                                 }
-                            },
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_function_string_&_cdesc_allocatable"
-                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -3149,11 +3095,6 @@
                             "fortran": true
                         },
                         "zz_bind": {
-                            "c": {
-                                "+result": {
-                                    "stmt": "c_function_string_&"
-                                }
-                            },
                             "f": {
                                 "+result": {
                                     "stmt": "f_function_string_&_cdesc_allocatable"
@@ -4672,13 +4613,6 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_items",
                             "F_name_api": "get_items",
@@ -6965,11 +6899,6 @@
                         "+result": {
                             "stmt": "c_function_string_&"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_&_buf_copy"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -7091,11 +7020,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_string_&_buf_copy"

@@ -566,19 +566,6 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
-                        },
-                        "arg1": {
-                            "stmt": "f_in_string_&_buf"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtl": {
@@ -951,23 +938,11 @@
                     "c": {
                         "+result": {
                             "stmt": "c_function_native_scalar"
-                        },
-                        "arg1": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_bool_scalar"
                         }
                     },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_scalar"
-                        },
-                        "arg1": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_bool_scalar"
                         }
                     }
                 },
@@ -1099,9 +1074,6 @@
                         },
                         "arg1": {
                             "stmt": "c_in_native_scalar"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_bool_scalar"
                         }
                     },
                     "f": {
@@ -1110,9 +1082,6 @@
                         },
                         "arg1": {
                             "stmt": "f_in_native_scalar"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_bool_scalar"
                         }
                     }
                 },
@@ -1643,14 +1612,6 @@
                         "name": {
                             "stmt": "c_in_string_&"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "stmt": "f_in_string_&_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1799,14 +1760,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "name": {
-                            "stmt": "c_in_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -2124,24 +2077,6 @@
                     "ArgType"
                 ],
                 "wrap": {},
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "stmt": "f_in_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "TemplateArgument",
                     "F_name_api": "template_argument",
@@ -2629,18 +2564,6 @@
                     "RetType"
                 ],
                 "wrap": {},
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_scalar"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
@@ -3174,17 +3097,6 @@
                         "name": {
                             "stmt": "c_in_string_&"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "f_in_string_&_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3398,30 +3310,6 @@
                     "F_string_len_trim": true
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "c_in_string_&"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded",
                     "F_name_api": "fortran_generic_overloaded",
@@ -3507,17 +3395,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "c_in_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -3688,30 +3565,6 @@
                     "F_string_len_trim": true
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "c_in_string_&"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded",
                     "F_name_api": "fortran_generic_overloaded",
@@ -3797,17 +3650,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_subroutine"
-                        },
-                        "arg2": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "stmt": "c_in_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_subroutine"
@@ -3964,12 +3806,6 @@
                         },
                         "num": {
                             "stmt": "c_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
@@ -3977,12 +3813,6 @@
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4178,9 +4008,6 @@
                         },
                         "offset": {
                             "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
@@ -4191,9 +4018,6 @@
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4867,12 +4691,6 @@
                         "num": {
                             "stmt": "c_in_native_scalar"
                         },
-                        "offset": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
-                        },
                         "type": {
                             "stmt": "c_in_native_scalar"
                         }
@@ -4882,12 +4700,6 @@
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
@@ -5141,9 +4953,6 @@
                         "offset": {
                             "stmt": "c_in_native_scalar"
                         },
-                        "stride": {
-                            "stmt": "c_in_native_scalar"
-                        },
                         "type": {
                             "stmt": "c_in_native_scalar"
                         }
@@ -5156,9 +4965,6 @@
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "stride": {
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
@@ -7178,11 +6984,6 @@
                         "+result": {
                             "stmt": "c_function_string_&"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_&_buf_copy"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -7304,11 +7105,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_string_&"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_string_&_buf_copy"

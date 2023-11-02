@@ -842,14 +842,6 @@
                         "len": {
                             "stmt": "c_out_native_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_*_cdesc_pointer"
-                        },
-                        "len": {
-                            "stmt": "f_out_native_*_hidden"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1044,14 +1036,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_*"
-                        },
-                        "len": {
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1233,14 +1217,6 @@
                         },
                         "len": {
                             "stmt": "c_out_native_*"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_*_cdesc_allocatable"
-                        },
-                        "len": {
-                            "stmt": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -1439,14 +1415,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_*"
-                        },
-                        "len": {
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -1630,14 +1598,6 @@
                         },
                         "len": {
                             "stmt": "c_out_native_*"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_*_cdesc_pointer"
-                        },
-                        "len": {
-                            "stmt": "f_out_native_*_hidden"
                         }
                     }
                 },
@@ -1831,14 +1791,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_*"
-                        },
-                        "len": {
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -2163,14 +2115,6 @@
                         "len": {
                             "stmt": "c_out_native_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_*_cdesc_pointer_caller"
-                        },
-                        "len": {
-                            "stmt": "f_out_native_*_hidden"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2366,14 +2310,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_*_caller"
-                        },
-                        "len": {
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2743,14 +2679,6 @@
                         "len": {
                             "stmt": "c_out_native_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_*_cdesc_pointer_caller"
-                        },
-                        "len": {
-                            "stmt": "f_out_native_*_hidden"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2945,14 +2873,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_*_caller"
-                        },
-                        "len": {
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_*_cdesc_pointer_caller"

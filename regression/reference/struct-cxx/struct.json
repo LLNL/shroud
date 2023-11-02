@@ -2432,17 +2432,6 @@
                         "s1": {
                             "stmt": "c_in_struct_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "f_out_char_*_buf"
-                        },
-                        "s1": {
-                            "stmt": "f_in_struct_*"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2618,17 +2607,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "c_out_char_*"
-                        },
-                        "s1": {
-                            "stmt": "c_in_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_native_scalar"
@@ -3928,20 +3906,6 @@
                         "outbuf": {
                             "stmt": "c_out_char_*"
                         }
-                    },
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_struct_*_pointer"
-                        },
-                        "d": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "i": {
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "f_out_char_*_buf"
-                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4162,20 +4126,6 @@
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "stmt": "c_function_struct_*"
-                        },
-                        "d": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "i": {
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "outbuf": {
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "stmt": "f_function_struct_*_pointer"
@@ -5683,16 +5633,6 @@
                     "wrapped_name": "ivalue"
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_getter_native_*_cdesc_pointer"
-                        },
-                        "SH_this": {
-                            "stmt": "f_in_struct_*"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_ivalue",
                     "F_name_api": "cstruct_list_get_ivalue",
@@ -6148,16 +6088,6 @@
                     "wrapped_name": "dvalue"
                 },
                 "wrap": {},
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_getter_native_*_cdesc_pointer"
-                        },
-                        "SH_this": {
-                            "stmt": "f_in_struct_*"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_dvalue",
                     "F_name_api": "cstruct_list_get_dvalue",
