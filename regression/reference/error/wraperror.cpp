@@ -34,6 +34,17 @@ void ERR_BadFstatements(void)
 }
 
 // ----------------------------------------
+// Function:  void BadFstatements
+// Attrs:     +intent(subroutine)
+// Statement: f_subroutine
+no-such-type ERR_BadFstatements_extrawrapper(void)
+{
+    // splicer begin function.BadFstatements_extrawrapper
+    BadFstatements();
+    // splicer end function.BadFstatements_extrawrapper
+}
+
+// ----------------------------------------
 // Function:  void AssumedRank
 // Attrs:     +intent(subroutine)
 // Statement: c_subroutine

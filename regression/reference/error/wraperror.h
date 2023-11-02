@@ -30,6 +30,8 @@ extern "C" {
 
 void ERR_BadFstatements(void);
 
+no-such-type ERR_BadFstatements_extrawrapper(void);
+
 void ERR_AssumedRank(int * data);
 
 void ERR_AssumedRank_0d(int * data);

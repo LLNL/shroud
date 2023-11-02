@@ -157,11 +157,11 @@ module error_mod
         ! Function:  void BadFstatements
         ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
-        function c_bad_fstatements() &
+        function c_bad_fstatements_extrawrapper() &
                 result(SHT_rv) &
-                bind(C, name="ERR_BadFstatements")
+                bind(C, name="ERR_BadFstatements_extrawrapper")
             implicit none
-        end function c_bad_fstatements
+        end function c_bad_fstatements_extrawrapper
 
         ! ----------------------------------------
         ! Function:  void AssumedRank
@@ -369,7 +369,7 @@ contains
     ! Statement: f_subroutine
     subroutine bad_fstatements()
         ! splicer begin function.bad_fstatements
-        call c_bad_fstatements()
+        call c_bad_fstatements_extrawrapper()
         ===>{no_such_var} = 10<===
         ! splicer end function.bad_fstatements
     end subroutine bad_fstatements

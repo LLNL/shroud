@@ -956,9 +956,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
-        result_stmt = bind["+result"].stmt
+        bind_arg = bind["+result"]
+        result_stmt = bind_arg.stmt
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
+        if bind_arg.fstmts:
+            stmt_indexes.append(bind_arg.fstmts)
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
         
