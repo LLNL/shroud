@@ -940,7 +940,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         while CXX_node._PTR_C_CXX_index is not None:
             CXX_node = self.newlibrary.function_index[CXX_node._PTR_C_CXX_index]
         CXX_ast = CXX_node.ast
-        CXX_subprogram = CXX_ast.declarator.get_subprogram()
 
         # C return type
         ast = node.ast
@@ -970,7 +969,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
         
-        if CXX_subprogram == "subroutine":
+        if C_subprogram == "subroutine":
             fmt_pattern = fmt_func
         else:
             fmt_result.idtor = "0"  # no destructor
@@ -1237,7 +1236,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if result_stmt.c_call:
             raw_call_code = result_stmt.c_call
             need_wrapper = True
-        elif CXX_subprogram == "subroutine":
+        elif C_subprogram == "subroutine":
             raw_call_code = ["{C_call_function};"]
         else:
             if result_stmt.cxx_local_var is None:
