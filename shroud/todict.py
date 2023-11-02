@@ -458,8 +458,6 @@ class ToDict(visitor.Visitor):
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
-        if hasattr(node, "fmtdict2"):
-            d["zz_fmtdict2"] = self.visit(node.fmtdict2)
 
         if node.helpers:
             helpers = {}
