@@ -12,6 +12,17 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
+Changes to YAML input
+^^^^^^^^^^^^^^^^^^^^^
+
+* C wrappers can now be generated independent of Fortran wrappers
+  instead of just as a side effect of creating Fortran Wrappers.
+
+  As part of this effort some uses of *fstatements* in the YAML file
+  must be changed.  The C wrapper created for the Fortran wrapper to call
+  is now considered part of the Fortran wrapper processing.
+  The *c_buf* label used with *fstatements* is now *f*.
+
 * Rename some fields in Statements to allow C and Fortran entries to exist
   in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
   This allows a single group to contains all the fields used for more complex
@@ -20,78 +31,87 @@ Unreleased
   This will change the name of fields in *fstatements* in an input YAML file.
   These are used to changed the default behavior of a wrapper.
 
+c statements
+
+=============   =============
+Old Name        New Name
+=============   =============
+arg_call        c_arg_call
+pre_call        c_pre_call
+call            c_call
+post_call       c_post_call
+final           c_final
+ret             c_return
+temps           c_temps
+local           c_local
+f_arg_decl      i_arg_decl
+f_result_decl   i_result_decl
+f_result_var    i_result_var
+f_module        i_module
+f_import        i_import
+=============   =============
+
+f statements
+
+=============   =============
+Old Name        New Name
+=============   =============
+need_wrapper    f_need_wrapper
+arg_name        f_arg_name
+arg_decl        f_arg_decl
+arg_c_call      f_arg_call
+declare         f_declare
+pre_call        f_pre_call
+call            f_call
+post_call       f_post_call
+result          f_result
+temps           f_temps
+local           f_local
+=============   =============
+
+.. from vectors.yaml
+
 .. code-block:: yaml
 
-    - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
-      fstatements:
-        c:
-          c_return_type: long
-          c_return:
-          - return SHT_arg_cdesc->size;
+    fstatements:
+      c:
+        return_type: long
+        ret:
+        - return SHT_arg_cdesc->size;
+      c_buf:
+        return_type: long
+        ret:
+        - return SHT_arg_cdesc->size;
+      f:
+        result: num
+        f_module:
+          iso_c_binding: ["C_LONG"]
+        declare:
+        -  "integer(C_LONG) :: {F_result}"
+        call:
+        -  "{F_result} = {F_C_call}({F_arg_c_call})"              
 
+is now:
 
-.. list-table:: c statements
-   :widths: 25 25
-   :header-rows: 1
+.. code-block:: yaml
 
-   * - Old Name
-     - New Name
-   * - arg_call
-     - c_arg_call
-   * - pre_call
-     - c_pre_call
-   * - call
-     - c_call
-   * - post_call
-     - c_post_call
-   * - final
-     - c_final
-   * - ret
-     - c_return
-   * - temps
-     - c_temps
-   * - local
-     - c_local
-   * - f_arg_decl
-     - i_arg_decl
-   * - f_result_decl
-     - i_result_decl
-   * - f_result_var
-     - i_result_var
-   * - f_module
-     - i_module
-   * - f_import
-     - i_import
+    fstatements:
+      c:
+        c_return_type: long
+        c_return:
+        - return SHT_arg_cdesc->size;
+      f:
+        c_return_type: long
+        c_return:
+        - return SHT_arg_cdesc->size;
+        f_result: num
+        f_module:
+          iso_c_binding: ["C_LONG"]
+        f_arg_decl:
+        -  "integer(C_LONG) :: {F_result}"
+        f_call:
+        -  "{F_result} = {F_C_call}({F_arg_c_call})"              
 
-
-.. list-table:: f statements
-   :widths: 25 25
-   :header-rows: 1
-
-   * - Old Name
-     - New Name
-   * - need_wrapper
-     - f_need_wrapper
-   * - arg_name
-     - f_arg_name
-   * - arg_decl
-     - f_arg_decl
-   * - arg_c_call
-     - f_arg_call
-   * - declare
-     - f_declare
-   * - pre_call
-     - f_pre_call
-   * - call
-     - f_call
-   * - post_call
-     - f_post_call
-   * - result
-     - f_result
-   * - temps
-     - f_temps
-   * - local
-     - f_local
 
 * Added format field *f_c_suffix*. Used in format fields
   *C_name_template* and *F_C_name_template* to allow Fortran wrapper
@@ -178,7 +198,7 @@ Unreleased
   *c_var*. Remove format field *F_C_var* since it is redundant with
   *i_var*.
 
-.. The fmtc and fmtf dictionaries will be merged and needed unique names
+.. The fmtc and fmtf dictionaries were merged and needed unique names
    instead of overloading c_var.
 
 .. As part of creating better C specific wrappers (not intented to be
