@@ -69,6 +69,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "intargs_in(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
@@ -161,6 +162,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "intargs_inout(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
@@ -253,6 +255,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "intargs_out(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
@@ -390,6 +393,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "intargs(\targin,\t arginout,\t argout)",
                             "C_call_list": "argin,\t arginout,\t argout",
                             "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                             "C_return_type": "void",
@@ -580,6 +584,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "cos_doubles(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
                             "C_prototype": "double * in,\t double * out,\t int sizein",
                             "C_return_type": "void",
@@ -772,6 +777,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "truncate_to_int(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
                             "C_prototype": "double * in,\t int * out,\t int sizein",
                             "C_return_type": "void",
@@ -938,6 +944,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "get_values(\tnvalues,\t values)",
                             "C_call_list": "nvalues,\t values",
                             "C_prototype": "int * nvalues,\t int * values",
                             "C_return_type": "void",
@@ -1091,6 +1098,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "get_values2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int * arg1,\t int * arg2",
                             "C_return_type": "void",
@@ -1231,6 +1239,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "iota_dimension(\tnvar,\t values)",
                             "C_call_list": "nvar,\t values",
                             "C_prototype": "int nvar,\t int * values",
                             "C_return_type": "void",
@@ -1391,6 +1400,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Sum(\tlen,\t values,\t result)",
                             "C_call_list": "len,\t values,\t result",
                             "C_prototype": "int len,\t const int * values,\t int * result",
                             "C_return_type": "void",
@@ -1530,6 +1540,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fillIntArray(\tout)",
                             "C_call_list": "out",
                             "C_prototype": "int * out",
                             "C_return_type": "void",
@@ -1648,6 +1659,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "incrementIntArray(\tarray,\t sizein)",
                             "C_call_list": "array,\t sizein",
                             "C_prototype": "int * array,\t int sizein",
                             "C_return_type": "void",
@@ -1779,6 +1791,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fill_with_zeros(\tx,\t x_length)",
                             "C_call_list": "x,\t x_length",
                             "C_prototype": "double * x,\t int x_length",
                             "C_return_type": "void",
@@ -1911,6 +1924,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "accumulate(\tarr,\t len)",
                             "C_call_list": "arr,\t len",
                             "C_prototype": "const int * arr,\t size_t len",
                             "C_return_type": "int",
@@ -2042,6 +2056,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptCharArrayIn(\tnames)",
                             "C_call_list": "names",
                             "C_prototype": "char **names",
                             "C_return_type": "int",
@@ -2142,6 +2157,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "setGlobalInt(\tvalue)",
                             "C_call_list": "value",
                             "C_prototype": "int value",
                             "C_return_type": "void",
@@ -2212,6 +2228,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "sumFixedArray(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -2303,6 +2320,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
@@ -2408,6 +2426,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
@@ -2540,6 +2559,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToDynamicArray(\tcount,\t ncount)",
                             "C_call_list": "count,\t ncount",
                             "C_prototype": "int * * count,\t int * ncount",
                             "C_return_type": "void",
@@ -2667,6 +2687,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToFuncArray(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
@@ -2768,6 +2789,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToConstScalar(\tnitems)",
                             "C_call_list": "nitems",
                             "C_prototype": "const int * * nitems",
                             "C_return_type": "void",
@@ -2871,6 +2893,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToFixedConstArray(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "const int * * count",
                             "C_return_type": "void",
@@ -3001,6 +3024,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getPtrToDynamicConstArray(\tcount,\t ncount)",
                             "C_call_list": "count,\t ncount",
                             "C_prototype": "const int * * count,\t int * ncount",
                             "C_return_type": "void",
@@ -3122,6 +3146,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getRawPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
@@ -3225,6 +3250,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getRawPtrToScalarForce(\tnitems)",
                             "C_call_list": "nitems",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
@@ -3325,6 +3351,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getRawPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
@@ -3428,6 +3455,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getRawPtrToFixedArrayForce(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
@@ -3531,6 +3559,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getRawPtrToInt2d(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int * * * arg",
                             "C_return_type": "void",
@@ -3631,6 +3660,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "checkInt2d(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int **arg",
                             "C_return_type": "int",
@@ -3751,6 +3781,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "DimensionIn(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
@@ -3861,6 +3892,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getAllocToFixedArray(\tcount)",
                             "C_call_list": "count",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
@@ -3955,6 +3987,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnAddress1(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
@@ -4062,6 +4095,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnAddress2(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
@@ -4170,6 +4204,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchVoidPtr(\taddr)",
                             "C_call_list": "addr",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
@@ -4268,6 +4303,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "updateVoidPtr(\taddr)",
                             "C_call_list": "addr",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
@@ -4366,6 +4402,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "VoidPtrArray(\taddr)",
                             "C_call_list": "addr",
                             "C_prototype": "void **addr",
                             "C_return_type": "int",
@@ -4452,6 +4489,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntPtrToScalar(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_const": "",
@@ -4526,6 +4564,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntPtrToFixedArray(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_array_size2": "10",
@@ -4595,6 +4634,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntPtrToConstScalar(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const int *",
                             "c_const": "const ",
@@ -4670,6 +4710,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntPtrToFixedConstArray(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const int *",
                             "c_array_size2": "10",
@@ -4741,6 +4782,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntScalar(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_const": "",
@@ -4815,6 +4857,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntRaw(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_const": "",
@@ -4913,6 +4956,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntRawWithArgs(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "const char * name",
                             "C_return_type": "int *",
@@ -5007,6 +5051,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnRawPtrToInt2d(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int * *",
                             "c_const": "",
@@ -5084,6 +5129,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnIntAllocToFixedArray(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_array_size2": "10",

@@ -63,6 +63,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GetNameLength(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -81,6 +82,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "GetNameLength(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -177,6 +179,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getNameErrorPattern(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -274,6 +277,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getNameErrorPattern(\t)",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",

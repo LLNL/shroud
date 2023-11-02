@@ -175,6 +175,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
@@ -194,6 +195,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
@@ -383,12 +385,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "typestruct(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "TYP_Struct1Rename * arg1",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "typestruct(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "TYP_Struct1Rename * arg1",
                             "C_return_type": "void",
@@ -544,6 +548,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnBytesForIndexType(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "TYP_IndexType arg",
                             "C_return_type": "int",
@@ -563,6 +568,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "returnBytesForIndexType(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "TYP_IndexType arg",
                             "C_return_type": "int",

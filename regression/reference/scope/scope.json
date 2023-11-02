@@ -669,6 +669,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "DataPointer_get_items(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -851,6 +852,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "DataPointer_set_items(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                             "C_return_type": "void",
@@ -1278,6 +1280,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "ns1::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
@@ -1460,6 +1463,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "ns1::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",
@@ -1914,6 +1918,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "ns2::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
@@ -2096,6 +2101,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "ns2::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",

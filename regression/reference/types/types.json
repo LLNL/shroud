@@ -76,6 +76,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "short_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
@@ -95,6 +96,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "short_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
@@ -282,6 +284,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int arg1",
                             "C_return_type": "int",
@@ -301,6 +304,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int arg1",
                             "C_return_type": "int",
@@ -488,6 +492,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
@@ -507,6 +512,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
@@ -696,6 +702,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "long_long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
@@ -715,6 +722,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "long_long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
@@ -906,6 +914,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "short_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
@@ -925,6 +934,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "short_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
@@ -1114,6 +1124,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "long_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
@@ -1133,6 +1144,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "long_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
@@ -1324,6 +1336,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "long_long_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
@@ -1343,6 +1356,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "long_long_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
@@ -1532,6 +1546,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "unsigned_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
@@ -1551,6 +1566,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "unsigned_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
@@ -1740,6 +1756,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ushort_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned short arg1",
                             "C_return_type": "unsigned short",
@@ -1759,6 +1776,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ushort_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned short arg1",
                             "C_return_type": "unsigned short",
@@ -1948,6 +1966,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "uint_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
@@ -1967,6 +1986,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "uint_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
@@ -2156,6 +2176,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ulong_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
@@ -2175,6 +2196,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ulong_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
@@ -2366,6 +2388,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ulong_long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long long arg1",
                             "C_return_type": "unsigned long long",
@@ -2385,6 +2408,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ulong_long_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long long arg1",
                             "C_return_type": "unsigned long long",
@@ -2578,6 +2602,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ulong_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
@@ -2597,6 +2622,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ulong_int_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
@@ -2784,6 +2810,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "int8_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int8_t arg1",
                             "C_return_type": "int8_t",
@@ -2803,6 +2830,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "int8_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int8_t arg1",
                             "C_return_type": "int8_t",
@@ -2990,6 +3018,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "int16_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int16_t arg1",
                             "C_return_type": "int16_t",
@@ -3009,6 +3038,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "int16_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int16_t arg1",
                             "C_return_type": "int16_t",
@@ -3196,6 +3226,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "int32_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int32_t arg1",
                             "C_return_type": "int32_t",
@@ -3215,6 +3246,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "int32_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int32_t arg1",
                             "C_return_type": "int32_t",
@@ -3402,6 +3434,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "int64_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int64_t arg1",
                             "C_return_type": "int64_t",
@@ -3421,6 +3454,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "int64_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "int64_t arg1",
                             "C_return_type": "int64_t",
@@ -3608,6 +3642,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "uint8_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint8_t arg1",
                             "C_return_type": "uint8_t",
@@ -3627,6 +3662,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "uint8_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint8_t arg1",
                             "C_return_type": "uint8_t",
@@ -3814,6 +3850,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "uint16_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint16_t arg1",
                             "C_return_type": "uint16_t",
@@ -3833,6 +3870,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "uint16_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint16_t arg1",
                             "C_return_type": "uint16_t",
@@ -4020,6 +4058,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "uint32_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint32_t arg1",
                             "C_return_type": "uint32_t",
@@ -4039,6 +4078,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "uint32_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint32_t arg1",
                             "C_return_type": "uint32_t",
@@ -4226,6 +4266,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "uint64_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint64_t arg1",
                             "C_return_type": "uint64_t",
@@ -4245,6 +4286,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "uint64_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "uint64_t arg1",
                             "C_return_type": "uint64_t",
@@ -4432,6 +4474,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "size_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "size_t arg1",
                             "C_return_type": "size_t",
@@ -4451,6 +4494,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "size_func(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "size_t arg1",
                             "C_return_type": "size_t",
@@ -4638,6 +4682,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "bool_func(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "bool arg",
                             "C_return_type": "bool",
@@ -4657,6 +4702,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "bool_func(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "bool arg",
                             "C_return_type": "bool",
@@ -4857,6 +4903,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnBoolAndOthers(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int * flag",
                             "C_return_type": "bool",
@@ -4876,6 +4923,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "returnBoolAndOthers(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int * flag",
                             "C_return_type": "bool",

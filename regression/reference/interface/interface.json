@@ -52,11 +52,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Function1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "Function1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -163,6 +165,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Function2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
@@ -182,6 +185,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "Function2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",

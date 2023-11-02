@@ -462,6 +462,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getName(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
@@ -600,6 +601,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getName(\tSHT_name_str)",
                             "C_call_list": "SHT_name_str",
                             "C_prototype": "char *name,\t int SHT_name_len",
                             "C_return_type": "void",
@@ -701,11 +703,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "function1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "function1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -774,11 +778,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "function2(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "function2(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -870,12 +876,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
                             "C_prototype": "int i",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
                             "C_prototype": "int i",
                             "C_return_type": "void",
@@ -1031,12 +1039,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
                             "C_prototype": "long i",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
                             "C_prototype": "long i",
                             "C_return_type": "void",
@@ -1187,6 +1197,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "function4(\tARG_rv)",
                             "C_call_list": "ARG_rv",
                             "C_prototype": "const char * rv",
                             "C_return_type": "int",
@@ -1354,6 +1365,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "function4(\tARG_rv)",
                             "C_call_list": "ARG_rv",
                             "C_prototype": "char *rv,\t int SHT_rv_len",
                             "C_return_type": "int",
@@ -1474,11 +1486,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fiveplus(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "fiveplus(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -1610,6 +1624,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
                             "C_call_list": "ARG_name,\t value",
                             "C_prototype": "char * name,\t int * value",
                             "C_return_type": "void",
@@ -1830,6 +1845,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
                             "C_call_list": "ARG_name,\t value",
                             "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                             "C_return_type": "void",
@@ -2174,12 +2190,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
@@ -2479,12 +2497,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
@@ -2754,6 +2774,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -2772,6 +2793,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -2906,6 +2928,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
                             "C_call_list": "ARG_point",
                             "C_prototype": "TES_Cstruct_as_class * point",
                             "C_return_type": "int",
@@ -2925,6 +2948,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
                             "C_call_list": "ARG_point",
                             "C_prototype": "TES_Cstruct_as_class * point",
                             "C_return_type": "int",
@@ -3379,12 +3403,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                             "C_return_type": "void",
@@ -3723,6 +3749,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->defaultctor(\t)",
                                             "C_prototype": "TES_ns0_Names * SHC_rv",
                                             "C_return_type": "TES_ns0_Names *",
                                             "c_const": "",
@@ -3741,6 +3768,7 @@
                                             "stmt_name": "c_ctor_shadow_scalar_capptr"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->defaultctor(\t)",
                                             "C_prototype": "TES_ns0_Names * SHC_rv",
                                             "C_return_type": "TES_ns0_Names *",
                                             "F_C_arguments": "SHT_rv",
@@ -3855,11 +3883,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->method1(\t)",
                                             "C_prototype": "TES_ns0_Names * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->method1(\t)",
                                             "C_prototype": "TES_ns0_Names * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -3933,11 +3963,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->method2(\t)",
                                             "C_prototype": "TES_ns0_Names * self2",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->method2(\t)",
                                             "C_prototype": "TES_ns0_Names * self2",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self2",
@@ -4134,11 +4166,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "ns1::init_ns1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "ns1::init_ns1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
@@ -4753,11 +4787,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->Member1(\t)",
                                             "C_prototype": "TES_capi_class1 * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->Member1(\t)",
                                             "C_prototype": "TES_capi_class1 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -4854,11 +4890,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "CAPI::Worker1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "CAPI::Worker1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
@@ -4956,11 +4994,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "CAPI2::Worker1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "CAPI2::Worker1(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",

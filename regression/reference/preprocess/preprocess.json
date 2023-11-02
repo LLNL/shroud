@@ -50,11 +50,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method1(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method1(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -123,11 +125,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method2(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method2(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -201,11 +205,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method3def(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method3def(\t)",
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -307,12 +313,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method3def(\ti)",
                                     "C_call_list": "i",
                                     "C_prototype": "PRE_User1 * self,\t int i",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method3def(\ti)",
                                     "C_call_list": "i",
                                     "C_prototype": "PRE_User1 * self,\t int i",
                                     "C_return_type": "void",
@@ -489,11 +497,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->exfunc(\t)",
                                     "C_prototype": "PRE_User2 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->exfunc(\t)",
                                     "C_prototype": "PRE_User2 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -587,12 +597,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->exfunc(\tflag)",
                                     "C_call_list": "flag",
                                     "C_prototype": "PRE_User2 * self,\t int flag",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->exfunc(\tflag)",
                                     "C_call_list": "flag",
                                     "C_prototype": "PRE_User2 * self,\t int flag",
                                     "C_return_type": "void",

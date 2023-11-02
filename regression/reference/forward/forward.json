@@ -111,6 +111,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "FOR_Class2 * SHC_rv",
                                     "C_return_type": "FOR_Class2 *",
                                     "c_const": "",
@@ -129,6 +130,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "FOR_Class2 * SHC_rv",
                                     "C_return_type": "FOR_Class2 *",
                                     "F_C_arguments": "SHT_rv",
@@ -255,11 +257,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->dtor(\t)",
                                     "C_prototype": "FOR_Class2 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_dtor"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->dtor(\t)",
                                     "C_prototype": "FOR_Class2 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -363,12 +367,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->func1(\tSHCXX_arg)",
                                     "C_call_list": "SHCXX_arg",
                                     "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->func1(\tSHCXX_arg)",
                                     "C_call_list": "SHCXX_arg",
                                     "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                                     "C_return_type": "void",
@@ -551,12 +557,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->acceptClass3(\tSHCXX_arg)",
                                     "C_call_list": "SHCXX_arg",
                                     "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->acceptClass3(\tSHCXX_arg)",
                                     "C_call_list": "SHCXX_arg",
                                     "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                                     "C_return_type": "void",
@@ -799,6 +807,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "forward::passStruct1(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const Cstruct1 * arg",
                             "C_return_type": "int",
@@ -818,6 +827,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "forward::passStruct1(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const Cstruct1 * arg",
                             "C_return_type": "int",

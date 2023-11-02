@@ -1209,6 +1209,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         
         if call_list:
             fmt_result.C_call_list = ",\t ".join(call_list)
+        fmt_result.C_call_function = wformat(
+            "{CXX_this_call}{function_name}"
+            "{CXX_template}(\t{C_call_list})", fmt_result)
 
         if len(proto_list) + len(proto_tail) == 0:
             proto_list.append("void")
@@ -1234,10 +1237,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             raw_call_code = result_stmt.c_call
             need_wrapper = True
         elif CXX_subprogram == "subroutine":
-            raw_call_code = [
-                "{CXX_this_call}{function_name}"
-                "{CXX_template}({C_call_list});",
-            ]
+            raw_call_code = ["{C_call_function};"]
         else:
             if result_stmt.cxx_local_var is None:
                 pass
@@ -1249,10 +1249,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 fmt_result.cxx_addr = ""
                 fmt_result.cxx_rv_decl = "*" + fmt_result.cxx_var
             
-            raw_call_code = [
-                "{cxx_rv_decl} =\t {CXX_this_call}{function_name}"
-                "{CXX_template}(\t{C_call_list});",
-            ]
+            raw_call_code = ["{cxx_rv_decl} =\t {C_call_function};"]
             # Return result from function
             if self.language == "c":
                 pass

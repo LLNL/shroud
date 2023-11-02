@@ -74,12 +74,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method1(\tSHCXX_comm)",
                                     "C_call_list": "SHCXX_comm",
                                     "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method1(\tSHCXX_comm)",
                                     "C_call_list": "SHCXX_comm",
                                     "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                     "C_return_type": "void",
@@ -219,12 +221,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->method2(\tSHCXX_c2)",
                                     "C_call_list": "SHCXX_c2",
                                     "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->method2(\tSHCXX_c2)",
                                     "C_call_list": "SHCXX_c2",
                                     "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                     "C_return_type": "void",
@@ -386,11 +390,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "one::two::function1(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "one::two::function1(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
@@ -544,12 +550,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->method1(\targ1)",
                                             "C_call_list": "arg1",
                                             "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->method1(\targ1)",
                                             "C_call_list": "arg1",
                                             "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                             "C_return_type": "void",
@@ -725,11 +733,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->method(\t)",
                                             "C_prototype": "LIB_outer1_class0 * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->method(\t)",
                                             "C_prototype": "LIB_outer1_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -826,11 +836,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "outer1::outer_func(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "outer1::outer_func(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
@@ -932,11 +944,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->method(\t)",
                                             "C_prototype": "LIB_outer2_class0 * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->method(\t)",
                                             "C_prototype": "LIB_outer2_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -1033,11 +1047,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "outer2::outer_func(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "outer2::outer_func(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",

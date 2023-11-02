@@ -689,6 +689,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_x1(\t)",
                                     "C_prototype": "STR_Cstruct_as_class * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -802,6 +803,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_x1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                     "C_return_type": "void",
@@ -901,6 +903,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_y1(\t)",
                                     "C_prototype": "STR_Cstruct_as_class * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1014,6 +1017,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_y1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                     "C_return_type": "void",
@@ -1209,6 +1213,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_x1(\t)",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1322,6 +1327,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_x1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -1421,6 +1427,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_y1(\t)",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1534,6 +1541,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_y1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -1633,6 +1641,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_z1(\t)",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1746,6 +1755,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_z1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -2062,6 +2072,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passStructByValue(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 arg",
                             "C_return_type": "int",
@@ -2081,6 +2092,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "passStructByValue(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 arg",
                             "C_return_type": "int",
@@ -2238,6 +2250,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passStruct1(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const STR_cstruct1 * arg",
                             "C_return_type": "int",
@@ -2257,6 +2270,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "passStruct1(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "const STR_cstruct1 * arg",
                             "C_return_type": "int",
@@ -2437,6 +2451,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passStruct2(\ts1,\t outbuf)",
                             "C_call_list": "s1,\t outbuf",
                             "C_prototype": "const STR_cstruct1 * s1,\t char * outbuf",
                             "C_return_type": "int",
@@ -2622,6 +2637,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passStruct2(\ts1,\t outbuf)",
                             "C_call_list": "s1,\t outbuf",
                             "C_prototype": "const STR_cstruct1 * s1,\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "int",
@@ -2793,6 +2809,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStructInPtr(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 * arg",
                             "C_return_type": "int",
@@ -2812,6 +2829,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "acceptStructInPtr(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 * arg",
                             "C_return_type": "int",
@@ -3016,12 +3034,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
                             "C_call_list": "arg,\t i,\t d",
                             "C_prototype": "STR_cstruct1 * arg,\t int i,\t double d",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
                             "C_call_list": "arg,\t i,\t d",
                             "C_prototype": "STR_cstruct1 * arg,\t int i,\t double d",
                             "C_return_type": "void",
@@ -3243,12 +3263,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStructInOutPtr(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 * arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "acceptStructInOutPtr(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "STR_cstruct1 * arg",
                             "C_return_type": "void",
@@ -3401,6 +3423,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnStructByValue(\ti,\t d)",
                             "C_call_list": "i,\t d",
                             "C_prototype": "int i,\t double d,\t STR_cstruct1 *SHC_rv",
                             "C_return_type": "void",
@@ -3419,6 +3442,7 @@
                             "stmt_name": "c_function_struct_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "returnStructByValue(\ti,\t d)",
                             "C_call_list": "i,\t d",
                             "C_prototype": "int i,\t double d,\t STR_cstruct1 *SHC_rv",
                             "C_return_type": "void",
@@ -3645,6 +3669,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "STR_cstruct1 *",
@@ -3664,6 +3689,7 @@
                             "stmt_name": "c_function_struct_*"
                         },
                         "fmtf": {
+                            "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "STR_cstruct1 *",
@@ -3911,6 +3937,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
                             "C_prototype": "int i,\t double d,\t char * outbuf",
                             "C_return_type": "STR_cstruct1 *",
@@ -4144,6 +4171,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
                             "C_prototype": "int i,\t double d,\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "STR_cstruct1 *",
@@ -4320,6 +4348,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "get_global_struct_list(\t)",
                             "C_prototype": "void",
                             "C_return_type": "STR_cstruct_list *",
                             "c_const": "",
@@ -4338,6 +4367,7 @@
                             "stmt_name": "c_function_struct_*"
                         },
                         "fmtf": {
+                            "C_call_function": "get_global_struct_list(\t)",
                             "C_prototype": "void",
                             "C_return_type": "STR_cstruct_list *",
                             "F_C_arguments": "",
@@ -4433,6 +4463,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Create_Cstruct_as_class(\t)",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "c_const": "",
@@ -4451,6 +4482,7 @@
                             "stmt_name": "c_function_shadow_*_capptr"
                         },
                         "fmtf": {
+                            "C_call_function": "Create_Cstruct_as_class(\t)",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "F_C_arguments": "SHT_rv",
@@ -4592,6 +4624,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
@@ -4611,6 +4644,7 @@
                             "stmt_name": "c_function_shadow_*_capptr"
                         },
                         "fmtf": {
+                            "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
@@ -4820,6 +4854,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
                             "C_call_list": "SHCXX_point",
                             "C_prototype": "STR_Cstruct_as_class * point",
                             "C_return_type": "int",
@@ -4839,6 +4874,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
                             "C_call_list": "SHCXX_point",
                             "C_prototype": "STR_Cstruct_as_class * point",
                             "C_return_type": "int",
@@ -5044,6 +5080,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_subclass *",
@@ -5063,6 +5100,7 @@
                             "stmt_name": "c_function_shadow_*_capptr"
                         },
                         "fmtf": {
+                            "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_subclass *",
@@ -5313,6 +5351,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_ptr_get_const_dvalue(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "STR_cstruct_ptr * SH_this",
                             "C_return_type": "const double *",
@@ -5476,6 +5515,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_ptr_set_const_dvalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "STR_cstruct_ptr * SH_this,\t const double * val",
                             "C_return_type": "void",
@@ -5738,6 +5778,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_list_get_ivalue(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "STR_cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -5926,6 +5967,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_list_set_ivalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "STR_cstruct_list * SH_this,\t int * val",
                             "C_return_type": "void",
@@ -6193,6 +6235,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_list_get_dvalue(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "STR_cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -6381,6 +6424,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Cstruct_list_set_dvalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "STR_cstruct_list * SH_this,\t double * val",
                             "C_return_type": "void",

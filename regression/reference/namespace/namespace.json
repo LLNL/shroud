@@ -71,6 +71,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "LastFunctionCalled(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -186,6 +187,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "LastFunctionCalled(\t)",
                             "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc,\t NS_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -283,11 +285,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "One(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "One(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -690,11 +694,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "outer::One(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "outer::One(\t)",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",

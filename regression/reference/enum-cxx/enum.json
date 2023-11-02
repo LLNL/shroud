@@ -275,6 +275,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "convert_to_int(\tSHCXX_in)",
                             "C_call_list": "SHCXX_in",
                             "C_prototype": "int in",
                             "C_return_type": "int",
@@ -294,6 +295,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "convert_to_int(\tSHCXX_in)",
                             "C_call_list": "SHCXX_in",
                             "C_prototype": "int in",
                             "C_return_type": "int",

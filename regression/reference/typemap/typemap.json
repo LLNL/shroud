@@ -179,6 +179,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
                             "C_call_list": "i1,\t i2",
                             "C_prototype": "IndexType i1,\t IndexType * i2",
                             "C_return_type": "bool",
@@ -350,6 +351,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
                             "C_call_list": "i1,\t i2",
                             "C_prototype": "int32_t i1,\t IndexType * i2",
                             "C_return_type": "bool",
@@ -533,6 +535,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
                             "C_call_list": "i1,\t i2",
                             "C_prototype": "int64_t i1,\t IndexType * i2",
                             "C_return_type": "bool",
@@ -732,6 +735,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passIndex2(\ti1)",
                             "C_call_list": "i1",
                             "C_prototype": "IndexType i1",
                             "C_return_type": "void",
@@ -834,6 +838,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passIndex2(\ti1)",
                             "C_call_list": "i1",
                             "C_prototype": "int32_t i1",
                             "C_return_type": "void",
@@ -942,6 +947,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passIndex2(\ti1)",
                             "C_call_list": "i1",
                             "C_prototype": "int64_t i1",
                             "C_return_type": "void",
@@ -1090,6 +1096,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passFloat(\tf1)",
                             "C_call_list": "f1",
                             "C_prototype": "FloatType f1",
                             "C_return_type": "void",
@@ -1192,6 +1199,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passFloat(\tf1)",
                             "C_call_list": "f1",
                             "C_prototype": "float f1",
                             "C_return_type": "void",
@@ -1300,6 +1308,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passFloat(\tf1)",
                             "C_call_list": "f1",
                             "C_prototype": "double f1",
                             "C_return_type": "void",

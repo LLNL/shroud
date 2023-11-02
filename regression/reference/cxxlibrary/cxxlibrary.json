@@ -476,6 +476,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "CXX_Class1 * SHC_rv",
                                     "C_return_type": "CXX_Class1 *",
                                     "c_const": "",
@@ -494,6 +495,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "CXX_Class1 * SHC_rv",
                                     "C_return_type": "CXX_Class1 *",
                                     "F_C_arguments": "SHT_rv",
@@ -589,6 +591,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->check_length(\t)",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
                                     "c_const": "",
@@ -607,6 +610,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->check_length(\t)",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -771,6 +775,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
                                     "C_prototype": "CXX_Class1 * self,\t int length",
                                     "C_return_type": "int",
@@ -910,6 +915,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
                                     "C_prototype": "CXX_Class1 * self,\t int length",
                                     "C_return_type": "int",
@@ -1054,6 +1060,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
                                     "C_prototype": "CXX_Class1 * self,\t long length",
                                     "C_return_type": "int",
@@ -1201,6 +1208,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->declare(\tflag)",
                                     "C_call_list": "flag",
                                     "C_prototype": "CXX_Class1 * self,\t int flag",
                                     "C_return_type": "void",
@@ -1218,6 +1226,7 @@
                                     "stmt_name": "c_function_shadow_*_this"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->declare(\tflag)",
                                     "C_call_list": "flag",
                                     "C_prototype": "CXX_Class1 * self,\t int flag",
                                     "C_return_type": "void",
@@ -1478,6 +1487,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
                                     "C_return_type": "void",
@@ -1664,6 +1674,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
                                     "C_return_type": "void",
@@ -1847,6 +1858,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t long length",
                                     "C_return_type": "void",
@@ -1977,6 +1989,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_length(\t)",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -2501,6 +2514,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "defaultPtrIsNULL(\t)",
                             "C_prototype": "void",
                             "C_return_type": "bool",
                             "c_const": "",
@@ -2519,6 +2533,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "defaultPtrIsNULL(\t)",
                             "C_prototype": "void",
                             "C_return_type": "bool",
                             "F_C_arguments": "",
@@ -2643,6 +2658,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "defaultPtrIsNULL(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "double * data",
                             "C_return_type": "bool",
@@ -2662,6 +2678,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "defaultPtrIsNULL(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "double * data",
                             "C_return_type": "bool",
@@ -2917,12 +2934,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
                             "C_call_list": "in1,\t out1,\t out2",
                             "C_prototype": "int in1,\t int * out1,\t int * out2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
                             "C_call_list": "in1,\t out1,\t out2",
                             "C_prototype": "int in1,\t int * out1,\t int * out2",
                             "C_return_type": "void",
@@ -3226,12 +3245,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
                             "C_call_list": "in1,\t out1,\t out2,\t flag",
                             "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
                             "C_call_list": "in1,\t out1,\t out2,\t flag",
                             "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                             "C_return_type": "void",
@@ -3628,6 +3649,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
                             "C_prototype": "long idx",
                             "C_return_type": "const char *",
@@ -3851,6 +3873,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
                             "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
@@ -4088,6 +4111,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
                             "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
@@ -4248,6 +4272,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "nested_get_parent(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -4416,6 +4441,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "nested_set_parent(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_nested * val",
                             "C_return_type": "void",
@@ -4674,6 +4700,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "nested_get_child(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -4860,6 +4887,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "nested_set_child(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_nested * * val",
                             "C_return_type": "void",
@@ -5118,6 +5146,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "structns::passStructByReference(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "int",
@@ -5137,6 +5166,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "structns::passStructByReference(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "int",
@@ -5337,6 +5367,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "const CXX_cstruct1 * arg",
                                     "C_return_type": "int",
@@ -5356,6 +5387,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "const CXX_cstruct1 * arg",
                                     "C_return_type": "int",
@@ -5555,12 +5587,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
@@ -5722,12 +5756,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
                                     "C_call_list": "*arg",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",

@@ -122,12 +122,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UpdateAsFloat(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "float arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "UpdateAsFloat(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "float arg",
                             "C_return_type": "void",
@@ -262,12 +264,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UpdateAsDouble(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "UpdateAsDouble(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
@@ -374,6 +378,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GetGlobalDouble(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "c_const": "",
@@ -392,6 +397,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "GetGlobalDouble(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
@@ -541,6 +547,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GenericReal(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
@@ -648,6 +655,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GenericReal(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "float arg",
                             "C_return_type": "void",
@@ -761,6 +769,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GenericReal(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
@@ -964,6 +973,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GenericReal2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "long arg1,\t long arg2",
                             "C_return_type": "long",
@@ -1134,6 +1144,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GenericReal2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int arg1,\t int arg2",
                             "C_return_type": "long",
@@ -1310,6 +1321,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GenericReal2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "long arg1,\t long arg2",
                             "C_return_type": "long",
@@ -1631,6 +1643,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "SumValues(\tvalues,\t nvalues)",
                             "C_call_list": "values,\t nvalues",
                             "C_prototype": "const int * values,\t int nvalues",
                             "C_return_type": "int",
@@ -1814,6 +1827,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SumValues(\tvalues,\t nvalues)",
                             "C_call_list": "values,\t nvalues",
                             "C_prototype": "const int * values,\t int nvalues",
                             "C_return_type": "int",
@@ -2010,6 +2024,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SumValues(\tvalues,\t nvalues)",
                             "C_call_list": "values,\t nvalues",
                             "C_prototype": "const int * values,\t int nvalues",
                             "C_return_type": "int",
@@ -2208,6 +2223,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SumValues(\tvalues,\t nvalues)",
                             "C_call_list": "values,\t nvalues",
                             "C_prototype": "const int * values,\t int nvalues",
                             "C_return_type": "int",
@@ -2666,6 +2682,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
                             "C_call_list": "from,\t nfrom,\t to,\t nto",
                             "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                             "C_return_type": "void",
@@ -2909,6 +2926,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
                             "C_call_list": "from,\t nfrom,\t to,\t nto",
                             "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                             "C_return_type": "void",
@@ -3167,6 +3185,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
                             "C_call_list": "from,\t nfrom,\t to,\t nto",
                             "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                             "C_return_type": "void",
@@ -3432,6 +3451,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
                             "C_call_list": "from,\t nfrom,\t to,\t nto",
                             "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                             "C_return_type": "void",
@@ -3793,6 +3813,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "SavePointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "void * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -3991,6 +4012,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SavePointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "float * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -4207,6 +4229,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SavePointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "float * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -4569,6 +4592,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "SavePointer2(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "void * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -4795,6 +4819,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SavePointer2(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "float * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -5039,6 +5064,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "SavePointer2(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "float * addr,\t int type,\t size_t size",
                             "C_return_type": "void",
@@ -5272,12 +5298,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GetPointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "void **addr,\t int * type,\t size_t * size",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "GetPointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "void **addr,\t int * type,\t size_t * size",
                             "C_return_type": "void",
@@ -5706,6 +5734,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GetPointerAsPointer(\taddr,\t type,\t size)",
                             "C_call_list": "addr,\t type,\t size",
                             "C_prototype": "void **addr,\t int * type,\t size_t * size",
                             "C_return_type": "void",
@@ -6047,6 +6076,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetPointerAsPointer(\t&addr,\t &type,\t &size)",
                             "C_call_list": "&addr,\t &type,\t &size",
                             "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                             "C_return_type": "void",
@@ -6411,6 +6441,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetPointerAsPointer(\t&addr,\t &type,\t &size)",
                             "C_call_list": "&addr,\t &type,\t &size",
                             "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                             "C_return_type": "void",
@@ -6572,6 +6603,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CreateStructAsClass(\t)",
                             "C_prototype": "GEN_StructAsClass * SHC_rv",
                             "C_return_type": "GEN_StructAsClass *",
                             "c_const": "",
@@ -6590,6 +6622,7 @@
                             "stmt_name": "c_function_shadow_*_capptr"
                         },
                         "fmtf": {
+                            "C_call_function": "CreateStructAsClass(\t)",
                             "C_prototype": "GEN_StructAsClass * SHC_rv",
                             "C_return_type": "GEN_StructAsClass *",
                             "F_C_arguments": "SHT_rv",
@@ -6795,6 +6828,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UpdateStructAsClass(\tSHCXX_arg,\t inew)",
                             "C_call_list": "SHCXX_arg,\t inew",
                             "C_prototype": "GEN_StructAsClass * arg,\t long inew",
                             "C_return_type": "long",
@@ -6965,6 +6999,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "UpdateStructAsClass(\tSHCXX_arg,\t inew)",
                             "C_call_list": "SHCXX_arg,\t inew",
                             "C_prototype": "GEN_StructAsClass * arg,\t int inew",
                             "C_return_type": "long",
@@ -7147,6 +7182,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "UpdateStructAsClass(\tSHCXX_arg,\t inew)",
                             "C_call_list": "SHCXX_arg,\t inew",
                             "C_prototype": "GEN_StructAsClass * arg,\t long inew",
                             "C_return_type": "long",

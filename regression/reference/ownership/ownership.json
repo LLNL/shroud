@@ -54,11 +54,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->dtor(\t)",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_dtor"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->dtor(\t)",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -135,6 +137,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_flag(\t)",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -328,6 +331,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrRaw(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
@@ -415,6 +419,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrScalar(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_const": "",
@@ -433,6 +438,7 @@
                             "stmt_name": "c_function_native_*"
                         },
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrScalar(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -546,6 +552,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrPointer(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "c_const": "",
@@ -564,6 +571,7 @@
                             "stmt_name": "c_function_native_*"
                         },
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrPointer(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
@@ -698,6 +706,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimRaw(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -847,6 +856,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimPointer(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -1048,6 +1058,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimPointer(\t&len)",
                             "C_call_list": "&len",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -1223,6 +1234,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimAlloc(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -1427,6 +1439,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimAlloc(\t&len)",
                             "C_call_list": "&len",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
@@ -1604,6 +1617,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimDefault(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -1803,6 +1817,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimDefault(\t&len)",
                             "C_call_list": "&len",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
@@ -1966,6 +1981,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimRawNew(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -2120,6 +2136,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimPointerNew(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -2322,6 +2339,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimPointerNew(\t&len)",
                             "C_call_list": "&len",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
@@ -2489,6 +2507,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimAllocNew(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -2684,6 +2703,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimDefaultNew(\tlen)",
                             "C_call_list": "len",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
@@ -2885,6 +2905,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimDefaultNew(\t&len)",
                             "C_call_list": "&len",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
@@ -3727,12 +3748,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "createClassStatic(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "createClassStatic(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag",
                             "C_return_type": "void",
@@ -3870,6 +3893,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getClassStatic(\t)",
                             "C_prototype": "OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
                             "c_const": "",
@@ -3888,6 +3912,7 @@
                             "stmt_name": "c_function_shadow_*_capptr_library"
                         },
                         "fmtf": {
+                            "C_call_function": "getClassStatic(\t)",
                             "C_prototype": "OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
                             "F_C_arguments": "SHT_rv",
@@ -4033,6 +4058,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getClassNew(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
@@ -4052,6 +4078,7 @@
                             "stmt_name": "c_function_shadow_*_capptr_caller"
                         },
                         "fmtf": {
+                            "C_call_function": "getClassNew(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",

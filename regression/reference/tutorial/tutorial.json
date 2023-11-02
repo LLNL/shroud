@@ -122,11 +122,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::NoReturnNoArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::NoReturnNoArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -242,6 +244,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
@@ -261,6 +264,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
@@ -779,6 +783,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
                             "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc,\t TUT_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
@@ -949,6 +954,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "c_const": "",
@@ -967,6 +973,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
@@ -1088,6 +1095,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
@@ -1107,6 +1115,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
@@ -1302,6 +1311,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
@@ -1321,6 +1331,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
@@ -1617,6 +1628,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
                             "C_prototype": "const char * name",
                             "C_return_type": "void",
@@ -1772,6 +1784,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
                             "C_prototype": "char *name,\t int SHT_name_len",
                             "C_return_type": "void",
@@ -1896,12 +1909,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
@@ -2181,12 +2196,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
@@ -2396,12 +2413,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
@@ -2647,6 +2666,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::TemplateReturn<int>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -2665,6 +2685,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::TemplateReturn<int>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -2792,6 +2813,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::TemplateReturn<double>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "c_const": "",
@@ -2810,6 +2832,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::TemplateReturn<double>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
@@ -2898,11 +2921,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -3102,6 +3127,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
                             "C_prototype": "const char * name,\t double arg2",
                             "C_return_type": "void",
@@ -3410,6 +3436,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
                             "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                             "C_return_type": "void",
@@ -3665,6 +3692,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
                             "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                             "C_return_type": "void",
@@ -3820,6 +3848,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
@@ -3839,6 +3868,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
@@ -4025,6 +4055,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
@@ -4044,6 +4075,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
@@ -4302,6 +4334,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
@@ -4321,6 +4354,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
@@ -4710,6 +4744,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
@@ -4729,6 +4764,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
@@ -4975,6 +5011,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
@@ -4994,6 +5031,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
@@ -5312,6 +5350,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
@@ -5331,6 +5370,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
@@ -5765,6 +5805,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
@@ -5784,6 +5825,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
@@ -5997,6 +6039,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
@@ -6018,6 +6061,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
@@ -6239,6 +6283,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
@@ -6260,6 +6305,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
@@ -6518,12 +6564,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
@@ -6787,6 +6835,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
@@ -6806,6 +6855,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
@@ -6989,6 +7039,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "tutorial::LastFunctionCalled(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -7114,6 +7165,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "tutorial::LastFunctionCalled(\t)",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",

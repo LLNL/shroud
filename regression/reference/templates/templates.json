@@ -248,12 +248,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->nested<double>(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->nested<double>(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                                     "C_return_type": "void",
@@ -514,6 +516,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "TEM_structAsClass_int * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_int *",
                                     "c_const": "",
@@ -532,6 +535,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "TEM_structAsClass_int * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_int *",
                                     "F_C_arguments": "SHT_rv",
@@ -642,12 +646,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int n",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int n",
                                     "C_return_type": "void",
@@ -759,6 +765,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->get_npts(\t)",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "c_const": "",
@@ -777,6 +784,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_npts(\t)",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -939,12 +947,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int v",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int v",
                                     "C_return_type": "void",
@@ -1091,6 +1101,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->get_value(\t)",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "c_const": "",
@@ -1109,6 +1120,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_value(\t)",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1274,6 +1286,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "TEM_structAsClass_double * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_double *",
                                     "c_const": "",
@@ -1292,6 +1305,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->ctor(\t)",
                                     "C_prototype": "TEM_structAsClass_double * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_double *",
                                     "F_C_arguments": "SHT_rv",
@@ -1402,12 +1416,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
                                     "C_prototype": "TEM_structAsClass_double * self,\t int n",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
                                     "C_prototype": "TEM_structAsClass_double * self,\t int n",
                                     "C_return_type": "void",
@@ -1519,6 +1535,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->get_npts(\t)",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "int",
                                     "c_const": "",
@@ -1537,6 +1554,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_npts(\t)",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1699,12 +1717,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
                                     "C_prototype": "TEM_structAsClass_double * self,\t double v",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
                                     "C_prototype": "TEM_structAsClass_double * self,\t double v",
                                     "C_return_type": "void",
@@ -1851,6 +1871,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->get_value(\t)",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "double",
                                     "c_const": "",
@@ -1869,6 +1890,7 @@
                                     "stmt_name": "c_function_native_scalar"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_value(\t)",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "double",
                                     "F_C_arguments": "self",
@@ -2048,6 +2070,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnUserType(\t)",
                             "C_prototype": "TEM_user_int * SHC_rv",
                             "C_return_type": "TEM_user_int *",
                             "c_const": "",
@@ -2067,6 +2090,7 @@
                             "stmt_name": "c_function_shadow_scalar_capptr_targ_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "returnUserType(\t)",
                             "C_prototype": "TEM_user_int * SHC_rv",
                             "C_return_type": "TEM_user_int *",
                             "F_C_arguments": "SHT_rv",
@@ -2359,12 +2383,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
@@ -2655,12 +2681,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
@@ -2956,6 +2984,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -2974,6 +3003,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -3120,6 +3150,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -3138,6 +3169,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -3262,6 +3294,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->ctor(\t)",
                                             "C_prototype": "TEM_vector_int * SHC_rv",
                                             "C_return_type": "TEM_vector_int *",
                                             "c_const": "",
@@ -3280,6 +3313,7 @@
                                             "stmt_name": "c_ctor_shadow_scalar_capptr"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->ctor(\t)",
                                             "C_prototype": "TEM_vector_int * SHC_rv",
                                             "C_return_type": "TEM_vector_int *",
                                             "F_C_arguments": "SHT_rv",
@@ -3396,11 +3430,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->dtor(\t)",
                                             "C_prototype": "TEM_vector_int * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_dtor"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->dtor(\t)",
                                             "C_prototype": "TEM_vector_int * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -3555,12 +3591,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
                                             "C_prototype": "TEM_vector_int * self,\t const int * value",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
                                             "C_prototype": "TEM_vector_int * self,\t const int * value",
                                             "C_return_type": "void",
@@ -3780,6 +3818,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
@@ -3799,6 +3838,7 @@
                                             "stmt_name": "c_function_native_&"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
@@ -4070,6 +4110,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->ctor(\t)",
                                             "C_prototype": "TEM_vector_double * SHC_rv",
                                             "C_return_type": "TEM_vector_double *",
                                             "c_const": "",
@@ -4088,6 +4129,7 @@
                                             "stmt_name": "c_ctor_shadow_scalar_capptr"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->ctor(\t)",
                                             "C_prototype": "TEM_vector_double * SHC_rv",
                                             "C_return_type": "TEM_vector_double *",
                                             "F_C_arguments": "SHT_rv",
@@ -4204,11 +4246,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->dtor(\t)",
                                             "C_prototype": "TEM_vector_double * self",
                                             "C_return_type": "void",
                                             "stmt_name": "c_dtor"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->dtor(\t)",
                                             "C_prototype": "TEM_vector_double * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
@@ -4363,12 +4407,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
                                             "C_prototype": "TEM_vector_double * self,\t const double * value",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
                                             "C_prototype": "TEM_vector_double * self,\t const double * value",
                                             "C_return_type": "void",
@@ -4588,6 +4634,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",
@@ -4607,6 +4654,7 @@
                                             "stmt_name": "c_function_native_&"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",

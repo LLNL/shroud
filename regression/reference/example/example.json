@@ -78,6 +78,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->ctor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "c_const": "",
@@ -96,6 +97,7 @@
                                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->ctor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "F_C_arguments": "SHT_rv",
@@ -255,6 +257,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
                                                     "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
@@ -466,6 +469,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
                                                     "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
@@ -598,11 +602,13 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->dtor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_dtor"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->dtor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
@@ -701,6 +707,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->incrementCount(\tincr)",
                                                     "C_call_list": "incr",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
                                                     "C_return_type": "int",
@@ -720,6 +727,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->incrementCount(\tincr)",
                                                     "C_call_list": "incr",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
                                                     "C_return_type": "int",
@@ -929,6 +937,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getNameErrorCheck(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
@@ -1062,6 +1071,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getNameErrorCheck(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -1174,6 +1184,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getNameArg(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
@@ -1304,6 +1315,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getNameArg(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int nname",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t name,\t nname",
@@ -1424,6 +1436,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
                                                     "C_return_type": "int",
@@ -1443,6 +1456,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
                                                     "C_return_type": "int",
@@ -1662,6 +1676,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
                                                     "C_return_type": "long",
@@ -1681,6 +1696,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
                                                     "C_return_type": "long",
@@ -1896,6 +1912,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->hasAddr(\tin)",
                                                     "C_call_list": "in",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
                                                     "C_return_type": "bool",
@@ -1915,6 +1932,7 @@
                                                     "stmt_name": "c_function_bool_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->hasAddr(\tin)",
                                                     "C_call_list": "in",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
                                                     "C_return_type": "bool",
@@ -2113,11 +2131,13 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->SplicerSpecial(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->SplicerSpecial(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
@@ -2323,6 +2343,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
                                                     "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass2 *",
@@ -2537,6 +2558,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
                                                     "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass2 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass2 *",
@@ -2667,11 +2689,13 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->dtor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_dtor"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->dtor(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
@@ -2758,6 +2782,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getName(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
@@ -2889,6 +2914,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getName(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self,\t char *SHC_rv,\t int SHT_rv_len",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv,\t SHT_rv_len",
@@ -2999,6 +3025,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getName2(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
@@ -3130,6 +3157,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getName2(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3246,6 +3274,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getName3(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "char *",
                                                     "F_C_arguments": "self",
@@ -3378,6 +3407,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getName3(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3493,6 +3523,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getName4(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "char *",
                                                     "F_C_arguments": "self",
@@ -3623,6 +3654,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getName4(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3734,6 +3766,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->GetNameLength(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "c_const": "",
@@ -3752,6 +3785,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->GetNameLength(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self",
@@ -3904,6 +3938,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
                                                     "C_call_list": "SHCXX_in",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
@@ -3923,6 +3958,7 @@
                                                     "stmt_name": "c_function_shadow_*_capptr"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
                                                     "C_call_list": "SHCXX_in",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
@@ -4163,6 +4199,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->declare(\tSHCXX_type)",
                                                     "C_call_list": "SHCXX_type",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                                     "C_return_type": "void",
@@ -4180,6 +4217,7 @@
                                                     "stmt_name": "c_function_shadow_*_this"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->declare(\tSHCXX_type)",
                                                     "C_call_list": "SHCXX_type",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                                     "C_return_type": "void",
@@ -4446,6 +4484,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t SIDRE_SidreLength len",
                                                     "C_return_type": "void",
@@ -4732,6 +4771,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t int len",
                                                     "C_return_type": "void",
@@ -4917,6 +4957,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t long len",
                                                     "C_return_type": "void",
@@ -5048,11 +5089,13 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->destroyall(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->destroyall(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
@@ -5129,6 +5172,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getTypeID(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "AA_TypeID",
                                                     "c_const": "",
@@ -5149,6 +5193,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getTypeID(\t)",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "AA_TypeID",
                                                     "F_C_arguments": "self",
@@ -5452,12 +5497,14 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->setValue<int>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->setValue<int>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                                     "C_return_type": "void",
@@ -5689,12 +5736,14 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->setValue<long>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->setValue<long>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                                     "C_return_type": "void",
@@ -5923,12 +5972,14 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->setValue<float>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->setValue<float>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                                     "C_return_type": "void",
@@ -6163,12 +6214,14 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->setValue<double>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                                     "C_return_type": "void",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->setValue<double>(\tvalue)",
                                                     "C_call_list": "value",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                                     "C_return_type": "void",
@@ -6415,6 +6468,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getValue<int>(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "c_const": "",
@@ -6433,6 +6487,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getValue<int>(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self",
@@ -6594,6 +6649,7 @@
                                         "zz_fmtargs": {
                                             "+result": {
                                                 "fmtc": {
+                                                    "C_call_function": "SH_this->getValue<double>(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "double",
                                                     "c_const": "",
@@ -6612,6 +6668,7 @@
                                                     "stmt_name": "c_function_native_scalar"
                                                 },
                                                 "fmtf": {
+                                                    "C_call_function": "SH_this->getValue<double>(\t)",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "double",
                                                     "F_C_arguments": "self",
@@ -6798,11 +6855,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::local_function1(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::local_function1(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
@@ -6907,6 +6966,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
                                             "C_prototype": "const char * name",
                                             "C_return_type": "bool",
@@ -7111,6 +7171,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtf": {
+                                            "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
                                             "C_prototype": "char *name,\t int SHT_name_len",
                                             "C_return_type": "bool",
@@ -7229,6 +7290,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::isInitialized(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "bool",
                                             "c_const": "",
@@ -7247,6 +7309,7 @@
                                             "stmt_name": "c_function_bool_scalar"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::isInitialized(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "bool",
                                             "F_C_arguments": "",
@@ -7389,6 +7452,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::test_names(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
                                             "C_prototype": "const char * name",
                                             "C_return_type": "void",
@@ -7544,6 +7608,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtf": {
+                                            "C_call_function": "example::nested::test_names(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
                                             "C_prototype": "char *name,\t int SHT_name_len",
                                             "C_return_type": "void",
@@ -7687,6 +7752,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::test_names(\tSHCXX_name,\t flag)",
                                             "C_call_list": "SHCXX_name,\t flag",
                                             "C_prototype": "const char * name,\t int flag",
                                             "C_return_type": "void",
@@ -7914,6 +7980,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtf": {
+                                            "C_call_function": "example::nested::test_names(\tSHCXX_name,\t flag)",
                                             "C_call_list": "SHCXX_name,\t flag",
                                             "C_prototype": "char *name,\t int SHT_name_len,\t int flag",
                                             "C_return_type": "void",
@@ -8041,11 +8108,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::testoptional(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::testoptional(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
@@ -8138,12 +8207,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::testoptional(\ti)",
                                             "C_call_list": "i",
                                             "C_prototype": "int i",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::testoptional(\ti)",
                                             "C_call_list": "i",
                                             "C_prototype": "int i",
                                             "C_return_type": "void",
@@ -8310,12 +8381,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::testoptional(\ti,\t j)",
                                             "C_call_list": "i,\t j",
                                             "C_prototype": "int i,\t long j",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::testoptional(\ti,\t j)",
                                             "C_call_list": "i,\t j",
                                             "C_prototype": "int i,\t long j",
                                             "C_return_type": "void",
@@ -8538,6 +8611,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::test_size_t(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "size_t",
                                             "c_const": "",
@@ -8556,6 +8630,7 @@
                                             "stmt_name": "c_function_native_scalar"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::test_size_t(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "size_t",
                                             "F_C_arguments": "",
@@ -8697,12 +8772,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::testmpi(\tSHCXX_comm)",
                                             "C_call_list": "SHCXX_comm",
                                             "C_prototype": "MPI_Fint comm",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::testmpi(\tSHCXX_comm)",
                                             "C_call_list": "SHCXX_comm",
                                             "C_prototype": "MPI_Fint comm",
                                             "C_return_type": "void",
@@ -8860,11 +8937,13 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::testmpi(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::testmpi(\t)",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
@@ -8969,12 +9048,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::FuncPtr1(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "void ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::FuncPtr1(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "void ( * get)(\tvoid)",
                                             "C_return_type": "void",
@@ -9157,12 +9238,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::FuncPtr2(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double * ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::FuncPtr2(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double * ( * get)(\tvoid)",
                                             "C_return_type": "void",
@@ -9373,12 +9456,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::FuncPtr3(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double ( * get)(\tint i,\t int)",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::FuncPtr3(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double ( * get)(\tint i,\t int)",
                                             "C_return_type": "void",
@@ -9589,12 +9674,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::FuncPtr4(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double ( * get)(\tdouble,\t int)",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::FuncPtr4(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "double ( * get)(\tdouble,\t int)",
                                             "C_return_type": "void",
@@ -9867,12 +9954,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::FuncPtr5(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::FuncPtr5(\tget)",
                                             "C_call_list": "get",
                                             "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "C_return_type": "void",
@@ -10290,12 +10379,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                             "C_return_type": "void",
@@ -11343,6 +11434,7 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
                                             "C_return_type": "int",
@@ -11362,6 +11454,7 @@
                                             "stmt_name": "c_function_native_scalar"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
                                             "C_return_type": "int",
@@ -12313,12 +12406,14 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
+                                            "C_call_function": "example::nested::cos_doubles(\tin,\t out,\t sizein)",
                                             "C_call_list": "in,\t out,\t sizein",
                                             "C_prototype": "double * in,\t double * out,\t int sizein",
                                             "C_return_type": "void",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
+                                            "C_call_function": "example::nested::cos_doubles(\tin,\t out,\t sizein)",
                                             "C_call_list": "in,\t out,\t sizein",
                                             "C_prototype": "double * in,\t double * out,\t int sizein",
                                             "C_return_type": "void",

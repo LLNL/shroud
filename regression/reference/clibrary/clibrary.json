@@ -122,11 +122,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "NoReturnNoArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "NoReturnNoArguments(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -237,6 +239,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
@@ -256,6 +259,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
@@ -538,12 +542,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "PassByReference(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double * arg1,\t int * arg2",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "PassByReference(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "double * arg1,\t int * arg2",
                             "C_return_type": "void",
@@ -761,6 +767,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "PassByValueMacro(\targ2)",
                             "C_call_list": "arg2",
                             "C_prototype": "int arg2",
                             "C_return_type": "double",
@@ -780,6 +787,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "PassByValueMacro(\targ2)",
                             "C_call_list": "arg2",
                             "C_prototype": "int arg2",
                             "C_return_type": "double",
@@ -1027,12 +1035,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "checkBool(\targ1,\t arg2,\t arg3)",
                             "C_call_list": "arg1,\t arg2,\t arg3",
                             "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "checkBool(\targ1,\t arg2,\t arg3)",
                             "C_call_list": "arg1,\t arg2,\t arg3",
                             "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
                             "C_return_type": "void",
@@ -1347,6 +1357,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Function4a(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "const char * arg1,\t const char * arg2",
                             "C_return_type": "char *",
@@ -1594,6 +1605,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "Function4a(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
                             "C_prototype": "const char * arg1,\t const char * arg2,\t char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
@@ -1767,12 +1779,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptName(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "const char * name",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "acceptName(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "const char * name",
                             "C_return_type": "void",
@@ -1931,6 +1945,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passCharPtrInOut(\ts)",
                             "C_call_list": "s",
                             "C_prototype": "char * s",
                             "C_return_type": "void",
@@ -2070,6 +2085,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passCharPtrInOut(\tSHT_s_str)",
                             "C_call_list": "SHT_s_str",
                             "C_prototype": "char *s,\t int SHT_s_len",
                             "C_return_type": "void",
@@ -2201,6 +2217,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnOneName(\tname1)",
                             "C_call_list": "name1",
                             "C_prototype": "char * name1",
                             "C_return_type": "void",
@@ -2342,6 +2359,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "returnOneName(\tname1)",
                             "C_call_list": "name1",
                             "C_prototype": "char *name1,\t int SHT_name1_len",
                             "C_return_type": "void",
@@ -2492,6 +2510,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnTwoNames(\tname1,\t name2)",
                             "C_call_list": "name1,\t name2",
                             "C_prototype": "char * name1,\t char * name2",
                             "C_return_type": "void",
@@ -2702,6 +2721,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "returnTwoNames(\tname1,\t name2)",
                             "C_call_list": "name1,\t name2",
                             "C_prototype": "char *name1,\t int SHT_name1_len,\t char *name2,\t int SHT_name2_len",
                             "C_return_type": "void",
@@ -2878,6 +2898,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ImpliedTextLen(\ttext,\t ltext)",
                             "C_call_list": "text,\t ltext",
                             "C_prototype": "char * text,\t int ltext",
                             "C_return_type": "void",
@@ -3081,6 +3102,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "ImpliedTextLen(\ttext,\t ltext)",
                             "C_call_list": "text,\t ltext",
                             "C_prototype": "char *text,\t int SHT_text_len,\t int ltext",
                             "C_return_type": "void",
@@ -3282,6 +3304,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ImpliedLen(\ttext,\t ltext,\t flag)",
                             "C_call_list": "text,\t ltext,\t flag",
                             "C_prototype": "const char * text,\t int ltext,\t bool flag",
                             "C_return_type": "int",
@@ -3301,6 +3324,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ImpliedLen(\ttext,\t ltext,\t flag)",
                             "C_call_list": "text,\t ltext,\t flag",
                             "C_prototype": "const char * text,\t int ltext,\t bool flag",
                             "C_return_type": "int",
@@ -3671,6 +3695,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ImpliedLenTrim(\ttext,\t ltext,\t flag)",
                             "C_call_list": "text,\t ltext,\t flag",
                             "C_prototype": "const char * text,\t int ltext,\t bool flag",
                             "C_return_type": "int",
@@ -3690,6 +3715,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ImpliedLenTrim(\ttext,\t ltext,\t flag)",
                             "C_call_list": "text,\t ltext,\t flag",
                             "C_prototype": "const char * text,\t int ltext,\t bool flag",
                             "C_return_type": "int",
@@ -4008,6 +4034,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ImpliedBoolTrue(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "bool flag",
                             "C_return_type": "bool",
@@ -4027,6 +4054,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ImpliedBoolTrue(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "bool flag",
                             "C_return_type": "bool",
@@ -4222,6 +4250,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "ImpliedBoolFalse(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "bool flag",
                             "C_return_type": "bool",
@@ -4241,6 +4270,7 @@
                             "stmt_name": "c_function_bool_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "ImpliedBoolFalse(\tflag)",
                             "C_call_list": "flag",
                             "C_prototype": "bool flag",
                             "C_return_type": "bool",
@@ -4418,11 +4448,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "bindC1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "bindC1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -4518,6 +4550,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "bindC2(\toutbuf)",
                             "C_call_list": "outbuf",
                             "C_prototype": "char * outbuf",
                             "C_return_type": "void",
@@ -4641,6 +4674,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "bindC2(\toutbuf)",
                             "C_call_list": "outbuf",
                             "C_prototype": "char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "void",
@@ -4801,12 +4835,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passVoidStarStar(\tin,\t out)",
                             "C_call_list": "in,\t out",
                             "C_prototype": "void * in,\t void **out",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "passVoidStarStar(\tin,\t out)",
                             "C_call_list": "in,\t out",
                             "C_prototype": "void * in,\t void **out",
                             "C_return_type": "void",
@@ -4989,6 +5025,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passAssumedType(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "void * arg",
                             "C_return_type": "int",
@@ -5008,6 +5045,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "passAssumedType(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "void * arg",
                             "C_return_type": "int",
@@ -5170,12 +5208,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passAssumedTypeDim(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "void * arg",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "passAssumedTypeDim(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "void * arg",
                             "C_return_type": "void",
@@ -5340,6 +5380,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passAssumedTypeBuf(\targ,\t outbuf)",
                             "C_call_list": "arg,\t outbuf",
                             "C_prototype": "void * arg,\t char * outbuf",
                             "C_return_type": "int",
@@ -5527,6 +5568,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passAssumedTypeBuf(\targ,\t outbuf)",
                             "C_call_list": "arg,\t outbuf",
                             "C_prototype": "void * arg,\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "int",
@@ -5731,12 +5773,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "callback1(\ttype,\t incr)",
                             "C_call_list": "type,\t incr",
                             "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "callback1(\ttype,\t incr)",
                             "C_call_list": "type,\t incr",
                             "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                             "C_return_type": "void",
@@ -5950,12 +5994,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "callback1a(\ttype,\t incr)",
                             "C_call_list": "type,\t incr",
                             "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "callback1a(\ttype,\t incr)",
                             "C_call_list": "type,\t incr",
                             "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                             "C_return_type": "void",
@@ -6208,12 +6254,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "callback2(\ttype,\t in,\t incr)",
                             "C_call_list": "type,\t in,\t incr",
                             "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "callback2(\ttype,\t in,\t incr)",
                             "C_call_list": "type,\t in,\t incr",
                             "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
                             "C_return_type": "void",
@@ -6528,6 +6576,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "callback3(\ttype,\t in,\t incr,\t outbuf)",
                             "C_call_list": "type,\t in,\t incr,\t outbuf",
                             "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
                             "C_return_type": "void",
@@ -6813,6 +6862,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "callback3(\ttype,\t in,\t incr,\t outbuf)",
                             "C_call_list": "type,\t in,\t incr,\t outbuf",
                             "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "void",
@@ -7110,12 +7160,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "callback_set_alloc(\ttc,\t arr,\t alloc)",
                             "C_call_list": "tc,\t arr,\t alloc",
                             "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "callback_set_alloc(\ttc,\t arr,\t alloc)",
                             "C_call_list": "tc,\t arr,\t alloc",
                             "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
                             "C_return_type": "void",

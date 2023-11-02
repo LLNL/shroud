@@ -56,11 +56,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "init_test(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "init_test(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -148,12 +150,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passChar(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "passChar(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
@@ -289,12 +293,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passCharForce(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "passCharForce(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
@@ -404,6 +410,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "returnChar(\t)",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "c_const": "",
@@ -420,6 +427,7 @@
                             "stmt_name": "c_function_char_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "returnChar(\t)",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -559,6 +567,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passCharPtr(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
@@ -730,6 +739,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passCharPtr(\tSHCXX_dest,\t SHCXX_src)",
                             "C_call_list": "SHCXX_dest,\t SHCXX_src",
                             "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
                             "C_return_type": "void",
@@ -884,6 +894,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "passCharPtrInOut(\ts)",
                             "C_call_list": "s",
                             "C_prototype": "char * s",
                             "C_return_type": "void",
@@ -1003,6 +1014,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "passCharPtrInOut(\tSHCXX_s)",
                             "C_call_list": "SHCXX_s",
                             "C_prototype": "CFI_cdesc_t *SHT_s_cfi",
                             "C_return_type": "void",
@@ -1105,6 +1117,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getCharPtr1(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -1194,6 +1207,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getCharPtr1(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -1295,6 +1309,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getCharPtr2(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -1394,6 +1409,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getCharPtr2(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -1497,6 +1513,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getCharPtr3(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -1595,6 +1612,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getCharPtr3(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "output",
@@ -1696,6 +1714,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getCharPtr4(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "c_const": "const ",
@@ -1714,6 +1733,7 @@
                             "stmt_name": "c_function_char_*"
                         },
                         "fmtf": {
+                            "C_call_function": "getCharPtr4(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -1807,6 +1827,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getCharPtr5(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -1899,6 +1920,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getCharPtr5(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2037,6 +2059,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringResult(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2181,6 +2204,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringLen(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2328,6 +2352,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringAsArg(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "output",
@@ -2448,6 +2473,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringAlloc(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2541,6 +2567,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringRefPure(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -2631,6 +2658,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringRefPure(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2732,6 +2760,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringRefLen(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -2832,6 +2861,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringRefLen(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -2935,6 +2965,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringRefAsArg(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3034,6 +3065,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringRefAsArg(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "output",
@@ -3134,6 +3166,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringRefLenEmpty(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3233,6 +3266,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringRefLenEmpty(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -3324,6 +3358,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringRefAlloc(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3409,6 +3444,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringRefAlloc(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -3516,6 +3552,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringPtrLen(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3623,6 +3660,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringPtrLen(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -3717,6 +3755,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringPtrAlloc(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3805,6 +3844,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringPtrAlloc(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -3899,6 +3939,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -3990,6 +4031,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -4085,6 +4127,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -4177,6 +4220,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -4271,6 +4315,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getConstStringPtrPointer(\t)",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
@@ -4362,6 +4407,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "getConstStringPtrPointer(\t)",
                             "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -4485,6 +4531,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringConstReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "const char * arg1",
                             "C_return_type": "void",
@@ -4600,6 +4647,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringConstReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -4724,6 +4772,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringReferenceOut(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
@@ -4841,6 +4890,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringReferenceOut(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -4963,6 +5013,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
@@ -5080,6 +5131,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -5202,6 +5254,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringPointerConst(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "const char * arg1",
                             "C_return_type": "void",
@@ -5316,6 +5369,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringPointerConst(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -5437,6 +5491,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
@@ -5551,6 +5606,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -5676,6 +5732,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
@@ -5793,6 +5850,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "fetchStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "void",
@@ -5937,6 +5995,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
                             "C_prototype": "char * arg1,\t int * nlen",
                             "C_return_type": "void",
@@ -6101,6 +6160,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
                             "C_return_type": "void",
@@ -6276,6 +6336,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
                             "C_prototype": "char * arg1,\t int * nlen",
                             "C_return_type": "void",
@@ -6442,6 +6503,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "fetchStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
                             "C_return_type": "void",
@@ -6584,6 +6646,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "acceptStringInstance(\targ1)",
                             "C_call_list": "arg1",
                             "C_prototype": "char *arg1",
                             "C_return_type": "int",
@@ -6715,6 +6778,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "acceptStringInstance(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
                             "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                             "C_return_type": "int",
@@ -6968,6 +7032,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchArrayStringArg(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
@@ -7145,6 +7210,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "fetchArrayStringArg(\t&SHT_strs_cxx,\t &nstrs)",
                             "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                             "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                             "C_return_type": "void",
@@ -7330,6 +7396,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchArrayStringAlloc(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
@@ -7508,6 +7575,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "fetchArrayStringAlloc(\t&SHT_strs_cxx,\t &nstrs)",
                             "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                             "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                             "C_return_type": "void",
@@ -7694,6 +7762,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "fetchArrayStringAllocLen(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
@@ -7875,6 +7944,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "fetchArrayStringAllocLen(\t&SHT_strs_cxx,\t &nstrs)",
                             "C_call_list": "&SHT_strs_cxx,\t &nstrs",
                             "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                             "C_return_type": "void",
@@ -8087,6 +8157,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "explicit1(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
@@ -8206,6 +8277,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "explicit1(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
                             "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
                             "C_return_type": "void",
@@ -8330,6 +8402,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "explicit2(\tname)",
                             "C_call_list": "name",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
@@ -8449,6 +8522,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "explicit2(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
                             "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
                             "C_return_type": "void",
@@ -8572,12 +8646,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassChar(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "CpassChar(\tstatus)",
                             "C_call_list": "status",
                             "C_prototype": "char status",
                             "C_return_type": "void",
@@ -8689,6 +8765,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CreturnChar(\t)",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "c_const": "",
@@ -8705,6 +8782,7 @@
                             "stmt_name": "c_function_char_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "CreturnChar(\t)",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
@@ -8848,6 +8926,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassCharPtr(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
@@ -9024,6 +9103,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "CpassCharPtr(\tSHCXX_dest,\t SHCXX_src)",
                             "C_call_list": "SHCXX_dest,\t SHCXX_src",
                             "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
                             "C_return_type": "void",
@@ -9205,6 +9285,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassCharPtrBlank(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
@@ -9377,6 +9458,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "CpassCharPtrBlank(\tSHCXX_dest,\t SHCXX_src)",
                             "C_call_list": "SHCXX_dest,\t SHCXX_src",
                             "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
                             "C_return_type": "void",
@@ -9554,6 +9636,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "PostDeclare(\tcount,\t SHCXX_name)",
                             "C_call_list": "count,\t SHCXX_name",
                             "C_prototype": "int * count,\t char * name",
                             "C_return_type": "void",
@@ -9725,6 +9808,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "PostDeclare(\tSHCXX_count,\t SHCXX_name)",
                             "C_call_list": "SHCXX_count,\t SHCXX_name",
                             "C_prototype": "CFI_cdesc_t *SHT_count_cfi,\t CFI_cdesc_t *SHT_name_cfi",
                             "C_return_type": "void",
@@ -9883,6 +9967,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassCharPtrNotrim(\tsrc)",
                             "C_call_list": "src",
                             "C_prototype": "const char * src",
                             "C_return_type": "int",
@@ -10021,6 +10106,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "CpassCharPtrNotrim(\tSHCXX_src)",
                             "C_call_list": "SHCXX_src",
                             "C_prototype": "CFI_cdesc_t *SHT_src_cfi",
                             "C_return_type": "int",
@@ -10200,6 +10286,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
                             "C_call_list": "addr,\t src",
                             "C_prototype": "void * addr,\t const char * src",
                             "C_return_type": "int",
@@ -10219,6 +10306,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
                             "C_call_list": "addr,\t src",
                             "C_prototype": "void * addr,\t const char * src",
                             "C_return_type": "int",
@@ -10444,6 +10532,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
                             "C_call_list": "in,\t src",
                             "C_prototype": "const char * in,\t const char * src",
                             "C_return_type": "int",
@@ -10632,6 +10721,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "CpassCharPtrCAPI2(\tSHCXX_in,\t src)",
                             "C_call_list": "SHCXX_in,\t src",
                             "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t const char * src",
                             "C_return_type": "int",

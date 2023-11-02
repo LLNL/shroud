@@ -51,6 +51,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_x1(\t)",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -164,6 +165,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_x1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -263,6 +265,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_y1(\t)",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -376,6 +379,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_y1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -475,6 +479,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_z1(\t)",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -588,6 +593,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->set_z1(\tval)",
                                     "C_call_list": "val",
                                     "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
@@ -851,11 +857,13 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "BadFstatements(\t)",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "BadFstatements(\t)",
                             "C_prototype": "void",
                             "C_return_type": "no-such-type",
                             "F_C_arguments": "",
@@ -1034,6 +1042,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "AssumedRank(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "int * data",
                             "C_return_type": "void",
@@ -1172,6 +1181,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssumedRank(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "int * data",
                             "C_return_type": "void",
@@ -1295,6 +1305,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssumedRank(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "int * data",
                             "C_return_type": "void",
@@ -1420,6 +1431,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "AssumedRank(\tdata)",
                             "C_call_list": "data",
                             "C_prototype": "int * data",
                             "C_return_type": "void",

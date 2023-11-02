@@ -92,12 +92,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
@@ -404,6 +406,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
@@ -726,6 +729,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
@@ -1067,6 +1071,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
@@ -1299,6 +1304,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getData<int>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "c_const": "",
@@ -1317,6 +1323,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "getData<int>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
@@ -1445,6 +1452,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "getData<double>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "c_const": "",
@@ -1463,6 +1471,7 @@
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
+                            "C_call_function": "getData<double>(\t)",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
@@ -1926,6 +1935,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                             "C_return_type": "void",
@@ -2228,6 +2238,7 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
+                            "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_prototype": "char *name,\t int SHT_name_len,\t double * value",
                             "C_return_type": "void",

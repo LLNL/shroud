@@ -88,6 +88,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1)",
                                     "C_call_list": "arg1",
                                     "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -107,6 +108,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1)",
                                     "C_call_list": "arg1",
                                     "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -301,6 +303,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -320,6 +323,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -584,6 +588,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
                                     "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -603,6 +608,7 @@
                                     "stmt_name": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
                                     "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
@@ -825,11 +831,13 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->delete(\t)",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "void",
                                     "stmt_name": "c_dtor"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->delete(\t)",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -929,12 +937,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1)",
                                     "C_call_list": "arg1",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1)",
                                     "C_call_list": "arg1",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1",
                                     "C_return_type": "void",
@@ -1101,12 +1111,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
                                     "C_return_type": "void",
@@ -1343,12 +1355,14 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
                                     "C_return_type": "void",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
                                     "C_return_type": "void",
@@ -1549,6 +1563,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_field1(\t)",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1641,6 +1656,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_field2(\t)",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1733,6 +1749,7 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtf": {
+                                    "C_call_function": "SH_this->get_field3(\t)",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
@@ -1994,12 +2011,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems)",
                             "C_call_list": "num_elems",
                             "C_prototype": "IndexType num_elems",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems)",
                             "C_call_list": "num_elems",
                             "C_prototype": "IndexType num_elems",
                             "C_return_type": "void",
@@ -2166,12 +2185,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset)",
                             "C_call_list": "num_elems,\t offset",
                             "C_prototype": "IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset)",
                             "C_call_list": "num_elems,\t offset",
                             "C_prototype": "IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
@@ -2408,12 +2429,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
@@ -2665,12 +2688,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
                             "C_call_list": "SHCXX_type,\t num_elems",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
                             "C_call_list": "SHCXX_type,\t num_elems",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                             "C_return_type": "void",
@@ -2906,12 +2931,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
@@ -3217,12 +3244,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
@@ -3539,12 +3568,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
@@ -3836,12 +3867,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
@@ -4158,12 +4191,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
@@ -4457,12 +4492,14 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
+                            "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
+                            "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
