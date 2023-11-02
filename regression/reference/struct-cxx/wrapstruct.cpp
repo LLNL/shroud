@@ -186,8 +186,7 @@ void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv)
 {
     // splicer begin function.returnStructByValue
-    Cstruct1 SHCXX_rv = returnStructByValue(i, d);
-    memcpy((void *) SHC_rv, (void *) &SHCXX_rv, sizeof(SHCXX_rv));
+    *SHC_rv = returnStructByValue(i, d);
     // splicer end function.returnStructByValue
 }
 

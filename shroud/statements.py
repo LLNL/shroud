@@ -3091,6 +3091,8 @@ fc_statements = [
     dict(
         # f_function_shadow_*_capptr
         # f_function_shadow_&_capptr
+        # c_function_shadow_*_capptr
+        # c_function_shadow_&_capptr
         name="f_function_shadow_*/&_capptr",
         mixin=[
             "f_mixin_function_shadow_capptr",
@@ -3226,9 +3228,8 @@ fc_statements = [
         i_module={
             "{f_type_module}":["{f_kind}"],
         },
-        cxx_local_var="result",
-        c_post_call=[
-            "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
+        c_call=[
+            "*{c_var} = {C_call_function};",
         ],
     ),
     # end function_struct_scalar
