@@ -953,6 +953,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
+        if ast.template_arguments:
+            for targ in ast.template_arguments:
+                header_typedef_nodes[targ.typemap.name] = targ.typemap
+        else:
+            header_typedef_nodes[result_typemap.name] = result_typemap
 
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
@@ -976,10 +981,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt_result.cfi_type = result_typemap.cfi_type
             if ast.template_arguments:
                 fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
-                for targ in ast.template_arguments:
-                    header_typedef_nodes[targ.typemap.name] = targ.typemap
-            else:
-                header_typedef_nodes[result_typemap.name] = result_typemap
             if result_stmt.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
