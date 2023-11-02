@@ -4467,6 +4467,7 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fstmts": "c",
                             "stmt": "c_subroutine"
                         },
                         "addr": {
@@ -4816,6 +4817,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "addr": {
@@ -5186,6 +5188,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "addr": {

@@ -686,6 +686,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "arg": {
@@ -963,6 +964,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "arg": {

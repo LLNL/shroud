@@ -85,13 +85,15 @@ class FillFormat(object):
         ast = node.ast
 
         if wlang == "c":
-            result_stmt = statements.lookup_c_function_stmt(node)
+            stmt0 = statements.lookup_c_function_stmt(node)
         else:
-            result_stmt = statements.lookup_f_function_stmt(node)
-        result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
+            stmt0 = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
         bind_result.stmt = result_stmt
         func_cursor.stmt = result_stmt
         fmt_result.stmt_name = result_stmt.name
+        if stmt0 is not result_stmt:
+            bind_result.fstmts = wlang
         stmt_indexes = [result_stmt.index]
 
         # --- Loop over function parameters

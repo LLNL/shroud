@@ -837,11 +837,13 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fstmts": "c",
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         }
                     }

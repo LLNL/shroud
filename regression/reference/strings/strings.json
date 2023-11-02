@@ -4162,6 +4162,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_function_string_*_buf_copy"
                         }
                     }

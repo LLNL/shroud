@@ -38,6 +38,7 @@ class BindArg(object):
         self.stmt = None
         self.meta = None
         self.fmtdict = None
+        self.fstmts = None  # fstatements from YAML file
 
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.

@@ -551,6 +551,8 @@ class ToDict(visitor.Visitor):
         d = {}
         if node.stmt:
             d["stmt"] = node.stmt.name
+        if node.fstmts:
+            d["fstmts"] = node.fstmts
         return d
     
     # Rename some attributes so they sort to the bottom of the JSON dictionary.

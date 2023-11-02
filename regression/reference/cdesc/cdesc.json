@@ -1912,6 +1912,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "name": {
@@ -2213,6 +2214,7 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fstmts": "f",
                             "stmt": "f_subroutine"
                         },
                         "name": {
