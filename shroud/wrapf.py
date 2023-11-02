@@ -1124,6 +1124,7 @@ rv = .false.
         options = node.options
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
+        bind = node._bind[wlang]
 
         ast = node.ast
         declarator = ast.declarator
@@ -1139,7 +1140,7 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result= fmtargs["+result"][fmtlang]
-        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
+        result_stmt = bind["+result"].stmt
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
             
@@ -1230,7 +1231,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
+            arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt
 
             if options.debug:
@@ -1455,6 +1456,7 @@ rv = .false.
         options = node.options
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
+        bind = node._bind["f"]
 
         # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
@@ -1474,7 +1476,7 @@ rv = .false.
         sintent = r_meta["intent"]
         fmt_result= fmtargs["+result"]["fmtf"]
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
-        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
+        result_stmt = bind["+result"].stmt
         result_stmt = statements.lookup_local_stmts(["f"], result_stmt, node)
         func_cursor.stmt = result_stmt
 
@@ -1578,7 +1580,7 @@ rv = .false.
                 continue
             optattr = False
             
-            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
+            arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt
             self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
             arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)

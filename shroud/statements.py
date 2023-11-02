@@ -94,9 +94,6 @@ def lookup_fc_stmts(path):
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
-def get_fc_stmts(name):
-    return fc_dict[name]
-
 def lookup_c_function_stmt(node):
     """Lookup the C statements for a function."""
     ast = node.ast

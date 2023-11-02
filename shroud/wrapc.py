@@ -918,6 +918,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
+        bind = node._bind[wlang]
 
         if node.C_force_wrapper:
             need_wrapper = True
@@ -955,7 +956,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
-        result_stmt = statements.get_fc_stmts(fmt_result.stmt_name)
+        result_stmt = bind["+result"].stmt
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
@@ -1108,7 +1109,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             cxx_local_var = ""
             hidden = c_attrs["hidden"] and node._generated
 
-            arg_stmt = statements.get_fc_stmts(fmt_arg.stmt_name)
+            arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             fmt_arg.c_var = arg_name

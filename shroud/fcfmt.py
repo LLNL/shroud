@@ -88,11 +88,11 @@ class FillFormat(object):
             result_stmt = statements.lookup_c_function_stmt(node)
         else:
             result_stmt = statements.lookup_f_function_stmt(node)
+        bind_result.stmt = result_stmt
         result_stmt = statements.lookup_local_stmts([wlang], result_stmt, node)
         func_cursor.stmt = result_stmt
         fmt_result.stmt_name = result_stmt.name
         stmt_indexes = [result_stmt.index]
-        bind_result.stmt = result_stmt
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
