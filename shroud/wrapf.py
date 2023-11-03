@@ -1512,7 +1512,6 @@ rv = .false.
             fmt_arg = fmtargs[arg_name]["fmtf"]
 
             f_declarator = f_arg.declarator
-            f_name = f_declarator.user_name
             f_attrs = f_declarator.attrs
             c_index += 1
             c_arg = c_args[c_index]
@@ -1536,20 +1535,20 @@ rv = .false.
             if f_arg.ftrim_char_in:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
-                    "character(len=*), intent(IN) :: {}".format(f_name)
+                    "character(len=*), intent(IN) :: {}".format(fmt_arg.f_var)
                 )
                 arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append("trim({})//C_NULL_CHAR".format(f_name))
+                arg_c_call.append("trim({})//C_NULL_CHAR".format(fmt_arg.f_var))
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
                 continue
             elif f_attrs["assumedtype"]:
                 # Passed directly to C as a 'void *'
                 arg_f_decl.append(
-                    "type(*) :: {}".format(f_name)
+                    "type(*) :: {}".format(fmt_arg.f_var)
                 )
                 arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(f_name)
+                arg_c_call.append(fmt_arg.f_var)
                 continue
             elif f_declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, f_arg, fileinfo)
@@ -1557,14 +1556,14 @@ rv = .false.
                     # external is similar to assumed type, in that it will
                     # accept any function.  But external is not allowed
                     # in bind(C), so make sure a wrapper is generated.
-                    arg_f_decl.append("external :: {}".format(f_name))
+                    arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
                     need_wrapper = True
                 else:
                     arg_f_decl.append(
-                        "procedure({}) :: {}".format(absiface, f_name)
+                        "procedure({}) :: {}".format(absiface, fmt_arg.f_var)
                     )
                 arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(f_name)
+                arg_c_call.append(fmt_arg.f_var)
                 # function pointers are pass thru without any other action
                 continue
             elif implied:
