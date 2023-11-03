@@ -6,18 +6,22 @@ Wrote wrapCstruct_as_subclass.cpp
 Phase: Wrapc.wrap_function
 ----------------------------------------
 Node: BadFstatements
+line 34
 Statement: c_subroutine
 No such c_helper 'no_c_helper2'
 --------------------
 Node: BadFstatements
+line 34
 Statement: c_subroutine
 No value for 'no_c_var' in '{no_c_var} = 11;'
 --------------------
 Node: BadFstatements
+line 34
 Statement: c_subroutine
 expected '}' before end of string in '{bad_format = 12;'
 --------------------
 Node: BadFstatements
+line 34
 Statement: f_subroutine
 No such c_helper 'no_c_helper'
 Wrote wraperror.h
@@ -27,20 +31,24 @@ Wrote wraperror.cpp
 Phase: Wrapf.wrap_class
 ----------------------------------------
 Node: Cstruct_as_subclass
+line 22
 Unknown class 'Cstruct_as_class' in option.class_baseclass
 
 ----------------------------------------
 Phase: Wrapf.wrap_function_impl
 ----------------------------------------
 Node: BadFstatements
+line 34
 Statement: f_subroutine
 No such c_helper 'no_c_helper'
 --------------------
 Node: BadFstatements
+line 34
 Statement: f_subroutine
 No such f_helper 'no_f_helper'
 --------------------
 Node: BadFstatements
+line 34
 Statement: f_subroutine
 No value for 'no_such_var' in '{no_such_var} = 10'
 
@@ -48,6 +56,7 @@ No value for 'no_such_var' in '{no_such_var} = 10'
 Phase: Wrapf.wrap_function_interface
 ----------------------------------------
 Node: BadFstatements
+line 34
 Statement: f_subroutine
 Unknown type in c_return_type: no-such-type
 Wrote wrapferror.f
@@ -58,6 +67,7 @@ Wrote typeserror.h
 Phase: Wrapp.wrap_functions
 ----------------------------------------
 Node: AssumedRank
+line 51
 Statement: py_default
 Detected assumed-rank dimension
 Wrote pyerrormodule.cpp

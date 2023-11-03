@@ -391,6 +391,25 @@ if __name__ == "__main__":
                      "--option", "wrap_lua=false",
                  ]),
 
+        TestDesc("pointers-c-f", yaml="pointers",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+        TestDesc("pointers-cxx-f", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+
         TestDesc("pointers-cfi", yaml="pointers",
                  cmdline=[
                      "--option", "F_CFI=true",

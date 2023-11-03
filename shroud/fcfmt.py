@@ -225,6 +225,7 @@ class FillFormat(object):
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
+            fmt_result.c_type = result_typemap.c_type  # c_return_type
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
                                       fmt_result.F_result, result_typemap,
