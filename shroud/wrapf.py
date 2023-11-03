@@ -1440,31 +1440,15 @@ rv = .false.
         fmt_result.F_C_call = C_node.fmtdict.F_C_name
         result_stmt = bind["+result"].stmt
         func_cursor.stmt = result_stmt
+        self.fill_fortran_result(cls, node, result_stmt, fmt_result)
 
-        subprogram = declarator.get_subprogram()
+        subprogram = fmt_result.F_subprogram
         C_subprogram = subprogram
         if result_stmt.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
             # XXX - reset result_typemap based on c_return_type?
-        if result_stmt.f_result == "subroutine":
-            subprogram = "subroutine"
-        elif result_stmt.f_result is not None:
-            subprogram = "function"
-            fmt_result.F_result = result_stmt.f_result
-        if subprogram == "function":
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.fc_var = fmt_result.F_result
-            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
-        fmt_result.F_subprogram = subprogram
-        
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
-        self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,
-                              subprogram, result_typemap)
-        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
-        self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
         fileinfo.apply_helpers_from_stmts(node)
 
@@ -1526,8 +1510,6 @@ rv = .false.
             func_cursor.arg = f_arg
             arg_name = f_arg.declarator.user_name
             fmt_arg = fmtargs[arg_name]["fmtf"]
-            fmt_arg.f_var = arg_name
-            fmt_arg.fc_var = arg_name
 
             f_declarator = f_arg.declarator
             f_name = f_declarator.user_name
@@ -1543,11 +1525,8 @@ rv = .false.
             
             arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt
-            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
-            arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
-            self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
-            self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
-            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+            arg_typemap = self.fill_fortran_arg(
+                cls, node, C_node, f_arg, c_arg, arg_stmt, fmt_arg)
 
             fileinfo.apply_helpers_from_stmts(node)
             
