@@ -1142,37 +1142,7 @@ rv = .false.
         fmt_result= fmtargs["+result"][fmtlang]
         result_stmt = bind["+result"].stmt
         func_cursor.stmt = result_stmt
-            
-        if subprogram == "subroutine":
-            fmt_result.F_C_subprogram = "subroutine"
-        else:
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-            fmt_result.i_var = fmt_result.F_result
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.f_intent = "OUT"
-            fmt_result.f_type = result_typemap.f_type
-            self.set_fmt_fields_iface(node, ast, fmt_result,
-                                      fmt_result.F_result, result_typemap,
-                                      "function")
-            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
-
-        if result_stmt.c_return_type == "void":
-            # Change a function into a subroutine.
-            fmt_result.F_C_subprogram = "subroutine"
-            fmt_result.F_C_result_clause = ""
-            subprogram = "subroutine"
-        elif result_stmt.c_return_type:
-            # Change a subroutine into function
-            # or change the return type.
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-        if result_stmt.i_result_var:
-            fmt_result.F_result = wformat(
-                result_stmt.i_result_var, fmt_result)
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c", "i")
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+        self.fill_interface_result(cls, node, result_stmt, fmt_result)
             
         stmts_comments = []
         if options.debug:
@@ -1216,11 +1186,9 @@ rv = .false.
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg = fmtargs[arg_name][fmtlang]
-            arg_typemap, specialize = statements.lookup_c_statements(arg)
-            fmt_arg.i_var = arg_name
-            fmt_arg.f_var = arg_name
-            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
-            self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
+            arg_stmt = bind[arg_name].stmt
+            func_cursor.stmt = arg_stmt
+            self.fill_interface_arg(cls, node, arg, arg_stmt, fmt_arg)
             
             attrs = declarator.attrs
             meta = declarator.metaattrs
@@ -1230,17 +1198,12 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
 
-            arg_stmt = bind[arg_name].stmt
-            func_cursor.stmt = arg_stmt
-
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
-            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
-            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1271,7 +1234,7 @@ rv = .false.
             # Functions which return shadow classes are not pure
             # since the result argument will be assigned to.
             pass
-        elif subprogram == "function" and (
+        elif fmt_result.F_C_subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
             fmt_result.F_C_pure_clause = "pure "

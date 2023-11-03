@@ -208,7 +208,62 @@ class FillFormat(object):
                 continuation=True,
             )
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
+        self.set_cxx_nonconst_ptr(arg, fmt_arg)
+        self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt)
 
+    def fill_interface_result(self, cls, node, result_stmt, fmt_result):
+        ast = node.ast
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
+        result_typemap = ast.typemap
+
+        if subprogram == "subroutine":
+            fmt_result.F_C_subprogram = "subroutine"
+        else:
+            fmt_result.F_C_subprogram = "function"
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.i_var = fmt_result.F_result
+            fmt_result.f_var = fmt_result.F_result
+            fmt_result.f_intent = "OUT"
+            fmt_result.f_type = result_typemap.f_type
+            self.set_fmt_fields_iface(node, ast, fmt_result,
+                                      fmt_result.F_result, result_typemap,
+                                      "function")
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
+
+        if result_stmt.c_return_type == "void":
+            # Change a function into a subroutine.
+            fmt_result.F_C_subprogram = "subroutine"
+            fmt_result.F_C_result_clause = ""
+        elif result_stmt.c_return_type:
+            # Change a subroutine into function
+            # or change the return type.
+            fmt_result.F_C_subprogram = "function"
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+        if result_stmt.i_result_var:
+            fmt_result.F_result = wformat(
+                result_stmt.i_result_var, fmt_result)
+            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c", "i")
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+
+    def fill_interface_arg(self, cls, node, arg, arg_stmt, fmt_arg):
+        declarator = arg.declarator
+        arg_name = declarator.user_name
+
+        arg_typemap, junk = statements.lookup_c_statements(arg)
+        fmt_arg.i_var = arg_name
+        fmt_arg.f_var = arg_name
+        self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
+        self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
+        self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
+        statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+        
+    def fill_fortran_result(self):
+        pass
+    def fill_fortran_arg(self):
+        pass
+    
     def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):
         """Compute names of temporary C variables.
 

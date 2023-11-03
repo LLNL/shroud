@@ -1089,9 +1089,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     proto_list,
                 )
 
-            self.set_cxx_nonconst_ptr(arg, fmt_arg)
-            self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt)
-
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, arg_stmt, pre_call, post_call, need_wrapper
             )
