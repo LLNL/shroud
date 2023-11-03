@@ -537,7 +537,8 @@ def main_with_args(args):
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
 
-        fcfmt.FillFormat(newlibrary).fmt_library()
+        if wrap.c or wrap.fortran:
+            fcfmt.FillFormat(newlibrary).fmt_library()
         
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call

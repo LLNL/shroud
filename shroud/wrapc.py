@@ -1245,8 +1245,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                      post_call + final_code + return_code
 
         signature = ":".join(stmt_indexes)
-#        if options.debug:
-#            stmts_comments.append("// Signature: " + signature)
+        if options.debug_index:
+            stmts_comments.append("// Signature: " + signature)
 
         if node.C_fortran_generic:
             # Use a previously generated C wrapper
@@ -1291,7 +1291,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             if node.C_signature == signature:
                 # Use the wrapper which has already been written
-                notimplemented = True
+                pass
                 
             elif notimplemented:
                 self.impl.append("")
