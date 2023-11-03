@@ -1105,7 +1105,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
-            cxx_local_var = ""
             hidden = c_attrs["hidden"] and node._generated
 
             arg_stmt = bind[arg_name].stmt
@@ -1121,7 +1120,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             if arg_stmt.cxx_local_var:
                 # Explicit conversion must be in pre_call.
-                cxx_local_var = arg_stmt.cxx_local_var
                 fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             elif self.language == "c":
                 fmt_arg.cxx_var = fmt_arg.c_var
@@ -1141,7 +1139,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 append_format(
                     pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                 )
-            fcfmt.compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+            fcfmt.compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
 
             self.c_helper.update(node.helpers.get("c", {}))
 
@@ -1173,12 +1171,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if arg_stmt.c_arg_call:
                 for arg_call in arg_stmt.c_arg_call:
                     append_format(call_list, arg_call, fmt_arg)
-            elif cxx_local_var == "scalar":
+            elif arg_stmt.cxx_local_var == "scalar":
                 if declarator.is_pointer():
                     call_list.append("&" + fmt_arg.cxx_var)
                 else:
                     call_list.append(fmt_arg.cxx_var)
-            elif cxx_local_var == "pointer":
+            elif arg_stmt.cxx_local_var == "pointer":
                 if declarator.is_pointer():
                     call_list.append(fmt_arg.cxx_var)
                 else:
