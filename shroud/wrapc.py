@@ -969,9 +969,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
         
-        if C_subprogram == "subroutine":
-            fmt_pattern = fmt_func
-        else:
+        if C_subprogram != "subroutine":
             fmt_result.idtor = "0"  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
@@ -1002,7 +1000,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             fcfmt.compute_cxx_deref(
                 CXX_ast, result_stmt.cxx_local_var, fmt_result)
-            fmt_pattern = fmt_result
 
         if result_stmt.c_return_type:
             # Override return type.
@@ -1230,7 +1227,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 append_format(
                     post_call_pattern,
                     self.patterns[C_error_pattern],
-                    fmt_pattern,
+                    fmt_result,
                 )
 
         if result_stmt.c_call:

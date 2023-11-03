@@ -2025,7 +2025,6 @@ return 1;""",
         fmt_result.size_var = "SHSize_" + fmt_result.C_result
         fmt_result.value_var = "SHValue_" + fmt_result.C_result
         fmt_result.numpy_type = result_typemap.PYN_typenum
-        #            fmt_pattern = fmt_result
         update_fmt_from_typemap(fmt_result, result_typemap)
 
         self.set_fmt_fields(cls, node, ast, fmt_result, True)
