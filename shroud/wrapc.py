@@ -968,53 +968,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             stmt_indexes.append(bind_arg.fstmts)
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
-        
-        if C_subprogram != "subroutine":
-            fmt_result.idtor = "0"  # no destructor
-            fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
-            fmt_result.c_type = result_typemap.c_type
-            fmt_result.cxx_type = result_typemap.cxx_type
-            fmt_result.sh_type = result_typemap.sh_type
-            fmt_result.cfi_type = result_typemap.cfi_type
-            if ast.template_arguments:
-                fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
-            if result_stmt.cxx_local_var == "result":
-                # C result is passed in as an argument. Create local C++ name.
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            elif self.language == "c":
-                fmt_result.cxx_var = fmt_result.c_var
-            elif result_typemap.cxx_to_c is None:
-                # C and C++ are compatible
-                fmt_result.cxx_var = fmt_result.c_var
-            else:
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if ast.const:
-                fmt_result.c_const = "const "
-            else:
-                fmt_result.c_const = ""
-
-            fmt_result.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True
-            )
-
-            fcfmt.compute_cxx_deref(
-                CXX_ast, result_stmt.cxx_local_var, fmt_result)
-
-        if result_stmt.c_return_type:
-            # Override return type.
-            fmt_result.C_return_type = wformat(
-                result_stmt.c_return_type, fmt_result)
-        else:
-            fmt_result.C_return_type = ast.gen_arg_as_c(
-                name=None, params=None, continuation=True
-            )
-            
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
-        self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
-        self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
-        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
+        self.fill_c_result(cls, node, result_stmt, fmt_result, CXX_ast)
 
         self.c_helper.update(node.helpers.get("c", {}))
         
@@ -1103,44 +1058,19 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             self.header_impl.add_typemap_list(arg_typemap.impl_header)
                     
-            arg_typemap, specialize = statements.lookup_c_statements(arg)
+            arg_typemap, junk = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             hidden = c_attrs["hidden"] and node._generated
 
             arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
-            fmt_arg.c_var = arg_name
-            # XXX - order issue - c_var must be set before name_temp_vars,
-            #       but set by set_fmt_fields
-            self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-            self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
-            self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
-            statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
-
-            if arg_stmt.cxx_local_var:
-                # Explicit conversion must be in pre_call.
-                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-            elif self.language == "c":
-                fmt_arg.cxx_var = fmt_arg.c_var
-            elif arg_typemap.c_to_cxx is None:
-                # Compatible
-                fmt_arg.cxx_var = fmt_arg.c_var
-            else:
-                # convert C argument to C++
-                fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var,
-                    params=None,
-                    as_ptr=True,
-                    continuation=True,
-                )
+            self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg)
+            if fmt_arg.inlocal("cxx_val"):
                 append_format(
                     pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                 )
-            fcfmt.compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
-
+            
             self.c_helper.update(node.helpers.get("c", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented

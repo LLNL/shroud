@@ -122,6 +122,93 @@ class FillFormat(object):
             
         cursor.pop_node(node)
 
+    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast):
+        ast = node.ast
+        declarator = ast.declarator
+        C_subprogram = declarator.get_subprogram()
+        result_typemap = ast.typemap
+
+        if C_subprogram != "subroutine":
+            fmt_result.idtor = "0"  # no destructor
+            fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+            fmt_result.c_type = result_typemap.c_type
+            fmt_result.cxx_type = result_typemap.cxx_type
+            fmt_result.sh_type = result_typemap.sh_type
+            fmt_result.cfi_type = result_typemap.cfi_type
+            if ast.template_arguments:
+                fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+            if result_stmt.cxx_local_var == "result":
+                # C result is passed in as an argument. Create local C++ name.
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            elif self.language == "c":
+                fmt_result.cxx_var = fmt_result.c_var
+            elif result_typemap.cxx_to_c is None:
+                # C and C++ are compatible
+                fmt_result.cxx_var = fmt_result.c_var
+            else:
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
+            if ast.const:
+                fmt_result.c_const = "const "
+            else:
+                fmt_result.c_const = ""
+
+            fmt_result.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None, continuation=True
+            )
+
+            compute_cxx_deref(
+                CXX_ast, result_stmt.cxx_local_var, fmt_result)
+
+        if result_stmt.c_return_type:
+            # Override return type.
+            fmt_result.C_return_type = wformat(
+                result_stmt.c_return_type, fmt_result)
+        else:
+            fmt_result.C_return_type = ast.gen_arg_as_c(
+                name=None, params=None, continuation=True
+            )
+            
+        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
+        self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
+        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+        self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
+        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
+
+    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg):
+        declarator = arg.declarator
+        arg_name = declarator.user_name
+        arg_typemap = arg.typemap  # XXX - look up vector
+        arg_typemap, junk = statements.lookup_c_statements(arg)
+           
+        fmt_arg.c_var = arg_name
+        # XXX - order issue - c_var must be set before name_temp_vars,
+        #       but set by set_fmt_fields
+        self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
+        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
+        self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
+        statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+
+        if arg_stmt.cxx_local_var:
+            # Explicit conversion must be in pre_call.
+            fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+        elif self.language == "c":
+            fmt_arg.cxx_var = fmt_arg.c_var
+        elif arg_typemap.c_to_cxx is None:
+            # Compatible
+            fmt_arg.cxx_var = fmt_arg.c_var
+        else:
+            # convert C argument to C++
+            fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
+            fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+            fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                name=fmt_arg.cxx_var,
+                params=None,
+                as_ptr=True,
+                continuation=True,
+            )
+        compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
+
     def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):
         """Compute names of temporary C variables.
 
