@@ -71,7 +71,7 @@ module typedefs_mod
     ! ----------------------------------------
     ! Function:  void typestruct
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
     ! Attrs:     +intent(inout)

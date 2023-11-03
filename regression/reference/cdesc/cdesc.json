@@ -56,15 +56,82 @@
                 },
                 "decl": "void Rank2In(int *arg +intent(in)+rank(2)+api(cdesc))",
                 "declgen": "void Rank2In(int * arg +api(cdesc)+intent(in)+rank(2))",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "Rank2In",
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_*_cdesc"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_*_cdesc"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "Rank2In(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "Rank2In(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_arg_cdesc",
+                            "F_C_call": "c_rank2_in",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_arg_cdesc",
+                            "F_arguments": "arg",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_helper_array_context": "CDE_SHROUD_array",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_*_cdesc"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -97,31 +164,19 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmtc": "f_in_native_*_cdesc",
-                            "stmtf": "f_in_native_*_cdesc"
+                            "stmt_name": "f_in_native_*_cdesc"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg",
                     "C_name": "CDE_Rank2In",
                     "C_name_api": "Rank2In",
-                    "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_arg_cdesc",
-                    "F_C_call": "c_rank2_in",
                     "F_C_name": "c_rank2_in",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
                     "F_name_api": "rank2_in",
                     "F_name_function": "rank2_in",
                     "F_name_generic": "rank2_in",
                     "F_name_impl": "rank2_in",
-                    "F_subprogram": "subroutine",
-                    "function_name": "Rank2In",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "Rank2In"
                 }
             },
             {
@@ -297,6 +352,16 @@
                         "generic": "(double *value+intent(out)+rank(0)+api(cdesc))"
                     }
                 ],
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -325,9 +390,33 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "name": {
+                            "stmt": "c_in_string_&"
+                        },
+                        "value": {
+                            "stmt": "c_in_void_*_cdesc"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
+                            "C_call_list": "SHCXX_name,\t value",
+                            "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_value_cdesc",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        }
+                    },
                     "name": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -348,11 +437,11 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&"
+                            "stmt_name": "c_in_string_&"
                         }
                     },
                     "value": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -377,22 +466,16 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "1",
-                            "stmtc": "f_in_void_*_cdesc"
+                            "stmt_name": "c_in_void_*_cdesc"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_GetScalar1",
                     "C_name_api": "GetScalar1",
-                    "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_value_cdesc",
                     "F_C_name": "c_get_scalar1",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "get_scalar1",
-                    "function_name": "GetScalar1",
-                    "stmtc": "f_subroutine"
+                    "function_name": "GetScalar1"
                 }
             },
             {
@@ -470,6 +553,16 @@
                 "declgen": "void GetScalar1(std::string & name +intent(in), int * value +api(cdesc)+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
                 },
                 "name": "GetScalar1",
                 "options": {},
@@ -581,6 +674,16 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -608,11 +711,37 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "stmt": "f_in_string_&_buf"
+                        },
+                        "value": {
+                            "stmt": "f_out_native_*_cdesc"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
+                            "C_call_list": "SHCXX_name,\t value",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
+                            "F_C_call": "c_get_scalar1_0_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "name": {
                         "fmtf": {
                             "c_addr": "",
@@ -640,8 +769,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&_buf",
-                            "stmtf": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -675,33 +803,21 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmtc": "f_out_native_*_cdesc",
-                            "stmtf": "f_out_native_*_cdesc"
+                            "stmt_name": "f_out_native_*_cdesc"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_GetScalar1_0_bufferify",
                     "C_name_api": "GetScalar1",
-                    "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
-                    "F_C_call": "c_get_scalar1_0_bufferify",
                     "F_C_name": "c_get_scalar1_0_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
-                    "F_arguments": "name,\t value",
                     "F_name_api": "get_scalar1",
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_0",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
                 }
             },
             {
@@ -779,6 +895,16 @@
                 "declgen": "void GetScalar1(std::string & name +intent(in), double * value +api(cdesc)+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
                 },
                 "name": "GetScalar1",
                 "options": {},
@@ -890,6 +1016,16 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "char_len_trim"
+                    ],
+                    "f": [
+                        "type_defines",
+                        "array_context"
+                    ]
+                },
                 "name": "GetScalar1",
                 "options": {},
                 "splicer": {
@@ -917,11 +1053,37 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "stmt": "f_in_string_&_buf"
+                        },
+                        "value": {
+                            "stmt": "f_out_native_*_cdesc"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
+                            "C_call_list": "SHCXX_name,\t value",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
+                            "F_C_call": "c_get_scalar1_1_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "name": {
                         "fmtf": {
                             "c_addr": "",
@@ -949,8 +1111,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&_buf",
-                            "stmtf": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -984,33 +1145,21 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
-                            "stmtc": "f_out_native_*_cdesc",
-                            "stmtf": "f_out_native_*_cdesc"
+                            "stmt_name": "f_out_native_*_cdesc"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_GetScalar1_1_bufferify",
                     "C_name_api": "GetScalar1",
-                    "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
-                    "F_C_call": "c_get_scalar1_1_bufferify",
                     "F_C_name": "c_get_scalar1_1_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
-                    "F_arguments": "name,\t value",
                     "F_name_api": "get_scalar1",
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_1",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
                 }
             },
             {
@@ -1138,55 +1287,87 @@
                 ],
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "getData<int>(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getData<int>(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_get_data_int",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
                     "C_name": "CDE_getData_int",
                     "C_name_api": "getData",
-                    "C_prototype": "void",
-                    "C_return_type": "int",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_get_data_int",
                     "F_C_name": "c_get_data_int",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_int",
                     "F_name_generic": "get_data",
                     "F_name_impl": "get_data_int",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "getData",
                     "template_suffix": "_int"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    }
                 }
             },
             {
@@ -1254,55 +1435,87 @@
                 ],
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "getData<double>(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "double",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "double",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "double SHC_rv",
+                            "cxx_type": "double",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getData<double>(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "double",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_get_data_double",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "double",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "double SHC_rv",
+                            "cxx_type": "double",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
                     "C_name": "CDE_getData_double",
                     "C_name_api": "getData",
-                    "C_prototype": "void",
-                    "C_return_type": "double",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_get_data_double",
                     "F_C_name": "c_get_data_double",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_double",
                     "F_name_generic": "get_data",
                     "F_name_impl": "get_data_double",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "double SHC_rv",
                     "function_name": "getData",
                     "template_suffix": "_double"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "double",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_double",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "double",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_DOUBLE",
-                        "f_type": "real(C_DOUBLE)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_DOUBLE",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    }
                 }
             },
             {
@@ -1482,6 +1695,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
@@ -1577,6 +1795,11 @@
                             "value = c_get_data_{stype}()"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "GetScalar2",
                 "options": {
@@ -1677,6 +1900,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
@@ -1688,11 +1916,38 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fstmts": "f",
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "stmt": "f_in_string_&_buf"
+                        },
+                        "value": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
+                            "C_call_list": "SHCXX_name,\t value",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t value",
+                            "F_C_call": "c_get_scalar2_0_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "name": {
                         "fmtf": {
                             "c_addr": "",
@@ -1720,8 +1975,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&_buf",
-                            "stmtf": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -1747,33 +2001,21 @@
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_GetScalar2_0_bufferify",
                     "C_name_api": "GetScalar2",
-                    "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_name_len,\t value",
-                    "F_C_call": "c_get_scalar2_0_bufferify",
                     "F_C_name": "c_get_scalar2_0_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
-                    "F_arguments": "name,\t value",
                     "F_name_api": "get_scalar2",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_0",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "stype": "int"
                 }
             },
@@ -1856,6 +2098,11 @@
                             "value = c_get_data_{stype}()"
                         ]
                     }
+                },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
                 },
                 "name": "GetScalar2",
                 "options": {
@@ -1956,6 +2203,11 @@
                         ]
                     }
                 },
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
@@ -1967,11 +2219,38 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fstmts": "f",
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "stmt": "f_in_string_&_buf"
+                        },
+                        "value": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
+                            "C_call_list": "SHCXX_name,\t value",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t double * value",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t value",
+                            "F_C_call": "c_get_scalar2_1_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "name": {
                         "fmtf": {
                             "c_addr": "",
@@ -1999,8 +2278,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_string_&_buf",
-                            "stmtf": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -2026,33 +2304,21 @@
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_GetScalar2_1_bufferify",
                     "C_name_api": "GetScalar2",
-                    "C_prototype": "char *name,\t int SHT_name_len,\t double * value",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_name_len,\t value",
-                    "F_C_call": "c_get_scalar2_1_bufferify",
                     "F_C_name": "c_get_scalar2_1_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
-                    "F_arguments": "name,\t value",
                     "F_name_api": "get_scalar2",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_1",
-                    "F_subprogram": "subroutine",
                     "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine",
                     "stype": "double"
                 }
             }

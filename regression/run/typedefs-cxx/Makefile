@@ -41,6 +41,6 @@ testc.o : testc.c wraptypedefs.h
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
 clean :
-	rm -f $(OBJS) *.mod typedefs main.f typedefs.cpp
+	rm -f $(OBJS) *.mod typedefs main.f
 
 main.o : wrapftypedefs.o

@@ -273,6 +273,17 @@ and destructors for shadow types.
 
 .. sets need_wrapper
 
+c_need_wrapper
+^^^^^^^^^^^^^^
+
+There are occassions when a C wrapper is not needed when the Fortran
+wrapper can call the library function directly. For example, when
+language=c or the C++ library function is ``extern "C"``.
+
+*c_need_wrapper* can be set to *True* to force the C wrapper to be
+created.  This is useful when the wrapper is modified via other fields
+such as *c_return_type*.
+
 c_post_call
 ^^^^^^^^^^^
 
@@ -324,6 +335,11 @@ pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
 would be return by the C wrapper is unneeded by the Fortran wrapper.
 
 The Fortran wrapper is also changed to call the C wrapper as a subroutine.
+
+.. The field will be expanded so it may be set to "{c_type}";
+   however, the Fortran wrapper does not parse the value so
+   if it is a pointer, ``int *``, the typemap will not be found.
+   It will also be necessary to set i_result_decl.
  
 destructor_name
 ^^^^^^^^^^^^^^^

@@ -163,9 +163,53 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_bool_scalar"
+                        },
+                        "i1": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "i2": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
+                            "C_call_list": "i1,\t i2",
+                            "C_prototype": "IndexType i1,\t IndexType * i2",
+                            "C_return_type": "bool",
+                            "F_C_arguments": "i1,\t i2",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "bool",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_Bool",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "bool SHC_rv",
+                            "cxx_type": "bool",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_BOOL",
+                            "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt_name": "c_function_bool_scalar"
+                        }
+                    },
                     "i1": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -186,11 +230,11 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar"
+                            "stmt_name": "c_in_native_scalar"
                         }
                     },
                     "i2": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -211,46 +255,16 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "i1,\t i2",
                     "C_name": "TYP_passIndex",
                     "C_name_api": "passIndex",
-                    "C_prototype": "IndexType i1,\t IndexType * i2",
-                    "C_return_type": "bool",
-                    "F_C_arguments": "i1,\t i2",
                     "F_C_name": "c_pass_index",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "pass_index",
-                    "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "bool",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_Bool",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "bool",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_BOOL",
-                        "f_type": "logical",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar"
-                    }
                 }
             },
             {
@@ -319,11 +333,59 @@
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_bool_scalar"
+                        },
+                        "i1": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "i2": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
+                            "C_call_list": "i1,\t i2",
+                            "C_prototype": "int32_t i1,\t IndexType * i2",
+                            "C_return_type": "bool",
+                            "F_C_arguments": "i1,\t i2",
+                            "F_C_call": "c_pass_index_32",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "i1,\t i2",
+                            "F_arguments": "i1,\t i2",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "bool",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_Bool",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "bool SHC_rv",
+                            "cxx_type": "bool",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_BOOL",
+                            "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt_name": "f_function_bool_scalar"
+                        }
+                    },
                     "i1": {
                         "fmtf": {
                             "c_addr": "&",
@@ -347,8 +409,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "i2": {
@@ -374,58 +435,20 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "i1,\t i2",
                     "C_name": "TYP_passIndex_32",
                     "C_name_api": "passIndex",
-                    "C_prototype": "int32_t i1,\t IndexType * i2",
-                    "C_return_type": "bool",
-                    "F_C_arguments": "i1,\t i2",
-                    "F_C_call": "c_pass_index_32",
                     "F_C_name": "c_pass_index_32",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "i1,\t i2",
-                    "F_arguments": "i1,\t i2",
                     "F_name_api": "pass_index",
                     "F_name_function": "pass_index_32",
                     "F_name_generic": "pass_index",
                     "F_name_impl": "pass_index_32",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
                     "function_suffix": "_32"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "bool",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_Bool",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "bool",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_BOOL",
-                        "f_type": "logical",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar",
-                        "stmtf": "f_function_bool_scalar"
-                    }
                 }
             },
             {
@@ -494,11 +517,59 @@
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_bool_scalar"
+                        },
+                        "i1": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "i2": {
+                            "stmt": "f_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passIndex(\ti1,\t i2)",
+                            "C_call_list": "i1,\t i2",
+                            "C_prototype": "int64_t i1,\t IndexType * i2",
+                            "C_return_type": "bool",
+                            "F_C_arguments": "i1,\t i2",
+                            "F_C_call": "c_pass_index_64",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "i1,\t i2",
+                            "F_arguments": "i1,\t i2",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "bool",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_Bool",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "bool SHC_rv",
+                            "cxx_type": "bool",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_BOOL",
+                            "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt_name": "f_function_bool_scalar"
+                        }
+                    },
                     "i1": {
                         "fmtf": {
                             "c_addr": "&",
@@ -522,8 +593,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "i2": {
@@ -549,58 +619,20 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_out_native_*",
-                            "stmtf": "f_out_native_*"
+                            "stmt_name": "f_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "i1,\t i2",
                     "C_name": "TYP_passIndex_64",
                     "C_name_api": "passIndex",
-                    "C_prototype": "int64_t i1,\t IndexType * i2",
-                    "C_return_type": "bool",
-                    "F_C_arguments": "i1,\t i2",
-                    "F_C_call": "c_pass_index_64",
                     "F_C_name": "c_pass_index_64",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "i1,\t i2",
-                    "F_arguments": "i1,\t i2",
                     "F_name_api": "pass_index",
                     "F_name_function": "pass_index_64",
                     "F_name_generic": "pass_index",
                     "F_name_impl": "pass_index_64",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
                     "function_suffix": "_64"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "bool",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_Bool",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "bool",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_BOOL",
-                        "f_type": "logical",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_BOOL",
-                        "stmtc": "f_function_bool_scalar",
-                        "stmtf": "f_function_bool_scalar"
-                    }
                 }
             },
             {
@@ -688,12 +720,32 @@
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "i1": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "passIndex2(\ti1)",
+                            "C_call_list": "i1",
+                            "C_prototype": "IndexType i1",
+                            "C_return_type": "void",
+                            "F_C_arguments": "i1",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        }
+                    },
                     "i1": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -711,27 +763,19 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "i1",
-                            "fc_var": "i1",
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "c_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "i1",
                     "C_name": "TYP_passIndex2",
                     "C_name_api": "passIndex2",
-                    "C_prototype": "IndexType i1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "i1",
                     "F_C_name": "c_pass_index2",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_index2",
-                    "function_name": "passIndex2",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passIndex2"
                 }
             },
             {
@@ -781,19 +825,66 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "i1": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passIndex2(\ti1)",
+                            "C_call_list": "i1",
+                            "C_prototype": "int32_t i1",
+                            "C_return_type": "void",
+                            "F_C_call": "c_pass_index2",
+                            "F_arg_c_call": "int(i1, INDEXTYPE)",
+                            "F_arguments": "i1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "i1": {
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int32_t",
+                            "c_var": "i1",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&i1",
+                            "cxx_type": "int32_t",
+                            "cxx_var": "i1",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT32_T",
+                            "f_type": "integer(C_INT32_T)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "i1",
+                            "fc_var": "i1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
+                    "C_name": "passIndex2",
                     "C_name_api": "passIndex2",
-                    "F_C_call": "c_pass_index2",
-                    "F_arg_c_call": "int(i1, INDEXTYPE)",
-                    "F_arguments": "i1",
+                    "F_C_name": "c_pass_index2_32",
                     "F_name_api": "pass_index2",
                     "F_name_function": "pass_index2_32",
                     "F_name_generic": "pass_index2",
                     "F_name_impl": "pass_index2_32",
-                    "F_subprogram": "subroutine",
                     "function_name": "passIndex2",
-                    "function_suffix": "_32",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_32"
                 }
             },
             {
@@ -843,19 +934,66 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "i1": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passIndex2(\ti1)",
+                            "C_call_list": "i1",
+                            "C_prototype": "int64_t i1",
+                            "C_return_type": "void",
+                            "F_C_call": "c_pass_index2",
+                            "F_arg_c_call": "int(i1, INDEXTYPE)",
+                            "F_arguments": "i1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "i1": {
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int64_t",
+                            "c_var": "i1",
+                            "cfi_type": "CFI_type_int64_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&i1",
+                            "cxx_type": "int64_t",
+                            "cxx_var": "i1",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT64_T",
+                            "f_type": "integer(C_INT64_T)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "i1",
+                            "fc_var": "i1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT64_T",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
+                    "C_name": "passIndex2",
                     "C_name_api": "passIndex2",
-                    "F_C_call": "c_pass_index2",
-                    "F_arg_c_call": "int(i1, INDEXTYPE)",
-                    "F_arguments": "i1",
+                    "F_C_name": "c_pass_index2_64",
                     "F_name_api": "pass_index2",
                     "F_name_function": "pass_index2_64",
                     "F_name_generic": "pass_index2",
                     "F_name_impl": "pass_index2_64",
-                    "F_subprogram": "subroutine",
                     "function_name": "passIndex2",
-                    "function_suffix": "_64",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_64"
                 }
             },
             {
@@ -943,12 +1081,32 @@
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "f1": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "passFloat(\tf1)",
+                            "C_call_list": "f1",
+                            "C_prototype": "FloatType f1",
+                            "C_return_type": "void",
+                            "F_C_arguments": "f1",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        }
+                    },
                     "f1": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -966,27 +1124,19 @@
                             "f_type": "real(FLOATTYPE)",
                             "f_type_module": "typemap_mod",
                             "f_var": "f1",
-                            "fc_var": "f1",
                             "i_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "c_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "f1",
                     "C_name": "TYP_passFloat",
                     "C_name_api": "passFloat",
-                    "C_prototype": "FloatType f1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "f1",
                     "F_C_name": "c_pass_float",
-                    "F_C_subprogram": "subroutine",
                     "F_name_api": "pass_float",
-                    "function_name": "passFloat",
-                    "stmtc": "f_subroutine"
+                    "function_name": "passFloat"
                 }
             },
             {
@@ -1036,19 +1186,66 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "f1": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passFloat(\tf1)",
+                            "C_call_list": "f1",
+                            "C_prototype": "float f1",
+                            "C_return_type": "void",
+                            "F_C_call": "c_pass_float",
+                            "F_arg_c_call": "real(f1, FLOATTYPE)",
+                            "F_arguments": "f1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "f1": {
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "float",
+                            "c_var": "f1",
+                            "cfi_type": "CFI_type_float",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&f1",
+                            "cxx_type": "float",
+                            "cxx_var": "f1",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "f1",
+                            "fc_var": "f1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
+                    "C_name": "passFloat",
                     "C_name_api": "passFloat",
-                    "F_C_call": "c_pass_float",
-                    "F_arg_c_call": "real(f1, FLOATTYPE)",
-                    "F_arguments": "f1",
+                    "F_C_name": "c_pass_float_float",
                     "F_name_api": "pass_float",
                     "F_name_function": "pass_float_float",
                     "F_name_generic": "pass_float",
                     "F_name_impl": "pass_float_float",
-                    "F_subprogram": "subroutine",
                     "function_name": "passFloat",
-                    "function_suffix": "_float",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_float"
                 }
             },
             {
@@ -1098,19 +1295,66 @@
                 "wrap": {
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "f1": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "passFloat(\tf1)",
+                            "C_call_list": "f1",
+                            "C_prototype": "double f1",
+                            "C_return_type": "void",
+                            "F_C_call": "c_pass_float",
+                            "F_arg_c_call": "real(f1, FLOATTYPE)",
+                            "F_arguments": "f1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "f1": {
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "double",
+                            "c_var": "f1",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&f1",
+                            "cxx_type": "double",
+                            "cxx_var": "f1",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "f1",
+                            "fc_var": "f1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
+                    "C_name": "passFloat",
                     "C_name_api": "passFloat",
-                    "F_C_call": "c_pass_float",
-                    "F_arg_c_call": "real(f1, FLOATTYPE)",
-                    "F_arguments": "f1",
+                    "F_C_name": "c_pass_float_double",
                     "F_name_api": "pass_float",
                     "F_name_function": "pass_float_double",
                     "F_name_generic": "pass_float",
                     "F_name_impl": "pass_float_double",
-                    "F_subprogram": "subroutine",
                     "function_name": "passFloat",
-                    "function_suffix": "_double",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_double"
                 }
             }
         ],

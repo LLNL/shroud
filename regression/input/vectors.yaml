@@ -52,15 +52,14 @@ declarations:
       c_return_type: long
       c_return:
       - return SHT_arg_cdesc->size;
-    c_buf:
+    f:
       c_return_type: long
       c_return:
       - return SHT_arg_cdesc->size;
-    f:
       f_result: num
       f_module:
         iso_c_binding: ["C_LONG"]
-      f_declare:
+      f_arg_decl:
       -  "integer(C_LONG) :: {F_result}"
       f_call:
       -  "{F_result} = {F_C_call}({F_arg_c_call})"
@@ -81,7 +80,7 @@ declarations:
       f_result: num
       f_module:
         iso_c_binding: ["C_LONG"]
-      f_declare:
+      f_arg_decl:
       -  "integer(C_LONG) :: num"
       f_post_call:
       -  "num = SHT_arg_cdesc%size"

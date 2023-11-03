@@ -179,7 +179,7 @@ declarations:
       This is accomplished with C_finalize_buf which is possible
       because +len(30) so the contents are copied before returning.
   fstatements:
-    c_buf:
+    f:
       c_final:
       - delete {cxx_var};
 

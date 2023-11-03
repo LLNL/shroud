@@ -1994,9 +1994,9 @@ return 1;""",
 
         result_blk = default_scope
 
-        fmt_result = node._fmtresult.setdefault(
-            "fmtpy", util.Scope(fmt)
-        )  # fmt_func
+        fmtargs = node._fmtargs
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))  # fmt_func
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.
@@ -2025,7 +2025,6 @@ return 1;""",
         fmt_result.size_var = "SHSize_" + fmt_result.C_result
         fmt_result.value_var = "SHValue_" + fmt_result.C_result
         fmt_result.numpy_type = result_typemap.PYN_typenum
-        #            fmt_pattern = fmt_result
         update_fmt_from_typemap(fmt_result, result_typemap)
 
         self.set_fmt_fields(cls, node, ast, fmt_result, True)

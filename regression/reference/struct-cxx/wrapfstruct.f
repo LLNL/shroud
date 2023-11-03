@@ -181,7 +181,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -218,7 +218,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -255,7 +255,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -292,7 +292,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -329,7 +329,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void set_z1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -388,15 +388,15 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
-        ! Statement: f_function_native_scalar
+        ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: c_in_struct_*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_char_*
+        ! Statement: c_out_char_*
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2")
@@ -454,7 +454,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void acceptStructOutPtr
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(out)
         ! Attrs:     +intent(out)
@@ -480,7 +480,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void acceptStructInOutPtr
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(inout)
         ! Attrs:     +intent(inout)
@@ -539,19 +539,19 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_struct_*_pointer
+        ! Statement: c_function_struct_*
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_char_*
+        ! Statement: c_out_char_*
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr2")
@@ -715,7 +715,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_ptr_set_const_dvalue
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this
         ! Attrs:     +intent(inout)
@@ -755,7 +755,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_list_set_ivalue
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(inout)
@@ -795,7 +795,7 @@ module struct_mod
         ! ----------------------------------------
         ! Function:  void Cstruct_list_set_dvalue
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
         ! Attrs:     +intent(inout)

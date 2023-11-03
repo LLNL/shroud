@@ -32,6 +32,14 @@ from collections import OrderedDict
 # The dictionary of c and fortran statements.
 fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
+
+class BindArg(object):
+    def __init__(self):
+        self.stmt = None
+        self.meta = None
+        self.fmtdict = None
+        self.fstmts = None  # fstatements from YAML file
+
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
@@ -86,7 +94,91 @@ def lookup_fc_stmts(path):
         stmt = fc_dict.get("f_mixin_unknown")
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
-        
+
+def lookup_c_function_stmt(node):
+    """Lookup the C statements for a function."""
+    ast = node.ast
+    declarator = ast.declarator
+    subprogram = declarator.get_subprogram()
+    r_meta = declarator.metaattrs
+    sintent = r_meta["intent"]
+    if subprogram == "subroutine":
+        # intent will be "subroutine", "dtor", "setter"
+        stmts = ["c", sintent]
+        result_stmt = lookup_fc_stmts(stmts)
+    else:
+        r_attrs = declarator.attrs
+        result_typemap = ast.typemap
+        spointer = declarator.get_indirect_stmt()
+        # intent will be "function", "ctor", "getter"
+        junk, specialize = lookup_c_statements(ast)
+        stmts = ["c", sintent, result_typemap.sgroup, spointer,
+                 r_meta["api"],
+#                 r_meta["deref"],   # XXX - No deref for C wrapper
+                 r_attrs["owner"]
+        ] + specialize
+    result_stmt = lookup_fc_stmts(stmts)
+    return result_stmt
+
+def lookup_f_function_stmt(node):
+    """Lookup the Fortran statements for a function."""
+    ast = node.ast
+    declarator = ast.declarator
+    subprogram = declarator.get_subprogram()
+    r_meta = declarator.metaattrs
+    sintent = r_meta["intent"]
+    if subprogram == "subroutine":
+        # intent will be "subroutine", "dtor", "setter"
+        stmts = ["f", sintent]
+        result_stmt = lookup_fc_stmts(stmts)
+    else:
+        r_attrs = declarator.attrs
+        result_typemap = ast.typemap
+        spointer = declarator.get_indirect_stmt()
+        # intent will be "function", "ctor", "getter"
+        junk, specialize = lookup_c_statements(ast)
+        stmts = ["f", sintent, result_typemap.sgroup, spointer,
+                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
+    result_stmt = lookup_fc_stmts(stmts)
+    return result_stmt
+
+def lookup_c_arg_stmt(node, arg):
+    """Lookup the C statements for an argument."""
+    declarator = arg.declarator
+    c_attrs = declarator.attrs
+    c_meta = declarator.metaattrs
+    arg_typemap = arg.typemap  # XXX - look up vector
+    sgroup = arg_typemap.sgroup
+    junk, specialize = lookup_c_statements(arg)
+    spointer = declarator.get_indirect_stmt()
+    sapi = c_meta["api"]
+    if c_attrs["hidden"] and node._generated:
+        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+        sapi = "hidden"
+    stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
+#             c_meta["deref"],   # XXX - No deref for C wrapper
+             c_attrs["owner"]] + specialize
+    arg_stmt = lookup_fc_stmts(stmts)
+    return arg_stmt
+
+def lookup_f_arg_stmt(node, arg):
+    """Lookup the Fortran statements for an argument."""
+    declarator = arg.declarator
+    c_attrs = declarator.attrs
+    c_meta = declarator.metaattrs
+    arg_typemap = arg.typemap  # XXX - look up vector
+    sgroup = arg_typemap.sgroup
+    junk, specialize = lookup_c_statements(arg)
+    spointer = declarator.get_indirect_stmt()
+    sapi = c_meta["api"]
+    if c_attrs["hidden"] and node._generated:
+        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+        sapi = "hidden"
+    stmts = ["f", c_meta["intent"], sgroup, spointer,
+             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
+    arg_stmt = lookup_fc_stmts(stmts)
+    return arg_stmt
+
 def compute_name(path, char="_"):
     """
     Compute a name from a list of components.
@@ -296,6 +388,9 @@ def process_mixin(stmts, defaults, stmtdict):
         "c_function_native_*_allocatable/raw",
         "c_function_native_*/&/**_pointer",
     ],
+
+    Set an index field for each statement.
+    variants (ex in/out) and aliases all have the same index.
     """
     # Apply base and mixin
     # This allows mixins to propagate
@@ -303,20 +398,27 @@ def process_mixin(stmts, defaults, stmtdict):
     # Save by name permutations into mixins  (in/out/inout)
     mixins = OrderedDict()
     aliases = []
+    index = 0
     for stmt in stmts:
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
         parts = name.split("_")
-        if parts[0] == "x":
+        if len(parts) < 2:
+            print("XXXX - a group names needs at least lang_intent_other*:", name)
             continue
-        if parts[1] == "mixin":
+        lang = parts[0]
+        intent = parts[1]
+        # Check length of name
+        if lang == "x":
+            continue
+        if intent == "mixin":
             if "base" in stmt:
-                print("XXXX - mixin should not have 'base' field:", name)
+                print("XXXX - intent mixin group should not have 'base' field:", name)
             if "alias" in stmt:
-                print("XXXX - mixin should not have 'alias' field:", name)
+                print("XXXX - intent mixin group should not have 'alias' field:", name)
             if "append" in stmt:
-                print("XXXX - mixin should not have 'append' field:", name)
+                print("XXXX - intent mixin group should not have 'append' field:", name)
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
@@ -329,7 +431,7 @@ def process_mixin(stmts, defaults, stmtdict):
                     raise RuntimeError("Mixin {} not found for {}".format(mixin, name))
 #                print("M    ", mixin)
                 append_mixin(node, mixins[mixin])
-        if parts[1] == "mixin":
+        if intent == "mixin":
             append_mixin(node, stmt)
         else:
             if "append" in stmt:
@@ -339,6 +441,8 @@ def process_mixin(stmts, defaults, stmtdict):
         node["orig"] = name
         out = compute_all_permutations(name)
         firstname = "_".join(out[0])
+        node["index"] = str(index)
+        index += 1
         if len(out) == 1:
             if name in mixins:
                 raise RuntimeError("process_mixin: key already exists {}".format(name))
@@ -640,10 +744,12 @@ CStmts = util.Scope(
     None,
     name="c_default",
     comments=[],
+    index="X",
     intent=None,
     fmtdict=None,
     iface_header=[],
     impl_header=[],
+    c_need_wrapper=False,
     c_helper=[],
     cxx_local_var=None,
     c_arg_call=[],
@@ -731,23 +837,12 @@ fc_statements = [
         i_arg_names=[],
     ),
     dict(
-        name="f_subroutine_void_scalar_capptr",
-        mixin=[
-            "c_mixin_noargs",
-        ],
-        alias=[
-            "c_subroutine_void_scalar",
-            "c_subroutine_void_scalar_capptr",
-        ],
-    ),
-    dict(
         name="f_subroutine",
         mixin=[
             "c_mixin_noargs",
         ],
         alias=[
             "c_subroutine",
-            "f_subroutine_void_scalar",
         ],
         f_arg_call=[],
         f_call=[
@@ -757,9 +852,6 @@ fc_statements = [
 
     dict(
         name="c_function",
-        alias=[
-            "c_function_void_*",
-        ],
     ),
     dict(
         name="f_mixin_function",
@@ -773,9 +865,19 @@ fc_statements = [
     dict(
         name="f_function_native_scalar",
         alias=[
-            "f_function_native_*_scalar",
             "c_function_native_scalar",
         ],
+    ),
+    dict(
+        name="f_function_native_*_scalar",
+        comments=[
+            "Return a scalar to avoid doing the deref in Fortran.",
+        ],
+        c_return_type="{c_type}",
+        c_return=[
+            "return *{cxx_var};",
+        ],
+        c_need_wrapper=True,
     ),
 
     ########## mixin ##########
@@ -1163,6 +1265,8 @@ fc_statements = [
     dict(
         # Default returned by lookup_fc_stmts when group is not found.
         name="f_mixin_unknown",
+        # Point out where there are problems in the wrapper...
+        c_arg_decl=["===>{c_var}<==="],
     ),
 
     ##########
@@ -1372,7 +1476,7 @@ fc_statements = [
             "c_out_native_&",
 
             "f_out_native_*&_pointer",
-            "c_out_native_*&_pointer",
+            "c_out_native_*&",
 
             "f_inout_native_*",
             "c_inout_native_*",
@@ -1381,10 +1485,7 @@ fc_statements = [
             "c_inout_native_&",
             
             "f_out_native_**_allocatable",
-            "c_out_native_**_allocatable",
-
             "f_out_native_**_pointer",
-            "c_out_native_**_pointer",
 
             "f_out_native_***",
             "c_out_native_***",
@@ -1571,6 +1672,7 @@ fc_statements = [
         name="f_out_native_**_raw",
         alias=[
             "c_out_native_**_raw",
+            "c_out_native_**",
         ],
         f_arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
@@ -1674,6 +1776,9 @@ fc_statements = [
     dict(
         # return a type(C_PTR)
         name="f_function_void_*",
+        alias=[
+            "c_function_void_*",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
         f_arg_decl=[
             "type(C_PTR) :: {f_var}",
@@ -1710,20 +1815,6 @@ fc_statements = [
     ),
     
     dict(
-        # Works with deref allocatable and pointer.
-        # c_function_native_*
-        # c_function_native_&
-        name="c_function_native_*/&",
-        # f_mixin_function_ptr
-        alias=[
-            "c_function_native_**_pointer",
-        ],
-        i_result_decl=[
-            "type(C_PTR) {i_var}",
-        ],
-        i_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
         name="c_function_native_*_scalar",
         i_result_decl=[
             "{f_type} :: {i_var}",
@@ -1755,6 +1846,8 @@ fc_statements = [
             "f_function_native_&_pointer",
             "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
+            "c_function_native_*/&",
+            "c_function_native_*_caller",
         ],
     ),
     dict(
@@ -2216,6 +2309,7 @@ fc_statements = [
             "f_function_string_*_allocatable_caller",
             "f_function_string_*_allocatable_library",
             "f_function_string_*_copy",
+            "c_function_string_*_caller/library",
             "c_function_string_*_copy",
             "f_function_string_*_pointer",
             "f_function_string_*_pointer_caller",
@@ -2948,6 +3042,9 @@ fc_statements = [
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
         ],
+        alias=[
+            "c_function_shadow_*_capsule",
+        ],
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
@@ -2959,6 +3056,9 @@ fc_statements = [
         name="f_function_shadow_*_this",
         mixin=[
             "f_mixin_function-to-subroutine",
+        ],
+        alias=[
+            "c_function_shadow_*_this",
         ],
         f_result="subroutine",
         c_call=[
@@ -2991,6 +3091,8 @@ fc_statements = [
     dict(
         # f_function_shadow_*_capptr
         # f_function_shadow_&_capptr
+        # c_function_shadow_*_capptr
+        # c_function_shadow_&_capptr
         name="f_function_shadow_*/&_capptr",
         mixin=[
             "f_mixin_function_shadow_capptr",
@@ -3008,7 +3110,8 @@ fc_statements = [
             "{c_var}->idtor = {idtor};",
         ],
         
-        c_return_type=None,
+        # Remove const from return type
+        c_return_type="{c_type} *",
         c_return=[
             "return {c_var};",
         ],
@@ -3071,8 +3174,7 @@ fc_statements = [
             "f_mixin_function-to-subroutine",
         ],
         alias=[
-            "f_dtor_void_scalar",  # Used with interface
-            "c_dtor_void_scalar",
+            "c_dtor",
         ],
         lang_c=dict(
             impl_header=["<stddef.h>"],
@@ -3126,9 +3228,8 @@ fc_statements = [
         i_module={
             "{f_type_module}":["{f_kind}"],
         },
-        cxx_local_var="result",
-        c_post_call=[
-            "memcpy((void *) {c_var}, (void *) &{cxx_var}, sizeof({cxx_var}));",
+        c_call=[
+            "*{c_var} = {C_call_function};",
         ],
     ),
     # end function_struct_scalar
@@ -3140,7 +3241,7 @@ fc_statements = [
             "f_mixin_function_c-ptr",
         ],
         alias=[
-            "c_function_struct_*_pointer",
+            "c_function_struct_*",
         ],
     ),
 
@@ -3188,7 +3289,7 @@ fc_statements = [
         alias=[
             "c_getter_native_scalar",
             "f_getter_native_*_pointer",
-            "c_getter_native_*_pointer",
+            "c_getter_native_*",
         ],
         f_arg_call=[],
         c_call=[
@@ -3203,8 +3304,6 @@ fc_statements = [
         mixin=["c_mixin_noargs"],
         alias=[
             "c_setter",
-            "f_setter_void_scalar",  # for interface
-            "c_setter_void_scalar",
         ],
         f_arg_call=[],
         f_call=[
@@ -3961,7 +4060,7 @@ fc_statements = [
         # for the C interface.  Fortran calls the +api(cdesc) variant.
         name="f_out_string_**_copy",
         alias=[
-            "c_out_string_**_copy",
+            "c_out_string_**",
         ],
         notimplemented=True,
     ),

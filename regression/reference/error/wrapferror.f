@@ -73,7 +73,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_x1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -106,7 +106,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_y1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -139,7 +139,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void set_z1
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(in)+value
         ! Attrs:     +intent(setter)
@@ -156,20 +156,21 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void BadFstatements
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
-        subroutine c_bad_fstatements() &
-                bind(C, name="ERR_BadFstatements")
+        ! Statement: f_subroutine
+        function c_bad_fstatements_extrawrapper() &
+                result(SHT_rv) &
+                bind(C, name="ERR_BadFstatements_extrawrapper")
             implicit none
-        end subroutine c_bad_fstatements
+        end function c_bad_fstatements_extrawrapper
 
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  int * data
         ! Attrs:     +intent(inout)
-        ! Statement: f_inout_native_*
+        ! Statement: c_inout_native_*
         subroutine c_assumed_rank(data) &
                 bind(C, name="ERR_AssumedRank")
             use iso_c_binding, only : C_INT
@@ -181,7 +182,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(0)
         ! Attrs:     +intent(inout)
@@ -197,7 +198,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(1)
         ! Attrs:     +intent(inout)
@@ -213,7 +214,7 @@ module error_mod
         ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(2)
         ! Attrs:     +intent(inout)
@@ -368,7 +369,7 @@ contains
     ! Statement: f_subroutine
     subroutine bad_fstatements()
         ! splicer begin function.bad_fstatements
-        call c_bad_fstatements()
+        call c_bad_fstatements_extrawrapper()
         ===>{no_such_var} = 10<===
         ! splicer end function.bad_fstatements
     end subroutine bad_fstatements

@@ -23,11 +23,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  int passStruct1
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
-// Statement: f_in_struct_*
+// Statement: c_in_struct_*
 int FOR_passStruct1(const Cstruct1 * arg)
 {
     // splicer begin function.passStruct1

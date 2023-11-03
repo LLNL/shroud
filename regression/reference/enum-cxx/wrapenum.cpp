@@ -23,11 +23,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  int convert_to_int
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 int ENU_convert_to_int(int in)
 {
     // splicer begin function.convert_to_int

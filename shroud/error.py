@@ -26,10 +26,14 @@ class NodeCursor(object):
         self.arg  = None    # declast.Declaration
         self.stmt = None    # str
 
-    def print_context(self):
+    def print_context(self, linenumber=None):
         if self.node:
 #            print("Node:", self.node.declgen)
             print("Node:", self.node.name)
+            if not linenumber:
+                linenumber = self.node.linenumber
+        if linenumber != "?":
+            print("line", linenumber)
         if self.stmt:
             print("Statement:", self.stmt.name)
         
@@ -71,7 +75,7 @@ class Cursor(object):
         self.node_list.pop()
         self.current = self.node_list[-1]
 
-    def context(self):
+    def context(self, linenumber=None):
         if self.last_phase != self.phase:
             print()
             print("----------------------------------------")
@@ -79,11 +83,10 @@ class Cursor(object):
             print("----------------------------------------")
         else:
             print("--------------------")
-        self.current.print_context()
+        self.current.print_context(linenumber)
         self.last_phase = self.phase
 
     def decl_line(self, node):
-        print("line {}".format(node.linenumber))
         print(node.ast.gen_decl())
         
     def warning(self, message):
@@ -106,8 +109,7 @@ class Cursor(object):
     def ast(self, linenumber, decl, err=None):
         """Error from decl field in YAML file."""
         self.nwarning += 1
-        self.context()
-        print("line {}".format(linenumber))
+        self.context(linenumber)
         if err:
             print("Error in 'decl' field")
             print("".join(err.message))

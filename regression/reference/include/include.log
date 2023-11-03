@@ -1,57 +1,65 @@
 Read yaml include.yaml
 Close library_types.yaml
-C void function1(void)  +intent(subroutine)
+C c void function1(void)  +intent(subroutine)
+C f void function1(void)  +intent(subroutine)
 Close wraplibrary_one_two.h
 Close wraplibrary_one_two.cpp
 class Class1
-C void method1(CustomType arg1 +value)  +intent(subroutine)
+C c void method1(CustomType arg1 +value)  +intent(subroutine)
+C f void method1(CustomType arg1 +value)  +intent(subroutine)
 Close wrapthree_Class1.h
 Close wrapthree_Class1.cpp
 class class0
-C void method(void)  +intent(subroutine)
+C c void method(void)  +intent(subroutine)
+C f void method(void)  +intent(subroutine)
 Close wrapouter1_class0.h
 Close wrapouter1_class0.cpp
-C void outer_func(void)  +intent(subroutine)
+C c void outer_func(void)  +intent(subroutine)
+C f void outer_func(void)  +intent(subroutine)
 Close wraplibrary_outer1.h
 Close wraplibrary_outer1.cpp
 class class0
-C void method(void)  +intent(subroutine)
+C c void method(void)  +intent(subroutine)
+C f void method(void)  +intent(subroutine)
 Close wrapouter2_class0.h
 Close wrapouter2_class0.cpp
-C void outer_func(void)  +intent(subroutine)
+C c void outer_func(void)  +intent(subroutine)
+C f void outer_func(void)  +intent(subroutine)
 Close wraplibrary_outer2.h
 Close wraplibrary_outer2.cpp
 class Class2
-C void method1(MPI_Comm comm +value)  +intent(subroutine)
-C void method2(three::Class1 * c2)  +intent(subroutine)
+C c void method1(MPI_Comm comm +value)  +intent(subroutine)
+C f void method1(MPI_Comm comm +value)  +intent(subroutine)
+C c void method2(three::Class1 * c2)  +intent(subroutine)
+C f void method2(three::Class1 * c2)  +intent(subroutine)
 Close wrapClass2.h
 Close wrapClass2.cpp
 Close wraplibrary.h
 class Class2
 Fortran void method1(MPI_Comm comm +value)  +intent(subroutine)
 Fortran void method2(three::Class1 * c2)  +intent(subroutine)
-C-interface void method1(MPI_Comm comm +value)  +intent(subroutine)
-C-interface void method2(three::Class1 * c2)  +intent(subroutine)
+C-interface f void method1(MPI_Comm comm +value)  +intent(subroutine)
+C-interface f void method2(three::Class1 * c2)  +intent(subroutine)
 typedef CustomType
 Fortran void function1(void)  +intent(subroutine)
-C-interface void function1(void)  +intent(subroutine)
+C-interface f void function1(void)  +intent(subroutine)
 Close wrapflibrary_one_two.f
 Close wrapflibrary_one.f
 class Class1
 Fortran void method1(CustomType arg1 +value)  +intent(subroutine)
-C-interface void method1(CustomType arg1 +value)  +intent(subroutine)
+C-interface f void method1(CustomType arg1 +value)  +intent(subroutine)
 Close wrapflibrary_three.f
 class class0
 Fortran void method(void)  +intent(subroutine)
-C-interface void method(void)  +intent(subroutine)
+C-interface f void method(void)  +intent(subroutine)
 Fortran void outer_func(void)  +intent(subroutine)
-C-interface void outer_func(void)  +intent(subroutine)
+C-interface f void outer_func(void)  +intent(subroutine)
 Close wrapflibrary_outer1.f
 class class0
 Fortran void method(void)  +intent(subroutine)
-C-interface void method(void)  +intent(subroutine)
+C-interface f void method(void)  +intent(subroutine)
 Fortran void outer_func(void)  +intent(subroutine)
-C-interface void outer_func(void)  +intent(subroutine)
+C-interface f void outer_func(void)  +intent(subroutine)
 Close wrapflibrary_outer2.f
 Close wrapflibrary.f
 Close utillibrary.cpp

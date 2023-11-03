@@ -74,7 +74,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void Rank2In
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
         ! Attrs:     +api(cdesc)+intent(in)
@@ -89,15 +89,15 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         ! ----------------------------------------
         ! Argument:  void * value +api(cdesc)+intent(in)+rank(0)+value
         ! Attrs:     +api(cdesc)+intent(in)
-        ! Statement: f_in_void_*_cdesc
+        ! Statement: c_in_void_*_cdesc
         subroutine c_get_scalar1(name, SHT_value_cdesc) &
                 bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR
@@ -111,7 +111,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -135,7 +135,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -185,7 +185,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
@@ -207,7 +207,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)

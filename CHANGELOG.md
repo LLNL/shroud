@@ -48,6 +48,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - No longer create a new function for return_this.
   Instead set api(this) and let statements do the right thing.
 
+### Added
+- Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
+
 ## v0.13.0 - 2023-08-23
 ### Added
 - Python hello-world-python example for a simple library in examples directory.

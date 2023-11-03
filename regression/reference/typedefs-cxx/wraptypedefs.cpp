@@ -23,11 +23,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start TYP_typefunc
 TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 {
@@ -41,11 +41,11 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 // ----------------------------------------
 // Function:  void typestruct
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Struct1Rename * arg1
 // Attrs:     +intent(inout)
-// Statement: f_inout_struct_*
+// Statement: c_inout_struct_*
 // start TYP_typestruct
 void TYP_typestruct(TYP_Struct1Rename * arg1)
 {
@@ -58,11 +58,11 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 // ----------------------------------------
 // Function:  int returnBytesForIndexType
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  IndexType arg +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start TYP_returnBytesForIndexType
 int TYP_returnBytesForIndexType(TYP_IndexType arg)
 {

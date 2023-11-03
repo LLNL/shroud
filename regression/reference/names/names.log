@@ -2,13 +2,17 @@ Read yaml names.yaml
 Close testnames_types.yaml
 Close wraptestnames_ns0_inner.cc
 class Names
-C Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
-C void method1(void)  +intent(subroutine)
-C void method2(void)  +intent(subroutine)
+C c Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
+C f Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
+C c void method1(void)  +intent(subroutine)
+C f void method1(void)  +intent(subroutine)
+C c void method2(void)  +intent(subroutine)
+C f void method2(void)  +intent(subroutine)
 Close foo.h
 Close foo.cpp
 Close foons0.cpp
-C void init_ns1(void)  +intent(subroutine)
+C c void init_ns1(void)  +intent(subroutine)
+C f void init_ns1(void)  +intent(subroutine)
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
 class ImplWorker1
@@ -17,13 +21,16 @@ class vector<double>
 class vector<long>
 class vector<internal::ImplWorker1>
 class Class1
-C void Member1(void)  +intent(subroutine)
+C c void Member1(void)  +intent(subroutine)
+C f void Member1(void)  +intent(subroutine)
 Close wrapCAPI_Class1.hh
 Close wrapCAPI_Class1.cc
-C void Worker1(void)  +intent(subroutine)
+C c void Worker1(void)  +intent(subroutine)
+C f void Worker1(void)  +intent(subroutine)
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
-C void Worker1(void)  +intent(subroutine)
+C c void Worker1(void)  +intent(subroutine)
+C f void Worker1(void)  +intent(subroutine)
 Close wraptestnames_CAPI2.hh
 Close wraptestnames_CAPI2.cc
 class Names2
@@ -32,22 +39,32 @@ class twoTs<int, long>
 class twoTs<float, double>
 class Cstruct_as_class
 class Cstruct_as_subclass
-C void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
-C void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
-C void function1(void)  +intent(subroutine)
-C void function2(void)  +intent(subroutine)
-C void function3a(int i +value)  +intent(subroutine)
-C void function3a(long i +value)  +intent(subroutine)
-C int function4(const std::string & rv)  +intent(function)
-C int function4(const std::string & rv)  +intent(function)
-C void function5(void) +name(fiveplus)  +intent(subroutine)
-C void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
-C void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
-C void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
-C void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
-C int UseImplWorker(void)  +intent(function)
-C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
-C void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
+C c void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C f void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C c void function1(void)  +intent(subroutine)
+C f void function1(void)  +intent(subroutine)
+C c void function2(void)  +intent(subroutine)
+C f void function2(void)  +intent(subroutine)
+C c void function3a(int i +value)  +intent(subroutine)
+C f void function3a(int i +value)  +intent(subroutine)
+C c void function3a(long i +value)  +intent(subroutine)
+C f void function3a(long i +value)  +intent(subroutine)
+C c int function4(const std::string & rv)  +intent(function)
+C f int function4(const std::string & rv)  +intent(function)
+C c void function5(void) +name(fiveplus)  +intent(subroutine)
+C f void function5(void) +name(fiveplus)  +intent(subroutine)
+C c void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C f void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C c void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C f void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C c void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C f void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C c int UseImplWorker(void)  +intent(function)
+C f int UseImplWorker(void)  +intent(function)
+C c int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C f int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C c void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
+C f void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
 Close top.h
 Close top.cpp
 class Names2
@@ -68,33 +85,33 @@ Fortran void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subrouti
 Fortran int UseImplWorker(void)  +intent(function)
 Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
 Fortran void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
-C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
-C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
-C-interface void function1(void)  +intent(subroutine)
-C-interface void function2(void)  +intent(subroutine)
-C-interface void function3a(int i +value)  +intent(subroutine)
-C-interface void function3a(long i +value)  +intent(subroutine)
-C-interface int function4(const std::string & rv)  +intent(function)
-C-interface int function4(const std::string & rv)  +intent(function)
-C-interface void function5(void) +name(fiveplus)  +intent(subroutine)
-C-interface void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
-C-interface void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
-C-interface void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
-C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
-C-interface int UseImplWorker(void)  +intent(function)
-C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
-C-interface void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
+C-interface c void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C-interface f void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C-interface f void function1(void)  +intent(subroutine)
+C-interface f void function2(void)  +intent(subroutine)
+C-interface f void function3a(int i +value)  +intent(subroutine)
+C-interface f void function3a(long i +value)  +intent(subroutine)
+C-interface c int function4(const std::string & rv)  +intent(function)
+C-interface f int function4(const std::string & rv)  +intent(function)
+C-interface f void function5(void) +name(fiveplus)  +intent(subroutine)
+C-interface c void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C-interface f void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C-interface f void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C-interface f void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C-interface f int UseImplWorker(void)  +intent(function)
+C-interface f int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C-interface f void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
 class Names
 Fortran Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
 Fortran void method1(void)  +intent(subroutine)
 Fortran void method2(void)  +intent(subroutine)
-C-interface Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
-C-interface void method1(void)  +intent(subroutine)
-C-interface void method2(void)  +intent(subroutine)
+C-interface f Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
+C-interface f void method1(void)  +intent(subroutine)
+C-interface f void method2(void)  +intent(subroutine)
 Close wrapftestnames_ns0_inner.F
 Close foo.f
 Fortran void init_ns1(void)  +intent(subroutine)
-C-interface void init_ns1(void)  +intent(subroutine)
+C-interface f void init_ns1(void)  +intent(subroutine)
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
 class vector<int>
@@ -104,12 +121,12 @@ class vector<internal::ImplWorker1>
 Close wrapftestnames_std.F
 class Class1
 Fortran void Member1(void)  +intent(subroutine)
-C-interface void Member1(void)  +intent(subroutine)
+C-interface f void Member1(void)  +intent(subroutine)
 Fortran void Worker1(void)  +intent(subroutine)
-C-interface void Worker1(void)  +intent(subroutine)
+C-interface f void Worker1(void)  +intent(subroutine)
 Close wrapftestnames_CAPI.F
 Fortran void Worker1(void)  +intent(subroutine)
-C-interface void Worker1(void)  +intent(subroutine)
+C-interface f void Worker1(void)  +intent(subroutine)
 Close wrapftestnames_CAPI2.F
 Close top.f
 Close utiltestnames.cc

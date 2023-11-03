@@ -22,6 +22,7 @@ from yaml.constructor import Constructor
 
 from . import ast
 from . import declast
+from . import fcfmt
 from . import generate
 from . import metadata
 from . import splicer
@@ -535,11 +536,15 @@ def main_with_args(args):
     try:
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
+
+        if wrap.c or wrap.fortran:
+            fcfmt.FillFormat(newlibrary).fmt_library()
+        
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.
         clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
-        if wrap.c:
+        if wrap.c or wrap.fortran:
             clibrary.wrap_library()
 
         if wrap.fortran:

@@ -46,54 +46,86 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "GetNameLength(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "GetNameLength(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_get_name_length",
+                            "F_C_pure_clause": "pure ",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name": "STMT_GetNameLength",
                     "C_name_api": "GetNameLength",
-                    "C_prototype": "void",
-                    "C_return_type": "int",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_get_name_length",
                     "F_C_name": "get_name_length",
-                    "F_C_pure_clause": "pure ",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "get_name_length",
                     "F_name_function": "get_name_length",
                     "F_name_generic": "get_name_length",
                     "F_name_impl": "get_name_length",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "GetNameLength"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    }
                 }
             },
             {
@@ -127,49 +159,64 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getNameErrorPattern",
                 "options": {},
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_string_&"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "getNameErrorPattern(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "const char *",
+                            "F_C_arguments": "",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_char_len": "get_name_length()",
+                            "c_const": "const ",
+                            "c_rv_decl": "const char * SHC_rv",
+                            "c_type": "char",
+                            "c_val": "SHCXX_rv.c_str()",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_rv_decl": "const std::string & SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_char_len": "len=get_name_length()",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_string_&"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name": "STMT_getNameErrorPattern",
                     "C_name_api": "getNameErrorPattern",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_get_name_error_pattern",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "get_name_error_pattern",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getNameErrorPattern"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_char_len": "get_name_length()",
-                        "c_const": "const ",
-                        "c_rv_decl": "const char * SHC_rv",
-                        "c_type": "char",
-                        "c_val": "SHCXX_rv.c_str()",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "f_char_len": "len=get_name_length()",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_copy"
-                    }
                 }
             },
             {
@@ -209,65 +256,77 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "helpers": {
+                    "c": [
+                        "char_copy"
+                    ]
+                },
                 "name": "getNameErrorPattern",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_string_&_buf_copy"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "getNameErrorPattern(\t)",
+                            "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                            "F_C_call": "c_get_name_error_pattern_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_char_len": "get_name_length()",
+                            "c_const": "const ",
+                            "c_helper_char_copy": "ShroudCharCopy",
+                            "c_type": "char",
+                            "c_var": "SHC_rv",
+                            "c_var_len": "SHT_rv_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_rv_decl": "const std::string & SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_char_len": "len=get_name_length()",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_len": "SHT_rv_len",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_len": "SHT_rv_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_string_&_buf_copy"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name": "STMT_getNameErrorPattern_bufferify",
                     "C_name_api": "getNameErrorPattern",
-                    "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t SHT_rv_len",
-                    "F_C_call": "c_get_name_error_pattern_bufferify",
                     "F_C_name": "c_get_name_error_pattern_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                    "F_arguments": "",
                     "F_name_api": "get_name_error_pattern",
                     "F_name_function": "get_name_error_pattern",
                     "F_name_generic": "get_name_error_pattern",
                     "F_name_impl": "get_name_error_pattern",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "getNameErrorPattern"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_char_len": "get_name_length()",
-                        "c_const": "const ",
-                        "c_helper_char_copy": "ShroudCharCopy",
-                        "c_type": "char",
-                        "c_var": "SHC_rv",
-                        "c_var_len": "SHT_rv_len",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "f_char_len": "len=get_name_length()",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_len": "SHT_rv_len",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_len": "SHT_rv_len",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_string_&_buf_copy",
-                        "stmtf": "f_function_string_&_buf_copy"
-                    }
                 }
             }
         ],

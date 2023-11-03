@@ -151,12 +151,119 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "typefunc(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "TYP_TypeID arg",
+                            "C_return_type": "TYP_TypeID",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "typefunc(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "TYP_TypeID arg",
+                            "C_return_type": "TYP_TypeID",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_typefunc",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        },
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -179,8 +286,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -203,68 +309,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg",
                     "C_name": "typefunc",
                     "C_name_api": "typefunc",
-                    "C_prototype": "TYP_TypeID arg",
-                    "C_return_type": "TYP_TypeID",
-                    "F_C_arguments": "arg",
-                    "F_C_call": "c_typefunc",
                     "F_C_name": "typefunc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
                     "F_name_api": "typefunc",
                     "F_name_function": "typefunc",
                     "F_name_generic": "typefunc",
                     "F_name_impl": "typefunc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_typefunc",
-                    "cxx_rv_decl": "TypeID SHC_rv",
                     "function_name": "typefunc"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "TYP_TypeID",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "TypeID",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "type_id",
-                        "f_type": "integer(type_id)",
-                        "f_type_module": "typedefs_mod",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "TypeID",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -308,12 +361,68 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "stmt": "c_inout_struct_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "arg1": {
+                            "stmt": "f_inout_struct_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "typestruct(\targ1)",
+                            "C_call_list": "arg1",
+                            "C_prototype": "TYP_Struct1Rename * arg1",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "typestruct(\targ1)",
+                            "C_call_list": "arg1",
+                            "C_prototype": "TYP_Struct1Rename * arg1",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg1",
+                            "F_C_call": "c_typestruct",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "arg1",
+                            "F_arguments": "arg1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "TYP_Struct1Rename",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "Struct1Rename",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "c_inout_struct_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -337,8 +446,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmtc": "f_inout_struct_*",
-                            "stmtf": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct_*"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_s_Struct1_array_descr",
@@ -365,26 +473,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg1",
                     "C_name": "typestruct",
                     "C_name_api": "typestruct",
-                    "C_prototype": "TYP_Struct1Rename * arg1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1",
-                    "F_C_call": "c_typestruct",
                     "F_C_name": "typestruct",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "arg1",
-                    "F_arguments": "arg1",
                     "F_name_api": "typestruct",
                     "F_name_function": "typestruct",
                     "F_name_generic": "typestruct",
                     "F_name_impl": "typestruct",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_typestruct",
-                    "function_name": "typestruct",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "typestruct"
                 }
             },
             {
@@ -428,11 +525,102 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "returnBytesForIndexType(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "TYP_IndexType arg",
+                            "C_return_type": "int",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnBytesForIndexType(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "TYP_IndexType arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_return_bytes_for_index_type",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "TYP_IndexType",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -455,57 +643,19 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg",
                     "C_name": "returnBytesForIndexType",
                     "C_name_api": "returnBytesForIndexType",
-                    "C_prototype": "TYP_IndexType arg",
-                    "C_return_type": "int",
-                    "F_C_arguments": "arg",
-                    "F_C_call": "c_return_bytes_for_index_type",
                     "F_C_name": "return_bytes_for_index_type",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
                     "F_name_api": "return_bytes_for_index_type",
                     "F_name_function": "return_bytes_for_index_type",
                     "F_name_generic": "return_bytes_for_index_type",
                     "F_name_impl": "return_bytes_for_index_type",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "returnBytesForIndexType"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    }
                 }
             }
         ],

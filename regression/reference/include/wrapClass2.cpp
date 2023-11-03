@@ -22,11 +22,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  void method1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Statement: f_in_unknown_scalar
+// Statement: c_in_unknown_scalar
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);
@@ -37,11 +37,11 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // ----------------------------------------
 // Function:  void method2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  three::Class1 * c2
 // Attrs:     +intent(inout)
-// Statement: f_inout_shadow_*
+// Statement: c_inout_shadow_*
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);

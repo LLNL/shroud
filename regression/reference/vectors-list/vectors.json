@@ -74,6 +74,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
                         "fmtpy": {
                             "c_const": "const ",
@@ -108,24 +126,6 @@
                     "F_name_api": "vector_sum",
                     "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -290,18 +290,16 @@
                         ],
                         "c_return_type": "long"
                     },
-                    "c_buf": {
+                    "f": {
                         "c_return": [
                             "return SHT_arg_cdesc->size;"
                         ],
-                        "c_return_type": "long"
-                    },
-                    "f": {
+                        "c_return_type": "long",
+                        "f_arg_decl": [
+                            "integer(C_LONG) :: {F_result}"
+                        ],
                         "f_call": [
                             "{F_result} = {F_C_call}({F_arg_c_call})"
-                        ],
-                        "f_declare": [
-                            "integer(C_LONG) :: {F_result}"
                         ],
                         "f_module": {
                             "iso_c_binding": [
@@ -382,7 +380,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "f_declare": [
+                        "f_arg_decl": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {
@@ -1195,6 +1193,30 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "std::vector<int>",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = SHCXX_rv->size();\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_vector_list_targ_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "n": {
                         "fmtpy": {
                             "c_const": "",
@@ -1221,30 +1243,6 @@
                     "F_name_api": "return_vector_alloc",
                     "PY_name_impl": "PY_ReturnVectorAlloc",
                     "function_name": "ReturnVectorAlloc"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_T": "int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "std::vector<int>",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = SHCXX_rv->size();\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_vector_list_targ_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1311,6 +1309,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
                         "fmtpy": {
                             "c_const": "",
@@ -1360,24 +1376,6 @@
                     "F_name_api": "return_dim2",
                     "PY_name_impl": "PY_returnDim2",
                     "function_name": "returnDim2"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             }
         ],

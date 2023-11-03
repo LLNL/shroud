@@ -82,7 +82,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_in
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg
     ! Attrs:     +intent(in)
@@ -101,7 +101,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_inout
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg
     ! Attrs:     +intent(inout)
@@ -120,7 +120,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs_out
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -139,7 +139,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void intargs
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
     ! Attrs:     +intent(in)
@@ -168,7 +168,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void cos_doubles
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -197,7 +197,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void truncate_to_int
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -226,7 +226,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void get_values
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
     ! Attrs:     +intent(out)
@@ -250,7 +250,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void get_values2
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
@@ -274,7 +274,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void iota_dimension
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int nvar +value
     ! Attrs:     +intent(in)
@@ -298,7 +298,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void Sum
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+value
     ! Attrs:     +intent(in)
@@ -327,7 +327,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fillIntArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
     ! Attrs:     +intent(out)
@@ -346,7 +346,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void incrementIntArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
@@ -370,7 +370,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
@@ -420,11 +420,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Statement: f_in_char_**
+    ! Statement: c_in_char_**
     ! start c_accept_char_array_in
     interface
         function c_accept_char_array_in(names) &
@@ -466,7 +466,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void setGlobalInt
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int value +value
     ! Attrs:     +intent(in)
@@ -501,11 +501,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_scalar
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
@@ -521,7 +521,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -540,11 +540,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_fixed_array
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
@@ -560,7 +560,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -579,15 +579,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     ! start c_get_ptr_to_dynamic_array
     interface
         subroutine c_get_ptr_to_dynamic_array(count, ncount) &
@@ -604,7 +604,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -623,11 +623,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_func_array
     interface
         subroutine c_get_ptr_to_func_array(count) &
@@ -643,7 +643,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -662,11 +662,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_const_scalar
     interface
         subroutine c_get_ptr_to_const_scalar(nitems) &
@@ -682,7 +682,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -701,11 +701,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! start c_get_ptr_to_fixed_const_array
     interface
         subroutine c_get_ptr_to_fixed_const_array(count) &
@@ -721,7 +721,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -741,15 +741,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Statement: f_out_native_**_pointer
+    ! Statement: c_out_native_**
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: c_out_native_*
     ! start c_get_ptr_to_dynamic_const_array
     interface
         subroutine c_get_ptr_to_dynamic_const_array(count, ncount) &
@@ -766,7 +766,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
@@ -786,7 +786,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -805,7 +805,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -824,7 +824,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -843,7 +843,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
@@ -862,7 +862,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -902,7 +902,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void DimensionIn
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
     ! Attrs:     +intent(in)
@@ -921,11 +921,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Statement: f_out_native_**_allocatable
+    ! Statement: c_out_native_**
     ! start c_get_alloc_to_fixed_array
     interface
         subroutine c_get_alloc_to_fixed_array(count) &
@@ -941,7 +941,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -1004,7 +1004,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -1023,7 +1023,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void updateVoidPtr
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
     ! Attrs:     +intent(inout)
@@ -1079,7 +1079,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_native_*_pointer
+    ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -1128,7 +1128,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Statement: f_function_native_*_pointer
+    ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1166,7 +1166,7 @@ module pointers_mod
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar")
+                bind(C, name="POI_returnIntScalar_extrawrapper")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -1230,7 +1230,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Statement: f_function_native_*_allocatable
+    ! Statement: c_function_native_*
     ! start c_return_int_alloc_to_fixed_array
     interface
         function c_return_int_alloc_to_fixed_array() &
@@ -2265,7 +2265,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_scalar
-        SHT_rv = c_return_int_scalar()
+        SHT_rv = c_return_int_scalar_extrawrapper()
         ! splicer end function.return_int_scalar
     end function return_int_scalar
     ! end return_int_scalar

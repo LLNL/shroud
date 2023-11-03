@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     TEM_structAsClass_int * SHC_rv)
 {
@@ -38,11 +38,11 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // ----------------------------------------
 // Function:  void set_npts
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>
@@ -55,7 +55,7 @@ void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 // ----------------------------------------
 // Function:  int get_npts
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>
@@ -70,11 +70,11 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 // ----------------------------------------
 // Function:  void set_value
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int v +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
     int v)
 {
@@ -89,7 +89,7 @@ void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
 // ----------------------------------------
 // Function:  int get_value
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 int TEM_structAsClass_int_get_value(TEM_structAsClass_int * self)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>

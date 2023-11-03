@@ -53,20 +53,19 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
 // Attrs:     +intent(function)
-// Statement: f_function_struct_scalar
+// Statement: c_function_struct_scalar
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 {
     // splicer begin function.returnStructByValue
-    Cstruct1 SHCXX_rv = returnStructByValue(i, d);
-    memcpy((void *) SHC_rv, (void *) &SHCXX_rv, sizeof(SHCXX_rv));
+    *SHC_rv = returnStructByValue(i, d);
     // splicer end function.returnStructByValue
 }
 
@@ -105,7 +104,7 @@ Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // start STR_Create_Cstruct_as_class
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
@@ -122,15 +121,15 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
@@ -145,11 +144,11 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
-// Statement: f_in_shadow_*
+// Statement: c_in_shadow_*
 int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum
@@ -163,19 +162,19 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
 // Attrs:     +api(capptr)+intent(function)
-// Statement: f_function_shadow_*_capptr
+// Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int y +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int z +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {

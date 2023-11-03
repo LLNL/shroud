@@ -27,27 +27,27 @@ class WrapFlags(object):
     """
     def __init__(self, options):
         self.fortran = options.wrap_fortran
-        self.f_c = False
         self.c = options.wrap_c
+        self.f_or_c = self.fortran or self.c
         self.lua = options.wrap_lua
         self.python = options.wrap_python
 
     def clear(self):
         self.fortran = False
-        self.f_c = False
         self.c = False
+        self.f_or_c = False
         self.lua = False
         self.python = False
 
-    def assign(self, fortran=False, f_c=False, c=False, lua=False, python=False):
+    def assign(self, fortran=False, c=False, lua=False, python=False):
         """Assign wrap flags to wrap.
 
         Used when generating new FunctionNodes as part of function
         overload, generic, default args.
         """
         self.fortran = fortran
-        self.f_c = f_c
         self.c = c
+        self.f_or_c = self.fortran or self.c
         self.lua = lua
         self.python = python
 
@@ -59,8 +59,8 @@ class WrapFlags(object):
         wrap : WrapFlags
         """
         self.fortran = self.fortran or wrap.fortran
-        self.f_c = self.f_c or wrap.f_c
         self.c = self.c or wrap.c
+        self.f_or_c = self.fortran or self.c
         self.lua = self.lua or wrap.lua
         self.python = self.python or wrap.python
 
@@ -69,8 +69,6 @@ class WrapFlags(object):
         flags = []
         if self.fortran:
             flags.append("fortran")
-        if self.f_c:
-            flags.append("f_c")
         if self.c:
             flags.append("c")
         if self.lua:
@@ -1371,7 +1369,7 @@ class ClassNode(AstNode, NamespaceMixin):
 class FunctionNode(AstNode):
     """
 
-    - decl: template<typename T1, typename T2> foo(T1 arg, T2 arg)
+    - decl: template<typename T1, typename T2> foo(T1 arg1, T2 arg2)
       cxx_template:
       - instantiation: <int, long>
       - instantiation: <float, double>
@@ -1381,6 +1379,12 @@ class FunctionNode(AstNode):
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
+#     lang:
+#        f:
+#          decl:   (arg1 +attr, arg2+attr)  +attr
+#          attrs:
+#             +result:
+#             arg1:
       splicer:
          c: [ ]
          f: [ ]
@@ -1393,16 +1397,29 @@ class FunctionNode(AstNode):
 
     _fmtfunc = Scope()
 
-    _fmtresult = {
-       'fmtc': Scope(_fmtfunc)
-    }
     _fmtargs = {
+      '+result': {
+         'fmtc': Scope(_fmtfunc)
+      }
       'arg1': {
         'fmtc': Scope(_fmtfunc),
         'fmtf': Scope(_fmtfunc)
         'fmtl': Scope(_fmtfunc)
         'fmtpy': Scope(_fmtfunc)
       }
+    }
+
+    _bind = {
+       'f': {
+          -----'args': {
+             '+result': { }
+             'arg1': {    statements.BindArg
+                stmt: Scope
+                meta: collections.defaultdict(lambda: None)
+                fmtdict:  Scope(_fmtfunc)
+              }
+          -----}
+        }
     }
 
     statements = {
@@ -1433,6 +1450,18 @@ class FunctionNode(AstNode):
     fortran_generic = [ FortranGeneric('double arg'),
                         FortranGeneric('float arg') ]
 
+    A list of helpers for the function derived from statements.
+    helpers = {
+      'c': {
+            name = True,
+           }
+      'f': {},
+    }
+
+    C_signature - statement.index signature of C wrapper.
+       Used to avoid writing the same function twice. 
+    C_fortran_generic = if True, multiple version of the Fortran
+       wrappers will call a single C wrapper.
     """
 
     def __init__(
@@ -1458,7 +1487,6 @@ class FunctionNode(AstNode):
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
         self._fmtargs = {}
-        self._fmtresult = {}
         self._function_index = None
         self._generated = False
         self._generated_path = []
@@ -1467,6 +1495,7 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
         self._gen_fortran_generic = False # An argument is assumed-rank.
+        self._bind = {}
         self.splicer = {}
         self.fstatements = {}
         self.splicer_group = None
@@ -1475,6 +1504,8 @@ class FunctionNode(AstNode):
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
         self.C_force_wrapper = False
+        self.C_signature = None
+        self.C_fortran_generic = False
 
         # self.function_index = []
 
@@ -1486,6 +1517,7 @@ class FunctionNode(AstNode):
         self.doxygen = kwargs.get("doxygen", {})
         self.fortran_generic = kwargs.get("fortran_generic", [])
         self.return_this = kwargs.get("return_this", False)
+        self.helpers = {}
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
@@ -1663,7 +1695,7 @@ class FunctionNode(AstNode):
         # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
-        new._fmtresult = copy.deepcopy(self._fmtresult)
+        new._bind = {}
         new._generated_path = copy.deepcopy(self._generated_path)
         if new._orig_node is None:
             new._orig_node = self

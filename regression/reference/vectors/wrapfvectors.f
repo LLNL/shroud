@@ -106,7 +106,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
@@ -126,7 +126,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
@@ -140,7 +140,7 @@ module vectors_mod
             import :: VEC_SHROUD_array
             implicit none
             type(VEC_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
-            integer(C_LONG) num
+            integer(C_LONG) :: num
         end function c_vector_iota_out_with_num_bufferify
     end interface
     ! end c_vector_iota_out_with_num_bufferify
@@ -149,7 +149,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
@@ -169,7 +169,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -189,7 +189,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
@@ -213,7 +213,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_increment
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +api(cdesc)+intent(inout)
@@ -235,7 +235,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
@@ -304,7 +304,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_string_fill
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
@@ -322,7 +322,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_string_fill_allocatable
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -342,7 +342,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_string_fill_allocatable_len
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
@@ -510,9 +510,9 @@ contains
             result(num)
         use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
+        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        integer(C_LONG) :: num
         num = c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))
@@ -541,9 +541,9 @@ contains
             result(num)
         use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
+        integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num2
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
-        integer(C_LONG) :: num
         call c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
             size(arg,kind=C_SIZE_T))

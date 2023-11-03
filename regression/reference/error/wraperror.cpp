@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void BadFstatements
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void ERR_BadFstatements(void)
 {
     // splicer begin function.BadFstatements
@@ -34,13 +34,24 @@ void ERR_BadFstatements(void)
 }
 
 // ----------------------------------------
-// Function:  void AssumedRank
+// Function:  void BadFstatements
 // Attrs:     +intent(subroutine)
 // Statement: f_subroutine
+no-such-type ERR_BadFstatements_extrawrapper(void)
+{
+    // splicer begin function.BadFstatements_extrawrapper
+    BadFstatements();
+    // splicer end function.BadFstatements_extrawrapper
+}
+
+// ----------------------------------------
+// Function:  void AssumedRank
+// Attrs:     +intent(subroutine)
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * data
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 void ERR_AssumedRank(int * data)
 {
     // splicer begin function.AssumedRank

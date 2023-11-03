@@ -2,13 +2,18 @@ Read yaml forward.yaml
 Close forward_types.yaml
 class Class3
 class Class2
-C Class2(void)  +api(capptr)+intent(ctor)
-C ~Class2(void)  +intent(dtor)
-C void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
-C void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
+C c Class2(void)  +api(capptr)+intent(ctor)
+C f Class2(void)  +api(capptr)+intent(ctor)
+C c ~Class2(void)  +intent(dtor)
+C f ~Class2(void)  +intent(dtor)
+C c void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+C f void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+C c void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
+C f void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
 Close wrapClass2.h
 Close wrapClass2.cpp
-C int passStruct1(const Cstruct1 * arg)  +intent(function)
+C c int passStruct1(const Cstruct1 * arg)  +intent(function)
+C f int passStruct1(const Cstruct1 * arg)  +intent(function)
 Close wrapforward.h
 Close wrapforward.cpp
 class Class3
@@ -17,12 +22,12 @@ Fortran Class2(void)  +api(capptr)+intent(ctor)
 Fortran ~Class2(void)  +intent(dtor)
 Fortran void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
 Fortran void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
-C-interface Class2(void)  +api(capptr)+intent(ctor)
-C-interface ~Class2(void)  +intent(dtor)
-C-interface void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
-C-interface void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
+C-interface f Class2(void)  +api(capptr)+intent(ctor)
+C-interface f ~Class2(void)  +intent(dtor)
+C-interface f void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
+C-interface f void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
 Fortran int passStruct1(const Cstruct1 * arg)  +intent(function)
-C-interface int passStruct1(const Cstruct1 * arg)  +intent(function)
+C-interface f int passStruct1(const Cstruct1 * arg)  +intent(function)
 Close wrapfforward.f
 Close utilforward.cpp
 Close typesforward.h

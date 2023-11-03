@@ -1246,6 +1246,10 @@ PY_PyTypeObject_base
 Function
 ^^^^^^^^
 
+C_call_function
+    Expression to call the function.
+    ``{CXX_this_call}{function_name}{CXX_template}(\t{C_call_list})``
+
 C_call_list
     Comma delimited list of function arguments.
 

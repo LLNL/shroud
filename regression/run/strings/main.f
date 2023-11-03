@@ -25,6 +25,9 @@ program tester
   call test_string_array
   call test_explicit
   call char_functions
+#ifdef TEST_C_WRAPPER
+  call test_c_wrapper
+#endif
 
   call fruit_summary
   call fruit_finalize
@@ -56,13 +59,6 @@ contains
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call pass_char_ptr(dest=str, src="bird")
     call assert_true( str == "bird")
-
-    ! call C version directly via the interface
-    ! caller is responsible for nulls
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call c_pass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
-    call assert_true( str(1:5) == "mouse")
-    call assert_true( str(6:6) == C_NULL_CHAR)
 
     str = 'dog'
     call pass_char_ptr_in_out(str)
@@ -99,13 +95,6 @@ contains
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call cpass_char_ptr_blank(dest=str, src=" ")
     call assert_true( str == "NULL", "blank string")
-
-    ! call C version directly via the interface
-    ! caller is responsible for nulls
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call c_cpass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
-    call assert_true( str(1:5) == "mouse")
-    call assert_true( str(6:6) == C_NULL_CHAR)
 
   end subroutine test_charargs_c
 
@@ -250,14 +239,6 @@ contains
     call accept_string_reference(str)
     call assert_true( str == "catdog")
 
-    ! call C version directly via the interface
-    ! caller is responsible for nulls
-    ! str must be long enough for the result from the function
-    str = "cat" // C_NULL_CHAR
-    call c_accept_string_reference(str)
-    call assert_true( str(1:6) == "catdog")
-    call assert_true( str(7:7) == C_NULL_CHAR)
-
     ! Store in global_str.
     call accept_string_pointer_const("from Fortran")
 
@@ -277,10 +258,6 @@ contains
     call assert_equals(12, nlen, "acceptStringInstance")
     ! argument is passed by value to C++ so changes will not effect argument.
     call assert_equals("from Fortran", str)
-
-    ! Call C++ function directly by adding trailing NULL.
-    nlen = c_accept_string_instance("from Fortran" // C_NULL_CHAR)
-    call assert_equals(12, nlen, "acceptStringInstance")
 
     ! append "dog".
     str = "bird"
@@ -365,4 +342,34 @@ contains
     
   end subroutine char_functions
 
+#ifdef TEST_C_WRAPPER
+  ! Calling C only wrappers from Fortran via an interface
+  subroutine test_c_wrapper
+    character(30) str
+    integer(C_INT) :: nlen
+
+    call set_case_name("test_c_wrapper")
+
+    ! call C version directly via the interface
+    ! caller is responsible for nulls
+    ! str must be long enough for the result from the function
+    str = "cat" // C_NULL_CHAR
+    call c_accept_string_reference(str)
+    call assert_true( str(1:6) == "catdog", "acceptStringReference 1")
+    call assert_true( str(7:7) == C_NULL_CHAR, "acceptStringReference 2")
+
+    ! Call C++ function directly by adding trailing NULL.
+    nlen = c_accept_string_instance("from Fortran" // C_NULL_CHAR)
+    call assert_equals(12, nlen, "acceptStringInstance")
+
+    ! call C version directly via the interface
+    ! caller is responsible for nulls
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call c_cpass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
+    call assert_true( str(1:5) == "mouse", "CpassCharPtr 1")
+    call assert_true( str(6:6) == C_NULL_CHAR, "CpassCharPtr 1")
+
+  end subroutine test_c_wrapper
+#endif
+  
 end program tester

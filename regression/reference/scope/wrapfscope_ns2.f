@@ -104,7 +104,7 @@ module scope_ns2_mod
         ! ----------------------------------------
         ! Function:  void DataPointer_set_items
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
         ! Attrs:     +intent(inout)

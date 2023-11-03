@@ -35,28 +35,56 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->dtor(\t)",
+                                    "C_prototype": "OWN_Class1 * self",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_dtor"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->dtor(\t)",
+                                    "C_prototype": "OWN_Class1 * self",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_dtor",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_dtor"
+                                },
+                                "fmtl": {
+                                    "stmt": "lua_dtor_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "OWN_Class1_dtor",
                             "C_name_api": "dtor",
-                            "C_prototype": "OWN_Class1 * self",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_dtor",
                             "F_C_name": "c_class1_dtor",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "dtor",
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
                             "F_name_impl": "class1_dtor",
-                            "F_subprogram": "subroutine",
                             "LUA_name": "dtor",
                             "LUA_name_api": "dtor",
                             "LUA_name_impl": "l_Class1_dtor",
@@ -64,14 +92,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "dtor",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
-                        },
-                        "zz_fmtresult": {
-                            "fmtl": {
-                                "stmt": "lua_dtor_scalar"
-                            }
+                            "function_name": "dtor"
                         }
                     },
                     {
@@ -104,60 +125,67 @@
                             "wrapped_name": "flag"
                         },
                         "wrap": {
-                            "c": true,
-                            "f_c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->get_flag(\t)",
+                                    "C_prototype": "OWN_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_flag",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "C_name": "OWN_Class1_get_flag",
                             "C_name_api": "get_flag",
-                            "C_prototype": "OWN_Class1 * self",
-                            "C_return_type": "int",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_get_flag",
                             "F_C_name": "c_class1_get_flag",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "get_flag",
                             "F_name_function": "get_flag",
                             "F_name_generic": "get_flag",
                             "F_name_impl": "class1_get_flag",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_flag",
                             "function_name": "get_flag",
                             "struct_name": "Class1",
                             "wrapped_name": "flag"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar",
-                                "stmtf": "f_getter_native_scalar"
-                            }
                         }
                     }
                 ],
@@ -293,41 +321,51 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrRaw(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name": "OWN_ReturnIntPtrRaw",
                     "C_name_api": "ReturnIntPtrRaw",
-                    "C_prototype": "void",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "",
                     "F_C_name": "c_return_int_ptr_raw",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_raw",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrRaw"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_raw"
-                    }
                 }
             },
             {
@@ -363,71 +401,104 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_scalar"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrScalar(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int *",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrScalar(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_return_int_ptr_scalar_extrawrapper",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_scalar"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrScalar",
+                    "C_name": "OWN_ReturnIntPtrScalar_extrawrapper",
                     "C_name_api": "ReturnIntPtrScalar",
-                    "C_prototype": "void",
-                    "C_return_type": "int",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_scalar",
                     "F_C_name": "return_int_ptr_scalar",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_scalar",
                     "F_name_function": "return_int_ptr_scalar",
                     "F_name_generic": "return_int_ptr_scalar",
                     "F_name_impl": "return_int_ptr_scalar",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
-                    "cxx_rv_decl": "int * SHC_rv",
+                    "f_c_suffix": "_extrawrapper",
                     "function_name": "ReturnIntPtrScalar"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_scalar",
-                        "stmtf": "f_function_native_*_scalar"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -463,73 +534,105 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_pointer"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrPointer(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int *",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrPointer(\t)",
+                            "C_prototype": "void",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "",
+                            "F_C_call": "c_return_int_ptr_pointer",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_local_ptr": "SHC_rv_ptr",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_pointer"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_pointer_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name": "OWN_ReturnIntPtrPointer",
                     "C_name_api": "ReturnIntPtrPointer",
-                    "C_prototype": "void",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_pointer",
                     "F_C_name": "c_return_int_ptr_pointer",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_pointer",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
                     "F_name_impl": "return_int_ptr_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_ReturnIntPtrPointer",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrPointer"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_local_ptr": "SHC_rv_ptr",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer",
-                        "stmtf": "f_function_native_*_pointer"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_pointer_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -590,9 +693,50 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimRaw(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -613,46 +757,16 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimRaw",
                     "C_name_api": "ReturnIntPtrDimRaw",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_raw",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_raw",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRaw"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_raw"
-                    }
                 }
             },
             {
@@ -712,6 +826,14 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "ReturnIntPtrDimPointer",
                 "options": {
                     "literalinclude": true,
@@ -721,9 +843,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimPointer(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_pointer_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -744,7 +933,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -768,68 +957,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimPointer",
                     "C_name_api": "ReturnIntPtrDimPointer",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_pointer",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_pointer_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -895,6 +1028,14 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "ReturnIntPtrDimPointer",
                 "options": {
                     "literalinclude": true,
@@ -902,11 +1043,68 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimPointer(\t&len)",
+                            "C_call_list": "&len",
+                            "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc",
+                            "F_C_call": "c_return_int_ptr_dim_pointer_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_helper_array_context": "OWN_SHROUD_array",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_helper_array_context": "OWN_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_cdesc_pointer"
+                        }
+                    },
                     "len": {
                         "fmtf": {
                             "c_addr": "",
@@ -926,73 +1124,23 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "fc_var": "len",
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&len",
                     "C_name": "OWN_ReturnIntPtrDimPointer_bufferify",
                     "C_name_api": "ReturnIntPtrDimPointer",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv_cdesc",
-                    "F_C_call": "c_return_int_ptr_dim_pointer_bufferify",
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "F_name_function": "return_int_ptr_dim_pointer",
                     "F_name_generic": "return_int_ptr_dim_pointer",
                     "F_name_impl": "return_int_ptr_dim_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimPointer"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_helper_array_context": "OWN_SHROUD_array",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_helper_array_context": "OWN_SHROUD_array",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_cdesc": "SHT_rv_cdesc",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_cdesc": "SHT_rv_cdesc",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer",
-                        "stmtf": "f_function_native_*_cdesc_pointer"
-                    }
                 }
             },
             {
@@ -1052,6 +1200,17 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "ReturnIntPtrDimAlloc",
                 "options": {
                     "literalinclude": true,
@@ -1061,9 +1220,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimAlloc(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_allocatable_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1084,7 +1310,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1108,68 +1334,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimAlloc",
                     "C_name_api": "ReturnIntPtrDimAlloc",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_allocatable_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1235,6 +1405,17 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context",
+                        "copy_array"
+                    ],
+                    "f": [
+                        "array_context",
+                        "copy_array",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "ReturnIntPtrDimAlloc",
                 "options": {
                     "literalinclude": true,
@@ -1242,11 +1423,75 @@
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_allocatable"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimAlloc(\t&len)",
+                            "C_call_list": "&len",
+                            "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_C_call": "c_return_int_ptr_dim_alloc_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_helper_array_context": "OWN_SHROUD_array",
+                            "c_helper_copy_array": "OWN_ShroudCopyArray",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_capsule": "SHT_rv_capsule",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
+                            "f_helper_array_context": "OWN_SHROUD_array",
+                            "f_helper_capsule_dtor": "OWN_SHROUD_capsule_dtor",
+                            "f_helper_copy_array": "OWN_SHROUD_copy_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_capsule": "SHT_rv_capsule",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_capsule": "SHT_rv_capsule",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_cdesc_allocatable"
+                        }
+                    },
                     "len": {
                         "fmtf": {
                             "c_addr": "",
@@ -1266,80 +1511,23 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "fc_var": "len",
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&len",
                     "C_name": "OWN_ReturnIntPtrDimAlloc_bufferify",
                     "C_name_api": "ReturnIntPtrDimAlloc",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                    "F_C_call": "c_return_int_ptr_dim_alloc_bufferify",
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "F_name_function": "return_int_ptr_dim_alloc",
                     "F_name_generic": "return_int_ptr_dim_alloc",
                     "F_name_impl": "return_int_ptr_dim_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimAlloc"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_helper_array_context": "OWN_SHROUD_array",
-                        "c_helper_copy_array": "OWN_ShroudCopyArray",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
-                        "f_helper_array_context": "OWN_SHROUD_array",
-                        "f_helper_capsule_dtor": "OWN_SHROUD_capsule_dtor",
-                        "f_helper_copy_array": "OWN_SHROUD_copy_array",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_capsule": "SHT_rv_capsule",
-                        "f_var_cdesc": "SHT_rv_cdesc",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_capsule": "SHT_rv_capsule",
-                        "i_var_cdesc": "SHT_rv_cdesc",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_allocatable",
-                        "stmtf": "f_function_native_*_cdesc_allocatable"
-                    }
                 }
             },
             {
@@ -1398,6 +1586,14 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "ReturnIntPtrDimDefault",
                 "options": {
                     "wrap_lua": false
@@ -1406,9 +1602,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimDefault(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_pointer_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1429,7 +1692,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1453,68 +1716,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimDefault",
                     "C_name_api": "ReturnIntPtrDimDefault",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_default",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_default",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_pointer_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1579,17 +1786,82 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "ReturnIntPtrDimDefault",
                 "options": {
                     "wrap_lua": false
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimDefault(\t&len)",
+                            "C_call_list": "&len",
+                            "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc",
+                            "F_C_call": "c_return_int_ptr_dim_default_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_helper_array_context": "OWN_SHROUD_array",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_helper_array_context": "OWN_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_cdesc_pointer"
+                        }
+                    },
                     "len": {
                         "fmtf": {
                             "c_addr": "",
@@ -1609,73 +1881,23 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "fc_var": "len",
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&len",
                     "C_name": "OWN_ReturnIntPtrDimDefault_bufferify",
                     "C_name_api": "ReturnIntPtrDimDefault",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv_cdesc",
-                    "F_C_call": "c_return_int_ptr_dim_default_bufferify",
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "return_int_ptr_dim_default",
                     "F_name_function": "return_int_ptr_dim_default",
                     "F_name_generic": "return_int_ptr_dim_default",
                     "F_name_impl": "return_int_ptr_dim_default",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimDefault"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_helper_array_context": "OWN_SHROUD_array",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_helper_array_context": "OWN_SHROUD_array",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_cdesc": "SHT_rv_cdesc",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_cdesc": "SHT_rv_cdesc",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer",
-                        "stmtf": "f_function_native_*_cdesc_pointer"
-                    }
                 }
             },
             {
@@ -1743,9 +1965,54 @@
                 "wrap": {
                     "c": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimRawNew(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*_caller"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1766,50 +2033,16 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimRawNew",
                     "C_name_api": "ReturnIntPtrDimRawNew",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_raw_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_raw_new",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRawNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    }
                 }
             },
             {
@@ -1870,6 +2103,15 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context",
+                        "capsule_helper"
+                    ]
+                },
                 "name": "ReturnIntPtrDimPointerNew",
                 "options": {
                     "wrap_lua": false
@@ -1878,9 +2120,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimPointerNew(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*_caller"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_pointer_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1901,7 +2210,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1925,68 +2234,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimPointerNew",
                     "C_name_api": "ReturnIntPtrDimPointerNew",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_pointer_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_pointer_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -2053,17 +2306,86 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context",
+                        "capsule_helper"
+                    ]
+                },
                 "name": "ReturnIntPtrDimPointerNew",
                 "options": {
                     "wrap_lua": false
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimPointerNew(\t&len)",
+                            "C_call_list": "&len",
+                            "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_C_call": "c_return_int_ptr_dim_pointer_new_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
+                            "F_arguments": "Crv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_helper_array_context": "OWN_SHROUD_array",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_capsule": "SHT_rv_capsule",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_helper_array_context": "OWN_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_capsule": "Crv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_capsule": "SHT_rv_capsule",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_cdesc_pointer_caller"
+                        }
+                    },
                     "len": {
                         "fmtf": {
                             "c_addr": "",
@@ -2083,76 +2405,23 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "fc_var": "len",
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&len",
                     "C_name": "OWN_ReturnIntPtrDimPointerNew_bufferify",
                     "C_name_api": "ReturnIntPtrDimPointerNew",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                    "F_C_call": "c_return_int_ptr_dim_pointer_new_bufferify",
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
-                    "F_arguments": "Crv",
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
                     "F_name_impl": "return_int_ptr_dim_pointer_new",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimPointerNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_helper_array_context": "OWN_SHROUD_array",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_helper_array_context": "OWN_SHROUD_array",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_capsule": "Crv",
-                        "f_var_cdesc": "SHT_rv_cdesc",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_capsule": "SHT_rv_capsule",
-                        "i_var_cdesc": "SHT_rv_cdesc",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer_caller",
-                        "stmtf": "f_function_native_*_cdesc_pointer_caller"
-                    }
                 }
             },
             {
@@ -2221,9 +2490,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimAllocNew(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*_caller"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_allocatable_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2244,7 +2580,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2268,68 +2604,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimAllocNew",
                     "C_name_api": "ReturnIntPtrDimAllocNew",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_alloc_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAllocNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_allocatable_caller"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_allocatable_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -2389,6 +2669,15 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context",
+                        "capsule_helper"
+                    ]
+                },
                 "name": "ReturnIntPtrDimDefaultNew",
                 "options": {
                     "wrap_lua": false
@@ -2397,9 +2686,76 @@
                     "c": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_*_caller"
+                        },
+                        "len": {
+                            "stmt": "c_out_native_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "ReturnIntPtrDimDefaultNew(\tlen)",
+                            "C_call_list": "len",
+                            "C_prototype": "int * len",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "len",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(len)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_*_caller"
+                        },
+                        "fmtpy": {
+                            "array_size": "len",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_*_pointer_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "len": {
-                        "fmtf": {
+                        "fmtc": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2420,7 +2776,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*"
+                            "stmt_name": "c_out_native_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2444,68 +2800,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
                     "C_name": "OWN_ReturnIntPtrDimDefaultNew",
                     "C_name_api": "ReturnIntPtrDimDefaultNew",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
                     "F_C_name": "c_return_int_ptr_dim_default_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(len)",
-                        "f_assumed_shape": "(:)",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_pointer_caller"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_*_pointer_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -2571,17 +2871,86 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context",
+                        "capsule_helper"
+                    ]
+                },
                 "name": "ReturnIntPtrDimDefaultNew",
                 "options": {
                     "wrap_lua": false
                 },
                 "splicer_group": "buf",
                 "wrap": {
-                    "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_*_cdesc_pointer_caller"
+                        },
+                        "len": {
+                            "stmt": "f_out_native_*_hidden"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "ReturnIntPtrDimDefaultNew(\t&len)",
+                            "C_call_list": "&len",
+                            "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_C_call": "c_return_int_ptr_dim_default_new_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
+                            "F_arguments": "Crv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "len",
+                            "c_const": "",
+                            "c_helper_array_context": "OWN_SHROUD_array",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_capsule": "SHT_rv_capsule",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_helper_array_context": "OWN_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_capsule": "Crv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_capsule": "SHT_rv_capsule",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "2",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_*_cdesc_pointer_caller"
+                        }
+                    },
                     "len": {
                         "fmtf": {
                             "c_addr": "",
@@ -2601,76 +2970,23 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "len",
-                            "fc_var": "len",
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native_*_hidden"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&len",
                     "C_name": "OWN_ReturnIntPtrDimDefaultNew_bufferify",
                     "C_name_api": "ReturnIntPtrDimDefaultNew",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                    "F_C_call": "c_return_int_ptr_dim_default_new_bufferify",
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
-                    "F_arguments": "Crv",
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "F_name_function": "return_int_ptr_dim_default_new",
                     "F_name_generic": "return_int_ptr_dim_default_new",
                     "F_name_impl": "return_int_ptr_dim_default_new",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
                     "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimDefaultNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                        "c_array_size2": "len",
-                        "c_const": "",
-                        "c_helper_array_context": "OWN_SHROUD_array",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_capsule": "SHT_rv_capsule",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                        "f_assumed_shape": "(:)",
-                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                        "f_helper_array_context": "OWN_SHROUD_array",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "f_var_capsule": "Crv",
-                        "f_var_cdesc": "SHT_rv_cdesc",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "i_var_capsule": "SHT_rv_capsule",
-                        "i_var_cdesc": "SHT_rv_cdesc",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_*_cdesc_pointer_caller",
-                        "stmtf": "f_function_native_*_cdesc_pointer_caller"
-                    }
                 }
             },
             {
@@ -3403,12 +3719,68 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "createClassStatic(\tflag)",
+                            "C_call_list": "flag",
+                            "C_prototype": "int flag",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "createClassStatic(\tflag)",
+                            "C_call_list": "flag",
+                            "C_prototype": "int flag",
+                            "C_return_type": "void",
+                            "F_C_arguments": "flag",
+                            "F_C_call": "c_create_class_static",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "flag",
+                            "F_arguments": "flag",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "flag": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&flag",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3431,8 +3803,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3455,26 +3826,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "flag",
                     "C_name": "OWN_createClassStatic",
                     "C_name_api": "createClassStatic",
-                    "C_prototype": "int flag",
-                    "C_return_type": "void",
-                    "F_C_arguments": "flag",
-                    "F_C_call": "c_create_class_static",
                     "F_C_name": "create_class_static",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "flag",
-                    "F_arguments": "flag",
                     "F_name_api": "create_class_static",
                     "F_name_function": "create_class_static",
                     "F_name_generic": "create_class_static",
                     "F_name_impl": "create_class_static",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_createClassStatic",
-                    "function_name": "createClassStatic",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_name": "createClassStatic"
                 }
             },
             {
@@ -3510,78 +3870,110 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr_library"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr_library"
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "getClassStatic(\t)",
+                            "C_prototype": "OWN_Class1 * SHC_rv",
+                            "C_return_type": "OWN_Class1 *",
+                            "c_const": "",
+                            "c_type": "OWN_Class1",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Class1 * SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "f_local_ptr": "SHT_prv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_shadow_*_capptr_library"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getClassStatic(\t)",
+                            "C_prototype": "OWN_Class1 * SHC_rv",
+                            "C_return_type": "OWN_Class1 *",
+                            "F_C_arguments": "SHT_rv",
+                            "F_C_call": "c_get_class_static",
+                            "F_C_result_clause": "\fresult(SHT_prv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_result": "SHT_prv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "OWN_Class1",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Class1 * SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "f_capsule_data_type": "OWN_SHROUD_capsule_data",
+                            "f_derived_type": "class1",
+                            "f_intent": "OUT",
+                            "f_local_ptr": "SHT_prv",
+                            "f_type": "type(class1)",
+                            "f_type_module": "ownership_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_shadow_*_capptr_library"
+                        },
+                        "fmtpy": {
+                            "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_shadow_*",
+                            "value_var": "SHValue_rv"
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name": "OWN_getClassStatic",
                     "C_name_api": "getClassStatic",
-                    "C_prototype": "OWN_Class1 * SHC_rv",
-                    "C_return_type": "OWN_Class1 *",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_call": "c_get_class_static",
                     "F_C_name": "c_get_class_static",
-                    "F_C_result_clause": "\fresult(SHT_prv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv%cxxmem",
-                    "F_arguments": "",
                     "F_name_api": "get_class_static",
                     "F_name_function": "get_class_static",
                     "F_name_generic": "get_class_static",
                     "F_name_impl": "get_class_static",
-                    "F_result": "SHT_prv",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassStatic",
-                    "cxx_rv_decl": "Class1 * SHCXX_rv",
                     "function_name": "getClassStatic"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_type": "OWN_Class1",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Class1",
-                        "cxx_var": "SHCXX_rv",
-                        "f_capsule_data_type": "OWN_SHROUD_capsule_data",
-                        "f_derived_type": "class1",
-                        "f_intent": "OUT",
-                        "f_local_ptr": "SHT_prv",
-                        "f_type": "type(class1)",
-                        "f_type_module": "ownership_mod",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr_library",
-                        "stmtf": "f_function_shadow_*_capptr_library"
-                    },
-                    "fmtpy": {
-                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
-                        "PyObject": "PY_Class1",
-                        "PyTypeObject": "PY_Class1_Type",
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Class1",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_shadow_*",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -3637,12 +4029,125 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_shadow_*_capptr_caller"
+                        },
+                        "flag": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_shadow_*_capptr_caller"
+                        },
+                        "flag": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "getClassNew(\tflag)",
+                            "C_call_list": "flag",
+                            "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
+                            "C_return_type": "OWN_Class1 *",
+                            "c_const": "",
+                            "c_type": "OWN_Class1",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Class1 * SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "f_local_ptr": "SHT_prv",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_shadow_*_capptr_caller"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getClassNew(\tflag)",
+                            "C_call_list": "flag",
+                            "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
+                            "C_return_type": "OWN_Class1 *",
+                            "F_C_arguments": "flag,\t SHT_rv",
+                            "F_C_call": "c_get_class_new",
+                            "F_C_result_clause": "\fresult(SHT_prv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
+                            "F_arguments": "flag",
+                            "F_result": "SHT_prv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "OWN_Class1",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Class1 * SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "f_capsule_data_type": "OWN_SHROUD_capsule_data",
+                            "f_derived_type": "class1",
+                            "f_intent": "OUT",
+                            "f_local_ptr": "SHT_prv",
+                            "f_type": "type(class1)",
+                            "f_type_module": "ownership_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_shadow_*_capptr_caller"
+                        },
+                        "fmtpy": {
+                            "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Class1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_shadow_*",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "flag": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&flag",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3665,8 +4170,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3689,74 +4193,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "flag",
                     "C_name": "OWN_getClassNew",
                     "C_name_api": "getClassNew",
-                    "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
-                    "C_return_type": "OWN_Class1 *",
-                    "F_C_arguments": "flag,\t SHT_rv",
-                    "F_C_call": "c_get_class_new",
                     "F_C_name": "c_get_class_new",
-                    "F_C_result_clause": "\fresult(SHT_prv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
-                    "F_arguments": "flag",
                     "F_name_api": "get_class_new",
                     "F_name_function": "get_class_new",
                     "F_name_generic": "get_class_new",
                     "F_name_impl": "get_class_new",
-                    "F_result": "SHT_prv",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassNew",
-                    "cxx_rv_decl": "Class1 * SHCXX_rv",
                     "function_name": "getClassNew"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_type": "OWN_Class1",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Class1",
-                        "cxx_var": "SHCXX_rv",
-                        "f_capsule_data_type": "OWN_SHROUD_capsule_data",
-                        "f_derived_type": "class1",
-                        "f_intent": "OUT",
-                        "f_local_ptr": "SHT_prv",
-                        "f_type": "type(class1)",
-                        "f_type_module": "ownership_mod",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "1",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmtc": "f_function_shadow_*_capptr_caller",
-                        "stmtf": "f_function_shadow_*_capptr_caller"
-                    },
-                    "fmtpy": {
-                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
-                        "PyObject": "PY_Class1",
-                        "PyTypeObject": "PY_Class1_Type",
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Class1",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_shadow_*",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             }
         ],

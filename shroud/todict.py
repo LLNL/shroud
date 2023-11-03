@@ -309,7 +309,7 @@ class ToDict(visitor.Visitor):
     def visit_WrapFlags(self, node):
         d = dict()
         add_true_fields(
-            node, d, ["fortran", "f_c", "c", "lua", "python"]
+            node, d, ["fortran", "c", "lua", "python"]
         )
         return d
 
@@ -393,8 +393,8 @@ class ToDict(visitor.Visitor):
             [
                 "_PTR_C_CXX_index",
                 "_PTR_F_C_index",
+                "_bind",
                 "_fmtargs",
-                "_fmtresult",
                 "user_fmt",
                 "fmtdict",
                 "options",
@@ -458,6 +458,14 @@ class ToDict(visitor.Visitor):
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
+
+        if node.helpers:
+            helpers = {}
+            for key, values in node.helpers.items():
+                if values:
+                    helpers[key] = list(values.keys())
+            if helpers:
+                d["helpers"] = self.visit(helpers)
 
         return d
 
@@ -536,10 +544,19 @@ class ToDict(visitor.Visitor):
     def visit_SymbolTable(self, node):
         return {}
 
+
+    def visit_BindArg(self, node):
+        d = {}
+        if node.stmt:
+            d["stmt"] = node.stmt.name
+        if node.fstmts:
+            d["fstmts"] = node.fstmts
+        return d
+    
     # Rename some attributes so they sort to the bottom of the JSON dictionary.
     rename_fields = dict(
+        _bind="zz_bind",
         _fmtargs="zz_fmtargs",
-        _fmtresult="zz_fmtresult",
         fmtdict="zz_fmtdict",
     )
     def add_visit_fields(self, node, d, fields):
@@ -782,7 +799,6 @@ class PrintFmt(Helpers, visitor.Visitor):
             d,
             [
                 "_fmtargs",
-                "_fmtresult",
 #                "user_fmt",
                 "fmtdict",
             ],

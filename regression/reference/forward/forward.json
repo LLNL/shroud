@@ -92,92 +92,124 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->ctor(\t)",
+                                    "C_prototype": "FOR_Class2 * SHC_rv",
+                                    "C_return_type": "FOR_Class2 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "FOR_Class2",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "forward::Class2 SHCXX_rv",
+                                    "cxx_type": "forward::Class2",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->ctor(\t)",
+                                    "C_prototype": "FOR_Class2 * SHC_rv",
+                                    "C_return_type": "FOR_Class2 *",
+                                    "F_C_arguments": "SHT_rv",
+                                    "F_C_call": "c_class2_ctor",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "SHT_rv%cxxmem",
+                                    "F_arguments": "",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "FOR_Class2",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "forward::Class2 SHCXX_rv",
+                                    "cxx_type": "forward::Class2",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
+                                    "f_derived_type": "class2",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class2)",
+                                    "f_type_module": "forward_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtl": {
+                                    "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_var": "SHCXX_rv",
+                                    "stmt": "lua_ctor_scalar"
+                                },
+                                "fmtpy": {
+                                    "PY_build_format": "O",
+                                    "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
+                                    "PyObject": "PY_Class2",
+                                    "PyTypeObject": "PY_Class2_Type",
+                                    "c_deref": "",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "SHCXX_rv",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_type": "forward::Class2",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "numpy_type": null,
+                                    "py_var": "SHTPy_rv",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_default",
+                                    "value_var": "SHValue_rv",
+                                    "vargs": "SHCXX_rv"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_ctor",
                             "C_name_api": "ctor",
-                            "C_prototype": "FOR_Class2 * SHC_rv",
-                            "C_return_type": "FOR_Class2 *",
-                            "F_C_arguments": "SHT_rv",
-                            "F_C_call": "c_class2_ctor",
                             "F_C_name": "c_class2_ctor",
-                            "F_C_result_clause": "\fresult(SHT_prv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "SHT_rv%cxxmem",
-                            "F_arguments": "",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
                             "F_name_generic": "class2",
                             "F_name_impl": "class2_ctor",
-                            "F_result": "SHT_prv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "LUA_name": "ctor",
                             "LUA_name_api": "ctor",
                             "LUA_name_impl": "l_Class2_ctor",
                             "PY_name_impl": "PY_Class2_tp_init",
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
-                            "cxx_rv_decl": "forward::Class2 SHCXX_rv",
                             "function_name": "ctor"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "FOR_Class2",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "forward::Class2",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "FOR_SHROUD_capsule_data",
-                                "f_derived_type": "class2",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class2)",
-                                "f_type_module": "forward_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr",
-                                "stmtf": "f_ctor_shadow_scalar_capptr"
-                            },
-                            "fmtl": {
-                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv",
-                                "stmt": "lua_ctor_scalar"
-                            },
-                            "fmtpy": {
-                                "PY_build_format": "O",
-                                "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
-                                "PyObject": "PY_Class2",
-                                "PyTypeObject": "PY_Class2_Type",
-                                "c_deref": "",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "forward::Class2",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": null,
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_default",
-                                "value_var": "SHValue_rv",
-                                "vargs": "SHCXX_rv"
-                            }
                         }
                     },
                     {
@@ -206,28 +238,56 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->dtor(\t)",
+                                    "C_prototype": "FOR_Class2 * self",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_dtor"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->dtor(\t)",
+                                    "C_prototype": "FOR_Class2 * self",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class2_dtor",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_dtor"
+                                },
+                                "fmtl": {
+                                    "stmt": "lua_dtor_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_dtor",
                             "C_name_api": "dtor",
-                            "C_prototype": "FOR_Class2 * self",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class2_dtor",
                             "F_C_name": "c_class2_dtor",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "dtor",
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
                             "F_name_impl": "class2_dtor",
-                            "F_subprogram": "subroutine",
                             "LUA_name": "dtor",
                             "LUA_name_api": "dtor",
                             "LUA_name_impl": "l_Class2_dtor",
@@ -235,14 +295,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "dtor",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
-                        },
-                        "zz_fmtresult": {
-                            "fmtl": {
-                                "stmt": "lua_dtor_scalar"
-                            }
+                            "function_name": "dtor"
                         }
                     },
                     {
@@ -289,13 +342,72 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "arg": {
+                                    "stmt": "c_in_shadow_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "arg": {
+                                    "stmt": "f_in_shadow_*"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->func1(\tSHCXX_arg)",
+                                    "C_call_list": "SHCXX_arg",
+                                    "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->func1(\tSHCXX_arg)",
+                                    "C_call_list": "SHCXX_arg",
+                                    "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg",
+                                    "F_C_call": "c_class2_func1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
+                                    "F_arguments": "obj,\t arg",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                },
+                                "fmtl": {
+                                    "stmt": "lua_subroutine"
+                                }
+                            },
                             "arg": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "TUT_Class1",
+                                    "c_var": "arg",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_arg",
+                                    "cxx_type": "tutorial::Class1",
+                                    "cxx_var": "SHCXX_arg",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_in_shadow_*"
+                                },
                                 "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
@@ -319,8 +431,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*",
-                                    "stmtf": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -359,22 +470,13 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
                             "C_name_api": "func1",
-                            "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self,\t arg",
-                            "F_C_call": "c_class2_func1",
                             "F_C_name": "c_class2_func1",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
-                            "F_arguments": "obj,\t arg",
                             "F_name_api": "func1",
                             "F_name_function": "func1",
                             "F_name_generic": "func1",
                             "F_name_impl": "class2_func1",
-                            "F_subprogram": "subroutine",
                             "LUA_name": "func1",
                             "LUA_name_api": "func1",
                             "LUA_name_impl": "l_Class2_func1",
@@ -383,14 +485,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "func1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
-                        },
-                        "zz_fmtresult": {
-                            "fmtl": {
-                                "stmt": "lua_subroutine"
-                            }
+                            "function_name": "func1"
                         }
                     },
                     {
@@ -437,13 +532,72 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "arg": {
+                                    "stmt": "c_in_shadow_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "arg": {
+                                    "stmt": "f_in_shadow_*"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->acceptClass3(\tSHCXX_arg)",
+                                    "C_call_list": "SHCXX_arg",
+                                    "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->acceptClass3(\tSHCXX_arg)",
+                                    "C_call_list": "SHCXX_arg",
+                                    "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg",
+                                    "F_C_call": "c_class2_accept_class3",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
+                                    "F_arguments": "obj,\t arg",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                },
+                                "fmtl": {
+                                    "stmt": "lua_subroutine"
+                                }
+                            },
                             "arg": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "FOR_Class3",
+                                    "c_var": "arg",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_arg",
+                                    "cxx_type": "forward::Class3",
+                                    "cxx_var": "SHCXX_arg",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_in_shadow_*"
+                                },
                                 "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
@@ -467,8 +621,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmtc": "f_in_shadow_*",
-                                    "stmtf": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -509,22 +662,13 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_acceptClass3",
                             "C_name_api": "acceptClass3",
-                            "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self,\t arg",
-                            "F_C_call": "c_class2_accept_class3",
                             "F_C_name": "c_class2_accept_class3",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
-                            "F_arguments": "obj,\t arg",
                             "F_name_api": "accept_class3",
                             "F_name_function": "accept_class3",
                             "F_name_generic": "accept_class3",
                             "F_name_impl": "class2_accept_class3",
-                            "F_subprogram": "subroutine",
                             "LUA_name": "acceptClass3",
                             "LUA_name_api": "acceptClass3",
                             "LUA_name_impl": "l_Class2_acceptClass3",
@@ -533,14 +677,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "acceptClass3",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
-                        },
-                        "zz_fmtresult": {
-                            "fmtl": {
-                                "stmt": "lua_subroutine"
-                            }
+                            "function_name": "acceptClass3"
                         }
                     }
                 ],
@@ -647,11 +784,102 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "c_in_struct_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "stmt": "f_in_struct_*"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "forward::passStruct1(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "const Cstruct1 * arg",
+                            "C_return_type": "int",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "forward::passStruct1(\targ)",
+                            "C_call_list": "arg",
+                            "C_prototype": "const Cstruct1 * arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_pass_struct1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct1",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_struct_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -675,57 +903,19 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_struct_*",
-                            "stmtf": "f_in_struct_*"
+                            "stmt_name": "f_in_struct_*"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "arg",
                     "C_name": "FOR_passStruct1",
                     "C_name_api": "passStruct1",
-                    "C_prototype": "const Cstruct1 * arg",
-                    "C_return_type": "int",
-                    "F_C_arguments": "arg",
-                    "F_C_call": "c_pass_struct1",
                     "F_C_name": "pass_struct1",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
                     "F_name_api": "pass_struct1",
                     "F_name_function": "pass_struct1",
                     "F_name_generic": "pass_struct1",
                     "F_name_impl": "pass_struct1",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct1"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_int",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_type_module": "iso_c_binding",
-                        "f_var": "SHT_rv",
-                        "fc_var": "SHT_rv",
-                        "i_var": "SHT_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmtc": "f_function_native_scalar",
-                        "stmtf": "f_function_native_scalar"
-                    }
                 }
             }
         ],

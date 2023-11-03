@@ -19,7 +19,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void method
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void LIB_outer1_class0_method(LIB_outer1_class0 * self)
 {
     outer1::class0 *SH_this = static_cast<outer1::class0 *>(self->addr);

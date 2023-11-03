@@ -1,16 +1,20 @@
 Read yaml ccomplex.yaml
-C void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
-C void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
-C void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
-C void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
+C c void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
+C f void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
+C c void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
+C f void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
+C c void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
+C f void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
+C c void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
+C f void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
 Fortran void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
 Fortran void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
 Fortran void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
 Fortran void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
-C-interface void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
-C-interface void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
-C-interface void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
-C-interface void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
+C-interface f void acceptFloatComplexInoutPtr(float complex * arg1)  +intent(subroutine)
+C-interface f void acceptDoubleComplexInoutPtr(double complex * arg1)  +intent(subroutine)
+C-interface f void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))  +intent(subroutine)
+C-interface f void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))  +intent(subroutine)
 Close wrapfccomplex.f
 Close utilccomplex.c
 Close typesccomplex.h

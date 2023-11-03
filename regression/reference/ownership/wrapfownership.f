@@ -111,7 +111,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  ~Class1
         ! Attrs:     +intent(dtor)
-        ! Statement: f_dtor_void_scalar
+        ! Statement: f_dtor
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data
@@ -137,7 +137,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Statement: f_function_native_*_raw
+        ! Statement: c_function_native_*
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrRaw")
@@ -152,7 +152,7 @@ module ownership_mod
         ! Statement: f_function_native_*_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
-                bind(C, name="OWN_ReturnIntPtrScalar")
+                bind(C, name="OWN_ReturnIntPtrScalar_extrawrapper")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -173,11 +173,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(function)
-        ! Statement: f_function_native_*_raw
+        ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimRaw")
@@ -190,11 +190,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer
+        ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         ! start c_return_int_ptr_dim_pointer
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
@@ -223,11 +223,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_native_*_allocatable
+        ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         ! start c_return_int_ptr_dim_alloc
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
@@ -258,11 +258,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer
+        ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault")
@@ -287,11 +287,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer_caller
+        ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimRawNew")
@@ -304,11 +304,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer_caller
+        ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointerNew")
@@ -335,11 +335,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_native_*_allocatable_caller
+        ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimAllocNew")
@@ -352,11 +352,11 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(function)
-        ! Statement: f_function_native_*_pointer_caller
+        ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefaultNew")
@@ -383,7 +383,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  void createClassStatic
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
@@ -521,7 +521,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_ptr_scalar
-        SHT_rv = c_return_int_ptr_scalar()
+        SHT_rv = c_return_int_ptr_scalar_extrawrapper()
         ! splicer end function.return_int_ptr_scalar
     end function return_int_ptr_scalar
 #endif

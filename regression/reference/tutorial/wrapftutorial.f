@@ -108,7 +108,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
@@ -239,11 +239,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Statement: f_in_string_&
+    ! Statement: c_in_string_&
     interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_OverloadedFunction_from_name")
@@ -257,7 +257,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -276,7 +276,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int indx +value
     ! Attrs:     +intent(in)
@@ -294,7 +294,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -312,7 +312,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void TemplateArgument
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -359,7 +359,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_FortranGenericOverloaded_0")
@@ -370,15 +370,15 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Statement: f_in_string_&
+    ! Statement: c_in_string_&
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
                 bind(C, name="TUT_FortranGenericOverloaded_1")
@@ -393,7 +393,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -418,7 +418,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
@@ -663,7 +663,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void getMinMax
     ! Attrs:     +intent(subroutine)
-    ! Statement: f_subroutine_void_scalar
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
     ! Attrs:     +intent(out)
@@ -714,7 +714,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(copy)+intent(function)
-    ! Statement: f_function_string_&_copy
+    ! Statement: c_function_string_&
     interface
         function c_last_function_called() &
                 result(SHT_rv) &

@@ -70,11 +70,11 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // ----------------------------------------
 // Function:  void intargs_in
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int * arg
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // start POI_intargs_in
 void POI_intargs_in(const int * arg)
 {
@@ -90,11 +90,11 @@ void POI_intargs_in(const int * arg)
 // ----------------------------------------
 // Function:  void intargs_inout
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * arg
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 // start POI_intargs_inout
 void POI_intargs_inout(int * arg)
 {
@@ -107,11 +107,11 @@ void POI_intargs_inout(int * arg)
 // ----------------------------------------
 // Function:  void intargs_out
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_intargs_out
 void POI_intargs_out(int * arg)
 {
@@ -124,19 +124,19 @@ void POI_intargs_out(int * arg)
 // ----------------------------------------
 // Function:  void intargs
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 // ----------------------------------------
 // Argument:  int * argout +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_intargs
 void POI_intargs(const int argin, int * arginout, int * argout)
 {
@@ -154,19 +154,19 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // ----------------------------------------
 // Function:  void cos_doubles
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // ----------------------------------------
 // Argument:  double * out +dimension(size(in))+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_cos_doubles
 void POI_cos_doubles(double * in, double * out, int sizein)
 {
@@ -185,19 +185,19 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // ----------------------------------------
 // Function:  void truncate_to_int
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // ----------------------------------------
 // Argument:  int * out +dimension(size(in))+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_truncate_to_int
 void POI_truncate_to_int(double * in, int * out, int sizein)
 {
@@ -218,15 +218,15 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // ----------------------------------------
 // Function:  void get_values
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * nvalues +intent(OUT)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_get_values
 void POI_get_values(int * nvalues, int * values)
 {
@@ -245,15 +245,15 @@ void POI_get_values(int * nvalues, int * values)
 // ----------------------------------------
 // Function:  void get_values2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_get_values2
 void POI_get_values2(int * arg1, int * arg2)
 {
@@ -266,15 +266,15 @@ void POI_get_values2(int * arg1, int * arg2)
 // ----------------------------------------
 // Function:  void iota_dimension
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int nvar +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_iota_dimension
 void POI_iota_dimension(int nvar, int * values)
 {
@@ -287,19 +287,19 @@ void POI_iota_dimension(int nvar, int * values)
 // ----------------------------------------
 // Function:  void Sum
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int len +implied(size(values))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // ----------------------------------------
 // Argument:  int * result +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_Sum
 void POI_Sum(int len, const int * values, int * result)
 {
@@ -315,11 +315,11 @@ void POI_Sum(int len, const int * values, int * result)
 // ----------------------------------------
 // Function:  void fillIntArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_fillIntArray
 void POI_fillIntArray(int * out)
 {
@@ -335,15 +335,15 @@ void POI_fillIntArray(int * out)
 // ----------------------------------------
 // Function:  void incrementIntArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_incrementIntArray
 void POI_incrementIntArray(int * array, int sizein)
 {
@@ -356,15 +356,15 @@ void POI_incrementIntArray(int * array, int sizein)
 // ----------------------------------------
 // Function:  void fill_with_zeros
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * x +rank(1)
 // Attrs:     +intent(inout)
-// Statement: f_inout_native_*
+// Statement: c_inout_native_*
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_fill_with_zeros
 void POI_fill_with_zeros(double * x, int x_length)
 {
@@ -377,15 +377,15 @@ void POI_fill_with_zeros(double * x, int x_length)
 // ----------------------------------------
 // Function:  int accumulate
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))+value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_accumulate
 int POI_accumulate(const int * arr, size_t len)
 {
@@ -402,11 +402,11 @@ int POI_accumulate(const int * arr, size_t len)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_char_**
+// Statement: c_in_char_**
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
 {
@@ -446,11 +446,11 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
 // ----------------------------------------
 // Function:  void setGlobalInt
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_setGlobalInt
 void POI_setGlobalInt(int value)
 {
@@ -466,7 +466,7 @@ void POI_setGlobalInt(int value)
 // ----------------------------------------
 // Function:  int sumFixedArray
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // start POI_sumFixedArray
 int POI_sumFixedArray(void)
 {
@@ -480,11 +480,11 @@ int POI_sumFixedArray(void)
 // ----------------------------------------
 // Function:  void getPtrToScalar
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // start POI_getPtrToScalar
 void POI_getPtrToScalar(int * * nitems)
 {
@@ -524,11 +524,11 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // start POI_getPtrToFixedArray
 void POI_getPtrToFixedArray(int * * count)
 {
@@ -573,15 +573,15 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_getPtrToDynamicArray
 void POI_getPtrToDynamicArray(int * * count, int * ncount)
 {
@@ -634,11 +634,11 @@ void POI_getPtrToDynamicArray_bufferify(
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // start POI_getPtrToFuncArray
 void POI_getPtrToFuncArray(int * * count)
 {
@@ -681,11 +681,11 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // start POI_getPtrToConstScalar
 void POI_getPtrToConstScalar(const int * * nitems)
 {
@@ -723,11 +723,11 @@ void POI_getPtrToConstScalar_bufferify(
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // start POI_getPtrToFixedConstArray
 void POI_getPtrToFixedConstArray(const int * * count)
 {
@@ -766,15 +766,15 @@ void POI_getPtrToFixedConstArray_bufferify(
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Statement: f_out_native_**_pointer
+// Statement: c_out_native_**
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // start POI_getPtrToDynamicConstArray
 void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 {
@@ -821,11 +821,11 @@ void POI_getPtrToDynamicConstArray_bufferify(
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Statement: f_out_native_**_raw
+// Statement: c_out_native_**
 // start POI_getRawPtrToScalar
 void POI_getRawPtrToScalar(int * * nitems)
 {
@@ -841,11 +841,11 @@ void POI_getRawPtrToScalar(int * * nitems)
 // ----------------------------------------
 // Function:  void getRawPtrToScalarForce
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Statement: f_out_native_**_raw
+// Statement: c_out_native_**
 // start POI_getRawPtrToScalarForce
 void POI_getRawPtrToScalarForce(int * * nitems)
 {
@@ -863,11 +863,11 @@ void POI_getRawPtrToScalarForce(int * * nitems)
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Statement: f_out_native_**_raw
+// Statement: c_out_native_**
 // start POI_getRawPtrToFixedArray
 void POI_getRawPtrToFixedArray(int * * count)
 {
@@ -884,11 +884,11 @@ void POI_getRawPtrToFixedArray(int * * count)
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArrayForce
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Statement: f_out_native_**_raw
+// Statement: c_out_native_**
 // start POI_getRawPtrToFixedArrayForce
 void POI_getRawPtrToFixedArrayForce(int * * count)
 {
@@ -904,11 +904,11 @@ void POI_getRawPtrToFixedArrayForce(int * * count)
 // ----------------------------------------
 // Function:  void getRawPtrToInt2d
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * * arg +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_***
+// Statement: c_out_native_***
 // start POI_getRawPtrToInt2d
 void POI_getRawPtrToInt2d(int * * * arg)
 {
@@ -924,11 +924,11 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // ----------------------------------------
 // Function:  int checkInt2d
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Attrs:     +intent(in)
-// Statement: f_in_native_**
+// Statement: c_in_native_**
 // start POI_checkInt2d
 int POI_checkInt2d(int **arg)
 {
@@ -946,11 +946,11 @@ int POI_checkInt2d(int **arg)
 // ----------------------------------------
 // Function:  void DimensionIn
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int * arg +dimension(10,20)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 // start POI_DimensionIn
 void POI_DimensionIn(const int * arg)
 {
@@ -966,11 +966,11 @@ void POI_DimensionIn(const int * arg)
 // ----------------------------------------
 // Function:  void getAllocToFixedArray
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
-// Statement: f_out_native_**_allocatable
+// Statement: c_out_native_**
 // start POI_getAllocToFixedArray
 void POI_getAllocToFixedArray(int * * count)
 {
@@ -1015,11 +1015,11 @@ void POI_getAllocToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  void * returnAddress1
 // Attrs:     +intent(function)
-// Statement: f_function_void_*
+// Statement: c_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_returnAddress1
 void * POI_returnAddress1(int flag)
 {
@@ -1033,11 +1033,11 @@ void * POI_returnAddress1(int flag)
 // ----------------------------------------
 // Function:  void * returnAddress2
 // Attrs:     +intent(function)
-// Statement: f_function_void_*
+// Statement: c_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start POI_returnAddress2
 void * POI_returnAddress2(int flag)
 {
@@ -1051,11 +1051,11 @@ void * POI_returnAddress2(int flag)
 // ----------------------------------------
 // Function:  void fetchVoidPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_void_**
+// Statement: c_out_void_**
 // start POI_fetchVoidPtr
 void POI_fetchVoidPtr(void **addr)
 {
@@ -1068,11 +1068,11 @@ void POI_fetchVoidPtr(void **addr)
 // ----------------------------------------
 // Function:  void updateVoidPtr
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * * addr +intent(inout)
 // Attrs:     +intent(inout)
-// Statement: f_inout_void_**
+// Statement: c_inout_void_**
 // start POI_updateVoidPtr
 void POI_updateVoidPtr(void **addr)
 {
@@ -1085,11 +1085,11 @@ void POI_updateVoidPtr(void **addr)
 // ----------------------------------------
 // Function:  int VoidPtrArray
 // Attrs:     +intent(function)
-// Statement: f_function_native_scalar
+// Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_void_**
+// Statement: c_in_void_**
 // start POI_VoidPtrArray
 int POI_VoidPtrArray(void **addr)
 {
@@ -1103,7 +1103,7 @@ int POI_VoidPtrArray(void **addr)
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
@@ -1117,7 +1117,7 @@ int * POI_returnIntPtrToScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
@@ -1152,7 +1152,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
@@ -1166,7 +1166,7 @@ const int * POI_returnIntPtrToConstScalar(void)
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(function)
-// Statement: f_function_native_*_pointer
+// Statement: c_function_native_*
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
@@ -1201,16 +1201,30 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
-// Statement: f_function_native_*_scalar
+// Statement: c_function_native_*
 // start POI_returnIntScalar
-int POI_returnIntScalar(void)
+int * POI_returnIntScalar(void)
 {
     // splicer begin function.returnIntScalar
     int * SHC_rv = returnIntScalar();
-    return *SHC_rv;
+    return SHC_rv;
     // splicer end function.returnIntScalar
 }
 // end POI_returnIntScalar
+
+// ----------------------------------------
+// Function:  int * returnIntScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(function)
+// Statement: f_function_native_*_scalar
+// start POI_returnIntScalar_extrawrapper
+int POI_returnIntScalar_extrawrapper(void)
+{
+    // splicer begin function.returnIntScalar_extrawrapper
+    int * SHC_rv = returnIntScalar();
+    return *SHC_rv;
+    // splicer end function.returnIntScalar_extrawrapper
+}
+// end POI_returnIntScalar_extrawrapper
 
 /**
  * Call directly via interface.
@@ -1218,7 +1232,7 @@ int POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
 // Attrs:     +deref(raw)+intent(function)
-// Statement: f_function_native_*_raw
+// Statement: c_function_native_*
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
@@ -1228,6 +1242,45 @@ int * POI_returnIntRaw(void)
     // splicer end function.returnIntRaw
 }
 // end POI_returnIntRaw
+
+/**
+ * Call directly via interface.
+ */
+// ----------------------------------------
+// Function:  int * returnIntRaw +deref(raw)
+// Attrs:     +deref(raw)+intent(function)
+// Statement: f_function_native_*_raw
+// start POI_returnIntRaw_extrawrapper
+int * POI_returnIntRaw_extrawrapper(void)
+{
+    // splicer begin function.returnIntRaw_extrawrapper
+    int * SHC_rv = returnIntRaw();
+    return SHC_rv;
+    // splicer end function.returnIntRaw_extrawrapper
+}
+// end POI_returnIntRaw_extrawrapper
+
+/**
+ * Like returnIntRaw but with another argument to force a wrapper.
+ * Uses fc_statements f_function_native_*_raw.
+ */
+// ----------------------------------------
+// Function:  int * returnIntRawWithArgs +deref(raw)
+// Attrs:     +deref(raw)+intent(function)
+// Statement: c_function_native_*
+// ----------------------------------------
+// Argument:  const char * name
+// Attrs:     +intent(in)
+// Statement: c_in_char_*
+// start POI_returnIntRawWithArgs
+int * POI_returnIntRawWithArgs(const char * name)
+{
+    // splicer begin function.returnIntRawWithArgs
+    int * SHC_rv = returnIntRawWithArgs(name);
+    return SHC_rv;
+    // splicer end function.returnIntRawWithArgs
+}
+// end POI_returnIntRawWithArgs
 
 /**
  * Like returnIntRaw but with another argument to force a wrapper.
@@ -1241,15 +1294,15 @@ int * POI_returnIntRaw(void)
 // Argument:  const char * name
 // Attrs:     +intent(in)
 // Statement: f_in_char_*
-// start POI_returnIntRawWithArgs
-int * POI_returnIntRawWithArgs(const char * name)
+// start POI_returnIntRawWithArgs_extrawrapper
+int * POI_returnIntRawWithArgs_extrawrapper(const char * name)
 {
-    // splicer begin function.returnIntRawWithArgs
+    // splicer begin function.returnIntRawWithArgs_extrawrapper
     int * SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
-    // splicer end function.returnIntRawWithArgs
+    // splicer end function.returnIntRawWithArgs_extrawrapper
 }
-// end POI_returnIntRawWithArgs
+// end POI_returnIntRawWithArgs_extrawrapper
 
 /**
  * Test multiple layers of indirection.
@@ -1258,7 +1311,7 @@ int * POI_returnIntRawWithArgs(const char * name)
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
 // Attrs:     +intent(function)
-// Statement: f_function_native_**
+// Statement: c_function_native_**
 // start POI_returnRawPtrToInt2d
 int * * POI_returnRawPtrToInt2d(void)
 {
@@ -1272,7 +1325,7 @@ int * * POI_returnRawPtrToInt2d(void)
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +deref(allocatable)+intent(function)
-// Statement: f_function_native_*_allocatable
+// Statement: c_function_native_*
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {

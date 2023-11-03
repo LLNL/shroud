@@ -65,11 +65,104 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1)",
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1)",
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_0",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -92,60 +185,20 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1",
                             "C_name": "DEF_Class1_new_0",
                             "C_name_api": "new",
-                            "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
-                            "C_return_type": "DEF_Class1 *",
-                            "F_C_arguments": "arg1,\t SHT_rv",
-                            "F_C_call": "c_class1_new_0",
                             "F_C_name": "c_class1_new_0",
-                            "F_C_result_clause": "\fresult(SHT_prv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg1,\t SHT_rv%cxxmem",
-                            "F_arguments": "arg1",
                             "F_name_api": "new",
                             "F_name_function": "new_0",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_0",
-                            "F_result": "SHT_prv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "cxx_rv_decl": "Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_0"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr",
-                                "stmtf": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -221,11 +274,110 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2)",
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2)",
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t arg2,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_1",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t arg2,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1,\t arg2",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -248,11 +400,27 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg2",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg2",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg2",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -275,60 +443,20 @@
                                     "i_var": "arg2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1,\t arg2",
                             "C_name": "DEF_Class1_new_1",
                             "C_name_api": "new",
-                            "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
-                            "C_return_type": "DEF_Class1 *",
-                            "F_C_arguments": "arg1,\t arg2,\t SHT_rv",
-                            "F_C_call": "c_class1_new_1",
                             "F_C_name": "c_class1_new_1",
-                            "F_C_result_clause": "\fresult(SHT_prv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg1,\t arg2,\t SHT_rv%cxxmem",
-                            "F_arguments": "arg1,\t arg2",
                             "F_name_api": "new",
                             "F_name_function": "new_1",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_1",
-                            "F_result": "SHT_prv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "cxx_rv_decl": "Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr",
-                                "stmtf": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -425,11 +553,116 @@
                         },
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg3": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg3": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_local_ptr": "SHT_prv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
+                                    "C_return_type": "DEF_Class1 *",
+                                    "F_C_arguments": "arg1,\t arg2,\t arg3,\t SHT_rv",
+                                    "F_C_call": "c_class1_new_2",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "arg1,\t arg2,\t arg3,\t SHT_rv%cxxmem",
+                                    "F_arguments": "arg1,\t arg2,\t arg3",
+                                    "F_result": "SHT_prv",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_type": "DEF_Class1",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_other",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "Class1 SHCXX_rv",
+                                    "cxx_type": "Class1",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_capsule_data_type": "DEF_SHROUD_capsule_data",
+                                    "f_derived_type": "class1",
+                                    "f_intent": "OUT",
+                                    "f_local_ptr": "SHT_prv",
+                                    "f_type": "type(class1)",
+                                    "f_type_module": "defaultarg_mod",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "1",
+                                    "sh_type": "SH_TYPE_OTHER",
+                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -452,11 +685,27 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg2",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg2",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg2",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -479,11 +728,27 @@
                                     "i_var": "arg2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg3": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg3",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg3",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg3",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -506,60 +771,20 @@
                                     "i_var": "arg3",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1,\t arg2,\t arg3",
                             "C_name": "DEF_Class1_new_2",
                             "C_name_api": "new",
-                            "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
-                            "C_return_type": "DEF_Class1 *",
-                            "F_C_arguments": "arg1,\t arg2,\t arg3,\t SHT_rv",
-                            "F_C_call": "c_class1_new_2",
                             "F_C_name": "c_class1_new_2",
-                            "F_C_result_clause": "\fresult(SHT_prv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg1,\t arg2,\t arg3,\t SHT_rv%cxxmem",
-                            "F_arguments": "arg1,\t arg2,\t arg3",
                             "F_name_api": "new",
                             "F_name_function": "new_2",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_2",
-                            "F_result": "SHT_prv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "cxx_rv_decl": "Class1 SHCXX_rv",
                             "function_name": "new",
                             "function_suffix": "_2"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "DEF_Class1",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "Class1",
-                                "cxx_var": "SHCXX_rv",
-                                "f_capsule_data_type": "DEF_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_intent": "OUT",
-                                "f_local_ptr": "SHT_prv",
-                                "f_type": "type(class1)",
-                                "f_type_module": "defaultarg_mod",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmtc": "f_ctor_shadow_scalar_capptr",
-                                "stmtf": "f_ctor_shadow_scalar_capptr"
-                            }
                         }
                     },
                     {
@@ -589,33 +814,56 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_dtor"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->delete(\t)",
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_dtor"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->delete(\t)",
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_delete",
+                                    "F_C_result_clause": "",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_dtor"
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_delete",
                             "C_name_api": "delete",
-                            "C_prototype": "DEF_Class1 * self",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_delete",
                             "F_C_name": "c_class1_delete",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "delete",
                             "F_name_function": "delete",
                             "F_name_generic": "delete",
                             "F_name_impl": "class1_delete",
-                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "function_name": "delete",
-                            "stmtc": "f_dtor",
-                            "stmtf": "f_dtor"
+                            "function_name": "delete"
                         }
                     },
                     {
@@ -666,11 +914,67 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1)",
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1)",
+                                    "C_call_list": "arg1",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1",
+                                    "F_C_call": "c_class1_default_arguments_0",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1",
+                                    "F_arguments": "obj,\t arg1",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -693,36 +997,24 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1",
                             "C_name": "DEF_Class1_DefaultArguments_0",
                             "C_name_api": "DefaultArguments",
-                            "C_prototype": "DEF_Class1 * self,\t int arg1",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self,\t arg1",
-                            "F_C_call": "c_class1_default_arguments_0",
                             "F_C_name": "c_class1_default_arguments_0",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t arg1",
-                            "F_arguments": "obj,\t arg1",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_0",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_0",
-                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_0",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_0"
                         }
                     },
                     {
@@ -790,11 +1082,73 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
+                                    "C_call_list": "arg1,\t arg2",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1,\t arg2",
+                                    "F_C_call": "c_class1_default_arguments_1",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
+                                    "F_arguments": "obj,\t arg1,\t arg2",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -817,11 +1171,27 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg2",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg2",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg2",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -844,36 +1214,24 @@
                                     "i_var": "arg2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1,\t arg2",
                             "C_name": "DEF_Class1_DefaultArguments_1",
                             "C_name_api": "DefaultArguments",
-                            "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self,\t arg1,\t arg2",
-                            "F_C_call": "c_class1_default_arguments_1",
                             "F_C_name": "c_class1_default_arguments_1",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
-                            "F_arguments": "obj,\t arg1,\t arg2",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_1",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_1",
-                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_1",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_1"
                         }
                     },
                     {
@@ -962,11 +1320,79 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "stmt": "c_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "c_in_native_scalar"
+                                },
+                                "arg3": {
+                                    "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_subroutine"
+                                },
+                                "arg1": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg2": {
+                                    "stmt": "f_in_native_scalar"
+                                },
+                                "arg3": {
+                                    "stmt": "f_in_native_scalar"
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
+                            "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
+                                    "C_return_type": "void",
+                                    "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
+                                    "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t arg1,\t arg2,\t arg3",
+                                    "F_C_call": "c_class1_default_arguments_2",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2,\t arg3",
+                                    "F_arguments": "obj,\t arg1,\t arg2,\t arg3",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_subroutine"
+                                }
+                            },
                             "arg1": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg1",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg1",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg1",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -989,11 +1415,27 @@
                                     "i_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg2": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg2",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg2",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg2",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -1016,11 +1458,27 @@
                                     "i_var": "arg2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             },
                             "arg3": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "int",
+                                    "c_var": "arg3",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&arg3",
+                                    "cxx_type": "int",
+                                    "cxx_var": "arg3",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_in_native_scalar"
+                                },
                                 "fmtf": {
                                     "c_addr": "&",
                                     "c_const": "",
@@ -1043,36 +1501,24 @@
                                     "i_var": "arg3",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmtc": "f_in_native_scalar",
-                                    "stmtf": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native_scalar"
                                 }
                             }
                         },
                         "zz_fmtdict": {
-                            "C_call_list": "arg1,\t arg2,\t arg3",
                             "C_name": "DEF_Class1_DefaultArguments_2",
                             "C_name_api": "DefaultArguments",
-                            "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
-                            "C_return_type": "void",
-                            "F_C_arguments": "self,\t arg1,\t arg2,\t arg3",
-                            "F_C_call": "c_class1_default_arguments_2",
                             "F_C_name": "c_class1_default_arguments_2",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2,\t arg3",
-                            "F_arguments": "obj,\t arg1,\t arg2,\t arg3",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_2",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_2",
-                            "F_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "DefaultArguments",
-                            "function_suffix": "_2",
-                            "stmtc": "f_subroutine",
-                            "stmtf": "f_subroutine"
+                            "function_suffix": "_2"
                         }
                     },
                     {
@@ -1105,60 +1551,67 @@
                             "wrapped_name": "field1"
                         },
                         "wrap": {
-                            "c": true,
-                            "f_c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->get_field1(\t)",
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field1",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field1",
                             "C_name_api": "get_field1",
-                            "C_prototype": "DEF_Class1 * self",
-                            "C_return_type": "int",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_get_field1",
                             "F_C_name": "c_class1_get_field1",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "get_field1",
                             "F_name_function": "get_field1",
                             "F_name_generic": "get_field1",
                             "F_name_impl": "class1_get_field1",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_field1",
                             "function_name": "get_field1",
                             "struct_name": "Class1",
                             "wrapped_name": "field1"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar",
-                                "stmtf": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -1191,60 +1644,67 @@
                             "wrapped_name": "field2"
                         },
                         "wrap": {
-                            "c": true,
-                            "f_c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->get_field2(\t)",
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field2",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field2",
                             "C_name_api": "get_field2",
-                            "C_prototype": "DEF_Class1 * self",
-                            "C_return_type": "int",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_get_field2",
                             "F_C_name": "c_class1_get_field2",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "get_field2",
                             "F_name_function": "get_field2",
                             "F_name_generic": "get_field2",
                             "F_name_impl": "class1_get_field2",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_field2",
                             "function_name": "get_field2",
                             "struct_name": "Class1",
                             "wrapped_name": "field2"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar",
-                                "stmtf": "f_getter_native_scalar"
-                            }
                         }
                     },
                     {
@@ -1277,60 +1737,67 @@
                             "wrapped_name": "field3"
                         },
                         "wrap": {
-                            "c": true,
-                            "f_c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "stmt": "f_getter_native_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->get_field3(\t)",
+                                    "C_prototype": "DEF_Class1 * self",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_field3",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "int",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "int SHC_rv",
+                                    "cxx_type": "int",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_getter_native_scalar"
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "C_name": "DEF_Class1_get_field3",
                             "C_name_api": "get_field3",
-                            "C_prototype": "DEF_Class1 * self",
-                            "C_return_type": "int",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_get_field3",
                             "F_C_name": "c_class1_get_field3",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
                             "F_name_api": "get_field3",
                             "F_name_function": "get_field3",
                             "F_name_generic": "get_field3",
                             "F_name_impl": "class1_get_field3",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_field3",
                             "function_name": "get_field3",
                             "struct_name": "Class1",
                             "wrapped_name": "field3"
-                        },
-                        "zz_fmtresult": {
-                            "fmtf": {
-                                "c_const": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_intent": "OUT",
-                                "f_kind": "C_INT",
-                                "f_type": "integer(C_INT)",
-                                "f_type_module": "iso_c_binding",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmtc": "f_getter_native_scalar",
-                                "stmtf": "f_getter_native_scalar"
-                            }
                         }
                     }
                 ],
@@ -1521,11 +1988,67 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems)",
+                            "C_call_list": "num_elems",
+                            "C_prototype": "IndexType num_elems",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems)",
+                            "C_call_list": "num_elems",
+                            "C_prototype": "IndexType num_elems",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems",
+                            "F_C_call": "c_apply_generic_nelems",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems",
+                            "F_arguments": "num_elems",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1548,32 +2071,20 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "num_elems",
                     "C_name": "DEF_apply_generic_nelems",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "IndexType num_elems",
-                    "C_return_type": "void",
-                    "F_C_arguments": "num_elems",
-                    "F_C_call": "c_apply_generic_nelems",
                     "F_C_name": "c_apply_generic_nelems",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems",
-                    "F_arguments": "num_elems",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems"
                 }
             },
             {
@@ -1645,11 +2156,73 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset)",
+                            "C_call_list": "num_elems,\t offset",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset)",
+                            "C_call_list": "num_elems,\t offset",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset",
+                            "F_C_call": "c_apply_generic_nelems_offset",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset",
+                            "F_arguments": "num_elems,\t offset",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1672,11 +2245,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1699,32 +2288,20 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "num_elems,\t offset",
                     "C_name": "DEF_apply_generic_nelems_offset",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "IndexType num_elems,\t IndexType offset",
-                    "C_return_type": "void",
-                    "F_C_arguments": "num_elems,\t offset",
-                    "F_C_call": "c_apply_generic_nelems_offset",
                     "F_C_name": "c_apply_generic_nelems_offset",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems,\t offset",
-                    "F_arguments": "num_elems,\t offset",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems_offset",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems_offset",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems_offset",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems_offset"
                 }
             },
             {
@@ -1817,11 +2394,79 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_generic_nelems_offset_stride",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset,\t stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1844,11 +2489,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1871,11 +2532,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1898,32 +2575,20 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_generic_nelems_offset_stride",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_generic_nelems_offset_stride",
                     "F_C_name": "c_apply_generic_nelems_offset_stride",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems,\t offset,\t stride",
-                    "F_arguments": "num_elems,\t offset,\t stride",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems_offset_stride",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_nelems_offset_stride",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_nelems_offset_stride"
                 }
             },
             {
@@ -1994,11 +2659,73 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
+                            "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
+                            "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems",
+                            "F_C_call": "c_apply_generic_type_nelems",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems",
+                            "F_arguments": "type,\t num_elems",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2021,11 +2748,29 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "DEF_TypeID",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_type",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_type",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "static_cast<TypeID>(type)",
+                            "cxx_var": "SHCXX_type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2050,32 +2795,20 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_type,\t num_elems",
                     "C_name": "DEF_apply_generic_type_nelems",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t num_elems",
-                    "F_C_call": "c_apply_generic_type_nelems",
                     "F_C_name": "c_apply_generic_type_nelems",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems",
-                    "F_arguments": "type,\t num_elems",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems"
                 }
             },
             {
@@ -2163,11 +2896,79 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset",
+                            "F_C_call": "c_apply_generic_type_nelems_offset",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset",
+                            "F_arguments": "type,\t num_elems,\t offset",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2190,11 +2991,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2217,11 +3034,29 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "DEF_TypeID",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_type",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_type",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "static_cast<TypeID>(type)",
+                            "cxx_var": "SHCXX_type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2246,32 +3081,20 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_type,\t num_elems,\t offset",
                     "C_name": "DEF_apply_generic_type_nelems_offset",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t num_elems,\t offset",
-                    "F_C_call": "c_apply_generic_type_nelems_offset",
                     "F_C_name": "c_apply_generic_type_nelems_offset",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems,\t offset",
-                    "F_arguments": "type,\t num_elems,\t offset",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems_offset",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems_offset",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems_offset",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems_offset"
                 }
             },
             {
@@ -2380,11 +3203,85 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_generic_type_nelems_offset_stride",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2407,11 +3304,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2434,11 +3347,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2461,11 +3390,29 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "DEF_TypeID",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_type",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_type",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "static_cast<TypeID>(type)",
+                            "cxx_var": "SHCXX_type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2490,32 +3437,20 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_generic_type_nelems_offset_stride",
                     "C_name_api": "apply_generic",
-                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_generic_type_nelems_offset_stride",
                     "F_C_name": "c_apply_generic_type_nelems_offset_stride",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
-                    "F_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems_offset_stride",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_generic",
-                    "function_suffix": "_type_nelems_offset_stride",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_type_nelems_offset_stride"
                 }
             },
             {
@@ -2598,11 +3533,79 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_require_0",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t offset,\t stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2625,11 +3628,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2652,11 +3671,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2679,32 +3714,20 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_require_0",
                     "C_name_api": "apply_require",
-                    "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_require_0",
                     "F_C_name": "c_apply_require_0",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems,\t offset,\t stride",
-                    "F_arguments": "num_elems,\t offset,\t stride",
                     "F_name_api": "apply_require",
                     "F_name_function": "apply_require_0",
                     "F_name_generic": "apply_require",
                     "F_name_impl": "apply_require_0",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_require",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
                 }
             },
             {
@@ -2803,11 +3826,85 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_require_1",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2830,11 +3927,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2857,11 +3970,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2884,11 +4013,29 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "DEF_TypeID",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_type",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_type",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "static_cast<TypeID>(type)",
+                            "cxx_var": "SHCXX_type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2913,32 +4060,20 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_require_1",
                     "C_name_api": "apply_require",
-                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_require_1",
                     "F_C_name": "c_apply_require_1",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
-                    "F_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_name_api": "apply_require",
                     "F_name_function": "apply_require_1",
                     "F_name_generic": "apply_require",
                     "F_name_impl": "apply_require_1",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_require",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
                 }
             },
             {
@@ -3021,11 +4156,79 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
+                            "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_optional_0",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
+                            "F_arguments": "num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3048,11 +4251,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3076,11 +4295,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3104,32 +4339,20 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_optional_0",
                     "C_name_api": "apply_optional",
-                    "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_optional_0",
                     "F_C_name": "c_apply_optional_0",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
-                    "F_arguments": "num_elems,\t offset,\t stride",
                     "F_name_api": "apply_optional",
                     "F_name_function": "apply_optional_0",
                     "F_name_generic": "apply_optional",
                     "F_name_impl": "apply_optional_0",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_optional",
-                    "function_suffix": "_0",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_0"
                 }
             },
             {
@@ -3228,11 +4451,85 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "stmt": "c_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "stmt": "f_subroutine"
+                        },
+                        "num_elems": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "offset": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "stride": {
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "type": {
+                            "stmt": "f_in_native_scalar"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
+                            "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_C_call": "c_apply_optional_1",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
+                            "F_arguments": "type,\t num_elems,\t offset,\t stride",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
                     "num_elems": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "num_elems",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num_elems",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "num_elems",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3255,11 +4552,27 @@
                             "i_var": "num_elems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "offset": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "offset",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&offset",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "offset",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3283,11 +4596,27 @@
                             "i_var": "offset",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "stride": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "IndexType",
+                            "c_var": "stride",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&stride",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "stride",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3311,11 +4640,29 @@
                             "i_var": "stride",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "DEF_TypeID",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_type",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_type",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "static_cast<TypeID>(type)",
+                            "cxx_var": "SHCXX_type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3340,32 +4687,20 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmtc": "f_in_native_scalar",
-                            "stmtf": "f_in_native_scalar"
+                            "stmt_name": "f_in_native_scalar"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_optional_1",
                     "C_name_api": "apply_optional",
-                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
-                    "F_C_call": "c_apply_optional_1",
                     "F_C_name": "c_apply_optional_1",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
-                    "F_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_name_api": "apply_optional",
                     "F_name_function": "apply_optional_1",
                     "F_name_generic": "apply_optional",
                     "F_name_impl": "apply_optional_1",
-                    "F_subprogram": "subroutine",
                     "function_name": "apply_optional",
-                    "function_suffix": "_1",
-                    "stmtc": "f_subroutine",
-                    "stmtf": "f_subroutine"
+                    "function_suffix": "_1"
                 }
             }
         ],

@@ -148,11 +148,17 @@ const int * POI_returnIntPtrToFixedConstArray(void);
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
-int POI_returnIntScalar(void);
+int * POI_returnIntScalar(void);
+
+int POI_returnIntScalar_extrawrapper(void);
 
 int * POI_returnIntRaw(void);
 
+int * POI_returnIntRaw_extrawrapper(void);
+
 int * POI_returnIntRawWithArgs(const char * name);
+
+int * POI_returnIntRawWithArgs_extrawrapper(const char * name);
 
 int * * POI_returnRawPtrToInt2d(void);
 

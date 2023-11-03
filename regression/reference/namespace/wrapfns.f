@@ -104,7 +104,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
         ! Attrs:     +deref(allocatable)+intent(function)
-        ! Statement: f_function_string_&_allocatable
+        ! Statement: c_function_string_&
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="NS_LastFunctionCalled")
@@ -130,7 +130,7 @@ module ns_mod
         ! ----------------------------------------
         ! Function:  void One
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine one() &
                 bind(C, name="NS_One")
             implicit none

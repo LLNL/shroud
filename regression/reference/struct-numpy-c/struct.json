@@ -950,6 +950,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -981,24 +999,6 @@
                     "F_name_api": "pass_struct_by_value",
                     "PY_name_impl": "PY_passStructByValue",
                     "function_name": "passStructByValue"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1047,6 +1047,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1079,24 +1097,6 @@
                     "F_name_api": "pass_struct1",
                     "PY_name_impl": "PY_passStruct1",
                     "function_name": "passStruct1"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1168,6 +1168,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "outbuf": {
                         "fmtpy": {
                             "array_size": "1",
@@ -1222,24 +1240,6 @@
                     "F_name_api": "pass_struct2",
                     "PY_name_impl": "PY_passStruct2",
                     "function_name": "passStruct2"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1288,6 +1288,24 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1320,24 +1338,6 @@
                     "F_name_api": "accept_struct_in_ptr",
                     "PY_name_impl": "PY_acceptStructInPtr",
                     "function_name": "acceptStructInPtr"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_native_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1631,6 +1631,31 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "capsule_order": "1",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_capsule": "SHC_SHCXX_rv",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_struct_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "d": {
                         "fmtpy": {
                             "c_const": "",
@@ -1677,31 +1702,6 @@
                     "F_name_api": "return_struct_by_value",
                     "PY_name_impl": "PY_returnStructByValue",
                     "function_name": "returnStructByValue"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "PYN_descr": "PY_Cstruct1_array_descr",
-                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
-                        "PyObject": "PY_Cstruct1",
-                        "PyTypeObject": "PY_Cstruct1_Type",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "capsule_order": "1",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "Cstruct1",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_capsule": "SHC_SHCXX_rv",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_struct_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1771,6 +1771,29 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_struct_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "d": {
                         "fmtpy": {
                             "c_const": "",
@@ -1817,29 +1840,6 @@
                     "F_name_api": "return_struct_ptr1",
                     "PY_name_impl": "PY_returnStructPtr1",
                     "function_name": "returnStructPtr1"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "PYN_descr": "PY_Cstruct1_array_descr",
-                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
-                        "PyObject": "PY_Cstruct1",
-                        "PyTypeObject": "PY_Cstruct1_Type",
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Cstruct1",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_struct_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -1931,6 +1931,29 @@
                     "python": true
                 },
                 "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_struct_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
                     "d": {
                         "fmtpy": {
                             "c_const": "",
@@ -1999,29 +2022,6 @@
                     "F_name_api": "return_struct_ptr2",
                     "PY_name_impl": "PY_returnStructPtr2",
                     "function_name": "returnStructPtr2"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "PYN_descr": "PY_Cstruct1_array_descr",
-                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
-                        "PyObject": "PY_Cstruct1",
-                        "PyTypeObject": "PY_Cstruct1_Type",
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Cstruct1",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_struct_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -2053,34 +2053,36 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct_list_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
+                            "PyObject": "PY_Cstruct_list",
+                            "PyTypeObject": "PY_Cstruct_list_Type",
+                            "array_size": "1",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_struct_numpy",
+                            "value_var": "SHValue_rv"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "get_global_struct_list",
                     "F_name_api": "get_global_struct_list",
                     "PY_name_impl": "PY_get_global_struct_list",
                     "function_name": "get_global_struct_list"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "PYN_descr": "PY_Cstruct_list_array_descr",
-                        "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
-                        "PyObject": "PY_Cstruct_list",
-                        "PyTypeObject": "PY_Cstruct_list_Type",
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "Cstruct_list",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt": "py_function_struct_numpy",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {

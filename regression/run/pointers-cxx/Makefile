@@ -10,14 +10,16 @@
 #
 include $(top)/regression/run/defaults.mk
 
+testdir = pointers-cxx
+TEST_FFLAGS = -DTEST_C_WRAPPER
+
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-cxx \
+    -I$(top)/regression/reference/$(testdir) \
     -I$(top)/regression/run/pointers
 
 VPATH = \
-    $(top)/regression/reference/pointers-cxx \
+    $(top)/regression/reference/$(testdir) \
     ../cxx \
-    $(top)/regression/run/pointers-cxx \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
@@ -30,7 +32,7 @@ F_OBJS = \
     fruit.o \
     wrapfpointers.o
 
-pointers-cxx : $(F_OBJS) $(C_OBJS)
+$(testdir) : $(F_OBJS) $(C_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 main.o : main.f fruit.o wrapfpointers.o
@@ -41,6 +43,6 @@ testc.o : testc.c wrappointers.h
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
 clean :
-	rm -f $(OBJS) *.mod pointers main.f pointers.cpp
+	rm -f $(C_OBJS) $(F_OBJS) *.mod $(testdir) testc
 
 main.o : wrapfpointers.o

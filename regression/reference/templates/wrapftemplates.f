@@ -104,7 +104,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void nested
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -140,7 +140,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
@@ -172,7 +172,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int v +value
         ! Attrs:     +intent(in)
@@ -218,7 +218,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_npts
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
@@ -250,7 +250,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void set_value
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  double v +value
         ! Attrs:     +intent(in)
@@ -297,7 +297,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -318,7 +318,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)

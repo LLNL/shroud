@@ -137,11 +137,11 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
-        ! Statement: f_inout_char_*
+        ! Statement: c_inout_char_*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
@@ -153,7 +153,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +api(buf)+intent(inout)
@@ -169,7 +169,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine YYY_TES_function1() &
                 bind(C, name="YYY_TES_function1")
             implicit none
@@ -178,7 +178,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function2
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine f_c_name_special() &
                 bind(C, name="c_name_special")
             implicit none
@@ -187,7 +187,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function3a
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
@@ -202,7 +202,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function3a
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  long i +value
         ! Attrs:     +intent(in)
@@ -217,11 +217,11 @@ module top_module
         ! ----------------------------------------
         ! Function:  int function4
         ! Attrs:     +intent(function)
-        ! Statement: f_function_native_scalar
+        ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
-        ! Statement: f_in_string_&
+        ! Statement: c_in_string_&
         function YYY_TES_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -253,7 +253,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void function5 +name(fiveplus)
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         subroutine YYY_TES_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
             implicit none
@@ -262,15 +262,15 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +intent(inout)
-        ! Statement: f_inout_string_&
+        ! Statement: c_inout_string_&
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: c_out_native_*
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -283,7 +283,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +api(buf)+intent(inout)
@@ -306,7 +306,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -327,7 +327,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void FunctionTU
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
@@ -378,7 +378,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void external_funcs
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  const char * rdbase
         ! Attrs:     +intent(in)

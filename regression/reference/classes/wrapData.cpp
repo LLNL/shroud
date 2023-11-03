@@ -24,11 +24,11 @@ extern "C" {
 // ----------------------------------------
 // Function:  void allocate
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {
@@ -42,7 +42,7 @@ void CLA_Data_allocate(CLA_Data * self, int n)
 // ----------------------------------------
 // Function:  void free
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // start CLA_Data_free
 void CLA_Data_free(CLA_Data * self)
 {
@@ -56,7 +56,7 @@ void CLA_Data_free(CLA_Data * self)
 // ----------------------------------------
 // Function:  Data
 // Attrs:     +api(capptr)+intent(ctor)
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_scalar_capptr
 // start CLA_Data_ctor
 CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 {
@@ -72,7 +72,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 // ----------------------------------------
 // Function:  ~Data
 // Attrs:     +intent(dtor)
-// Statement: f_dtor
+// Statement: c_dtor
 // start CLA_Data_dtor
 void CLA_Data_dtor(CLA_Data * self)
 {

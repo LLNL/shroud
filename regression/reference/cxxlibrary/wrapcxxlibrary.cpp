@@ -43,7 +43,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 bool CXX_defaultPtrIsNULL_0(void)
 {
     // splicer begin function.defaultPtrIsNULL_0
@@ -55,11 +55,11 @@ bool CXX_defaultPtrIsNULL_0(void)
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
 // Attrs:     +intent(function)
-// Statement: f_function_bool_scalar
+// Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
-// Statement: f_in_native_*
+// Statement: c_in_native_*
 bool CXX_defaultPtrIsNULL_1(double * data)
 {
     // splicer begin function.defaultPtrIsNULL_1
@@ -72,19 +72,19 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.defaultArgsInOut_0
@@ -95,23 +95,23 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // ----------------------------------------
 // Function:  void defaultArgsInOut
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Statement: f_out_native_*
+// Statement: c_out_native_*
 // ----------------------------------------
 // Argument:  bool flag=false +value
 // Attrs:     +intent(in)
-// Statement: f_in_bool_scalar
+// Statement: c_in_bool_scalar
 void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
     // splicer begin function.defaultArgsInOut_1
@@ -126,11 +126,11 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // ----------------------------------------
 // Function:  const std::string & getGroupName +len(30)
 // Attrs:     +deref(copy)+intent(function)
-// Statement: f_function_string_&_copy
+// Statement: c_function_string_&
 // ----------------------------------------
 // Argument:  long idx +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.getGroupName

@@ -1483,10 +1483,6 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const std::string & getName(void) const", s)
 
-        r.result_as_arg("output")
-        s = r.gen_decl()
-        self.assertEqual("void getName(const std::string & output) const", s)
-
     def test_copy01(self):
         """Test copy"""
         symtab = declast.SymbolTable()

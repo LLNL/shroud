@@ -147,11 +147,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  int check_length
         ! Attrs:     +intent(function)
-        ! Statement: f_function_native_scalar
+        ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int length=1 +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         function c_class1_check_length_1(self, length) &
                 result(SHT_rv) &
                 bind(C, name="CXX_Class1_check_length_1")
@@ -184,15 +184,15 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  Class1 * declare
         ! Attrs:     +api(this)+intent(function)
-        ! Statement: f_function_shadow_*_this
+        ! Statement: c_function_shadow_*_this
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int length=1 +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         subroutine c_class1_declare_1(self, flag, length) &
                 bind(C, name="CXX_Class1_declare_1")
             use iso_c_binding, only : C_INT
@@ -252,7 +252,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -277,7 +277,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void defaultArgsInOut
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1 +value
         ! Attrs:     +intent(in)
@@ -307,11 +307,11 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  const std::string & getGroupName +len(30)
         ! Attrs:     +deref(copy)+intent(function)
-        ! Statement: f_function_string_&_copy
+        ! Statement: c_function_string_&
         ! ----------------------------------------
         ! Argument:  long idx +value
         ! Attrs:     +intent(in)
-        ! Statement: f_in_native_scalar
+        ! Statement: c_in_native_scalar
         function c_get_group_name(idx) &
                 result(SHT_rv) &
                 bind(C, name="CXX_getGroupName")
@@ -380,7 +380,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void nested_set_parent
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
         ! Attrs:     +intent(inout)
@@ -418,7 +418,7 @@ module cxxlibrary_mod
         ! ----------------------------------------
         ! Function:  void nested_set_child
         ! Attrs:     +intent(setter)
-        ! Statement: f_setter_void_scalar
+        ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
         ! Attrs:     +intent(inout)

@@ -461,7 +461,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
-        fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt_func))
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or declarator.is_pointer():

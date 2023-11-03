@@ -161,9 +161,13 @@ const int * POI_returnIntPtrToFixedConstArray(void);
 
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-int POI_returnIntScalar(void);
+int * POI_returnIntScalar(void);
+
+int POI_returnIntScalar_extrawrapper(void);
 
 int * POI_returnIntRaw(void);
+
+int * POI_returnIntRaw_extrawrapper(void);
 
 int * POI_returnIntRawWithArgs(const char * name);
 

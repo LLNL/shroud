@@ -43,7 +43,7 @@ module library_three_mod
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
-        ! Statement: f_subroutine_void_scalar
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +value
         ! Attrs:     +intent(in)

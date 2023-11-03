@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  void method1
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void PRE_User1_method1(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -36,7 +36,7 @@ void PRE_User1_method1(PRE_User1 * self)
 // ----------------------------------------
 // Function:  void method2
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void PRE_User1_method2(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -51,7 +51,7 @@ void PRE_User1_method2(PRE_User1 * self)
 // ----------------------------------------
 // Function:  void method3def
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 void PRE_User1_method3def_0(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -65,11 +65,11 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // ----------------------------------------
 // Function:  void method3def
 // Attrs:     +intent(subroutine)
-// Statement: f_subroutine
+// Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=0 +value
 // Attrs:     +intent(in)
-// Statement: f_in_native_scalar
+// Statement: c_in_native_scalar
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
