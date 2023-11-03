@@ -6,12 +6,12 @@
 #
 # #######################################################################
 #
-# run/pointers-c
+# run/pointers-c-f
+# Fortran wrappers only for a C library
 #
 include $(top)/regression/run/defaults.mk
 
-testdir = pointers-c
-TEST_FFLAGS = -DTEST_C_WRAPPER
+testdir = pointers-c-f
 
 INCLUDE = \
     -I$(top)/regression/reference/$(testdir) \

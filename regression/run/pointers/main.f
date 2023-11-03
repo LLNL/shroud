@@ -26,6 +26,9 @@ program tester
   call test_out_alloc
   call test_nested_ptrs
   call test_dimension
+#ifdef TEST_C_WRAPPER
+  call test_c_wrapper
+#endif
 
   call fruit_summary
   call fruit_finalize
@@ -132,8 +135,6 @@ contains
          "cat       ", &
          "monkey    "  &
          ]
-    character(10), target :: word1, word2, word3
-    type(C_PTR)  cin(4)
 
     call set_case_name("test_char_arrays")
 
@@ -142,22 +143,10 @@ contains
     nchar = accept_char_array_in(in)
     call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
 
-    ! Build up a native char ** variable and pass to C.
-    ! Caller is responsibile for explicilty NULL terminating.
-    word1 = "word1" // C_NULL_CHAR
-    word2 = "word2+" // C_NULL_CHAR
-    word3 = "word3long" // C_NULL_CHAR
-    cin(1) = c_loc(word1)
-    cin(2) = c_loc(word2)
-    cin(3) = c_loc(word3)
-    cin(4) = C_NULL_PTR
-    nchar = c_accept_char_array_in(cin)
-    call assert_equals(5, nchar, "acceptCharArrayIn") ! 5 = len(word1) - trailing NULL
-    
   end subroutine test_char_arrays
 
   subroutine test_out_ptrs
-    integer(C_INT) :: ivalue, narray
+    integer(C_INT) :: ivalue
     integer(C_INT), target :: ivalue1, ivalue2
     integer(C_INT), pointer :: iscalar, irvscalar
     integer(C_INT), pointer :: iarray(:)
@@ -201,12 +190,6 @@ contains
     call get_ptr_to_dynamic_array(iarray)
     call assert_true(associated(iarray))
     call assert_true(size(iarray) == 10)
-
-    ! Call C version directly.
-    cptr_array = C_NULL_PTR
-    call c_get_ptr_to_dynamic_array(cptr_array, narray)
-    call assert_true(c_associated(cptr_array))
-    call assert_true(narray == 10)
 
     ! Returns global_array in pointers.c.
     ! iarray is used later for deref(raw) tests. Do not reset.
@@ -520,5 +503,36 @@ contains
     call dimension_in(arg2)
 
   end subroutine test_dimension
-  
+
+#ifdef TEST_C_WRAPPER
+  ! Calling C only wrappers from Fortran via an interface
+  subroutine test_c_wrapper
+    integer nchar
+    character(10), target :: word1, word2, word3
+    type(C_PTR)  cin(4)
+    integer(C_INT) :: narray
+    type(C_PTR) :: cptr_array
+
+    call set_case_name("test_c_wrapper")
+
+    ! Call C version directly.
+    cptr_array = C_NULL_PTR
+    call c_get_ptr_to_dynamic_array(cptr_array, narray)
+    call assert_true(c_associated(cptr_array), "GetPtrToDynamicArray associated")
+    call assert_true(narray == 10, "GetPtrToDynamicArray narray")
+
+    ! Build up a native char ** variable and pass to C.
+    ! Caller is responsibile for explicilty NULL terminating.
+    word1 = "word1" // C_NULL_CHAR
+    word2 = "word2+" // C_NULL_CHAR
+    word3 = "word3long" // C_NULL_CHAR
+    cin(1) = c_loc(word1)
+    cin(2) = c_loc(word2)
+    cin(3) = c_loc(word3)
+    cin(4) = C_NULL_PTR
+    nchar = c_accept_char_array_in(cin)
+    call assert_equals(5, nchar, "acceptCharArrayIn") ! 5 = len(word1) - trailing NULL
+  end subroutine test_c_wrapper
+#endif
+
 end program tester

@@ -90,7 +90,7 @@ module pointers_mod
     ! start intargs_in
     interface
         subroutine intargs_in(arg) &
-                bind(C, name="POI_intargs_in")
+                bind(C, name="intargs_in")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg
@@ -109,7 +109,7 @@ module pointers_mod
     ! start intargs_inout
     interface
         subroutine intargs_inout(arg) &
-                bind(C, name="POI_intargs_inout")
+                bind(C, name="intargs_inout")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: arg
@@ -128,7 +128,7 @@ module pointers_mod
     ! start intargs_out
     interface
         subroutine intargs_out(arg) &
-                bind(C, name="POI_intargs_out")
+                bind(C, name="intargs_out")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: arg
@@ -155,7 +155,7 @@ module pointers_mod
     ! start intargs
     interface
         subroutine intargs(argin, arginout, argout) &
-                bind(C, name="POI_intargs")
+                bind(C, name="intargs")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: argin
@@ -184,7 +184,7 @@ module pointers_mod
     ! start c_cos_doubles
     interface
         subroutine c_cos_doubles(in, out, sizein) &
-                bind(C, name="POI_cos_doubles")
+                bind(C, name="cos_doubles")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(*)
@@ -213,7 +213,7 @@ module pointers_mod
     ! start c_truncate_to_int
     interface
         subroutine c_truncate_to_int(in, out, sizein) &
-                bind(C, name="POI_truncate_to_int")
+                bind(C, name="truncate_to_int")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(*)
@@ -238,7 +238,7 @@ module pointers_mod
     ! start get_values
     interface
         subroutine get_values(nvalues, values) &
-                bind(C, name="POI_get_values")
+                bind(C, name="get_values")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: nvalues
@@ -262,7 +262,7 @@ module pointers_mod
     ! start get_values2
     interface
         subroutine get_values2(arg1, arg2) &
-                bind(C, name="POI_get_values2")
+                bind(C, name="get_values2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: arg1(*)
@@ -286,7 +286,7 @@ module pointers_mod
     ! start iota_dimension
     interface
         subroutine iota_dimension(nvar, values) &
-                bind(C, name="POI_iota_dimension")
+                bind(C, name="iota_dimension")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: nvar
@@ -314,7 +314,7 @@ module pointers_mod
     ! start c_sum
     interface
         subroutine c_sum(len, values, result) &
-                bind(C, name="POI_Sum")
+                bind(C, name="Sum")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
@@ -335,7 +335,7 @@ module pointers_mod
     ! start fill_int_array
     interface
         subroutine fill_int_array(out) &
-                bind(C, name="POI_fillIntArray")
+                bind(C, name="fillIntArray")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: out(*)
@@ -358,7 +358,7 @@ module pointers_mod
     ! start c_increment_int_array
     interface
         subroutine c_increment_int_array(array, sizein) &
-                bind(C, name="POI_incrementIntArray")
+                bind(C, name="incrementIntArray")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: array(*)
@@ -382,7 +382,7 @@ module pointers_mod
     ! start c_fill_with_zeros
     interface
         subroutine c_fill_with_zeros(x, x_length) &
-                bind(C, name="POI_fill_with_zeros")
+                bind(C, name="fill_with_zeros")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(INOUT) :: x(*)
@@ -407,7 +407,7 @@ module pointers_mod
     interface
         function c_accumulate(arr, len) &
                 result(SHT_rv) &
-                bind(C, name="POI_accumulate")
+                bind(C, name="accumulate")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
             integer(C_INT), intent(IN) :: arr(*)
@@ -453,7 +453,7 @@ module pointers_mod
     ! start set_global_int
     interface
         subroutine set_global_int(value) &
-                bind(C, name="POI_setGlobalInt")
+                bind(C, name="setGlobalInt")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: value
@@ -469,7 +469,7 @@ module pointers_mod
     interface
         function sum_fixed_array() &
                 result(SHT_rv) &
-                bind(C, name="POI_sumFixedArray")
+                bind(C, name="sumFixedArray")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -630,7 +630,7 @@ module pointers_mod
     ! start get_raw_ptr_to_scalar
     interface
         subroutine get_raw_ptr_to_scalar(nitems) &
-                bind(C, name="POI_getRawPtrToScalar")
+                bind(C, name="getRawPtrToScalar")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
@@ -649,7 +649,7 @@ module pointers_mod
     ! start c_get_raw_ptr_to_scalar_force
     interface
         subroutine c_get_raw_ptr_to_scalar_force(nitems) &
-                bind(C, name="POI_getRawPtrToScalarForce")
+                bind(C, name="getRawPtrToScalarForce")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
@@ -668,7 +668,7 @@ module pointers_mod
     ! start get_raw_ptr_to_fixed_array
     interface
         subroutine get_raw_ptr_to_fixed_array(count) &
-                bind(C, name="POI_getRawPtrToFixedArray")
+                bind(C, name="getRawPtrToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
@@ -687,7 +687,7 @@ module pointers_mod
     ! start c_get_raw_ptr_to_fixed_array_force
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force(count) &
-                bind(C, name="POI_getRawPtrToFixedArrayForce")
+                bind(C, name="getRawPtrToFixedArrayForce")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
@@ -706,7 +706,7 @@ module pointers_mod
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
-                bind(C, name="POI_getRawPtrToInt2d")
+                bind(C, name="getRawPtrToInt2d")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: arg
@@ -726,7 +726,7 @@ module pointers_mod
     interface
         function check_int2d(arg) &
                 result(SHT_rv) &
-                bind(C, name="POI_checkInt2d")
+                bind(C, name="checkInt2d")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(IN), value :: arg
@@ -746,7 +746,7 @@ module pointers_mod
     ! start c_dimension_in
     interface
         subroutine c_dimension_in(arg) &
-                bind(C, name="POI_DimensionIn")
+                bind(C, name="DimensionIn")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg(*)
@@ -788,7 +788,7 @@ module pointers_mod
     interface
         function return_address1(flag) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnAddress1")
+                bind(C, name="returnAddress1")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
@@ -809,7 +809,7 @@ module pointers_mod
     interface
         function c_return_address2(flag) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnAddress2")
+                bind(C, name="returnAddress2")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
@@ -829,7 +829,7 @@ module pointers_mod
     ! start fetch_void_ptr
     interface
         subroutine fetch_void_ptr(addr) &
-                bind(C, name="POI_fetchVoidPtr")
+                bind(C, name="fetchVoidPtr")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: addr
@@ -848,7 +848,7 @@ module pointers_mod
     ! start c_update_void_ptr
     interface
         subroutine c_update_void_ptr(addr) &
-                bind(C, name="POI_updateVoidPtr")
+                bind(C, name="updateVoidPtr")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(INOUT) :: addr
@@ -868,7 +868,7 @@ module pointers_mod
     interface
         function c_void_ptr_array(addr) &
                 result(SHT_rv) &
-                bind(C, name="POI_VoidPtrArray")
+                bind(C, name="VoidPtrArray")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(IN) :: addr(*)
@@ -885,7 +885,7 @@ module pointers_mod
     interface
         function c_return_int_ptr_to_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToScalar")
+                bind(C, name="returnIntPtrToScalar")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -918,7 +918,7 @@ module pointers_mod
     interface
         function c_return_int_ptr_to_const_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToConstScalar")
+                bind(C, name="returnIntPtrToConstScalar")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -951,7 +951,7 @@ module pointers_mod
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar")
+                bind(C, name="POI_returnIntScalar_extrawrapper")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -967,7 +967,7 @@ module pointers_mod
     interface
         function return_int_raw() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRaw")
+                bind(C, name="returnIntRaw")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -987,7 +987,7 @@ module pointers_mod
     interface
         function c_return_int_raw_with_args(name) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRawWithArgs")
+                bind(C, name="returnIntRawWithArgs")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -1004,7 +1004,7 @@ module pointers_mod
     interface
         function c_return_raw_ptr_to_int2d() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnRawPtrToInt2d")
+                bind(C, name="returnRawPtrToInt2d")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -2034,7 +2034,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_scalar
-        SHT_rv = c_return_int_scalar()
+        SHT_rv = c_return_int_scalar_extrawrapper()
         ! splicer end function.return_int_scalar
     end function return_int_scalar
     ! end return_int_scalar

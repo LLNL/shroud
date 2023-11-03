@@ -6,12 +6,12 @@
 #
 # #######################################################################
 #
-# run/pointers-c
+# run/pointers-cxx-f
+# Fortran wrappers only for a C++ library
 #
 include $(top)/regression/run/defaults.mk
 
-testdir = pointers-c
-TEST_FFLAGS = -DTEST_C_WRAPPER
+testdir = pointers-cxx-f
 
 INCLUDE = \
     -I$(top)/regression/reference/$(testdir) \
@@ -19,21 +19,27 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/$(testdir) \
+    ../cxx \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
-    main.o \
-    fruit.o \
-    wrapfpointers.o \
+C_OBJS = \
     pointers.o \
     wrappointers.o \
     utilpointers.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfpointers.o
 
-$(testdir) : $(OBJS)
+$(testdir) : $(F_OBJS) $(C_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
-clean :
-	rm -f $(OBJS) *.mod $(testdir)
+main.o : main.f fruit.o wrapfpointers.o
+pointers.o : pointers.cpp pointers.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
-main.o : fruit.o wrapfpointers.o
+clean :
+	rm -f $(C_OBJS) $(F_OBJS) *.mod $(testdir) testc
+
+main.o : wrapfpointers.o

@@ -544,7 +544,7 @@ def main_with_args(args):
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.
         clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
-        if wrap.c:
+        if wrap.c or wrap.fortran:
             clibrary.wrap_library()
 
         if wrap.fortran:

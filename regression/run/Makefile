@@ -71,6 +71,8 @@ fortran-test-list-std = \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
+  test-fortran-pointers-c-f \
+  test-fortran-pointers-cxx-f \
   test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
