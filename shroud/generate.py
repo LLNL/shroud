@@ -858,18 +858,15 @@ class GenFunctions(object):
 
         api = None
         deref = None
+        value = None
         if sgroup in ["char", "string"]:
-            value = None
             deref = "allocatable"
         elif sgroup == "vector":
-            value = None
             deref = "pointer"
         elif sgroup == "struct":
-            value = None
             deref = "pointer"
             api = "cdesc"
         elif declarator.is_pointer():
-            value = None
             deref = "pointer"
 #            if meta["dimension"] is None:
 #                api = "fapi" 
