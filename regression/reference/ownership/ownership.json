@@ -137,7 +137,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
                                 }

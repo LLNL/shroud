@@ -938,7 +938,6 @@ class GenFunctions(object):
         meta.update(declarator.metaattrs)
         meta["intent"] = "setter"
         meta = metaattrs.fetch_arg_metaattrs(fcn, params[iarg], "f")
-        meta.update(declarator.metaattrs)
         meta["intent"] = "setter"
         fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"

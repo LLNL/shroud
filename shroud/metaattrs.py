@@ -88,9 +88,7 @@ class FillMeta(object):
         ast = node.ast
         declarator = ast.declarator
 
-        bind = node._bind.setdefault(wlang, {})
-        bind_result = bind.setdefault("+result", statements.BindArg())
-        r_meta = bind_result.meta = collections.defaultdict(lambda: None)
+        r_meta = fetch_func_metaattrs(node, wlang)
 
         self.set_func_intent(node, r_meta)
         if wlang == "c":
@@ -105,8 +103,7 @@ class FillMeta(object):
             declarator = arg.declarator
             arg_name = declarator.user_name
 
-            bind_arg = bind.setdefault(arg_name, statements.BindArg())
-            meta = bind_arg.meta = collections.defaultdict(lambda: None)
+            meta = fetch_arg_metaattrs(node, arg, wlang)
 
             self.set_arg_intent(node, arg, meta)
             if wlang == "c":
@@ -125,6 +122,7 @@ class FillMeta(object):
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
         if meta["intent"]:
+            # getter/setter
             return
         if declarator.is_ctor():
             meta["intent"] = "ctor"

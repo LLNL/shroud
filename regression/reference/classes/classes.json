@@ -2261,7 +2261,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
                                 }
@@ -2357,7 +2357,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
                                 }
@@ -2471,13 +2471,13 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -4650,7 +4650,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
                                 }
@@ -4764,13 +4764,13 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -5108,13 +5108,13 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
                                 }

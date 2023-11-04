@@ -2059,7 +2059,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
                                 }
@@ -4436,14 +4436,15 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "getter"
                             },
                             "stmt": "f_getter_struct_*_cdesc_pointer"
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
                         }
@@ -4609,7 +4610,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "stmt": "f_setter"
                         },
@@ -4621,7 +4622,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             },
                             "stmt": "f_setter_struct_*"
                         }
@@ -5086,7 +5087,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "stmt": "f_setter"
                         },
@@ -5098,7 +5099,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             },
                             "stmt": "f_setter_struct_**"
                         }
