@@ -35,7 +35,6 @@ PyObject *PY_init_ns_nswork(void);
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: py_function_string_&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
@@ -62,7 +61,6 @@ PY_LastFunctionCalled(
 
 // ----------------------------------------
 // Function:  void One
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_One__doc__[] =
 "documentation"

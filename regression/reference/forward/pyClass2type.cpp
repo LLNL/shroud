@@ -39,7 +39,6 @@ PY_Class2_tp_del (PY_Class2 *self)
 
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 static int
 PY_Class2_tp_init(
@@ -60,11 +59,9 @@ PY_Class2_tp_init(
 
 // ----------------------------------------
 // Function:  void func1
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: py_in_shadow_*
 static char PY_func1__doc__[] =
 "documentation"
@@ -96,11 +93,9 @@ PY_func1(
 
 // ----------------------------------------
 // Function:  void acceptClass3
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: py_in_shadow_*
 static char PY_acceptClass3__doc__[] =
 "documentation"

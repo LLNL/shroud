@@ -20,7 +20,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void AFunction
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void NAM_AFunction(void)
 {

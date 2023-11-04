@@ -19,7 +19,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void LIB_outer2_class0_method(LIB_outer2_class0 * self)
 {

@@ -913,8 +913,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmtlang = "fmt" + wlang
 
-        self.log.write("C {2} {0.declgen} {1}\n".format(
-            node, self.get_metaattrs(node.ast), wlang))
+        self.log.write("C {0} {1.declgen}\n".format(
+            wlang, node)) #, self.get_metaattrs(node.ast)
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs

@@ -33,11 +33,9 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  short short_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  short arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_short_func__doc__[] =
 "documentation"
@@ -71,11 +69,9 @@ PY_short_func(
 
 // ----------------------------------------
 // Function:  int int_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_int_func__doc__[] =
 "documentation"
@@ -109,11 +105,9 @@ PY_int_func(
 
 // ----------------------------------------
 // Function:  long long_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_long_func__doc__[] =
 "documentation"
@@ -147,11 +141,9 @@ PY_long_func(
 
 // ----------------------------------------
 // Function:  long long long_long_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long long arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_long_long_func__doc__[] =
 "documentation"
@@ -185,11 +177,9 @@ PY_long_long_func(
 
 // ----------------------------------------
 // Function:  short int short_int_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  short int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_short_int_func__doc__[] =
 "documentation"
@@ -223,11 +213,9 @@ PY_short_int_func(
 
 // ----------------------------------------
 // Function:  long int long_int_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_long_int_func__doc__[] =
 "documentation"
@@ -261,11 +249,9 @@ PY_long_int_func(
 
 // ----------------------------------------
 // Function:  long long int long_long_int_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long long int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_long_long_int_func__doc__[] =
 "documentation"
@@ -299,11 +285,9 @@ PY_long_long_int_func(
 
 // ----------------------------------------
 // Function:  unsigned unsigned_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_unsigned_func__doc__[] =
 "documentation"
@@ -337,11 +321,9 @@ PY_unsigned_func(
 
 // ----------------------------------------
 // Function:  unsigned short ushort_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned short arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_ushort_func__doc__[] =
 "documentation"
@@ -375,11 +357,9 @@ PY_ushort_func(
 
 // ----------------------------------------
 // Function:  unsigned int uint_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_uint_func__doc__[] =
 "documentation"
@@ -413,11 +393,9 @@ PY_uint_func(
 
 // ----------------------------------------
 // Function:  unsigned long ulong_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_ulong_func__doc__[] =
 "documentation"
@@ -451,11 +429,9 @@ PY_ulong_func(
 
 // ----------------------------------------
 // Function:  unsigned long long ulong_long_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long long arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_ulong_long_func__doc__[] =
 "documentation"
@@ -489,11 +465,9 @@ PY_ulong_long_func(
 
 // ----------------------------------------
 // Function:  unsigned long int ulong_int_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long int arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_ulong_int_func__doc__[] =
 "documentation"
@@ -527,11 +501,9 @@ PY_ulong_int_func(
 
 // ----------------------------------------
 // Function:  int8_t int8_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int8_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_int8_func__doc__[] =
 "documentation"
@@ -565,11 +537,9 @@ PY_int8_func(
 
 // ----------------------------------------
 // Function:  int16_t int16_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int16_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_int16_func__doc__[] =
 "documentation"
@@ -603,11 +573,9 @@ PY_int16_func(
 
 // ----------------------------------------
 // Function:  int32_t int32_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int32_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_int32_func__doc__[] =
 "documentation"
@@ -641,11 +609,9 @@ PY_int32_func(
 
 // ----------------------------------------
 // Function:  int64_t int64_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int64_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_int64_func__doc__[] =
 "documentation"
@@ -679,11 +645,9 @@ PY_int64_func(
 
 // ----------------------------------------
 // Function:  uint8_t uint8_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint8_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_uint8_func__doc__[] =
 "documentation"
@@ -717,11 +681,9 @@ PY_uint8_func(
 
 // ----------------------------------------
 // Function:  uint16_t uint16_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint16_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_uint16_func__doc__[] =
 "documentation"
@@ -755,11 +717,9 @@ PY_uint16_func(
 
 // ----------------------------------------
 // Function:  uint32_t uint32_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint32_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_uint32_func__doc__[] =
 "documentation"
@@ -793,11 +753,9 @@ PY_uint32_func(
 
 // ----------------------------------------
 // Function:  uint64_t uint64_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint64_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_uint64_func__doc__[] =
 "documentation"
@@ -831,11 +789,9 @@ PY_uint64_func(
 
 // ----------------------------------------
 // Function:  size_t size_func
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  size_t arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_size_func__doc__[] =
 "documentation"
@@ -869,11 +825,9 @@ PY_size_func(
 
 // ----------------------------------------
 // Function:  bool bool_func
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool arg +value
-// Attrs:     +intent(in)
 // Statement: py_in_bool_scalar
 static char PY_bool_func__doc__[] =
 "documentation"
@@ -916,11 +870,9 @@ fail:
 
 // ----------------------------------------
 // Function:  bool returnBoolAndOthers
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_native_*
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"

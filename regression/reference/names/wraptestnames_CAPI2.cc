@@ -20,7 +20,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Worker1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void TES_CAPItwo_Worker1(void)
 {

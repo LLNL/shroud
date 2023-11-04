@@ -19,7 +19,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void function1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void LIB_one_two_function1(void)
 {

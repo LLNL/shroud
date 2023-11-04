@@ -33,7 +33,6 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
@@ -53,15 +52,12 @@ PY_NoReturnNoArguments(
 
 // ----------------------------------------
 // Function:  double PassByValue
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_PassByValue__doc__[] =
 "documentation"
@@ -97,15 +93,12 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  void PassByReference
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * arg1 +intent(in)
-// Attrs:     +intent(in)
 // Statement: py_in_native_*
 // ----------------------------------------
 // Argument:  int * arg2 +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_native_*
 static char PY_PassByReference__doc__[] =
 "documentation"
@@ -140,11 +133,9 @@ PY_PassByReference(
 
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_PassByValueMacro__doc__[] =
 "documentation"
@@ -182,19 +173,15 @@ PY_PassByValueMacro(
 
 // ----------------------------------------
 // Function:  void checkBool
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const bool arg1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_bool_scalar
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_bool_*
 // ----------------------------------------
 // Argument:  bool * arg3 +intent(inout)
-// Attrs:     +intent(inout)
 // Statement: py_inout_bool_*
 static char PY_checkBool__doc__[] =
 "documentation"
@@ -251,15 +238,12 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
-// Attrs:     +deref(copy)+intent(function)
 // Statement: py_function_char_*
 // ----------------------------------------
 // Argument:  const char * arg1
-// Attrs:     +intent(in)
 // Statement: py_in_char_*
 // ----------------------------------------
 // Argument:  const char * arg2
-// Attrs:     +intent(in)
 // Statement: py_in_char_*
 static char PY_Function4a__doc__[] =
 "documentation"
@@ -295,11 +279,9 @@ PY_Function4a(
 
 // ----------------------------------------
 // Function:  void acceptName
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const char * name
-// Attrs:     +intent(in)
 // Statement: py_in_char_*
 static char PY_acceptName__doc__[] =
 "documentation"
@@ -328,11 +310,9 @@ PY_acceptName(
 
 // ----------------------------------------
 // Function:  void passCharPtrInOut
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
-// Attrs:     +intent(inout)
 // Statement: py_inout_char_*
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
@@ -372,11 +352,9 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  void returnOneName
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_char_*_charlen
 static char PY_returnOneName__doc__[] =
 "documentation"
@@ -410,15 +388,12 @@ PY_returnOneName(
 
 // ----------------------------------------
 // Function:  void returnTwoNames
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_char_*_charlen
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_char_*_charlen
 static char PY_returnTwoNames__doc__[] =
 "documentation"
@@ -453,11 +428,9 @@ PY_returnTwoNames(
 
 // ----------------------------------------
 // Function:  void ImpliedTextLen
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_char_*_charlen
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
@@ -495,11 +468,9 @@ PY_ImpliedTextLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLen
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text
-// Attrs:     +intent(in)
 // Statement: py_in_char_*
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
@@ -551,11 +522,9 @@ PY_ImpliedLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLenTrim
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text
-// Attrs:     +intent(in)
 // Statement: py_in_char_*
 // ----------------------------------------
 // Argument:  int ltext +implied(len_trim(text))+value
@@ -607,7 +576,6 @@ PY_ImpliedLenTrim(
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolTrue
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool flag +implied(true)+value
@@ -649,7 +617,6 @@ fail:
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolFalse
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool flag +implied(false)+value

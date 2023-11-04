@@ -22,11 +22,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  int convert_to_int
-// Attrs:     +intent(function)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in +value
-// Attrs:     +intent(in)
 // Statement: c_in_native_scalar
 int ENU_convert_to_int(int in)
 {

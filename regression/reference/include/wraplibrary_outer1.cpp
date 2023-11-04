@@ -18,7 +18,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void outer_func
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void LIB_outer1_outer_func(void)
 {

@@ -24,7 +24,6 @@ module worker_names
 
         ! ----------------------------------------
         ! Function:  void AFunction
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine a_function() &
                 bind(C, name="NAM_AFunction")
@@ -41,7 +40,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void AFunction
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine a_function()
         ! splicer begin function.a_function

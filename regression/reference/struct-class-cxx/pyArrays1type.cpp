@@ -49,15 +49,12 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 
 // ----------------------------------------
 // Function:  Arrays1 +name(Arrays1_ctor)
-// Attrs:     +intent(ctor)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char name[20]
-// Attrs:     +intent(in)
 // Statement: py_ctor_char_[]_numpy
 // ----------------------------------------
 // Argument:  int count[10]
-// Attrs:     +intent(in)
 // Statement: py_ctor_native_[]_numpy
 static int
 PY_Arrays1_tp_init(

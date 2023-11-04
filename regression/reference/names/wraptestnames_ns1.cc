@@ -20,7 +20,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void init_ns1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void TES_ns1_init_ns1(void)
 {

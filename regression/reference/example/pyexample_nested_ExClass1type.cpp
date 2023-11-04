@@ -55,7 +55,6 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 static int
 PP_ExClass1_tp_init_0(
@@ -76,11 +75,9 @@ PP_ExClass1_tp_init_0(
 
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name
-// Attrs:     +intent(in)
 // Statement: py_in_string_*
 /**
  * \brief constructor
@@ -121,11 +118,9 @@ PP_ExClass1_tp_init_1(
 
 // ----------------------------------------
 // Function:  int incrementCount
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PP_incrementCount__doc__[] =
 "documentation"
@@ -159,7 +154,6 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: py_function_string_&
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
@@ -186,7 +180,6 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Attrs:     +intent(function)
 // Statement: py_function_string_&
 static char PP_getNameArg__doc__[] =
 "documentation"
@@ -213,11 +206,9 @@ PP_getNameArg(
 
 // ----------------------------------------
 // Function:  int getValue
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int value +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static PyObject *
 PP_getValue_from_int(
@@ -247,11 +238,9 @@ PP_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long value +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static PyObject *
 PP_getValue_1(
@@ -281,11 +270,9 @@ PP_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in +value
-// Attrs:     +intent(in)
 // Statement: py_in_bool_scalar
 static char PP_hasAddr__doc__[] =
 "documentation"
@@ -328,7 +315,6 @@ fail:
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PP_SplicerSpecial__doc__[] =
 "documentation"

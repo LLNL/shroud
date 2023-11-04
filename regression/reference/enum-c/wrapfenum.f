@@ -40,11 +40,9 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  int convert_to_int
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
@@ -65,11 +63,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int convert_to_int
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function convert_to_int(in) &
             result(SHT_rv)

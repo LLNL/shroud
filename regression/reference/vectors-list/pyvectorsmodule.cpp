@@ -135,11 +135,9 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
-// Attrs:     +intent(in)
 // Statement: py_in_vector_list
 static char PY_vector_sum__doc__[] =
 "documentation"
@@ -185,11 +183,9 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Attrs:     +intent(out)
 // Statement: py_out_vector_list
 static char PY_vector_iota_out__doc__[] =
 "documentation"
@@ -227,11 +223,9 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out_d
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
-// Attrs:     +intent(out)
 // Statement: py_out_vector_list
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
@@ -269,11 +263,9 @@ fail:
 
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: py_function_vector_list_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
@@ -317,11 +309,9 @@ fail:
 
 // ----------------------------------------
 // Function:  int returnDim2
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
-// Attrs:     +intent(in)
 // Statement: py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value

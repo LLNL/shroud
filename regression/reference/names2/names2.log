@@ -1,11 +1,11 @@
 Read yaml names2.yaml
 Close names_types.yaml
-C c void AFunction(void)  +intent(subroutine)
-C f void AFunction(void)  +intent(subroutine)
+C c void AFunction(void)
+C f void AFunction(void)
 Close wrapNames.h
 Close wrapNames.cpp
-Fortran void AFunction(void)  +intent(subroutine)
-C-interface f void AFunction(void)  +intent(subroutine)
+Fortran void AFunction(void)
+C-interface f void AFunction(void)
 Close wrapfnames.f
 Close utilNames.cpp
 Close typesNames.h

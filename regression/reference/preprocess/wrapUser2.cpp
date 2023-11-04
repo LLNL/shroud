@@ -24,7 +24,6 @@ extern "C" {
 #ifdef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void PRE_User2_exfunc_0(PRE_User2 * self)
 {
@@ -38,11 +37,9 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 #ifndef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value
-// Attrs:     +intent(in)
 // Statement: c_in_native_scalar
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {

@@ -39,7 +39,6 @@ PY_Class1_tp_del (PY_Class1 *self)
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 static int
 PY_Class1_tp_init_default(
@@ -60,11 +59,9 @@ PY_Class1_tp_init_default(
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int flag +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static int
 PY_Class1_tp_init_flag(
@@ -94,7 +91,6 @@ PY_Class1_tp_init_flag(
 
 // ----------------------------------------
 // Function:  int Method1
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 static char PY_Method1__doc__[] =
 "documentation"
@@ -124,11 +120,9 @@ PY_Method1(
 
 // ----------------------------------------
 // Function:  bool equivalent
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
-// Attrs:     +intent(in)
 // Statement: py_in_shadow_&
 static char PY_equivalent__doc__[] =
 "documentation"
@@ -174,7 +168,6 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +api(capptr)+intent(function)
 // Statement: py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"
@@ -203,7 +196,6 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: py_function_string_&
 static char PY_getName__doc__[] =
 "documentation"
@@ -234,11 +226,9 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_directionFunc__doc__[] =
 "documentation"
