@@ -910,6 +910,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -1173,6 +1174,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -1435,6 +1437,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -1700,6 +1703,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -2106,6 +2110,7 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -2549,6 +2554,7 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -2994,6 +3000,7 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -3439,6 +3446,7 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },

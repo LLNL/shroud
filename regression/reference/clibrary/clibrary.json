@@ -1680,6 +1680,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -2197,6 +2198,7 @@
                         },
                         "s": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_buf"
@@ -2483,6 +2485,7 @@
                         },
                         "name1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -2857,12 +2860,14 @@
                         },
                         "name1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
                         },
                         "name2": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -3262,6 +3267,7 @@
                         },
                         "text": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -4924,6 +4930,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -5878,6 +5885,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -7256,6 +7264,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"

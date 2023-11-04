@@ -4400,6 +4400,7 @@
                         },
                         "names": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_**_cfi"
@@ -4939,6 +4940,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5216,6 +5218,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5576,6 +5579,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5894,6 +5898,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6163,6 +6168,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6436,6 +6442,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6792,6 +6799,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -9702,6 +9710,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -10116,6 +10125,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -10666,6 +10676,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -11023,6 +11034,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },

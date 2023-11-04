@@ -147,6 +147,7 @@ class FillMeta(object):
         declarator = ast.declarator
         attrs = declarator.attrs
         deref = attrs["deref"]
+        shared = ast.declarator.metaattrs
         mderef = None
         ntypemap = ast.typemap
         nindirect = declarator.is_indirect()
@@ -195,6 +196,44 @@ class FillMeta(object):
         elif deref:
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
+
+        # arg_to_buffer
+        fmt_func = node.fmtdict
+        need_buf_result   = None
+
+        result_is_ptr = ast.declarator.is_indirect()
+        result_as_arg = ""  # Only applies to string functions
+        # when the result is added as an argument to the Fortran api.
+
+        # Check if result needs to be an argument.
+        if meta["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif ntypemap.sgroup == "string":
+            if meta["deref"] in ["allocatable", "pointer"]:
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
+            result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.sgroup == "char" and result_is_ptr:
+            if meta["deref"] in ["allocatable", "pointer"]:
+                # Result default to "allocatable".
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
+            result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.base == "vector":
+            need_buf_result = "cdesc"
+        elif result_is_ptr:
+            if meta["deref"] in ["allocatable", "pointer"]:
+                if shared["dimension"]:
+                    # int *get_array() +deref(pointer)+dimension(10)
+                    need_buf_result = "cdesc"
+        if need_buf_result:
+            meta["api"] = need_buf_result
+        if result_as_arg:
+            meta["deref"] = "arg"
+            meta["api"] = "buf"
 
     def set_arg_deref(self, arg, meta):
         """Check deref attr and set default for variable.
@@ -248,7 +287,43 @@ class FillMeta(object):
                 meta["deref"] = "copy"
             else:
                 meta["deref"] = "pointer"
-    
+
+        # arg_to_buffer
+        has_buf_arg = None
+        if meta["api"]:
+            # API explicitly set by user.
+            pass
+        elif ntypemap.sgroup == "string":
+            if meta["deref"] in ["allocatable", "pointer", "copy"]:
+                has_buf_arg = "cdesc"
+                # XXX - this is not tested
+                # XXX - tested with string **arg+intent(out)+dimension(ndim)
+            else:
+                has_buf_arg = "buf"
+        elif ntypemap.sgroup == "char":
+            if arg.ftrim_char_in:
+                pass
+            elif declarator.is_indirect():
+                if meta["deref"] in ["allocatable", "pointer"]:
+                    has_buf_arg = "cdesc"
+                else:
+                    has_buf_arg = "buf"
+        elif ntypemap.sgroup == "vector":
+            if meta["intent"] == "in":
+                # Pass SIZE.
+                has_buf_arg = "buf"
+            else:
+                has_buf_arg = "cdesc"
+        elif (ntypemap.sgroup == "native" and
+              meta["intent"] == "out" and
+              meta["deref"] != "raw" and
+              declarator.get_indirect_stmt() in ["**", "*&"]):
+            # double **values +intent(out) +deref(pointer)
+            has_buf_arg = "cdesc"
+            #has_buf_arg = "buf" # XXX - for scalar?
+        if has_buf_arg:
+            meta["api"] = has_buf_arg
+
     def set_func_api(self, node, meta):
         """
         Based on other meta attrs: 

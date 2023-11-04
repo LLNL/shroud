@@ -660,6 +660,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -1287,6 +1288,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -1941,6 +1943,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },

@@ -778,12 +778,14 @@
                         },
                         "dest": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -1071,6 +1073,7 @@
                         },
                         "s": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_cfi"
@@ -1270,6 +1273,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -1479,6 +1483,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -1689,7 +1694,8 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "deref": "allocatable",
+                                "api": "buf",
+                                "deref": "arg",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_arg"
@@ -2011,6 +2017,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -2154,6 +2161,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2303,6 +2311,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -2455,7 +2464,8 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "deref": "allocatable",
+                                "api": "buf",
+                                "deref": "arg",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_arg"
@@ -2580,6 +2590,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2772,6 +2783,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2982,6 +2994,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -3193,7 +3206,8 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "deref": "allocatable",
+                                "api": "buf",
+                                "deref": "arg",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_arg"
@@ -3401,6 +3415,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -3586,6 +3601,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -3809,6 +3825,7 @@
                         "+result": {
                             "fstmts": "f",
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -4000,6 +4017,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4194,6 +4212,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4390,6 +4409,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4584,6 +4604,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -4837,6 +4858,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_cfi"
@@ -5092,6 +5114,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_&_cfi"
@@ -5345,6 +5368,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_cfi"
@@ -5595,6 +5619,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_*_cfi"
@@ -5844,6 +5869,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_cfi"
@@ -6100,6 +6126,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_cfi"
@@ -6422,6 +6449,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_cfi"
@@ -6783,6 +6811,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_cfi"
@@ -7076,6 +7105,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_scalar_cfi"
@@ -7526,6 +7556,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "copy",
                                 "intent": "out"
                             },
@@ -8641,6 +8672,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -8898,6 +8930,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
@@ -9509,12 +9542,14 @@
                         },
                         "dest": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -9882,12 +9917,14 @@
                         },
                         "dest": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -10256,6 +10293,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_cfi"
@@ -10566,6 +10604,7 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -11214,6 +11253,7 @@
                         },
                         "in": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"

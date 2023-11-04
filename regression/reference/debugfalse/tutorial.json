@@ -795,6 +795,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -802,12 +803,14 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
                         },
                         "arg2": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -1857,6 +1860,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -3581,6 +3585,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -3846,6 +3851,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -7523,6 +7529,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },

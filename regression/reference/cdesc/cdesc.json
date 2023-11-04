@@ -747,6 +747,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -1099,6 +1100,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -1985,6 +1987,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -2297,6 +2300,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"

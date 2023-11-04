@@ -2709,6 +2709,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -4357,6 +4358,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
@@ -6053,6 +6055,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -6526,6 +6529,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },

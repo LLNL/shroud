@@ -1429,6 +1429,7 @@
                                 },
                                 "name": {
                                     "meta": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_string_&_buf"
@@ -1891,6 +1892,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "function"
                                     },
@@ -2645,6 +2647,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "function"
                                     },
@@ -2835,6 +2838,7 @@
                                 },
                                 "val": {
                                     "meta": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "stmt": "f_setter_string_scalar_buf"
@@ -3250,6 +3254,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "function"
                                     },
@@ -4929,6 +4934,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -7425,6 +7431,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },

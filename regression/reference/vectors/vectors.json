@@ -155,6 +155,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_vector_&_buf_targ_native_scalar"
@@ -412,6 +413,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
@@ -708,6 +710,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
@@ -993,6 +996,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
@@ -1736,6 +1740,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
@@ -1977,6 +1982,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
@@ -2242,6 +2248,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_vector_&_buf_targ_native_*"
@@ -2525,6 +2532,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_vector_&_buf_targ_string_scalar"
@@ -2793,6 +2801,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
@@ -3592,6 +3601,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },

@@ -4021,6 +4021,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -4266,6 +4267,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "buf",
                                 "deref": "copy",
                                 "intent": "function"
                             },

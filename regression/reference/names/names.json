@@ -604,6 +604,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_buf"
@@ -1416,6 +1417,7 @@
                         },
                         "rv": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
@@ -1914,6 +1916,7 @@
                         },
                         "name": {
                             "meta": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_buf"

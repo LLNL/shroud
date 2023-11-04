@@ -482,6 +482,7 @@
                                                 },
                                                 "name": {
                                                     "meta": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
@@ -1108,6 +1109,7 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
+                                                        "api": "cdesc",
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
@@ -1359,7 +1361,8 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
-                                                        "deref": "allocatable",
+                                                        "api": "buf",
+                                                        "deref": "arg",
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_buf_arg"
@@ -2659,6 +2662,7 @@
                                                 },
                                                 "name": {
                                                     "meta": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
@@ -3027,6 +3031,7 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
+                                                        "api": "buf",
                                                         "deref": "copy",
                                                         "intent": "function"
                                                     },
@@ -3277,6 +3282,7 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
+                                                        "api": "cdesc",
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
@@ -3534,6 +3540,7 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
+                                                        "api": "cdesc",
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
@@ -3788,6 +3795,7 @@
                                             "f": {
                                                 "+result": {
                                                     "meta": {
+                                                        "api": "cdesc",
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
@@ -7460,6 +7468,7 @@
                                         },
                                         "name": {
                                             "meta": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
@@ -7915,6 +7924,7 @@
                                         },
                                         "name": {
                                             "meta": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
@@ -8305,6 +8315,7 @@
                                         },
                                         "name": {
                                             "meta": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
