@@ -4651,6 +4651,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr"
@@ -4659,6 +4660,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
@@ -4806,6 +4808,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr"
@@ -4826,6 +4829,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
@@ -5286,6 +5290,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr"
@@ -5312,6 +5317,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"

@@ -81,6 +81,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*_cdesc"
@@ -95,6 +96,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cdesc"
@@ -418,6 +420,7 @@
                         },
                         "value": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "in"
                             },
                             "stmt": "c_in_void_*_cdesc"
@@ -750,6 +753,7 @@
                         },
                         "value": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_cdesc"
@@ -1101,6 +1105,7 @@
                         },
                         "value": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_cdesc"

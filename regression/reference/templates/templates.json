@@ -523,6 +523,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -531,6 +532,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -1335,6 +1337,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -1343,6 +1346,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -2161,6 +2165,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_scalar_capptr_targ_native_scalar"
@@ -2169,6 +2174,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_scalar_capptr_targ_native_scalar"
@@ -3439,6 +3445,7 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "stmt": "c_ctor_shadow_scalar_capptr"
@@ -3447,6 +3454,7 @@
                                     "f": {
                                         "+result": {
                                             "meta": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "stmt": "f_ctor_shadow_scalar_capptr"
@@ -4291,6 +4299,7 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "stmt": "c_ctor_shadow_scalar_capptr"
@@ -4299,6 +4308,7 @@
                                     "f": {
                                         "+result": {
                                             "meta": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "stmt": "f_ctor_shadow_scalar_capptr"

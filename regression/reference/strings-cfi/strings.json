@@ -10722,6 +10722,7 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "stmt": "c_in_char_*_capi"
@@ -10742,6 +10743,7 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"
@@ -10997,6 +10999,7 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "stmt": "c_in_char_*_capi"
@@ -11195,6 +11198,7 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"

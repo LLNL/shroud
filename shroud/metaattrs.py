@@ -72,6 +72,7 @@ class FillMeta(object):
         r_meta = bind_result.meta = collections.defaultdict(lambda: None)
 
         self.set_func_intent(node, r_meta)
+        self.set_func_api(node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -83,6 +84,7 @@ class FillMeta(object):
             meta = bind_arg.meta = collections.defaultdict(lambda: None)
 
             self.set_arg_intent(node, arg, meta)
+            self.set_arg_api(arg, meta)
 
             
         # --- End loop over function parameters
@@ -122,3 +124,35 @@ class FillMeta(object):
         else:
             intent = intent.lower()
         meta["intent"] = intent
+
+    def set_func_api(self, node, meta):
+        """
+        Based on other meta attrs: 
+        """
+        # from check_fcn_attrs  (C and Fortran)
+        ast = node.ast
+        api = ast.declarator.attrs["api"]
+
+        if api:
+            # XXX - from check_common_attrs
+            meta["api"] = api
+        elif ast.typemap.sgroup == "shadow":
+            if node.return_this:
+                meta["api"] = "this"
+            elif node.options.C_shadow_result:
+                meta["api"] = "capptr"
+            else:
+                meta["api"] = "capsule"
+
+    def set_arg_api(self, arg, meta):
+        """
+        Based on other meta attrs: 
+        """
+        declarator = arg.declarator
+        api = declarator.attrs["api"]
+
+        # XXX - from check_common_attrs
+        if api:
+            meta["api"] = api
+        
+        

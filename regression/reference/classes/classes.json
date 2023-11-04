@@ -136,6 +136,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -144,6 +145,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -313,6 +315,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -327,6 +330,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -1040,6 +1044,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "this",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_shadow_*_this"
@@ -1048,6 +1053,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "this",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_*_this"
@@ -1204,6 +1210,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_shadow_*_capptr"
@@ -1409,6 +1416,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_*_capptr"
@@ -1582,6 +1590,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_shadow_*_capptr"
@@ -1590,6 +1599,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_*_capptr"
@@ -3397,6 +3407,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_shadow_&_capptr"
@@ -3405,6 +3416,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_&_capptr"
@@ -3598,6 +3610,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -3606,6 +3619,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -3958,6 +3972,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -3966,6 +3981,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -4396,6 +4412,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -4404,6 +4421,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
@@ -5955,6 +5973,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr"
@@ -5963,6 +5982,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
@@ -6079,6 +6099,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr"
@@ -6087,6 +6108,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
@@ -6226,6 +6248,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capsule",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capsule"
@@ -6234,6 +6257,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capsule",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capsule"
@@ -6348,6 +6372,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capsule",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capsule"
@@ -6356,6 +6381,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capsule",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capsule"
@@ -6467,6 +6493,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_&_capptr"
@@ -6475,6 +6502,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_&_capptr"
@@ -6588,6 +6616,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_&_capptr"
@@ -6596,6 +6625,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_&_capptr"
@@ -6745,6 +6775,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_scalar_capptr"
@@ -6759,6 +6790,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_scalar_capptr"

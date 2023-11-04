@@ -46,6 +46,7 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
@@ -54,6 +55,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"

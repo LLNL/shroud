@@ -3991,6 +3991,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr_library"
@@ -3999,6 +4000,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr_library"
@@ -4156,6 +4158,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "c_function_shadow_*_capptr_caller"
@@ -4170,6 +4173,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "capptr",
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr_caller"
