@@ -76,8 +76,11 @@ class FillMeta(object):
         r_meta = bind_result.meta = collections.defaultdict(lambda: None)
 
         self.set_func_intent(node, r_meta)
-        self.set_func_deref(node, r_meta)
-        self.set_func_api(node, r_meta)
+        if wlang == "c":
+            self.set_func_api(node, r_meta)
+        else:
+            self.set_func_deref(node, r_meta)
+            self.set_func_api(node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -89,8 +92,11 @@ class FillMeta(object):
             meta = bind_arg.meta = collections.defaultdict(lambda: None)
 
             self.set_arg_intent(node, arg, meta)
-            self.set_arg_deref(arg, meta)
-            self.set_arg_api(arg, meta)
+            if wlang == "c":
+                self.set_arg_api(arg, meta)
+            else:
+                self.set_arg_deref(arg, meta)
+                self.set_arg_api(arg, meta)
 
             
         # --- End loop over function parameters

@@ -3797,7 +3797,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -4093,7 +4092,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -4534,7 +4532,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"

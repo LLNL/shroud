@@ -60,7 +60,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_library"

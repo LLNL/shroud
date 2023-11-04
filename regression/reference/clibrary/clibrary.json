@@ -1423,7 +1423,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"

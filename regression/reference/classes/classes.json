@@ -1753,7 +1753,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "allocatable",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_string_&"
@@ -3113,7 +3112,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "allocatable",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_string_&"
@@ -7298,7 +7296,6 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"

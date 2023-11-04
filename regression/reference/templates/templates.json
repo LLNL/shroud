@@ -3989,7 +3989,6 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
-                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "c_function_native_&"
@@ -4845,7 +4844,6 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
-                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "c_function_native_&"

@@ -775,7 +775,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1037,7 +1036,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1301,7 +1299,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1565,7 +1562,6 @@
                             "c": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1873,7 +1869,6 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -2317,7 +2312,6 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
@@ -2762,7 +2756,6 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -3208,7 +3201,6 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
