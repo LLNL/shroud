@@ -62,17 +62,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }
@@ -203,17 +215,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }
@@ -370,17 +394,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -684,23 +720,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }

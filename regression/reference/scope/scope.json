@@ -659,9 +659,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_getter_native_*_cdesc_pointer"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_in_struct_*"
                         }
                     }
@@ -839,12 +845,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_setter"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_struct_*"
                         },
                         "val": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_setter_native_*"
                         }
                     }
@@ -1270,9 +1285,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_in_struct_*"
                                 }
                             }
@@ -1450,12 +1471,21 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_*"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_*"
                                 }
                             }
@@ -1908,9 +1938,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_in_struct_*"
                                 }
                             }
@@ -2088,12 +2124,21 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_*"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_*"
                                 }
                             }

@@ -66,11 +66,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                                 }
                                             }
@@ -247,9 +253,15 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                                 },
                                                 "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_string_*"
                                                 }
                                             }
@@ -459,9 +471,15 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                                 },
                                                 "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_string_*_buf"
                                                 }
                                             }
@@ -590,11 +608,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    },
                                                     "stmt": "c_dtor"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    },
                                                     "stmt": "f_dtor"
                                                 }
                                             }
@@ -689,17 +713,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 },
                                                 "incr": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 },
                                                 "incr": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -930,6 +966,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -1064,6 +1103,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             }
@@ -1177,6 +1219,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -1308,6 +1353,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_buf_arg"
                                                 }
                                             }
@@ -1418,17 +1466,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -1658,17 +1718,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -1894,17 +1966,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_bool_scalar"
                                                 },
                                                 "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_bool_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_bool_scalar"
                                                 },
                                                 "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_bool_scalar"
                                                 }
                                             }
@@ -2119,11 +2203,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 }
                                             }
@@ -2333,9 +2423,15 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                                 },
                                                 "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_string_*"
                                                 }
                                             }
@@ -2548,9 +2644,15 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    },
                                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                                 },
                                                 "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_string_*_buf"
                                                 }
                                             }
@@ -2677,11 +2779,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    },
                                                     "stmt": "c_dtor"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    },
                                                     "stmt": "f_dtor"
                                                 }
                                             }
@@ -2775,6 +2883,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -2907,6 +3018,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_buf_copy"
                                                 }
                                             }
@@ -3018,6 +3132,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -3150,6 +3267,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             }
@@ -3267,6 +3387,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -3400,6 +3523,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             }
@@ -3516,6 +3642,9 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_string_&"
                                                 }
                                             }
@@ -3647,6 +3776,9 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             }
@@ -3754,11 +3886,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 }
                                             }
@@ -3920,17 +4058,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_shadow_*_capptr"
                                                 },
                                                 "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_shadow_*"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_shadow_*_capptr"
                                                 },
                                                 "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_shadow_*"
                                                 }
                                             }
@@ -4181,17 +4331,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_shadow_*_this"
                                                 },
                                                 "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_shadow_*_this"
                                                 },
                                                 "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -4471,12 +4633,21 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_shadow_*_this"
                                                 },
                                                 "len": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 },
                                                 "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             }
@@ -4758,12 +4929,21 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_shadow_*_this"
                                                 },
                                                 "len": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 },
                                                 "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -4944,12 +5124,21 @@
                                         "zz_bind": {
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_shadow_*_this"
                                                 },
                                                 "len": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 },
                                                 "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -5077,11 +5266,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 }
                                             }
@@ -5160,11 +5355,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 }
                                             }
@@ -5479,17 +5680,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -5718,17 +5931,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -5954,17 +6179,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -6196,17 +6433,29 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "c_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "c_in_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    },
                                                     "stmt": "f_subroutine"
                                                 },
                                                 "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    },
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             }
@@ -6456,11 +6705,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 }
                                             }
@@ -6637,11 +6892,17 @@
                                         "zz_bind": {
                                             "c": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "c_function_native_scalar"
                                                 }
                                             },
                                             "f": {
                                                 "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    },
                                                     "stmt": "f_function_native_scalar"
                                                 }
                                             }
@@ -6843,11 +7104,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -6956,9 +7223,15 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "c_function_bool_scalar"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_string_&"
                                         }
                                     }
@@ -7161,9 +7434,15 @@
                                 "zz_bind": {
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "f_function_bool_scalar"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_string_&_buf"
                                         }
                                     }
@@ -7278,11 +7557,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "c_function_bool_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "f_function_bool_scalar"
                                         }
                                     }
@@ -7442,9 +7727,15 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_string_&"
                                         }
                                     }
@@ -7598,9 +7889,15 @@
                                 "zz_bind": {
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_string_&_buf"
                                         }
                                     }
@@ -7739,12 +8036,21 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "flag": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_string_&"
                                         }
                                     }
@@ -7967,12 +8273,21 @@
                                 "zz_bind": {
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "flag": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_string_&_buf"
                                         }
                                     }
@@ -8096,11 +8411,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -8189,17 +8510,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -8357,23 +8690,41 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "j": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "j": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -8599,11 +8950,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "c_function_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "f_function_native_scalar"
                                         }
                                     }
@@ -8754,17 +9111,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "comm": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_unknown_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "comm": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_unknown_scalar"
                                         }
                                     }
@@ -8925,11 +9294,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -9030,17 +9405,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_void_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_void_scalar"
                                         }
                                     }
@@ -9220,17 +9607,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_*"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_*"
                                         }
                                     }
@@ -9438,17 +9837,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -9656,17 +10067,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -9936,17 +10359,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_void_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_void_scalar"
                                         }
                                     }
@@ -10307,71 +10742,137 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "verylongname1": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname10": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname2": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname3": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname4": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname5": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname6": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname7": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname8": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         },
                                         "verylongname9": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "c_inout_native_*"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "verylongname1": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname10": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname2": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname3": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname4": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname5": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname6": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname7": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname8": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         },
                                         "verylongname9": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            },
                                             "stmt": "f_inout_native_*"
                                         }
                                     }
@@ -11362,71 +11863,137 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "c_function_native_scalar"
                                         },
                                         "verylongname1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname10": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname2": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname3": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname4": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname5": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname6": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname7": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname8": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         },
                                         "verylongname9": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            },
                                             "stmt": "f_function_native_scalar"
                                         },
                                         "verylongname1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname10": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname2": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname3": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname4": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname5": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname6": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname7": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname8": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         },
                                         "verylongname9": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -12376,29 +12943,53 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "in": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_*"
                                         },
                                         "out": {
+                                            "meta": {
+                                                "intent": "out"
+                                            },
                                             "stmt": "c_out_native_*"
                                         },
                                         "sizein": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "in": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_*"
                                         },
                                         "out": {
+                                            "meta": {
+                                                "intent": "out"
+                                            },
                                             "stmt": "f_out_native_*"
                                         },
                                         "sizein": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }

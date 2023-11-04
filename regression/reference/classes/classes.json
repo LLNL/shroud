@@ -135,11 +135,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             }
@@ -306,17 +312,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -533,11 +551,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    },
                                     "stmt": "c_dtor"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    },
                                     "stmt": "f_dtor"
                                 }
                             }
@@ -618,11 +642,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 }
                             }
@@ -782,17 +812,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_bool_scalar"
                                 },
                                 "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_shadow_&"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_bool_scalar"
                                 },
                                 "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_shadow_&"
                                 }
                             }
@@ -997,11 +1039,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_*_this"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_this"
                                 }
                             }
@@ -1155,12 +1203,21 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_*_capptr"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_bool_scalar"
                                 },
                                 "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_string_&"
                                 }
                             }
@@ -1351,12 +1408,21 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_capptr"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_bool_scalar"
                                 },
                                 "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_string_&_buf"
                                 }
                             }
@@ -1515,11 +1581,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_*_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_capptr"
                                 }
                             }
@@ -1670,6 +1742,9 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_string_&"
                                 }
                             }
@@ -1805,6 +1880,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                 }
                             }
@@ -1920,17 +1998,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -2157,6 +2247,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -2250,6 +2343,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -2361,9 +2457,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_scalar"
                                 }
                             }
@@ -2531,6 +2633,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_string_scalar_cdesc_allocatable"
                                 }
                             }
@@ -2711,9 +2816,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_string_scalar_buf"
                                 }
                             }
@@ -2988,6 +3099,9 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_string_&"
                                 }
                             }
@@ -3123,6 +3237,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                 }
                             }
@@ -3279,11 +3396,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_&_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_&_capptr"
                                 }
                             }
@@ -3474,11 +3597,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             }
@@ -3617,11 +3746,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 }
                             }
@@ -3822,11 +3957,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             }
@@ -4031,17 +4172,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 },
                                 "n": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 },
                                 "n": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -4155,11 +4308,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -4236,11 +4395,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             }
@@ -4346,11 +4511,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    },
                                     "stmt": "c_dtor"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    },
                                     "stmt": "f_dtor"
                                 }
                             }
@@ -4428,6 +4599,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -4539,9 +4713,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_scalar"
                                 }
                             }
@@ -4727,6 +4907,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
                                 }
                             }
@@ -4862,9 +5045,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_*"
                                 }
                             }
@@ -5105,17 +5294,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5353,17 +5554,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_shadow_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_shadow_scalar"
                         }
                     }
@@ -5520,17 +5733,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_shadow_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_shadow_*"
                         }
                     }
@@ -5729,11 +5954,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_*_capptr"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_*_capptr"
                         }
                     }
@@ -5847,11 +6078,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_*_capptr"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_*_capptr"
                         }
                     }
@@ -5988,11 +6225,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_*_capsule"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_*_capsule"
                         }
                     }
@@ -6104,11 +6347,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_*_capsule"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_*_capsule"
                         }
                     }
@@ -6217,11 +6466,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_&_capptr"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_&_capptr"
                         }
                     }
@@ -6332,11 +6587,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_&_capptr"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_&_capptr"
                         }
                     }
@@ -6483,17 +6744,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_shadow_scalar_capptr"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_shadow_scalar_capptr"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -6659,17 +6932,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -6819,11 +7104,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -6968,6 +7259,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -7094,6 +7388,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_copy"
                         }
                     }

@@ -45,11 +45,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -135,17 +141,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_scalar"
                         }
                     }
@@ -298,17 +316,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_scalar"
                         }
                     }
@@ -422,11 +452,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_scalar"
                         }
                     }
@@ -595,12 +631,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_char_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     }
@@ -805,12 +850,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_char_*_buf"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         }
                     }
@@ -961,9 +1015,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "s": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_char_*"
                         }
                     }
@@ -1101,9 +1161,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "s": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_char_*_buf"
                         }
                     }
@@ -1222,6 +1288,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_*"
                         }
                     }
@@ -1341,6 +1410,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_*_cdesc_allocatable"
                         }
                     }
@@ -1449,6 +1521,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_*"
                         }
                     }
@@ -1567,6 +1642,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_*_buf_copy"
                         }
                     }
@@ -1673,6 +1751,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_*"
                         }
                     }
@@ -1790,6 +1871,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_*_buf_arg"
                         }
                     }
@@ -1888,11 +1972,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_*_raw"
                         }
                     }
@@ -2016,6 +2106,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_*"
                         }
                     }
@@ -2119,6 +2212,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_*_cdesc_pointer"
                         }
                     }
@@ -2299,6 +2395,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_scalar_cdesc_allocatable"
                         }
                     }
@@ -2477,6 +2576,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_scalar_buf_copy"
                         }
                     }
@@ -2649,6 +2751,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_scalar_buf_arg"
                         }
                     }
@@ -2818,6 +2923,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_scalar_cdesc_allocatable"
                         }
                     }
@@ -2935,6 +3043,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -3056,6 +3167,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_cdesc_allocatable"
                         }
                     }
@@ -3169,6 +3283,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -3288,6 +3405,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_copy"
                         }
                     }
@@ -3394,6 +3514,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -3512,6 +3635,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_arg"
                         }
                     }
@@ -3615,6 +3741,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -3733,6 +3862,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_copy"
                         }
                     }
@@ -3839,6 +3971,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         }
                     }
@@ -3955,6 +4090,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_cdesc_allocatable"
                         }
                     }
@@ -4074,6 +4212,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*"
                         }
                     }
@@ -4200,6 +4341,9 @@
                     "f": {
                         "+result": {
                             "fstmts": "f",
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_buf_copy"
                         }
                     }
@@ -4309,6 +4453,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*_library"
                         }
                     }
@@ -4428,6 +4575,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
                     }
@@ -4546,6 +4696,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*_caller"
                         }
                     }
@@ -4668,6 +4821,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
                     }
@@ -4787,6 +4943,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*_caller"
                         }
                     }
@@ -4910,6 +5069,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
                     }
@@ -5025,6 +5187,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*_library"
                         }
                     }
@@ -5127,6 +5292,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_cdesc_pointer_library"
                         }
                     }
@@ -5244,9 +5412,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_&"
                         }
                     }
@@ -5380,9 +5554,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_string_&_buf"
                         }
                     }
@@ -5505,9 +5685,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_&"
                         }
                     }
@@ -5643,9 +5829,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_&_buf"
                         }
                     }
@@ -5768,9 +5960,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_string_&"
                         }
                     }
@@ -5906,9 +6104,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_string_&_buf"
                         }
                     }
@@ -6029,9 +6233,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_*"
                         }
                     }
@@ -6164,9 +6374,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_string_*_buf"
                         }
                     }
@@ -6286,9 +6502,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_string_*"
                         }
                     }
@@ -6421,9 +6643,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_string_*_buf"
                         }
                     }
@@ -6547,9 +6775,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_*"
                         }
                     }
@@ -6685,9 +6919,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_*_buf"
                         }
                     }
@@ -6829,12 +7069,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_string_*"
                         },
                         "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     }
@@ -7033,12 +7282,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_string_*_buf"
                         },
                         "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -7209,12 +7467,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_*"
                         },
                         "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     }
@@ -7415,12 +7682,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_*_buf"
                         },
                         "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -7563,9 +7839,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_scalar"
                         }
                     }
@@ -7730,9 +8012,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_string_scalar_buf"
                         }
                     }
@@ -8038,12 +8326,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_**"
                         }
                     }
@@ -8225,12 +8522,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*_hidden"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_**_cdesc_copy"
                         }
                     }
@@ -8427,12 +8733,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_**"
                         }
                     }
@@ -8618,12 +8933,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*_hidden"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_**_cdesc_allocatable"
                         }
                     }
@@ -8829,12 +9153,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_string_**"
                         }
                     }
@@ -9023,12 +9356,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*_hidden"
                         },
                         "strs": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_string_**_cdesc_allocatable"
                         }
                     }
@@ -9246,17 +9588,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         }
                     }
@@ -9418,9 +9772,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_char_*"
                         }
                     }
@@ -9538,9 +9898,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_char_*_buf"
                         }
                     }
@@ -9656,17 +10022,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "status": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_scalar"
                         }
                     }
@@ -9802,11 +10180,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_char_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_char_scalar"
                         }
                     }
@@ -9979,12 +10363,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_char_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     }
@@ -10156,12 +10549,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_char_*_buf"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*_buf"
                         }
                     }
@@ -10342,12 +10744,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_char_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     }
@@ -10515,12 +10926,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "dest": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_char_*_buf"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*_buf"
                         }
                     }
@@ -10698,12 +11118,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_*"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_string_&"
                         }
                     }
@@ -10910,12 +11339,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_string_&_buf"
                         }
                     }
@@ -11069,9 +11507,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     }
@@ -11208,9 +11652,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*_buf"
                         }
                     }
@@ -11377,23 +11827,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "addr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_void_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*_capi"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "addr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_void_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*_capi"
                         }
                     }
@@ -11629,23 +12097,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*_capi"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         },
                         "src": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*_capi"
                         }
                     }

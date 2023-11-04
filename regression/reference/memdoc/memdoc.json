@@ -59,6 +59,9 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_*_library"
                         }
                     }
@@ -159,6 +162,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
                     }

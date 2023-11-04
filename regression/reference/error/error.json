@@ -44,6 +44,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -155,9 +158,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_scalar"
                                 }
                             }
@@ -258,6 +267,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -369,9 +381,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_scalar"
                                 }
                             }
@@ -472,6 +490,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -583,9 +604,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_setter_native_scalar"
                                 }
                             }
@@ -844,12 +871,18 @@
                     "c": {
                         "+result": {
                             "fstmts": "c",
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
                             "fstmts": "f",
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -1032,9 +1065,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_native_*"
                         }
                     }
@@ -1171,9 +1210,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }
@@ -1295,9 +1340,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }
@@ -1421,9 +1472,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }

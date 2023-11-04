@@ -65,11 +65,13 @@ class FillMeta(object):
         func_cursor = cursor.push_node(node)
         #####
         ast = node.ast
+        declarator = ast.declarator
 
         bind = node._bind.setdefault(wlang, {})
         bind_result = bind.setdefault("+result", statements.BindArg())
         r_meta = bind_result.meta = collections.defaultdict(lambda: None)
-#        r_meta["test"] = "test"
+
+        self.set_func_intent(node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -79,11 +81,44 @@ class FillMeta(object):
 
             bind_arg = bind.setdefault(arg_name, statements.BindArg())
             meta = bind_arg.meta = collections.defaultdict(lambda: None)
-#            meta["test"] = "test"
+
+            self.set_arg_intent(node, arg, meta)
+
             
         # --- End loop over function parameters
         func_cursor.arg = None
 
         #####
         cursor.pop_node(node)
-        
+
+    def set_func_intent(self, node, meta):
+        declarator = node.ast.declarator
+        if declarator.is_ctor():
+            meta["intent"] = "ctor"
+        elif declarator.is_dtor():
+            meta["intent"] = "dtor"
+        else:
+            meta["intent"] = declarator.get_subprogram()
+
+    def set_arg_intent(self, node, arg, meta):
+        declarator = arg.declarator
+        intent = declarator.attrs["intent"]
+        if intent is None:
+            if node is None:
+                # do not default intent for function pointers
+                pass
+            elif declarator.is_function_pointer():
+                intent = "in"
+            elif not declarator.is_indirect():
+                intent = "in"
+            elif arg.const:
+                intent = "in"
+            elif arg.typemap.sgroup == "void":
+                # void *
+                intent = "in"  # XXX must coordinate with VALUE
+            else:
+                intent = "inout"
+            # XXX - Do hidden arguments need intent?
+        else:
+            intent = intent.lower()
+        meta["intent"] = intent
