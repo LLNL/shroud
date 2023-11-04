@@ -4787,6 +4787,22 @@
                     "wrapped_name": "child"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "nested_get_child",
                     "F_name_api": "nested_get_child",

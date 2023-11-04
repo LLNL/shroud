@@ -13,6 +13,9 @@ generate.VerifyAttrs will do some initial error checking and
 preprocessing on user supplied attributes that may apply to all
 wrappers. These are in declarator.metaattrs.
 
+add_var_getter_setter will set meta attributes for the 
+functions that it generates.
+
 This file sets some meta attributes based on language specific
 wrappings.
 
@@ -30,6 +33,20 @@ import collections
 
 from . import error
 from . import statements
+
+def fetch_func_metaattrs(node, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault("+result", statements.BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
+
+def fetch_arg_metaattrs(node, arg, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault(arg.declarator.user_name, statements.BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
 
 class FillMeta(object):
     """Loop over Nodes and fill meta attributes.
@@ -107,6 +124,8 @@ class FillMeta(object):
 
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
+        if meta["intent"]:
+            return
         if declarator.is_ctor():
             meta["intent"] = "ctor"
         elif declarator.is_dtor():
@@ -115,6 +134,8 @@ class FillMeta(object):
             meta["intent"] = declarator.get_subprogram()
 
     def set_arg_intent(self, node, arg, meta):
+        if meta["intent"]:
+            return
         declarator = arg.declarator
         intent = declarator.attrs["intent"]
         if intent is None:
@@ -142,6 +163,8 @@ class FillMeta(object):
         Function which return pointers or objects (std::string)
         set the deref meta attribute.
         """
+        if meta["deref"]:
+            return
         # check_deref_attr_func
         ast = node.ast
         declarator = ast.declarator
@@ -240,6 +263,8 @@ class FillMeta(object):
 
         Pointer variables set the default deref meta attribute.
         """
+        if meta["deref"]:
+            return
         # check_deref_attr_var
         # XXX - error via FortranGeneric
         declarator = arg.declarator

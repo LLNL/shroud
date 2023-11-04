@@ -571,6 +571,21 @@
                     "wrapped_name": "items"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "DataPointer_get_items",
                     "F_name_api": "data_pointer_get_items",
@@ -1198,6 +1213,21 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",
@@ -1853,6 +1883,21 @@
                             "wrapped_name": "items"
                         },
                         "wrap": {},
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "DataPointer_get_items",
                             "F_name_api": "data_pointer_get_items",

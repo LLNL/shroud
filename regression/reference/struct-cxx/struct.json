@@ -5959,6 +5959,21 @@
                     "wrapped_name": "ivalue"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_ivalue",
                     "F_name_api": "cstruct_list_get_ivalue",
@@ -6433,6 +6448,21 @@
                     "wrapped_name": "dvalue"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_list_get_dvalue",
                     "F_name_api": "cstruct_list_get_dvalue",
