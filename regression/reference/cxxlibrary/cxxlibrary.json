@@ -3791,6 +3791,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -4021,6 +4022,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
@@ -4265,6 +4267,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
@@ -4432,6 +4435,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_getter_struct_*_cdesc_pointer"

@@ -6346,6 +6346,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -6721,6 +6722,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"

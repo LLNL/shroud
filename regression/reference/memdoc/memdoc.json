@@ -60,6 +60,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_library"
@@ -163,6 +164,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"

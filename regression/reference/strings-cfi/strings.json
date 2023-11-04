@@ -1177,6 +1177,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"
@@ -1270,6 +1271,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_allocatable"
@@ -1375,6 +1377,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"
@@ -1478,6 +1481,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_copy"
@@ -1585,6 +1589,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"
@@ -1687,6 +1692,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_arg"
@@ -1787,6 +1793,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"
@@ -1795,6 +1802,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_raw"
@@ -1911,6 +1919,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char_*"
@@ -2007,6 +2016,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_pointer"
@@ -2149,6 +2159,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_allocatable"
@@ -2297,6 +2308,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_copy"
@@ -2448,6 +2460,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_arg"
@@ -2572,6 +2585,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_allocatable"
@@ -2669,6 +2683,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -2763,6 +2778,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_allocatable"
@@ -2868,6 +2884,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -2972,6 +2989,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_copy"
@@ -3079,6 +3097,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -3182,6 +3201,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_arg"
@@ -3286,6 +3306,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -3389,6 +3410,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_copy"
@@ -3484,6 +3506,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
@@ -3573,6 +3596,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_allocatable"
@@ -3684,6 +3708,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*"
@@ -3795,6 +3820,7 @@
                         "+result": {
                             "fstmts": "f",
                             "meta": {
+                                "deref": "copy",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_copy"
@@ -3893,6 +3919,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_library"
@@ -3985,6 +4012,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_library"
@@ -4083,6 +4111,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_caller"
@@ -4178,6 +4207,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
@@ -4277,6 +4307,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_caller"
@@ -4373,6 +4404,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
@@ -4471,6 +4503,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_library"
@@ -4566,6 +4599,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_pointer_library"
@@ -7320,6 +7354,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7507,6 +7542,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "copy",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_copy"
@@ -7701,6 +7737,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7889,6 +7926,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"
@@ -8084,6 +8122,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -8275,6 +8314,7 @@
                         },
                         "strs": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"

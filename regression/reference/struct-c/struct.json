@@ -3797,6 +3797,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -3817,6 +3818,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct_*_pointer"
@@ -4091,6 +4093,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -4337,6 +4340,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct_*_pointer"
@@ -4530,6 +4534,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -4538,6 +4543,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct_*_pointer"
@@ -5607,6 +5613,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_getter_native_*_pointer"
@@ -6049,6 +6056,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -6521,6 +6529,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"

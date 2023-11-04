@@ -237,7 +237,6 @@ class VerifyAttrs(object):
         node : FunctionNode
         ast : declast.Declaration
         """
-        options = node.options
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
@@ -245,8 +244,8 @@ class VerifyAttrs(object):
         mderef = None
         ntypemap = ast.typemap
         nindirect = declarator.is_indirect()
-        attrs = ast.declarator.attrs
         meta = ast.declarator.metaattrs
+
         if declarator.get_subprogram() == "subroutine":
             pass
         if ntypemap.sgroup == "void":
@@ -287,7 +286,7 @@ class VerifyAttrs(object):
             elif attrs["dimension"]:  # XXX - or rank?
                 mderef = "pointer"
             else:
-                mderef = options.return_scalar_pointer
+                mderef = node.options.return_scalar_pointer
         elif deref:
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef

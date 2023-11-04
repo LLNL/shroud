@@ -334,6 +334,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -420,6 +421,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -428,6 +430,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_scalar"
@@ -559,6 +562,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -567,6 +571,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
@@ -721,6 +726,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -877,6 +883,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1085,6 +1092,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1266,6 +1274,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1477,6 +1486,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -1660,6 +1670,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1866,6 +1877,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -2035,6 +2047,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2196,6 +2209,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2405,6 +2419,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2578,6 +2593,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2780,6 +2796,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2988,6 +3005,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"

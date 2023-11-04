@@ -3989,6 +3989,7 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
+                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "c_function_native_&"
@@ -4003,6 +4004,7 @@
                                     "f": {
                                         "+result": {
                                             "meta": {
+                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "f_function_native_&_pointer"
@@ -4843,6 +4845,7 @@
                                     "c": {
                                         "+result": {
                                             "meta": {
+                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "c_function_native_&"
@@ -4857,6 +4860,7 @@
                                     "f": {
                                         "+result": {
                                             "meta": {
+                                                "deref": "pointer",
                                                 "intent": "function"
                                             },
                                             "stmt": "f_function_native_&_pointer"

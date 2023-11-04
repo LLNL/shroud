@@ -72,6 +72,7 @@ class FillMeta(object):
         r_meta = bind_result.meta = collections.defaultdict(lambda: None)
 
         self.set_func_intent(node, r_meta)
+        self.set_func_deref(node, r_meta)
         self.set_func_api(node, r_meta)
 
         # --- Loop over function parameters
@@ -84,6 +85,7 @@ class FillMeta(object):
             meta = bind_arg.meta = collections.defaultdict(lambda: None)
 
             self.set_arg_intent(node, arg, meta)
+            self.set_arg_deref(arg, meta)
             self.set_arg_api(arg, meta)
 
             
@@ -125,6 +127,118 @@ class FillMeta(object):
             intent = intent.lower()
         meta["intent"] = intent
 
+    def set_func_deref(self, node, meta):
+        """
+        Function which return pointers or objects (std::string)
+        set the deref meta attribute.
+        """
+        # check_deref_attr_func
+        ast = node.ast
+        declarator = ast.declarator
+        attrs = declarator.attrs
+        deref = attrs["deref"]
+        mderef = None
+        ntypemap = ast.typemap
+        nindirect = declarator.is_indirect()
+
+        if declarator.get_subprogram() == "subroutine":
+            pass
+        if ntypemap.sgroup == "void":
+            # Unable to set Fortran pointer for void
+            # if deref set, error
+            pass
+        elif ntypemap.sgroup == "shadow":
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
+            # Array of shadow?
+            pass
+        elif ntypemap.sgroup == "string":
+            if deref:
+                mderef = deref
+            elif attrs["len"]:
+                mderef = "copy"
+            else:
+                mderef = "allocatable"
+        elif ntypemap.sgroup == "vector":
+            if deref:
+                mderef = deref
+            else:
+                mderef = "allocatable"
+        elif nindirect > 1:
+            if deref:
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on function which returns multiple indirections")
+        elif nindirect == 1:
+            # pointer to a POD  e.g. int *
+            if deref:
+                mderef = deref
+            elif ntypemap.sgroup == "char":  # char *
+                if attrs["len"]:
+                    mderef = "copy"
+                else:
+                    mderef = "allocatable"
+            elif attrs["dimension"]:  # XXX - or rank?
+                mderef = "pointer"
+            else:
+                mderef = node.options.return_scalar_pointer
+        elif deref:
+            self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
+        meta["deref"] = mderef
+
+    def set_arg_deref(self, arg, meta):
+        """Check deref attr and set default for variable.
+
+        Pointer variables set the default deref meta attribute.
+        """
+        # check_deref_attr_var
+        # XXX - error via FortranGeneric
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        ntypemap = arg.typemap
+        is_ptr = declarator.is_indirect()
+
+        deref = attrs["deref"]
+        if deref is not None:
+            if deref not in ["allocatable", "pointer", "raw", "scalar"]:
+                self.cursor.generate(
+                    "Illegal value '{}' for deref attribute. "
+                    "Must be 'allocatable', 'pointer', 'raw', "
+                    "or 'scalar'.".format(deref)
+                )
+                return
+            nindirect = declarator.is_indirect()
+            if ntypemap.sgroup == "vector":
+                if deref:
+                    mderef = deref
+                else:
+                    # Copy vector to new array.
+                    mderef = "allocatable"
+            elif nindirect != 2:
+                self.cursor.generate(
+                    "Can only have attribute 'deref' on arguments which"
+                    " return a pointer:"
+                    " '{}'".format(declarator.name))
+            elif meta["intent"] == "in":
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on intent(in) argument"
+                    " '{}'".format(declarator.name))
+            meta["deref"] = attrs["deref"]
+            return
+
+        # Set deref attribute for arguments which return values.
+        intent = meta["intent"]
+        spointer = declarator.get_indirect_stmt()
+        if ntypemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif spointer in ["**", "*&"] and intent == "out":
+            if ntypemap.sgroup == "string":
+                # strings are not contiguous, so copy into argument.
+                meta["deref"] = "copy"
+            else:
+                meta["deref"] = "pointer"
+    
     def set_func_api(self, node, meta):
         """
         Based on other meta attrs: 

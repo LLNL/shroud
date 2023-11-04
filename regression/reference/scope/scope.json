@@ -660,6 +660,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -1286,6 +1287,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
@@ -1939,6 +1941,7 @@
                             "f": {
                                 "+result": {
                                     "meta": {
+                                        "deref": "pointer",
                                         "intent": "function"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"

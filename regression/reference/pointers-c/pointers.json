@@ -4032,6 +4032,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -4161,6 +4162,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -4304,6 +4306,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -4444,6 +4447,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -4617,6 +4621,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -4810,6 +4815,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -4993,6 +4999,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -5134,6 +5141,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -5279,6 +5287,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -5409,6 +5418,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -5550,6 +5560,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -5688,6 +5699,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -5859,6 +5871,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -6050,6 +6063,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -6219,6 +6233,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -6233,6 +6248,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
@@ -6384,6 +6400,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -6398,6 +6415,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
@@ -6546,6 +6564,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -6560,6 +6579,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
@@ -6711,6 +6731,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -6725,6 +6746,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
@@ -7429,6 +7451,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_**"
@@ -7575,6 +7598,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_allocatable"
@@ -8581,6 +8605,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -8589,6 +8614,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
@@ -8713,6 +8739,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -8820,6 +8847,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -8923,6 +8951,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -8931,6 +8960,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
@@ -9056,6 +9086,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -9164,6 +9195,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "pointer",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -9269,6 +9301,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -9277,6 +9310,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_scalar"
@@ -9392,6 +9426,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -9400,6 +9435,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_raw"
@@ -9536,6 +9572,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -9550,6 +9587,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_raw"
@@ -9854,6 +9892,7 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -9967,6 +10006,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"

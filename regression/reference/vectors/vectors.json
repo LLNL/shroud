@@ -1244,6 +1244,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
@@ -1494,6 +1495,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
@@ -3034,6 +3036,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
@@ -3287,6 +3290,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "out"
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
@@ -3588,6 +3592,7 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "deref": "allocatable",
                                 "intent": "function"
                             },
                             "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
