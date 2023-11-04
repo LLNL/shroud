@@ -17,8 +17,12 @@ This file sets some meta attributes based on language specific
 wrappings.
 
 Fortran:
+   intent
+   api
    deref
    hidden
+   owner    attrs
+
 
 """
 
