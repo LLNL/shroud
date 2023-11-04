@@ -973,6 +973,7 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 for i, param in enumerate(arg.declarator.params):
                     name = param.declarator.user_name
+                    intent = param.declarator.metaattrs["intent"]
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
@@ -980,7 +981,7 @@ rv = .false.
                             fmt,
                         )
                     arg_f_names.append(name)
-                    arg_c_decl.append(param.bind_c(name=name))
+                    arg_c_decl.append(param.bind_c(intent=intent, name=name))
 
                     arg_typemap, specialize = statements.lookup_c_statements(
                         param
@@ -1024,7 +1025,7 @@ rv = .false.
     def build_arg_list_interface(
         self,
         node, fileinfo,
-        fmt,
+        fmt, meta,
         ast,
         stmts_blk,
         modules,
@@ -1038,7 +1039,7 @@ rv = .false.
             node -
             fileinfo - ModuleInfo
             fmt -
-            ast - Abstract Syntax Tree from parser
+            ast - declast.Declaration
                node.ast for subprograms
                node.declarator.params[n] for parameters
             stmts_blk - typemap.CStmts or util.Scope
@@ -1091,7 +1092,7 @@ rv = .false.
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c())
+                arg_c_decl.append(ast.bind_c(meta["intent"]))
                 arg_typemap = ast.typemap
                 if ast.template_arguments:
                     # If a template, use its type
@@ -1206,7 +1207,7 @@ rv = .false.
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.build_arg_list_interface(
                 node, fileinfo,
-                fmt_arg,
+                fmt_arg, meta,
                 arg,
                 arg_stmt,
                 modules,
@@ -1220,7 +1221,7 @@ rv = .false.
 
         self.build_arg_list_interface(
             node, fileinfo,
-            fmt_result,
+            fmt_result, r_meta,
             ast,
             result_stmt,
             modules,
@@ -1595,7 +1596,9 @@ rv = .false.
                 if options.F_default_args == "optional" and f_arg.declarator.init is not None:
                     fmt_arg.default_value = f_arg.declarator.init
                     optattr = True
-                arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
+                intent = f_declarator.metaattrs["intent"]
+                arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                    intent=intent, pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
             if options.debug:
