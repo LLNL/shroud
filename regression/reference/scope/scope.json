@@ -575,7 +575,6 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "deref": "pointer",
                                 "intent": "getter"
                             }
                         },
@@ -1217,7 +1216,6 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "getter"
                                     }
                                 },
@@ -1887,7 +1885,6 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "getter"
                                     }
                                 },

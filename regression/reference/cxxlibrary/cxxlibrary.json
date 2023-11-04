@@ -4436,7 +4436,6 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "getter"
                             },
@@ -4792,8 +4791,6 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
-                                "deref": "pointer",
                                 "intent": "getter"
                             }
                         },

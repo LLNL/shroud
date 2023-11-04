@@ -231,7 +231,7 @@ class FillMeta(object):
             # No bufferify required for raw pointer result.
             pass
         elif ntypemap.sgroup == "string":
-            if meta["deref"] in ["allocatable", "pointer"]:
+            if meta["deref"] in ["allocatable", "pointer", "scalar"]:
                 need_buf_result = "cdesc"
             else:
                 need_buf_result = "buf"

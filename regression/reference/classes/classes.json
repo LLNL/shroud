@@ -2590,7 +2590,6 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "allocatable",
                                         "intent": "getter"
                                     }
                                 }
@@ -4892,7 +4891,6 @@
                             "f": {
                                 "+result": {
                                     "meta": {
-                                        "deref": "pointer",
                                         "intent": "getter"
                                     }
                                 }
