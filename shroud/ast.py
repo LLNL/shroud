@@ -1669,17 +1669,6 @@ class FunctionNode(AstNode):
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
 
-    def update_names(self):
-        """Update C and Fortran names."""
-        fmt = self.fmtdict
-        if self.wrap.c:
-            self.eval_template("C_name")
-            self.eval_template("F_C_name")
-        if self.wrap.fortran:
-            self.eval_template("F_name_impl")
-            self.eval_template("F_name_function")
-            self.eval_template("F_name_generic")
-
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template
         or changing result to argument.
