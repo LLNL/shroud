@@ -2245,6 +2245,12 @@
                     "T",
                     "U"
                 ],
+                "user_fmt": {
+                    "C_name": "c_name_instantiation1",
+                    "F_C_name": "f_c_name_instantiation1",
+                    "F_name_impl": "f_name_instantiation1",
+                    "PY_name_impl": "PY_name_instantiation1"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -2570,6 +2576,9 @@
                     "T",
                     "U"
                 ],
+                "user_fmt": {
+                    "template_suffix": "_instantiation2"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,

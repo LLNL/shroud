@@ -1259,6 +1259,7 @@ class GenFunctions(object):
             fmt = new.fmtdict
             if targs.fmtdict:
                 fmt.update(targs.fmtdict)
+                new.user_fmt = targs.fmtdict
 
             # Use explicit template_suffix if provide.
             # If single template argument, use type's explicit_suffix
