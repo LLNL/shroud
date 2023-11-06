@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# run/enum
+# run/enum-c
 #
 ifeq ($(top),)
 top := ../../..

@@ -2,7 +2,7 @@
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
-# run/struct-cxx
+# run/cxxlibrary
 #
 ifndef top
 top = ../../..

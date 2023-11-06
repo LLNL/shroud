@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
-# run/clibrary
+# run/ccomplex
 #
 include $(top)/regression/run/defaults.mk
 
