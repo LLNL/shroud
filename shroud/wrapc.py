@@ -143,7 +143,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self._push_splicer("class")
         structs = []
         for cls in node.classes:
-            if not node.wrap.c:
+            if not (node.wrap.c or node.wrap.fortran):
                 continue
             if cls.wrap_as == "struct":
                 structs.append(cls)
@@ -175,8 +175,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             if cls.wrap_as == "class":
                 self.wrap_class(cls)
         else:
-            self.wrap_typedefs(ns)
-            self.wrap_enums(ns)
+            if node.wrap.c:
+                self.wrap_typedefs(ns)
+                self.wrap_enums(ns)
             self.wrap_functions(ns)
 
         c_header = fmt.C_header_filename
@@ -674,7 +675,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             fmt.cpp_if = ""
             fmt.cpp_endif = ""
-            
+
         fmt.lang = "C"
         fmt.capsule_type = "void"
         self.add_class_capsule_worker(self.capsule_impl_c, fmt, literalinclude)
@@ -722,9 +723,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.compute_idtor(node)
         self.add_class_capsule_structs(node)
-
-        self.wrap_typedefs(node)
-        self.wrap_enums(node)
+        if node.wrap.c:
+            self.wrap_typedefs(node)
+            self.wrap_enums(node)
 
         self._push_splicer("method")
         for method in node.functions:

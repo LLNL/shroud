@@ -1,4 +1,6 @@
 Wrote wrap_types.yaml
+Wrote wrapClass1.h
+Wrote wrapClass1.cpp
 Wrote wrapfwrap.f
 Wrote utilwrap.cpp
 Wrote typeswrap.h

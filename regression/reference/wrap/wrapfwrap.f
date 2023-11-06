@@ -50,12 +50,15 @@ module wrap_mod
 
     interface
 
-        subroutine c_class1_func_in_class(self) &
+        function c_class1_func_in_class(self) &
+                result(SHT_rv) &
                 bind(C, name="WRA_Class1_FuncInClass")
+            use iso_c_binding, only : C_INT
             import :: WRA_SHROUD_capsule_data
             implicit none
             type(WRA_SHROUD_capsule_data), intent(IN) :: self
-        end subroutine c_class1_func_in_class
+            integer(C_INT) :: SHT_rv
+        end function c_class1_func_in_class
     end interface
 
     ! splicer begin additional_declarations
@@ -63,12 +66,15 @@ module wrap_mod
 
 contains
 
-    subroutine class1_func_in_class(obj)
+    function class1_func_in_class(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
         class(class1) :: obj
+        integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.func_in_class
-        call c_class1_func_in_class(obj%cxxmem)
+        SHT_rv = c_class1_func_in_class(obj%cxxmem)
         ! splicer end class.Class1.method.func_in_class
-    end subroutine class1_func_in_class
+    end function class1_func_in_class
 
     ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)
