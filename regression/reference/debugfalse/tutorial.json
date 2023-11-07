@@ -129,16 +129,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::NoReturnNoArguments(\t)",
+                            "C_name": "TUT_NoReturnNoArguments",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_no_return_no_arguments",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::NoReturnNoArguments(\t)",
+                            "C_name": "TUT_NoReturnNoArguments",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_no_return_no_arguments",
+                            "F_C_name": "no_return_no_arguments",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -150,9 +154,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_NoReturnNoArguments",
                     "C_name_api": "NoReturnNoArguments",
-                    "F_C_name": "no_return_no_arguments",
                     "F_name_api": "no_return_no_arguments",
                     "F_name_function": "no_return_no_arguments",
                     "F_name_generic": "no_return_no_arguments",
@@ -270,8 +272,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_PassByValue",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
+                            "F_C_name": "c_pass_by_value",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -290,10 +294,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_PassByValue",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_pass_by_value",
+                            "F_C_name": "pass_by_value",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t arg2",
@@ -498,9 +504,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_PassByValue",
                     "C_name_api": "PassByValue",
-                    "F_C_name": "pass_by_value",
                     "F_name_api": "pass_by_value",
                     "F_name_function": "pass_by_value",
                     "F_name_generic": "pass_by_value",
@@ -822,10 +826,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
                             "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
+                            "C_name": "TUT_ConcatenateStrings_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc,\t TUT_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_concatenate_strings_bufferify",
+                            "F_C_name": "c_concatenate_strings_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -928,9 +934,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_ConcatenateStrings_bufferify",
                     "C_name_api": "ConcatenateStrings",
-                    "F_C_name": "c_concatenate_strings_bufferify",
                     "F_name_api": "concatenate_strings",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -998,8 +1002,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\t)",
+                            "C_name": "TUT_UseDefaultArguments",
                             "C_prototype": "void",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1017,10 +1023,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\t)",
+                            "C_name": "TUT_UseDefaultArguments",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
                             "F_C_call": "c_use_default_arguments",
+                            "F_C_name": "c_use_default_arguments",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -1051,9 +1059,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
@@ -1152,8 +1158,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TUT_UseDefaultArguments_arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments_arg1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1172,10 +1180,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TUT_UseDefaultArguments_arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_use_default_arguments_arg1",
+                            "F_C_name": "c_use_default_arguments_arg1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1250,9 +1260,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments_arg1",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments_arg1",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments_arg1",
                     "F_name_generic": "use_default_arguments",
@@ -1386,8 +1394,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments_arg1_arg2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1406,10 +1416,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_use_default_arguments_arg1_arg2",
+                            "F_C_name": "c_use_default_arguments_arg1_arg2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t SHT_arg2_cxx",
@@ -1617,9 +1629,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments_arg1_arg2",
                     "F_name_generic": "use_default_arguments",
@@ -1709,9 +1719,11 @@
                         "fmtc": {
                             "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
+                            "C_name": "TUT_OverloadedFunction_from_name",
                             "C_prototype": "const char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
+                            "F_C_name": "c_overloaded_function_from_name",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
@@ -1778,9 +1790,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_name",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_name",
                     "F_name_api": "overloaded_function",
                     "LUA_name": "OverloadedFunction",
                     "LUA_name_api": "OverloadedFunction",
@@ -1872,10 +1882,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
+                            "C_name": "TUT_OverloadedFunction_from_name_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len",
                             "F_C_call": "c_overloaded_function_from_name_bufferify",
+                            "F_C_name": "c_overloaded_function_from_name_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len",
                             "F_arguments": "name",
@@ -1915,9 +1927,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_name_bufferify",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_name_api": "overloaded_function",
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
@@ -2009,17 +2019,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
+                            "C_name": "TUT_OverloadedFunction_from_index",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
+                            "F_C_name": "c_overloaded_function_from_index",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
+                            "C_name": "TUT_OverloadedFunction_from_index",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
                             "F_C_arguments": "indx",
                             "F_C_call": "c_overloaded_function_from_index",
+                            "F_C_name": "c_overloaded_function_from_index",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "indx",
                             "F_arguments": "indx",
@@ -2106,9 +2120,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_index",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_index",
                     "F_name_api": "overloaded_function",
                     "F_name_function": "overloaded_function_from_index",
                     "F_name_generic": "overloaded_function",
@@ -2308,17 +2320,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_int",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_template_argument_int",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_int",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_template_argument_int",
+                            "F_C_name": "c_template_argument_int",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
@@ -2406,9 +2422,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateArgument_int",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_int",
                     "F_name_api": "template_argument",
                     "F_name_function": "template_argument_int",
                     "F_name_generic": "template_argument",
@@ -2537,17 +2551,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_double",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_template_argument_double",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_double",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_template_argument_double",
+                            "F_C_name": "c_template_argument_double",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
@@ -2635,9 +2653,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateArgument_double",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_double",
                     "F_name_api": "template_argument",
                     "F_name_function": "template_argument_double",
                     "F_name_generic": "template_argument",
@@ -2795,8 +2811,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateReturn<int>(\t)",
+                            "C_name": "TUT_TemplateReturn_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_template_return_int",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2814,10 +2832,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<int>(\t)",
+                            "C_name": "TUT_TemplateReturn_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_template_return_int",
+                            "F_C_name": "c_template_return_int",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2849,9 +2869,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateReturn_int",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_int",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
@@ -2948,8 +2966,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateReturn<double>(\t)",
+                            "C_name": "TUT_TemplateReturn_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
+                            "F_C_name": "c_template_return_double",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -2967,10 +2987,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<double>(\t)",
+                            "C_name": "TUT_TemplateReturn_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
                             "F_C_call": "c_template_return_double",
+                            "F_C_name": "c_template_return_double",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -3002,9 +3024,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateReturn_double",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_double",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
@@ -3062,16 +3082,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
+                            "C_name": "TUT_FortranGenericOverloaded_0",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_fortran_generic_overloaded_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
+                            "C_name": "TUT_FortranGenericOverloaded_0",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_fortran_generic_overloaded_0",
+                            "F_C_name": "c_fortran_generic_overloaded_0",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -3083,9 +3107,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_0",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_0",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_0",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -3278,9 +3300,11 @@
                         "fmtc": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1",
                             "C_prototype": "const char * name,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t arg2",
+                            "F_C_name": "c_fortran_generic_overloaded_1",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
@@ -3403,9 +3427,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1",
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
@@ -3597,10 +3619,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                             "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
+                            "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
@@ -3666,9 +3690,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -3863,10 +3885,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                             "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
+                            "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
@@ -3932,9 +3956,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -4031,8 +4053,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
+                            "C_name": "TUT_UseDefaultOverload_num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4051,10 +4075,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
+                            "C_name": "TUT_UseDefaultOverload_num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
                             "F_C_arguments": "num",
                             "F_C_call": "c_use_default_overload_num",
+                            "F_C_name": "c_use_default_overload_num",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num",
@@ -4129,9 +4155,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num",
                     "F_name_generic": "use_default_overload",
@@ -4256,8 +4280,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_num_offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num_offset",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4276,10 +4302,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_num_offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
                             "F_C_arguments": "num,\t offset",
                             "F_C_call": "c_use_default_overload_num_offset",
+                            "F_C_name": "c_use_default_overload_num_offset",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num,\t offset",
@@ -4397,9 +4425,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num_offset",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num_offset",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num_offset",
                     "F_name_generic": "use_default_overload",
@@ -4559,8 +4585,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num_offset_stride",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4579,10 +4607,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
                             "F_C_arguments": "num,\t offset,\t stride",
                             "F_C_call": "c_use_default_overload_num_offset_stride",
+                            "F_C_name": "c_use_default_overload_num_offset_stride",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num,\t offset,\t stride",
@@ -4861,9 +4891,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num_offset_stride",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num_offset_stride",
                     "F_name_generic": "use_default_overload",
@@ -4987,8 +5015,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
+                            "C_name": "TUT_UseDefaultOverload_3",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_3",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5007,10 +5037,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
+                            "C_name": "TUT_UseDefaultOverload_3",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num",
                             "F_C_call": "c_use_default_overload_3",
+                            "F_C_name": "c_use_default_overload_3",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num",
@@ -5128,9 +5160,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_3",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_3",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_3",
                     "F_name_generic": "use_default_overload",
@@ -5278,8 +5308,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_4",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_4",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5298,10 +5330,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_4",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num,\t offset",
                             "F_C_call": "c_use_default_overload_4",
+                            "F_C_name": "c_use_default_overload_4",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num,\t offset",
@@ -5462,9 +5496,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_4",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_4",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_4",
                     "F_name_generic": "use_default_overload",
@@ -5647,8 +5679,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_5",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_5",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5667,10 +5701,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_5",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num,\t offset,\t stride",
                             "F_C_call": "c_use_default_overload_5",
+                            "F_C_name": "c_use_default_overload_5",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num,\t offset,\t stride",
@@ -6023,9 +6059,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_5",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_5",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_5",
                     "F_name_generic": "use_default_overload",
@@ -6114,8 +6148,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_typefunc",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
+                            "F_C_name": "c_typefunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "TUT_TypeID",
@@ -6134,10 +6170,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_typefunc",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc",
+                            "F_C_name": "typefunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -6268,9 +6306,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_typefunc",
                     "C_name_api": "typefunc",
-                    "F_C_name": "typefunc",
                     "F_name_api": "typefunc",
                     "F_name_function": "typefunc",
                     "F_name_generic": "typefunc",
@@ -6360,8 +6396,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_enumfunc",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
+                            "F_C_name": "c_enumfunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TUT_EnumTypeID SHC_rv",
@@ -6382,10 +6420,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_enumfunc",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_enumfunc",
+                            "F_C_name": "enumfunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -6524,9 +6564,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_enumfunc",
                     "C_name_api": "enumfunc",
-                    "F_C_name": "enumfunc",
                     "F_name_api": "enumfunc",
                     "F_name_function": "enumfunc",
                     "F_name_generic": "enumfunc",
@@ -6616,8 +6654,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_colorfunc",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_colorfunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "int SHC_rv",
@@ -6638,10 +6678,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_colorfunc",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_colorfunc",
+                            "F_C_name": "colorfunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -6780,9 +6822,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_colorfunc",
                     "C_name_api": "colorfunc",
-                    "F_C_name": "colorfunc",
                     "F_name_api": "colorfunc",
                     "F_name_function": "colorfunc",
                     "F_name_generic": "colorfunc",
@@ -6915,17 +6955,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
+                            "C_name": "TUT_getMinMax",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_min_max",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
+                            "C_name": "TUT_getMinMax",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
                             "F_C_arguments": "min,\t max",
                             "F_C_call": "c_get_min_max",
+                            "F_C_name": "get_min_max",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "min,\t max",
                             "F_arguments": "min,\t max",
@@ -7059,9 +7103,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_getMinMax",
                     "C_name_api": "getMinMax",
-                    "F_C_name": "get_min_max",
                     "F_name_api": "get_min_max",
                     "F_name_function": "get_min_max",
                     "F_name_generic": "get_min_max",
@@ -7204,8 +7246,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
+                            "C_name": "TUT_callback1",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
+                            "F_C_name": "c_callback1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -7224,10 +7268,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
+                            "C_name": "TUT_callback1",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
                             "F_C_arguments": "in,\t incr",
                             "F_C_call": "c_callback1",
+                            "F_C_name": "callback1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "in,\t incr",
@@ -7345,9 +7391,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_callback1",
                     "C_name_api": "callback1",
-                    "F_C_name": "callback1",
                     "F_name_api": "callback1",
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
@@ -7410,9 +7454,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::LastFunctionCalled(\t)",
+                            "C_name": "TUT_LastFunctionCalled",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_last_function_called",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": "30",
@@ -7468,9 +7514,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_LastFunctionCalled",
                     "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called",
                     "F_name_api": "last_function_called",
                     "LUA_name": "LastFunctionCalled",
                     "LUA_name_api": "LastFunctionCalled",
@@ -7541,10 +7585,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "tutorial::LastFunctionCalled(\t)",
+                            "C_name": "TUT_LastFunctionCalled_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_last_function_called_bufferify",
+                            "F_C_name": "c_last_function_called_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -7581,9 +7627,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_LastFunctionCalled_bufferify",
                     "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called_bufferify",
                     "F_name_api": "last_function_called",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",

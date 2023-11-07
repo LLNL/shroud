@@ -268,17 +268,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->nested<double>(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "TEM_user_int_nested_double",
                                     "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_user_int_nested_double",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->nested<double>(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "TEM_user_int_nested_double",
                                     "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t arg1,\t arg2",
                                     "F_C_call": "c_user_int_nested_double",
+                                    "F_C_name": "c_user_int_nested_double",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
                                     "F_arguments": "obj,\t arg1,\t arg2",
@@ -411,9 +415,7 @@
                         },
                         "zz_fmtdict": {
                             "CXX_template": "<double>",
-                            "C_name": "TEM_user_int_nested_double",
                             "C_name_api": "nested",
-                            "F_C_name": "c_user_int_nested_double",
                             "F_name_api": "nested",
                             "F_name_function": "nested_double",
                             "F_name_generic": "nested",
@@ -543,8 +545,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "TEM_structAsClass_int_ctor",
                                     "C_prototype": "TEM_structAsClass_int * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_int *",
+                                    "F_C_name": "c_struct_as_class_int_ctor",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "TEM_structAsClass_int",
@@ -562,10 +566,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "TEM_structAsClass_int_ctor",
                                     "C_prototype": "TEM_structAsClass_int * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_int *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "c_struct_as_class_int_ctor",
+                                    "F_C_name": "c_struct_as_class_int_ctor",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -599,9 +605,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_ctor",
                             "C_name_api": "ctor",
-                            "F_C_name": "c_struct_as_class_int_ctor",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_int",
@@ -686,17 +690,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
+                                    "C_name": "TEM_structAsClass_int_set_npts",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int n",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_struct_as_class_int_set_npts",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
+                                    "C_name": "TEM_structAsClass_int_set_npts",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int n",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_call": "c_struct_as_class_int_set_npts",
+                                    "F_C_name": "c_struct_as_class_int_set_npts",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
@@ -749,9 +757,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_set_npts",
                             "C_name_api": "set_npts",
-                            "F_C_name": "c_struct_as_class_int_set_npts",
                             "F_name_api": "set_npts",
                             "F_name_function": "set_npts",
                             "F_name_generic": "set_npts",
@@ -810,8 +816,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->get_npts(\t)",
+                                    "C_name": "TEM_structAsClass_int_get_npts",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_struct_as_class_int_get_npts",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -829,10 +837,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
+                                    "C_name": "TEM_structAsClass_int_get_npts",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_struct_as_class_int_get_npts",
+                                    "F_C_name": "c_struct_as_class_int_get_npts",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -864,9 +874,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_get_npts",
                             "C_name_api": "get_npts",
-                            "F_C_name": "c_struct_as_class_int_get_npts",
                             "F_name_api": "get_npts",
                             "F_name_function": "get_npts",
                             "F_name_generic": "get_npts",
@@ -1005,17 +1013,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
+                                    "C_name": "TEM_structAsClass_int_set_value",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int v",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_struct_as_class_int_set_value",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
+                                    "C_name": "TEM_structAsClass_int_set_value",
                                     "C_prototype": "TEM_structAsClass_int * self,\t int v",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t v",
                                     "F_C_call": "c_struct_as_class_int_set_value",
+                                    "F_C_name": "c_struct_as_class_int_set_value",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t v",
                                     "F_arguments": "obj,\t v",
@@ -1068,9 +1080,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_set_value",
                             "C_name_api": "set_value",
-                            "F_C_name": "c_struct_as_class_int_set_value",
                             "F_name_api": "set_value",
                             "F_name_function": "set_value",
                             "F_name_generic": "set_value",
@@ -1164,8 +1174,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->get_value(\t)",
+                                    "C_name": "TEM_structAsClass_int_get_value",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_struct_as_class_int_get_value",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -1183,10 +1195,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
+                                    "C_name": "TEM_structAsClass_int_get_value",
                                     "C_prototype": "TEM_structAsClass_int * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_struct_as_class_int_get_value",
+                                    "F_C_name": "c_struct_as_class_int_get_value",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1218,9 +1232,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_int_get_value",
                             "C_name_api": "get_value",
-                            "F_C_name": "c_struct_as_class_int_get_value",
                             "F_name_api": "get_value",
                             "F_name_function": "get_value",
                             "F_name_generic": "get_value",
@@ -1357,8 +1369,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "TEM_structAsClass_double_ctor",
                                     "C_prototype": "TEM_structAsClass_double * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_double *",
+                                    "F_C_name": "c_struct_as_class_double_ctor",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "TEM_structAsClass_double",
@@ -1376,10 +1390,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "TEM_structAsClass_double_ctor",
                                     "C_prototype": "TEM_structAsClass_double * SHC_rv",
                                     "C_return_type": "TEM_structAsClass_double *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "c_struct_as_class_double_ctor",
+                                    "F_C_name": "c_struct_as_class_double_ctor",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -1413,9 +1429,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_ctor",
                             "C_name_api": "ctor",
-                            "F_C_name": "c_struct_as_class_double_ctor",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_double",
@@ -1500,17 +1514,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
+                                    "C_name": "TEM_structAsClass_double_set_npts",
                                     "C_prototype": "TEM_structAsClass_double * self,\t int n",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_struct_as_class_double_set_npts",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
                                     "C_call_list": "n",
+                                    "C_name": "TEM_structAsClass_double_set_npts",
                                     "C_prototype": "TEM_structAsClass_double * self,\t int n",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_call": "c_struct_as_class_double_set_npts",
+                                    "F_C_name": "c_struct_as_class_double_set_npts",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
@@ -1563,9 +1581,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_set_npts",
                             "C_name_api": "set_npts",
-                            "F_C_name": "c_struct_as_class_double_set_npts",
                             "F_name_api": "set_npts",
                             "F_name_function": "set_npts",
                             "F_name_generic": "set_npts",
@@ -1624,8 +1640,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->get_npts(\t)",
+                                    "C_name": "TEM_structAsClass_double_get_npts",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_struct_as_class_double_get_npts",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -1643,10 +1661,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
+                                    "C_name": "TEM_structAsClass_double_get_npts",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_struct_as_class_double_get_npts",
+                                    "F_C_name": "c_struct_as_class_double_get_npts",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1678,9 +1698,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_get_npts",
                             "C_name_api": "get_npts",
-                            "F_C_name": "c_struct_as_class_double_get_npts",
                             "F_name_api": "get_npts",
                             "F_name_function": "get_npts",
                             "F_name_generic": "get_npts",
@@ -1819,17 +1837,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
+                                    "C_name": "TEM_structAsClass_double_set_value",
                                     "C_prototype": "TEM_structAsClass_double * self,\t double v",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_struct_as_class_double_set_value",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_value(\tv)",
                                     "C_call_list": "v",
+                                    "C_name": "TEM_structAsClass_double_set_value",
                                     "C_prototype": "TEM_structAsClass_double * self,\t double v",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t v",
                                     "F_C_call": "c_struct_as_class_double_set_value",
+                                    "F_C_name": "c_struct_as_class_double_set_value",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t v",
                                     "F_arguments": "obj,\t v",
@@ -1882,9 +1904,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_set_value",
                             "C_name_api": "set_value",
-                            "F_C_name": "c_struct_as_class_double_set_value",
                             "F_name_api": "set_value",
                             "F_name_function": "set_value",
                             "F_name_generic": "set_value",
@@ -1978,8 +1998,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->get_value(\t)",
+                                    "C_name": "TEM_structAsClass_double_get_value",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "double",
+                                    "F_C_name": "c_struct_as_class_double_get_value",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "double",
@@ -1997,10 +2019,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
+                                    "C_name": "TEM_structAsClass_double_get_value",
                                     "C_prototype": "TEM_structAsClass_double * self",
                                     "C_return_type": "double",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_struct_as_class_double_get_value",
+                                    "F_C_name": "c_struct_as_class_double_get_value",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -2032,9 +2056,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TEM_structAsClass_double_get_value",
                             "C_name_api": "get_value",
-                            "F_C_name": "c_struct_as_class_double_get_value",
                             "F_name_api": "get_value",
                             "F_name_function": "get_value",
                             "F_name_generic": "get_value",
@@ -2185,8 +2207,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnUserType(\t)",
+                            "C_name": "TEM_returnUserType",
                             "C_prototype": "TEM_user_int * SHC_rv",
                             "C_return_type": "TEM_user_int *",
+                            "F_C_name": "c_return_user_type",
                             "c_const": "",
                             "c_type": "TEM_user_int",
                             "c_var": "SHC_rv",
@@ -2205,10 +2229,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "returnUserType(\t)",
+                            "C_name": "TEM_returnUserType",
                             "C_prototype": "TEM_user_int * SHC_rv",
                             "C_return_type": "TEM_user_int *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_return_user_type",
+                            "F_C_name": "c_return_user_type",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -2243,9 +2269,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TEM_returnUserType",
                     "C_name_api": "returnUserType",
-                    "F_C_name": "c_return_user_type",
                     "F_name_api": "return_user_type",
                     "F_name_function": "return_user_type",
                     "F_name_generic": "return_user_type",
@@ -2517,17 +2541,21 @@
                         "fmtc": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TEM_FunctionTU_0",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
+                            "F_C_name": "c_function_tu_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TEM_FunctionTU_0",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_function_tu_0",
+                            "F_C_name": "c_function_tu_0",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
@@ -2660,9 +2688,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int, long>",
-                    "C_name": "TEM_FunctionTU_0",
                     "C_name_api": "FunctionTU",
-                    "F_C_name": "c_function_tu_0",
                     "F_name_api": "function_tu",
                     "F_name_function": "function_tu_0",
                     "F_name_generic": "function_tu",
@@ -2833,17 +2859,21 @@
                         "fmtc": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TEM_FunctionTU_1",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
+                            "F_C_name": "c_function_tu_1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TEM_FunctionTU_1",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_function_tu_1",
+                            "F_C_name": "c_function_tu_1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
@@ -2976,9 +3006,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<float, double>",
-                    "C_name": "TEM_FunctionTU_1",
                     "C_name_api": "FunctionTU",
-                    "F_C_name": "c_function_tu_1",
                     "F_name_api": "function_tu",
                     "F_name_function": "function_tu_1",
                     "F_name_generic": "function_tu",
@@ -3141,8 +3169,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
+                            "C_name": "TEM_UseImplWorker_internal_ImplWorker1",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_impl_worker_internal_ImplWorker1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -3160,10 +3190,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
+                            "C_name": "TEM_UseImplWorker_internal_ImplWorker1",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_use_impl_worker_internal_ImplWorker1",
+                            "F_C_name": "c_use_impl_worker_internal_ImplWorker1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -3211,9 +3243,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_name": "TEM_UseImplWorker_internal_ImplWorker1",
                     "C_name_api": "UseImplWorker",
-                    "F_C_name": "c_use_impl_worker_internal_ImplWorker1",
                     "F_name_api": "use_impl_worker",
                     "F_name_function": "use_impl_worker_internal_ImplWorker1",
                     "F_name_generic": "use_impl_worker",
@@ -3313,8 +3343,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
+                            "C_name": "TEM_UseImplWorker_internal_ImplWorker2",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_impl_worker_internal_ImplWorker2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -3332,10 +3364,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
+                            "C_name": "TEM_UseImplWorker_internal_ImplWorker2",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_use_impl_worker_internal_ImplWorker2",
+                            "F_C_name": "c_use_impl_worker_internal_ImplWorker2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -3383,9 +3417,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker2>",
-                    "C_name": "TEM_UseImplWorker_internal_ImplWorker2",
                     "C_name_api": "UseImplWorker",
-                    "F_C_name": "c_use_impl_worker_internal_ImplWorker2",
                     "F_name_api": "use_impl_worker",
                     "F_name_function": "use_impl_worker_internal_ImplWorker2",
                     "F_name_generic": "use_impl_worker",
@@ -3465,8 +3497,10 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->ctor(\t)",
+                                            "C_name": "TEM_vector_int_ctor",
                                             "C_prototype": "TEM_vector_int * SHC_rv",
                                             "C_return_type": "TEM_vector_int *",
+                                            "F_C_name": "c_vector_int_ctor",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "TEM_vector_int",
@@ -3484,10 +3518,12 @@
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
+                                            "C_name": "TEM_vector_int_ctor",
                                             "C_prototype": "TEM_vector_int * SHC_rv",
                                             "C_return_type": "TEM_vector_int *",
                                             "F_C_arguments": "SHT_rv",
                                             "F_C_call": "c_vector_int_ctor",
+                                            "F_C_name": "c_vector_int_ctor",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -3542,9 +3578,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_ctor",
                                     "C_name_api": "ctor",
-                                    "F_C_name": "c_vector_int_ctor",
                                     "F_name_api": "ctor",
                                     "F_name_function": "ctor",
                                     "F_name_generic": "vector_int",
@@ -3607,16 +3641,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->dtor(\t)",
+                                            "C_name": "TEM_vector_int_dtor",
                                             "C_prototype": "TEM_vector_int * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_vector_int_dtor",
                                             "stmt_name": "c_dtor"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->dtor(\t)",
+                                            "C_name": "TEM_vector_int_dtor",
                                             "C_prototype": "TEM_vector_int * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_vector_int_dtor",
+                                            "F_C_name": "c_vector_int_dtor",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
@@ -3627,9 +3665,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_dtor",
                                     "C_name_api": "dtor",
-                                    "F_C_name": "c_vector_int_dtor",
                                     "F_name_api": "dtor",
                                     "F_name_function": "dtor",
                                     "F_name_generic": "dtor",
@@ -3781,17 +3817,21 @@
                                         "fmtc": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
+                                            "C_name": "TEM_vector_int_push_back",
                                             "C_prototype": "TEM_vector_int * self,\t const int * value",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_vector_int_push_back",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
+                                            "C_name": "TEM_vector_int_push_back",
                                             "C_prototype": "TEM_vector_int * self,\t const int * value",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_vector_int_push_back",
+                                            "F_C_name": "c_vector_int_push_back",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
@@ -3863,9 +3903,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_push_back",
                                     "C_name_api": "push_back",
-                                    "F_C_name": "c_vector_int_push_back",
                                     "F_name_api": "push_back",
                                     "F_name_function": "push_back",
                                     "F_name_generic": "push_back",
@@ -4021,8 +4059,10 @@
                                         "fmtc": {
                                             "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
+                                            "C_name": "TEM_vector_int_at",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
+                                            "F_C_name": "c_vector_int_at",
                                             "c_const": "",
                                             "c_get_value": "&",
                                             "c_type": "int",
@@ -4041,10 +4081,12 @@
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
+                                            "C_name": "TEM_vector_int_at",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
                                             "F_C_arguments": "self,\t n",
                                             "F_C_call": "c_vector_int_at",
+                                            "F_C_name": "c_vector_int_at",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "obj%cxxmem,\t n",
@@ -4155,9 +4197,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_int_at",
                                     "C_name_api": "at",
-                                    "F_C_name": "c_vector_int_at",
                                     "F_name_api": "at",
                                     "F_name_function": "at",
                                     "F_name_generic": "at",
@@ -4320,8 +4360,10 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->ctor(\t)",
+                                            "C_name": "TEM_vector_double_ctor",
                                             "C_prototype": "TEM_vector_double * SHC_rv",
                                             "C_return_type": "TEM_vector_double *",
+                                            "F_C_name": "c_vector_double_ctor",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "TEM_vector_double",
@@ -4339,10 +4381,12 @@
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
+                                            "C_name": "TEM_vector_double_ctor",
                                             "C_prototype": "TEM_vector_double * SHC_rv",
                                             "C_return_type": "TEM_vector_double *",
                                             "F_C_arguments": "SHT_rv",
                                             "F_C_call": "c_vector_double_ctor",
+                                            "F_C_name": "c_vector_double_ctor",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -4397,9 +4441,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_ctor",
                                     "C_name_api": "ctor",
-                                    "F_C_name": "c_vector_double_ctor",
                                     "F_name_api": "ctor",
                                     "F_name_function": "ctor",
                                     "F_name_generic": "vector_double",
@@ -4462,16 +4504,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->dtor(\t)",
+                                            "C_name": "TEM_vector_double_dtor",
                                             "C_prototype": "TEM_vector_double * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_vector_double_dtor",
                                             "stmt_name": "c_dtor"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->dtor(\t)",
+                                            "C_name": "TEM_vector_double_dtor",
                                             "C_prototype": "TEM_vector_double * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_vector_double_dtor",
+                                            "F_C_name": "c_vector_double_dtor",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
@@ -4482,9 +4528,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_dtor",
                                     "C_name_api": "dtor",
-                                    "F_C_name": "c_vector_double_dtor",
                                     "F_name_api": "dtor",
                                     "F_name_function": "dtor",
                                     "F_name_generic": "dtor",
@@ -4636,17 +4680,21 @@
                                         "fmtc": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
+                                            "C_name": "TEM_vector_double_push_back",
                                             "C_prototype": "TEM_vector_double * self,\t const double * value",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_vector_double_push_back",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
                                             "C_call_list": "*value",
+                                            "C_name": "TEM_vector_double_push_back",
                                             "C_prototype": "TEM_vector_double * self,\t const double * value",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_vector_double_push_back",
+                                            "F_C_name": "c_vector_double_push_back",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
@@ -4718,9 +4766,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_push_back",
                                     "C_name_api": "push_back",
-                                    "F_C_name": "c_vector_double_push_back",
                                     "F_name_api": "push_back",
                                     "F_name_function": "push_back",
                                     "F_name_generic": "push_back",
@@ -4876,8 +4922,10 @@
                                         "fmtc": {
                                             "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
+                                            "C_name": "TEM_vector_double_at",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",
+                                            "F_C_name": "c_vector_double_at",
                                             "c_const": "",
                                             "c_get_value": "&",
                                             "c_type": "double",
@@ -4896,10 +4944,12 @@
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
                                             "C_call_list": "n",
+                                            "C_name": "TEM_vector_double_at",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",
                                             "F_C_arguments": "self,\t n",
                                             "F_C_call": "c_vector_double_at",
+                                            "F_C_name": "c_vector_double_at",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "obj%cxxmem,\t n",
@@ -5010,9 +5060,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TEM_vector_double_at",
                                     "C_name_api": "at",
-                                    "F_C_name": "c_vector_double_at",
                                     "F_name_api": "at",
                                     "F_name_function": "at",
                                     "F_name_generic": "at",

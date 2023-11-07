@@ -73,9 +73,6 @@ class FillFormat(object):
 
         bind = node._bind.setdefault(wlang, {})
         bind_result = bind.setdefault("+result", statements.BindArg())
-        
-        node.eval_template("C_name")
-        node.eval_template("F_C_name")
 
         if wlang == "f":
             node.eval_template("F_name_impl")

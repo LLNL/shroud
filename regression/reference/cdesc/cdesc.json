@@ -108,17 +108,21 @@
                         "fmtc": {
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "CDE_Rank2In",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
+                            "F_C_name": "c_rank2_in",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "CDE_Rank2In",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_arg_cdesc",
                             "F_C_call": "c_rank2_in",
+                            "F_C_name": "c_rank2_in",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
@@ -183,9 +187,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_Rank2In",
                     "C_name_api": "Rank2In",
-                    "F_C_name": "c_rank2_in",
                     "F_name_api": "rank2_in",
                     "F_name_function": "rank2_in",
                     "F_name_generic": "rank2_in",
@@ -432,9 +434,11 @@
                         "fmtc": {
                             "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
+                            "C_name": "CDE_GetScalar1",
                             "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_value_cdesc",
+                            "F_C_name": "c_get_scalar1",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -495,9 +499,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar1",
                     "C_name_api": "GetScalar1",
-                    "F_C_name": "c_get_scalar1",
                     "F_name_api": "get_scalar1",
                     "function_name": "GetScalar1"
                 }
@@ -766,10 +768,12 @@
                         "fmtf": {
                             "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
+                            "C_name": "CDE_GetScalar1_0_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_C_call": "c_get_scalar1_0_bufferify",
+                            "F_C_name": "c_get_scalar1_0_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_arguments": "name,\t value",
@@ -843,9 +847,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar1_0_bufferify",
                     "C_name_api": "GetScalar1",
-                    "F_C_name": "c_get_scalar1_0_bufferify",
                     "F_name_api": "get_scalar1",
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
@@ -1119,10 +1121,12 @@
                         "fmtf": {
                             "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
+                            "C_name": "CDE_GetScalar1_1_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_C_call": "c_get_scalar1_1_bufferify",
+                            "F_C_name": "c_get_scalar1_1_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_arguments": "name,\t value",
@@ -1196,9 +1200,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar1_1_bufferify",
                     "C_name_api": "GetScalar1",
-                    "F_C_name": "c_get_scalar1_1_bufferify",
                     "F_name_api": "get_scalar1",
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
@@ -1357,8 +1359,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getData<int>(\t)",
+                            "C_name": "CDE_getData_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_get_data_int",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -1376,10 +1380,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "getData<int>(\t)",
+                            "C_name": "CDE_getData_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_get_data_int",
+                            "F_C_name": "c_get_data_int",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -1411,9 +1417,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "CDE_getData_int",
                     "C_name_api": "getData",
-                    "F_C_name": "c_get_data_int",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_int",
                     "F_name_generic": "get_data",
@@ -1511,8 +1515,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getData<double>(\t)",
+                            "C_name": "CDE_getData_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
+                            "F_C_name": "c_get_data_double",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1530,10 +1536,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "getData<double>(\t)",
+                            "C_name": "CDE_getData_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
                             "F_C_call": "c_get_data_double",
+                            "F_C_name": "c_get_data_double",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -1565,9 +1573,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "CDE_getData_double",
                     "C_name_api": "getData",
-                    "F_C_name": "c_get_data_double",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_double",
                     "F_name_generic": "get_data",
@@ -2005,10 +2011,12 @@
                         "fmtf": {
                             "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
+                            "C_name": "CDE_GetScalar2_0_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t value",
                             "F_C_call": "c_get_scalar2_0_bufferify",
+                            "F_C_name": "c_get_scalar2_0_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t value",
                             "F_arguments": "name,\t value",
@@ -2074,9 +2082,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar2_0_bufferify",
                     "C_name_api": "GetScalar2",
-                    "F_C_name": "c_get_scalar2_0_bufferify",
                     "F_name_api": "get_scalar2",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
@@ -2318,10 +2324,12 @@
                         "fmtf": {
                             "C_call_function": "GetScalar2(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
+                            "C_name": "CDE_GetScalar2_1_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t double * value",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t value",
                             "F_C_call": "c_get_scalar2_1_bufferify",
+                            "F_C_name": "c_get_scalar2_1_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t value",
                             "F_arguments": "name,\t value",
@@ -2387,9 +2395,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CDE_GetScalar2_1_bufferify",
                     "C_name_api": "GetScalar2",
-                    "F_C_name": "c_get_scalar2_1_bufferify",
                     "F_name_api": "get_scalar2",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",

@@ -77,8 +77,10 @@
                         "fmtc": {
                             "C_call_function": "intargs_in(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "intargs_in",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_intargs_in",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -103,9 +105,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "intargs_in",
                     "C_name_api": "intargs_in",
-                    "F_C_name": "c_intargs_in",
                     "F_name_api": "intargs_in",
                     "function_name": "intargs_in"
                 }
@@ -176,8 +176,10 @@
                         "fmtc": {
                             "C_call_function": "intargs_inout(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "intargs_inout",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_intargs_inout",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -202,9 +204,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "intargs_inout",
                     "C_name_api": "intargs_inout",
-                    "F_C_name": "c_intargs_inout",
                     "F_name_api": "intargs_inout",
                     "function_name": "intargs_inout"
                 }
@@ -275,8 +275,10 @@
                         "fmtc": {
                             "C_call_function": "intargs_out(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "intargs_out",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_intargs_out",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -301,9 +303,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "intargs_out",
                     "C_name_api": "intargs_out",
-                    "F_C_name": "c_intargs_out",
                     "F_name_api": "intargs_out",
                     "function_name": "intargs_out"
                 }
@@ -425,8 +425,10 @@
                         "fmtc": {
                             "C_call_function": "intargs(\targin,\t arginout,\t argout)",
                             "C_call_list": "argin,\t arginout,\t argout",
+                            "C_name": "intargs",
                             "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                             "C_return_type": "void",
+                            "F_C_name": "c_intargs",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -489,9 +491,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "intargs",
                     "C_name_api": "intargs",
-                    "F_C_name": "c_intargs",
                     "F_name_api": "intargs",
                     "function_name": "intargs"
                 }
@@ -628,8 +628,10 @@
                         "fmtc": {
                             "C_call_function": "cos_doubles(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
+                            "C_name": "cos_doubles",
                             "C_prototype": "double * in,\t double * out,\t int sizein",
                             "C_return_type": "void",
+                            "F_C_name": "c_cos_doubles",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -694,9 +696,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "cos_doubles",
                     "C_name_api": "cos_doubles",
-                    "F_C_name": "c_cos_doubles",
                     "F_name_api": "cos_doubles",
                     "function_name": "cos_doubles"
                 }
@@ -833,8 +833,10 @@
                         "fmtc": {
                             "C_call_function": "truncate_to_int(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
+                            "C_name": "truncate_to_int",
                             "C_prototype": "double * in,\t int * out,\t int sizein",
                             "C_return_type": "void",
+                            "F_C_name": "c_truncate_to_int",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -899,9 +901,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "truncate_to_int",
                     "C_name_api": "truncate_to_int",
-                    "F_C_name": "c_truncate_to_int",
                     "F_name_api": "truncate_to_int",
                     "function_name": "truncate_to_int"
                 }
@@ -1009,8 +1009,10 @@
                         "fmtc": {
                             "C_call_function": "get_values(\tnvalues,\t values)",
                             "C_call_list": "nvalues,\t values",
+                            "C_name": "get_values",
                             "C_prototype": "int * nvalues,\t int * values",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_values",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1056,9 +1058,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "get_values",
                     "C_name_api": "get_values",
-                    "F_C_name": "c_get_values",
                     "F_name_api": "get_values",
                     "function_name": "get_values"
                 }
@@ -1172,8 +1172,10 @@
                         "fmtc": {
                             "C_call_function": "get_values2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "get_values2",
                             "C_prototype": "int * arg1,\t int * arg2",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_values2",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1221,9 +1223,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "get_values2",
                     "C_name_api": "get_values2",
-                    "F_C_name": "c_get_values2",
                     "F_name_api": "get_values2",
                     "function_name": "get_values2"
                 }
@@ -1322,8 +1322,10 @@
                         "fmtc": {
                             "C_call_function": "iota_dimension(\tnvar,\t values)",
                             "C_call_list": "nvar,\t values",
+                            "C_name": "iota_dimension",
                             "C_prototype": "int nvar,\t int * values",
                             "C_return_type": "void",
+                            "F_C_name": "c_iota_dimension",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1369,9 +1371,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "iota_dimension",
                     "C_name_api": "iota_dimension",
-                    "F_C_name": "c_iota_dimension",
                     "F_name_api": "iota_dimension",
                     "function_name": "iota_dimension"
                 }
@@ -1495,8 +1495,10 @@
                         "fmtc": {
                             "C_call_function": "Sum(\tlen,\t values,\t result)",
                             "C_call_list": "len,\t values,\t result",
+                            "C_name": "Sum",
                             "C_prototype": "int len,\t const int * values,\t int * result",
                             "C_return_type": "void",
+                            "F_C_name": "c_sum",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1559,9 +1561,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "Sum",
                     "C_name_api": "Sum",
-                    "F_C_name": "c_sum",
                     "F_name_api": "sum",
                     "function_name": "Sum"
                 }
@@ -1641,8 +1641,10 @@
                         "fmtc": {
                             "C_call_function": "fillIntArray(\tout)",
                             "C_call_list": "out",
+                            "C_name": "fillIntArray",
                             "C_prototype": "int * out",
                             "C_return_type": "void",
+                            "F_C_name": "c_fill_int_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1669,9 +1671,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "fillIntArray",
                     "C_name_api": "fillIntArray",
-                    "F_C_name": "c_fill_int_array",
                     "F_name_api": "fill_int_array",
                     "function_name": "fillIntArray"
                 }
@@ -1769,8 +1769,10 @@
                         "fmtc": {
                             "C_call_function": "incrementIntArray(\tarray,\t sizein)",
                             "C_call_list": "array,\t sizein",
+                            "C_name": "incrementIntArray",
                             "C_prototype": "int * array,\t int sizein",
                             "C_return_type": "void",
+                            "F_C_name": "c_increment_int_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1814,9 +1816,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "incrementIntArray",
                     "C_name_api": "incrementIntArray",
-                    "F_C_name": "c_increment_int_array",
                     "F_name_api": "increment_int_array",
                     "function_name": "incrementIntArray"
                 }
@@ -1910,8 +1910,10 @@
                         "fmtc": {
                             "C_call_function": "fill_with_zeros(\tx,\t x_length)",
                             "C_call_list": "x,\t x_length",
+                            "C_name": "fill_with_zeros",
                             "C_prototype": "double * x,\t int x_length",
                             "C_return_type": "void",
+                            "F_C_name": "c_fill_with_zeros",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -1955,9 +1957,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "fill_with_zeros",
                     "C_name_api": "fill_with_zeros",
-                    "F_C_name": "c_fill_with_zeros",
                     "F_name_api": "fill_with_zeros",
                     "function_name": "fill_with_zeros"
                 }
@@ -2052,8 +2052,10 @@
                         "fmtc": {
                             "C_call_function": "accumulate(\tarr,\t len)",
                             "C_call_list": "arr,\t len",
+                            "C_name": "accumulate",
                             "C_prototype": "const int * arr,\t size_t len",
                             "C_return_type": "int",
+                            "F_C_name": "c_accumulate",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2110,9 +2112,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "accumulate",
                     "C_name_api": "accumulate",
-                    "F_C_name": "c_accumulate",
                     "F_name_api": "accumulate",
                     "function_name": "accumulate"
                 }
@@ -2190,8 +2190,10 @@
                         "fmtc": {
                             "C_call_function": "acceptCharArrayIn(\tnames)",
                             "C_call_list": "names",
+                            "C_name": "acceptCharArrayIn",
                             "C_prototype": "char **names",
                             "C_return_type": "int",
+                            "F_C_name": "c_accept_char_array_in",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2229,9 +2231,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "acceptCharArrayIn",
                     "C_name_api": "acceptCharArrayIn",
-                    "F_C_name": "c_accept_char_array_in",
                     "F_name_api": "accept_char_array_in",
                     "function_name": "acceptCharArrayIn"
                 }
@@ -2297,8 +2297,10 @@
                         "fmtc": {
                             "C_call_function": "setGlobalInt(\tvalue)",
                             "C_call_list": "value",
+                            "C_name": "setGlobalInt",
                             "C_prototype": "int value",
                             "C_return_type": "void",
+                            "F_C_name": "c_set_global_int",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2323,9 +2325,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "setGlobalInt",
                     "C_name_api": "setGlobalInt",
-                    "F_C_name": "c_set_global_int",
                     "F_name_api": "set_global_int",
                     "function_name": "setGlobalInt"
                 }
@@ -2370,8 +2370,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "sumFixedArray(\t)",
+                            "C_name": "sumFixedArray",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_sum_fixed_array",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2390,9 +2392,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "sumFixedArray",
                     "C_name_api": "sumFixedArray",
-                    "F_C_name": "c_sum_fixed_array",
                     "F_name_api": "sum_fixed_array",
                     "function_name": "sumFixedArray"
                 }
@@ -2469,8 +2469,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "getPtrToScalar",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_scalar",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2495,9 +2497,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToScalar",
                     "C_name_api": "getPtrToScalar",
-                    "F_C_name": "c_get_ptr_to_scalar",
                     "F_name_api": "get_ptr_to_scalar",
                     "function_name": "getPtrToScalar"
                 }
@@ -2581,8 +2581,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getPtrToFixedArray",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_fixed_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2609,9 +2611,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToFixedArray",
                     "C_name_api": "getPtrToFixedArray",
-                    "F_C_name": "c_get_ptr_to_fixed_array",
                     "F_name_api": "get_ptr_to_fixed_array",
                     "function_name": "getPtrToFixedArray"
                 }
@@ -2723,8 +2723,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToDynamicArray(\tcount,\t ncount)",
                             "C_call_list": "count,\t ncount",
+                            "C_name": "getPtrToDynamicArray",
                             "C_prototype": "int * * count,\t int * ncount",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_dynamic_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2770,9 +2772,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToDynamicArray",
                     "C_name_api": "getPtrToDynamicArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_array",
                     "F_name_api": "get_ptr_to_dynamic_array",
                     "function_name": "getPtrToDynamicArray"
                 }
@@ -2857,8 +2857,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToFuncArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getPtrToFuncArray",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_func_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2885,9 +2887,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToFuncArray",
                     "C_name_api": "getPtrToFuncArray",
-                    "F_C_name": "c_get_ptr_to_func_array",
                     "F_name_api": "get_ptr_to_func_array",
                     "function_name": "getPtrToFuncArray"
                 }
@@ -2965,8 +2965,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToConstScalar(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "getPtrToConstScalar",
                             "C_prototype": "const int * * nitems",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_const_scalar",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -2991,9 +2993,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToConstScalar",
                     "C_name_api": "getPtrToConstScalar",
-                    "F_C_name": "c_get_ptr_to_const_scalar",
                     "F_name_api": "get_ptr_to_const_scalar",
                     "function_name": "getPtrToConstScalar"
                 }
@@ -3075,8 +3075,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToFixedConstArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getPtrToFixedConstArray",
                             "C_prototype": "const int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_fixed_const_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3103,9 +3105,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToFixedConstArray",
                     "C_name_api": "getPtrToFixedConstArray",
-                    "F_C_name": "c_get_ptr_to_fixed_const_array",
                     "F_name_api": "get_ptr_to_fixed_const_array",
                     "function_name": "getPtrToFixedConstArray"
                 }
@@ -3215,8 +3215,10 @@
                         "fmtc": {
                             "C_call_function": "getPtrToDynamicConstArray(\tcount,\t ncount)",
                             "C_call_list": "count,\t ncount",
+                            "C_name": "getPtrToDynamicConstArray",
                             "C_prototype": "const int * * count,\t int * ncount",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_ptr_to_dynamic_const_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3262,9 +3264,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getPtrToDynamicConstArray",
                     "C_name_api": "getPtrToDynamicConstArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_const_array",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
                     "function_name": "getPtrToDynamicConstArray"
                 }
@@ -3343,8 +3343,10 @@
                         "fmtc": {
                             "C_call_function": "getRawPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "getRawPtrToScalar",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_raw_ptr_to_scalar",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3369,9 +3371,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getRawPtrToScalar",
                     "C_name_api": "getRawPtrToScalar",
-                    "F_C_name": "c_get_raw_ptr_to_scalar",
                     "F_name_api": "get_raw_ptr_to_scalar",
                     "function_name": "getRawPtrToScalar"
                 }
@@ -3453,8 +3453,10 @@
                         "fmtc": {
                             "C_call_function": "getRawPtrToScalarForce(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "getRawPtrToScalarForce",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_raw_ptr_to_scalar_force",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3479,9 +3481,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getRawPtrToScalarForce",
                     "C_name_api": "getRawPtrToScalarForce",
-                    "F_C_name": "c_get_raw_ptr_to_scalar_force",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
                     "function_name": "getRawPtrToScalarForce"
                 }
@@ -3560,8 +3560,10 @@
                         "fmtc": {
                             "C_call_function": "getRawPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getRawPtrToFixedArray",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_raw_ptr_to_fixed_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3586,9 +3588,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getRawPtrToFixedArray",
                     "C_name_api": "getRawPtrToFixedArray",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array",
                     "F_name_api": "get_raw_ptr_to_fixed_array",
                     "function_name": "getRawPtrToFixedArray"
                 }
@@ -3670,8 +3670,10 @@
                         "fmtc": {
                             "C_call_function": "getRawPtrToFixedArrayForce(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getRawPtrToFixedArrayForce",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3696,9 +3698,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getRawPtrToFixedArrayForce",
                     "C_name_api": "getRawPtrToFixedArrayForce",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
                     "function_name": "getRawPtrToFixedArrayForce"
                 }
@@ -3780,8 +3780,10 @@
                         "fmtc": {
                             "C_call_function": "getRawPtrToInt2d(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "getRawPtrToInt2d",
                             "C_prototype": "int * * * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_raw_ptr_to_int2d",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -3806,9 +3808,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getRawPtrToInt2d",
                     "C_name_api": "getRawPtrToInt2d",
-                    "F_C_name": "c_get_raw_ptr_to_int2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
                     "function_name": "getRawPtrToInt2d"
                 }
@@ -3887,8 +3887,10 @@
                         "fmtc": {
                             "C_call_function": "checkInt2d(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "checkInt2d",
                             "C_prototype": "int **arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_check_int2d",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -3926,9 +3928,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "checkInt2d",
                     "C_name_api": "checkInt2d",
-                    "F_C_name": "c_check_int2d",
                     "F_name_api": "check_int2d",
                     "function_name": "checkInt2d"
                 }
@@ -4014,8 +4014,10 @@
                         "fmtc": {
                             "C_call_function": "DimensionIn(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "DimensionIn",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_dimension_in",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -4042,9 +4044,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DimensionIn",
                     "C_name_api": "DimensionIn",
-                    "F_C_name": "c_dimension_in",
                     "F_name_api": "dimension_in",
                     "function_name": "DimensionIn"
                 }
@@ -4131,8 +4131,10 @@
                         "fmtc": {
                             "C_call_function": "getAllocToFixedArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "getAllocToFixedArray",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_alloc_to_fixed_array",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -4159,9 +4161,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "getAllocToFixedArray",
                     "C_name_api": "getAllocToFixedArray",
-                    "F_C_name": "c_get_alloc_to_fixed_array",
                     "F_name_api": "get_alloc_to_fixed_array",
                     "function_name": "getAllocToFixedArray"
                 }
@@ -4232,8 +4232,10 @@
                         "fmtc": {
                             "C_call_function": "returnAddress1(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "returnAddress1",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
+                            "F_C_name": "c_return_address1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "void",
@@ -4271,9 +4273,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnAddress1",
                     "C_name_api": "returnAddress1",
-                    "F_C_name": "c_return_address1",
                     "F_name_api": "return_address1",
                     "function_name": "returnAddress1"
                 }
@@ -4346,8 +4346,10 @@
                         "fmtc": {
                             "C_call_function": "returnAddress2(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "returnAddress2",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
+                            "F_C_name": "c_return_address2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "void",
@@ -4385,9 +4387,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnAddress2",
                     "C_name_api": "returnAddress2",
-                    "F_C_name": "c_return_address2",
                     "F_name_api": "return_address2",
                     "function_name": "returnAddress2"
                 }
@@ -4461,8 +4461,10 @@
                         "fmtc": {
                             "C_call_function": "fetchVoidPtr(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "fetchVoidPtr",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
+                            "F_C_name": "c_fetch_void_ptr",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -4487,9 +4489,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "fetchVoidPtr",
                     "C_name_api": "fetchVoidPtr",
-                    "F_C_name": "c_fetch_void_ptr",
                     "F_name_api": "fetch_void_ptr",
                     "function_name": "fetchVoidPtr"
                 }
@@ -4566,8 +4566,10 @@
                         "fmtc": {
                             "C_call_function": "updateVoidPtr(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "updateVoidPtr",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
+                            "F_C_name": "c_update_void_ptr",
                             "stmt_name": "c_subroutine"
                         }
                     },
@@ -4592,9 +4594,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "updateVoidPtr",
                     "C_name_api": "updateVoidPtr",
-                    "F_C_name": "c_update_void_ptr",
                     "F_name_api": "update_void_ptr",
                     "function_name": "updateVoidPtr"
                 }
@@ -4671,8 +4671,10 @@
                         "fmtc": {
                             "C_call_function": "VoidPtrArray(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "VoidPtrArray",
                             "C_prototype": "void **addr",
                             "C_return_type": "int",
+                            "F_C_name": "c_void_ptr_array",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4710,9 +4712,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "VoidPtrArray",
                     "C_name_api": "VoidPtrArray",
-                    "F_C_name": "c_void_ptr_array",
                     "F_name_api": "void_ptr_array",
                     "function_name": "VoidPtrArray"
                 }
@@ -4760,8 +4760,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntPtrToScalar(\t)",
+                            "C_name": "returnIntPtrToScalar",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_ptr_to_scalar",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4780,9 +4782,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntPtrToScalar",
                     "C_name_api": "returnIntPtrToScalar",
-                    "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_name_api": "return_int_ptr_to_scalar",
                     "function_name": "returnIntPtrToScalar"
                 }
@@ -4838,8 +4838,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntPtrToFixedArray(\t)",
+                            "C_name": "returnIntPtrToFixedArray",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_ptr_to_fixed_array",
                             "c_array_size2": "10",
                             "c_const": "",
                             "c_get_value": "",
@@ -4860,9 +4862,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntPtrToFixedArray",
                     "C_name_api": "returnIntPtrToFixedArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_array",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "function_name": "returnIntPtrToFixedArray"
                 }
@@ -4911,8 +4911,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntPtrToConstScalar(\t)",
+                            "C_name": "returnIntPtrToConstScalar",
                             "C_prototype": "void",
                             "C_return_type": "const int *",
+                            "F_C_name": "c_return_int_ptr_to_const_scalar",
                             "c_const": "const ",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4931,9 +4933,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntPtrToConstScalar",
                     "C_name_api": "returnIntPtrToConstScalar",
-                    "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "function_name": "returnIntPtrToConstScalar"
                 }
@@ -4990,8 +4990,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntPtrToFixedConstArray(\t)",
+                            "C_name": "returnIntPtrToFixedConstArray",
                             "C_prototype": "void",
                             "C_return_type": "const int *",
+                            "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                             "c_array_size2": "10",
                             "c_const": "const ",
                             "c_get_value": "",
@@ -5012,9 +5014,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntPtrToFixedConstArray",
                     "C_name_api": "returnIntPtrToFixedConstArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
@@ -5065,8 +5065,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntScalar(\t)",
+                            "C_name": "returnIntScalar",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_scalar",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5085,9 +5087,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntScalar",
                     "C_name_api": "returnIntScalar",
-                    "F_C_name": "c_return_int_scalar",
                     "F_name_api": "return_int_scalar",
                     "function_name": "returnIntScalar"
                 }
@@ -5143,8 +5143,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntRaw(\t)",
+                            "C_name": "returnIntRaw",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_raw",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5163,9 +5165,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntRaw",
                     "C_name_api": "returnIntRaw",
-                    "F_C_name": "c_return_int_raw",
                     "F_name_api": "return_int_raw",
                     "function_name": "returnIntRaw"
                 }
@@ -5249,8 +5249,10 @@
                         "fmtc": {
                             "C_call_function": "returnIntRawWithArgs(\tname)",
                             "C_call_list": "name",
+                            "C_name": "returnIntRawWithArgs",
                             "C_prototype": "const char * name",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_raw_with_args",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5288,9 +5290,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntRawWithArgs",
                     "C_name_api": "returnIntRawWithArgs",
-                    "F_C_name": "c_return_int_raw_with_args",
                     "F_name_api": "return_int_raw_with_args",
                     "function_name": "returnIntRawWithArgs"
                 }
@@ -5346,8 +5346,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnRawPtrToInt2d(\t)",
+                            "C_name": "returnRawPtrToInt2d",
                             "C_prototype": "void",
                             "C_return_type": "int * *",
+                            "F_C_name": "c_return_raw_ptr_to_int2d",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5366,9 +5368,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnRawPtrToInt2d",
                     "C_name_api": "returnRawPtrToInt2d",
-                    "F_C_name": "c_return_raw_ptr_to_int2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
                     "function_name": "returnRawPtrToInt2d"
                 }
@@ -5427,8 +5427,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnIntAllocToFixedArray(\t)",
+                            "C_name": "returnIntAllocToFixedArray",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_alloc_to_fixed_array",
                             "c_array_size2": "10",
                             "c_const": "",
                             "c_get_value": "",
@@ -5449,9 +5451,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnIntAllocToFixedArray",
                     "C_name_api": "returnIntAllocToFixedArray",
-                    "F_C_name": "c_return_int_alloc_to_fixed_array",
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "function_name": "returnIntAllocToFixedArray"
                 }

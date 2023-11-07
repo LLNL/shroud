@@ -90,8 +90,10 @@
                         "fmtc": {
                             "C_call_function": "short_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_short_func",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
+                            "F_C_name": "c_short_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "short",
@@ -110,10 +112,12 @@
                         "fmtf": {
                             "C_call_function": "short_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_short_func",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_short_func",
+                            "F_C_name": "short_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -222,9 +226,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_short_func",
                     "C_name_api": "short_func",
-                    "F_C_name": "short_func",
                     "F_name_api": "short_func",
                     "F_name_function": "short_func",
                     "F_name_generic": "short_func",
@@ -310,8 +312,10 @@
                         "fmtc": {
                             "C_call_function": "int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int_func",
                             "C_prototype": "int arg1",
                             "C_return_type": "int",
+                            "F_C_name": "c_int_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -330,10 +334,12 @@
                         "fmtf": {
                             "C_call_function": "int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int_func",
                             "C_prototype": "int arg1",
                             "C_return_type": "int",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_int_func",
+                            "F_C_name": "int_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -442,9 +448,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_int_func",
                     "C_name_api": "int_func",
-                    "F_C_name": "int_func",
                     "F_name_api": "int_func",
                     "F_name_function": "int_func",
                     "F_name_generic": "int_func",
@@ -530,8 +534,10 @@
                         "fmtc": {
                             "C_call_function": "long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_func",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
+                            "F_C_name": "c_long_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "long",
@@ -550,10 +556,12 @@
                         "fmtf": {
                             "C_call_function": "long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_func",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_long_func",
+                            "F_C_name": "long_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -662,9 +670,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_long_func",
                     "C_name_api": "long_func",
-                    "F_C_name": "long_func",
                     "F_name_api": "long_func",
                     "F_name_function": "long_func",
                     "F_name_generic": "long_func",
@@ -752,8 +758,10 @@
                         "fmtc": {
                             "C_call_function": "long_long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_long_func",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
+                            "F_C_name": "c_long_long_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "long long",
@@ -772,10 +780,12 @@
                         "fmtf": {
                             "C_call_function": "long_long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_long_func",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_long_long_func",
+                            "F_C_name": "long_long_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -886,9 +896,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_long_long_func",
                     "C_name_api": "long_long_func",
-                    "F_C_name": "long_long_func",
                     "F_name_api": "long_long_func",
                     "F_name_function": "long_long_func",
                     "F_name_generic": "long_long_func",
@@ -976,8 +984,10 @@
                         "fmtc": {
                             "C_call_function": "short_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_short_int_func",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
+                            "F_C_name": "c_short_int_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "short",
@@ -996,10 +1006,12 @@
                         "fmtf": {
                             "C_call_function": "short_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_short_int_func",
                             "C_prototype": "short arg1",
                             "C_return_type": "short",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_short_int_func",
+                            "F_C_name": "short_int_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1108,9 +1120,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_short_int_func",
                     "C_name_api": "short_int_func",
-                    "F_C_name": "short_int_func",
                     "F_name_api": "short_int_func",
                     "F_name_function": "short_int_func",
                     "F_name_generic": "short_int_func",
@@ -1198,8 +1208,10 @@
                         "fmtc": {
                             "C_call_function": "long_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_int_func",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
+                            "F_C_name": "c_long_int_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "long",
@@ -1218,10 +1230,12 @@
                         "fmtf": {
                             "C_call_function": "long_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_int_func",
                             "C_prototype": "long arg1",
                             "C_return_type": "long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_long_int_func",
+                            "F_C_name": "long_int_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1330,9 +1344,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_long_int_func",
                     "C_name_api": "long_int_func",
-                    "F_C_name": "long_int_func",
                     "F_name_api": "long_int_func",
                     "F_name_function": "long_int_func",
                     "F_name_generic": "long_int_func",
@@ -1422,8 +1434,10 @@
                         "fmtc": {
                             "C_call_function": "long_long_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_long_int_func",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
+                            "F_C_name": "c_long_long_int_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "long long",
@@ -1442,10 +1456,12 @@
                         "fmtf": {
                             "C_call_function": "long_long_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_long_long_int_func",
                             "C_prototype": "long long arg1",
                             "C_return_type": "long long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_long_long_int_func",
+                            "F_C_name": "long_long_int_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1556,9 +1572,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_long_long_int_func",
                     "C_name_api": "long_long_int_func",
-                    "F_C_name": "long_long_int_func",
                     "F_name_api": "long_long_int_func",
                     "F_name_function": "long_long_int_func",
                     "F_name_generic": "long_long_int_func",
@@ -1644,8 +1658,10 @@
                         "fmtc": {
                             "C_call_function": "unsigned_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_unsigned_func",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
+                            "F_C_name": "c_unsigned_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned int",
@@ -1664,10 +1680,12 @@
                         "fmtf": {
                             "C_call_function": "unsigned_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_unsigned_func",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_unsigned_func",
+                            "F_C_name": "unsigned_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1776,9 +1794,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_unsigned_func",
                     "C_name_api": "unsigned_func",
-                    "F_C_name": "unsigned_func",
                     "F_name_api": "unsigned_func",
                     "F_name_function": "unsigned_func",
                     "F_name_generic": "unsigned_func",
@@ -1866,8 +1882,10 @@
                         "fmtc": {
                             "C_call_function": "ushort_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ushort_func",
                             "C_prototype": "unsigned short arg1",
                             "C_return_type": "unsigned short",
+                            "F_C_name": "c_ushort_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned short",
@@ -1886,10 +1904,12 @@
                         "fmtf": {
                             "C_call_function": "ushort_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ushort_func",
                             "C_prototype": "unsigned short arg1",
                             "C_return_type": "unsigned short",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_ushort_func",
+                            "F_C_name": "ushort_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1998,9 +2018,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_ushort_func",
                     "C_name_api": "ushort_func",
-                    "F_C_name": "ushort_func",
                     "F_name_api": "ushort_func",
                     "F_name_function": "ushort_func",
                     "F_name_generic": "ushort_func",
@@ -2088,8 +2106,10 @@
                         "fmtc": {
                             "C_call_function": "uint_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint_func",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
+                            "F_C_name": "c_uint_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned int",
@@ -2108,10 +2128,12 @@
                         "fmtf": {
                             "C_call_function": "uint_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint_func",
                             "C_prototype": "unsigned int arg1",
                             "C_return_type": "unsigned int",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_uint_func",
+                            "F_C_name": "uint_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -2220,9 +2242,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_uint_func",
                     "C_name_api": "uint_func",
-                    "F_C_name": "uint_func",
                     "F_name_api": "uint_func",
                     "F_name_function": "uint_func",
                     "F_name_generic": "uint_func",
@@ -2310,8 +2330,10 @@
                         "fmtc": {
                             "C_call_function": "ulong_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_func",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
+                            "F_C_name": "c_ulong_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned long",
@@ -2330,10 +2352,12 @@
                         "fmtf": {
                             "C_call_function": "ulong_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_func",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_ulong_func",
+                            "F_C_name": "ulong_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -2442,9 +2466,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_ulong_func",
                     "C_name_api": "ulong_func",
-                    "F_C_name": "ulong_func",
                     "F_name_api": "ulong_func",
                     "F_name_function": "ulong_func",
                     "F_name_generic": "ulong_func",
@@ -2534,8 +2556,10 @@
                         "fmtc": {
                             "C_call_function": "ulong_long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_long_func",
                             "C_prototype": "unsigned long long arg1",
                             "C_return_type": "unsigned long long",
+                            "F_C_name": "c_ulong_long_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned long long",
@@ -2554,10 +2578,12 @@
                         "fmtf": {
                             "C_call_function": "ulong_long_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_long_func",
                             "C_prototype": "unsigned long long arg1",
                             "C_return_type": "unsigned long long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_ulong_long_func",
+                            "F_C_name": "ulong_long_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -2668,9 +2694,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_ulong_long_func",
                     "C_name_api": "ulong_long_func",
-                    "F_C_name": "ulong_long_func",
                     "F_name_api": "ulong_long_func",
                     "F_name_function": "ulong_long_func",
                     "F_name_generic": "ulong_long_func",
@@ -2760,8 +2784,10 @@
                         "fmtc": {
                             "C_call_function": "ulong_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_int_func",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
+                            "F_C_name": "c_ulong_int_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "unsigned long",
@@ -2780,10 +2806,12 @@
                         "fmtf": {
                             "C_call_function": "ulong_int_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_ulong_int_func",
                             "C_prototype": "unsigned long arg1",
                             "C_return_type": "unsigned long",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_ulong_int_func",
+                            "F_C_name": "ulong_int_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -2892,9 +2920,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_ulong_int_func",
                     "C_name_api": "ulong_int_func",
-                    "F_C_name": "ulong_int_func",
                     "F_name_api": "ulong_int_func",
                     "F_name_function": "ulong_int_func",
                     "F_name_generic": "ulong_int_func",
@@ -2980,8 +3006,10 @@
                         "fmtc": {
                             "C_call_function": "int8_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int8_func",
                             "C_prototype": "int8_t arg1",
                             "C_return_type": "int8_t",
+                            "F_C_name": "c_int8_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int8_t",
@@ -3000,10 +3028,12 @@
                         "fmtf": {
                             "C_call_function": "int8_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int8_func",
                             "C_prototype": "int8_t arg1",
                             "C_return_type": "int8_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_int8_func",
+                            "F_C_name": "int8_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -3112,9 +3142,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_int8_func",
                     "C_name_api": "int8_func",
-                    "F_C_name": "int8_func",
                     "F_name_api": "int8_func",
                     "F_name_function": "int8_func",
                     "F_name_generic": "int8_func",
@@ -3200,8 +3228,10 @@
                         "fmtc": {
                             "C_call_function": "int16_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int16_func",
                             "C_prototype": "int16_t arg1",
                             "C_return_type": "int16_t",
+                            "F_C_name": "c_int16_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int16_t",
@@ -3220,10 +3250,12 @@
                         "fmtf": {
                             "C_call_function": "int16_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int16_func",
                             "C_prototype": "int16_t arg1",
                             "C_return_type": "int16_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_int16_func",
+                            "F_C_name": "int16_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -3332,9 +3364,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_int16_func",
                     "C_name_api": "int16_func",
-                    "F_C_name": "int16_func",
                     "F_name_api": "int16_func",
                     "F_name_function": "int16_func",
                     "F_name_generic": "int16_func",
@@ -3420,8 +3450,10 @@
                         "fmtc": {
                             "C_call_function": "int32_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int32_func",
                             "C_prototype": "int32_t arg1",
                             "C_return_type": "int32_t",
+                            "F_C_name": "c_int32_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int32_t",
@@ -3440,10 +3472,12 @@
                         "fmtf": {
                             "C_call_function": "int32_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int32_func",
                             "C_prototype": "int32_t arg1",
                             "C_return_type": "int32_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_int32_func",
+                            "F_C_name": "int32_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -3552,9 +3586,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_int32_func",
                     "C_name_api": "int32_func",
-                    "F_C_name": "int32_func",
                     "F_name_api": "int32_func",
                     "F_name_function": "int32_func",
                     "F_name_generic": "int32_func",
@@ -3640,8 +3672,10 @@
                         "fmtc": {
                             "C_call_function": "int64_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int64_func",
                             "C_prototype": "int64_t arg1",
                             "C_return_type": "int64_t",
+                            "F_C_name": "c_int64_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int64_t",
@@ -3660,10 +3694,12 @@
                         "fmtf": {
                             "C_call_function": "int64_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_int64_func",
                             "C_prototype": "int64_t arg1",
                             "C_return_type": "int64_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_int64_func",
+                            "F_C_name": "int64_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -3772,9 +3808,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_int64_func",
                     "C_name_api": "int64_func",
-                    "F_C_name": "int64_func",
                     "F_name_api": "int64_func",
                     "F_name_function": "int64_func",
                     "F_name_generic": "int64_func",
@@ -3860,8 +3894,10 @@
                         "fmtc": {
                             "C_call_function": "uint8_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint8_func",
                             "C_prototype": "uint8_t arg1",
                             "C_return_type": "uint8_t",
+                            "F_C_name": "c_uint8_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "uint8_t",
@@ -3880,10 +3916,12 @@
                         "fmtf": {
                             "C_call_function": "uint8_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint8_func",
                             "C_prototype": "uint8_t arg1",
                             "C_return_type": "uint8_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_uint8_func",
+                            "F_C_name": "uint8_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -3992,9 +4030,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_uint8_func",
                     "C_name_api": "uint8_func",
-                    "F_C_name": "uint8_func",
                     "F_name_api": "uint8_func",
                     "F_name_function": "uint8_func",
                     "F_name_generic": "uint8_func",
@@ -4080,8 +4116,10 @@
                         "fmtc": {
                             "C_call_function": "uint16_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint16_func",
                             "C_prototype": "uint16_t arg1",
                             "C_return_type": "uint16_t",
+                            "F_C_name": "c_uint16_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "uint16_t",
@@ -4100,10 +4138,12 @@
                         "fmtf": {
                             "C_call_function": "uint16_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint16_func",
                             "C_prototype": "uint16_t arg1",
                             "C_return_type": "uint16_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_uint16_func",
+                            "F_C_name": "uint16_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -4212,9 +4252,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_uint16_func",
                     "C_name_api": "uint16_func",
-                    "F_C_name": "uint16_func",
                     "F_name_api": "uint16_func",
                     "F_name_function": "uint16_func",
                     "F_name_generic": "uint16_func",
@@ -4300,8 +4338,10 @@
                         "fmtc": {
                             "C_call_function": "uint32_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint32_func",
                             "C_prototype": "uint32_t arg1",
                             "C_return_type": "uint32_t",
+                            "F_C_name": "c_uint32_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "uint32_t",
@@ -4320,10 +4360,12 @@
                         "fmtf": {
                             "C_call_function": "uint32_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint32_func",
                             "C_prototype": "uint32_t arg1",
                             "C_return_type": "uint32_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_uint32_func",
+                            "F_C_name": "uint32_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -4432,9 +4474,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_uint32_func",
                     "C_name_api": "uint32_func",
-                    "F_C_name": "uint32_func",
                     "F_name_api": "uint32_func",
                     "F_name_function": "uint32_func",
                     "F_name_generic": "uint32_func",
@@ -4520,8 +4560,10 @@
                         "fmtc": {
                             "C_call_function": "uint64_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint64_func",
                             "C_prototype": "uint64_t arg1",
                             "C_return_type": "uint64_t",
+                            "F_C_name": "c_uint64_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "uint64_t",
@@ -4540,10 +4582,12 @@
                         "fmtf": {
                             "C_call_function": "uint64_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_uint64_func",
                             "C_prototype": "uint64_t arg1",
                             "C_return_type": "uint64_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_uint64_func",
+                            "F_C_name": "uint64_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -4652,9 +4696,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_uint64_func",
                     "C_name_api": "uint64_func",
-                    "F_C_name": "uint64_func",
                     "F_name_api": "uint64_func",
                     "F_name_function": "uint64_func",
                     "F_name_generic": "uint64_func",
@@ -4740,8 +4782,10 @@
                         "fmtc": {
                             "C_call_function": "size_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_size_func",
                             "C_prototype": "size_t arg1",
                             "C_return_type": "size_t",
+                            "F_C_name": "c_size_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "size_t",
@@ -4760,10 +4804,12 @@
                         "fmtf": {
                             "C_call_function": "size_func(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TYP_size_func",
                             "C_prototype": "size_t arg1",
                             "C_return_type": "size_t",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_size_func",
+                            "F_C_name": "size_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -4872,9 +4918,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_size_func",
                     "C_name_api": "size_func",
-                    "F_C_name": "size_func",
                     "F_name_api": "size_func",
                     "F_name_function": "size_func",
                     "F_name_generic": "size_func",
@@ -4960,8 +5004,10 @@
                         "fmtc": {
                             "C_call_function": "bool_func(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TYP_bool_func",
                             "C_prototype": "bool arg",
                             "C_return_type": "bool",
+                            "F_C_name": "c_bool_func",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "bool",
@@ -4980,10 +5026,12 @@
                         "fmtf": {
                             "C_call_function": "bool_func(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TYP_bool_func",
                             "C_prototype": "bool arg",
                             "C_return_type": "bool",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_bool_func",
+                            "F_C_name": "c_bool_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_arg_cxx",
@@ -5096,9 +5144,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_bool_func",
                     "C_name_api": "bool_func",
-                    "F_C_name": "c_bool_func",
                     "F_name_api": "bool_func",
                     "F_name_function": "bool_func",
                     "F_name_generic": "bool_func",
@@ -5193,8 +5239,10 @@
                         "fmtc": {
                             "C_call_function": "returnBoolAndOthers(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "TYP_returnBoolAndOthers",
                             "C_prototype": "int * flag",
                             "C_return_type": "bool",
+                            "F_C_name": "c_return_bool_and_others",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "bool",
@@ -5213,10 +5261,12 @@
                         "fmtf": {
                             "C_call_function": "returnBoolAndOthers(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "TYP_returnBoolAndOthers",
                             "C_prototype": "int * flag",
                             "C_return_type": "bool",
                             "F_C_arguments": "flag",
                             "F_C_call": "c_return_bool_and_others",
+                            "F_C_name": "c_return_bool_and_others",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "flag",
@@ -5327,9 +5377,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TYP_returnBoolAndOthers",
                     "C_name_api": "returnBoolAndOthers",
-                    "F_C_name": "c_return_bool_and_others",
                     "F_name_api": "return_bool_and_others",
                     "F_name_function": "return_bool_and_others",
                     "F_name_generic": "return_bool_and_others",

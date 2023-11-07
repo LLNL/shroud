@@ -693,10 +693,12 @@
                         "fmtf": {
                             "C_call_function": "DataPointer_get_items(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "SCO_DataPointer_get_items_bufferify",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                             "F_C_call": "c_data_pointer_get_items_bufferify",
+                            "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -766,9 +768,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "SCO_DataPointer_get_items_bufferify",
                     "C_name_api": "DataPointer_get_items",
-                    "F_C_name": "c_data_pointer_get_items_bufferify",
                     "F_name_api": "data_pointer_get_items",
                     "F_name_function": "data_pointer_get_items",
                     "F_name_generic": "data_pointer_get_items",
@@ -885,10 +885,12 @@
                         "fmtf": {
                             "C_call_function": "DataPointer_set_items(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "SCO_DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_data_pointer_set_items",
+                            "F_C_name": "data_pointer_set_items",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -956,9 +958,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "SCO_DataPointer_set_items",
                     "C_name_api": "DataPointer_set_items",
-                    "F_C_name": "data_pointer_set_items",
                     "F_name_api": "data_pointer_set_items",
                     "F_name_function": "data_pointer_set_items",
                     "F_name_generic": "data_pointer_set_items",
@@ -1335,10 +1335,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns1::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
+                                    "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                                     "F_C_call": "c_data_pointer_get_items_bufferify",
+                                    "F_C_name": "c_data_pointer_get_items_bufferify",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -1408,9 +1410,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
@@ -1527,10 +1527,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns1::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
+                                    "C_name": "SCO_ns1_DataPointer_set_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",
+                                    "F_C_name": "data_pointer_set_items",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
@@ -1598,9 +1600,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns1_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
-                            "F_C_name": "data_pointer_set_items",
                             "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
@@ -2004,10 +2004,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns2::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
+                                    "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                                     "F_C_call": "c_data_pointer_get_items_bufferify",
+                                    "F_C_name": "c_data_pointer_get_items_bufferify",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -2077,9 +2079,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
@@ -2196,10 +2196,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns2::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
+                                    "C_name": "SCO_ns2_DataPointer_set_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",
+                                    "F_C_name": "data_pointer_set_items",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
@@ -2267,9 +2269,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns2_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
-                            "F_C_name": "data_pointer_set_items",
                             "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",

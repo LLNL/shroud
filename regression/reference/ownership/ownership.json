@@ -61,16 +61,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->dtor(\t)",
+                                    "C_name": "OWN_Class1_dtor",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_dtor",
                                     "stmt_name": "c_dtor"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->dtor(\t)",
+                                    "C_name": "OWN_Class1_dtor",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_dtor",
+                                    "F_C_name": "c_class1_dtor",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -84,9 +88,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "OWN_Class1_dtor",
                             "C_name_api": "dtor",
-                            "F_C_name": "c_class1_dtor",
                             "F_name_api": "dtor",
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
@@ -147,10 +149,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_flag(\t)",
+                                    "C_name": "OWN_Class1_get_flag",
                                     "C_prototype": "OWN_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_get_flag",
+                                    "F_C_name": "c_class1_get_flag",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -180,9 +184,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "OWN_Class1_get_flag",
                             "C_name_api": "get_flag",
-                            "F_C_name": "c_class1_get_flag",
                             "F_name_api": "get_flag",
                             "F_name_function": "get_flag",
                             "F_name_generic": "get_flag",
@@ -344,9 +346,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrRaw(\t)",
+                            "C_name": "OWN_ReturnIntPtrRaw",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_return_int_ptr_raw",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -373,9 +377,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrRaw",
                     "C_name_api": "ReturnIntPtrRaw",
-                    "F_C_name": "c_return_int_ptr_raw",
                     "F_name_api": "return_int_ptr_raw",
                     "function_name": "ReturnIntPtrRaw"
                 }
@@ -439,8 +441,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrScalar(\t)",
+                            "C_name": "OWN_ReturnIntPtrScalar",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_ptr_scalar",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -458,10 +462,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrScalar(\t)",
+                            "C_name": "OWN_ReturnIntPtrScalar_extrawrapper",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_return_int_ptr_scalar_extrawrapper",
+                            "F_C_name": "return_int_ptr_scalar",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -508,9 +514,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrScalar_extrawrapper",
                     "C_name_api": "ReturnIntPtrScalar",
-                    "F_C_name": "return_int_ptr_scalar",
                     "F_name_api": "return_int_ptr_scalar",
                     "F_name_function": "return_int_ptr_scalar",
                     "F_name_generic": "return_int_ptr_scalar",
@@ -579,8 +583,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrPointer(\t)",
+                            "C_name": "OWN_ReturnIntPtrPointer",
                             "C_prototype": "void",
                             "C_return_type": "int *",
+                            "F_C_name": "c_return_int_ptr_pointer",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -598,10 +604,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrPointer(\t)",
+                            "C_name": "OWN_ReturnIntPtrPointer",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
                             "F_C_call": "c_return_int_ptr_pointer",
+                            "F_C_name": "c_return_int_ptr_pointer",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -650,9 +658,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrPointer",
                     "C_name_api": "ReturnIntPtrPointer",
-                    "F_C_name": "c_return_int_ptr_pointer",
                     "F_name_api": "return_int_ptr_pointer",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
@@ -740,9 +746,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimRaw(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimRaw",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_raw",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -794,9 +802,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimRaw",
                     "C_name_api": "ReturnIntPtrDimRaw",
-                    "F_C_name": "c_return_int_ptr_dim_raw",
                     "F_name_api": "return_int_ptr_dim_raw",
                     "function_name": "ReturnIntPtrDimRaw"
                 }
@@ -896,9 +902,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimPointer(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimPointer",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_pointer",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -995,9 +1003,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimPointer",
                     "C_name_api": "ReturnIntPtrDimPointer",
-                    "F_C_name": "c_return_int_ptr_dim_pointer",
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
                     "function_name": "ReturnIntPtrDimPointer"
@@ -1106,10 +1112,12 @@
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrDimPointer(\t&len)",
                             "C_call_list": "&len",
+                            "C_name": "OWN_ReturnIntPtrDimPointer_bufferify",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_return_int_ptr_dim_pointer_bufferify",
+                            "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -1178,9 +1186,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimPointer_bufferify",
                     "C_name_api": "ReturnIntPtrDimPointer",
-                    "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
                     "F_name_api": "return_int_ptr_dim_pointer",
                     "F_name_function": "return_int_ptr_dim_pointer",
                     "F_name_generic": "return_int_ptr_dim_pointer",
@@ -1287,9 +1293,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimAlloc(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimAlloc",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -1386,9 +1394,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimAlloc",
                     "C_name_api": "ReturnIntPtrDimAlloc",
-                    "F_C_name": "c_return_int_ptr_dim_alloc",
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
                     "function_name": "ReturnIntPtrDimAlloc"
@@ -1500,10 +1506,12 @@
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrDimAlloc(\t&len)",
                             "C_call_list": "&len",
+                            "C_name": "OWN_ReturnIntPtrDimAlloc_bufferify",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_return_int_ptr_dim_alloc_bufferify",
+                            "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -1579,9 +1587,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimAlloc_bufferify",
                     "C_name_api": "ReturnIntPtrDimAlloc",
-                    "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
                     "F_name_api": "return_int_ptr_dim_alloc",
                     "F_name_function": "return_int_ptr_dim_alloc",
                     "F_name_generic": "return_int_ptr_dim_alloc",
@@ -1683,9 +1689,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimDefault(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimDefault",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_default",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -1782,9 +1790,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimDefault",
                     "C_name_api": "ReturnIntPtrDimDefault",
-                    "F_C_name": "c_return_int_ptr_dim_default",
                     "F_name_api": "return_int_ptr_dim_default",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
                     "function_name": "ReturnIntPtrDimDefault"
@@ -1891,10 +1897,12 @@
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrDimDefault(\t&len)",
                             "C_call_list": "&len",
+                            "C_name": "OWN_ReturnIntPtrDimDefault_bufferify",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_return_int_ptr_dim_default_bufferify",
+                            "F_C_name": "c_return_int_ptr_dim_default_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -1963,9 +1971,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimDefault_bufferify",
                     "C_name_api": "ReturnIntPtrDimDefault",
-                    "F_C_name": "c_return_int_ptr_dim_default_bufferify",
                     "F_name_api": "return_int_ptr_dim_default",
                     "F_name_function": "return_int_ptr_dim_default",
                     "F_name_generic": "return_int_ptr_dim_default",
@@ -2060,9 +2066,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimRawNew(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimRawNew",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_raw_new",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -2118,9 +2126,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimRawNew",
                     "C_name_api": "ReturnIntPtrDimRawNew",
-                    "F_C_name": "c_return_int_ptr_dim_raw_new",
                     "F_name_api": "return_int_ptr_dim_raw_new",
                     "function_name": "ReturnIntPtrDimRawNew"
                 }
@@ -2221,9 +2227,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimPointerNew(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimPointerNew",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_pointer_new",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -2320,9 +2328,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimPointerNew",
                     "C_name_api": "ReturnIntPtrDimPointerNew",
-                    "F_C_name": "c_return_int_ptr_dim_pointer_new",
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
                     "function_name": "ReturnIntPtrDimPointerNew"
@@ -2432,10 +2438,12 @@
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrDimPointerNew(\t&len)",
                             "C_call_list": "&len",
+                            "C_name": "OWN_ReturnIntPtrDimPointerNew_bufferify",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_return_int_ptr_dim_pointer_new_bufferify",
+                            "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
@@ -2507,9 +2515,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimPointerNew_bufferify",
                     "C_name_api": "ReturnIntPtrDimPointerNew",
-                    "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
                     "F_name_api": "return_int_ptr_dim_pointer_new",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
@@ -2605,9 +2611,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimAllocNew(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimAllocNew",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_alloc_new",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -2704,9 +2712,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimAllocNew",
                     "C_name_api": "ReturnIntPtrDimAllocNew",
-                    "F_C_name": "c_return_int_ptr_dim_alloc_new",
                     "F_name_api": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
                     "function_name": "ReturnIntPtrDimAllocNew"
@@ -2807,9 +2813,11 @@
                         "fmtc": {
                             "C_call_function": "ReturnIntPtrDimDefaultNew(\tlen)",
                             "C_call_list": "len",
+                            "C_name": "OWN_ReturnIntPtrDimDefaultNew",
                             "C_prototype": "int * len",
                             "C_return_type": "int *",
                             "F_C_arguments": "len",
+                            "F_C_name": "c_return_int_ptr_dim_default_new",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_array_size2": "len",
@@ -2906,9 +2914,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimDefaultNew",
                     "C_name_api": "ReturnIntPtrDimDefaultNew",
-                    "F_C_name": "c_return_int_ptr_dim_default_new",
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
                     "function_name": "ReturnIntPtrDimDefaultNew"
@@ -3017,10 +3023,12 @@
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrDimDefaultNew(\t&len)",
                             "C_call_list": "&len",
+                            "C_name": "OWN_ReturnIntPtrDimDefaultNew_bufferify",
                             "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t OWN_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_return_int_ptr_dim_default_new_bufferify",
+                            "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
@@ -3092,9 +3100,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_ReturnIntPtrDimDefaultNew_bufferify",
                     "C_name_api": "ReturnIntPtrDimDefaultNew",
-                    "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
                     "F_name_api": "return_int_ptr_dim_default_new",
                     "F_name_function": "return_int_ptr_dim_default_new",
                     "F_name_generic": "return_int_ptr_dim_default_new",
@@ -3871,17 +3877,21 @@
                         "fmtc": {
                             "C_call_function": "createClassStatic(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "OWN_createClassStatic",
                             "C_prototype": "int flag",
                             "C_return_type": "void",
+                            "F_C_name": "c_create_class_static",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "createClassStatic(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "OWN_createClassStatic",
                             "C_prototype": "int flag",
                             "C_return_type": "void",
                             "F_C_arguments": "flag",
                             "F_C_call": "c_create_class_static",
+                            "F_C_name": "create_class_static",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "flag",
                             "F_arguments": "flag",
@@ -3952,9 +3962,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_createClassStatic",
                     "C_name_api": "createClassStatic",
-                    "F_C_name": "create_class_static",
                     "F_name_api": "create_class_static",
                     "F_name_function": "create_class_static",
                     "F_name_generic": "create_class_static",
@@ -4023,8 +4031,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getClassStatic(\t)",
+                            "C_name": "OWN_getClassStatic",
                             "C_prototype": "OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
+                            "F_C_name": "c_get_class_static",
                             "c_const": "",
                             "c_type": "OWN_Class1",
                             "c_var": "SHC_rv",
@@ -4042,10 +4052,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "getClassStatic(\t)",
+                            "C_name": "OWN_getClassStatic",
                             "C_prototype": "OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_get_class_static",
+                            "F_C_name": "c_get_class_static",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -4099,9 +4111,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_getClassStatic",
                     "C_name_api": "getClassStatic",
-                    "F_C_name": "c_get_class_static",
                     "F_name_api": "get_class_static",
                     "F_name_function": "get_class_static",
                     "F_name_generic": "get_class_static",
@@ -4203,8 +4213,10 @@
                         "fmtc": {
                             "C_call_function": "getClassNew(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "OWN_getClassNew",
                             "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
+                            "F_C_name": "c_get_class_new",
                             "c_const": "",
                             "c_type": "OWN_Class1",
                             "c_var": "SHC_rv",
@@ -4223,10 +4235,12 @@
                         "fmtf": {
                             "C_call_function": "getClassNew(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "OWN_getClassNew",
                             "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
                             "C_return_type": "OWN_Class1 *",
                             "F_C_arguments": "flag,\t SHT_rv",
                             "F_C_call": "c_get_class_new",
+                            "F_C_name": "c_get_class_new",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
@@ -4341,9 +4355,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "OWN_getClassNew",
                     "C_name_api": "getClassNew",
-                    "F_C_name": "c_get_class_new",
                     "F_name_api": "get_class_new",
                     "F_name_function": "get_class_new",
                     "F_name_generic": "get_class_new",

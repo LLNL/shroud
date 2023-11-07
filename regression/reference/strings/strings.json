@@ -64,16 +64,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "init_test(\t)",
+                            "C_name": "STR_init_test",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_init_test",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "init_test(\t)",
+                            "C_name": "STR_init_test",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_init_test",
+                            "F_C_name": "init_test",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -82,9 +86,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_init_test",
                     "C_name_api": "init_test",
-                    "F_C_name": "init_test",
                     "F_name_api": "init_test",
                     "F_name_function": "init_test",
                     "F_name_generic": "init_test",
@@ -173,17 +175,21 @@
                         "fmtc": {
                             "C_call_function": "passChar(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "STR_passChar",
                             "C_prototype": "char status",
                             "C_return_type": "void",
+                            "F_C_name": "c_pass_char",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "passChar(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "STR_passChar",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_arguments": "status",
                             "F_C_call": "c_pass_char",
+                            "F_C_name": "pass_char",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
@@ -255,9 +261,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passChar",
                     "C_name_api": "passChar",
-                    "F_C_name": "pass_char",
                     "F_name_api": "pass_char",
                     "F_name_function": "pass_char",
                     "F_name_generic": "pass_char",
@@ -348,17 +352,21 @@
                         "fmtc": {
                             "C_call_function": "passCharForce(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "STR_passCharForce",
                             "C_prototype": "char status",
                             "C_return_type": "void",
+                            "F_C_name": "c_pass_char_force",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "passCharForce(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "STR_passCharForce",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_arguments": "status",
                             "F_C_call": "c_pass_char_force",
+                            "F_C_name": "c_pass_char_force",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
@@ -411,9 +419,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passCharForce",
                     "C_name_api": "passCharForce",
-                    "F_C_name": "c_pass_char_force",
                     "F_name_api": "pass_char_force",
                     "F_name_function": "pass_char_force",
                     "F_name_generic": "pass_char_force",
@@ -471,8 +477,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "returnChar(\t)",
+                            "C_name": "STR_returnChar",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
+                            "F_C_name": "c_return_char",
                             "c_const": "",
                             "c_type": "char",
                             "c_var": "SHC_rv",
@@ -488,10 +496,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "returnChar(\t)",
+                            "C_name": "STR_returnChar",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_return_char",
+                            "F_C_name": "c_return_char",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv",
@@ -537,9 +547,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_returnChar",
                     "C_name_api": "returnChar",
-                    "F_C_name": "c_return_char",
                     "F_name_api": "return_char",
                     "F_name_function": "return_char",
                     "F_name_generic": "return_char",
@@ -655,9 +663,11 @@
                         "fmtc": {
                             "C_call_function": "passCharPtr(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
+                            "C_name": "STR_passCharPtr",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t src",
+                            "F_C_name": "c_pass_char_ptr",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -753,9 +763,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passCharPtr",
                     "C_name_api": "passCharPtr",
-                    "F_C_name": "c_pass_char_ptr",
                     "F_name_api": "pass_char_ptr",
                     "PY_name_impl": "PY_passCharPtr",
                     "function_name": "passCharPtr"
@@ -875,10 +883,12 @@
                         "fmtf": {
                             "C_call_function": "passCharPtr(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
+                            "C_name": "STR_passCharPtr_bufferify",
                             "C_prototype": "char *dest,\t int SHT_dest_len,\t const char * src",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t SHT_dest_len,\t src",
                             "F_C_call": "c_pass_char_ptr_bufferify",
+                            "F_C_name": "c_pass_char_ptr_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t trim(src)//C_NULL_CHAR",
                             "F_arguments": "dest,\t src",
@@ -944,9 +954,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passCharPtr_bufferify",
                     "C_name_api": "passCharPtr",
-                    "F_C_name": "c_pass_char_ptr_bufferify",
                     "F_name_api": "pass_char_ptr",
                     "F_name_function": "pass_char_ptr",
                     "F_name_generic": "pass_char_ptr",
@@ -1034,9 +1042,11 @@
                         "fmtc": {
                             "C_call_function": "passCharPtrInOut(\ts)",
                             "C_call_list": "s",
+                            "C_name": "STR_passCharPtrInOut",
                             "C_prototype": "char * s",
                             "C_return_type": "void",
                             "F_C_arguments": "s",
+                            "F_C_name": "c_pass_char_ptr_in_out",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -1087,9 +1097,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passCharPtrInOut",
                     "C_name_api": "passCharPtrInOut",
-                    "F_C_name": "c_pass_char_ptr_in_out",
                     "F_name_api": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut"
@@ -1181,10 +1189,12 @@
                         "fmtf": {
                             "C_call_function": "passCharPtrInOut(\tSHT_s_str)",
                             "C_call_list": "SHT_s_str",
+                            "C_name": "STR_passCharPtrInOut_bufferify",
                             "C_prototype": "char *s,\t int SHT_s_len",
                             "C_return_type": "void",
                             "F_C_arguments": "s,\t SHT_s_len",
                             "F_C_call": "c_pass_char_ptr_in_out_bufferify",
+                            "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "s,\t SHT_s_len",
                             "F_arguments": "s",
@@ -1228,9 +1238,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passCharPtrInOut_bufferify",
                     "C_name_api": "passCharPtrInOut",
-                    "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                     "F_name_api": "pass_char_ptr_in_out",
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
@@ -1301,9 +1309,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getCharPtr1(\t)",
+                            "C_name": "STR_getCharPtr1",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_char_ptr1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -1347,9 +1357,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr1",
                     "C_name_api": "getCharPtr1",
-                    "F_C_name": "c_get_char_ptr1",
                     "F_name_api": "get_char_ptr1",
                     "PY_name_impl": "PY_getCharPtr1",
                     "function_name": "getCharPtr1"
@@ -1425,10 +1433,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getCharPtr1(\t)",
+                            "C_name": "STR_getCharPtr1_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_get_char_ptr1_bufferify",
+                            "F_C_name": "c_get_char_ptr1_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -1466,9 +1476,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr1_bufferify",
                     "C_name_api": "getCharPtr1",
-                    "F_C_name": "c_get_char_ptr1_bufferify",
                     "F_name_api": "get_char_ptr1",
                     "F_name_function": "get_char_ptr1",
                     "F_name_generic": "get_char_ptr1",
@@ -1536,9 +1544,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getCharPtr2(\t)",
+                            "C_name": "STR_getCharPtr2",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_char_ptr2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": "30",
@@ -1584,9 +1594,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr2",
                     "C_name_api": "getCharPtr2",
-                    "F_C_name": "c_get_char_ptr2",
                     "F_name_api": "get_char_ptr2",
                     "PY_name_impl": "PY_getCharPtr2",
                     "function_name": "getCharPtr2"
@@ -1659,10 +1667,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getCharPtr2(\t)",
+                            "C_name": "STR_getCharPtr2_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_char_ptr2_bufferify",
+                            "F_C_name": "c_get_char_ptr2_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -1699,9 +1709,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr2_bufferify",
                     "C_name_api": "getCharPtr2",
-                    "F_C_name": "c_get_char_ptr2_bufferify",
                     "F_name_api": "get_char_ptr2",
                     "F_name_function": "get_char_ptr2",
                     "F_name_generic": "get_char_ptr2",
@@ -1768,9 +1776,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getCharPtr3(\t)",
+                            "C_name": "STR_getCharPtr3",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_char_ptr3",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -1814,9 +1824,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr3",
                     "C_name_api": "getCharPtr3",
-                    "F_C_name": "c_get_char_ptr3",
                     "F_name_api": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
@@ -1890,10 +1898,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getCharPtr3(\t)",
+                            "C_name": "STR_getCharPtr3_bufferify",
                             "C_prototype": "char *output,\t int noutput",
                             "C_return_type": "void",
                             "F_C_arguments": "output,\t noutput",
                             "F_C_call": "c_get_char_ptr3_bufferify",
+                            "F_C_name": "c_get_char_ptr3_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "output,\t noutput",
@@ -1926,9 +1936,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr3_bufferify",
                     "C_name_api": "getCharPtr3",
-                    "F_C_name": "c_get_char_ptr3_bufferify",
                     "F_name_api": "get_char_ptr3",
                     "F_name_function": "get_char_ptr3",
                     "F_name_generic": "get_char_ptr3",
@@ -2000,8 +2008,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getCharPtr4(\t)",
+                            "C_name": "STR_getCharPtr4",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
+                            "F_C_name": "c_get_char_ptr4",
                             "c_const": "const ",
                             "c_get_value": "",
                             "c_type": "char",
@@ -2019,10 +2029,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr4(\t)",
+                            "C_name": "STR_getCharPtr4",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
                             "F_C_call": "c_get_char_ptr4",
+                            "F_C_name": "get_char_ptr4",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2053,9 +2065,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr4",
                     "C_name_api": "getCharPtr4",
-                    "F_C_name": "get_char_ptr4",
                     "F_name_api": "get_char_ptr4",
                     "F_name_function": "get_char_ptr4",
                     "F_name_generic": "get_char_ptr4",
@@ -2126,9 +2136,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getCharPtr5(\t)",
+                            "C_name": "STR_getCharPtr5",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_char_ptr5",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -2155,9 +2167,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr5",
                     "C_name_api": "getCharPtr5",
-                    "F_C_name": "c_get_char_ptr5",
                     "F_name_api": "get_char_ptr5",
                     "function_name": "getCharPtr5"
                 }
@@ -2234,10 +2244,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getCharPtr5(\t)",
+                            "C_name": "STR_getCharPtr5_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_get_char_ptr5_bufferify",
+                            "F_C_name": "c_get_char_ptr5_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -2274,9 +2286,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getCharPtr5_bufferify",
                     "C_name_api": "getCharPtr5",
-                    "F_C_name": "c_get_char_ptr5_bufferify",
                     "F_name_api": "get_char_ptr5",
                     "F_name_function": "get_char_ptr5",
                     "F_name_generic": "get_char_ptr5",
@@ -2419,10 +2429,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringResult(\t)",
+                            "C_name": "STR_getConstStringResult_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_result_bufferify",
+                            "F_C_name": "c_get_const_string_result_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -2465,9 +2477,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringResult_bufferify",
                     "C_name_api": "getConstStringResult",
-                    "F_C_name": "c_get_const_string_result_bufferify",
                     "F_name_api": "get_const_string_result",
                     "F_name_function": "get_const_string_result",
                     "F_name_generic": "get_const_string_result",
@@ -2602,10 +2612,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringLen(\t)",
+                            "C_name": "STR_getConstStringLen_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_const_string_len_bufferify",
+                            "F_C_name": "c_get_const_string_len_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -2642,9 +2654,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringLen_bufferify",
                     "C_name_api": "getConstStringLen",
-                    "F_C_name": "c_get_const_string_len_bufferify",
                     "F_name_api": "get_const_string_len",
                     "F_name_function": "get_const_string_len",
                     "F_name_generic": "get_const_string_len",
@@ -2779,10 +2789,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringAsArg(\t)",
+                            "C_name": "STR_getConstStringAsArg_bufferify",
                             "C_prototype": "char *output,\t int noutput",
                             "C_return_type": "void",
                             "F_C_arguments": "output,\t noutput",
                             "F_C_call": "c_get_const_string_as_arg_bufferify",
+                            "F_C_name": "c_get_const_string_as_arg_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "output,\t noutput",
@@ -2815,9 +2827,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAsArg_bufferify",
                     "C_name_api": "getConstStringAsArg",
-                    "F_C_name": "c_get_const_string_as_arg_bufferify",
                     "F_name_api": "get_const_string_as_arg",
                     "F_name_function": "get_const_string_as_arg",
                     "F_name_generic": "get_const_string_as_arg",
@@ -2953,10 +2963,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringAlloc(\t)",
+                            "C_name": "STR_getConstStringAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_alloc_bufferify",
+                            "F_C_name": "c_get_const_string_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -2999,9 +3011,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringAlloc_bufferify",
                     "C_name_api": "getConstStringAlloc",
-                    "F_C_name": "c_get_const_string_alloc_bufferify",
                     "F_name_api": "get_const_string_alloc",
                     "F_name_function": "get_const_string_alloc",
                     "F_name_generic": "get_const_string_alloc",
@@ -3073,9 +3083,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringRefPure(\t)",
+                            "C_name": "STR_getConstStringRefPure",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ref_pure",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -3120,9 +3132,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefPure",
                     "C_name_api": "getConstStringRefPure",
-                    "F_C_name": "c_get_const_string_ref_pure",
                     "F_name_api": "get_const_string_ref_pure",
                     "PY_name_impl": "PY_getConstStringRefPure",
                     "function_name": "getConstStringRefPure"
@@ -3199,10 +3209,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringRefPure(\t)",
+                            "C_name": "STR_getConstStringRefPure_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ref_pure_bufferify",
+                            "F_C_name": "c_get_const_string_ref_pure_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3245,9 +3257,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefPure_bufferify",
                     "C_name_api": "getConstStringRefPure",
-                    "F_C_name": "c_get_const_string_ref_pure_bufferify",
                     "F_name_api": "get_const_string_ref_pure",
                     "F_name_function": "get_const_string_ref_pure",
                     "F_name_generic": "get_const_string_ref_pure",
@@ -3315,9 +3325,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringRefLen(\t)",
+                            "C_name": "STR_getConstStringRefLen",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ref_len",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": 30,
@@ -3364,9 +3376,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefLen",
                     "C_name_api": "getConstStringRefLen",
-                    "F_C_name": "c_get_const_string_ref_len",
                     "F_name_api": "get_const_string_ref_len",
                     "PY_name_impl": "PY_getConstStringRefLen",
                     "function_name": "getConstStringRefLen"
@@ -3439,10 +3449,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringRefLen(\t)",
+                            "C_name": "STR_getConstStringRefLen_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_const_string_ref_len_bufferify",
+                            "F_C_name": "c_get_const_string_ref_len_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -3479,9 +3491,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefLen_bufferify",
                     "C_name_api": "getConstStringRefLen",
-                    "F_C_name": "c_get_const_string_ref_len_bufferify",
                     "F_name_api": "get_const_string_ref_len",
                     "F_name_function": "get_const_string_ref_len",
                     "F_name_generic": "get_const_string_ref_len",
@@ -3548,9 +3558,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringRefAsArg(\t)",
+                            "C_name": "STR_getConstStringRefAsArg",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ref_as_arg",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -3595,9 +3607,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefAsArg",
                     "C_name_api": "getConstStringRefAsArg",
-                    "F_C_name": "c_get_const_string_ref_as_arg",
                     "F_name_api": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
@@ -3671,10 +3681,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringRefAsArg(\t)",
+                            "C_name": "STR_getConstStringRefAsArg_bufferify",
                             "C_prototype": "char *output,\t int noutput",
                             "C_return_type": "void",
                             "F_C_arguments": "output,\t noutput",
                             "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
+                            "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "output,\t noutput",
@@ -3707,9 +3719,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefAsArg_bufferify",
                     "C_name_api": "getConstStringRefAsArg",
-                    "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
                     "F_name_api": "get_const_string_ref_as_arg",
                     "F_name_function": "get_const_string_ref_as_arg",
                     "F_name_generic": "get_const_string_ref_as_arg",
@@ -3777,9 +3787,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringRefLenEmpty(\t)",
+                            "C_name": "STR_getConstStringRefLenEmpty",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ref_len_empty",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": 30,
@@ -3826,9 +3838,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefLenEmpty",
                     "C_name_api": "getConstStringRefLenEmpty",
-                    "F_C_name": "c_get_const_string_ref_len_empty",
                     "F_name_api": "get_const_string_ref_len_empty",
                     "PY_name_impl": "PY_getConstStringRefLenEmpty",
                     "function_name": "getConstStringRefLenEmpty"
@@ -3900,10 +3910,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringRefLenEmpty(\t)",
+                            "C_name": "STR_getConstStringRefLenEmpty_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
+                            "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -3940,9 +3952,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefLenEmpty_bufferify",
                     "C_name_api": "getConstStringRefLenEmpty",
-                    "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
                     "F_name_api": "get_const_string_ref_len_empty",
                     "F_name_function": "get_const_string_ref_len_empty",
                     "F_name_generic": "get_const_string_ref_len_empty",
@@ -4009,9 +4019,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringRefAlloc(\t)",
+                            "C_name": "STR_getConstStringRefAlloc",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ref_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -4056,9 +4068,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefAlloc",
                     "C_name_api": "getConstStringRefAlloc",
-                    "F_C_name": "c_get_const_string_ref_alloc",
                     "F_name_api": "get_const_string_ref_alloc",
                     "PY_name_impl": "PY_getConstStringRefAlloc",
                     "function_name": "getConstStringRefAlloc"
@@ -4130,10 +4140,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringRefAlloc(\t)",
+                            "C_name": "STR_getConstStringRefAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ref_alloc_bufferify",
+                            "F_C_name": "c_get_const_string_ref_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -4176,9 +4188,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringRefAlloc_bufferify",
                     "C_name_api": "getConstStringRefAlloc",
-                    "F_C_name": "c_get_const_string_ref_alloc_bufferify",
                     "F_name_api": "get_const_string_ref_alloc",
                     "F_name_function": "get_const_string_ref_alloc",
                     "F_name_generic": "get_const_string_ref_alloc",
@@ -4252,9 +4262,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrLen(\t)",
+                            "C_name": "STR_getConstStringPtrLen",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_len",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": 30,
@@ -4301,9 +4313,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrLen",
                     "C_name_api": "getConstStringPtrLen",
-                    "F_C_name": "c_get_const_string_ptr_len",
                     "F_name_api": "get_const_string_ptr_len",
                     "PY_name_impl": "PY_getConstStringPtrLen",
                     "function_name": "getConstStringPtrLen"
@@ -4383,10 +4393,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrLen(\t)",
+                            "C_name": "STR_getConstStringPtrLen_bufferify",
                             "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_const_string_ptr_len_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_len_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -4423,9 +4435,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrLen_bufferify",
                     "C_name_api": "getConstStringPtrLen",
-                    "F_C_name": "c_get_const_string_ptr_len_bufferify",
                     "F_name_api": "get_const_string_ptr_len",
                     "F_name_function": "get_const_string_ptr_len",
                     "F_name_generic": "get_const_string_ptr_len",
@@ -4495,9 +4505,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrAlloc",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -4542,9 +4554,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrAlloc",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "PY_name_impl": "PY_getConstStringPtrAlloc",
                     "function_name": "getConstStringPtrAlloc"
@@ -4619,10 +4629,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -4665,9 +4677,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrAlloc_bufferify",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
@@ -4740,9 +4750,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrOwnsAlloc",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_owns_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -4787,9 +4799,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrOwnsAlloc",
                     "C_name_api": "getConstStringPtrOwnsAlloc",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
                     "function_name": "getConstStringPtrOwnsAlloc"
@@ -4867,10 +4877,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrOwnsAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -4913,9 +4925,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrOwnsAlloc_bufferify",
                     "C_name_api": "getConstStringPtrOwnsAlloc",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_name_api": "get_const_string_ptr_owns_alloc",
                     "F_name_function": "get_const_string_ptr_owns_alloc",
                     "F_name_generic": "get_const_string_ptr_owns_alloc",
@@ -4989,9 +4999,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                            "C_name": "STR_getConstStringPtrOwnsAllocPattern",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -5036,9 +5048,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrOwnsAllocPattern",
                     "C_name_api": "getConstStringPtrOwnsAllocPattern",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
@@ -5117,10 +5127,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                            "C_name": "STR_getConstStringPtrOwnsAllocPattern_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -5163,9 +5175,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrOwnsAllocPattern_bufferify",
                     "C_name_api": "getConstStringPtrOwnsAllocPattern",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
@@ -5235,9 +5245,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrPointer(\t)",
+                            "C_name": "STR_getConstStringPtrPointer",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_pointer",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -5265,9 +5277,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrPointer",
                     "C_name_api": "getConstStringPtrPointer",
-                    "F_C_name": "c_get_const_string_ptr_pointer",
                     "F_name_api": "get_const_string_ptr_pointer",
                     "function_name": "getConstStringPtrPointer"
                 }
@@ -5342,10 +5352,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrPointer(\t)",
+                            "C_name": "STR_getConstStringPtrPointer_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_get_const_string_ptr_pointer_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_pointer_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -5383,9 +5395,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrPointer_bufferify",
                     "C_name_api": "getConstStringPtrPointer",
-                    "F_C_name": "c_get_const_string_ptr_pointer_bufferify",
                     "F_name_api": "get_const_string_ptr_pointer",
                     "F_name_function": "get_const_string_ptr_pointer",
                     "F_name_generic": "get_const_string_ptr_pointer",
@@ -5469,9 +5479,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringConstReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringConstReference",
                             "C_prototype": "const char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_const_reference",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -5522,9 +5534,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringConstReference",
                     "C_name_api": "acceptStringConstReference",
-                    "F_C_name": "c_accept_string_const_reference",
                     "F_name_api": "accept_string_const_reference",
                     "PY_name_impl": "PY_acceptStringConstReference",
                     "function_name": "acceptStringConstReference"
@@ -5612,10 +5622,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringConstReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringConstReference_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_const_reference_bufferify",
+                            "F_C_name": "c_accept_string_const_reference_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -5655,9 +5667,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringConstReference_bufferify",
                     "C_name_api": "acceptStringConstReference",
-                    "F_C_name": "c_accept_string_const_reference_bufferify",
                     "F_name_api": "accept_string_const_reference",
                     "F_name_function": "accept_string_const_reference",
                     "F_name_generic": "accept_string_const_reference",
@@ -5743,9 +5753,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringReferenceOut(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringReferenceOut",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_reference_out",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -5796,9 +5808,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringReferenceOut",
                     "C_name_api": "acceptStringReferenceOut",
-                    "F_C_name": "c_accept_string_reference_out",
                     "F_name_api": "accept_string_reference_out",
                     "PY_name_impl": "PY_acceptStringReferenceOut",
                     "function_name": "acceptStringReferenceOut"
@@ -5888,10 +5898,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringReferenceOut(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringReferenceOut_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_reference_out_bufferify",
+                            "F_C_name": "c_accept_string_reference_out_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -5931,9 +5943,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringReferenceOut_bufferify",
                     "C_name_api": "acceptStringReferenceOut",
-                    "F_C_name": "c_accept_string_reference_out_bufferify",
                     "F_name_api": "accept_string_reference_out",
                     "F_name_function": "accept_string_reference_out",
                     "F_name_generic": "accept_string_reference_out",
@@ -6019,9 +6029,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringReference",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_reference",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -6072,9 +6084,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringReference",
                     "C_name_api": "acceptStringReference",
-                    "F_C_name": "c_accept_string_reference",
                     "F_name_api": "accept_string_reference",
                     "PY_name_impl": "PY_acceptStringReference",
                     "function_name": "acceptStringReference"
@@ -6164,10 +6174,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringReference(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringReference_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_reference_bufferify",
+                            "F_C_name": "c_accept_string_reference_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -6208,9 +6220,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringReference_bufferify",
                     "C_name_api": "acceptStringReference",
-                    "F_C_name": "c_accept_string_reference_bufferify",
                     "F_name_api": "accept_string_reference",
                     "F_name_function": "accept_string_reference",
                     "F_name_generic": "accept_string_reference",
@@ -6293,9 +6303,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringPointerConst(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_acceptStringPointerConst",
                             "C_prototype": "const char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_pointer_const",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -6346,9 +6358,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointerConst",
                     "C_name_api": "acceptStringPointerConst",
-                    "F_C_name": "c_accept_string_pointer_const",
                     "F_name_api": "accept_string_pointer_const",
                     "PY_name_impl": "PY_acceptStringPointerConst",
                     "function_name": "acceptStringPointerConst"
@@ -6435,10 +6445,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringPointerConst(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_acceptStringPointerConst_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_pointer_const_bufferify",
+                            "F_C_name": "c_accept_string_pointer_const_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -6478,9 +6490,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointerConst_bufferify",
                     "C_name_api": "acceptStringPointerConst",
-                    "F_C_name": "c_accept_string_pointer_const_bufferify",
                     "F_name_api": "accept_string_pointer_const",
                     "F_name_function": "accept_string_pointer_const",
                     "F_name_generic": "accept_string_pointer_const",
@@ -6563,9 +6573,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_acceptStringPointer",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_pointer",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -6616,9 +6628,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointer",
                     "C_name_api": "acceptStringPointer",
-                    "F_C_name": "c_accept_string_pointer",
                     "F_name_api": "accept_string_pointer",
                     "PY_name_impl": "PY_acceptStringPointer",
                     "function_name": "acceptStringPointer"
@@ -6705,10 +6715,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_acceptStringPointer_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_pointer_bufferify",
+                            "F_C_name": "c_accept_string_pointer_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -6749,9 +6761,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointer_bufferify",
                     "C_name_api": "acceptStringPointer",
-                    "F_C_name": "c_accept_string_pointer_bufferify",
                     "F_name_api": "accept_string_pointer",
                     "F_name_function": "accept_string_pointer",
                     "F_name_generic": "accept_string_pointer",
@@ -6837,9 +6847,11 @@
                         "fmtc": {
                             "C_call_function": "fetchStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_fetchStringPointer",
                             "C_prototype": "char * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_fetch_string_pointer",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -6890,9 +6902,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchStringPointer",
                     "C_name_api": "fetchStringPointer",
-                    "F_C_name": "c_fetch_string_pointer",
                     "F_name_api": "fetch_string_pointer",
                     "PY_name_impl": "PY_fetchStringPointer",
                     "function_name": "fetchStringPointer"
@@ -6982,10 +6992,12 @@
                         "fmtf": {
                             "C_call_function": "fetchStringPointer(\t&SHCXX_arg1)",
                             "C_call_list": "&SHCXX_arg1",
+                            "C_name": "STR_fetchStringPointer_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_fetch_string_pointer_bufferify",
+                            "F_C_name": "c_fetch_string_pointer_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
@@ -7025,9 +7037,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchStringPointer_bufferify",
                     "C_name_api": "fetchStringPointer",
-                    "F_C_name": "c_fetch_string_pointer_bufferify",
                     "F_name_api": "fetch_string_pointer",
                     "F_name_function": "fetch_string_pointer",
                     "F_name_generic": "fetch_string_pointer",
@@ -7138,9 +7148,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
+                            "C_name": "STR_acceptStringPointerLen",
                             "C_prototype": "char * arg1,\t int * nlen",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t nlen",
+                            "F_C_name": "c_accept_string_pointer_len",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -7235,9 +7247,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointerLen",
                     "C_name_api": "acceptStringPointerLen",
-                    "F_C_name": "c_accept_string_pointer_len",
                     "F_name_api": "accept_string_pointer_len",
                     "PY_name_impl": "PY_acceptStringPointerLen",
                     "function_name": "acceptStringPointerLen"
@@ -7352,10 +7362,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
+                            "C_name": "STR_acceptStringPointerLen_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_C_call": "c_accept_string_pointer_len_bufferify",
+                            "F_C_name": "c_accept_string_pointer_len_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_arguments": "arg1,\t nlen",
@@ -7422,9 +7434,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringPointerLen_bufferify",
                     "C_name_api": "acceptStringPointerLen",
-                    "F_C_name": "c_accept_string_pointer_len_bufferify",
                     "F_name_api": "accept_string_pointer_len",
                     "F_name_function": "accept_string_pointer_len",
                     "F_name_generic": "accept_string_pointer_len",
@@ -7537,9 +7547,11 @@
                         "fmtc": {
                             "C_call_function": "fetchStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
+                            "C_name": "STR_fetchStringPointerLen",
                             "C_prototype": "char * arg1,\t int * nlen",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t nlen",
+                            "F_C_name": "c_fetch_string_pointer_len",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -7634,9 +7646,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchStringPointerLen",
                     "C_name_api": "fetchStringPointerLen",
-                    "F_C_name": "c_fetch_string_pointer_len",
                     "F_name_api": "fetch_string_pointer_len",
                     "PY_name_impl": "PY_fetchStringPointerLen",
                     "function_name": "fetchStringPointerLen"
@@ -7753,10 +7763,12 @@
                         "fmtf": {
                             "C_call_function": "fetchStringPointerLen(\t&SHCXX_arg1,\t nlen)",
                             "C_call_list": "&SHCXX_arg1,\t nlen",
+                            "C_name": "STR_fetchStringPointerLen_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_C_call": "c_fetch_string_pointer_len_bufferify",
+                            "F_C_name": "c_fetch_string_pointer_len_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_arguments": "arg1,\t nlen",
@@ -7822,9 +7834,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchStringPointerLen_bufferify",
                     "C_name_api": "fetchStringPointerLen",
-                    "F_C_name": "c_fetch_string_pointer_len_bufferify",
                     "F_name_api": "fetch_string_pointer_len",
                     "F_name_function": "fetch_string_pointer_len",
                     "F_name_generic": "fetch_string_pointer_len",
@@ -7904,9 +7914,11 @@
                         "fmtc": {
                             "C_call_function": "acceptStringInstance(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "STR_acceptStringInstance",
                             "C_prototype": "char *arg1",
                             "C_return_type": "int",
                             "F_C_arguments": "arg1",
+                            "F_C_name": "c_accept_string_instance",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -7992,9 +8004,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringInstance",
                     "C_name_api": "acceptStringInstance",
-                    "F_C_name": "c_accept_string_instance",
                     "F_name_api": "accept_string_instance",
                     "PY_name_impl": "PY_acceptStringInstance",
                     "function_name": "acceptStringInstance"
@@ -8078,10 +8088,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStringInstance(\tSHCXX_arg1)",
                             "C_call_list": "SHCXX_arg1",
+                            "C_name": "STR_acceptStringInstance_bufferify",
                             "C_prototype": "char *arg1,\t int SHT_arg1_len",
                             "C_return_type": "int",
                             "F_C_arguments": "arg1,\t SHT_arg1_len",
                             "F_C_call": "c_accept_string_instance_bufferify",
+                            "F_C_name": "c_accept_string_instance_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
@@ -8145,9 +8157,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_acceptStringInstance_bufferify",
                     "C_name_api": "acceptStringInstance",
-                    "F_C_name": "c_accept_string_instance_bufferify",
                     "F_name_api": "accept_string_instance",
                     "F_name_function": "accept_string_instance",
                     "F_name_generic": "accept_string_instance",
@@ -8398,9 +8408,11 @@
                         "fmtc": {
                             "C_call_function": "fetchArrayStringArg(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
+                            "C_name": "STR_fetchArrayStringArg",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
                             "F_C_arguments": "strs,\t nstrs",
+                            "F_C_name": "c_fetch_array_string_arg",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -8461,9 +8473,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringArg",
                     "C_name_api": "fetchArrayStringArg",
-                    "F_C_name": "c_fetch_array_string_arg",
                     "F_name_api": "fetch_array_string_arg",
                     "function_name": "fetchArrayStringArg"
                 }
@@ -8596,10 +8606,12 @@
                         "fmtf": {
                             "C_call_function": "fetchArrayStringArg(\t&strs,\t &nstrs)",
                             "C_call_list": "&strs,\t &nstrs",
+                            "C_name": "STR_fetchArrayStringArg_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_strs_cdesc",
                             "F_C_call": "c_fetch_array_string_arg_bufferify",
+                            "F_C_name": "c_fetch_array_string_arg_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_strs_cdesc",
                             "F_arguments": "strs",
@@ -8673,9 +8685,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringArg_bufferify",
                     "C_name_api": "fetchArrayStringArg",
-                    "F_C_name": "c_fetch_array_string_arg_bufferify",
                     "F_name_api": "fetch_array_string_arg",
                     "F_name_function": "fetch_array_string_arg",
                     "F_name_generic": "fetch_array_string_arg",
@@ -8807,9 +8817,11 @@
                         "fmtc": {
                             "C_call_function": "fetchArrayStringAlloc(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
+                            "C_name": "STR_fetchArrayStringAlloc",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
                             "F_C_arguments": "strs,\t nstrs",
+                            "F_C_name": "c_fetch_array_string_alloc",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -8870,9 +8882,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringAlloc",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "F_C_name": "c_fetch_array_string_alloc",
                     "F_name_api": "fetch_array_string_alloc",
                     "function_name": "fetchArrayStringAlloc"
                 }
@@ -9008,10 +9018,12 @@
                         "fmtf": {
                             "C_call_function": "fetchArrayStringAlloc(\t&strs,\t &nstrs)",
                             "C_call_list": "&strs,\t &nstrs",
+                            "C_name": "STR_fetchArrayStringAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc,\t STR_SHROUD_capsule_data *SHT_strs_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_C_call": "c_fetch_array_string_alloc_bufferify",
+                            "F_C_name": "c_fetch_array_string_alloc_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_arguments": "strs",
@@ -9093,9 +9105,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringAlloc_bufferify",
                     "C_name_api": "fetchArrayStringAlloc",
-                    "F_C_name": "c_fetch_array_string_alloc_bufferify",
                     "F_name_api": "fetch_array_string_alloc",
                     "F_name_function": "fetch_array_string_alloc",
                     "F_name_generic": "fetch_array_string_alloc",
@@ -9228,9 +9238,11 @@
                         "fmtc": {
                             "C_call_function": "fetchArrayStringAllocLen(\tstrs,\t nstrs)",
                             "C_call_list": "strs,\t nstrs",
+                            "C_name": "STR_fetchArrayStringAllocLen",
                             "C_prototype": "char * * strs,\t int * nstrs",
                             "C_return_type": "void",
                             "F_C_arguments": "strs,\t nstrs",
+                            "F_C_name": "c_fetch_array_string_alloc_len",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -9293,9 +9305,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringAllocLen",
                     "C_name_api": "fetchArrayStringAllocLen",
-                    "F_C_name": "c_fetch_array_string_alloc_len",
                     "F_name_api": "fetch_array_string_alloc_len",
                     "function_name": "fetchArrayStringAllocLen"
                 }
@@ -9432,10 +9442,12 @@
                         "fmtf": {
                             "C_call_function": "fetchArrayStringAllocLen(\t&strs,\t &nstrs)",
                             "C_call_list": "&strs,\t &nstrs",
+                            "C_name": "STR_fetchArrayStringAllocLen_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_strs_cdesc,\t STR_SHROUD_capsule_data *SHT_strs_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_C_call": "c_fetch_array_string_alloc_len_bufferify",
+                            "F_C_name": "c_fetch_array_string_alloc_len_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_arguments": "strs",
@@ -9518,9 +9530,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_fetchArrayStringAllocLen_bufferify",
                     "C_name_api": "fetchArrayStringAllocLen",
-                    "F_C_name": "c_fetch_array_string_alloc_len_bufferify",
                     "F_name_api": "fetch_array_string_alloc_len",
                     "F_name_function": "fetch_array_string_alloc_len",
                     "F_name_generic": "fetch_array_string_alloc_len",
@@ -9672,17 +9682,21 @@
                         "fmtc": {
                             "C_call_function": "explicit1(\tname)",
                             "C_call_list": "name",
+                            "C_name": "STR_explicit1",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
+                            "F_C_name": "c_explicit1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "explicit1(\tname)",
                             "C_call_list": "name",
+                            "C_name": "STR_explicit1",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
                             "F_C_call": "c_explicit1",
+                            "F_C_name": "c_explicit1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR",
                             "F_arguments": "name",
@@ -9755,9 +9769,7 @@
                 },
                 "zz_fmtdict": {
                     "C_bufferify_suffix": "_BUFFER",
-                    "C_name": "STR_explicit1",
                     "C_name_api": "explicit1",
-                    "F_C_name": "c_explicit1",
                     "F_name_api": "explicit1",
                     "F_name_function": "explicit1",
                     "F_name_generic": "explicit1",
@@ -9842,9 +9854,11 @@
                         "fmtc": {
                             "C_call_function": "explicit2(\tname)",
                             "C_call_list": "name",
+                            "C_name": "STR_explicit2",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
+                            "F_C_name": "c_explicit2",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -9878,9 +9892,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_explicit2",
                     "C_name_api": "explicit2",
-                    "F_C_name": "c_explicit2",
                     "F_name_api": "explicit2",
                     "function_name": "explicit2"
                 }
@@ -9969,10 +9981,12 @@
                         "fmtf": {
                             "C_call_function": "explicit2(\tname)",
                             "C_call_list": "name",
+                            "C_name": "STR_explicit2_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len",
                             "F_C_call": "c_explicit2_bufferify",
+                            "F_C_name": "c_explicit2_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len",
                             "F_arguments": "name",
@@ -10014,9 +10028,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_explicit2_bufferify",
                     "C_name_api": "explicit2",
-                    "F_C_name": "c_explicit2_bufferify",
                     "F_name_api": "explicit2",
                     "F_name_function": "explicit2",
                     "F_name_generic": "explicit2",
@@ -10107,17 +10119,21 @@
                         "fmtc": {
                             "C_call_function": "CpassChar(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "CpassChar",
                             "C_prototype": "char status",
                             "C_return_type": "void",
+                            "F_C_name": "c_cpass_char",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "CpassChar(\tstatus)",
                             "C_call_list": "status",
+                            "C_name": "CpassChar",
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_arguments": "status",
                             "F_C_call": "c_cpass_char",
+                            "F_C_name": "cpass_char",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
@@ -10189,9 +10205,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CpassChar",
                     "C_name_api": "CpassChar",
-                    "F_C_name": "cpass_char",
                     "F_name_api": "cpass_char",
                     "F_name_function": "cpass_char",
                     "F_name_generic": "cpass_char",
@@ -10252,8 +10266,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "CreturnChar(\t)",
+                            "C_name": "STR_CreturnChar",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
+                            "F_C_name": "c_creturn_char",
                             "c_const": "",
                             "c_type": "char",
                             "c_var": "SHC_rv",
@@ -10269,10 +10285,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "CreturnChar(\t)",
+                            "C_name": "STR_CreturnChar",
                             "C_prototype": "char *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_creturn_char",
+                            "F_C_name": "c_creturn_char",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv",
@@ -10318,9 +10336,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CreturnChar",
                     "C_name_api": "CreturnChar",
-                    "F_C_name": "c_creturn_char",
                     "F_name_api": "creturn_char",
                     "F_name_function": "creturn_char",
                     "F_name_generic": "creturn_char",
@@ -10440,9 +10456,11 @@
                         "fmtc": {
                             "C_call_function": "CpassCharPtr(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
+                            "C_name": "CpassCharPtr",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t src",
+                            "F_C_name": "c_cpass_char_ptr",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -10500,9 +10518,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CpassCharPtr",
                     "C_name_api": "CpassCharPtr",
-                    "F_C_name": "c_cpass_char_ptr",
                     "F_name_api": "cpass_char_ptr",
                     "function_name": "CpassCharPtr"
                 }
@@ -10628,10 +10644,12 @@
                         "fmtf": {
                             "C_call_function": "CpassCharPtr(\tdest,\t SHT_src_str)",
                             "C_call_list": "dest,\t SHT_src_str",
+                            "C_name": "STR_CpassCharPtr_bufferify",
                             "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_C_call": "c_cpass_char_ptr_bufferify",
+                            "F_C_name": "c_cpass_char_ptr_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_arguments": "dest,\t src",
@@ -10705,9 +10723,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtr_bufferify",
                     "C_name_api": "CpassCharPtr",
-                    "F_C_name": "c_cpass_char_ptr_bufferify",
                     "F_name_api": "cpass_char_ptr",
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
@@ -10823,9 +10839,11 @@
                         "fmtc": {
                             "C_call_function": "CpassCharPtrBlank(\tdest,\t src)",
                             "C_call_list": "dest,\t src",
+                            "C_name": "STR_CpassCharPtrBlank",
                             "C_prototype": "char * dest,\t const char * src",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t src",
+                            "F_C_name": "c_cpass_char_ptr_blank",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -10883,9 +10901,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrBlank",
                     "C_name_api": "CpassCharPtrBlank",
-                    "F_C_name": "c_cpass_char_ptr_blank",
                     "F_name_api": "cpass_char_ptr_blank",
                     "function_name": "CpassCharPtrBlank"
                 }
@@ -11007,10 +11023,12 @@
                         "fmtf": {
                             "C_call_function": "CpassCharPtrBlank(\tdest,\t SHT_src_str)",
                             "C_call_list": "dest,\t SHT_src_str",
+                            "C_name": "STR_CpassCharPtrBlank_bufferify",
                             "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                             "C_return_type": "void",
                             "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_C_call": "c_cpass_char_ptr_blank_bufferify",
+                            "F_C_name": "c_cpass_char_ptr_blank_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_arguments": "dest,\t src",
@@ -11084,9 +11102,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrBlank_bufferify",
                     "C_name_api": "CpassCharPtrBlank",
-                    "F_C_name": "c_cpass_char_ptr_blank_bufferify",
                     "F_name_api": "cpass_char_ptr_blank",
                     "F_name_function": "cpass_char_ptr_blank",
                     "F_name_generic": "cpass_char_ptr_blank",
@@ -11199,9 +11215,11 @@
                         "fmtc": {
                             "C_call_function": "PostDeclare(\tcount,\t SHCXX_name)",
                             "C_call_list": "count,\t SHCXX_name",
+                            "C_name": "STR_PostDeclare",
                             "C_prototype": "int * count,\t char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "count,\t name",
+                            "F_C_name": "c_post_declare",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         }
@@ -11302,9 +11320,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_PostDeclare",
                     "C_name_api": "PostDeclare",
-                    "F_C_name": "c_post_declare",
                     "F_name_api": "post_declare",
                     "PY_name_impl": "PY_PostDeclare",
                     "function_name": "PostDeclare"
@@ -11421,10 +11437,12 @@
                         "fmtf": {
                             "C_call_function": "PostDeclare(\tcount,\t SHCXX_name)",
                             "C_call_list": "count,\t SHCXX_name",
+                            "C_name": "STR_PostDeclare_bufferify",
                             "C_prototype": "int * count,\t char *name,\t int SHT_name_len",
                             "C_return_type": "void",
                             "F_C_arguments": "count,\t name,\t SHT_name_len",
                             "F_C_call": "c_post_declare_bufferify",
+                            "F_C_name": "c_post_declare_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "count,\t name,\t SHT_name_len",
                             "F_arguments": "count,\t name",
@@ -11495,9 +11513,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_PostDeclare_bufferify",
                     "C_name_api": "PostDeclare",
-                    "F_C_name": "c_post_declare_bufferify",
                     "F_name_api": "post_declare",
                     "F_name_function": "post_declare",
                     "F_name_generic": "post_declare",
@@ -11583,9 +11599,11 @@
                         "fmtc": {
                             "C_call_function": "CpassCharPtrNotrim(\tsrc)",
                             "C_call_list": "src",
+                            "C_name": "STR_CpassCharPtrNotrim",
                             "C_prototype": "const char * src",
                             "C_return_type": "int",
                             "F_C_arguments": "src",
+                            "F_C_name": "c_cpass_char_ptr_notrim",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -11637,9 +11655,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrNotrim",
                     "C_name_api": "CpassCharPtrNotrim",
-                    "F_C_name": "c_cpass_char_ptr_notrim",
                     "F_name_api": "cpass_char_ptr_notrim",
                     "function_name": "CpassCharPtrNotrim"
                 }
@@ -11729,10 +11745,12 @@
                         "fmtf": {
                             "C_call_function": "CpassCharPtrNotrim(\tSHT_src_str)",
                             "C_call_list": "SHT_src_str",
+                            "C_name": "STR_CpassCharPtrNotrim_bufferify",
                             "C_prototype": "char *src,\t int SHT_src_len",
                             "C_return_type": "int",
                             "F_C_arguments": "src,\t SHT_src_len",
                             "F_C_call": "c_cpass_char_ptr_notrim_bufferify",
+                            "F_C_name": "c_cpass_char_ptr_notrim_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "src,\t SHT_src_len",
@@ -11797,9 +11815,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrNotrim_bufferify",
                     "C_name_api": "CpassCharPtrNotrim",
-                    "F_C_name": "c_cpass_char_ptr_notrim_bufferify",
                     "F_name_api": "cpass_char_ptr_notrim",
                     "F_name_function": "cpass_char_ptr_notrim",
                     "F_name_generic": "cpass_char_ptr_notrim",
@@ -11932,8 +11948,10 @@
                         "fmtc": {
                             "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
                             "C_call_list": "addr,\t src",
+                            "C_name": "STR_CpassCharPtrCAPI",
                             "C_prototype": "void * addr,\t const char * src",
                             "C_return_type": "int",
+                            "F_C_name": "c_cpass_char_ptr_capi",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -11952,10 +11970,12 @@
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
                             "C_call_list": "addr,\t src",
+                            "C_name": "STR_CpassCharPtrCAPI",
                             "C_prototype": "void * addr,\t const char * src",
                             "C_return_type": "int",
                             "F_C_arguments": "addr,\t src",
                             "F_C_call": "c_cpass_char_ptr_capi",
+                            "F_C_name": "cpass_char_ptr_capi",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "addr,\t src",
@@ -12072,9 +12092,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrCAPI",
                     "C_name_api": "CpassCharPtrCAPI",
-                    "F_C_name": "cpass_char_ptr_capi",
                     "F_name_api": "cpass_char_ptr_capi",
                     "F_name_function": "cpass_char_ptr_capi",
                     "F_name_generic": "cpass_char_ptr_capi",
@@ -12204,8 +12222,10 @@
                         "fmtc": {
                             "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
                             "C_call_list": "in,\t src",
+                            "C_name": "STR_CpassCharPtrCAPI2",
                             "C_prototype": "const char * in,\t const char * src",
                             "C_return_type": "int",
+                            "F_C_name": "c_cpass_char_ptr_capi2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -12224,10 +12244,12 @@
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
                             "C_call_list": "in,\t src",
+                            "C_name": "STR_CpassCharPtrCAPI2",
                             "C_prototype": "const char * in,\t const char * src",
                             "C_return_type": "int",
                             "F_C_arguments": "in,\t src",
                             "F_C_call": "c_cpass_char_ptr_capi2",
+                            "F_C_name": "c_cpass_char_ptr_capi2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "trim(in)//C_NULL_CHAR,\t src",
@@ -12345,9 +12367,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_CpassCharPtrCAPI2",
                     "C_name_api": "CpassCharPtrCAPI2",
-                    "F_C_name": "c_cpass_char_ptr_capi2",
                     "F_name_api": "cpass_char_ptr_capi2",
                     "F_name_function": "cpass_char_ptr_capi2",
                     "F_name_generic": "cpass_char_ptr_capi2",

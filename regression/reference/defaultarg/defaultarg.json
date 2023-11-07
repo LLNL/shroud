@@ -104,8 +104,10 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->new(\targ1)",
                                     "C_call_list": "arg1",
+                                    "C_name": "DEF_Class1_new_0",
                                     "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
+                                    "F_C_name": "c_class1_new_0",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "DEF_Class1",
@@ -124,10 +126,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1)",
                                     "C_call_list": "arg1",
+                                    "C_name": "DEF_Class1_new_0",
                                     "C_prototype": "int arg1,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
                                     "F_C_arguments": "arg1,\t SHT_rv",
                                     "F_C_call": "c_class1_new_0",
+                                    "F_C_name": "c_class1_new_0",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "arg1,\t SHT_rv%cxxmem",
@@ -204,9 +208,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_new_0",
                             "C_name_api": "new",
-                            "F_C_name": "c_class1_new_0",
                             "F_name_api": "new",
                             "F_name_function": "new_0",
                             "F_name_generic": "class1",
@@ -339,8 +341,10 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "DEF_Class1_new_1",
                                     "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
+                                    "F_C_name": "c_class1_new_1",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "DEF_Class1",
@@ -359,10 +363,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "DEF_Class1_new_1",
                                     "C_prototype": "int arg1,\t int arg2,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
                                     "F_C_arguments": "arg1,\t arg2,\t SHT_rv",
                                     "F_C_call": "c_class1_new_1",
+                                    "F_C_name": "c_class1_new_1",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "arg1,\t arg2,\t SHT_rv%cxxmem",
@@ -482,9 +488,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_new_1",
                             "C_name_api": "new",
-                            "F_C_name": "c_class1_new_1",
                             "F_name_api": "new",
                             "F_name_function": "new_1",
                             "F_name_generic": "class1",
@@ -650,8 +654,10 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_name": "DEF_Class1_new_2",
                                     "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
+                                    "F_C_name": "c_class1_new_2",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "DEF_Class1",
@@ -670,10 +676,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_name": "DEF_Class1_new_2",
                                     "C_prototype": "int arg1,\t int arg2,\t int arg3,\t DEF_Class1 * SHC_rv",
                                     "C_return_type": "DEF_Class1 *",
                                     "F_C_arguments": "arg1,\t arg2,\t arg3,\t SHT_rv",
                                     "F_C_call": "c_class1_new_2",
+                                    "F_C_name": "c_class1_new_2",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "arg1,\t arg2,\t arg3,\t SHT_rv%cxxmem",
@@ -836,9 +844,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_new_2",
                             "C_name_api": "new",
-                            "F_C_name": "c_class1_new_2",
                             "F_name_api": "new",
                             "F_name_function": "new_2",
                             "F_name_generic": "class1",
@@ -898,16 +904,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->delete(\t)",
+                                    "C_name": "DEF_Class1_delete",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_delete",
                                     "stmt_name": "c_dtor"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->delete(\t)",
+                                    "C_name": "DEF_Class1_delete",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_delete",
+                                    "F_C_name": "c_class1_delete",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -918,9 +928,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_delete",
                             "C_name_api": "delete",
-                            "F_C_name": "c_class1_delete",
                             "F_name_api": "delete",
                             "F_name_function": "delete",
                             "F_name_generic": "delete",
@@ -1017,17 +1025,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1)",
                                     "C_call_list": "arg1",
+                                    "C_name": "DEF_Class1_DefaultArguments_0",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_default_arguments_0",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1)",
                                     "C_call_list": "arg1",
+                                    "C_name": "DEF_Class1_DefaultArguments_0",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t arg1",
                                     "F_C_call": "c_class1_default_arguments_0",
+                                    "F_C_name": "c_class1_default_arguments_0",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t arg1",
                                     "F_arguments": "obj,\t arg1",
@@ -1080,9 +1092,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_DefaultArguments_0",
                             "C_name_api": "DefaultArguments",
-                            "F_C_name": "c_class1_default_arguments_0",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_0",
                             "F_name_generic": "default_arguments",
@@ -1209,17 +1219,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "DEF_Class1_DefaultArguments_1",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_default_arguments_1",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2)",
                                     "C_call_list": "arg1,\t arg2",
+                                    "C_name": "DEF_Class1_DefaultArguments_1",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t arg1,\t arg2",
                                     "F_C_call": "c_class1_default_arguments_1",
+                                    "F_C_name": "c_class1_default_arguments_1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
                                     "F_arguments": "obj,\t arg1,\t arg2",
@@ -1315,9 +1329,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_DefaultArguments_1",
                             "C_name_api": "DefaultArguments",
-                            "F_C_name": "c_class1_default_arguments_1",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_1",
                             "F_name_generic": "default_arguments",
@@ -1477,17 +1489,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_name": "DEF_Class1_DefaultArguments_2",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_default_arguments_2",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->DefaultArguments(\targ1,\t arg2,\t arg3)",
                                     "C_call_list": "arg1,\t arg2,\t arg3",
+                                    "C_name": "DEF_Class1_DefaultArguments_2",
                                     "C_prototype": "DEF_Class1 * self,\t int arg1,\t int arg2,\t int arg3",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t arg1,\t arg2,\t arg3",
                                     "F_C_call": "c_class1_default_arguments_2",
+                                    "F_C_name": "c_class1_default_arguments_2",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2,\t arg3",
                                     "F_arguments": "obj,\t arg1,\t arg2,\t arg3",
@@ -1626,9 +1642,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_DefaultArguments_2",
                             "C_name_api": "DefaultArguments",
-                            "F_C_name": "c_class1_default_arguments_2",
                             "F_name_api": "default_arguments",
                             "F_name_function": "default_arguments_2",
                             "F_name_generic": "default_arguments",
@@ -1687,10 +1701,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_field1(\t)",
+                                    "C_name": "DEF_Class1_get_field1",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_get_field1",
+                                    "F_C_name": "c_class1_get_field1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1720,9 +1736,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_get_field1",
                             "C_name_api": "get_field1",
-                            "F_C_name": "c_class1_get_field1",
                             "F_name_api": "get_field1",
                             "F_name_function": "get_field1",
                             "F_name_generic": "get_field1",
@@ -1783,10 +1797,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_field2(\t)",
+                                    "C_name": "DEF_Class1_get_field2",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_get_field2",
+                                    "F_C_name": "c_class1_get_field2",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1816,9 +1832,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_get_field2",
                             "C_name_api": "get_field2",
-                            "F_C_name": "c_class1_get_field2",
                             "F_name_api": "get_field2",
                             "F_name_function": "get_field2",
                             "F_name_generic": "get_field2",
@@ -1879,10 +1893,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_field3(\t)",
+                                    "C_name": "DEF_Class1_get_field3",
                                     "C_prototype": "DEF_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_get_field3",
+                                    "F_C_name": "c_class1_get_field3",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1912,9 +1928,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "DEF_Class1_get_field3",
                             "C_name_api": "get_field3",
-                            "F_C_name": "c_class1_get_field3",
                             "F_name_api": "get_field3",
                             "F_name_function": "get_field3",
                             "F_name_generic": "get_field3",
@@ -2154,17 +2168,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tnum_elems)",
                             "C_call_list": "num_elems",
+                            "C_name": "DEF_apply_generic_nelems",
                             "C_prototype": "IndexType num_elems",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_nelems",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tnum_elems)",
                             "C_call_list": "num_elems",
+                            "C_name": "DEF_apply_generic_nelems",
                             "C_prototype": "IndexType num_elems",
                             "C_return_type": "void",
                             "F_C_arguments": "num_elems",
                             "F_C_call": "c_apply_generic_nelems",
+                            "F_C_name": "c_apply_generic_nelems",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "num_elems",
                             "F_arguments": "num_elems",
@@ -2217,9 +2235,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_nelems",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_nelems",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems",
                     "F_name_generic": "apply_generic",
@@ -2346,17 +2362,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tnum_elems,\t offset)",
                             "C_call_list": "num_elems,\t offset",
+                            "C_name": "DEF_apply_generic_nelems_offset",
                             "C_prototype": "IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_nelems_offset",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tnum_elems,\t offset)",
                             "C_call_list": "num_elems,\t offset",
+                            "C_name": "DEF_apply_generic_nelems_offset",
                             "C_prototype": "IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
                             "F_C_arguments": "num_elems,\t offset",
                             "F_C_call": "c_apply_generic_nelems_offset",
+                            "F_C_name": "c_apply_generic_nelems_offset",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "num_elems,\t offset",
                             "F_arguments": "num_elems,\t offset",
@@ -2452,9 +2472,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_nelems_offset",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_nelems_offset",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems_offset",
                     "F_name_generic": "apply_generic",
@@ -2614,17 +2632,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_generic_nelems_offset_stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_nelems_offset_stride",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_generic_nelems_offset_stride",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_generic_nelems_offset_stride",
+                            "F_C_name": "c_apply_generic_nelems_offset_stride",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "num_elems,\t offset,\t stride",
                             "F_arguments": "num_elems,\t offset,\t stride",
@@ -2763,9 +2785,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_nelems_offset_stride",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_nelems_offset_stride",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
@@ -2891,17 +2911,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
                             "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_name": "DEF_apply_generic_type_nelems",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_type_nelems",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems)",
                             "C_call_list": "SHCXX_type,\t num_elems",
+                            "C_name": "DEF_apply_generic_type_nelems",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                             "C_return_type": "void",
                             "F_C_arguments": "type,\t num_elems",
                             "F_C_call": "c_apply_generic_type_nelems",
+                            "F_C_name": "c_apply_generic_type_nelems",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "type,\t num_elems",
                             "F_arguments": "type,\t num_elems",
@@ -3001,9 +3025,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_type_nelems",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_type_nelems",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems",
                     "F_name_generic": "apply_generic",
@@ -3158,17 +3180,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_name": "DEF_apply_generic_type_nelems_offset",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_type_nelems_offset",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset",
+                            "C_name": "DEF_apply_generic_type_nelems_offset",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                             "C_return_type": "void",
                             "F_C_arguments": "type,\t num_elems,\t offset",
                             "F_C_call": "c_apply_generic_type_nelems_offset",
+                            "F_C_name": "c_apply_generic_type_nelems_offset",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "type,\t num_elems,\t offset",
                             "F_arguments": "type,\t num_elems,\t offset",
@@ -3311,9 +3337,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_type_nelems_offset",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_type_nelems_offset",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems_offset",
                     "F_name_generic": "apply_generic",
@@ -3501,17 +3525,21 @@
                         "fmtc": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_generic_type_nelems_offset_stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_generic_type_nelems_offset_stride",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_generic(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_generic_type_nelems_offset_stride",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_generic_type_nelems_offset_stride",
+                            "F_C_name": "c_apply_generic_type_nelems_offset_stride",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
                             "F_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -3697,9 +3725,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_generic_type_nelems_offset_stride",
                     "C_name_api": "apply_generic",
-                    "F_C_name": "c_apply_generic_type_nelems_offset_stride",
                     "F_name_api": "apply_generic",
                     "F_name_function": "apply_generic_type_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
@@ -3849,17 +3875,21 @@
                         "fmtc": {
                             "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_require_0",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_require_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_require(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_require_0",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_require_0",
+                            "F_C_name": "c_apply_require_0",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "num_elems,\t offset,\t stride",
                             "F_arguments": "num_elems,\t offset,\t stride",
@@ -3998,9 +4028,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_require_0",
                     "C_name_api": "apply_require",
-                    "F_C_name": "c_apply_require_0",
                     "F_name_api": "apply_require",
                     "F_name_function": "apply_require_0",
                     "F_name_generic": "apply_require",
@@ -4178,17 +4206,21 @@
                         "fmtc": {
                             "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_require_1",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_require_1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_require(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_require_1",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_require_1",
+                            "F_C_name": "c_apply_require_1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
                             "F_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -4374,9 +4406,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_require_1",
                     "C_name_api": "apply_require",
-                    "F_C_name": "c_apply_require_1",
                     "F_name_api": "apply_require",
                     "F_name_function": "apply_require_1",
                     "F_name_generic": "apply_require",
@@ -4526,17 +4556,21 @@
                         "fmtc": {
                             "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_optional_0",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_optional_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_optional(\tnum_elems,\t offset,\t stride)",
                             "C_call_list": "num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_optional_0",
                             "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_optional_0",
+                            "F_C_name": "c_apply_optional_0",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
                             "F_arguments": "num_elems,\t offset,\t stride",
@@ -4677,9 +4711,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_optional_0",
                     "C_name_api": "apply_optional",
-                    "F_C_name": "c_apply_optional_0",
                     "F_name_api": "apply_optional",
                     "F_name_function": "apply_optional_0",
                     "F_name_generic": "apply_optional",
@@ -4857,17 +4889,21 @@
                         "fmtc": {
                             "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_optional_1",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
+                            "F_C_name": "c_apply_optional_1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "apply_optional(\tSHCXX_type,\t num_elems,\t offset,\t stride)",
                             "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
+                            "C_name": "DEF_apply_optional_1",
                             "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                             "C_return_type": "void",
                             "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                             "F_C_call": "c_apply_optional_1",
+                            "F_C_name": "c_apply_optional_1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
                             "F_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -5055,9 +5091,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "DEF_apply_optional_1",
                     "C_name_api": "apply_optional",
-                    "F_C_name": "c_apply_optional_1",
                     "F_name_api": "apply_optional",
                     "F_name_function": "apply_optional_1",
                     "F_name_generic": "apply_optional",

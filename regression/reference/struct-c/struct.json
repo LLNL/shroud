@@ -693,10 +693,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_x1(\t)",
+                                    "C_name": "STR_Cstruct_as_class_get_x1",
                                     "C_prototype": "STR_Cstruct_as_class * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_cstruct_as_class_get_x1",
+                                    "F_C_name": "c_cstruct_as_class_get_x1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -726,9 +728,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_class_get_x1",
                             "C_name_api": "get_x1",
-                            "F_C_name": "c_cstruct_as_class_get_x1",
                             "F_name_api": "get_x1",
                             "F_name_function": "get_x1",
                             "F_name_generic": "get_x1",
@@ -814,10 +814,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_x1(\tval)",
                                     "C_call_list": "val",
+                                    "C_name": "STR_Cstruct_as_class_set_x1",
                                     "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t val",
                                     "F_C_call": "c_cstruct_as_class_set_x1",
+                                    "F_C_name": "c_cstruct_as_class_set_x1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
@@ -853,9 +855,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_class_set_x1",
                             "C_name_api": "set_x1",
-                            "F_C_name": "c_cstruct_as_class_set_x1",
                             "F_name_api": "set_x1",
                             "F_name_function": "set_x1",
                             "F_name_generic": "set_x1",
@@ -916,10 +916,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_y1(\t)",
+                                    "C_name": "STR_Cstruct_as_class_get_y1",
                                     "C_prototype": "STR_Cstruct_as_class * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_cstruct_as_class_get_y1",
+                                    "F_C_name": "c_cstruct_as_class_get_y1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -949,9 +951,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_class_get_y1",
                             "C_name_api": "get_y1",
-                            "F_C_name": "c_cstruct_as_class_get_y1",
                             "F_name_api": "get_y1",
                             "F_name_function": "get_y1",
                             "F_name_generic": "get_y1",
@@ -1037,10 +1037,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_y1(\tval)",
                                     "C_call_list": "val",
+                                    "C_name": "STR_Cstruct_as_class_set_y1",
                                     "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t val",
                                     "F_C_call": "c_cstruct_as_class_set_y1",
+                                    "F_C_name": "c_cstruct_as_class_set_y1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
@@ -1076,9 +1078,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_class_set_y1",
                             "C_name_api": "set_y1",
-                            "F_C_name": "c_cstruct_as_class_set_y1",
                             "F_name_api": "set_y1",
                             "F_name_function": "set_y1",
                             "F_name_generic": "set_y1",
@@ -1235,10 +1235,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_x1(\t)",
+                                    "C_name": "STR_Cstruct_as_subclass_get_x1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_cstruct_as_subclass_get_x1",
+                                    "F_C_name": "c_cstruct_as_subclass_get_x1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1268,9 +1270,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_get_x1",
                             "C_name_api": "get_x1",
-                            "F_C_name": "c_cstruct_as_subclass_get_x1",
                             "F_name_api": "get_x1",
                             "F_name_function": "get_x1",
                             "F_name_generic": "get_x1",
@@ -1356,10 +1356,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_x1(\tval)",
                                     "C_call_list": "val",
+                                    "C_name": "STR_Cstruct_as_subclass_set_x1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t val",
                                     "F_C_call": "c_cstruct_as_subclass_set_x1",
+                                    "F_C_name": "c_cstruct_as_subclass_set_x1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
@@ -1395,9 +1397,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_set_x1",
                             "C_name_api": "set_x1",
-                            "F_C_name": "c_cstruct_as_subclass_set_x1",
                             "F_name_api": "set_x1",
                             "F_name_function": "set_x1",
                             "F_name_generic": "set_x1",
@@ -1458,10 +1458,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_y1(\t)",
+                                    "C_name": "STR_Cstruct_as_subclass_get_y1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_cstruct_as_subclass_get_y1",
+                                    "F_C_name": "c_cstruct_as_subclass_get_y1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1491,9 +1493,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_get_y1",
                             "C_name_api": "get_y1",
-                            "F_C_name": "c_cstruct_as_subclass_get_y1",
                             "F_name_api": "get_y1",
                             "F_name_function": "get_y1",
                             "F_name_generic": "get_y1",
@@ -1579,10 +1579,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_y1(\tval)",
                                     "C_call_list": "val",
+                                    "C_name": "STR_Cstruct_as_subclass_set_y1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t val",
                                     "F_C_call": "c_cstruct_as_subclass_set_y1",
+                                    "F_C_name": "c_cstruct_as_subclass_set_y1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
@@ -1618,9 +1620,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_set_y1",
                             "C_name_api": "set_y1",
-                            "F_C_name": "c_cstruct_as_subclass_set_y1",
                             "F_name_api": "set_y1",
                             "F_name_function": "set_y1",
                             "F_name_generic": "set_y1",
@@ -1681,10 +1681,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_z1(\t)",
+                                    "C_name": "STR_Cstruct_as_subclass_get_z1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_cstruct_as_subclass_get_z1",
+                                    "F_C_name": "c_cstruct_as_subclass_get_z1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -1714,9 +1716,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_get_z1",
                             "C_name_api": "get_z1",
-                            "F_C_name": "c_cstruct_as_subclass_get_z1",
                             "F_name_api": "get_z1",
                             "F_name_function": "get_z1",
                             "F_name_generic": "get_z1",
@@ -1802,10 +1802,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_z1(\tval)",
                                     "C_call_list": "val",
+                                    "C_name": "STR_Cstruct_as_subclass_set_z1",
                                     "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t val",
                                     "F_C_call": "c_cstruct_as_subclass_set_z1",
+                                    "F_C_name": "c_cstruct_as_subclass_set_z1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
@@ -1841,9 +1843,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "STR_Cstruct_as_subclass_set_z1",
                             "C_name_api": "set_z1",
-                            "F_C_name": "c_cstruct_as_subclass_set_z1",
                             "F_name_api": "set_z1",
                             "F_name_function": "set_z1",
                             "F_name_generic": "set_z1",
@@ -2131,8 +2131,10 @@
                         "fmtc": {
                             "C_call_function": "passStructByValue(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "passStructByValue",
                             "C_prototype": "Cstruct1 arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_pass_struct_by_value",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2151,10 +2153,12 @@
                         "fmtf": {
                             "C_call_function": "passStructByValue(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "passStructByValue",
                             "C_prototype": "Cstruct1 arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct_by_value",
+                            "F_C_name": "pass_struct_by_value",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -2230,9 +2234,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "passStructByValue",
                     "C_name_api": "passStructByValue",
-                    "F_C_name": "pass_struct_by_value",
                     "F_name_api": "pass_struct_by_value",
                     "F_name_function": "pass_struct_by_value",
                     "F_name_generic": "pass_struct_by_value",
@@ -2321,8 +2323,10 @@
                         "fmtc": {
                             "C_call_function": "passStruct1(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "passStruct1",
                             "C_prototype": "const Cstruct1 * arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_pass_struct1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2341,10 +2345,12 @@
                         "fmtf": {
                             "C_call_function": "passStruct1(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "passStruct1",
                             "C_prototype": "const Cstruct1 * arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct1",
+                            "F_C_name": "pass_struct1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -2420,9 +2426,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "passStruct1",
                     "C_name_api": "passStruct1",
-                    "F_C_name": "pass_struct1",
                     "F_name_api": "pass_struct1",
                     "F_name_function": "pass_struct1",
                     "F_name_generic": "pass_struct1",
@@ -2531,9 +2535,11 @@
                         "fmtc": {
                             "C_call_function": "passStruct2(\ts1,\t outbuf)",
                             "C_call_list": "s1,\t outbuf",
+                            "C_name": "passStruct2",
                             "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
                             "C_return_type": "int",
                             "F_C_arguments": "s1,\t outbuf",
+                            "F_C_name": "c_pass_struct2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -2611,9 +2617,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "passStruct2",
                     "C_name_api": "passStruct2",
-                    "F_C_name": "c_pass_struct2",
                     "F_name_api": "pass_struct2",
                     "function_name": "passStruct2"
                 }
@@ -2727,10 +2731,12 @@
                         "fmtf": {
                             "C_call_function": "passStruct2(\ts1,\t outbuf)",
                             "C_call_list": "s1,\t outbuf",
+                            "C_name": "STR_passStruct2_bufferify",
                             "C_prototype": "const Cstruct1 * s1,\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "int",
                             "F_C_arguments": "s1,\t outbuf,\t SHT_outbuf_len",
                             "F_C_call": "c_pass_struct2_bufferify",
+                            "F_C_name": "c_pass_struct2_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "s1,\t outbuf,\t SHT_outbuf_len",
@@ -2819,9 +2825,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_passStruct2_bufferify",
                     "C_name_api": "passStruct2",
-                    "F_C_name": "c_pass_struct2_bufferify",
                     "F_name_api": "pass_struct2",
                     "F_name_function": "pass_struct2",
                     "F_name_generic": "pass_struct2",
@@ -2911,8 +2915,10 @@
                         "fmtc": {
                             "C_call_function": "acceptStructInPtr(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "acceptStructInPtr",
                             "C_prototype": "Cstruct1 * arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_accept_struct_in_ptr",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2931,10 +2937,12 @@
                         "fmtf": {
                             "C_call_function": "acceptStructInPtr(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "acceptStructInPtr",
                             "C_prototype": "Cstruct1 * arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_accept_struct_in_ptr",
+                            "F_C_name": "accept_struct_in_ptr",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -3010,9 +3018,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "acceptStructInPtr",
                     "C_name_api": "acceptStructInPtr",
-                    "F_C_name": "accept_struct_in_ptr",
                     "F_name_api": "accept_struct_in_ptr",
                     "F_name_function": "accept_struct_in_ptr",
                     "F_name_generic": "accept_struct_in_ptr",
@@ -3160,17 +3166,21 @@
                         "fmtc": {
                             "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
                             "C_call_list": "arg,\t i,\t d",
+                            "C_name": "acceptStructOutPtr",
                             "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
                             "C_return_type": "void",
+                            "F_C_name": "c_accept_struct_out_ptr",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
                             "C_call_list": "arg,\t i,\t d",
+                            "C_name": "acceptStructOutPtr",
                             "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
                             "C_return_type": "void",
                             "F_C_arguments": "arg,\t i,\t d",
                             "F_C_call": "c_accept_struct_out_ptr",
+                            "F_C_name": "accept_struct_out_ptr",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg,\t i,\t d",
                             "F_arguments": "arg,\t i,\t d",
@@ -3310,9 +3320,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "acceptStructOutPtr",
                     "C_name_api": "acceptStructOutPtr",
-                    "F_C_name": "accept_struct_out_ptr",
                     "F_name_api": "accept_struct_out_ptr",
                     "F_name_function": "accept_struct_out_ptr",
                     "F_name_generic": "accept_struct_out_ptr",
@@ -3401,17 +3409,21 @@
                         "fmtc": {
                             "C_call_function": "acceptStructInOutPtr(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "acceptStructInOutPtr",
                             "C_prototype": "Cstruct1 * arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_accept_struct_in_out_ptr",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStructInOutPtr(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "acceptStructInOutPtr",
                             "C_prototype": "Cstruct1 * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_accept_struct_in_out_ptr",
+                            "F_C_name": "accept_struct_in_out_ptr",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
@@ -3465,9 +3477,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "acceptStructInOutPtr",
                     "C_name_api": "acceptStructInOutPtr",
-                    "F_C_name": "accept_struct_in_out_ptr",
                     "F_name_api": "accept_struct_in_out_ptr",
                     "F_name_function": "accept_struct_in_out_ptr",
                     "F_name_generic": "accept_struct_in_out_ptr",
@@ -3579,8 +3589,10 @@
                         "fmtc": {
                             "C_call_function": "returnStructByValue(\ti,\t d)",
                             "C_call_list": "i,\t d",
+                            "C_name": "STR_returnStructByValue",
                             "C_prototype": "int i,\t double d,\t Cstruct1 *SHC_rv",
                             "C_return_type": "void",
+                            "F_C_name": "c_return_struct_by_value",
                             "c_const": "",
                             "c_type": "Cstruct1",
                             "c_var": "SHC_rv",
@@ -3597,10 +3609,12 @@
                         "fmtf": {
                             "C_call_function": "returnStructByValue(\ti,\t d)",
                             "C_call_list": "i,\t d",
+                            "C_name": "STR_returnStructByValue",
                             "C_prototype": "int i,\t double d,\t Cstruct1 *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "i,\t d,\t SHT_rv",
                             "F_C_call": "c_return_struct_by_value",
+                            "F_C_name": "c_return_struct_by_value",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "i,\t d,\t SHT_rv",
@@ -3717,9 +3731,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_returnStructByValue",
                     "C_name_api": "returnStructByValue",
-                    "F_C_name": "c_return_struct_by_value",
                     "F_name_api": "return_struct_by_value",
                     "F_name_function": "return_struct_by_value",
                     "F_name_generic": "return_struct_by_value",
@@ -3842,8 +3854,10 @@
                         "fmtc": {
                             "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
+                            "C_name": "returnStructPtr1",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "Cstruct1 *",
+                            "F_C_name": "c_return_struct_ptr1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "Cstruct1",
@@ -3862,10 +3876,12 @@
                         "fmtf": {
                             "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
+                            "C_name": "returnStructPtr1",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "Cstruct1 *",
                             "F_C_arguments": "i,\t d",
                             "F_C_call": "c_return_struct_ptr1",
+                            "F_C_name": "c_return_struct_ptr1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "i,\t d",
@@ -3985,9 +4001,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnStructPtr1",
                     "C_name_api": "returnStructPtr1",
-                    "F_C_name": "c_return_struct_ptr1",
                     "F_name_api": "return_struct_ptr1",
                     "F_name_function": "return_struct_ptr1",
                     "F_name_generic": "return_struct_ptr1",
@@ -4122,9 +4136,11 @@
                         "fmtc": {
                             "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
+                            "C_name": "returnStructPtr2",
                             "C_prototype": "int i,\t double d,\t char * outbuf",
                             "C_return_type": "Cstruct1 *",
                             "F_C_arguments": "i,\t d,\t outbuf",
+                            "F_C_name": "c_return_struct_ptr2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -4227,9 +4243,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "returnStructPtr2",
                     "C_name_api": "returnStructPtr2",
-                    "F_C_name": "c_return_struct_ptr2",
                     "F_name_api": "return_struct_ptr2",
                     "function_name": "returnStructPtr2"
                 }
@@ -4370,10 +4384,12 @@
                         "fmtf": {
                             "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
+                            "C_name": "STR_returnStructPtr2_bufferify",
                             "C_prototype": "int i,\t double d,\t char *outbuf,\t int SHT_outbuf_len",
                             "C_return_type": "Cstruct1 *",
                             "F_C_arguments": "i,\t d,\t outbuf,\t SHT_outbuf_len",
                             "F_C_call": "c_return_struct_ptr2_bufferify",
+                            "F_C_name": "c_return_struct_ptr2_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "i,\t d,\t outbuf,\t SHT_outbuf_len",
@@ -4489,9 +4505,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_returnStructPtr2_bufferify",
                     "C_name_api": "returnStructPtr2",
-                    "F_C_name": "c_return_struct_ptr2_bufferify",
                     "F_name_api": "return_struct_ptr2",
                     "F_name_function": "return_struct_ptr2",
                     "F_name_generic": "return_struct_ptr2",
@@ -4553,8 +4567,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "get_global_struct_list(\t)",
+                            "C_name": "get_global_struct_list",
                             "C_prototype": "void",
                             "C_return_type": "Cstruct_list *",
+                            "F_C_name": "c_get_global_struct_list",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "Cstruct_list",
@@ -4572,10 +4588,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "get_global_struct_list(\t)",
+                            "C_name": "get_global_struct_list",
                             "C_prototype": "void",
                             "C_return_type": "Cstruct_list *",
                             "F_C_arguments": "",
                             "F_C_call": "c_get_global_struct_list",
+                            "F_C_name": "c_get_global_struct_list",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -4608,9 +4626,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "get_global_struct_list",
                     "C_name_api": "get_global_struct_list",
-                    "F_C_name": "c_get_global_struct_list",
                     "F_name_api": "get_global_struct_list",
                     "F_name_function": "get_global_struct_list",
                     "F_name_generic": "get_global_struct_list",
@@ -4676,8 +4692,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "Create_Cstruct_as_class(\t)",
+                            "C_name": "STR_Create_Cstruct_as_class",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
+                            "F_C_name": "c_create_cstruct_as_class",
                             "c_const": "",
                             "c_type": "STR_Cstruct_as_class",
                             "c_var": "SHC_rv",
@@ -4695,10 +4713,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_class(\t)",
+                            "C_name": "STR_Create_Cstruct_as_class",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_create_cstruct_as_class",
+                            "F_C_name": "c_create_cstruct_as_class",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -4733,9 +4753,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Create_Cstruct_as_class",
                     "C_name_api": "Create_Cstruct_as_class",
-                    "F_C_name": "c_create_cstruct_as_class",
                     "F_name_api": "create_cstruct_as_class",
                     "F_name_function": "create_cstruct_as_class",
                     "F_name_generic": "create_cstruct_as_class",
@@ -4858,8 +4876,10 @@
                         "fmtc": {
                             "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
+                            "C_name": "STR_Create_Cstruct_as_class_args",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
+                            "F_C_name": "c_create_cstruct_as_class_args",
                             "c_const": "",
                             "c_type": "STR_Cstruct_as_class",
                             "c_var": "SHC_rv",
@@ -4878,10 +4898,12 @@
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
+                            "C_name": "STR_Create_Cstruct_as_class_args",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "F_C_arguments": "x,\t y,\t SHT_rv",
                             "F_C_call": "c_create_cstruct_as_class_args",
+                            "F_C_name": "c_create_cstruct_as_class_args",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
@@ -5002,9 +5024,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Create_Cstruct_as_class_args",
                     "C_name_api": "Create_Cstruct_as_class_args",
-                    "F_C_name": "c_create_cstruct_as_class_args",
                     "F_name_api": "create_cstruct_as_class_args",
                     "F_name_function": "create_cstruct_as_class_args",
                     "F_name_generic": "create_cstruct_as_class_args",
@@ -5100,8 +5120,10 @@
                         "fmtc": {
                             "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
                             "C_call_list": "SHCXX_point",
+                            "C_name": "STR_Cstruct_as_class_sum",
                             "C_prototype": "STR_Cstruct_as_class * point",
                             "C_return_type": "int",
+                            "F_C_name": "c_cstruct_as_class_sum",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5120,10 +5142,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
                             "C_call_list": "SHCXX_point",
+                            "C_name": "STR_Cstruct_as_class_sum",
                             "C_prototype": "STR_Cstruct_as_class * point",
                             "C_return_type": "int",
                             "F_C_arguments": "point",
                             "F_C_call": "c_cstruct_as_class_sum",
+                            "F_C_name": "c_cstruct_as_class_sum",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "point%cxxmem",
@@ -5199,9 +5223,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_as_class_sum",
                     "C_name_api": "Cstruct_as_class_sum",
-                    "F_C_name": "c_cstruct_as_class_sum",
                     "F_name_api": "cstruct_as_class_sum",
                     "F_name_function": "sum",
                     "F_name_generic": "cstruct_as_class_sum",
@@ -5352,8 +5374,10 @@
                         "fmtc": {
                             "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
+                            "C_name": "STR_Create_Cstruct_as_subclass_args",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_subclass *",
+                            "F_C_name": "c_create_cstruct_as_subclass_args",
                             "c_const": "",
                             "c_type": "STR_Cstruct_as_subclass",
                             "c_var": "SHC_rv",
@@ -5372,10 +5396,12 @@
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
+                            "C_name": "STR_Create_Cstruct_as_subclass_args",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_subclass *",
                             "F_C_arguments": "x,\t y,\t z,\t SHT_rv",
                             "F_C_call": "c_create_cstruct_as_subclass_args",
+                            "F_C_name": "c_create_cstruct_as_subclass_args",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
@@ -5539,9 +5565,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Create_Cstruct_as_subclass_args",
                     "C_name_api": "Create_Cstruct_as_subclass_args",
-                    "F_C_name": "c_create_cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",
                     "F_name_function": "create_cstruct_as_subclass_args",
                     "F_name_generic": "create_cstruct_as_subclass_args",
@@ -5630,10 +5654,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_ptr_get_const_dvalue(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "STR_Cstruct_ptr_get_const_dvalue",
                             "C_prototype": "Cstruct_ptr * SH_this",
                             "C_return_type": "const double *",
                             "F_C_arguments": "SH_this",
                             "F_C_call": "c_cstruct_ptr_get_const_dvalue",
+                            "F_C_name": "cstruct_ptr_get_const_dvalue",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SH_this",
@@ -5690,9 +5716,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_ptr_get_const_dvalue",
                     "C_name_api": "Cstruct_ptr_get_const_dvalue",
-                    "F_C_name": "cstruct_ptr_get_const_dvalue",
                     "F_name_api": "cstruct_ptr_get_const_dvalue",
                     "F_name_function": "cstruct_ptr_get_const_dvalue",
                     "F_name_generic": "cstruct_ptr_get_const_dvalue",
@@ -5803,10 +5827,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_ptr_set_const_dvalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "STR_Cstruct_ptr_set_const_dvalue",
                             "C_prototype": "Cstruct_ptr * SH_this,\t const double * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_cstruct_ptr_set_const_dvalue",
+                            "F_C_name": "cstruct_ptr_set_const_dvalue",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -5869,9 +5895,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_ptr_set_const_dvalue",
                     "C_name_api": "Cstruct_ptr_set_const_dvalue",
-                    "F_C_name": "cstruct_ptr_set_const_dvalue",
                     "F_name_api": "cstruct_ptr_set_const_dvalue",
                     "F_name_function": "cstruct_ptr_set_const_dvalue",
                     "F_name_generic": "cstruct_ptr_set_const_dvalue",
@@ -6088,10 +6112,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_list_get_ivalue(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "STR_Cstruct_list_get_ivalue_bufferify",
                             "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                             "F_C_call": "c_cstruct_list_get_ivalue_bufferify",
+                            "F_C_name": "c_cstruct_list_get_ivalue_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -6161,9 +6187,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_get_ivalue_bufferify",
                     "C_name_api": "Cstruct_list_get_ivalue",
-                    "F_C_name": "c_cstruct_list_get_ivalue_bufferify",
                     "F_name_api": "cstruct_list_get_ivalue",
                     "F_name_function": "cstruct_list_get_ivalue",
                     "F_name_generic": "cstruct_list_get_ivalue",
@@ -6286,10 +6310,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_list_set_ivalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "STR_Cstruct_list_set_ivalue",
                             "C_prototype": "Cstruct_list * SH_this,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_cstruct_list_set_ivalue",
+                            "F_C_name": "cstruct_list_set_ivalue",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -6357,9 +6383,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_set_ivalue",
                     "C_name_api": "Cstruct_list_set_ivalue",
-                    "F_C_name": "cstruct_list_set_ivalue",
                     "F_name_api": "cstruct_list_set_ivalue",
                     "F_name_function": "cstruct_list_set_ivalue",
                     "F_name_generic": "cstruct_list_set_ivalue",
@@ -6576,10 +6600,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_list_get_dvalue(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "STR_Cstruct_list_get_dvalue_bufferify",
                             "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                             "F_C_call": "c_cstruct_list_get_dvalue_bufferify",
+                            "F_C_name": "c_cstruct_list_get_dvalue_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -6649,9 +6675,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_get_dvalue_bufferify",
                     "C_name_api": "Cstruct_list_get_dvalue",
-                    "F_C_name": "c_cstruct_list_get_dvalue_bufferify",
                     "F_name_api": "cstruct_list_get_dvalue",
                     "F_name_function": "cstruct_list_get_dvalue",
                     "F_name_generic": "cstruct_list_get_dvalue",
@@ -6774,10 +6798,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_list_set_dvalue(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "STR_Cstruct_list_set_dvalue",
                             "C_prototype": "Cstruct_list * SH_this,\t double * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_cstruct_list_set_dvalue",
+                            "F_C_name": "cstruct_list_set_dvalue",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -6845,9 +6871,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_Cstruct_list_set_dvalue",
                     "C_name_api": "Cstruct_list_set_dvalue",
-                    "F_C_name": "cstruct_list_set_dvalue",
                     "F_name_api": "cstruct_list_set_dvalue",
                     "F_name_function": "cstruct_list_set_dvalue",
                     "F_name_generic": "cstruct_list_set_dvalue",

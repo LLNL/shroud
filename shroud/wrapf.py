@@ -1123,7 +1123,6 @@ rv = .false.
         func_cursor = cursor.push_node(node)
         fmtlang = "fmt" + wlang
         options = node.options
-        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
         bind = node._bind[wlang]
 
@@ -1417,7 +1416,6 @@ rv = .false.
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
-        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
         bind = node._bind["f"]
 
@@ -1438,7 +1436,12 @@ rv = .false.
         r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         fmt_result= fmtargs["+result"]["fmtf"]
-        fmt_result.F_C_call = C_node.fmtdict.F_C_name
+        if C_node is node:
+            fmt_result.F_C_call = C_node._fmtargs["+result"]["fmtf"].F_C_name
+        else:
+            # node is generated, ex fortran_generic
+            # while C_node is the real function
+            fmt_result.F_C_call = C_node._fmtargs["+result"]["fmtc"].F_C_name
         result_stmt = bind["+result"].stmt
         func_cursor.stmt = result_stmt
         self.fill_fortran_result(cls, node, result_stmt, fmt_result)
@@ -1831,8 +1834,9 @@ rv = .false.
             fileinfo.impl.append("")
             fileinfo.impl.extend(impl)
         else:            
-            # Call the C function directly via bind(C).
-            C_node.fmtdict.F_C_name = fmt_result.F_name_impl
+            # Call the C function directly via bind(C)
+            # by changing the name of the F_C_name function.
+            C_node._fmtargs["+result"]["fmtf"].F_C_name = fmt_result.F_name_impl
             if options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")

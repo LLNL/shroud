@@ -87,8 +87,10 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->ctor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_ctor_0",
                                                     "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
+                                                    "F_C_name": "c_ex_class1_ctor_0",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "AA_example_nested_ExClass1",
@@ -106,10 +108,12 @@
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_ctor_0",
                                                     "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "F_C_arguments": "SHT_rv",
                                                     "F_C_call": "c_ex_class1_ctor_0",
+                                                    "F_C_name": "c_ex_class1_ctor_0",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -171,9 +175,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_ctor_0",
                                             "C_name_api": "ctor",
-                                            "F_C_name": "c_ex_class1_ctor_0",
                                             "F_name_api": "ctor",
                                             "F_name_function": "ctor_0",
                                             "F_name_generic": "ex_class1",
@@ -274,9 +276,11 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
+                                                    "C_name": "AA_example_nested_ExClass1_ctor_1",
                                                     "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "F_C_arguments": "name,\t SHT_rv",
+                                                    "F_C_name": "c_ex_class1_ctor_1",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_result": "SHT_prv",
@@ -390,9 +394,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_ctor_1",
                                             "C_name_api": "ctor",
-                                            "F_C_name": "c_ex_class1_ctor_1",
                                             "F_name_api": "ctor",
                                             "F_name_generic": "ex_class1",
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
@@ -494,10 +496,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
+                                                    "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
                                                     "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
                                                     "F_C_call": "c_ex_class1_ctor_1_bufferify",
+                                                    "F_C_name": "c_ex_class1_ctor_1_bufferify",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
@@ -561,9 +565,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
                                             "C_name_api": "ctor",
-                                            "F_C_name": "c_ex_class1_ctor_1_bufferify",
                                             "F_name_api": "ctor",
                                             "F_name_function": "ctor_1",
                                             "F_name_generic": "ex_class1",
@@ -632,16 +634,20 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->dtor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_dtor",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class1_dtor",
                                                     "stmt_name": "c_dtor"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->dtor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_dtor",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class1_dtor",
+                                                    "F_C_name": "c_ex_class1_dtor",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem",
@@ -655,9 +661,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_dtor",
                                             "C_name_api": "dtor",
-                                            "F_C_name": "c_ex_class1_dtor",
                                             "F_name_api": "dtor",
                                             "F_name_function": "delete",
                                             "F_name_generic": "dtor",
@@ -750,8 +754,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->incrementCount(\tincr)",
                                                     "C_call_list": "incr",
+                                                    "C_name": "AA_example_nested_ExClass1_incrementCount",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
                                                     "C_return_type": "int",
+                                                    "F_C_name": "c_ex_class1_increment_count",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "int",
@@ -770,10 +776,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->incrementCount(\tincr)",
                                                     "C_call_list": "incr",
+                                                    "C_name": "AA_example_nested_ExClass1_incrementCount",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self,\t incr",
                                                     "F_C_call": "c_ex_class1_increment_count",
+                                                    "F_C_name": "c_ex_class1_increment_count",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem,\t incr",
@@ -904,9 +912,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_incrementCount",
                                             "C_name_api": "incrementCount",
-                                            "F_C_name": "c_ex_class1_increment_count",
                                             "F_name_api": "increment_count",
                                             "F_name_function": "increment_count",
                                             "F_name_generic": "increment_count",
@@ -982,9 +988,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getNameErrorCheck(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_getNameErrorCheck",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class1_get_name_error_check",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -1039,9 +1047,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getNameErrorCheck",
                                             "C_name_api": "getNameErrorCheck",
-                                            "F_C_name": "c_ex_class1_get_name_error_check",
                                             "F_name_api": "get_name_error_check",
                                             "LUA_name": "getNameErrorCheck",
                                             "LUA_name_api": "getNameErrorCheck",
@@ -1121,10 +1127,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameErrorCheck(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_getNameErrorCheck_bufferify",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
                                                     "F_C_call": "c_ex_class1_get_name_error_check_bufferify",
+                                                    "F_C_name": "c_ex_class1_get_name_error_check_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -1167,9 +1175,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getNameErrorCheck_bufferify",
                                             "C_name_api": "getNameErrorCheck",
-                                            "F_C_name": "c_ex_class1_get_name_error_check_bufferify",
                                             "F_name_api": "get_name_error_check",
                                             "F_name_function": "get_name_error_check",
                                             "F_name_generic": "get_name_error_check",
@@ -1237,9 +1243,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getNameArg(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_getNameArg",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class1_get_name_arg",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -1294,9 +1302,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getNameArg",
                                             "C_name_api": "getNameArg",
-                                            "F_C_name": "c_ex_class1_get_name_arg",
                                             "F_name_api": "get_name_arg",
                                             "F_string_result_as_arg": "name",
                                             "LUA_name": "getNameArg",
@@ -1373,10 +1379,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameArg(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_getNameArg_bufferify",
                                                     "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int nname",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t name,\t nname",
                                                     "F_C_call": "c_ex_class1_get_name_arg_bufferify",
+                                                    "F_C_name": "c_ex_class1_get_name_arg_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t name,\t nname",
@@ -1409,9 +1417,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getNameArg_bufferify",
                                             "C_name_api": "getNameArg",
-                                            "F_C_name": "c_ex_class1_get_name_arg_bufferify",
                                             "F_name_api": "get_name_arg",
                                             "F_name_function": "get_name_arg",
                                             "F_name_generic": "get_name_arg",
@@ -1507,8 +1513,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass1_getValue_from_int",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
                                                     "C_return_type": "int",
+                                                    "F_C_name": "c_ex_class1_get_value_from_int",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "int",
@@ -1527,10 +1535,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass1_getValue_from_int",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class1_get_value_from_int",
+                                                    "F_C_name": "c_ex_class1_get_value_from_int",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
@@ -1661,9 +1671,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getValue_from_int",
                                             "C_name_api": "getValue",
-                                            "F_C_name": "c_ex_class1_get_value_from_int",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_from_int",
                                             "F_name_generic": "get_value",
@@ -1759,8 +1767,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass1_getValue_1",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
                                                     "C_return_type": "long",
+                                                    "F_C_name": "c_ex_class1_get_value_1",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "long",
@@ -1779,10 +1789,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass1_getValue_1",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
                                                     "C_return_type": "long",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class1_get_value_1",
+                                                    "F_C_name": "c_ex_class1_get_value_1",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
@@ -1913,9 +1925,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_getValue_1",
                                             "C_name_api": "getValue",
-                                            "F_C_name": "c_ex_class1_get_value_1",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_1",
                                             "F_name_generic": "get_value",
@@ -2007,8 +2017,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->hasAddr(\tin)",
                                                     "C_call_list": "in",
+                                                    "C_name": "AA_example_nested_ExClass1_hasAddr",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
                                                     "C_return_type": "bool",
+                                                    "F_C_name": "c_ex_class1_has_addr",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "bool",
@@ -2027,10 +2039,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->hasAddr(\tin)",
                                                     "C_call_list": "in",
+                                                    "C_name": "AA_example_nested_ExClass1_hasAddr",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
                                                     "C_return_type": "bool",
                                                     "F_C_arguments": "self,\t in",
                                                     "F_C_call": "c_ex_class1_has_addr",
+                                                    "F_C_name": "c_ex_class1_has_addr",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_in_cxx",
@@ -2165,9 +2179,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_hasAddr",
                                             "C_name_api": "hasAddr",
-                                            "F_C_name": "c_ex_class1_has_addr",
                                             "F_name_api": "has_addr",
                                             "F_name_function": "has_addr",
                                             "F_name_generic": "has_addr",
@@ -2231,16 +2243,20 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->SplicerSpecial(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_SplicerSpecial",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class1_splicer_special",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->SplicerSpecial(\t)",
+                                                    "C_name": "AA_example_nested_ExClass1_SplicerSpecial",
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class1_splicer_special",
+                                                    "F_C_name": "c_ex_class1_splicer_special",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
@@ -2253,9 +2269,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass1_SplicerSpecial",
                                             "C_name_api": "SplicerSpecial",
-                                            "F_C_name": "c_ex_class1_splicer_special",
                                             "F_name_api": "splicer_special",
                                             "F_name_function": "splicer_special",
                                             "F_name_generic": "splicer_special",
@@ -2451,9 +2465,11 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
+                                                    "C_name": "AA_example_nested_ExClass2_ctor",
                                                     "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass2 *",
                                                     "F_C_arguments": "name,\t SHT_rv",
+                                                    "F_C_name": "c_ex_class2_ctor",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_result": "SHT_prv",
@@ -2567,9 +2583,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_ctor",
                                             "C_name_api": "ctor",
-                                            "F_C_name": "c_ex_class2_ctor",
                                             "F_name_api": "ctor",
                                             "F_name_generic": "ex_class2",
                                             "LUA_name": "ctor",
@@ -2674,10 +2688,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
                                                     "C_call_list": "&SHCXX_name",
+                                                    "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
                                                     "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass2 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass2 *",
                                                     "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
                                                     "F_C_call": "c_ex_class2_ctor_bufferify",
+                                                    "F_C_name": "c_ex_class2_ctor_bufferify",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
@@ -2741,9 +2757,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
                                             "C_name_api": "ctor",
-                                            "F_C_name": "c_ex_class2_ctor_bufferify",
                                             "F_name_api": "ctor",
                                             "F_name_function": "ctor",
                                             "F_name_generic": "ex_class2",
@@ -2810,16 +2824,20 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->dtor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_dtor",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_dtor",
                                                     "stmt_name": "c_dtor"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->dtor(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_dtor",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_dtor",
+                                                    "F_C_name": "c_ex_class2_dtor",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem",
@@ -2833,9 +2851,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_dtor",
                                             "C_name_api": "dtor",
-                                            "F_C_name": "c_ex_class2_dtor",
                                             "F_name_api": "dtor",
                                             "F_name_function": "delete",
                                             "F_name_generic": "dtor",
@@ -2906,9 +2922,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getName(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class2_get_name",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -2965,9 +2983,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName",
                                             "C_name_api": "getName",
-                                            "F_C_name": "c_ex_class2_get_name",
                                             "F_name_api": "get_name",
                                             "LUA_name": "getName",
                                             "LUA_name_api": "getName",
@@ -3043,10 +3059,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName_bufferify",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self,\t char *SHC_rv,\t int SHT_rv_len",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv,\t SHT_rv_len",
                                                     "F_C_call": "c_ex_class2_get_name_bufferify",
+                                                    "F_C_name": "c_ex_class2_get_name_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t SHT_rv_len",
@@ -3083,9 +3101,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName_bufferify",
                                             "C_name_api": "getName",
-                                            "F_C_name": "c_ex_class2_get_name_bufferify",
                                             "F_name_api": "get_name",
                                             "F_name_function": "get_name",
                                             "F_name_generic": "get_name",
@@ -3157,9 +3173,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getName2(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName2",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "const char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class2_get_name2",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "c_const": "const ",
@@ -3213,9 +3231,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName2",
                                             "C_name_api": "getName2",
-                                            "F_C_name": "c_ex_class2_get_name2",
                                             "F_name_api": "get_name2",
                                             "LUA_name": "getName2",
                                             "LUA_name_api": "getName2",
@@ -3294,10 +3310,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName2(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName2_bufferify",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
                                                     "F_C_call": "c_ex_class2_get_name2_bufferify",
+                                                    "F_C_name": "c_ex_class2_get_name2_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3340,9 +3358,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName2_bufferify",
                                             "C_name_api": "getName2",
-                                            "F_C_name": "c_ex_class2_get_name2_bufferify",
                                             "F_name_api": "get_name2",
                                             "F_name_function": "get_name2",
                                             "F_name_generic": "get_name2",
@@ -3414,9 +3430,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getName3(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName3",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class2_get_name3",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -3471,9 +3489,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName3",
                                             "C_name_api": "getName3",
-                                            "F_C_name": "c_ex_class2_get_name3",
                                             "F_name_api": "get_name3",
                                             "LUA_name": "getName3",
                                             "LUA_name_api": "getName3",
@@ -3552,10 +3568,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName3(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName3_bufferify",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
                                                     "F_C_call": "c_ex_class2_get_name3_bufferify",
+                                                    "F_C_name": "c_ex_class2_get_name3_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3598,9 +3616,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName3_bufferify",
                                             "C_name_api": "getName3",
-                                            "F_C_name": "c_ex_class2_get_name3_bufferify",
                                             "F_name_api": "get_name3",
                                             "F_name_function": "get_name3",
                                             "F_name_generic": "get_name3",
@@ -3671,9 +3687,11 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getName4(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName4",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "char *",
                                                     "F_C_arguments": "self",
+                                                    "F_C_name": "c_ex_class2_get_name4",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "c_const": "",
@@ -3727,9 +3745,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName4",
                                             "C_name_api": "getName4",
-                                            "F_C_name": "c_ex_class2_get_name4",
                                             "F_name_api": "get_name4",
                                             "LUA_name": "getName4",
                                             "LUA_name_api": "getName4",
@@ -3807,10 +3823,12 @@
                                             "+result": {
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName4(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getName4_bufferify",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc,\t AA_SHROUD_capsule_data *SHT_rv_capsule",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t SHT_rv_cdesc,\t SHT_rv_capsule",
                                                     "F_C_call": "c_ex_class2_get_name4_bufferify",
+                                                    "F_C_name": "c_ex_class2_get_name4_bufferify",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -3853,9 +3871,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getName4_bufferify",
                                             "C_name_api": "getName4",
-                                            "F_C_name": "c_ex_class2_get_name4_bufferify",
                                             "F_name_api": "get_name4",
                                             "F_name_function": "get_name4",
                                             "F_name_generic": "get_name4",
@@ -3925,8 +3941,10 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->GetNameLength(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_GetNameLength",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
+                                                    "F_C_name": "c_ex_class2_get_name_length",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "int",
@@ -3944,10 +3962,12 @@
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->GetNameLength(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_GetNameLength",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_get_name_length",
+                                                    "F_C_name": "c_ex_class2_get_name_length",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -4005,9 +4025,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_GetNameLength",
                                             "C_name_api": "GetNameLength",
-                                            "F_C_name": "c_ex_class2_get_name_length",
                                             "F_name_api": "get_name_length",
                                             "F_name_function": "get_name_length",
                                             "F_name_generic": "get_name_length",
@@ -4112,8 +4130,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
                                                     "C_call_list": "SHCXX_in",
+                                                    "C_name": "AA_example_nested_ExClass2_get_class1",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
+                                                    "F_C_name": "c_ex_class2_get_class1",
                                                     "c_const": "",
                                                     "c_type": "AA_example_nested_ExClass1",
                                                     "c_var": "SHC_rv",
@@ -4132,10 +4152,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
                                                     "C_call_list": "SHCXX_in",
+                                                    "C_name": "AA_example_nested_ExClass2_get_class1",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
                                                     "C_return_type": "AA_example_nested_ExClass1 *",
                                                     "F_C_arguments": "self,\t in,\t SHT_rv",
                                                     "F_C_call": "c_ex_class2_get_class1",
+                                                    "F_C_name": "c_ex_class2_get_class1",
                                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem",
@@ -4278,9 +4300,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_get_class1",
                                             "C_name_api": "get_class1",
-                                            "F_C_name": "c_ex_class2_get_class1",
                                             "F_name_api": "get_class1",
                                             "F_name_function": "get_class1",
                                             "F_name_generic": "get_class1",
@@ -4387,8 +4407,10 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type)",
                                                     "C_call_list": "SHCXX_type",
+                                                    "C_name": "AA_example_nested_ExClass2_declare_0",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_declare_0",
                                                     "c_const": "",
                                                     "c_type": "AA_example_nested_ExClass2",
                                                     "c_var": "SHC_rv",
@@ -4405,10 +4427,12 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type)",
                                                     "C_call_list": "SHCXX_type",
+                                                    "C_name": "AA_example_nested_ExClass2_declare_0",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t type",
                                                     "F_C_call": "c_ex_class2_declare_0",
+                                                    "F_C_name": "c_ex_class2_declare_0",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t type",
@@ -4484,9 +4508,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_declare_0",
                                             "C_name_api": "declare",
-                                            "F_C_name": "c_ex_class2_declare_0",
                                             "F_name_api": "declare",
                                             "F_name_function": "declare_0",
                                             "F_name_generic": "declare",
@@ -4682,9 +4704,11 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
+                                                    "C_name": "AA_example_nested_ExClass2_declare_1",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t SIDRE_SidreLength len",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t type,\t len",
+                                                    "F_C_name": "c_ex_class2_declare_1",
                                                     "F_C_result_clause": "",
                                                     "F_C_subprogram": "subroutine",
                                                     "c_const": "",
@@ -4855,9 +4879,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_declare_1",
                                             "C_name_api": "declare",
-                                            "F_C_name": "c_ex_class2_declare_1",
                                             "F_name_api": "declare",
                                             "LUA_name": "declare",
                                             "LUA_name_api": "declare",
@@ -4979,9 +5001,11 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
+                                                    "C_name": "declare",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t int len",
                                                     "C_return_type": "void",
                                                     "F_C_call": "c_ex_class2_declare_1",
+                                                    "F_C_name": "c_ex_class2_declare_1_int",
                                                     "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
                                                     "F_arguments": "obj,\t type,\t len",
                                                     "F_subprogram": "subroutine",
@@ -5053,9 +5077,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "declare",
                                             "C_name_api": "declare",
-                                            "F_C_name": "c_ex_class2_declare_1_int",
                                             "F_name_api": "declare",
                                             "F_name_function": "declare_1_int",
                                             "F_name_generic": "declare",
@@ -5175,9 +5197,11 @@
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type,\t len)",
                                                     "C_call_list": "SHCXX_type,\t len",
+                                                    "C_name": "declare",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t long len",
                                                     "C_return_type": "void",
                                                     "F_C_call": "c_ex_class2_declare_1",
+                                                    "F_C_name": "c_ex_class2_declare_1_long",
                                                     "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
                                                     "F_arguments": "obj,\t type,\t len",
                                                     "F_subprogram": "subroutine",
@@ -5249,9 +5273,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "declare",
                                             "C_name_api": "declare",
-                                            "F_C_name": "c_ex_class2_declare_1_long",
                                             "F_name_api": "declare",
                                             "F_name_function": "declare_1_long",
                                             "F_name_generic": "declare",
@@ -5312,16 +5334,20 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->destroyall(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_destroyall",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_destroyall",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->destroyall(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_destroyall",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_destroyall",
+                                                    "F_C_name": "c_ex_class2_destroyall",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
@@ -5334,9 +5360,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_destroyall",
                                             "C_name_api": "destroyall",
-                                            "F_C_name": "c_ex_class2_destroyall",
                                             "F_name_api": "destroyall",
                                             "F_name_function": "destroyall",
                                             "F_name_generic": "destroyall",
@@ -5401,8 +5425,10 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getTypeID(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getTypeID",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "AA_TypeID",
+                                                    "F_C_name": "c_ex_class2_get_type_id",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_rv_decl": "AA_TypeID SHC_rv",
@@ -5422,10 +5448,12 @@
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getTypeID(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getTypeID",
                                                     "C_prototype": "const AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "AA_TypeID",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_get_type_id",
+                                                    "F_C_name": "c_ex_class2_get_type_id",
                                                     "F_C_pure_clause": "pure ",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
@@ -5485,9 +5513,7 @@
                                             }
                                         },
                                         "zz_fmtdict": {
-                                            "C_name": "AA_example_nested_ExClass2_getTypeID",
                                             "C_name_api": "getTypeID",
-                                            "F_C_name": "c_ex_class2_get_type_id",
                                             "F_name_api": "get_type_id",
                                             "F_name_function": "get_type_id",
                                             "F_name_generic": "get_type_id",
@@ -5739,17 +5765,21 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->setValue<int>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_int",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_set_value_int",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<int>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_int",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class2_set_value_int",
+                                                    "F_C_name": "c_ex_class2_set_value_int",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
@@ -5837,9 +5867,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<int>",
-                                            "C_name": "AA_example_nested_ExClass2_setValue_int",
                                             "C_name_api": "setValue",
-                                            "F_C_name": "c_ex_class2_set_value_int",
                                             "F_name_api": "set_value",
                                             "F_name_function": "set_value_int",
                                             "F_name_generic": "set_value",
@@ -5990,17 +6018,21 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->setValue<long>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_long",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_set_value_long",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<long>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_long",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class2_set_value_long",
+                                                    "F_C_name": "c_ex_class2_set_value_long",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
@@ -6088,9 +6120,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<long>",
-                                            "C_name": "AA_example_nested_ExClass2_setValue_long",
                                             "C_name_api": "setValue",
-                                            "F_C_name": "c_ex_class2_set_value_long",
                                             "F_name_api": "set_value",
                                             "F_name_function": "set_value_long",
                                             "F_name_generic": "set_value",
@@ -6238,17 +6268,21 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->setValue<float>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_float",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_set_value_float",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<float>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_float",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class2_set_value_float",
+                                                    "F_C_name": "c_ex_class2_set_value_float",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
@@ -6336,9 +6370,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<float>",
-                                            "C_name": "AA_example_nested_ExClass2_setValue_float",
                                             "C_name_api": "setValue",
-                                            "F_C_name": "c_ex_class2_set_value_float",
                                             "F_name_api": "set_value",
                                             "F_name_function": "set_value_float",
                                             "F_name_generic": "set_value",
@@ -6492,17 +6524,21 @@
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->setValue<double>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_double",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                                     "C_return_type": "void",
+                                                    "F_C_name": "c_ex_class2_set_value_double",
                                                     "stmt_name": "c_subroutine"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<double>(\tvalue)",
                                                     "C_call_list": "value",
+                                                    "C_name": "AA_example_nested_ExClass2_setValue_double",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                                     "C_return_type": "void",
                                                     "F_C_arguments": "self,\t value",
                                                     "F_C_call": "c_ex_class2_set_value_double",
+                                                    "F_C_name": "c_ex_class2_set_value_double",
                                                     "F_C_subprogram": "subroutine",
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
@@ -6590,9 +6626,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<double>",
-                                            "C_name": "AA_example_nested_ExClass2_setValue_double",
                                             "C_name_api": "setValue",
-                                            "F_C_name": "c_ex_class2_set_value_double",
                                             "F_name_api": "set_value",
                                             "F_name_function": "set_value_double",
                                             "F_name_generic": "set_value",
@@ -6751,8 +6785,10 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getValue<int>(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getValue_int",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
+                                                    "F_C_name": "c_ex_class2_get_value_int",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "int",
@@ -6770,10 +6806,12 @@
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<int>(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getValue_int",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "int",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_get_value_int",
+                                                    "F_C_name": "c_ex_class2_get_value_int",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem",
@@ -6831,9 +6869,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<int>",
-                                            "C_name": "AA_example_nested_ExClass2_getValue_int",
                                             "C_name_api": "getValue",
-                                            "F_C_name": "c_ex_class2_get_value_int",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_int",
                                             "F_name_generic": "get_value",
@@ -6938,8 +6974,10 @@
                                             "+result": {
                                                 "fmtc": {
                                                     "C_call_function": "SH_this->getValue<double>(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getValue_double",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "double",
+                                                    "F_C_name": "c_ex_class2_get_value_double",
                                                     "c_const": "",
                                                     "c_get_value": "",
                                                     "c_type": "double",
@@ -6957,10 +6995,12 @@
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<double>(\t)",
+                                                    "C_name": "AA_example_nested_ExClass2_getValue_double",
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "double",
                                                     "F_C_arguments": "self",
                                                     "F_C_call": "c_ex_class2_get_value_double",
+                                                    "F_C_name": "c_ex_class2_get_value_double",
                                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                                     "F_C_subprogram": "function",
                                                     "F_arg_c_call": "obj%cxxmem",
@@ -7018,9 +7058,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "CXX_template": "<double>",
-                                            "C_name": "AA_example_nested_ExClass2_getValue_double",
                                             "C_name_api": "getValue",
-                                            "F_C_name": "c_ex_class2_get_value_double",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_double",
                                             "F_name_generic": "get_value",
@@ -7150,16 +7188,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "example::nested::local_function1(\t)",
+                                            "C_name": "AA_example_nested_local_function1",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_local_function1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::local_function1(\t)",
+                                            "C_name": "AA_example_nested_local_function1",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_local_function1",
+                                            "F_C_name": "local_function1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
@@ -7171,9 +7213,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_local_function1",
                                     "C_name_api": "local_function1",
-                                    "F_C_name": "local_function1",
                                     "F_name_api": "local_function1",
                                     "F_name_function": "local_function1",
                                     "F_name_generic": "local_function1",
@@ -7268,9 +7308,11 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
+                                            "C_name": "AA_example_nested_isNameValid",
                                             "C_prototype": "const char * name",
                                             "C_return_type": "bool",
                                             "F_C_arguments": "name",
+                                            "F_C_name": "c_is_name_valid",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "c_const": "",
@@ -7380,9 +7422,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_isNameValid",
                                     "C_name_api": "isNameValid",
-                                    "F_C_name": "c_is_name_valid",
                                     "F_name_api": "is_name_valid",
                                     "LUA_name": "isNameValid",
                                     "LUA_name_api": "isNameValid",
@@ -7480,10 +7520,12 @@
                                         "fmtf": {
                                             "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
+                                            "C_name": "AA_example_nested_isNameValid_bufferify",
                                             "C_prototype": "char *name,\t int SHT_name_len",
                                             "C_return_type": "bool",
                                             "F_C_arguments": "name,\t SHT_name_len",
                                             "F_C_call": "c_is_name_valid_bufferify",
+                                            "F_C_name": "c_is_name_valid_bufferify",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "name,\t SHT_name_len",
@@ -7545,9 +7587,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_isNameValid_bufferify",
                                     "C_name_api": "isNameValid",
-                                    "F_C_name": "c_is_name_valid_bufferify",
                                     "F_name_api": "is_name_valid",
                                     "F_name_function": "is_name_valid",
                                     "F_name_generic": "is_name_valid",
@@ -7604,8 +7644,10 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "example::nested::isInitialized(\t)",
+                                            "C_name": "AA_example_nested_isInitialized",
                                             "C_prototype": "void",
                                             "C_return_type": "bool",
+                                            "F_C_name": "c_is_initialized",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "bool",
@@ -7623,10 +7665,12 @@
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::isInitialized(\t)",
+                                            "C_name": "AA_example_nested_isInitialized",
                                             "C_prototype": "void",
                                             "C_return_type": "bool",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_is_initialized",
+                                            "F_C_name": "c_is_initialized",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arguments": "",
@@ -7683,9 +7727,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_isInitialized",
                                     "C_name_api": "isInitialized",
-                                    "F_C_name": "c_is_initialized",
                                     "F_name_api": "is_initialized",
                                     "F_name_function": "is_initialized",
                                     "F_name_generic": "is_initialized",
@@ -7773,9 +7815,11 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
+                                            "C_name": "AA_example_nested_test_names",
                                             "C_prototype": "const char * name",
                                             "C_return_type": "void",
                                             "F_C_arguments": "name",
+                                            "F_C_name": "c_test_names",
                                             "F_C_subprogram": "subroutine",
                                             "stmt_name": "c_subroutine"
                                         },
@@ -7842,9 +7886,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_test_names",
                                     "C_name_api": "test_names",
-                                    "F_C_name": "c_test_names",
                                     "F_name_api": "test_names",
                                     "LUA_name": "test_names",
                                     "LUA_name_api": "test_names",
@@ -7936,10 +7978,12 @@
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name)",
                                             "C_call_list": "SHCXX_name",
+                                            "C_name": "AA_example_nested_test_names_bufferify",
                                             "C_prototype": "char *name,\t int SHT_name_len",
                                             "C_return_type": "void",
                                             "F_C_arguments": "name,\t SHT_name_len",
                                             "F_C_call": "c_test_names_bufferify",
+                                            "F_C_name": "c_test_names_bufferify",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "name,\t SHT_name_len",
                                             "F_arguments": "name",
@@ -7979,9 +8023,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_test_names_bufferify",
                                     "C_name_api": "test_names",
-                                    "F_C_name": "c_test_names_bufferify",
                                     "F_name_api": "test_names",
                                     "F_name_function": "test_names",
                                     "F_name_generic": "test_names",
@@ -8089,9 +8131,11 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name,\t flag)",
                                             "C_call_list": "SHCXX_name,\t flag",
+                                            "C_name": "AA_example_nested_test_names_flag",
                                             "C_prototype": "const char * name,\t int flag",
                                             "C_return_type": "void",
                                             "F_C_arguments": "name,\t flag",
+                                            "F_C_name": "c_test_names_flag",
                                             "F_C_subprogram": "subroutine",
                                             "stmt_name": "c_subroutine"
                                         },
@@ -8214,9 +8258,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_test_names_flag",
                                     "C_name_api": "test_names",
-                                    "F_C_name": "c_test_names_flag",
                                     "F_name_api": "test_names",
                                     "PY_name_impl": "PP_test_names_flag",
                                     "function_name": "test_names",
@@ -8327,10 +8369,12 @@
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name,\t flag)",
                                             "C_call_list": "SHCXX_name,\t flag",
+                                            "C_name": "AA_example_nested_test_names_flag_bufferify",
                                             "C_prototype": "char *name,\t int SHT_name_len,\t int flag",
                                             "C_return_type": "void",
                                             "F_C_arguments": "name,\t SHT_name_len,\t flag",
                                             "F_C_call": "c_test_names_flag_bufferify",
+                                            "F_C_name": "c_test_names_flag_bufferify",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "name,\t SHT_name_len,\t flag",
                                             "F_arguments": "name,\t flag",
@@ -8396,9 +8440,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_test_names_flag_bufferify",
                                     "C_name_api": "test_names",
-                                    "F_C_name": "c_test_names_flag_bufferify",
                                     "F_name_api": "test_names",
                                     "F_name_function": "test_names_flag",
                                     "F_name_generic": "test_names",
@@ -8460,16 +8502,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "example::nested::testoptional(\t)",
+                                            "C_name": "AA_example_nested_testoptional_0",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_testoptional_0",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\t)",
+                                            "C_name": "AA_example_nested_testoptional_0",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_testoptional_0",
+                                            "F_C_name": "c_testoptional_0",
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
@@ -8478,9 +8524,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_testoptional_0",
                                     "C_name_api": "testoptional",
-                                    "F_C_name": "c_testoptional_0",
                                     "F_name_api": "testoptional",
                                     "F_name_function": "testoptional_0",
                                     "F_name_generic": "testoptional",
@@ -8572,17 +8616,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::testoptional(\ti)",
                                             "C_call_list": "i",
+                                            "C_name": "AA_example_nested_testoptional_1",
                                             "C_prototype": "int i",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_testoptional_1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\ti)",
                                             "C_call_list": "i",
+                                            "C_name": "AA_example_nested_testoptional_1",
                                             "C_prototype": "int i",
                                             "C_return_type": "void",
                                             "F_C_arguments": "i",
                                             "F_C_call": "c_testoptional_1",
+                                            "F_C_name": "c_testoptional_1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "i",
                                             "F_arguments": "i",
@@ -8635,9 +8683,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_testoptional_1",
                                     "C_name_api": "testoptional",
-                                    "F_C_name": "c_testoptional_1",
                                     "F_name_api": "testoptional",
                                     "F_name_function": "testoptional_1",
                                     "F_name_generic": "testoptional",
@@ -8764,17 +8810,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::testoptional(\ti,\t j)",
                                             "C_call_list": "i,\t j",
+                                            "C_name": "AA_example_nested_testoptional_2",
                                             "C_prototype": "int i,\t long j",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_testoptional_2",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\ti,\t j)",
                                             "C_call_list": "i,\t j",
+                                            "C_name": "AA_example_nested_testoptional_2",
                                             "C_prototype": "int i,\t long j",
                                             "C_return_type": "void",
                                             "F_C_arguments": "i,\t j",
                                             "F_C_call": "c_testoptional_2",
+                                            "F_C_name": "c_testoptional_2",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "i,\t j",
                                             "F_arguments": "i,\t j",
@@ -8935,9 +8985,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_testoptional_2",
                                     "C_name_api": "testoptional",
-                                    "F_C_name": "c_testoptional_2",
                                     "F_name_api": "testoptional",
                                     "F_name_function": "testoptional_2",
                                     "F_name_generic": "testoptional",
@@ -8999,8 +9047,10 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "example::nested::test_size_t(\t)",
+                                            "C_name": "AA_example_nested_test_size_t",
                                             "C_prototype": "void",
                                             "C_return_type": "size_t",
+                                            "F_C_name": "c_test_size_t",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "size_t",
@@ -9018,10 +9068,12 @@
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_size_t(\t)",
+                                            "C_name": "AA_example_nested_test_size_t",
                                             "C_prototype": "void",
                                             "C_return_type": "size_t",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_test_size_t",
+                                            "F_C_name": "test_size_t",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arguments": "",
@@ -9077,9 +9129,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_test_size_t",
                                     "C_name_api": "test_size_t",
-                                    "F_C_name": "test_size_t",
                                     "F_name_api": "test_size_t",
                                     "F_name_function": "test_size_t",
                                     "F_name_generic": "test_size_t",
@@ -9173,17 +9223,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::testmpi(\tSHCXX_comm)",
                                             "C_call_list": "SHCXX_comm",
+                                            "C_name": "AA_example_nested_testmpi_mpi",
                                             "C_prototype": "MPI_Fint comm",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_testmpi_mpi",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testmpi(\tSHCXX_comm)",
                                             "C_call_list": "SHCXX_comm",
+                                            "C_name": "AA_example_nested_testmpi_mpi",
                                             "C_prototype": "MPI_Fint comm",
                                             "C_return_type": "void",
                                             "F_C_arguments": "comm",
                                             "F_C_call": "c_testmpi_mpi",
+                                            "F_C_name": "c_testmpi_mpi",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "comm",
                                             "F_arguments": "comm",
@@ -9276,9 +9330,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_testmpi_mpi",
                                     "C_name_api": "testmpi",
-                                    "F_C_name": "c_testmpi_mpi",
                                     "F_name_api": "testmpi",
                                     "F_name_function": "testmpi_mpi",
                                     "F_name_generic": "testmpi",
@@ -9343,16 +9395,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "example::nested::testmpi(\t)",
+                                            "C_name": "AA_example_nested_testmpi_serial",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_testmpi_serial",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testmpi(\t)",
+                                            "C_name": "AA_example_nested_testmpi_serial",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_testmpi_serial",
+                                            "F_C_name": "c_testmpi_serial",
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
@@ -9364,9 +9420,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_testmpi_serial",
                                     "C_name_api": "testmpi",
-                                    "F_C_name": "c_testmpi_serial",
                                     "F_name_api": "testmpi",
                                     "F_name_function": "testmpi_serial",
                                     "F_name_generic": "testmpi",
@@ -9467,17 +9521,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::FuncPtr1(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr1",
                                             "C_prototype": "void ( * get)(\tvoid)",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_func_ptr1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr1(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr1",
                                             "C_prototype": "void ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "F_C_arguments": "get",
                                             "F_C_call": "c_func_ptr1",
+                                            "F_C_name": "func_ptr1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
@@ -9562,9 +9620,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_FuncPtr1",
                                     "C_name_api": "FuncPtr1",
-                                    "F_C_name": "func_ptr1",
                                     "F_name_api": "func_ptr1",
                                     "F_name_function": "func_ptr1",
                                     "F_name_generic": "func_ptr1",
@@ -9669,17 +9725,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::FuncPtr2(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr2",
                                             "C_prototype": "double * ( * get)(\tvoid)",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_func_ptr2",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr2(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr2",
                                             "C_prototype": "double * ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "F_C_arguments": "get",
                                             "F_C_call": "c_func_ptr2",
+                                            "F_C_name": "func_ptr2",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
@@ -9766,9 +9826,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_FuncPtr2",
                                     "C_name_api": "FuncPtr2",
-                                    "F_C_name": "func_ptr2",
                                     "F_name_api": "func_ptr2",
                                     "F_name_function": "func_ptr2",
                                     "F_name_generic": "func_ptr2",
@@ -9899,17 +9957,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::FuncPtr3(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr3",
                                             "C_prototype": "double ( * get)(\tint i,\t int)",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_func_ptr3",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr3(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr3",
                                             "C_prototype": "double ( * get)(\tint i,\t int)",
                                             "C_return_type": "void",
                                             "F_C_arguments": "get",
                                             "F_C_call": "c_func_ptr3",
+                                            "F_C_name": "c_func_ptr3",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
@@ -9995,9 +10057,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_FuncPtr3",
                                     "C_name_api": "FuncPtr3",
-                                    "F_C_name": "c_func_ptr3",
                                     "F_name_api": "func_ptr3",
                                     "F_name_function": "func_ptr3",
                                     "F_name_generic": "func_ptr3",
@@ -10129,17 +10189,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::FuncPtr4(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr4",
                                             "C_prototype": "double ( * get)(\tdouble,\t int)",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_func_ptr4",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr4(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr4",
                                             "C_prototype": "double ( * get)(\tdouble,\t int)",
                                             "C_return_type": "void",
                                             "F_C_arguments": "get",
                                             "F_C_call": "c_func_ptr4",
+                                            "F_C_name": "c_func_ptr4",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
@@ -10192,9 +10256,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_FuncPtr4",
                                     "C_name_api": "FuncPtr4",
-                                    "F_C_name": "c_func_ptr4",
                                     "F_name_api": "func_ptr4",
                                     "F_name_function": "func_ptr4",
                                     "F_name_generic": "func_ptr4",
@@ -10421,17 +10483,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::FuncPtr5(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr5",
                                             "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_func_ptr5",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr5(\tget)",
                                             "C_call_list": "get",
+                                            "C_name": "AA_example_nested_FuncPtr5",
                                             "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "C_return_type": "void",
                                             "F_C_arguments": "get",
                                             "F_C_call": "c_func_ptr5",
+                                            "F_C_name": "func_ptr5",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
@@ -10516,9 +10582,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_FuncPtr5",
                                     "C_name_api": "FuncPtr5",
-                                    "F_C_name": "func_ptr5",
                                     "F_name_api": "func_ptr5",
                                     "F_name_function": "func_ptr5",
                                     "F_name_generic": "func_ptr5",
@@ -10912,17 +10976,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
+                                            "C_name": "AA_example_nested_verylongfunctionname1",
                                             "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_verylongfunctionname1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
+                                            "C_name": "AA_example_nested_verylongfunctionname1",
                                             "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                             "C_return_type": "void",
                                             "F_C_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "F_C_call": "c_verylongfunctionname1",
+                                            "F_C_name": "c_verylongfunctionname1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
@@ -11685,9 +11753,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_verylongfunctionname1",
                                     "C_name_api": "verylongfunctionname1",
-                                    "F_C_name": "c_verylongfunctionname1",
                                     "F_name_api": "verylongfunctionname1",
                                     "F_name_function": "verylongfunctionname1",
                                     "F_name_generic": "verylongfunctionname1",
@@ -12033,8 +12099,10 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
+                                            "C_name": "AA_example_nested_verylongfunctionname2",
                                             "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
                                             "C_return_type": "int",
+                                            "F_C_name": "c_verylongfunctionname2",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "int",
@@ -12053,10 +12121,12 @@
                                         "fmtf": {
                                             "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                             "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
+                                            "C_name": "AA_example_nested_verylongfunctionname2",
                                             "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
                                             "C_return_type": "int",
                                             "F_C_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "F_C_call": "c_verylongfunctionname2",
+                                            "F_C_name": "c_verylongfunctionname2",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
@@ -12853,9 +12923,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_verylongfunctionname2",
                                     "C_name_api": "verylongfunctionname2",
-                                    "F_C_name": "c_verylongfunctionname2",
                                     "F_name_api": "verylongfunctionname2",
                                     "F_name_function": "verylongfunctionname2",
                                     "F_name_generic": "verylongfunctionname2",
@@ -13029,17 +13097,21 @@
                                         "fmtc": {
                                             "C_call_function": "example::nested::cos_doubles(\tin,\t out,\t sizein)",
                                             "C_call_list": "in,\t out,\t sizein",
+                                            "C_name": "AA_example_nested_cos_doubles",
                                             "C_prototype": "double * in,\t double * out,\t int sizein",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_cos_doubles",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::cos_doubles(\tin,\t out,\t sizein)",
                                             "C_call_list": "in,\t out,\t sizein",
+                                            "C_name": "AA_example_nested_cos_doubles",
                                             "C_prototype": "double * in,\t double * out,\t int sizein",
                                             "C_return_type": "void",
                                             "F_C_arguments": "in,\t out,\t sizein",
                                             "F_C_call": "c_cos_doubles",
+                                            "F_C_name": "c_cos_doubles",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                                             "F_arguments": "in,\t out",
@@ -13292,9 +13364,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "AA_example_nested_cos_doubles",
                                     "C_name_api": "cos_doubles",
-                                    "F_C_name": "c_cos_doubles",
                                     "F_name_api": "cos_doubles",
                                     "F_name_function": "cos_doubles",
                                     "F_name_generic": "cos_doubles",

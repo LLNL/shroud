@@ -70,9 +70,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrAlloc",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_get_const_string_ptr_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -100,9 +102,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrAlloc",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "function_name": "getConstStringPtrAlloc"
                 }
@@ -175,10 +175,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
+                            "C_name": "STR_getConstStringPtrAlloc_bufferify",
                             "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc,\t STR_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
+                            "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -221,9 +223,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_getConstStringPtrAlloc_bufferify",
                     "C_name_api": "getConstStringPtrAlloc",
-                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "F_name_api": "get_const_string_ptr_alloc",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",

@@ -1254,7 +1254,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             need_wrapper = False
 
         need_wrapper = need_wrapper or stmt_need_wrapper
-            
+
         if need_wrapper:
             impl = []
             if options.doxygen and node.doxygen:
@@ -1266,13 +1266,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if node.C_signature != None and node.C_signature != signature:
                 # The Fortran wrapper has different signature, change name
                 fmt_func.f_c_suffix = "_extrawrapper"
-                node.reeval_template("C_name")
-                node.reeval_template("F_C_name")
             elif stmt_need_wrapper:
                 # The statements requires a wrapper (usually the Fortran statements)
                 fmt_func.f_c_suffix = "_extrawrapper"
-                node.reeval_template("C_name")
-                node.reeval_template("F_C_name")
+            node.eval_template("C_name", fmt=fmt_result)
+            node.eval_template("F_C_name", fmt=fmt_result)
+            if "C_name" in node.user_fmt:
+                # XXX - this needs to distinguish between wlang
+                fmt_result.C_name = node.user_fmt["C_name"]
             
             if options.literalinclude:
                 append_format(impl, "// start {C_name}", fmt_result)
@@ -1319,7 +1320,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node.ast.declarator.name
+            fmt_result.C_name = node.ast.declarator.name
+            # Needed to create interface for C only wrappers.
+            node.eval_template("F_C_name", fmt=fmt_result)
+
+        if wlang == "f":
+            if "F_C_name" in node.user_fmt:
+                fmt_result.F_C_name = node.user_fmt["F_C_name"]
+            
         cursor.pop_node(node)
 
     def set_capsule_headers(self, headers):
