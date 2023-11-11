@@ -778,6 +778,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -852,7 +853,6 @@
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_0",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
                     "function_suffix": "_0"
                 }
@@ -1131,6 +1131,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1205,7 +1206,6 @@
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_1",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar1",
                     "function_suffix": "_1"
                 }
@@ -2021,6 +2021,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t value",
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2087,7 +2088,6 @@
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_0",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
                     "stype": "int"
@@ -2334,6 +2334,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t value",
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2400,7 +2401,6 @@
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_1",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
                     "stype": "double"

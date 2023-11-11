@@ -1712,8 +1712,6 @@ class GenFunctions(object):
             C_new.ast.declarator.metaattrs["deref"] = "arg"
             # Special case for wrapf.py to override "allocatable"
             node.ast.declarator.metaattrs["deref"] = None
-        fmt_func = C_new.fmtdict
-        fmt_func.f_c_suffix = fmt_func.C_cfi_suffix
 
         C_new.wrap.assign(fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
@@ -1897,9 +1895,6 @@ class GenFunctions(object):
             # XXX - the legacy wrapper uses buf, easier to call from C.
             C_new.ast.declarator.metaattrs["api"] = "buf"
         
-        fmt_func = C_new.fmtdict
-        fmt_func.f_c_suffix = fmt_func.C_bufferify_suffix
-
         options = C_new.options
         C_new.wrap.assign(fortran=True)
         C_new._PTR_C_CXX_index = node._function_index

@@ -45,12 +45,12 @@ int * OWN_ReturnIntPtrScalar(void)
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
 // Statement: f_function_native_*_scalar
-int OWN_ReturnIntPtrScalar_extrawrapper(void)
+int OWN_ReturnIntPtrScalar_bufferify(void)
 {
-    // splicer begin function.ReturnIntPtrScalar_extrawrapper
+    // splicer begin function.ReturnIntPtrScalar_bufferify
     int * SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
-    // splicer end function.ReturnIntPtrScalar_extrawrapper
+    // splicer end function.ReturnIntPtrScalar_bufferify
 }
 
 // ----------------------------------------

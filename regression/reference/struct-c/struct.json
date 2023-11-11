@@ -2754,6 +2754,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2830,7 +2831,6 @@
                     "F_name_function": "pass_struct2",
                     "F_name_generic": "pass_struct2",
                     "F_name_impl": "pass_struct2",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "passStruct2"
                 }
             },
@@ -4407,6 +4407,7 @@
                             "cxx_rv_decl": "Cstruct1 * SHC_rv",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_derived_type": "cstruct1",
                             "f_intent": "OUT",
                             "f_kind": "cstruct1",
@@ -4510,7 +4511,6 @@
                     "F_name_function": "return_struct_ptr2",
                     "F_name_generic": "return_struct_ptr2",
                     "F_name_impl": "return_struct_ptr2",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnStructPtr2"
                 }
             },
@@ -6141,6 +6141,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_intent": "OUT",
@@ -6192,7 +6193,6 @@
                     "F_name_function": "cstruct_list_get_ivalue",
                     "F_name_generic": "cstruct_list_get_ivalue",
                     "F_name_impl": "cstruct_list_get_ivalue",
-                    "f_c_suffix": "_bufferify",
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_get_ivalue",
                     "struct_name": "Cstruct_list",
@@ -6629,6 +6629,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_intent": "OUT",
@@ -6680,7 +6681,6 @@
                     "F_name_function": "cstruct_list_get_dvalue",
                     "F_name_generic": "cstruct_list_get_dvalue",
                     "F_name_impl": "cstruct_list_get_dvalue",
-                    "f_c_suffix": "_bufferify",
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_get_dvalue",
                     "struct_name": "Cstruct_list",

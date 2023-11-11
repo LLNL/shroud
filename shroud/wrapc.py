@@ -949,6 +949,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
         result_typemap = ast.typemap
+        any_cfi = False
+        if r_meta["api"] == 'cfi':
+            any_cfi = True
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
@@ -1054,6 +1057,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt_arg = fmtargs[arg_name][fmtlang]
             c_attrs = declarator.attrs
             c_meta = declarator.metaattrs
+            if c_meta["api"] == 'cfi':
+                any_cfi = True
 
             arg_typemap = arg.typemap  # XXX - look up vector
 
@@ -1263,12 +1268,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 impl.append("#" + node.cpp_if)
             impl.extend(stmts_comments)
 
-            if node.C_signature != None and node.C_signature != signature:
-                # The Fortran wrapper has different signature, change name
-                fmt_func.f_c_suffix = "_extrawrapper"
-            elif stmt_need_wrapper:
-                # The statements requires a wrapper (usually the Fortran statements)
-                fmt_func.f_c_suffix = "_extrawrapper"
+            if wlang == "f":
+                if node.C_signature != signature:
+                    mmm = node._bind["f"]["+result"].meta
+                    if mmm["intent"] not in ["getter", "setter"]:
+                        if any_cfi:
+                            fmt_result.f_c_suffix = fmt_func.C_cfi_suffix
+                        else:
+                            fmt_result.f_c_suffix = fmt_func.C_bufferify_suffix
             node.eval_template("C_name", fmt=fmt_result)
             node.eval_template("F_C_name", fmt=fmt_result)
             if "C_name" in node.user_fmt:

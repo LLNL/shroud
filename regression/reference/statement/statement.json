@@ -319,6 +319,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=get_name_length()",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -341,7 +342,6 @@
                     "F_name_function": "get_name_error_pattern",
                     "F_name_generic": "get_name_error_pattern",
                     "F_name_impl": "get_name_error_pattern",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getNameErrorPattern"
                 }
             }

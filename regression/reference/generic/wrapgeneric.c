@@ -30,12 +30,12 @@
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Statement: f_in_native_scalar
-int GEN_SumValues_0d(const int * values, int nvalues)
+int GEN_SumValues_0d_bufferify(const int * values, int nvalues)
 {
-    // splicer begin function.SumValues_0d
+    // splicer begin function.SumValues_0d_bufferify
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.SumValues_0d
+    // splicer end function.SumValues_0d_bufferify
 }
 
 /**
@@ -52,12 +52,12 @@ int GEN_SumValues_0d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Statement: f_in_native_scalar
-int GEN_SumValues_1d(const int * values, int nvalues)
+int GEN_SumValues_1d_bufferify(const int * values, int nvalues)
 {
-    // splicer begin function.SumValues_1d
+    // splicer begin function.SumValues_1d_bufferify
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.SumValues_1d
+    // splicer end function.SumValues_1d_bufferify
 }
 
 /**
@@ -74,12 +74,12 @@ int GEN_SumValues_1d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  int nvalues +value
 // Statement: f_in_native_scalar
-int GEN_SumValues_2d(const int * values, int nvalues)
+int GEN_SumValues_2d_bufferify(const int * values, int nvalues)
 {
-    // splicer begin function.SumValues_2d
+    // splicer begin function.SumValues_2d_bufferify
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.SumValues_2d
+    // splicer end function.SumValues_2d_bufferify
 }
 
 /**
@@ -102,12 +102,12 @@ int GEN_SumValues_2d(const int * values, int nvalues)
 // ----------------------------------------
 // Argument:  int nto +value
 // Statement: f_in_native_scalar
-void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
-    int nto)
+void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
+    int * to, int nto)
 {
-    // splicer begin function.AssignValues_scalar
+    // splicer begin function.AssignValues_scalar_bufferify
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.AssignValues_scalar
+    // splicer end function.AssignValues_scalar_bufferify
 }
 
 /**
@@ -130,12 +130,12 @@ void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  int nto +value
 // Statement: f_in_native_scalar
-void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
-    int nto)
+void GEN_AssignValues_broadcast_bufferify(const int * from, int nfrom,
+    int * to, int nto)
 {
-    // splicer begin function.AssignValues_broadcast
+    // splicer begin function.AssignValues_broadcast_bufferify
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.AssignValues_broadcast
+    // splicer end function.AssignValues_broadcast_bufferify
 }
 
 /**
@@ -158,12 +158,12 @@ void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  int nto +value
 // Statement: f_in_native_scalar
-void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
-    int nto)
+void GEN_AssignValues_copy_bufferify(const int * from, int nfrom,
+    int * to, int nto)
 {
-    // splicer begin function.AssignValues_copy
+    // splicer begin function.AssignValues_copy_bufferify
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.AssignValues_copy
+    // splicer end function.AssignValues_copy_bufferify
 }
 
 #if 1
@@ -180,11 +180,12 @@ void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Statement: f_in_native_scalar
-void GEN_SavePointer_float1d(float * addr, int type, size_t size)
+void GEN_SavePointer_float1d_bufferify(float * addr, int type,
+    size_t size)
 {
-    // splicer begin function.SavePointer_float1d
+    // splicer begin function.SavePointer_float1d_bufferify
     SavePointer(addr, type, size);
-    // splicer end function.SavePointer_float1d
+    // splicer end function.SavePointer_float1d_bufferify
 }
 #endif  // if 1
 
@@ -202,11 +203,12 @@ void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Statement: f_in_native_scalar
-void GEN_SavePointer_float2d(float * addr, int type, size_t size)
+void GEN_SavePointer_float2d_bufferify(float * addr, int type,
+    size_t size)
 {
-    // splicer begin function.SavePointer_float2d
+    // splicer begin function.SavePointer_float2d_bufferify
     SavePointer(addr, type, size);
-    // splicer end function.SavePointer_float2d
+    // splicer end function.SavePointer_float2d_bufferify
 }
 #endif  // if 1
 
@@ -245,14 +247,15 @@ void GEN_SavePointer2(void * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Statement: f_in_native_scalar
-void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
+void GEN_SavePointer2_float1d_bufferify(float * addr, int type,
+    size_t size)
 {
-    // splicer begin function.SavePointer2_float1d
+    // splicer begin function.SavePointer2_float1d_bufferify
     // Test adding a blank line below.
 
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    // splicer end function.SavePointer2_float1d
+    // splicer end function.SavePointer2_float1d_bufferify
 }
 
 // Generated by fortran_generic
@@ -268,14 +271,15 @@ void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+value
 // Statement: f_in_native_scalar
-void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
+void GEN_SavePointer2_float2d_bufferify(float * addr, int type,
+    size_t size)
 {
-    // splicer begin function.SavePointer2_float2d
+    // splicer begin function.SavePointer2_float2d_bufferify
     // Test adding a blank line below.
 
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    // splicer end function.SavePointer2_float2d
+    // splicer end function.SavePointer2_float2d_bufferify
 }
 
 #if 0
@@ -381,13 +385,14 @@ long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 // ----------------------------------------
 // Argument:  int inew +value
 // Statement: f_in_native_scalar
-long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
+long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
+    int inew)
 {
-    // splicer begin function.UpdateStructAsClass_int
+    // splicer begin function.UpdateStructAsClass_int_bufferify
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
     return SHC_rv;
-    // splicer end function.UpdateStructAsClass_int
+    // splicer end function.UpdateStructAsClass_int_bufferify
 }
 
 // Generated by fortran_generic
@@ -400,11 +405,12 @@ long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 // ----------------------------------------
 // Argument:  long inew +value
 // Statement: f_in_native_scalar
-long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew)
+long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
+    long inew)
 {
-    // splicer begin function.UpdateStructAsClass_long
+    // splicer begin function.UpdateStructAsClass_long_bufferify
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
     return SHC_rv;
-    // splicer end function.UpdateStructAsClass_long
+    // splicer end function.UpdateStructAsClass_long_bufferify
 }

@@ -1099,15 +1099,15 @@ int * POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Statement: f_function_native_*_scalar
-// start POI_returnIntScalar_extrawrapper
-int POI_returnIntScalar_extrawrapper(void)
+// start POI_returnIntScalar_bufferify
+int POI_returnIntScalar_bufferify(void)
 {
-    // splicer begin function.returnIntScalar_extrawrapper
+    // splicer begin function.returnIntScalar_bufferify
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
-    // splicer end function.returnIntScalar_extrawrapper
+    // splicer end function.returnIntScalar_bufferify
 }
-// end POI_returnIntScalar_extrawrapper
+// end POI_returnIntScalar_bufferify
 
 /**
  * Call directly via interface.
@@ -1131,15 +1131,15 @@ int * POI_returnIntRaw(void)
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
 // Statement: f_function_native_*_raw
-// start POI_returnIntRaw_extrawrapper
-int * POI_returnIntRaw_extrawrapper(void)
+// start POI_returnIntRaw_bufferify
+int * POI_returnIntRaw_bufferify(void)
 {
-    // splicer begin function.returnIntRaw_extrawrapper
+    // splicer begin function.returnIntRaw_bufferify
     int * SHC_rv = returnIntRaw();
     return SHC_rv;
-    // splicer end function.returnIntRaw_extrawrapper
+    // splicer end function.returnIntRaw_bufferify
 }
-// end POI_returnIntRaw_extrawrapper
+// end POI_returnIntRaw_bufferify
 
 /**
  * Like returnIntRaw but with another argument to force a wrapper.
@@ -1171,15 +1171,15 @@ int * POI_returnIntRawWithArgs(const char * name)
 // ----------------------------------------
 // Argument:  const char * name
 // Statement: f_in_char_*
-// start POI_returnIntRawWithArgs_extrawrapper
-int * POI_returnIntRawWithArgs_extrawrapper(const char * name)
+// start POI_returnIntRawWithArgs_bufferify
+int * POI_returnIntRawWithArgs_bufferify(const char * name)
 {
-    // splicer begin function.returnIntRawWithArgs_extrawrapper
+    // splicer begin function.returnIntRawWithArgs_bufferify
     int * SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
-    // splicer end function.returnIntRawWithArgs_extrawrapper
+    // splicer end function.returnIntRawWithArgs_bufferify
 }
-// end POI_returnIntRawWithArgs_extrawrapper
+// end POI_returnIntRawWithArgs_bufferify
 
 /**
  * Test multiple layers of indirection.

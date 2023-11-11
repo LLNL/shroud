@@ -1418,15 +1418,15 @@ int * POI_returnIntScalar(void)
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Statement: f_function_native_*_scalar
-// start POI_returnIntScalar_extrawrapper
-int POI_returnIntScalar_extrawrapper(void)
+// start POI_returnIntScalar_bufferify
+int POI_returnIntScalar_bufferify(void)
 {
-    // splicer begin function.returnIntScalar_extrawrapper
+    // splicer begin function.returnIntScalar_bufferify
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
-    // splicer end function.returnIntScalar_extrawrapper
+    // splicer end function.returnIntScalar_bufferify
 }
-// end POI_returnIntScalar_extrawrapper
+// end POI_returnIntScalar_bufferify
 
 /**
  * Call directly via interface.
@@ -1450,15 +1450,15 @@ int * POI_returnIntRaw(void)
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
 // Statement: f_function_native_*_raw
-// start POI_returnIntRaw_extrawrapper
-int * POI_returnIntRaw_extrawrapper(void)
+// start POI_returnIntRaw_bufferify
+int * POI_returnIntRaw_bufferify(void)
 {
-    // splicer begin function.returnIntRaw_extrawrapper
+    // splicer begin function.returnIntRaw_bufferify
     int * SHC_rv = returnIntRaw();
     return SHC_rv;
-    // splicer end function.returnIntRaw_extrawrapper
+    // splicer end function.returnIntRaw_bufferify
 }
-// end POI_returnIntRaw_extrawrapper
+// end POI_returnIntRaw_bufferify
 
 /**
  * Like returnIntRaw but with another argument to force a wrapper.

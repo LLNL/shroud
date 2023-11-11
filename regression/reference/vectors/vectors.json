@@ -190,6 +190,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -242,7 +243,6 @@
                     "F_name_function": "vector_sum",
                     "F_name_generic": "vector_sum",
                     "F_name_impl": "vector_sum",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_sum"
                 }
             },
@@ -435,6 +435,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -482,7 +483,6 @@
                     "F_name_function": "vector_iota_out",
                     "F_name_generic": "vector_iota_out",
                     "F_name_impl": "vector_iota_out",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out"
                 }
             },
@@ -735,6 +735,7 @@
                             "F_result": "num",
                             "F_result_clause": "\fresult(num)",
                             "F_subprogram": "function",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -788,7 +789,6 @@
                     "F_name_function": "vector_iota_out_with_num",
                     "F_name_generic": "vector_iota_out_with_num",
                     "F_name_impl": "vector_iota_out_with_num",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num"
                 }
             },
@@ -1020,6 +1020,7 @@
                             "F_result": "num",
                             "F_result_clause": "\fresult(num)",
                             "F_subprogram": "function",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -1073,7 +1074,6 @@
                     "F_name_function": "vector_iota_out_with_num2",
                     "F_name_generic": "vector_iota_out_with_num2",
                     "F_name_impl": "vector_iota_out_with_num2",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_with_num2"
                 }
             },
@@ -1270,6 +1270,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1318,7 +1319,6 @@
                     "F_name_function": "vector_iota_out_alloc",
                     "F_name_generic": "vector_iota_out_alloc",
                     "F_name_impl": "vector_iota_out_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_alloc"
                 }
             },
@@ -1521,6 +1521,7 @@
                             "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1573,7 +1574,6 @@
                     "F_name_function": "vector_iota_inout_alloc",
                     "F_name_generic": "vector_iota_inout_alloc",
                     "F_name_impl": "vector_iota_inout_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_inout_alloc"
                 }
             },
@@ -1762,6 +1762,7 @@
                             "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1813,7 +1814,6 @@
                     "F_name_function": "vector_increment",
                     "F_name_generic": "vector_increment",
                     "F_name_impl": "vector_increment",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_increment"
                 }
             },
@@ -2004,6 +2004,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2051,7 +2052,6 @@
                     "F_name_function": "vector_iota_out_d",
                     "F_name_generic": "vector_iota_out_d",
                     "F_name_impl": "vector_iota_out_d",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_iota_out_d"
                 }
             },
@@ -2289,6 +2289,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2369,7 +2370,6 @@
                     "F_name_function": "vector_of_pointers",
                     "F_name_generic": "vector_of_pointers",
                     "F_name_impl": "vector_of_pointers",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_of_pointers"
                 }
             },
@@ -2567,6 +2567,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2628,7 +2629,6 @@
                     "F_name_function": "vector_string_count",
                     "F_name_generic": "vector_string_count",
                     "F_name_impl": "vector_string_count",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_count"
                 }
             },
@@ -2823,6 +2823,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2870,7 +2871,6 @@
                     "F_name_function": "vector_string_fill",
                     "F_name_generic": "vector_string_fill",
                     "F_name_impl": "vector_string_fill",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill"
                 }
             },
@@ -3067,6 +3067,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc,\t SHT_arg_capsule",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3122,7 +3123,6 @@
                     "F_name_function": "vector_string_fill_allocatable",
                     "F_name_generic": "vector_string_fill_allocatable",
                     "F_name_impl": "vector_string_fill_allocatable",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable"
                 }
             },
@@ -3321,6 +3321,7 @@
                             "F_arg_c_call": "SHT_arg_cdesc,\t SHT_arg_capsule",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3377,7 +3378,6 @@
                     "F_name_function": "vector_string_fill_allocatable_len",
                     "F_name_generic": "vector_string_fill_allocatable_len",
                     "F_name_impl": "vector_string_fill_allocatable_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "vector_string_fill_allocatable_len"
                 }
             },
@@ -3646,6 +3646,7 @@
                             "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHC_rv",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
@@ -3698,7 +3699,6 @@
                     "F_name_function": "return_vector_alloc",
                     "F_name_generic": "return_vector_alloc",
                     "F_name_impl": "return_vector_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnVectorAlloc"
                 }
             },

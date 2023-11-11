@@ -1815,6 +1815,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1891,7 +1892,6 @@
                     "F_name_function": "sum_values",
                     "F_name_generic": "sum_values",
                     "F_name_impl": "sum_values",
-                    "f_c_suffix": "_CFI",
                     "function_name": "SumValues"
                 }
             },
@@ -2526,16 +2526,17 @@
                         "fmtf": {
                             "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
                             "C_call_list": "from,\t nfrom,\t to,\t nto",
-                            "C_name": "GEN_AssignValues_scalar",
+                            "C_name": "GEN_AssignValues_scalar_bufferify",
                             "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                             "C_return_type": "void",
                             "F_C_arguments": "from,\t nfrom,\t to,\t nto",
-                            "F_C_call": "c_assign_values_scalar",
-                            "F_C_name": "c_assign_values_scalar",
+                            "F_C_call": "c_assign_values_scalar_bufferify",
+                            "F_C_name": "c_assign_values_scalar_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                             "F_arguments": "from,\t nfrom,\t to,\t nto",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2926,6 +2927,7 @@
                             "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                             "F_arguments": "from,\t nfrom,\t to,\t nto",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3046,7 +3048,6 @@
                     "F_name_function": "assign_values_broadcast",
                     "F_name_generic": "assign_values",
                     "F_name_impl": "assign_values_broadcast",
-                    "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast"
                 }
@@ -3330,6 +3331,7 @@
                             "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                             "F_arguments": "from,\t nfrom,\t to,\t nto",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3456,7 +3458,6 @@
                     "F_name_function": "assign_values_copy",
                     "F_name_generic": "assign_values",
                     "F_name_impl": "assign_values_copy",
-                    "f_c_suffix": "_CFI",
                     "function_name": "AssignValues",
                     "function_suffix": "_copy"
                 }
@@ -4017,6 +4018,7 @@
                             "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4113,7 +4115,6 @@
                     "F_name_function": "save_pointer_float1d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float1d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
                     "function_suffix": "_float1d"
                 }
@@ -4346,6 +4347,7 @@
                             "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4442,7 +4444,6 @@
                     "F_name_function": "save_pointer_float2d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float2d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer",
                     "function_suffix": "_float2d"
                 }
@@ -5087,6 +5088,7 @@
                             "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5183,7 +5185,6 @@
                     "F_name_function": "save_pointer2_float1d",
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float1d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d"
                 }
@@ -5471,6 +5472,7 @@
                             "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5567,7 +5569,6 @@
                     "F_name_function": "save_pointer2_float2d",
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float2d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d"
                 }
@@ -6513,6 +6514,7 @@
                             "F_arg_c_call": "addr",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6617,7 +6619,6 @@
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
                     "F_name_impl": "get_pointer_as_pointer_float1d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d"
                 }
@@ -6881,6 +6882,7 @@
                             "F_arg_c_call": "addr",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6985,7 +6987,6 @@
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",
                     "F_name_impl": "get_pointer_as_pointer_float2d",
-                    "f_c_suffix": "_CFI",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d"
                 }
@@ -7463,12 +7464,12 @@
                         "fmtf": {
                             "C_call_function": "UpdateStructAsClass(\tSHCXX_arg,\t inew)",
                             "C_call_list": "SHCXX_arg,\t inew",
-                            "C_name": "GEN_UpdateStructAsClass_int",
+                            "C_name": "GEN_UpdateStructAsClass_int_bufferify",
                             "C_prototype": "GEN_StructAsClass * arg,\t int inew",
                             "C_return_type": "long",
                             "F_C_arguments": "arg,\t inew",
-                            "F_C_call": "c_update_struct_as_class_int",
-                            "F_C_name": "c_update_struct_as_class_int",
+                            "F_C_call": "c_update_struct_as_class_int_bufferify",
+                            "F_C_name": "c_update_struct_as_class_int_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg%cxxmem,\t inew",
@@ -7486,6 +7487,7 @@
                             "cxx_rv_decl": "long SHC_rv",
                             "cxx_type": "long",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",
@@ -7655,12 +7657,12 @@
                         "fmtf": {
                             "C_call_function": "UpdateStructAsClass(\tSHCXX_arg,\t inew)",
                             "C_call_list": "SHCXX_arg,\t inew",
-                            "C_name": "GEN_UpdateStructAsClass_long",
+                            "C_name": "GEN_UpdateStructAsClass_long_bufferify",
                             "C_prototype": "GEN_StructAsClass * arg,\t long inew",
                             "C_return_type": "long",
                             "F_C_arguments": "arg,\t inew",
-                            "F_C_call": "c_update_struct_as_class_long",
-                            "F_C_name": "c_update_struct_as_class_long",
+                            "F_C_call": "c_update_struct_as_class_long_bufferify",
+                            "F_C_name": "c_update_struct_as_class_long_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg%cxxmem,\t inew",
@@ -7678,6 +7680,7 @@
                             "cxx_rv_decl": "long SHC_rv",
                             "cxx_type": "long",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_LONG",
                             "f_type": "integer(C_LONG)",

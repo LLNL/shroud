@@ -18,13 +18,13 @@ extern "C" {
 // splicer begin class.Class1.C_definitions
 // splicer end class.Class1.C_definitions
 
-int WRA_Class1_FuncInClass(WRA_Class1 * self)
+int WRA_Class1_FuncInClass_bufferify(WRA_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
-    // splicer begin class.Class1.method.FuncInClass
+    // splicer begin class.Class1.method.FuncInClass_bufferify
     int SHC_rv = SH_this->FuncInClass();
     return SHC_rv;
-    // splicer end class.Class1.method.FuncInClass
+    // splicer end class.Class1.method.FuncInClass_bufferify
 }
 
 }  // extern "C"

@@ -853,6 +853,7 @@
                             "cxx_rv_decl": "*SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "TUT_SHROUD_array",
                             "f_helper_capsule_dtor": "TUT_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "TUT_SHROUD_copy_string",
@@ -939,7 +940,6 @@
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
                     "F_name_impl": "concatenate_strings",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ConcatenateStrings"
                 }
             },
@@ -1892,6 +1892,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len",
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1932,7 +1933,6 @@
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
                     "F_name_impl": "overloaded_function_from_name",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name"
                 }
@@ -3629,6 +3629,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3695,7 +3696,6 @@
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_float",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float"
                 }
@@ -3895,6 +3895,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3961,7 +3962,6 @@
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_double",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double"
                 }
@@ -7610,6 +7610,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -7632,7 +7633,6 @@
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "LastFunctionCalled"
                 }
             }

@@ -1166,6 +1166,7 @@
                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1265,7 +1266,6 @@
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
-                    "f_c_suffix": "_CFI",
                     "function_name": "cos_doubles"
                 }
             },
@@ -1651,6 +1651,7 @@
                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1750,7 +1751,6 @@
                     "F_name_function": "truncate_to_int",
                     "F_name_generic": "truncate_to_int",
                     "F_name_impl": "truncate_to_int",
-                    "f_c_suffix": "_CFI",
                     "function_name": "truncate_to_int"
                 }
             },
@@ -2853,6 +2853,7 @@
                             "F_arg_c_call": "SH_len,\t values,\t result",
                             "F_arguments": "values,\t result",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2948,7 +2949,6 @@
                     "F_name_function": "sum",
                     "F_name_generic": "sum",
                     "F_name_impl": "sum",
-                    "f_c_suffix": "_CFI",
                     "function_name": "Sum"
                 }
             },
@@ -3398,6 +3398,7 @@
                             "F_arg_c_call": "array,\t SH_sizein",
                             "F_arguments": "array",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3467,7 +3468,6 @@
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "incrementIntArray"
                 }
             },
@@ -3738,6 +3738,7 @@
                             "F_arg_c_call": "x,\t SH_x_length",
                             "F_arguments": "x",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3807,7 +3808,6 @@
                     "F_name_function": "fill_with_zeros",
                     "F_name_generic": "fill_with_zeros",
                     "F_name_impl": "fill_with_zeros",
-                    "f_c_suffix": "_CFI",
                     "function_name": "fill_with_zeros"
                 }
             },
@@ -4113,6 +4113,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4191,7 +4192,6 @@
                     "F_name_function": "accumulate",
                     "F_name_generic": "accumulate",
                     "F_name_impl": "accumulate",
-                    "f_c_suffix": "_CFI",
                     "function_name": "accumulate"
                 }
             },
@@ -4451,6 +4451,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4508,7 +4509,6 @@
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
-                    "f_c_suffix": "_CFI",
                     "function_name": "acceptCharArrayIn"
                 }
             },
@@ -4983,6 +4983,7 @@
                             "F_arg_c_call": "nitems",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5033,7 +5034,6 @@
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
                     "F_name_impl": "get_ptr_to_scalar",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToScalar"
                 }
             },
@@ -5261,6 +5261,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5319,7 +5320,6 @@
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
                     "F_name_impl": "get_ptr_to_fixed_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedArray"
                 }
             },
@@ -5628,6 +5628,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5711,7 +5712,6 @@
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
                     "F_name_impl": "get_ptr_to_dynamic_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicArray"
                 }
             },
@@ -5941,6 +5941,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5999,7 +6000,6 @@
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
                     "F_name_impl": "get_ptr_to_func_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFuncArray"
                 }
             },
@@ -6211,6 +6211,7 @@
                             "F_arg_c_call": "nitems",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6261,7 +6262,6 @@
                     "F_name_function": "get_ptr_to_const_scalar",
                     "F_name_generic": "get_ptr_to_const_scalar",
                     "F_name_impl": "get_ptr_to_const_scalar",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToConstScalar"
                 }
             },
@@ -6485,6 +6485,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6543,7 +6544,6 @@
                     "F_name_function": "get_ptr_to_fixed_const_array",
                     "F_name_generic": "get_ptr_to_fixed_const_array",
                     "F_name_impl": "get_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToFixedConstArray"
                 }
             },
@@ -6848,6 +6848,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6931,7 +6932,6 @@
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
                     "F_name_impl": "get_ptr_to_dynamic_const_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getPtrToDynamicConstArray"
                 }
             },
@@ -8373,6 +8373,7 @@
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_CFI",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -8423,7 +8424,6 @@
                     "F_name_function": "get_alloc_to_fixed_array",
                     "F_name_generic": "get_alloc_to_fixed_array",
                     "F_name_impl": "get_alloc_to_fixed_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "getAllocToFixedArray"
                 }
             },
@@ -9368,6 +9368,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -9416,7 +9417,6 @@
                     "F_name_function": "void_ptr_array",
                     "F_name_generic": "void_ptr_array",
                     "F_name_impl": "void_ptr_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "VoidPtrArray"
                 }
             },
@@ -9581,6 +9581,7 @@
                             "cxx_rv_decl": "int * SHCXX_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -9607,7 +9608,6 @@
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
                     "F_name_impl": "return_int_ptr_to_scalar",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToScalar"
                 }
             },
@@ -9800,6 +9800,7 @@
                             "cxx_var": "SHCXX_rv",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -9827,7 +9828,6 @@
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
                     "F_name_impl": "return_int_ptr_to_fixed_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToFixedArray"
                 }
             },
@@ -9994,6 +9994,7 @@
                             "cxx_rv_decl": "const int * SHCXX_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -10020,7 +10021,6 @@
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
                     "F_name_impl": "return_int_ptr_to_const_scalar",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToConstScalar"
                 }
             },
@@ -10215,6 +10215,7 @@
                             "cxx_var": "SHCXX_rv",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -10242,7 +10243,6 @@
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
                     "F_name_impl": "return_int_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
             },
@@ -10323,11 +10323,11 @@
                         },
                         "fmtf": {
                             "C_call_function": "returnIntScalar(\t)",
-                            "C_name": "POI_returnIntScalar_extrawrapper",
+                            "C_name": "POI_returnIntScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_scalar_extrawrapper",
+                            "F_C_call": "c_return_int_scalar_bufferify",
                             "F_C_name": "return_int_scalar",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
@@ -10344,6 +10344,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -10363,7 +10364,6 @@
                     "F_name_function": "return_int_scalar",
                     "F_name_generic": "return_int_scalar",
                     "F_name_impl": "return_int_scalar",
-                    "f_c_suffix": "_extrawrapper",
                     "function_name": "returnIntScalar"
                 }
             },
@@ -10449,11 +10449,11 @@
                         },
                         "fmtf": {
                             "C_call_function": "returnIntRaw(\t)",
-                            "C_name": "POI_returnIntRaw_extrawrapper",
+                            "C_name": "POI_returnIntRaw_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_raw_extrawrapper",
+                            "F_C_call": "c_return_int_raw_bufferify",
                             "F_C_name": "return_int_raw",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
@@ -10471,6 +10471,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -10490,7 +10491,6 @@
                     "F_name_function": "return_int_raw",
                     "F_name_generic": "return_int_raw",
                     "F_name_impl": "return_int_raw",
-                    "f_c_suffix": "_extrawrapper",
                     "function_name": "returnIntRaw"
                 }
             },
@@ -10757,6 +10757,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -10806,7 +10807,6 @@
                     "F_name_function": "return_int_raw_with_args",
                     "F_name_generic": "return_int_raw_with_args",
                     "F_name_impl": "return_int_raw_with_args",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntRawWithArgs"
                 }
             },
@@ -11126,6 +11126,7 @@
                             "cxx_var": "SHCXX_rv",
                             "f_array_allocate": "(10)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_CFI",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -11149,7 +11150,6 @@
                     "F_name_function": "return_int_alloc_to_fixed_array",
                     "F_name_generic": "return_int_alloc_to_fixed_array",
                     "F_name_impl": "return_int_alloc_to_fixed_array",
-                    "f_c_suffix": "_CFI",
                     "function_name": "returnIntAllocToFixedArray"
                 }
             }

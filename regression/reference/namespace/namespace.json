@@ -223,6 +223,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "NS_SHROUD_array",
                             "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "NS_SHROUD_copy_string",
@@ -249,7 +250,6 @@
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "LastFunctionCalled"
                 }
             },

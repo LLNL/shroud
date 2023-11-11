@@ -4079,6 +4079,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4127,7 +4128,6 @@
                     "F_name_function": "get_group_name_int32_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int32_t",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t"
                 }
@@ -4325,6 +4325,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4373,7 +4374,6 @@
                     "F_name_function": "get_group_name_int64_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int64_t",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t"
                 }
@@ -4954,6 +4954,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_derived_type": "nested",
                             "f_helper_array_context": "CXX_SHROUD_array",
@@ -5006,7 +5007,6 @@
                     "F_name_function": "nested_get_child",
                     "F_name_generic": "nested_get_child",
                     "F_name_impl": "nested_get_child",
-                    "f_c_suffix": "_bufferify",
                     "field_name": "child",
                     "function_name": "nested_get_child",
                     "struct_name": "nested",

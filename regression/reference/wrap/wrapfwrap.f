@@ -50,15 +50,15 @@ module wrap_mod
 
     interface
 
-        function c_class1_func_in_class(self) &
+        function c_class1_func_in_class_bufferify(self) &
                 result(SHT_rv) &
-                bind(C, name="WRA_Class1_FuncInClass")
+                bind(C, name="WRA_Class1_FuncInClass_bufferify")
             use iso_c_binding, only : C_INT
             import :: WRA_SHROUD_capsule_data
             implicit none
             type(WRA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
-        end function c_class1_func_in_class
+        end function c_class1_func_in_class_bufferify
     end interface
 
     ! splicer begin additional_declarations
@@ -72,7 +72,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.func_in_class
-        SHT_rv = c_class1_func_in_class(obj%cxxmem)
+        SHT_rv = c_class1_func_in_class_bufferify(obj%cxxmem)
         ! splicer end class.Class1.method.func_in_class
     end function class1_func_in_class
 

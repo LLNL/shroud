@@ -962,6 +962,7 @@
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_c_suffix": "_bufferify",
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "ARR_SHROUD_array",
                                     "f_intent": "OUT",
@@ -990,7 +991,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getArray"
                         }
                     },
@@ -1226,6 +1226,7 @@
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_c_suffix": "_bufferify",
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "ARR_SHROUD_array",
                                     "f_intent": "OUT",
@@ -1254,7 +1255,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getArrayConst"
                         }
                     },
@@ -1489,6 +1489,7 @@
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_c_suffix": "_bufferify",
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "ARR_SHROUD_array",
                                     "f_intent": "OUT",
@@ -1517,7 +1518,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getArrayC"
                         }
                     },
@@ -1755,6 +1755,7 @@
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_c_suffix": "_bufferify",
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "ARR_SHROUD_array",
                                     "f_intent": "OUT",
@@ -1783,7 +1784,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getArrayConstC"
                         }
                     },
@@ -2149,6 +2149,7 @@
                                     "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
                                     "stmt_name": "f_subroutine"
                                 }
                             },
@@ -2227,7 +2228,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtr"
                         }
                     },
@@ -2593,6 +2593,7 @@
                                     "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
                                     "stmt_name": "f_subroutine"
                                 }
                             },
@@ -2671,7 +2672,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRef"
                         }
                     },
@@ -3039,6 +3039,7 @@
                                     "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
                                     "stmt_name": "f_subroutine"
                                 }
                             },
@@ -3117,7 +3118,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayPtrConst"
                         }
                     },
@@ -3485,6 +3485,7 @@
                                     "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
                                     "stmt_name": "f_subroutine"
                                 }
                             },
@@ -3563,7 +3564,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "fetchArrayRefConst"
                         }
                     },

@@ -3671,6 +3671,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3726,7 +3727,6 @@
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptCharArrayIn"
                 }
             },
@@ -4217,6 +4217,7 @@
                             "F_arg_c_call": "SHT_nitems_cdesc",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4258,7 +4259,6 @@
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
                     "F_name_impl": "get_ptr_to_scalar",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToScalar"
                 }
             },
@@ -4502,6 +4502,7 @@
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4551,7 +4552,6 @@
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
                     "F_name_impl": "get_ptr_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedArray"
                 }
             },
@@ -4876,6 +4876,7 @@
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4950,7 +4951,6 @@
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
                     "F_name_impl": "get_ptr_to_dynamic_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicArray"
                 }
             },
@@ -5196,6 +5196,7 @@
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5245,7 +5246,6 @@
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
                     "F_name_impl": "get_ptr_to_func_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFuncArray"
                 }
             },
@@ -5473,6 +5473,7 @@
                             "F_arg_c_call": "SHT_nitems_cdesc",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5514,7 +5515,6 @@
                     "F_name_function": "get_ptr_to_const_scalar",
                     "F_name_generic": "get_ptr_to_const_scalar",
                     "F_name_impl": "get_ptr_to_const_scalar",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToConstScalar"
                 }
             },
@@ -5754,6 +5754,7 @@
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5803,7 +5804,6 @@
                     "F_name_function": "get_ptr_to_fixed_const_array",
                     "F_name_generic": "get_ptr_to_fixed_const_array",
                     "F_name_impl": "get_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedConstArray"
                 }
             },
@@ -6124,6 +6124,7 @@
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6198,7 +6199,6 @@
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
                     "F_name_impl": "get_ptr_to_dynamic_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicConstArray"
                 }
             },
@@ -7662,6 +7662,7 @@
                             "F_arg_c_call": "SHT_count_cdesc,\t SHT_count_capsule",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -7718,7 +7719,6 @@
                     "F_name_function": "get_alloc_to_fixed_array",
                     "F_name_generic": "get_alloc_to_fixed_array",
                     "F_name_impl": "get_alloc_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getAllocToFixedArray"
                 }
             },
@@ -8941,6 +8941,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -8965,7 +8966,6 @@
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
                     "F_name_impl": "return_int_ptr_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntPtrToFixedArray"
                 }
             },
@@ -9290,6 +9290,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -9314,7 +9315,6 @@
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
                     "F_name_impl": "return_int_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
             },
@@ -9395,11 +9395,11 @@
                         },
                         "fmtf": {
                             "C_call_function": "returnIntScalar(\t)",
-                            "C_name": "POI_returnIntScalar_extrawrapper",
+                            "C_name": "POI_returnIntScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_scalar_extrawrapper",
+                            "F_C_call": "c_return_int_scalar_bufferify",
                             "F_C_name": "return_int_scalar",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
@@ -9416,6 +9416,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -9435,7 +9436,6 @@
                     "F_name_function": "return_int_scalar",
                     "F_name_generic": "return_int_scalar",
                     "F_name_impl": "return_int_scalar",
-                    "f_c_suffix": "_extrawrapper",
                     "function_name": "returnIntScalar"
                 }
             },
@@ -10108,6 +10108,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "POI_SHROUD_array",
@@ -10137,7 +10138,6 @@
                     "F_name_function": "return_int_alloc_to_fixed_array",
                     "F_name_generic": "return_int_alloc_to_fixed_array",
                     "F_name_impl": "return_int_alloc_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntAllocToFixedArray"
                 }
             }

@@ -150,15 +150,15 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 
 int * POI_returnIntScalar(void);
 
-int POI_returnIntScalar_extrawrapper(void);
+int POI_returnIntScalar_bufferify(void);
 
 int * POI_returnIntRaw(void);
 
-int * POI_returnIntRaw_extrawrapper(void);
+int * POI_returnIntRaw_bufferify(void);
 
 int * POI_returnIntRawWithArgs(const char * name);
 
-int * POI_returnIntRawWithArgs_extrawrapper(const char * name);
+int * POI_returnIntRawWithArgs_bufferify(const char * name);
 
 int * * POI_returnRawPtrToInt2d(void);
 

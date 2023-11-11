@@ -626,6 +626,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len",
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -672,7 +673,6 @@
                     "F_name_function": "get_name",
                     "F_name_generic": "get_name",
                     "F_name_impl": "get_name",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getName"
                 }
             },
@@ -1462,6 +1462,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1511,7 +1512,6 @@
                     "F_name_function": "function4",
                     "F_name_generic": "function4",
                     "F_name_impl": "testnames_function4",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "function4"
                 }
             },
@@ -1956,6 +1956,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len,\t value",
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2023,7 +2024,6 @@
                     "F_name_function": "test_multiline_splicer",
                     "F_name_generic": "test_multiline_splicer",
                     "F_name_impl": "test_multiline_splicer",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "TestMultilineSplicer"
                 }
             },

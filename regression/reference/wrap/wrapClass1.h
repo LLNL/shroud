@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-int WRA_Class1_FuncInClass(WRA_Class1 * self);
+int WRA_Class1_FuncInClass_bufferify(WRA_Class1 * self);
 
 #ifdef __cplusplus
 }

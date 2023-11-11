@@ -893,6 +893,7 @@
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t trim(src)//C_NULL_CHAR",
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -959,7 +960,6 @@
                     "F_name_function": "pass_char_ptr",
                     "F_name_generic": "pass_char_ptr",
                     "F_name_impl": "pass_char_ptr",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "passCharPtr"
                 }
             },
@@ -1199,6 +1199,7 @@
                             "F_arg_c_call": "s,\t SHT_s_len",
                             "F_arguments": "s",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1243,7 +1244,6 @@
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "passCharPtrInOut"
                 }
             },
@@ -1458,6 +1458,7 @@
                             "cxx_rv_decl": "const char * SHC_rv",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
                             "f_intent": "OUT",
@@ -1481,7 +1482,6 @@
                     "F_name_function": "get_char_ptr1",
                     "F_name_generic": "get_char_ptr1",
                     "F_name_impl": "get_char_ptr1",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr1"
                 }
             },
@@ -1692,6 +1692,7 @@
                             "cxx_rv_decl": "const char * SHCXX_rv",
                             "cxx_type": "char",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -1714,7 +1715,6 @@
                     "F_name_function": "get_char_ptr2",
                     "F_name_generic": "get_char_ptr2",
                     "F_name_impl": "get_char_ptr2",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr2"
                 }
             },
@@ -1921,6 +1921,7 @@
                             "cxx_rv_decl": "const char * SHCXX_rv",
                             "cxx_type": "char",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1942,7 +1943,6 @@
                     "F_name_generic": "get_char_ptr3",
                     "F_name_impl": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr3"
                 }
             },
@@ -2268,6 +2268,7 @@
                             "cxx_rv_decl": "const char * SHC_rv",
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_pointer_string": "STR_SHROUD_pointer_string",
                             "f_intent": "OUT",
@@ -2291,7 +2292,6 @@
                     "F_name_function": "get_char_ptr5",
                     "F_name_generic": "get_char_ptr5",
                     "F_name_impl": "get_char_ptr5",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getCharPtr5"
                 }
             },
@@ -2456,6 +2456,7 @@
                             "cxx_rv_decl": "*SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -2482,7 +2483,6 @@
                     "F_name_function": "get_const_string_result",
                     "F_name_generic": "get_const_string_result",
                     "F_name_impl": "get_const_string_result",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringResult"
                 }
             },
@@ -2637,6 +2637,7 @@
                             "cxx_rv_decl": "const std::string SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -2659,7 +2660,6 @@
                     "F_name_function": "get_const_string_len",
                     "F_name_generic": "get_const_string_len",
                     "F_name_impl": "get_const_string_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringLen"
                 }
             },
@@ -2812,6 +2812,7 @@
                             "cxx_rv_decl": "const std::string SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2833,7 +2834,6 @@
                     "F_name_generic": "get_const_string_as_arg",
                     "F_name_impl": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringAsArg"
                 }
             },
@@ -2990,6 +2990,7 @@
                             "cxx_rv_decl": "*SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3016,7 +3017,6 @@
                     "F_name_function": "get_const_string_alloc",
                     "F_name_generic": "get_const_string_alloc",
                     "F_name_impl": "get_const_string_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringAlloc"
                 }
             },
@@ -3236,6 +3236,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3262,7 +3263,6 @@
                     "F_name_function": "get_const_string_ref_pure",
                     "F_name_generic": "get_const_string_ref_pure",
                     "F_name_impl": "get_const_string_ref_pure",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefPure"
                 }
             },
@@ -3474,6 +3474,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3496,7 +3497,6 @@
                     "F_name_function": "get_const_string_ref_len",
                     "F_name_generic": "get_const_string_ref_len",
                     "F_name_impl": "get_const_string_ref_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefLen"
                 }
             },
@@ -3704,6 +3704,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -3725,7 +3726,6 @@
                     "F_name_generic": "get_const_string_ref_as_arg",
                     "F_name_impl": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefAsArg"
                 }
             },
@@ -3935,6 +3935,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3957,7 +3958,6 @@
                     "F_name_function": "get_const_string_ref_len_empty",
                     "F_name_generic": "get_const_string_ref_len_empty",
                     "F_name_impl": "get_const_string_ref_len_empty",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefLenEmpty"
                 }
             },
@@ -4167,6 +4167,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4193,7 +4194,6 @@
                     "F_name_function": "get_const_string_ref_alloc",
                     "F_name_generic": "get_const_string_ref_alloc",
                     "F_name_impl": "get_const_string_ref_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringRefAlloc"
                 }
             },
@@ -4418,6 +4418,7 @@
                             "cxx_rv_decl": "const std::string * SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4440,7 +4441,6 @@
                     "F_name_function": "get_const_string_ptr_len",
                     "F_name_generic": "get_const_string_ptr_len",
                     "F_name_impl": "get_const_string_ptr_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrLen"
                 }
             },
@@ -4656,6 +4656,7 @@
                             "cxx_rv_decl": "const std::string * SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4682,7 +4683,6 @@
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
                     "F_name_impl": "get_const_string_ptr_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrAlloc"
                 }
             },
@@ -4904,6 +4904,7 @@
                             "cxx_rv_decl": "const std::string * SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4930,7 +4931,6 @@
                     "F_name_function": "get_const_string_ptr_owns_alloc",
                     "F_name_generic": "get_const_string_ptr_owns_alloc",
                     "F_name_impl": "get_const_string_ptr_owns_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrOwnsAlloc"
                 }
             },
@@ -5154,6 +5154,7 @@
                             "cxx_rv_decl": "const std::string * SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -5180,7 +5181,6 @@
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
                 }
             },
@@ -5377,6 +5377,7 @@
                             "cxx_rv_decl": "const std::string * SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_pointer_string": "STR_SHROUD_pointer_string",
                             "f_intent": "OUT",
@@ -5400,7 +5401,6 @@
                     "F_name_function": "get_const_string_ptr_pointer",
                     "F_name_generic": "get_const_string_ptr_pointer",
                     "F_name_impl": "get_const_string_ptr_pointer",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getConstStringPtrPointer"
                 }
             },
@@ -5632,6 +5632,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5672,7 +5673,6 @@
                     "F_name_function": "accept_string_const_reference",
                     "F_name_generic": "accept_string_const_reference",
                     "F_name_impl": "accept_string_const_reference",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringConstReference"
                 }
             },
@@ -5908,6 +5908,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5948,7 +5949,6 @@
                     "F_name_function": "accept_string_reference_out",
                     "F_name_generic": "accept_string_reference_out",
                     "F_name_impl": "accept_string_reference_out",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringReferenceOut"
                 }
             },
@@ -6184,6 +6184,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6225,7 +6226,6 @@
                     "F_name_function": "accept_string_reference",
                     "F_name_generic": "accept_string_reference",
                     "F_name_impl": "accept_string_reference",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringReference"
                 }
             },
@@ -6455,6 +6455,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6495,7 +6496,6 @@
                     "F_name_function": "accept_string_pointer_const",
                     "F_name_generic": "accept_string_pointer_const",
                     "F_name_impl": "accept_string_pointer_const",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointerConst"
                 }
             },
@@ -6725,6 +6725,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6766,7 +6767,6 @@
                     "F_name_function": "accept_string_pointer",
                     "F_name_generic": "accept_string_pointer",
                     "F_name_impl": "accept_string_pointer",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointer"
                 }
             },
@@ -7002,6 +7002,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -7042,7 +7043,6 @@
                     "F_name_function": "fetch_string_pointer",
                     "F_name_generic": "fetch_string_pointer",
                     "F_name_impl": "fetch_string_pointer",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "fetchStringPointer"
                 }
             },
@@ -7372,6 +7372,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_arguments": "arg1,\t nlen",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -7439,7 +7440,6 @@
                     "F_name_function": "accept_string_pointer_len",
                     "F_name_generic": "accept_string_pointer_len",
                     "F_name_impl": "accept_string_pointer_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringPointerLen"
                 }
             },
@@ -7773,6 +7773,7 @@
                             "F_arg_c_call": "arg1,\t SHT_arg1_len,\t nlen",
                             "F_arguments": "arg1,\t nlen",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -7839,7 +7840,6 @@
                     "F_name_function": "fetch_string_pointer_len",
                     "F_name_generic": "fetch_string_pointer_len",
                     "F_name_impl": "fetch_string_pointer_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "fetchStringPointerLen"
                 }
             },
@@ -8111,6 +8111,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -8162,7 +8163,6 @@
                     "F_name_function": "accept_string_instance",
                     "F_name_generic": "accept_string_instance",
                     "F_name_impl": "accept_string_instance",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptStringInstance"
                 }
             },
@@ -8616,6 +8616,7 @@
                             "F_arg_c_call": "SHT_strs_cdesc",
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -8690,7 +8691,6 @@
                     "F_name_function": "fetch_array_string_arg",
                     "F_name_generic": "fetch_array_string_arg",
                     "F_name_impl": "fetch_array_string_arg",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringArg"
                 }
             },
@@ -9028,6 +9028,7 @@
                             "F_arg_c_call": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -9110,7 +9111,6 @@
                     "F_name_function": "fetch_array_string_alloc",
                     "F_name_generic": "fetch_array_string_alloc",
                     "F_name_impl": "fetch_array_string_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringAlloc"
                 }
             },
@@ -9452,6 +9452,7 @@
                             "F_arg_c_call": "SHT_strs_cdesc,\t SHT_strs_capsule",
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -9535,7 +9536,6 @@
                     "F_name_function": "fetch_array_string_alloc_len",
                     "F_name_generic": "fetch_array_string_alloc_len",
                     "F_name_impl": "fetch_array_string_alloc_len",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "fetchArrayStringAllocLen"
                 }
             },
@@ -9991,6 +9991,7 @@
                             "F_arg_c_call": "name,\t SHT_name_len",
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -10033,7 +10034,6 @@
                     "F_name_function": "explicit2",
                     "F_name_generic": "explicit2",
                     "F_name_impl": "explicit2",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "explicit2"
                 }
             },
@@ -10654,6 +10654,7 @@
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -10728,7 +10729,6 @@
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
                     "F_name_impl": "cpass_char_ptr",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtr"
                 }
             },
@@ -11033,6 +11033,7 @@
                             "F_arg_c_call": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -11107,7 +11108,6 @@
                     "F_name_function": "cpass_char_ptr_blank",
                     "F_name_generic": "cpass_char_ptr_blank",
                     "F_name_impl": "cpass_char_ptr_blank",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtrBlank"
                 }
             },
@@ -11447,6 +11447,7 @@
                             "F_arg_c_call": "count,\t name,\t SHT_name_len",
                             "F_arguments": "count,\t name",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -11518,7 +11519,6 @@
                     "F_name_function": "post_declare",
                     "F_name_generic": "post_declare",
                     "F_name_impl": "post_declare",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "PostDeclare"
                 }
             },
@@ -11768,6 +11768,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -11820,7 +11821,6 @@
                     "F_name_function": "cpass_char_ptr_notrim",
                     "F_name_generic": "cpass_char_ptr_notrim",
                     "F_name_impl": "cpass_char_ptr_notrim",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "CpassCharPtrNotrim"
                 }
             },

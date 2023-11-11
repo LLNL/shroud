@@ -462,11 +462,11 @@
                         },
                         "fmtf": {
                             "C_call_function": "ReturnIntPtrScalar(\t)",
-                            "C_name": "OWN_ReturnIntPtrScalar_extrawrapper",
+                            "C_name": "OWN_ReturnIntPtrScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_ptr_scalar_extrawrapper",
+                            "F_C_call": "c_return_int_ptr_scalar_bufferify",
                             "F_C_name": "return_int_ptr_scalar",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
@@ -483,6 +483,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -520,7 +521,6 @@
                     "F_name_generic": "return_int_ptr_scalar",
                     "F_name_impl": "return_int_ptr_scalar",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
-                    "f_c_suffix": "_extrawrapper",
                     "function_name": "ReturnIntPtrScalar"
                 }
             },
@@ -1142,6 +1142,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "OWN_SHROUD_array",
                             "f_intent": "OUT",
@@ -1191,7 +1192,6 @@
                     "F_name_function": "return_int_ptr_dim_pointer",
                     "F_name_generic": "return_int_ptr_dim_pointer",
                     "F_name_impl": "return_int_ptr_dim_pointer",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimPointer"
                 }
             },
@@ -1538,6 +1538,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "OWN_SHROUD_array",
@@ -1592,7 +1593,6 @@
                     "F_name_function": "return_int_ptr_dim_alloc",
                     "F_name_generic": "return_int_ptr_dim_alloc",
                     "F_name_impl": "return_int_ptr_dim_alloc",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimAlloc"
                 }
             },
@@ -1927,6 +1927,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "OWN_SHROUD_array",
                             "f_intent": "OUT",
@@ -1976,7 +1977,6 @@
                     "F_name_function": "return_int_ptr_dim_default",
                     "F_name_generic": "return_int_ptr_dim_default",
                     "F_name_impl": "return_int_ptr_dim_default",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimDefault"
                 }
             },
@@ -2469,6 +2469,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "OWN_SHROUD_array",
                             "f_intent": "OUT",
@@ -2520,7 +2521,6 @@
                     "F_name_function": "return_int_ptr_dim_pointer_new",
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
                     "F_name_impl": "return_int_ptr_dim_pointer_new",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimPointerNew"
                 }
             },
@@ -3054,6 +3054,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "OWN_SHROUD_array",
                             "f_intent": "OUT",
@@ -3105,7 +3106,6 @@
                     "F_name_function": "return_int_ptr_dim_default_new",
                     "F_name_generic": "return_int_ptr_dim_default_new",
                     "F_name_impl": "return_int_ptr_dim_default_new",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ReturnIntPtrDimDefaultNew"
                 }
             },

@@ -48,12 +48,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->FuncInClass(\t)",
-                                    "C_name": "WRA_Class1_FuncInClass",
+                                    "C_name": "WRA_Class1_FuncInClass_bufferify",
                                     "C_prototype": "WRA_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
-                                    "F_C_call": "c_class1_func_in_class",
-                                    "F_C_name": "c_class1_func_in_class",
+                                    "F_C_call": "c_class1_func_in_class_bufferify",
+                                    "F_C_name": "c_class1_func_in_class_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -71,6 +71,7 @@
                                     "cxx_rv_decl": "int SHC_rv",
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
+                                    "f_c_suffix": "_bufferify",
                                     "f_intent": "OUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",

@@ -148,7 +148,7 @@ module ownership_mod
         ! Statement: f_function_native_*_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
-                bind(C, name="OWN_ReturnIntPtrScalar_extrawrapper")
+                bind(C, name="OWN_ReturnIntPtrScalar_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -487,7 +487,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_ptr_scalar
-        SHT_rv = c_return_int_ptr_scalar_extrawrapper()
+        SHT_rv = c_return_int_ptr_scalar_bufferify()
         ! splicer end function.return_int_ptr_scalar
     end function return_int_ptr_scalar
 #endif

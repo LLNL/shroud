@@ -1476,6 +1476,7 @@
                                     "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                                     "cxx_type": "classes::Class1",
                                     "cxx_var": "SHCXX_rv",
+                                    "f_c_suffix": "_bufferify",
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
@@ -1558,7 +1559,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "returnThisBuffer"
                         }
                     },
@@ -1945,6 +1945,7 @@
                                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
+                                    "f_c_suffix": "_bufferify",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
@@ -1975,7 +1976,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getName"
                         }
                     },
@@ -2708,6 +2708,7 @@
                                     "cxx_rv_decl": "std::string SHCXX_rv",
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
+                                    "f_c_suffix": "_bufferify",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                     "f_intent": "OUT",
@@ -2735,7 +2736,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
                             "struct_name": "Class1",
@@ -2899,6 +2899,7 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val,\t SHT_val_len",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
                                     "stmt_name": "f_setter"
                                 }
                             },
@@ -2942,7 +2943,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
                             "struct_name": "Class1",
@@ -3332,6 +3332,7 @@
                                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
+                                    "f_c_suffix": "_bufferify",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
@@ -3362,7 +3363,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "function_name": "getName"
                         }
                     }
@@ -5039,6 +5039,7 @@
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                                     "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                     "f_assumed_shape": "(:)",
+                                    "f_c_suffix": "_bufferify",
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_intent": "OUT",
@@ -5067,7 +5068,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "get_items",
                             "struct_name": "Data",
@@ -7556,6 +7556,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -7578,7 +7579,6 @@
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "LastFunctionCalled"
                 }
             }
