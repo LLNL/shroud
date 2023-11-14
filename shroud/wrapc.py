@@ -1057,6 +1057,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt_arg = fmtargs[arg_name][fmtlang]
             c_attrs = declarator.attrs
             c_meta = declarator.metaattrs
+            meta2 = bind[arg_name].meta
             if c_meta["api"] == 'cfi':
                 any_cfi = True
 
@@ -1066,7 +1067,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     
             arg_typemap, junk = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
-            hidden = c_attrs["hidden"] and node._generated
+            hidden = meta2["hidden"]
 
             arg_stmt = bind[arg_name].stmt
             func_cursor.stmt = arg_stmt

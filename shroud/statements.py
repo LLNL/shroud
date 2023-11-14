@@ -155,9 +155,6 @@ def lookup_c_arg_stmt(node, arg):
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    if c_attrs["hidden"] and node._generated:
-        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
-        sapi = "hidden"
     stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
 #             c_meta["deref"],   # XXX - No deref for C wrapper
              c_attrs["owner"]] + specialize
@@ -169,14 +166,13 @@ def lookup_f_arg_stmt(node, arg):
     declarator = arg.declarator
     c_attrs = declarator.attrs
     c_meta = declarator.metaattrs
-#    c_meta = node._bind["f"][declarator.user_name].meta
+    c_meta2 = node._bind["f"][declarator.user_name].meta
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    if c_attrs["hidden"] and node._generated:
-        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+    if c_meta2["hidden"]:
         sapi = "hidden"
     stmts = ["f", c_meta["intent"], sgroup, spointer,
              sapi, c_meta["deref"], c_attrs["owner"]] + specialize

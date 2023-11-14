@@ -1192,7 +1192,8 @@ rv = .false.
             
             attrs = declarator.attrs
             meta = declarator.metaattrs
-            if attrs["hidden"] and node._generated:
+            meta2 = bind[arg_name].meta
+            if meta2["hidden"]:
                 continue
             intent = meta["intent"]
             if intent != "in":
