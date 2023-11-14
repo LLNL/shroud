@@ -956,17 +956,17 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
     ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_scalar
+    ! start c_return_int_ptr_to_scalar_bufferify
     interface
-        function c_return_int_ptr_to_scalar() &
+        function c_return_int_ptr_to_scalar_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToScalar")
+                bind(C, name="POI_returnIntPtrToScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_scalar
+        end function c_return_int_ptr_to_scalar_bufferify
     end interface
-    ! end c_return_int_ptr_to_scalar
+    ! end c_return_int_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -1002,17 +1002,17 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
     ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_const_scalar
+    ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
-        function c_return_int_ptr_to_const_scalar() &
+        function c_return_int_ptr_to_const_scalar_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToConstScalar")
+                bind(C, name="POI_returnIntPtrToConstScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_const_scalar
+        end function c_return_int_ptr_to_const_scalar_bufferify
     end interface
-    ! end c_return_int_ptr_to_const_scalar
+    ! end c_return_int_ptr_to_const_scalar_bufferify
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
@@ -1067,7 +1067,7 @@ module pointers_mod
     interface
         function return_int_raw() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRaw_bufferify")
+                bind(C, name="POI_returnIntRaw")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -1081,18 +1081,18 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Statement: f_in_char_*
-    ! start c_return_int_raw_with_args_bufferify
+    ! start c_return_int_raw_with_args
     interface
-        function c_return_int_raw_with_args_bufferify(name) &
+        function c_return_int_raw_with_args(name) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRawWithArgs_bufferify")
+                bind(C, name="POI_returnIntRawWithArgs")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(C_PTR) SHT_rv
-        end function c_return_int_raw_with_args_bufferify
+        end function c_return_int_raw_with_args
     end interface
-    ! end c_return_int_raw_with_args_bufferify
+    ! end c_return_int_raw_with_args
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
@@ -1990,7 +1990,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_return_int_ptr_to_scalar()
+        SHC_rv_ptr = c_return_int_ptr_to_scalar_bufferify()
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
@@ -2024,7 +2024,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_return_int_ptr_to_const_scalar()
+        SHC_rv_ptr = c_return_int_ptr_to_const_scalar_bufferify()
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
@@ -2079,7 +2079,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw
-        SHT_rv = c_return_int_raw_bufferify()
+        SHT_rv = c_return_int_raw()
         ! splicer end function.return_int_raw
     end function return_int_raw
     ! end return_int_raw
@@ -2099,7 +2099,7 @@ contains
         character(len=*), intent(IN) :: name
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args
-        SHT_rv = c_return_int_raw_with_args_bufferify(trim(name)//C_NULL_CHAR)
+        SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
         ! splicer end function.return_int_raw_with_args
     end function return_int_raw_with_args
     ! end return_int_raw_with_args

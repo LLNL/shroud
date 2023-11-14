@@ -167,8 +167,6 @@ int POI_returnIntScalar_bufferify(void);
 
 int * POI_returnIntRaw(void);
 
-int * POI_returnIntRaw_bufferify(void);
-
 int * POI_returnIntRawWithArgs(const char * name);
 
 int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi);

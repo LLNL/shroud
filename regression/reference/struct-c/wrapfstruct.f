@@ -528,7 +528,7 @@ module struct_mod
     interface
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &
-                bind(C, name="returnStructPtr1")
+                bind(C, name="STR_returnStructPtr1")
             use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: i
@@ -552,7 +552,7 @@ module struct_mod
     interface
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
-                bind(C, name="returnStructPtr2")
+                bind(C, name="STR_returnStructPtr2")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: i
@@ -596,7 +596,7 @@ module struct_mod
     interface
         function c_get_global_struct_list() &
                 result(SHT_rv) &
-                bind(C, name="get_global_struct_list")
+                bind(C, name="STR_get_global_struct_list")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv

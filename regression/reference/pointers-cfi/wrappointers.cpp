@@ -1445,22 +1445,6 @@ int * POI_returnIntRaw(void)
 // end POI_returnIntRaw
 
 /**
- * Call directly via interface.
- */
-// ----------------------------------------
-// Function:  int * returnIntRaw +deref(raw)
-// Statement: f_function_native_*_raw
-// start POI_returnIntRaw_bufferify
-int * POI_returnIntRaw_bufferify(void)
-{
-    // splicer begin function.returnIntRaw_bufferify
-    int * SHC_rv = returnIntRaw();
-    return SHC_rv;
-    // splicer end function.returnIntRaw_bufferify
-}
-// end POI_returnIntRaw_bufferify
-
-/**
  * Like returnIntRaw but with another argument to force a wrapper.
  * Uses fc_statements f_function_native_*_raw.
  */

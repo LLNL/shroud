@@ -910,6 +910,8 @@ fc_statements = [
         comments=[
             "Return a C pointer as a type(C_PTR).",
         ],
+        # XXX - need c wrapper to avoid confusion of type signature with f_mixin_function_ptr
+        c_need_wrapper=True,
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1846,8 +1848,6 @@ fc_statements = [
             "f_function_native_&_pointer",
             "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
-            "c_function_native_*/&",
-            "c_function_native_*_caller",
         ],
     ),
     dict(
@@ -1878,22 +1878,11 @@ fc_statements = [
             "f_mixin_function_ptr",
         ],
         alias=[
-            "c_function_native_*_raw",
-        ],
-    ),
-    dict(
-        # int **func(void)
-        # regardless of deref value.
-        name="f_function_native_**",
-        mixin=[
-            "f_mixin_function_ptr",
-        ],
-        alias=[
+            "c_function_native_*",
+            "c_function_native_&",
+            "c_function_native_*_caller",
             "c_function_native_**",
-
-            "f_function_native_*_allocatable",
-            "f_function_native_*_allocatable_caller",
-            "c_function_native_*_allocatable",
+            "f_function_native_**",
         ],
     ),
     

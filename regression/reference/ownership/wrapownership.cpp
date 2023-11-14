@@ -65,6 +65,17 @@ int * OWN_ReturnIntPtrPointer(void)
 }
 
 // ----------------------------------------
+// Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Statement: f_function_native_*_pointer
+int * OWN_ReturnIntPtrPointer_bufferify(void)
+{
+    // splicer begin function.ReturnIntPtrPointer_bufferify
+    int * SHC_rv = ReturnIntPtrPointer();
+    return SHC_rv;
+    // splicer end function.ReturnIntPtrPointer_bufferify
+}
+
+// ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
 // Statement: c_function_native_*
 // ----------------------------------------

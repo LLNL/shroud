@@ -125,16 +125,16 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Statement: f_in_native_scalar
-        function c_vector_int_at(self, n) &
+        function c_vector_int_at_bufferify(self, n) &
                 result(SHT_rv) &
-                bind(C, name="TEM_vector_int_at")
+                bind(C, name="TEM_vector_int_at_bufferify")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data, vector_int_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
             integer(vector_int_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
-        end function c_vector_int_at
+        end function c_vector_int_at_bufferify
 
         ! ----------------------------------------
         ! Function:  vector
@@ -182,16 +182,16 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Statement: f_in_native_scalar
-        function c_vector_double_at(self, n) &
+        function c_vector_double_at_bufferify(self, n) &
                 result(SHT_rv) &
-                bind(C, name="TEM_vector_double_at")
+                bind(C, name="TEM_vector_double_at_bufferify")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data, vector_double_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
             integer(vector_double_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
-        end function c_vector_double_at
+        end function c_vector_double_at_bufferify
     end interface
 
     interface vector_double
@@ -261,7 +261,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_int.method.at
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_vector_int_at(obj%cxxmem, n)
+        SHC_rv_ptr = c_vector_int_at_bufferify(obj%cxxmem, n)
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_int.method.at
     end function vector_int_at
@@ -346,7 +346,7 @@ contains
         real(C_DOUBLE), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_double.method.at
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_vector_double_at(obj%cxxmem, n)
+        SHC_rv_ptr = c_vector_double_at_bufferify(obj%cxxmem, n)
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_double.method.at
     end function vector_double_at

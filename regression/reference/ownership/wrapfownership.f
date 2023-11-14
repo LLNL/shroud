@@ -157,13 +157,13 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Statement: f_function_native_*_pointer
-        function c_return_int_ptr_pointer() &
+        function c_return_int_ptr_pointer_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="OWN_ReturnIntPtrPointer")
+                bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr_pointer
+        end function c_return_int_ptr_pointer_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
@@ -501,7 +501,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_pointer
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_return_int_ptr_pointer()
+        SHC_rv_ptr = c_return_int_ptr_pointer_bufferify()
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_pointer
     end function return_int_ptr_pointer

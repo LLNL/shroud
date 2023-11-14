@@ -1005,6 +1005,19 @@ int * POI_returnIntPtrToScalar(void)
 // end POI_returnIntPtrToScalar
 
 // ----------------------------------------
+// Function:  int * returnIntPtrToScalar
+// Statement: f_function_native_*_pointer
+// start POI_returnIntPtrToScalar_bufferify
+int * POI_returnIntPtrToScalar_bufferify(void)
+{
+    // splicer begin function.returnIntPtrToScalar_bufferify
+    int * SHC_rv = returnIntPtrToScalar();
+    return SHC_rv;
+    // splicer end function.returnIntPtrToScalar_bufferify
+}
+// end POI_returnIntPtrToScalar_bufferify
+
+// ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Statement: c_function_native_*
 // start POI_returnIntPtrToFixedArray
@@ -1049,6 +1062,19 @@ const int * POI_returnIntPtrToConstScalar(void)
     // splicer end function.returnIntPtrToConstScalar
 }
 // end POI_returnIntPtrToConstScalar
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToConstScalar
+// Statement: f_function_native_*_pointer
+// start POI_returnIntPtrToConstScalar_bufferify
+const int * POI_returnIntPtrToConstScalar_bufferify(void)
+{
+    // splicer begin function.returnIntPtrToConstScalar_bufferify
+    const int * SHC_rv = returnIntPtrToConstScalar();
+    return SHC_rv;
+    // splicer end function.returnIntPtrToConstScalar_bufferify
+}
+// end POI_returnIntPtrToConstScalar_bufferify
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
@@ -1126,22 +1152,6 @@ int * POI_returnIntRaw(void)
 // end POI_returnIntRaw
 
 /**
- * Call directly via interface.
- */
-// ----------------------------------------
-// Function:  int * returnIntRaw +deref(raw)
-// Statement: f_function_native_*_raw
-// start POI_returnIntRaw_bufferify
-int * POI_returnIntRaw_bufferify(void)
-{
-    // splicer begin function.returnIntRaw_bufferify
-    int * SHC_rv = returnIntRaw();
-    return SHC_rv;
-    // splicer end function.returnIntRaw_bufferify
-}
-// end POI_returnIntRaw_bufferify
-
-/**
  * Like returnIntRaw but with another argument to force a wrapper.
  * Uses fc_statements f_function_native_*_raw.
  */
@@ -1160,26 +1170,6 @@ int * POI_returnIntRawWithArgs(const char * name)
     // splicer end function.returnIntRawWithArgs
 }
 // end POI_returnIntRawWithArgs
-
-/**
- * Like returnIntRaw but with another argument to force a wrapper.
- * Uses fc_statements f_function_native_*_raw.
- */
-// ----------------------------------------
-// Function:  int * returnIntRawWithArgs +deref(raw)
-// Statement: f_function_native_*_raw
-// ----------------------------------------
-// Argument:  const char * name
-// Statement: f_in_char_*
-// start POI_returnIntRawWithArgs_bufferify
-int * POI_returnIntRawWithArgs_bufferify(const char * name)
-{
-    // splicer begin function.returnIntRawWithArgs_bufferify
-    int * SHC_rv = returnIntRawWithArgs(name);
-    return SHC_rv;
-    // splicer end function.returnIntRawWithArgs_bufferify
-}
-// end POI_returnIntRawWithArgs_bufferify
 
 /**
  * Test multiple layers of indirection.

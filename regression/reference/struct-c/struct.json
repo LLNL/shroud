@@ -3854,7 +3854,7 @@
                         "fmtc": {
                             "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
-                            "C_name": "returnStructPtr1",
+                            "C_name": "STR_returnStructPtr1",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "Cstruct1 *",
                             "F_C_name": "c_return_struct_ptr1",
@@ -3876,7 +3876,7 @@
                         "fmtf": {
                             "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
-                            "C_name": "returnStructPtr1",
+                            "C_name": "STR_returnStructPtr1",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "Cstruct1 *",
                             "F_C_arguments": "i,\t d",
@@ -4136,7 +4136,7 @@
                         "fmtc": {
                             "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
-                            "C_name": "returnStructPtr2",
+                            "C_name": "STR_returnStructPtr2",
                             "C_prototype": "int i,\t double d,\t char * outbuf",
                             "C_return_type": "Cstruct1 *",
                             "F_C_arguments": "i,\t d,\t outbuf",
@@ -4567,7 +4567,7 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "get_global_struct_list(\t)",
-                            "C_name": "get_global_struct_list",
+                            "C_name": "STR_get_global_struct_list",
                             "C_prototype": "void",
                             "C_return_type": "Cstruct_list *",
                             "F_C_name": "c_get_global_struct_list",
@@ -4588,7 +4588,7 @@
                         },
                         "fmtf": {
                             "C_call_function": "get_global_struct_list(\t)",
-                            "C_name": "get_global_struct_list",
+                            "C_name": "STR_get_global_struct_list",
                             "C_prototype": "void",
                             "C_return_type": "Cstruct_list *",
                             "F_C_arguments": "",

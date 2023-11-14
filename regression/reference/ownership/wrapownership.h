@@ -36,6 +36,8 @@ int OWN_ReturnIntPtrScalar_bufferify(void);
 
 int * OWN_ReturnIntPtrPointer(void);
 
+int * OWN_ReturnIntPtrPointer_bufferify(void);
+
 int * OWN_ReturnIntPtrDimRaw(int * len);
 
 int * OWN_ReturnIntPtrDimPointer(int * len);
