@@ -6480,6 +6480,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6850,6 +6851,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },

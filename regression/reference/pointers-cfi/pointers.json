@@ -8353,6 +8353,7 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },

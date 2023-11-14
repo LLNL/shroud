@@ -1248,6 +1248,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -1499,6 +1500,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "inout"
                             },
@@ -3045,6 +3047,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -3299,6 +3302,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },

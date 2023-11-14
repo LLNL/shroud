@@ -92,10 +92,10 @@ class FillMeta(object):
 
         self.set_func_intent(node, r_meta)
         if wlang == "c":
-            self.set_func_api(node, r_meta)
+            self.set_func_api(wlang, node, r_meta)
         else:
             self.set_func_deref(node, r_meta)
-            self.set_func_api(node, r_meta)
+            self.set_func_api(wlang, node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -106,9 +106,7 @@ class FillMeta(object):
             meta = fetch_arg_metaattrs(node, arg, wlang)
 
             self.set_arg_intent(node, arg, meta)
-            if wlang == "c":
-                self.set_arg_api(arg, meta)
-            else:
+            if wlang == "f":
                 self.set_arg_deref(arg, meta)
                 self.set_arg_api(arg, meta)
                 self.set_arg_hidden(arg, meta)
@@ -168,7 +166,6 @@ class FillMeta(object):
         declarator = ast.declarator
         attrs = declarator.attrs
         deref = attrs["deref"]
-        shared = ast.declarator.metaattrs
         mderef = None
         ntypemap = ast.typemap
         nindirect = declarator.is_indirect()
@@ -218,44 +215,6 @@ class FillMeta(object):
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
 
-        # arg_to_buffer
-        fmt_func = node.fmtdict
-        need_buf_result   = None
-
-        result_is_ptr = ast.declarator.is_indirect()
-        result_as_arg = ""  # Only applies to string functions
-        # when the result is added as an argument to the Fortran api.
-
-        # Check if result needs to be an argument.
-        if meta["deref"] == "raw":
-            # No bufferify required for raw pointer result.
-            pass
-        elif ntypemap.sgroup == "string":
-            if meta["deref"] in ["allocatable", "pointer", "scalar"]:
-                need_buf_result = "cdesc"
-            else:
-                need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
-        elif ntypemap.sgroup == "char" and result_is_ptr:
-            if meta["deref"] in ["allocatable", "pointer"]:
-                # Result default to "allocatable".
-                need_buf_result = "cdesc"
-            else:
-                need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
-        elif ntypemap.base == "vector":
-            need_buf_result = "cdesc"
-        elif result_is_ptr:
-            if meta["deref"] in ["allocatable", "pointer"]:
-                if shared["dimension"]:
-                    # int *get_array() +deref(pointer)+dimension(10)
-                    need_buf_result = "cdesc"
-        if need_buf_result:
-            meta["api"] = need_buf_result
-        if result_as_arg:
-            meta["deref"] = "arg"
-            meta["api"] = "buf"
-
     def set_arg_deref(self, arg, meta):
         """Check deref attr and set default for variable.
 
@@ -280,6 +239,8 @@ class FillMeta(object):
                 )
                 return
             nindirect = declarator.is_indirect()
+#            if ntypemap.name == "void":
+#                # void cannot be dereferenced.
             if ntypemap.sgroup == "vector":
                 if deref:
                     mderef = deref
@@ -310,6 +271,82 @@ class FillMeta(object):
                 meta["deref"] = "copy"
             else:
                 meta["deref"] = "pointer"
+
+    def set_func_api(self, wlang, node, meta):
+        """
+        Based on other meta attrs: 
+        """
+        # from check_fcn_attrs  (C and Fortran)
+        ast = node.ast
+        ntypemap = ast.typemap
+        api = ast.declarator.attrs["api"]
+        shared = ast.declarator.metaattrs
+
+        if api:
+            # XXX - from check_common_attrs
+            meta["api"] = api
+        elif ntypemap.sgroup == "shadow":
+            if node.return_this:
+                meta["api"] = "this"
+            elif node.options.C_shadow_result:
+                meta["api"] = "capptr"
+            else:
+                meta["api"] = "capsule"
+
+        if wlang == "c":
+            return
+
+        # arg_to_buffer
+        fmt_func = node.fmtdict
+        need_buf_result   = None
+
+        result_is_ptr = ast.declarator.is_indirect()
+        result_as_arg = ""  # Only applies to string functions
+        # when the result is added as an argument to the Fortran api.
+
+        # Check if result needs to be an argument.
+        if meta["api"]:
+            pass
+        elif meta["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif ntypemap.sgroup == "string":
+            if meta["deref"] in ["allocatable", "pointer", "scalar"]:
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
+            result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.sgroup == "char" and result_is_ptr:
+            if meta["deref"] in ["allocatable", "pointer"]:
+                # Result default to "allocatable".
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
+            result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.base == "vector":
+            need_buf_result = "cdesc"
+        elif result_is_ptr:
+            if meta["deref"] in ["allocatable", "pointer"]:
+                if shared["dimension"]:
+                    # int *get_array() +deref(pointer)+dimension(10)
+                    need_buf_result = "cdesc"
+        if need_buf_result:
+            meta["api"] = need_buf_result
+        if result_as_arg:
+            meta["deref"] = "arg"
+            meta["api"] = "buf"
+
+    def set_arg_api(self, arg, meta):
+        """
+        Based on other meta attrs: 
+        """
+        declarator = arg.declarator
+        ntypemap = arg.typemap
+        api = declarator.attrs["api"]
+
+        # XXX - from check_common_attrs
+        if api:
+            meta["api"] = api
 
         # arg_to_buffer
         has_buf_arg = None
@@ -346,36 +383,6 @@ class FillMeta(object):
             #has_buf_arg = "buf" # XXX - for scalar?
         if has_buf_arg:
             meta["api"] = has_buf_arg
-
-    def set_func_api(self, node, meta):
-        """
-        Based on other meta attrs: 
-        """
-        # from check_fcn_attrs  (C and Fortran)
-        ast = node.ast
-        api = ast.declarator.attrs["api"]
-
-        if api:
-            # XXX - from check_common_attrs
-            meta["api"] = api
-        elif ast.typemap.sgroup == "shadow":
-            if node.return_this:
-                meta["api"] = "this"
-            elif node.options.C_shadow_result:
-                meta["api"] = "capptr"
-            else:
-                meta["api"] = "capsule"
-
-    def set_arg_api(self, arg, meta):
-        """
-        Based on other meta attrs: 
-        """
-        declarator = arg.declarator
-        api = declarator.attrs["api"]
-
-        # XXX - from check_common_attrs
-        if api:
-            meta["api"] = api
         
     def set_arg_hidden(self, arg, meta):
         """

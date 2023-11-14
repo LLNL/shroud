@@ -1785,7 +1785,7 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 // Statement: c_in_void_*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*_capi
+// Statement: c_in_char_*
 int STR_CpassCharPtrCAPI(void * addr, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI
@@ -1806,7 +1806,7 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
 // Statement: c_in_char_*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*_capi
+// Statement: c_in_char_*
 int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI2
