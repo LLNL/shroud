@@ -4855,6 +4855,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -6103,6 +6104,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"

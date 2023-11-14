@@ -2128,6 +2128,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_native_*_hidden"
@@ -2572,6 +2573,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_native_&_hidden"
@@ -3018,6 +3020,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_native_*_hidden"
@@ -3464,6 +3467,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_native_&_hidden"

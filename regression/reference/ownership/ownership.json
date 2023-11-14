@@ -1101,6 +1101,7 @@
                         },
                         "len": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -1495,6 +1496,7 @@
                         },
                         "len": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -1886,6 +1888,7 @@
                         },
                         "len": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -2427,6 +2430,7 @@
                         },
                         "len": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -3012,6 +3016,7 @@
                         },
                         "len": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"

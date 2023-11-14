@@ -111,7 +111,7 @@ class FillMeta(object):
             else:
                 self.set_arg_deref(arg, meta)
                 self.set_arg_api(arg, meta)
-
+                self.set_arg_hidden(arg, meta)
             
         # --- End loop over function parameters
         func_cursor.arg = None
@@ -377,4 +377,13 @@ class FillMeta(object):
         if api:
             meta["api"] = api
         
+    def set_arg_hidden(self, arg, meta):
+        """
+        Fortran only.
+        """
+        declarator = arg.declarator
+        hidden = declarator.attrs["hidden"]
+
+        if hidden:
+            meta["hidden"] = hidden
         

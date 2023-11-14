@@ -6487,12 +6487,14 @@
                         },
                         "size": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
                         },
                         "type": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
@@ -6855,12 +6857,14 @@
                         },
                         "size": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
                         },
                         "type": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
