@@ -1765,7 +1765,7 @@ class GenFunctions(object):
         result_is_ptr = ast.declarator.is_indirect()
         if (
             result_typemap
-            and result_typemap.base in ["string", "vector"]
+            and result_typemap.base == "vector"
             and result_typemap.name != "char"
             and not result_is_ptr
         ):

@@ -167,6 +167,7 @@ def lookup_f_arg_stmt(node, arg):
     c_attrs = declarator.attrs
     c_meta = declarator.metaattrs
     c_meta2 = node._bind["f"][declarator.user_name].meta
+#    c_meta = c_meta2
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
     junk, specialize = lookup_c_statements(arg)
@@ -1503,7 +1504,7 @@ fc_statements = [
             "f_in_char_*_capi",
             "c_in_char_*_capi",
 
-            
+
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",
         ],
@@ -2273,7 +2274,7 @@ fc_statements = [
         # c_function_string_&
         name="f_shared_function_string_scalar",
         alias=[
-            "c_function_string_scalar/*/&",
+            "c_function_string_*/&",
             "c_function_string_*_caller/library",
             "c_function_string_*_copy",
             "c_function_string_&_copy",
@@ -2287,6 +2288,14 @@ fc_statements = [
             "type(C_PTR) {i_var}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="c_function_string_scalar",
+        notimplemented=True,
+        comments=[
+            "Cannot return a char array by value."
+            # Can return a char * but then there are lifetime issues.
+        ],
     ),
 
     # std::string

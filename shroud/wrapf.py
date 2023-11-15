@@ -1158,6 +1158,7 @@ rv = .false.
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
 
+        notimplemented = result_stmt.notimplemented
         arg_c_names = []  # argument names for functions
         arg_c_decl = []  # declaraion of argument names
         modules = {}  # indexed as [module][variable]
@@ -1199,6 +1200,7 @@ rv = .false.
             intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
+            notimplemented = notimplemented or arg_stmt.notimplemented
 
             if options.debug:
                 stmts_comments.append(
@@ -1273,7 +1275,9 @@ rv = .false.
 
         c_interface = fileinfo.c_interface
         c_interface.append("")
-
+        if notimplemented:
+            c_interface.append("#if 0")
+            c_interface.append("! Not Implemented")
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
@@ -1302,6 +1306,8 @@ rv = .false.
         if options.literalinclude:
             append_format(c_interface, "! end {F_C_name}", fmt_result)
         if node.cpp_if:
+            c_interface.append("#endif")
+        if notimplemented:
             c_interface.append("#endif")
         cursor.pop_node(node)
 

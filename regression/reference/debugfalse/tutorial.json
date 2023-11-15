@@ -595,11 +595,67 @@
                 "name": "ConcatenateStrings",
                 "options": {},
                 "wrap": {
+                    "c": true,
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_string_scalar"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string_&"
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string_&"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
+                            "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
+                            "C_name": "TUT_ConcatenateStrings",
+                            "C_prototype": "const char * arg1,\t const char * arg2",
+                            "C_return_type": "const char",
+                            "F_C_arguments": "arg1,\t arg2",
+                            "F_C_name": "c_concatenate_strings",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "const ",
+                            "c_get_value": "",
+                            "c_rv_decl": "const char SHC_rv",
+                            "c_type": "char",
+                            "c_val": "SHCXX_rv.c_str()",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_rv_decl": "const std::string SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_string_scalar"
+                        },
                         "fmtl": {
                             "c_var": "SHCXX_rv.c_str()",
                             "cxx_addr": "&",
@@ -627,6 +683,29 @@
                         }
                     },
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "i_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_string_&"
+                        },
                         "fmtl": {
                             "LUA_index": 1,
                             "c_deref": "",
@@ -661,6 +740,29 @@
                         }
                     },
                     "arg2": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg2",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg2",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg2",
+                            "i_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_string_&"
+                        },
                         "fmtl": {
                             "LUA_index": 2,
                             "c_deref": "",

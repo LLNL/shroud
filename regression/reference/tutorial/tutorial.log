@@ -1,10 +1,10 @@
 Read yaml tutorial.yaml
-Skipping std::string, unable to create C wrapper for function returning ConcatenateStrings instance (must return a pointer or reference). Bufferify version will still be created.
 Read splicer ftutorialsplicer.f
 C c void NoReturnNoArguments(void)
 C f void NoReturnNoArguments(void)
 C c double PassByValue(double arg1 +value, int arg2 +value)
 C f double PassByValue(double arg1 +value, int arg2 +value)
+C c const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
 C f const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
 C c double UseDefaultArguments(void)
 C f double UseDefaultArguments(void)
@@ -86,6 +86,7 @@ Fortran int callback1(int in +value, int ( * incr)(int +value) +value)
 Fortran const std::string & LastFunctionCalled(void) +len(30)
 C-interface f void NoReturnNoArguments(void)
 C-interface f double PassByValue(double arg1 +value, int arg2 +value)
+C-interface c const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
 C-interface f const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
 C-interface f double UseDefaultArguments(void)
 C-interface f double UseDefaultArguments(double arg1=3.1415 +value)

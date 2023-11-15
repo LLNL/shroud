@@ -1,5 +1,4 @@
 Read yaml classes.yaml
-Skipping std::string, unable to create C wrapper for function returning get_m_name instance (must return a pointer or reference). Bufferify version will still be created.
 Close classes_types.yaml
 class Class1
 C c Class1(void)
