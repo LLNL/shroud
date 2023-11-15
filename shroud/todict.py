@@ -309,7 +309,9 @@ class ToDict(visitor.Visitor):
     def visit_WrapFlags(self, node):
         d = dict()
         add_true_fields(
-            node, d, ["fortran", "c", "lua", "python"]
+            node, d, ["fortran", "c", "lua", "python",
+#                      "signature_c", "signature_f",
+            ]
         )
         return d
 

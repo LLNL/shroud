@@ -110,7 +110,9 @@
                             "C_name": "CDE_Rank2In",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
+                            "F_C_arguments": "arg",
                             "F_C_name": "c_rank2_in",
+                            "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
@@ -144,8 +146,18 @@
                             "cxx_nonconst_ptr": "arg",
                             "cxx_type": "int",
                             "cxx_var": "arg",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
                             "idtor": "0",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
                             "stmt_name": "c_in_native_*"
                         },
                         "fmtf": {

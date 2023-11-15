@@ -1189,6 +1189,21 @@ module pointers_mod
     ! end return_int_scalar
 
     ! ----------------------------------------
+    ! Function:  int * returnIntScalar +deref(scalar)
+    ! Statement: c_function_native_*
+    ! start c_return_int_scalar
+    interface
+        function c_return_int_scalar() &
+                result(SHT_rv) &
+                bind(C, name="POI_returnIntScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_scalar
+    end interface
+    ! end c_return_int_scalar
+
+    ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
     ! Statement: f_function_native_*_raw
     ! start return_int_raw

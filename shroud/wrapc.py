@@ -1260,6 +1260,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             need_wrapper = False
 
         need_wrapper = need_wrapper or stmt_need_wrapper
+        if wlang == "c":
+            node.wrap.signature_c = signature
+        elif wlang == "f":
+            node.wrap.signature_f = signature
 
         if need_wrapper:
             impl = []
@@ -1325,7 +1329,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 if node.cpp_if:
                     self.header_proto_c.append("#endif")
                 node.C_signature = signature
-                
+
         else:
             # There is no C wrapper, have Fortran call the function directly.
             fmt_result.C_name = node.ast.declarator.name

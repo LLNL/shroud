@@ -969,6 +969,21 @@ module pointers_mod
     ! end c_return_int_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
+    ! Function:  int * returnIntPtrToScalar
+    ! Statement: c_function_native_*
+    ! start c_return_int_ptr_to_scalar
+    interface
+        function c_return_int_ptr_to_scalar() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_scalar
+    end interface
+    ! end c_return_int_ptr_to_scalar
+
+    ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_array
@@ -1015,6 +1030,21 @@ module pointers_mod
     ! end c_return_int_ptr_to_const_scalar_bufferify
 
     ! ----------------------------------------
+    ! Function:  const int * returnIntPtrToConstScalar
+    ! Statement: c_function_native_*
+    ! start c_return_int_ptr_to_const_scalar
+    interface
+        function c_return_int_ptr_to_const_scalar() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToConstScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_const_scalar
+    end interface
+    ! end c_return_int_ptr_to_const_scalar
+
+    ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_fixed_const_array
@@ -1059,6 +1089,21 @@ module pointers_mod
         end function return_int_scalar
     end interface
     ! end return_int_scalar
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntScalar +deref(scalar)
+    ! Statement: c_function_native_*
+    ! start c_return_int_scalar
+    interface
+        function c_return_int_scalar() &
+                result(SHT_rv) &
+                bind(C, name="returnIntScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_scalar
+    end interface
+    ! end c_return_int_scalar
 
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)

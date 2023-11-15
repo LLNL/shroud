@@ -154,6 +154,14 @@ module error_mod
         end function c_bad_fstatements_bufferify
 
         ! ----------------------------------------
+        ! Function:  void BadFstatements
+        ! Statement: c_subroutine
+        subroutine c_bad_fstatements() &
+                bind(C, name="ERR_BadFstatements")
+            implicit none
+        end subroutine c_bad_fstatements
+
+        ! ----------------------------------------
         ! Function:  void AssumedRank
         ! Statement: c_subroutine
         ! ----------------------------------------

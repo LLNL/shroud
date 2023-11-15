@@ -710,11 +710,12 @@ rv = .false.
 
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
-            if node.wrap.fortran:
+            wrap = node.wrap
+            if wrap.fortran:
                 self.log.write("C-interface f {0.declgen}\n".format(
                     node)) #, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface("f", cls, node, fileinfo)
-            elif node.wrap.c:
+            if wrap.c and wrap.signature_c != wrap.signature_f:
                 self.log.write("C-interface c {0.declgen}\n".format(
                     node)) #, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface("c", cls, node, fileinfo)

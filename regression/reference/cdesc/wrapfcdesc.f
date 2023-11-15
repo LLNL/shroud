@@ -85,6 +85,19 @@ module cdesc_mod
         end subroutine c_rank2_in_bufferify
 
         ! ----------------------------------------
+        ! Function:  void Rank2In
+        ! Statement: c_subroutine
+        ! ----------------------------------------
+        ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
+        ! Statement: c_in_native_*
+        subroutine c_rank2_in(arg) &
+                bind(C, name="CDE_Rank2In")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg(*)
+        end subroutine c_rank2_in
+
+        ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Statement: c_subroutine
         ! ----------------------------------------

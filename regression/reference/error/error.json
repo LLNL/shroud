@@ -894,7 +894,9 @@
                             "C_name": "ERR_BadFstatements",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_arguments": "",
                             "F_C_name": "c_bad_fstatements",
+                            "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {

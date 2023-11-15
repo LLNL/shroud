@@ -155,6 +155,17 @@ module ownership_mod
         end function return_int_ptr_scalar
 
         ! ----------------------------------------
+        ! Function:  int * ReturnIntPtrScalar +deref(scalar)
+        ! Statement: c_function_native_*
+        function c_return_int_ptr_scalar() &
+                result(SHT_rv) &
+                bind(C, name="OWN_ReturnIntPtrScalar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_scalar
+
+        ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Statement: f_function_native_*_pointer
         function c_return_int_ptr_pointer_bufferify() &
@@ -164,6 +175,17 @@ module ownership_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_pointer_bufferify
+
+        ! ----------------------------------------
+        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
+        ! Statement: c_function_native_*
+        function c_return_int_ptr_pointer() &
+                result(SHT_rv) &
+                bind(C, name="OWN_ReturnIntPtrPointer")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_pointer
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)

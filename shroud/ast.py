@@ -31,6 +31,8 @@ class WrapFlags(object):
         self.f_or_c = self.fortran or self.c
         self.lua = options.wrap_lua
         self.python = options.wrap_python
+        self.signature_c = None
+        self.signature_f = None
 
     def clear(self):
         self.fortran = False
