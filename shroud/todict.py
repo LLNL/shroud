@@ -418,7 +418,6 @@ class ToDict(visitor.Visitor):
                 "doxygen",
                 "linenumber",
                 "return_this",
-                "splicer_group",
                 "have_template_args",
                 "template_parameters",
                 "C_error_pattern",

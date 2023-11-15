@@ -444,7 +444,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringResult_CFI
     const std::string SHCXX_rv = getConstStringResult();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
@@ -468,7 +468,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringLen_CFI
     const std::string SHCXX_rv = getConstStringLen();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
@@ -493,7 +493,7 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringAsArg_CFI
     const std::string SHCXX_rv = getConstStringAsArg();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
@@ -603,7 +603,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringRefLen_CFI
     const std::string & SHCXX_rv = getConstStringRefLen();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
@@ -653,7 +653,7 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringRefAsArg_CFI
     const std::string & SHCXX_rv = getConstStringRefAsArg();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
@@ -699,7 +699,7 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.getConstStringRefLenEmpty_CFI
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
     // C_error_pattern
-    // Some error code for cfi
+    // Some error code for buf
 
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {

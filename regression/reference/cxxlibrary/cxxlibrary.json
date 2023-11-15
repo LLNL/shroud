@@ -4027,7 +4027,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4273,7 +4272,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4894,7 +4892,6 @@
                 },
                 "name": "nested_get_child",
                 "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "nested",
                 "user_fmt": {
                     "field_name": "child",

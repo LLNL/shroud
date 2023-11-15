@@ -274,7 +274,6 @@
                 },
                 "name": "getNameErrorPattern",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

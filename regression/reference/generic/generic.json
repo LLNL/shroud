@@ -6350,7 +6350,6 @@
                 },
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6729,7 +6728,6 @@
                 },
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

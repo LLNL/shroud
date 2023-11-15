@@ -1151,8 +1151,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         # generate the C body
         post_call_pattern = []
         if node.C_error_pattern is not None:
+            if wlang == "f":
+                suffix = "buf"
+            else:
+                suffix = None
             C_error_pattern = statements.compute_name(
-                [node.C_error_pattern, node.splicer_group])
+                [node.C_error_pattern, suffix])
             if C_error_pattern in self.patterns:
                 need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
@@ -1240,7 +1244,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_name = statements.compute_name(["c", node.splicer_group])
+        splicer_list = ["c"]
+        if wlang == "f":
+            splicer_list.append("buf")
+        splicer_name = statements.compute_name(splicer_list)
         if splicer_name in node.splicer:
             need_wrapper = True
             C_force = node.splicer[splicer_name]

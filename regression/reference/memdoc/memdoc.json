@@ -155,7 +155,6 @@
                 },
                 "name": "getConstStringPtrAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

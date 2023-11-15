@@ -2617,7 +2617,6 @@
                 },
                 "name": "acceptCharArrayIn",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3046,7 +3045,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3269,7 +3267,6 @@
                 },
                 "name": "getPtrToFixedArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3544,7 +3541,6 @@
                 },
                 "name": "getPtrToDynamicArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3809,7 +3805,6 @@
                 },
                 "name": "getPtrToFuncArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4028,7 +4023,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4247,7 +4241,6 @@
                 },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4518,7 +4511,6 @@
                 },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -5700,7 +5692,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6643,7 +6634,6 @@
                 },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6913,7 +6903,6 @@
                 },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -7535,7 +7524,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

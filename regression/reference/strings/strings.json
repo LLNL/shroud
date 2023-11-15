@@ -851,7 +851,6 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1163,7 +1162,6 @@
                 },
                 "name": "passCharPtrInOut",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1413,7 +1411,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1647,7 +1644,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1875,7 +1871,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "user_fmt": {
                     "F_string_result_as_arg": "output"
                 },
@@ -2224,7 +2219,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2409,7 +2403,6 @@
                 },
                 "name": "getConstStringResult",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2592,7 +2585,6 @@
                 },
                 "name": "getConstStringLen",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2766,7 +2758,6 @@
                 },
                 "name": "getConstStringAsArg",
                 "options": {},
-                "splicer_group": "buf",
                 "user_fmt": {
                     "F_string_result_as_arg": "output"
                 },
@@ -2943,7 +2934,6 @@
                 },
                 "name": "getConstStringAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3189,7 +3179,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3429,7 +3418,6 @@
                 },
                 "name": "getConstStringRefLen",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3658,7 +3646,6 @@
                 },
                 "name": "getConstStringRefAsArg",
                 "options": {},
-                "splicer_group": "buf",
                 "user_fmt": {
                     "F_string_result_as_arg": "output"
                 },
@@ -3890,7 +3877,6 @@
                 },
                 "name": "getConstStringRefLenEmpty",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4120,7 +4106,6 @@
                 },
                 "name": "getConstStringRefAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4372,7 +4357,6 @@
                 },
                 "name": "getConstStringPtrLen",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4609,7 +4593,6 @@
                 },
                 "name": "getConstStringPtrAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4857,7 +4840,6 @@
                 },
                 "name": "getConstStringPtrOwnsAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -5107,7 +5089,6 @@
                 },
                 "name": "getConstStringPtrOwnsAllocPattern",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -5332,7 +5313,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -5596,7 +5576,6 @@
                 },
                 "name": "acceptStringConstReference",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -5872,7 +5851,6 @@
                 },
                 "name": "acceptStringReferenceOut",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6148,7 +6126,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6419,7 +6396,6 @@
                 },
                 "name": "acceptStringPointerConst",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6689,7 +6665,6 @@
                 },
                 "name": "acceptStringPointer",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6966,7 +6941,6 @@
                 },
                 "name": "fetchStringPointer",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -7330,7 +7304,6 @@
                 },
                 "name": "acceptStringPointerLen",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -7731,7 +7704,6 @@
                 },
                 "name": "fetchStringPointerLen",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -8062,7 +8034,6 @@
                 },
                 "name": "acceptStringInstance",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -8573,7 +8544,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -8987,7 +8957,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -9413,7 +9382,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -9960,7 +9928,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -10616,7 +10583,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -10995,7 +10961,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -11410,7 +11375,6 @@
                 "options": {
                     "PY_array_arg": "list"
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -11724,7 +11688,6 @@
                     "F_trim_char_in": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

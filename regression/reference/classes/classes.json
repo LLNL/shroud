@@ -1420,7 +1420,6 @@
                             "wrap_lua": false,
                             "wrap_python": false
                         },
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -1898,7 +1897,6 @@
                         },
                         "name": "getName",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -2659,7 +2657,6 @@
                         },
                         "name": "get_m_name",
                         "options": {},
-                        "splicer_group": "buf",
                         "user_fmt": {
                             "field_name": "m_name",
                             "struct_name": "Class1",
@@ -2858,7 +2855,6 @@
                         "declgen": "void set_m_name(std::string val +intent(in))",
                         "name": "set_m_name",
                         "options": {},
-                        "splicer_group": "buf",
                         "user_fmt": {
                             "field_name": "m_name",
                             "struct_name": "Class1",
@@ -3285,7 +3281,6 @@
                         },
                         "name": "getName",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -4985,7 +4980,6 @@
                         },
                         "name": "get_items",
                         "options": {},
-                        "splicer_group": "buf",
                         "user_fmt": {
                             "field_name": "items",
                             "struct_name": "Data",
@@ -7511,7 +7505,6 @@
                 },
                 "name": "LastFunctionCalled",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

@@ -741,7 +741,6 @@
                         "}"
                     ]
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1094,7 +1093,6 @@
                         "}"
                     ]
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1984,7 +1982,6 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2297,7 +2294,6 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

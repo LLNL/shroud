@@ -469,7 +469,6 @@
                                         "options": {
                                             "F_create_generic": true
                                         },
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -1107,7 +1106,6 @@
                                         },
                                         "name": "getNameErrorCheck",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -1356,7 +1354,6 @@
                                         },
                                         "name": "getNameArg",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "user_fmt": {
                                             "F_string_result_as_arg": "name"
                                         },
@@ -2661,7 +2658,6 @@
                                         "options": {
                                             "F_create_generic": true
                                         },
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -3039,7 +3035,6 @@
                                         },
                                         "name": "getName",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -3290,7 +3285,6 @@
                                         },
                                         "name": "getName2",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -3548,7 +3542,6 @@
                                         },
                                         "name": "getName3",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -3803,7 +3796,6 @@
                                         },
                                         "name": "getName4",
                                         "options": {},
-                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -7494,7 +7486,6 @@
                                         "rv = name .ne. \" \""
                                     ]
                                 },
-                                "splicer_group": "buf",
                                 "wrap": {
                                     "fortran": true
                                 },
@@ -7949,7 +7940,6 @@
                                 },
                                 "name": "test_names",
                                 "options": {},
-                                "splicer_group": "buf",
                                 "user_fmt": {
                                     "function_suffix": ""
                                 },
@@ -8334,7 +8324,6 @@
                                 },
                                 "name": "test_names",
                                 "options": {},
-                                "splicer_group": "buf",
                                 "user_fmt": {
                                     "function_suffix": "_flag"
                                 },

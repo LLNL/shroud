@@ -141,7 +141,6 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -399,7 +398,6 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -695,7 +693,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -981,7 +978,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1234,7 +1230,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1486,7 +1481,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1728,7 +1722,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1970,7 +1963,6 @@
                 "options": {
                     "wrap_lua": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2236,7 +2228,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2520,7 +2511,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2789,7 +2779,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3033,7 +3022,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3288,7 +3276,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3597,7 +3584,6 @@
                 },
                 "name": "ReturnVectorAlloc",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

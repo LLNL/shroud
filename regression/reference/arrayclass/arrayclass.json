@@ -912,7 +912,6 @@
                         },
                         "name": "getArray",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -1176,7 +1175,6 @@
                         },
                         "name": "getArrayConst",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -1439,7 +1437,6 @@
                         },
                         "name": "getArrayC",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -1705,7 +1702,6 @@
                         },
                         "name": "getArrayConstC",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -2106,7 +2102,6 @@
                         },
                         "name": "fetchArrayPtr",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -2551,7 +2546,6 @@
                         },
                         "name": "fetchArrayRef",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -2998,7 +2992,6 @@
                         },
                         "name": "fetchArrayPtrConst",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },
@@ -3445,7 +3438,6 @@
                         },
                         "name": "fetchArrayRefConst",
                         "options": {},
-                        "splicer_group": "buf",
                         "wrap": {
                             "fortran": true
                         },

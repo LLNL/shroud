@@ -176,7 +176,6 @@
                 },
                 "name": "LastFunctionCalled",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

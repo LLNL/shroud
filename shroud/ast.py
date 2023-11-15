@@ -1500,7 +1500,6 @@ class FunctionNode(AstNode):
         self._bind = {}
         self.splicer = {}
         self.fstatements = {}
-        self.splicer_group = None
         self.struct_parent = None         # Function is a getter/setter for a struct
 
         # Fortran wapper variables.

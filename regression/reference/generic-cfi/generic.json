@@ -1761,7 +1761,6 @@
                 "options": {
                     "F_assumed_rank_max": 2
                 },
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -2874,7 +2873,6 @@
                 },
                 "name": "AssignValues",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -3278,7 +3276,6 @@
                 },
                 "name": "AssignValues",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -3971,7 +3968,6 @@
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -4300,7 +4296,6 @@
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "name": "SavePointer",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -5040,7 +5035,6 @@
                 },
                 "name": "SavePointer2",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -5424,7 +5418,6 @@
                 },
                 "name": "SavePointer2",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -6466,7 +6459,6 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -6837,7 +6829,6 @@
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
-                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },

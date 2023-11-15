@@ -1705,7 +1705,6 @@ class GenFunctions(object):
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
         C_new._generated_path.append("arg_to_cfi")
-        C_new.splicer_group = "cfi"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
         if result_as_arg:
@@ -1885,7 +1884,6 @@ class GenFunctions(object):
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
         C_new._generated_path.append("arg_to_buffer")
-        C_new.splicer_group = "buf"
         if need_buf_result:
             C_new.ast.declarator.metaattrs["api"] = need_buf_result
         if result_as_arg:

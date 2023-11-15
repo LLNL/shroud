@@ -1682,7 +1682,6 @@
                 },
                 "name": "Function4a",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2196,7 +2195,6 @@
                 },
                 "name": "passCharPtrInOut",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2483,7 +2481,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -2858,7 +2855,6 @@
                 },
                 "name": "returnTwoNames",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -3259,7 +3255,6 @@
                 "options": {
                     "literalinclude": true
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4936,7 +4931,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "user_fmt": {
                     "F_name_impl": "Fortran_bindC2a"
                 },
@@ -5894,7 +5888,6 @@
                 "options": {
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -7273,7 +7266,6 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

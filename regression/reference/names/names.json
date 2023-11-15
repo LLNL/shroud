@@ -590,7 +590,6 @@
                 },
                 "name": "getName",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1413,7 +1412,6 @@
                 },
                 "name": "function4",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -1914,7 +1912,6 @@
                         "// py line 2"
                     ]
                 },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },

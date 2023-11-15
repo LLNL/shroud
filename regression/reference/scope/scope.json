@@ -660,7 +660,6 @@
                 },
                 "name": "DataPointer_get_items",
                 "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
@@ -1302,7 +1301,6 @@
                         },
                         "name": "DataPointer_get_items",
                         "options": {},
-                        "splicer_group": "buf",
                         "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
@@ -1971,7 +1969,6 @@
                         },
                         "name": "DataPointer_get_items",
                         "options": {},
-                        "splicer_group": "buf",
                         "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",

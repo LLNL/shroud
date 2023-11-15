@@ -2699,7 +2699,6 @@
                 },
                 "name": "passStruct2",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -4345,7 +4344,6 @@
                 },
                 "name": "returnStructPtr2",
                 "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
@@ -6079,7 +6077,6 @@
                 },
                 "name": "Cstruct_list_get_ivalue",
                 "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "ivalue",
@@ -6567,7 +6564,6 @@
                 },
                 "name": "Cstruct_list_get_dvalue",
                 "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "Cstruct_list",
                 "user_fmt": {
                     "field_name": "dvalue",
