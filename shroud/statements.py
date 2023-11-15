@@ -1477,7 +1477,6 @@ fc_statements = [
             "f_out_native_&",
             "c_out_native_&",
 
-            "f_out_native_*&_pointer",
             "c_out_native_*&",
 
             "f_inout_native_*",
@@ -1486,9 +1485,6 @@ fc_statements = [
             "f_inout_native_&",
             "c_inout_native_&",
             
-            "f_out_native_**_allocatable",
-            "f_out_native_**_pointer",
-
             "f_out_native_***",
             "c_out_native_***",
             
@@ -1609,7 +1605,6 @@ fc_statements = [
         ],
         alias=[
             "f_out_native_*&_cdesc_pointer",
-            "c_out_native_*&_cdesc_pointer",
         ],
         c_pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
@@ -1650,9 +1645,6 @@ fc_statements = [
             "f_mixin_out_native_cdesc_allocate",
             "f_mixin_use_capsule",
         ],
-        alias=[
-            "c_out_native_**_cdesc_allocatable",
-        ],
     ),
     dict(
         # deref(pointer)
@@ -1664,9 +1656,6 @@ fc_statements = [
             "c_mixin_out_native_**",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer",
-        ],
-        alias=[
-            "c_out_native_**_cdesc_pointer",
         ],
     ),
     dict(
@@ -1844,9 +1833,7 @@ fc_statements = [
         alias=[
             "f_function_native_*_pointer",   # XXX - change base to &?
             "f_function_native_*_pointer_caller",
-            "c_function_native_*_pointer",
             "f_function_native_&_pointer",
-            "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
         ],
     ),
@@ -1955,15 +1942,14 @@ fc_statements = [
 #    ),
     
     dict(
-        # c_function_char_*_allocatable
-        # c_function_char_*_copy
-        # c_function_char_*_pointer
-        # c_function_char_*_raw
+        # f_function_char_*_allocatable
+        # f_function_char_*_copy
+        # f_function_char_*_pointer
+        # f_function_char_*_raw
         name="f_function_char_*",
         alias=[
             "c_function_char_*",
             "f_function_char_*_allocatable/copy/pointer/raw",
-            "c_function_char_*_allocatable/copy/pointer/raw",
         ],
 
         f_arg_decl=[
@@ -2147,14 +2133,11 @@ fc_statements = [
         ],
         alias=[
             "f_function_char_*_cdesc_pointer",
-            "c_function_char_*_cdesc_pointer",
         ],
     ),
     dict(
         # f_function_string_scalar_cdesc_pointer
         # f_function_string_*_cdesc_pointer
-        # c_function_string_*_cdesc_pointer
-        # c_function_string_&_cdesc_pointer
         name="f_function_string_*_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
@@ -2165,8 +2148,6 @@ fc_statements = [
         alias=[
             "f_function_string_&_cdesc_pointer",
             "f_function_string_*/&_cdesc_pointer_caller/library",
-            "c_function_string_*/&_cdesc_pointer",
-            "c_function_string_*/&_cdesc_pointer_caller/library",
         ],
     ),
 
@@ -2292,19 +2273,9 @@ fc_statements = [
         # c_function_string_&
         name="f_shared_function_string_scalar",
         alias=[
-            "f_function_string_scalar/*/&",
             "c_function_string_scalar/*/&",
-            "f_function_string_*_allocatable",
-            "f_function_string_*_allocatable_caller",
-            "f_function_string_*_allocatable_library",
-            "f_function_string_*_copy",
             "c_function_string_*_caller/library",
             "c_function_string_*_copy",
-            "f_function_string_*_pointer",
-            "f_function_string_*_pointer_caller",
-            "f_function_string_*_pointer_library",
-            "f_function_string_&_allocatable",
-            "f_function_string_&_copy",
             "c_function_string_&_copy",
         ],
         # cxx_to_c creates a pointer from a value via c_str()
@@ -2909,10 +2880,6 @@ fc_statements = [
         mixin=[
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
-        ],
-        alias=[
-            "c_out_vector_*_cdesc_allocatable_targ_native_scalar",
-            "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
         ],
         c_helper=["copy_array"],
         f_helper=["copy_array"],
@@ -4095,20 +4062,6 @@ fc_statements = [
             "c_mixin_native_capsule_fill",
             "f_mixin_capsule_dtor",
         ],
-        alias=[
-            "c_out_string_**_cdesc_allocatable",
-        ],
-    ),
-
-    dict(
-        # std::string **arg+intent(out)+dimension(size)+deref(allocatable)
-        # Returning a pointer to a string*. However, this needs additional mapping
-        # for the C interface.  Fortran calls the +api(cdesc) variant.
-        name="f_out_string_**_allocatable",
-        alias=[
-            "c_out_string_**_allocatable",
-        ],
-        notimplemented=True,
     ),
 
     ########################################

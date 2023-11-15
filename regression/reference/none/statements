@@ -12,23 +12,15 @@ root
         scalar -- f_function_bool_scalar
       char
         * -- f_function_char_*
-          allocatable -- f_function_char_*
           arg -- f_function_char_*_arg
           buf
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
-          cdesc
-            pointer -- f_function_char_scalar_cdesc_pointer
-          copy -- f_function_char_*
-          pointer -- f_function_char_*
-          raw -- f_function_char_*
         scalar -- f_function_char_scalar
       native
         & -- f_function_native_*_raw
-          pointer -- f_function_native_&
         * -- f_function_native_*_raw
           caller -- f_function_native_*_raw
-          pointer -- f_function_native_&
           scalar -- c_function_native_*_scalar
         ** -- f_function_native_*_raw
         scalar -- f_function_native_scalar
@@ -53,19 +45,11 @@ root
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
-          cdesc
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
           buf
             copy -- f_function_string_scalar_buf
           caller -- f_shared_function_string_scalar
-          cdesc
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
           library -- f_shared_function_string_scalar
         scalar -- f_shared_function_string_scalar
@@ -231,12 +215,7 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
           hidden -- f_out/inout_native_*_hidden
         *& -- f_shared_native_scalar
-          cdesc
-            pointer -- f_out_native_*&_cdesc
         ** -- f_out_native_**_raw
-          cdesc
-            allocatable -- f_out_native_**_cdesc_allocatable
-            pointer -- f_out_native_**_cdesc_pointer
           raw -- f_out_native_**_raw
         *** -- f_shared_native_scalar
       string
@@ -245,9 +224,7 @@ root
         * -- f_out_string_*/&
           buf -- f_out_string_*/&_buf
         ** -- f_out_string_**_copy
-          allocatable -- f_out_string_**_allocatable
           cdesc
-            allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
       struct
         & -- f_shared_struct
@@ -257,8 +234,6 @@ root
           cdesc
             allocatable
               targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
                 string
                   scalar -- f_out_vector_&_cdesc_allocatable_targ_string_scalar
             targ
@@ -268,10 +243,6 @@ root
                 scalar -- f_out_vector_&_cdesc_targ_string_scalar
         *
           cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
             targ
               native
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
@@ -363,8 +334,7 @@ root
               native
                 scalar -- f_function_shadow_scalar_capptr
       string
-        & -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
+        &
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -384,11 +354,7 @@ root
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
-          copy -- f_shared_function_string_scalar
-        * -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
-            caller -- f_shared_function_string_scalar
-            library -- f_shared_function_string_scalar
+        *
           buf -- f_function_string_scalar_buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -406,11 +372,7 @@ root
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
-          copy -- f_shared_function_string_scalar
-          pointer -- f_shared_function_string_scalar
-            caller -- f_shared_function_string_scalar
-            library -- f_shared_function_string_scalar
-        scalar -- f_shared_function_string_scalar
+        scalar
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -664,16 +626,13 @@ root
         *&
           cdesc -- f_out_native_*&_cdesc
             pointer -- f_out_native_*&_cdesc
-          pointer -- f_shared_native_scalar
         **
-          allocatable -- f_shared_native_scalar
           cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
           cfi
             allocatable -- f_out_native_**_cfi_allocatable
             pointer -- f_out_native_**_cfi_pointer
-          pointer -- f_shared_native_scalar
           raw -- f_out_native_**_raw
         *** -- f_shared_native_scalar
       string
@@ -684,7 +643,6 @@ root
           buf -- f_out_string_*/&_buf
           cfi -- f_out_string_*/&_cfi
         **
-          allocatable -- f_out_string_**_allocatable
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
@@ -819,16 +777,6 @@ c_function_char_*:
   intent: function
   name: c_function_char_*
   owner: library
-c_function_char_*_allocatable:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '66'
-  intent: function
-  name: c_function_char_*_allocatable
-  owner: library
 c_function_char_*_arg:
   c_arg_decl:
   - char *{c_var}
@@ -927,66 +875,6 @@ c_function_char_*_buf_copy:
   intent: function
   name: c_function_char_*_buf_copy
   owner: library
-c_function_char_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - type_defines
-  c_post_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from char * in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '75'
-  intent: function
-  name: c_function_char_*_cdesc_pointer
-  owner: library
-c_function_char_*_copy:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '66'
-  intent: function
-  name: c_function_char_*_copy
-  owner: library
-c_function_char_*_pointer:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '66'
-  intent: function
-  name: c_function_char_*_pointer
-  owner: library
-c_function_char_*_raw:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '66'
-  intent: function
-  name: c_function_char_*_raw
-  owner: library
 c_function_char_scalar:
   c_arg_decl:
   - char *{c_var}
@@ -1015,19 +903,6 @@ c_function_native_&:
   index: '63'
   intent: function
   name: c_function_native_&
-  owner: library
-c_function_native_&_pointer:
-  c_need_wrapper: true
-  comments:
-  - Return a C pointer as a type(C_PTR).
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '60'
-  intent: function
-  name: c_function_native_&_pointer
   owner: library
 c_function_native_*:
   i_module:
@@ -1058,19 +933,6 @@ c_function_native_*_caller:
   index: '63'
   intent: function
   name: c_function_native_*_caller
-  owner: library
-c_function_native_*_pointer:
-  c_need_wrapper: true
-  comments:
-  - Return a C pointer as a type(C_PTR).
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '60'
-  intent: function
-  name: c_function_native_*_pointer
   owner: library
 c_function_native_*_scalar:
   i_module:
@@ -1426,87 +1288,6 @@ c_function_string_&_buf_copy:
   intent: function
   name: c_function_string_&_buf_copy
   owner: library
-c_function_string_&_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_&_cdesc_pointer
-  owner: library
-c_function_string_&_cdesc_pointer_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_&_cdesc_pointer_caller
-  owner: library
-c_function_string_&_cdesc_pointer_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_&_cdesc_pointer_library
-  owner: library
 c_function_string_&_copy:
   c_return:
   - return {c_var};
@@ -1573,87 +1354,6 @@ c_function_string_*_caller:
   index: '83'
   intent: function
   name: c_function_string_*_caller
-  owner: library
-c_function_string_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_*_cdesc_pointer
-  owner: library
-c_function_string_*_cdesc_pointer_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_*_cdesc_pointer_caller
-  owner: library
-c_function_string_*_cdesc_pointer_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_string_*_cdesc_pointer_library
   owner: library
 c_function_string_*_copy:
   c_return:
@@ -3086,37 +2786,6 @@ c_out_native_*&:
   intent: out
   name: c_out_native_*&
   owner: library
-c_out_native_*&_cdesc_pointer:
-  c_arg_call:
-  - '{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '48'
-  intent: out
-  name: c_out_native_*&_cdesc_pointer
-  owner: library
 c_out_native_**:
   index: '51'
   intent: out
@@ -3126,80 +2795,6 @@ c_out_native_***:
   index: '39'
   intent: out
   name: c_out_native_***
-  owner: library
-c_out_native_**_cdesc_allocatable:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_helper:
-  - array_context
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  - capsule
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Allocate Fortran native array for argument
-  - then fill from cdesc using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
-  - Release memory from capsule.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  - '{i_var_capsule}'
-  i_import:
-  - '{F_array_type}'
-  - '{F_capsule_data_type}'
-  index: '49'
-  intent: out
-  name: c_out_native_**_cdesc_allocatable
-  owner: library
-c_out_native_**_cdesc_pointer:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '50'
-  intent: out
-  name: c_out_native_**_cdesc_pointer
   owner: library
 c_out_native_**_raw:
   index: '51'
@@ -3305,59 +2900,6 @@ c_out_string_**:
   name: c_out_string_**
   notimplemented: true
   owner: library
-c_out_string_**_allocatable:
-  index: '162'
-  intent: out
-  name: c_out_string_**_allocatable
-  notimplemented: true
-  owner: library
-c_out_string_**_cdesc_allocatable:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_helper:
-  - array_context
-  - array_string_allocatable
-  - array_string_out_len
-  c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
-  - if ({c_char_len} > 0) {{+
-  - '{c_var_cdesc}->elem_len = {c_char_len};'
-  - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
-  - -}}
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  c_pre_call:
-  - std::string *{cxx_var};
-  c_temps:
-  - cdesc
-  - capsule
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
-  - Allocate Fortran array from cdesc.
-  - Allocate a vector<string> variable.
-  - Assign to std::string pointer from C++ function.
-  - Copy into Fortran allocated memory.
-  - Assign to capsule in C wrapper.
-  - Release memory from capsule.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  - '{i_var_capsule}'
-  i_import:
-  - '{F_array_type}'
-  - '{F_capsule_data_type}'
-  index: '161'
-  intent: out
-  name: c_out_string_**_cdesc_allocatable
-  owner: library
 c_out_string_**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
@@ -3419,39 +2961,6 @@ c_out_struct_*:
   index: '121'
   intent: out
   name: c_out_struct_*
-  owner: library
-c_out_vector_&_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '108'
-  intent: out
-  name: c_out_vector_&_cdesc_allocatable_targ_native_scalar
   owner: library
 c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   c_arg_call:
@@ -3557,39 +3066,6 @@ c_out_vector_&_cdesc_targ_string_scalar:
   index: '103'
   intent: out
   name: c_out_vector_&_cdesc_targ_string_scalar
-  owner: library
-c_out_vector_*_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '108'
-  intent: out
-  name: c_out_vector_*_cdesc_allocatable_targ_native_scalar
   owner: library
 c_out_vector_*_cdesc_targ_native_scalar:
   c_arg_decl:
@@ -3720,7 +3196,7 @@ c_subroutine:
   name: c_subroutine
   owner: library
 c_test:
-  index: '168'
+  index: '167'
   intent: test
   lang_c:
     field2:
@@ -4756,7 +4232,7 @@ f_function_native_*_cfi_allocatable:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '166'
+  index: '165'
   intent: function
   name: f_function_native_*_cfi_allocatable
   owner: library
@@ -4804,7 +4280,7 @@ f_function_native_*_cfi_pointer:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '167'
+  index: '166'
   intent: function
   name: f_function_native_*_cfi_pointer
   owner: library
@@ -5351,30 +4827,6 @@ f_function_shadow_scalar_capptr_targ_native_scalar:
   intent: function
   name: f_function_shadow_scalar_capptr_targ_native_scalar
   owner: caller
-f_function_string_&:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_&
-  owner: library
-f_function_string_&_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_&_allocatable
-  owner: library
 f_function_string_&_buf:
   c_arg_decl:
   - char *{c_var}
@@ -6164,66 +5616,6 @@ f_function_string_&_cfi_pointer_library:
   intent: function
   name: f_function_string_&_cfi_pointer_library
   owner: library
-f_function_string_&_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_&_copy
-  owner: library
-f_function_string_*:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*
-  owner: library
-f_function_string_*_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_allocatable
-  owner: library
-f_function_string_*_allocatable_caller:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_allocatable_caller
-  owner: library
-f_function_string_*_allocatable_library:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_allocatable_library
-  owner: library
 f_function_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -6912,66 +6304,6 @@ f_function_string_*_cfi_pointer_library:
   index: '151'
   intent: function
   name: f_function_string_*_cfi_pointer_library
-  owner: library
-f_function_string_*_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_copy
-  owner: library
-f_function_string_*_pointer:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_pointer
-  owner: library
-f_function_string_*_pointer_caller:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_pointer_caller
-  owner: library
-f_function_string_*_pointer_library:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_*_pointer_library
-  owner: library
-f_function_string_scalar:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '83'
-  intent: function
-  name: f_function_string_scalar
   owner: library
 f_function_string_scalar_buf:
   c_arg_decl:
@@ -10465,20 +9797,10 @@ f_out_native_*&_cdesc_pointer:
   intent: out
   name: f_out_native_*&_cdesc_pointer
   owner: library
-f_out_native_*&_pointer:
-  index: '39'
-  intent: out
-  name: f_out_native_*&_pointer
-  owner: library
 f_out_native_***:
   index: '39'
   intent: out
   name: f_out_native_***
-  owner: library
-f_out_native_**_allocatable:
-  index: '39'
-  intent: out
-  name: f_out_native_**_allocatable
   owner: library
 f_out_native_**_cdesc_allocatable:
   c_arg_call:
@@ -10624,7 +9946,7 @@ f_out_native_**_cfi_allocatable:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '164'
+  index: '163'
   intent: out
   name: f_out_native_**_cfi_allocatable
   owner: library
@@ -10665,14 +9987,9 @@ f_out_native_**_cfi_pointer:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '165'
+  index: '164'
   intent: out
   name: f_out_native_**_cfi_pointer
-  owner: library
-f_out_native_**_pointer:
-  index: '39'
-  intent: out
-  name: f_out_native_**_pointer
   owner: library
 f_out_native_**_raw:
   f_arg_decl:
@@ -10727,7 +10044,7 @@ f_out_native_*_cdesc:
   name: f_out_native_*_cdesc
   owner: library
 f_out_native_*_cfi_allocatable:
-  index: '163'
+  index: '162'
   intent: out
   name: f_out_native_*_cfi_allocatable
   owner: library
@@ -10827,12 +10144,6 @@ f_out_string_*:
   index: '78'
   intent: out
   name: f_out_string_*
-  owner: library
-f_out_string_**_allocatable:
-  index: '162'
-  intent: out
-  name: f_out_string_**_allocatable
-  notimplemented: true
   owner: library
 f_out_string_**_cdesc_allocatable:
   c_arg_call:
@@ -11691,7 +11002,7 @@ f_subroutine:
   name: f_subroutine
   owner: library
 f_test:
-  index: '169'
+  index: '168'
   intent: test
   name: f_test
   owner: library
