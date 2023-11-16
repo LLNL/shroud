@@ -108,7 +108,7 @@ class FillMeta(object):
             self.set_arg_intent(node, arg, meta)
             if wlang == "f":
                 self.set_arg_deref(arg, meta)
-                self.set_arg_api(arg, meta)
+                self.set_arg_api(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
             
         # --- End loop over function parameters
@@ -336,24 +336,43 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
-    def set_arg_api(self, arg, meta):
+    def set_arg_api(self, node, arg, meta):
         """
-        Based on other meta attrs: 
+        Based on other meta attrs: deref
         """
         declarator = arg.declarator
         ntypemap = arg.typemap
-        api = declarator.attrs["api"]
+        attrs = declarator.attrs
+        api = attrs["api"]
 
         # XXX - from check_common_attrs
         if api:
             meta["api"] = api
 
         # arg_to_buffer
-        has_buf_arg = None
         if meta["api"]:
             # API explicitly set by user.
-            pass
-        elif ntypemap.sgroup == "string":
+            return
+
+        if node.options.F_CFI:
+            cfi_arg = False
+            if meta["assumed-rank"]:
+                cfi_arg = True
+            elif attrs["rank"]:
+                cfi_arg = True
+            elif ntypemap.sgroup == "string":
+                cfi_arg = True
+            elif ntypemap.sgroup == "char":
+                if declarator.is_indirect():
+                    cfi_arg = True
+            elif meta["deref"] in ["allocatable", "pointer"]:
+                cfi_arg = True
+            if cfi_arg:
+                meta["api"] = "cfi"
+                return
+        
+        has_buf_arg = None
+        if ntypemap.sgroup == "string":
             if meta["deref"] in ["allocatable", "pointer", "copy"]:
                 has_buf_arg = "cdesc"
                 # XXX - this is not tested

@@ -785,14 +785,14 @@
                         },
                         "dest": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -1079,7 +1079,7 @@
                         },
                         "s": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_cfi"
@@ -5041,7 +5041,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_cfi"
@@ -5296,7 +5296,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_&_cfi"
@@ -5549,7 +5549,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_cfi"
@@ -5799,7 +5799,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_*_cfi"
@@ -6048,7 +6048,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_cfi"
@@ -6304,7 +6304,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_cfi"
@@ -6626,7 +6626,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_cfi"
@@ -6987,7 +6987,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_cfi"
@@ -7280,7 +7280,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_scalar_cfi"
@@ -7731,7 +7731,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "out"
                             },
@@ -8115,7 +8115,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -8503,7 +8503,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -8848,7 +8848,7 @@
                         },
                         "name": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -9105,7 +9105,7 @@
                         },
                         "name": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
@@ -9720,14 +9720,14 @@
                         },
                         "dest": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -10094,14 +10094,14 @@
                         },
                         "dest": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_cfi"
                         },
                         "src": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -10463,13 +10463,14 @@
                         },
                         "count": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
                         "name": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_cfi"
@@ -10779,7 +10780,7 @@
                         },
                         "src": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -11427,7 +11428,7 @@
                         },
                         "in": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"

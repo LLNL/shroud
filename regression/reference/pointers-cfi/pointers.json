@@ -1132,6 +1132,7 @@
                         },
                         "in": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -1616,6 +1617,7 @@
                         },
                         "in": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -2829,6 +2831,7 @@
                         },
                         "values": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -3367,6 +3370,7 @@
                         },
                         "array": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*_cfi"
@@ -3706,6 +3710,7 @@
                         },
                         "x": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*_cfi"
@@ -4067,6 +4072,7 @@
                         },
                         "arr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -4409,7 +4415,7 @@
                         },
                         "names": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_**_cfi"
@@ -4952,7 +4958,7 @@
                         },
                         "nitems": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5229,7 +5235,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5589,7 +5595,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5908,7 +5914,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6177,7 +6183,7 @@
                         },
                         "nitems": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6450,7 +6456,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6806,7 +6812,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -8338,7 +8344,7 @@
                         },
                         "count": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -9321,6 +9327,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_**_cfi"
@@ -10712,7 +10719,7 @@
                         },
                         "name": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"

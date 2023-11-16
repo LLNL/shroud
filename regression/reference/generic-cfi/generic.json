@@ -2904,6 +2904,7 @@
                         },
                         "to": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*_cfi"
@@ -3289,6 +3290,7 @@
                         },
                         "from": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -3307,6 +3309,7 @@
                         },
                         "to": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*_cfi"
@@ -3981,6 +3984,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -4309,6 +4313,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -5049,6 +5054,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -5432,6 +5438,7 @@
                         },
                         "addr": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -6472,7 +6479,7 @@
                         },
                         "addr": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -6842,7 +6849,7 @@
                         },
                         "addr": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
