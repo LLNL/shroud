@@ -890,6 +890,8 @@ class GenFunctions(object):
         meta["api"] = api
         meta = metaattrs.fetch_func_metaattrs(fcn, "f")
         meta["intent"] = "getter"
+        meta["deref"] = deref
+        meta["api"] = api
         if is_struct:
             params = fcn.ast.declarator.params
             meta = params[0].declarator.metaattrs
