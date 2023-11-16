@@ -205,11 +205,12 @@ class FillFormat(object):
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
         self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt)
 
-    def fill_interface_result(self, cls, node, result_stmt, fmt_result):
+    def fill_interface_result(self, cls, node, bind, fmt_result):
         ast = node.ast
         declarator = ast.declarator
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
+        result_stmt = bind.stmt
 
         if subprogram == "subroutine":
             fmt_result.F_C_subprogram = "subroutine"
@@ -221,7 +222,7 @@ class FillFormat(object):
             fmt_result.f_intent = "OUT"
             fmt_result.c_type = result_typemap.c_type  # c_return_type
             fmt_result.f_type = result_typemap.f_type
-            self.set_fmt_fields_iface(node, ast, fmt_result,
+            self.set_fmt_fields_iface(node, ast, bind, fmt_result,
                                       fmt_result.F_result, result_typemap,
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
@@ -242,22 +243,24 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c", "i")
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
-    def fill_interface_arg(self, cls, node, arg, arg_stmt, fmt_arg):
+    def fill_interface_arg(self, cls, node, arg, bind, fmt_arg):
         declarator = arg.declarator
         arg_name = declarator.user_name
+        arg_stmt = bind.stmt
 
         arg_typemap, junk = statements.lookup_c_statements(arg)
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
-        self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
+        self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)
         self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
         
-    def fill_fortran_result(self, cls, node, result_stmt, fmt_result):
+    def fill_fortran_result(self, cls, node, bind, fmt_result):
         ast = node.ast
         declarator = ast.declarator
         result_typemap = ast.typemap
+        result_stmt = bind.stmt
         C_node = node.C_node  # C wrapper to call.
 
         subprogram = declarator.get_subprogram()
@@ -273,19 +276,20 @@ class FillFormat(object):
         fmt_result.F_subprogram = subprogram
         
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
-        self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, fmt_result,
+        self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind, fmt_result,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
         self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
-    def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, arg_stmt, fmt_arg):
+    def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind, fmt_arg):
         arg_name = f_arg.declarator.user_name
+        arg_stmt = bind.stmt
 
         fmt_arg.f_var = arg_name
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
-        arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, fmt_arg)
+        arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
         self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
@@ -412,7 +416,7 @@ class FillFormat(object):
         if attrs["len"]:
             fmt.c_char_len = attrs["len"];
                 
-    def set_fmt_fields_iface(self, fcn, ast, fmt, rootname,
+    def set_fmt_fields_iface(self, fcn, ast, bind, fmt, rootname,
                              ntypemap, subprogram=None):
         """Set format fields for interface.
 
@@ -431,7 +435,7 @@ class FillFormat(object):
             "function" or "subroutine" or None
         """
         attrs = ast.declarator.attrs
-        meta = ast.declarator.metaattrs
+        meta = bind.meta
 
         if subprogram == "subroutine":
             pass
@@ -454,7 +458,7 @@ class FillFormat(object):
         if ntypemap.f_module_name:
             fmt.f_type_module = ntypemap.f_module_name
 
-    def set_fmt_fields_f(self, cls, fcn, f_ast, c_ast, fmt,
+    def set_fmt_fields_f(self, cls, fcn, f_ast, c_ast, bind, fmt,
                          subprogram=None,
                          ntypemap=None):
         """
@@ -475,7 +479,6 @@ class FillFormat(object):
         ntypemap : typemap.Typemap
         """
         c_attrs = c_ast.declarator.attrs
-        c_meta = c_ast.declarator.metaattrs
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
@@ -491,7 +494,7 @@ class FillFormat(object):
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ','.join([str(targ) for targ in c_ast.template_arguments])
         if subprogram != "subroutine":
-            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
+            self.set_fmt_fields_iface(fcn, c_ast, bind, fmt, rootname,
                                       ntypemap, subprogram)
             if c_attrs["pass"]:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
