@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Instead set api(this) and let statements do the right thing.
 - Removed warnings in ``arg_to_buffer`` and ``arg_to_CFI``.
   Replaced with *notimplemented* statement groups.
+- Removed options F_create_bufferify_function and F_string_len_trim.
 
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
