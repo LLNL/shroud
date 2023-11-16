@@ -22,6 +22,7 @@ from . import statements
 from . import typemap
 from . import whelpers
 from . import util
+from .metaattrs import get_func_bind, get_arg_bind
 from .util import append_format, wformat
 
 default_owner = "library"
@@ -915,11 +916,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         fmtlang = "fmt" + wlang
 
         self.log.write("C {0} {1.declgen}\n".format(
-            wlang, node)) #, self.get_metaattrs(node.ast)
+            wlang, node))
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        bind = node._bind[wlang]
 
         if node.C_force_wrapper:
             need_wrapper = True
@@ -947,7 +947,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
         r_attrs = declarator.attrs
-        r_meta = declarator.metaattrs
+        r_bind = get_func_bind(node, wlang)
+        r_meta = r_bind.meta
         result_typemap = ast.typemap
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
@@ -961,14 +962,13 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
-        bind_arg = bind["+result"]
-        result_stmt = bind_arg.stmt
+        result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
-        if bind_arg.fstmts:
-            stmt_indexes.append(bind_arg.fstmts)
+        if r_bind.fstmts:
+            stmt_indexes.append(r_bind.fstmts)
         any_cfi = False
-        if bind_arg.meta["api"] == 'cfi':
+        if r_meta["api"] == 'cfi':
             any_cfi = True
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
@@ -1055,10 +1055,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg = fmtargs[arg_name][fmtlang]
+            arg_bind = get_arg_bind(node, arg, wlang)
             c_attrs = declarator.attrs
-            c_meta = declarator.metaattrs
-            meta2 = bind[arg_name].meta
-            if meta2["api"] == 'cfi':
+            c_meta = arg_bind.meta
+            if c_meta["api"] == 'cfi':
                 any_cfi = True
 
             arg_typemap = arg.typemap  # XXX - look up vector
@@ -1067,9 +1067,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     
             arg_typemap, junk = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
-            hidden = meta2["hidden"]
+            hidden = c_meta["hidden"]
 
-            arg_stmt = bind[arg_name].stmt
+            arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg)
@@ -1282,7 +1282,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             if wlang == "f":
                 if node.C_signature != signature:
-                    mmm = node._bind["f"]["+result"].meta
+                    mmm = get_func_bind(node, "f").meta
                     if mmm["intent"] not in ["getter", "setter"]:
                         if any_cfi:
                             fmt_result.f_c_suffix = fmt_func.C_cfi_suffix
