@@ -47,6 +47,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove *f_imports* from statements.
 - No longer create a new function for return_this.
   Instead set api(this) and let statements do the right thing.
+- Removed warnings in ``arg_to_buffer`` and ``arg_to_CFI``.
+  Replaced with *notimplemented* statement groups.
 
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.

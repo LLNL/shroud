@@ -1629,22 +1629,6 @@ class GenFunctions(object):
         # shadow classes have not been added yet.
         # Only care about string, vector here.
         result_is_ptr = declarator.is_indirect()
-        if (
-            result_typemap
-            and result_typemap.base in ["string", "vector"]
-            and result_typemap.name != "char"
-            and not result_is_ptr
-        ):
-            node.wrap.c = False
-            #            node.wrap.fortran = False
-            self.config.log.write(
-                "Skipping {}, unable to create C wrapper "
-                "for function returning {} instance"
-                " (must return a pointer or reference)."
-                " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, declarator.user_name
-                )
-            )
         
         cfi_args = {}
         for arg in ast.declarator.params:
