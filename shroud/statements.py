@@ -2294,7 +2294,10 @@ fc_statements = [
         notimplemented=True,
         comments=[
             "Cannot return a char array by value."
-            # Can return a char * but then there are lifetime issues.
+            # If a C++ function returns a std::string instance,
+            # the default wrapper will not compile since the wrapper
+            # will be declared as char. It will also want to return the
+            # c_str of a stack variable. Warn and turn off the wrapper.
         ],
     ),
 
@@ -2478,6 +2481,14 @@ fc_statements = [
     ########################################
     # vector
     # Specialize for std::vector<native>
+    dict(
+        name="c_function_vector_scalar_targ_native_scalar",
+        notimplemented=True,
+        comments=[
+            "Cannot return a std::vector<native> by value."
+            # Can return a pointer but then there would be lifetime issues.
+        ],
+    ),
     dict(
         # f_in_vector_scalar_buf_targ_native_scalar
         # f_in_vector_*_buf_targ_native_scalar

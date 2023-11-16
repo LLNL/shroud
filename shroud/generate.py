@@ -1753,33 +1753,12 @@ class GenFunctions(object):
         if node.wrap.fortran is False:
             return
 
-        # If a C++ function returns a std::string instance,
-        # the default wrapper will not compile since the wrapper
-        # will be declared as char. It will also want to return the
-        # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node.ast
         declarator = ast.declarator
         result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string, vector here.
         result_is_ptr = ast.declarator.is_indirect()
-        if (
-            result_typemap
-            and result_typemap.base == "vector"
-            and result_typemap.name != "char"
-            and not result_is_ptr
-        ):
-            node.wrap.c = False
-            #            node.wrap.fortran = False
-            self.config.log.write(
-                "Skipping {}, unable to create C wrapper "
-                "for function returning {} instance"
-                " (must return a pointer or reference)."
-                " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, declarator.user_name
-                )
-            )
-
         if node.wrap.fortran is False:
             # The buffer function is intended to be called by Fortran.
             # No Fortran, no need for buffer function.

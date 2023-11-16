@@ -382,6 +382,28 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
     // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 
+#if 0
+! Not Implemented
+/**
+ * Implement iota function.
+ * Return a vector as an ALLOCATABLE array.
+ * Copy results into the new array.
+ */
+// ----------------------------------------
+// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Statement: c_function_vector_scalar_targ_native_scalar
+// ----------------------------------------
+// Argument:  int n +value
+// Statement: c_in_native_scalar
+int VEC_ReturnVectorAlloc(int n)
+{
+    // splicer begin function.ReturnVectorAlloc
+    int SHC_rv = ReturnVectorAlloc(n);
+    return SHC_rv;
+    // splicer end function.ReturnVectorAlloc
+}
+#endif
+
 /**
  * Implement iota function.
  * Return a vector as an ALLOCATABLE array.
