@@ -145,17 +145,6 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrScalar +deref(scalar)
-        ! Statement: f_function_native_*_scalar
-        function return_int_ptr_scalar() &
-                result(SHT_rv) &
-                bind(C, name="OWN_ReturnIntPtrScalar_bufferify")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT) :: SHT_rv
-        end function return_int_ptr_scalar
-
-        ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrScalar +deref(scalar)
         ! Statement: c_function_native_*
         function c_return_int_ptr_scalar() &
                 result(SHT_rv) &
@@ -166,15 +155,15 @@ module ownership_mod
         end function c_return_int_ptr_scalar
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
-        ! Statement: f_function_native_*_pointer
-        function c_return_int_ptr_pointer_bufferify() &
+        ! Function:  int * ReturnIntPtrScalar +deref(scalar)
+        ! Statement: f_function_native_*_scalar
+        function return_int_ptr_scalar() &
                 result(SHT_rv) &
-                bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
-            use iso_c_binding, only : C_PTR
+                bind(C, name="OWN_ReturnIntPtrScalar_bufferify")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_pointer_bufferify
+            integer(C_INT) :: SHT_rv
+        end function return_int_ptr_scalar
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
@@ -186,6 +175,17 @@ module ownership_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_pointer
+
+        ! ----------------------------------------
+        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
+        ! Statement: f_function_native_*_pointer
+        function c_return_int_ptr_pointer_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_pointer_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)

@@ -711,14 +711,14 @@ rv = .false.
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
             wrap = node.wrap
-            if wrap.fortran:
-                self.log.write("C-interface f {0.declgen}\n".format(
-                    node)) #, self.get_metaattrs(node.ast)))
-                self.wrap_function_interface("f", cls, node, fileinfo)
             if wrap.c and wrap.signature_c != wrap.signature_f:
                 self.log.write("C-interface c {0.declgen}\n".format(
                     node)) #, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface("c", cls, node, fileinfo)
+            if wrap.fortran:
+                self.log.write("C-interface f {0.declgen}\n".format(
+                    node)) #, self.get_metaattrs(node.ast)))
+                self.wrap_function_interface("f", cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):

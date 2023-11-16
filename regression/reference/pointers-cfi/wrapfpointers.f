@@ -1175,21 +1175,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: f_function_native_*_scalar
-    ! start return_int_scalar
-    interface
-        function return_int_scalar() &
-                result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar_bufferify")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT) :: SHT_rv
-        end function return_int_scalar
-    end interface
-    ! end return_int_scalar
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntScalar +deref(scalar)
     ! Statement: c_function_native_*
     ! start c_return_int_scalar
     interface
@@ -1202,6 +1187,21 @@ module pointers_mod
         end function c_return_int_scalar
     end interface
     ! end c_return_int_scalar
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntScalar +deref(scalar)
+    ! Statement: f_function_native_*_scalar
+    ! start return_int_scalar
+    interface
+        function return_int_scalar() &
+                result(SHT_rv) &
+                bind(C, name="POI_returnIntScalar_bufferify")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function return_int_scalar
+    end interface
+    ! end return_int_scalar
 
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)

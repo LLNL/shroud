@@ -113,8 +113,8 @@ Fortran int & at(size_type n +value)
 C-interface f vector(void)
 C-interface f ~vector(void)
 C-interface f void push_back(const int & value +intent(in))
-C-interface f int & at(size_type n +value)
 C-interface c int & at(size_type n +value)
+C-interface f int & at(size_type n +value)
 class vector<double>
 typedef size_type
 Fortran vector(void)
@@ -124,8 +124,8 @@ Fortran double & at(size_type n +value)
 C-interface f vector(void)
 C-interface f ~vector(void)
 C-interface f void push_back(const double & value +intent(in))
-C-interface f double & at(size_type n +value)
 C-interface c double & at(size_type n +value)
+C-interface f double & at(size_type n +value)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f

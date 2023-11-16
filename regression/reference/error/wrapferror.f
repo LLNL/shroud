@@ -146,20 +146,20 @@ module error_mod
 
         ! ----------------------------------------
         ! Function:  void BadFstatements
+        ! Statement: c_subroutine
+        subroutine c_bad_fstatements() &
+                bind(C, name="ERR_BadFstatements")
+            implicit none
+        end subroutine c_bad_fstatements
+
+        ! ----------------------------------------
+        ! Function:  void BadFstatements
         ! Statement: f_subroutine
         function c_bad_fstatements_bufferify() &
                 result(SHT_rv) &
                 bind(C, name="ERR_BadFstatements_bufferify")
             implicit none
         end function c_bad_fstatements_bufferify
-
-        ! ----------------------------------------
-        ! Function:  void BadFstatements
-        ! Statement: c_subroutine
-        subroutine c_bad_fstatements() &
-                bind(C, name="ERR_BadFstatements")
-            implicit none
-        end subroutine c_bad_fstatements
 
         ! ----------------------------------------
         ! Function:  void AssumedRank

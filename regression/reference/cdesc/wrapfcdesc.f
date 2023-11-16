@@ -73,19 +73,6 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void Rank2In
-        ! Statement: f_subroutine
-        ! ----------------------------------------
-        ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-        ! Statement: f_in_native_*_cdesc
-        subroutine c_rank2_in_bufferify(SHT_arg_cdesc) &
-                bind(C, name="CDE_Rank2In_bufferify")
-            import :: CDE_SHROUD_array
-            implicit none
-            type(CDE_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
-        end subroutine c_rank2_in_bufferify
-
-        ! ----------------------------------------
-        ! Function:  void Rank2In
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
@@ -96,6 +83,19 @@ module cdesc_mod
             implicit none
             integer(C_INT), intent(IN) :: arg(*)
         end subroutine c_rank2_in
+
+        ! ----------------------------------------
+        ! Function:  void Rank2In
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
+        ! Statement: f_in_native_*_cdesc
+        subroutine c_rank2_in_bufferify(SHT_arg_cdesc) &
+                bind(C, name="CDE_Rank2In_bufferify")
+            import :: CDE_SHROUD_array
+            implicit none
+            type(CDE_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
+        end subroutine c_rank2_in_bufferify
 
         ! ----------------------------------------
         ! Function:  void GetScalar1

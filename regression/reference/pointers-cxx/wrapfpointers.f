@@ -955,21 +955,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_scalar_bufferify
-    interface
-        function c_return_int_ptr_to_scalar_bufferify() &
-                result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToScalar_bufferify")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_scalar_bufferify
-    end interface
-    ! end c_return_int_ptr_to_scalar_bufferify
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntPtrToScalar
     ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_scalar
     interface
@@ -982,6 +967,21 @@ module pointers_mod
         end function c_return_int_ptr_to_scalar
     end interface
     ! end c_return_int_ptr_to_scalar
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntPtrToScalar
+    ! Statement: f_function_native_*_pointer
+    ! start c_return_int_ptr_to_scalar_bufferify
+    interface
+        function c_return_int_ptr_to_scalar_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="POI_returnIntPtrToScalar_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_scalar_bufferify
+    end interface
+    ! end c_return_int_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -1016,21 +1016,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_const_scalar_bufferify
-    interface
-        function c_return_int_ptr_to_const_scalar_bufferify() &
-                result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToConstScalar_bufferify")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_const_scalar_bufferify
-    end interface
-    ! end c_return_int_ptr_to_const_scalar_bufferify
-
-    ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToConstScalar
     ! Statement: c_function_native_*
     ! start c_return_int_ptr_to_const_scalar
     interface
@@ -1043,6 +1028,21 @@ module pointers_mod
         end function c_return_int_ptr_to_const_scalar
     end interface
     ! end c_return_int_ptr_to_const_scalar
+
+    ! ----------------------------------------
+    ! Function:  const int * returnIntPtrToConstScalar
+    ! Statement: f_function_native_*_pointer
+    ! start c_return_int_ptr_to_const_scalar_bufferify
+    interface
+        function c_return_int_ptr_to_const_scalar_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="POI_returnIntPtrToConstScalar_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_const_scalar_bufferify
+    end interface
+    ! end c_return_int_ptr_to_const_scalar_bufferify
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
@@ -1077,21 +1077,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: f_function_native_*_scalar
-    ! start return_int_scalar
-    interface
-        function return_int_scalar() &
-                result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar_bufferify")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT) :: SHT_rv
-        end function return_int_scalar
-    end interface
-    ! end return_int_scalar
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntScalar +deref(scalar)
     ! Statement: c_function_native_*
     ! start c_return_int_scalar
     interface
@@ -1104,6 +1089,21 @@ module pointers_mod
         end function c_return_int_scalar
     end interface
     ! end c_return_int_scalar
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntScalar +deref(scalar)
+    ! Statement: f_function_native_*_scalar
+    ! start return_int_scalar
+    interface
+        function return_int_scalar() &
+                result(SHT_rv) &
+                bind(C, name="POI_returnIntScalar_bufferify")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function return_int_scalar
+    end interface
+    ! end return_int_scalar
 
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
