@@ -91,7 +91,7 @@ class FillFormat(object):
         fmt_result.stmt_name = result_stmt.name
         if stmt0 is not result_stmt:
             bind_result.fstmts = wlang
-        stmt_indexes = [result_stmt.index]
+        func_cursor.stmt = None
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -107,15 +107,12 @@ class FillFormat(object):
             else:
                 arg_stmt = statements.lookup_f_arg_stmt(node, arg)
             func_cursor.stmt = arg_stmt
-            stmt_indexes.append(arg_stmt.index)
             fmt_arg.stmt_name = arg_stmt.name
             bind_arg.stmt = arg_stmt
 
         # --- End loop over function parameters
         func_cursor.arg = None
-        func_cursor.stmt = result_stmt
-        signature = ":".join(stmt_indexes)
-#        fmt_result.signature = signature
+        func_cursor.stmt = None
             
         cursor.pop_node(node)
 
