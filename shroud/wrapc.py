@@ -949,9 +949,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         r_attrs = declarator.attrs
         r_meta = declarator.metaattrs
         result_typemap = ast.typemap
-        any_cfi = False
-        if r_meta["api"] == 'cfi':
-            any_cfi = True
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
@@ -970,6 +967,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         stmt_indexes.append(result_stmt.index)
         if bind_arg.fstmts:
             stmt_indexes.append(bind_arg.fstmts)
+        any_cfi = False
+        if bind_arg.meta["api"] == 'cfi':
+            any_cfi = True
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
@@ -1058,7 +1058,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             c_attrs = declarator.attrs
             c_meta = declarator.metaattrs
             meta2 = bind[arg_name].meta
-            if c_meta["api"] == 'cfi':
+            if meta2["api"] == 'cfi':
                 any_cfi = True
 
             arg_typemap = arg.typemap  # XXX - look up vector

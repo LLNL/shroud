@@ -361,6 +361,7 @@ class FillMeta(object):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
+        shared = declarator.metaattrs
         api = attrs["api"]
 
         # XXX - from check_common_attrs
@@ -374,7 +375,7 @@ class FillMeta(object):
 
         if node.options.F_CFI:
             cfi_arg = False
-            if meta["assumed-rank"]:
+            if shared["assumed-rank"]:
                 cfi_arg = True
             elif attrs["rank"]:
                 cfi_arg = True

@@ -1780,6 +1780,7 @@
                         },
                         "values": {
                             "meta": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
