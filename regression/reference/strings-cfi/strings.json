@@ -1278,7 +1278,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -1487,7 +1487,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -1697,7 +1697,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "arg",
                                 "intent": "function"
                             },
@@ -2021,7 +2021,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
@@ -2212,7 +2212,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2411,7 +2411,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -2611,7 +2611,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "arg",
                                 "intent": "function"
                             },
@@ -2784,7 +2784,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2976,7 +2976,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -3186,7 +3186,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -3397,7 +3397,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "arg",
                                 "intent": "function"
                             },
@@ -3605,7 +3605,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -3790,7 +3790,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4013,7 +4013,7 @@
                         "+result": {
                             "fstmts": "f",
                             "meta": {
-                                "api": "buf",
+                                "api": "cfi",
                                 "deref": "copy",
                                 "intent": "function"
                             },
@@ -4204,7 +4204,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4398,7 +4398,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4594,7 +4594,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -4788,7 +4788,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "function"
                             },

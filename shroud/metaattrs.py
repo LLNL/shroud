@@ -295,22 +295,40 @@ class FillMeta(object):
 
         if wlang == "c":
             return
+        if meta["api"]:
+            return
+        if meta["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            return
 
         # arg_to_buffer
         fmt_func = node.fmtdict
-        need_buf_result   = None
 
         result_is_ptr = ast.declarator.is_indirect()
-        result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
 
         # Check if result needs to be an argument.
-        if meta["api"]:
-            pass
-        elif meta["deref"] == "raw":
-            # No bufferify required for raw pointer result.
-            pass
-        elif ntypemap.sgroup == "string":
+
+        if node.options.F_CFI:
+            result_as_arg = ""  # Only applies to string functions
+            cfi_result = False
+            if ntypemap.sgroup == "string":
+                cfi_result   = "cfi"
+                result_as_arg = fmt_func.F_string_result_as_arg
+            elif ntypemap.sgroup == "char" and result_is_ptr:
+                cfi_result   = "cfi"
+                result_as_arg = fmt_func.F_string_result_as_arg
+            elif meta["deref"] in ["allocatable", "pointer"]:
+                cfi_result   = "cfi"
+            if cfi_result:
+                if result_as_arg:
+                    meta["deref"] = "arg"
+                meta["api"] = "cfi"
+                return
+        
+        result_as_arg = ""  # Only applies to string functions
+        need_buf_result = None
+        if ntypemap.sgroup == "string":
             if meta["deref"] in ["allocatable", "pointer", "scalar"]:
                 need_buf_result = "cdesc"
             else:
