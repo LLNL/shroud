@@ -2490,6 +2490,23 @@ fc_statements = [
         ],
     ),
     dict(
+        name="c_shared_vector_argument",
+        notimplemented=True,
+        comments=[
+            "Need to know the length of the vector from C",
+        ],
+        alias=[
+            "c_in_vector_&_targ_native_scalar",
+            "c_out_vector_&_targ_native_scalar",
+            "c_inout_vector_&_targ_native_scalar",
+
+            "c_in_vector_&_targ_native_*",
+
+            "c_in_vector_&_targ_string_scalar",
+            "c_out_vector_&_targ_string_scalar",
+        ],
+    ),
+    dict(
         # f_in_vector_scalar_buf_targ_native_scalar
         # f_in_vector_*_buf_targ_native_scalar
         # f_in_vector_&_buf_targ_native_scalar
