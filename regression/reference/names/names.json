@@ -396,7 +396,6 @@
         "functions": [
             {
                 "<FUNCTION>": "getName  4 ****************************************",
-                "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -447,6 +446,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -463,6 +463,21 @@
                             },
                             "stmt": "c_inout_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -477,6 +492,22 @@
                             "F_C_name": "c_get_name",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getName(\tSHT_name_str)",
+                            "C_call_list": "SHT_name_str",
+                            "C_name": "TES_getName_bufferify",
+                            "C_prototype": "char *name,\t int SHT_name_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len",
+                            "F_C_call": "c_get_name_bufferify",
+                            "F_C_name": "c_get_name_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len",
+                            "F_arguments": "name",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name": {
@@ -505,131 +536,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_inout_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "ctor_expr": "name",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "data_var": "SHData_name",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_name",
-                            "size_var": "SHSize_name",
-                            "stmt": "py_inout_char_*",
-                            "value_var": "SHValue_name"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getName",
-                    "F_name_api": "get_name",
-                    "PY_name_impl": "PY_getName",
-                    "function_name": "getName"
-                }
-            },
-            {
-                "<FUNCTION>": "getName  19 ****************************************",
-                "_PTR_C_CXX_index": "4",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 4,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getName",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "len": "worklen",
-                                        "len_trim": "worktrim"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "inout"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
-                "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
-                "helpers": {
-                    "c": [
-                        "char_alloc",
-                        "char_copy",
-                        "char_free"
-                    ]
-                },
-                "name": "getName",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "inout"
-                            },
-                            "stmt": "f_inout_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "getName(\tSHT_name_str)",
-                            "C_call_list": "SHT_name_str",
-                            "C_name": "TES_getName_bufferify",
-                            "C_prototype": "char *name,\t int SHT_name_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_name_len",
-                            "F_C_call": "c_get_name_bufferify",
-                            "F_C_name": "c_get_name_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name,\t SHT_name_len",
-                            "F_arguments": "name",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name": {
                         "fmtf": {
                             "c_addr": "",
                             "c_char_len": "worklen",
@@ -663,6 +569,25 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_inout_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "ctor_expr": "name",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "data_var": "SHData_name",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name",
+                            "stmt": "py_inout_char_*",
+                            "value_var": "SHValue_name"
                         }
                     }
                 },
@@ -672,6 +597,7 @@
                     "F_name_function": "get_name",
                     "F_name_generic": "get_name",
                     "F_name_impl": "get_name",
+                    "PY_name_impl": "PY_getName",
                     "function_name": "getName"
                 }
             },
@@ -1194,7 +1120,6 @@
             },
             {
                 "<FUNCTION>": "function4  9 ****************************************",
-                "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1240,6 +1165,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -1255,6 +1181,21 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "rv": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -1290,6 +1231,44 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "function4(\tARG_rv)",
+                            "C_call_list": "ARG_rv",
+                            "C_name": "YYY_TES_function4_bufferify",
+                            "C_prototype": "char *rv,\t int SHT_rv_len",
+                            "C_return_type": "int",
+                            "F_C_arguments": "rv,\t SHT_rv_len",
+                            "F_C_call": "YYY_TES_function4_bufferify",
+                            "F_C_name": "YYY_TES_function4_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "rv,\t SHT_rv_len",
+                            "F_arguments": "rv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1332,148 +1311,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_string_&"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "const ",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "rv",
-                            "ctor_expr": "SH_rv.data(),\t SH_rv.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": null,
-                            "py_var": "SHPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_in_string_&",
-                            "value_var": "SHValue_rv"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "function4",
-                    "F_name_api": "function4",
-                    "PY_name_impl": "PY_function4",
-                    "function_name": "function4"
-                }
-            },
-            {
-                "<FUNCTION>": "function4  20 ****************************************",
-                "_PTR_C_CXX_index": "9",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "function4",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "rv",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv)",
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "function4",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "rv": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "function4(\tARG_rv)",
-                            "C_call_list": "ARG_rv",
-                            "C_name": "YYY_TES_function4_bufferify",
-                            "C_prototype": "char *rv,\t int SHT_rv_len",
-                            "C_return_type": "int",
-                            "F_C_arguments": "rv,\t SHT_rv_len",
-                            "F_C_call": "YYY_TES_function4_bufferify",
-                            "F_C_name": "YYY_TES_function4_bufferify",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "rv,\t SHT_rv_len",
-                            "F_arguments": "rv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_c_suffix": "_bufferify",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
-                        }
-                    },
-                    "rv": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -1501,6 +1338,25 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_in_string_&_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "const ",
+                            "c_deref": "",
+                            "c_type": "char",
+                            "c_var": "rv",
+                            "ctor_expr": "SH_rv.data(),\t SH_rv.size()",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&rv)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_in_string_&",
+                            "value_var": "SHValue_rv"
                         }
                     }
                 },
@@ -1510,6 +1366,7 @@
                     "F_name_function": "function4",
                     "F_name_generic": "function4",
                     "F_name_impl": "testnames_function4",
+                    "PY_name_impl": "PY_function4",
                     "function_name": "function4"
                 }
             },
@@ -1596,7 +1453,6 @@
             },
             {
                 "<FUNCTION>": "TestMultilineSplicer  11 ****************************************",
-                "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1684,6 +1540,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -1706,6 +1563,27 @@
                             },
                             "stmt": "c_out_native_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_string_&_buf"
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_native_*"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1720,6 +1598,22 @@
                             "F_C_name": "c_test_multiline_splicer",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
+                            "C_call_list": "ARG_name,\t value",
+                            "C_name": "TES_TestMultilineSplicer_bufferify",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t value",
+                            "F_C_call": "c_test_multiline_splicer_bufferify",
+                            "F_C_name": "c_test_multiline_splicer_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name": {
@@ -1745,6 +1639,35 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_inout_string_&"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_helper_char_copy": "ShroudCharCopy",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "c_var_len": "SHT_name_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ARG_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "ARG_name",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name",
+                            "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "i_var": "name",
+                            "i_var_len": "SHT_name_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_inout_string_&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1790,6 +1713,30 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_out_native_*"
                         },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "value",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "value",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "value",
+                            "fc_var": "value",
+                            "i_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_out_native_*"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -1814,213 +1761,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "TestMultilineSplicer",
                     "F_name_api": "test_multiline_splicer",
-                    "PY_name_impl": "PY_TestMultilineSplicer",
-                    "function_name": "TestMultilineSplicer"
-                }
-            },
-            {
-                "<FUNCTION>": "TestMultilineSplicer  21 ****************************************",
-                "_PTR_C_CXX_index": "11",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 11,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "TestMultilineSplicer",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "inout"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
-                "doxygen": {
-                    "description": "Use std::string argument to get bufferified function.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_copy",
-                        "char_len_trim"
-                    ]
-                },
-                "name": "TestMultilineSplicer",
-                "options": {},
-                "splicer": {
-                    "c": [
-                        "// line 1",
-                        "// line 2"
-                    ],
-                    "c_buf": [
-                        "// buf line 1",
-                        "// buf line 2"
-                    ],
-                    "f": [
-                        "! line 1",
-                        "! line 2"
-                    ],
-                    "py": [
-                        "// py line 1",
-                        "// py line 2"
-                    ]
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "inout"
-                            },
-                            "stmt": "f_inout_string_&_buf"
-                        },
-                        "value": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_native_*"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
-                            "C_call_list": "ARG_name,\t value",
-                            "C_name": "TES_TestMultilineSplicer_bufferify",
-                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_name_len,\t value",
-                            "F_C_call": "c_test_multiline_splicer_bufferify",
-                            "F_C_name": "c_test_multiline_splicer_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
-                            "F_arguments": "name,\t value",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_helper_char_copy": "ShroudCharCopy",
-                            "c_helper_char_len_trim": "ShroudCharLenTrim",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "c_var_len": "SHT_name_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ARG_name",
-                            "cxx_type": "std::string",
-                            "cxx_var": "ARG_name",
-                            "f_intent": "INOUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "name",
-                            "f_var_len": "SHT_name_len",
-                            "fc_var": "name",
-                            "i_var": "name",
-                            "i_var_len": "SHT_name_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_buf"
-                        }
-                    },
-                    "value": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "value",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "value",
-                            "cxx_type": "int",
-                            "cxx_var": "value",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "value",
-                            "fc_var": "value",
-                            "i_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "TestMultilineSplicer",
-                    "F_name_api": "test_multiline_splicer",
                     "F_name_function": "test_multiline_splicer",
                     "F_name_generic": "test_multiline_splicer",
                     "F_name_impl": "test_multiline_splicer",
+                    "PY_name_impl": "PY_TestMultilineSplicer",
                     "function_name": "TestMultilineSplicer"
                 }
             },
@@ -4366,7 +4110,7 @@
                 "<NAMESPACE>": "ns1 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "init_ns1  22 ****************************************",
+                        "<FUNCTION>": "init_ns1  19 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5107,7 +4851,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  23 ****************************************",
+                        "<FUNCTION>": "Worker1  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5219,7 +4963,7 @@
                 "<NAMESPACE>": "CAPI2 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  24 ****************************************",
+                        "<FUNCTION>": "Worker1  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

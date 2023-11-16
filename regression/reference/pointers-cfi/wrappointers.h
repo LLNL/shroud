@@ -143,8 +143,6 @@ void POI_updateVoidPtr(void **addr);
 
 int POI_VoidPtrArray(void **addr);
 
-int POI_VoidPtrArray_CFI(void **addr);
-
 int * POI_returnIntPtrToScalar(void);
 
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi);

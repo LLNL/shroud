@@ -12,7 +12,6 @@
         "functions": [
             {
                 "<FUNCTION>": "getConstStringPtrAlloc  0 ****************************************",
-                "_PTR_F_C_index": "1",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -54,7 +53,8 @@
                 "name": "getConstStringPtrAlloc",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -63,6 +63,16 @@
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_*_library"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
                     }
                 },
@@ -98,80 +108,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_function_string_*_library"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getConstStringPtrAlloc",
-                    "F_name_api": "get_const_string_ptr_alloc",
-                    "function_name": "getConstStringPtrAlloc"
-                }
-            },
-            {
-                "<FUNCTION>": "getConstStringPtrAlloc  1 ****************************************",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 0,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "owner": "library"
                         },
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
-                        "name": "getConstStringPtrAlloc",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "string_to_cdesc",
-                        "copy_string"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_string",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "getConstStringPtrAlloc",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "api": "cdesc",
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_string_*_cdesc_allocatable_library"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
                             "C_name": "STR_getConstStringPtrAlloc_bufferify",

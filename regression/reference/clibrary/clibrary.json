@@ -1351,7 +1351,6 @@
             },
             {
                 "<FUNCTION>": "Function4a  5 ****************************************",
-                "_PTR_F_C_index": "26",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -1427,6 +1426,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -1448,6 +1448,28 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_char_*_buf_copy"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_char_*"
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_char_*"
                         }
                     }
                 },
@@ -1485,6 +1507,49 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_function_char_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "Function4a(\targ1,\t arg2)",
+                            "C_call_list": "arg1,\t arg2",
+                            "C_name": "CLI_Function4a_bufferify",
+                            "C_prototype": "const char * arg1,\t const char * arg2,\t char *SHC_rv,\t int SHT_rv_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg1,\t arg2,\t SHT_rv,\t SHT_rv_len",
+                            "F_C_call": "c_function4a_bufferify",
+                            "F_C_name": "c_function4a_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t SHT_rv_len",
+                            "F_arguments": "arg1,\t arg2",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_char_len": "30",
+                            "c_const": "",
+                            "c_helper_char_copy": "ShroudCharCopy",
+                            "c_type": "char",
+                            "c_var": "SHC_rv",
+                            "c_var_len": "SHT_rv_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "char * SHCXX_rv",
+                            "cxx_type": "char",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_char_len": "len=30",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_len": "SHT_rv_len",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_len": "SHT_rv_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_char_*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1527,6 +1592,30 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_char_*"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(char *) arg1",
+                            "cxx_type": "char",
+                            "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_char_*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1572,6 +1661,30 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_char_*"
                         },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg2",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(char *) arg2",
+                            "cxx_type": "char",
+                            "cxx_var": "arg2",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg2",
+                            "fc_var": "arg2",
+                            "i_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_char_*"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "const ",
@@ -1596,224 +1709,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "Function4a",
                     "F_name_api": "function4a",
-                    "PY_name_impl": "PY_Function4a",
-                    "function_name": "Function4a"
-                }
-            },
-            {
-                "<FUNCTION>": "Function4a  26 ****************************************",
-                "_PTR_C_CXX_index": "5",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 5,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "len": "30"
-                        },
-                        "metaattrs": {
-                            "api": "buf",
-                            "deref": "copy",
-                            "intent": "function"
-                        },
-                        "name": "Function4a",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg1",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "ftrim_char_in": true,
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            },
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg2",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "ftrim_char_in": true,
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "char"
-                    },
-                    "specifier": [
-                        "char"
-                    ],
-                    "typemap_name": "char"
-                },
-                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
-                "helpers": {
-                    "c": [
-                        "char_copy"
-                    ]
-                },
-                "name": "Function4a",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "api": "buf",
-                                "deref": "copy",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_char_*_buf_copy"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_char_*"
-                        },
-                        "arg2": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_char_*"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "Function4a(\targ1,\t arg2)",
-                            "C_call_list": "arg1,\t arg2",
-                            "C_name": "CLI_Function4a_bufferify",
-                            "C_prototype": "const char * arg1,\t const char * arg2,\t char *SHC_rv,\t int SHT_rv_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1,\t arg2,\t SHT_rv,\t SHT_rv_len",
-                            "F_C_call": "c_function4a_bufferify",
-                            "F_C_name": "c_function4a_bufferify",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t SHT_rv_len",
-                            "F_arguments": "arg1,\t arg2",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_char_len": "30",
-                            "c_const": "",
-                            "c_helper_char_copy": "ShroudCharCopy",
-                            "c_type": "char",
-                            "c_var": "SHC_rv",
-                            "c_var_len": "SHT_rv_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "char * SHCXX_rv",
-                            "cxx_type": "char",
-                            "cxx_var": "SHCXX_rv",
-                            "f_c_suffix": "_bufferify",
-                            "f_char_len": "len=30",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "f_var_len": "SHT_rv_len",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "i_var_len": "SHT_rv_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_copy"
-                        }
-                    },
-                    "arg1": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) arg1",
-                            "cxx_type": "char",
-                            "cxx_var": "arg1",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg1",
-                            "fc_var": "arg1",
-                            "i_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
-                        }
-                    },
-                    "arg2": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "arg2",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) arg2",
-                            "cxx_type": "char",
-                            "cxx_var": "arg2",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg2",
-                            "fc_var": "arg2",
-                            "i_var": "arg2",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "Function4a",
-                    "F_name_api": "function4a",
                     "F_name_function": "function4a",
                     "F_name_generic": "function4a",
                     "F_name_impl": "function4a",
+                    "PY_name_impl": "PY_Function4a",
                     "function_name": "Function4a"
                 }
             },
@@ -1997,7 +1896,6 @@
             },
             {
                 "<FUNCTION>": "passCharPtrInOut  7 ****************************************",
-                "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2051,6 +1949,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -2067,6 +1966,21 @@
                             },
                             "stmt": "c_inout_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "s": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2081,6 +1995,22 @@
                             "F_C_name": "c_pass_char_ptr_in_out",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "passCharPtrInOut(\tSHT_s_str)",
+                            "C_call_list": "SHT_s_str",
+                            "C_name": "CLI_passCharPtrInOut_bufferify",
+                            "C_prototype": "char *s,\t int SHT_s_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "s,\t SHT_s_len",
+                            "F_C_call": "c_pass_char_ptr_in_out_bufferify",
+                            "F_C_name": "c_pass_char_ptr_in_out_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "s,\t SHT_s_len",
+                            "F_arguments": "s",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "s": {
@@ -2107,134 +2037,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_inout_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "s",
-                            "ctor_expr": "s",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s",
-                            "cxx_type": "char",
-                            "cxx_var": "s",
-                            "data_var": "SHData_s",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_s",
-                            "size_var": "SHSize_s",
-                            "stmt": "py_inout_char_*",
-                            "value_var": "SHValue_s"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "passCharPtrInOut",
-                    "F_name_api": "pass_char_ptr_in_out",
-                    "PY_name_impl": "PY_passCharPtrInOut",
-                    "function_name": "passCharPtrInOut"
-                }
-            },
-            {
-                "<FUNCTION>": "passCharPtrInOut  27 ****************************************",
-                "_PTR_C_CXX_index": "7",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 7,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "passCharPtrInOut",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "inout"
-                                    },
-                                    "name": "s",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
-                "doxygen": {
-                    "brief": "toupper",
-                    "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_alloc",
-                        "char_copy",
-                        "char_free"
-                    ]
-                },
-                "name": "passCharPtrInOut",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "s": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "inout"
-                            },
-                            "stmt": "f_inout_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "passCharPtrInOut(\tSHT_s_str)",
-                            "C_call_list": "SHT_s_str",
-                            "C_name": "CLI_passCharPtrInOut_bufferify",
-                            "C_prototype": "char *s,\t int SHT_s_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "s,\t SHT_s_len",
-                            "F_C_call": "c_pass_char_ptr_in_out_bufferify",
-                            "F_C_name": "c_pass_char_ptr_in_out_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "s,\t SHT_s_len",
-                            "F_arguments": "s",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "s": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2266,6 +2068,25 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_inout_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "s",
+                            "ctor_expr": "s",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "s",
+                            "cxx_type": "char",
+                            "cxx_var": "s",
+                            "data_var": "SHData_s",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_s",
+                            "size_var": "SHSize_s",
+                            "stmt": "py_inout_char_*",
+                            "value_var": "SHValue_s"
                         }
                     }
                 },
@@ -2275,12 +2096,12 @@
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
+                    "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut"
                 }
             },
             {
                 "<FUNCTION>": "returnOneName  8 ****************************************",
-                "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2335,6 +2156,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -2351,6 +2173,21 @@
                             },
                             "stmt": "c_out_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name1": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2365,6 +2202,22 @@
                             "F_C_name": "c_return_one_name",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnOneName(\tname1)",
+                            "C_call_list": "name1",
+                            "C_name": "CLI_returnOneName_bufferify",
+                            "C_prototype": "char *name1,\t int SHT_name1_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name1,\t SHT_name1_len",
+                            "F_C_call": "c_return_one_name_bufferify",
+                            "F_C_name": "c_return_one_name_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name1,\t SHT_name1_len",
+                            "F_arguments": "name1",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name1": {
@@ -2391,136 +2244,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_out_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "name1",
-                            "charlen": "MAXNAME",
-                            "ctor_expr": "name1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name1",
-                            "cxx_type": "char",
-                            "cxx_var": "name1",
-                            "data_var": "SHData_name1",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_name1",
-                            "size_var": "SHSize_name1",
-                            "stmt": "py_out_char_*_charlen",
-                            "value_var": "SHValue_name1"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "returnOneName",
-                    "F_name_api": "return_one_name",
-                    "PY_name_impl": "PY_returnOneName",
-                    "function_name": "returnOneName"
-                }
-            },
-            {
-                "<FUNCTION>": "returnOneName  28 ****************************************",
-                "_PTR_C_CXX_index": "8",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 8,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "returnOneName",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "charlen": "MAXNAME",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "name1",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
-                "doxygen": {
-                    "brief": "Test charlen attribute",
-                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "returnOneName",
-                "options": {
-                    "literalinclude": true
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "name1": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "returnOneName(\tname1)",
-                            "C_call_list": "name1",
-                            "C_name": "CLI_returnOneName_bufferify",
-                            "C_prototype": "char *name1,\t int SHT_name1_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name1,\t SHT_name1_len",
-                            "F_C_call": "c_return_one_name_bufferify",
-                            "F_C_name": "c_return_one_name_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name1,\t SHT_name1_len",
-                            "F_arguments": "name1",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name1": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2548,6 +2271,26 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_out_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name1",
+                            "charlen": "MAXNAME",
+                            "ctor_expr": "name1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name1",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "data_var": "SHData_name1",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_name1",
+                            "size_var": "SHSize_name1",
+                            "stmt": "py_out_char_*_charlen",
+                            "value_var": "SHValue_name1"
                         }
                     }
                 },
@@ -2557,12 +2300,12 @@
                     "F_name_function": "return_one_name",
                     "F_name_generic": "return_one_name",
                     "F_name_impl": "return_one_name",
+                    "PY_name_impl": "PY_returnOneName",
                     "function_name": "returnOneName"
                 }
             },
             {
                 "<FUNCTION>": "returnTwoNames  9 ****************************************",
-                "_PTR_F_C_index": "29",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2637,6 +2380,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -2659,6 +2403,28 @@
                             },
                             "stmt": "c_out_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name1": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
+                        },
+                        "name2": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2673,6 +2439,22 @@
                             "F_C_name": "c_return_two_names",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnTwoNames(\tname1,\t name2)",
+                            "C_call_list": "name1,\t name2",
+                            "C_name": "CLI_returnTwoNames_bufferify",
+                            "C_prototype": "char *name1,\t int SHT_name1_len,\t char *name2,\t int SHT_name2_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
+                            "F_C_call": "c_return_two_names_bufferify",
+                            "F_C_name": "c_return_two_names_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
+                            "F_arguments": "name1,\t name2",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name1": {
@@ -2698,6 +2480,34 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_out_char_*"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_helper_char_blank_fill": "ShroudCharBlankFill",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "name1",
+                            "c_var_len": "SHT_name1_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name1",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name1",
+                            "f_var_len": "SHT_name1_len",
+                            "fc_var": "name1",
+                            "i_var": "name1",
+                            "i_var_len": "SHT_name1_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_out_char_*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2744,194 +2554,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_out_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "name2",
-                            "charlen": "MAXNAME",
-                            "ctor_expr": "name2",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name2",
-                            "cxx_type": "char",
-                            "cxx_var": "name2",
-                            "data_var": "SHData_name2",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_name2",
-                            "size_var": "SHSize_name2",
-                            "stmt": "py_out_char_*_charlen",
-                            "value_var": "SHValue_name2"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "returnTwoNames",
-                    "F_name_api": "return_two_names",
-                    "PY_name_impl": "PY_returnTwoNames",
-                    "function_name": "returnTwoNames"
-                }
-            },
-            {
-                "<FUNCTION>": "returnTwoNames  29 ****************************************",
-                "_PTR_C_CXX_index": "9",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "returnTwoNames",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "charlen": "MAXNAME",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "name1",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "charlen": "MAXNAME",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "name2",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
-                "doxygen": {
-                    "brief": "Test charlen attribute",
-                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "returnTwoNames",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "name1": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        },
-                        "name2": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "returnTwoNames(\tname1,\t name2)",
-                            "C_call_list": "name1,\t name2",
-                            "C_name": "CLI_returnTwoNames_bufferify",
-                            "C_prototype": "char *name1,\t int SHT_name1_len,\t char *name2,\t int SHT_name2_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
-                            "F_C_call": "c_return_two_names_bufferify",
-                            "F_C_name": "c_return_two_names_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
-                            "F_arguments": "name1,\t name2",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name1": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_helper_char_blank_fill": "ShroudCharBlankFill",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name1",
-                            "c_var_len": "SHT_name1_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name1",
-                            "cxx_type": "char",
-                            "cxx_var": "name1",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "name1",
-                            "f_var_len": "SHT_name1_len",
-                            "fc_var": "name1",
-                            "i_var": "name1",
-                            "i_var_len": "SHT_name1_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
-                        }
-                    },
-                    "name2": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2959,6 +2581,26 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_out_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name2",
+                            "charlen": "MAXNAME",
+                            "ctor_expr": "name2",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name2",
+                            "cxx_type": "char",
+                            "cxx_var": "name2",
+                            "data_var": "SHData_name2",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_name2",
+                            "size_var": "SHSize_name2",
+                            "stmt": "py_out_char_*_charlen",
+                            "value_var": "SHValue_name2"
                         }
                     }
                 },
@@ -2968,12 +2610,12 @@
                     "F_name_function": "return_two_names",
                     "F_name_generic": "return_two_names",
                     "F_name_impl": "return_two_names",
+                    "PY_name_impl": "PY_returnTwoNames",
                     "function_name": "returnTwoNames"
                 }
             },
             {
                 "<FUNCTION>": "ImpliedTextLen  10 ****************************************",
-                "_PTR_F_C_index": "30",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3044,6 +2686,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -3066,6 +2709,27 @@
                             },
                             "stmt": "c_out_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "ltext": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "text": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3080,6 +2744,22 @@
                             "F_C_name": "c_implied_text_len",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "ImpliedTextLen(\ttext,\t ltext)",
+                            "C_call_list": "text,\t ltext",
+                            "C_name": "CLI_ImpliedTextLen_bufferify",
+                            "C_prototype": "char *text,\t int SHT_text_len,\t int ltext",
+                            "C_return_type": "void",
+                            "F_C_arguments": "text,\t SHT_text_len,\t ltext",
+                            "F_C_call": "c_implied_text_len_bufferify",
+                            "F_C_name": "c_implied_text_len_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "text,\t SHT_text_len,\t SH_ltext",
+                            "F_arguments": "text",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "ltext": {
@@ -3105,6 +2785,31 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "ltext",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ltext",
+                            "cxx_type": "int",
+                            "cxx_var": "ltext",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "ltext",
+                            "fc_var": "SH_ltext",
+                            "i_var": "ltext",
+                            "idtor": "0",
+                            "pre_call_intent": "len(text,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3149,185 +2854,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_out_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "text",
-                            "charlen": "MAXNAME",
-                            "ctor_expr": "text",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "text",
-                            "cxx_type": "char",
-                            "cxx_var": "text",
-                            "data_var": "SHData_text",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_text",
-                            "size_var": "SHSize_text",
-                            "stmt": "py_out_char_*_charlen",
-                            "value_var": "SHValue_text"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "ImpliedTextLen",
-                    "F_name_api": "implied_text_len",
-                    "PY_name_impl": "PY_ImpliedTextLen",
-                    "function_name": "ImpliedTextLen"
-                }
-            },
-            {
-                "<FUNCTION>": "ImpliedTextLen  30 ****************************************",
-                "_PTR_C_CXX_index": "10",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 10,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "ImpliedTextLen",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "charlen": "MAXNAME",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "text",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "implied": "len(text)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "ltext",
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
-                "doxygen": {
-                    "brief": "Fill text, at most ltext characters."
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "ImpliedTextLen",
-                "options": {
-                    "literalinclude": true
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "ltext": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_native_scalar"
-                        },
-                        "text": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "ImpliedTextLen(\ttext,\t ltext)",
-                            "C_call_list": "text,\t ltext",
-                            "C_name": "CLI_ImpliedTextLen_bufferify",
-                            "C_prototype": "char *text,\t int SHT_text_len,\t int ltext",
-                            "C_return_type": "void",
-                            "F_C_arguments": "text,\t SHT_text_len,\t ltext",
-                            "F_C_call": "c_implied_text_len_bufferify",
-                            "F_C_name": "c_implied_text_len_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "text,\t SHT_text_len,\t SH_ltext",
-                            "F_arguments": "text",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "ltext": {
-                        "fmtf": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "ltext",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ltext",
-                            "cxx_type": "int",
-                            "cxx_var": "ltext",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "ltext",
-                            "fc_var": "SH_ltext",
-                            "i_var": "ltext",
-                            "idtor": "0",
-                            "pre_call_intent": "len(text,kind=C_INT)",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
-                        }
-                    },
-                    "text": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3355,6 +2881,26 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_out_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "text",
+                            "charlen": "MAXNAME",
+                            "ctor_expr": "text",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "text",
+                            "cxx_type": "char",
+                            "cxx_var": "text",
+                            "data_var": "SHData_text",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_text",
+                            "size_var": "SHSize_text",
+                            "stmt": "py_out_char_*_charlen",
+                            "value_var": "SHValue_text"
                         }
                     }
                 },
@@ -3364,6 +2910,7 @@
                     "F_name_function": "implied_text_len",
                     "F_name_generic": "implied_text_len",
                     "F_name_impl": "implied_text_len",
+                    "PY_name_impl": "PY_ImpliedTextLen",
                     "function_name": "ImpliedTextLen"
                 }
             },
@@ -4750,7 +4297,6 @@
             },
             {
                 "<FUNCTION>": "bindC2  16 ****************************************",
-                "_PTR_F_C_index": "31",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4806,7 +4352,8 @@
                     "F_name_impl": "Fortran_bindC2a"
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -4822,6 +4369,21 @@
                             },
                             "stmt": "c_out_char_*"
                         }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4836,6 +4398,22 @@
                             "F_C_name": "c_bind_c2",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "bindC2(\toutbuf)",
+                            "C_call_list": "outbuf",
+                            "C_name": "CLI_bindC2_bufferify",
+                            "C_prototype": "char *outbuf,\t int SHT_outbuf_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "outbuf,\t SHT_outbuf_len",
+                            "F_C_call": "c_bind_c2_bufferify",
+                            "F_C_name": "c_bind_c2_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "outbuf,\t SHT_outbuf_len",
+                            "F_arguments": "outbuf",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "outbuf": {
@@ -4861,119 +4439,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_out_char_*"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "bindC2",
-                    "F_name_api": "bind_c2",
-                    "F_name_impl": "Fortran_bindC2a",
-                    "function_name": "bindC2"
-                }
-            },
-            {
-                "<FUNCTION>": "bindC2  31 ****************************************",
-                "_PTR_C_CXX_index": "16",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 16,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
                         },
-                        "name": "bindC2",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "outbuf",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void bindC2(char *outbuf+intent(out))",
-                "declgen": "void bindC2(char * outbuf +intent(out))",
-                "doxygen": {
-                    "brief": "Rename Fortran name for interface only function",
-                    "description": "This creates a Fortran bufferify function and an interface.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "bindC2",
-                "options": {
-                    "wrap_python": false
-                },
-                "user_fmt": {
-                    "F_name_impl": "Fortran_bindC2a"
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "outbuf": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "bindC2(\toutbuf)",
-                            "C_call_list": "outbuf",
-                            "C_name": "CLI_bindC2_bufferify",
-                            "C_prototype": "char *outbuf,\t int SHT_outbuf_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "outbuf,\t SHT_outbuf_len",
-                            "F_C_call": "c_bind_c2_bufferify",
-                            "F_C_name": "c_bind_c2_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "outbuf,\t SHT_outbuf_len",
-                            "F_arguments": "outbuf",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "outbuf": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -5619,7 +5085,6 @@
             },
             {
                 "<FUNCTION>": "passAssumedTypeBuf  20 ****************************************",
-                "_PTR_F_C_index": "32",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5693,7 +5158,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -5714,6 +5180,27 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_void_*"
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char_*_buf"
                         }
                     }
                 },
@@ -5749,173 +5236,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_function_native_scalar"
-                        }
-                    },
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "void",
-                            "cxx_var": "arg",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg",
-                            "i_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_*"
-                        }
-                    },
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "outbuf",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "outbuf",
-                            "i_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "passAssumedTypeBuf",
-                    "F_name_api": "pass_assumed_type_buf",
-                    "function_name": "passAssumedTypeBuf"
-                }
-            },
-            {
-                "<FUNCTION>": "passAssumedTypeBuf  32 ****************************************",
-                "_PTR_C_CXX_index": "20",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 20,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
                         },
-                        "name": "passAssumedTypeBuf",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "assumedtype": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "void"
-                                },
-                                "specifier": [
-                                    "void"
-                                ],
-                                "typemap_name": "void"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "outbuf",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))",
-                "doxygen": {
-                    "brief": "Test assumed-type",
-                    "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "passAssumedTypeBuf",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_void_*"
-                        },
-                        "outbuf": {
-                            "meta": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "stmt": "f_out_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
                         "fmtf": {
                             "C_call_function": "passAssumedTypeBuf(\targ,\t outbuf)",
                             "C_call_list": "arg,\t outbuf",
@@ -5956,6 +5277,28 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "void",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "void",
+                            "cxx_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -5981,6 +5324,29 @@
                         }
                     },
                     "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "outbuf",
+                            "i_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_out_char_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6830,7 +6196,6 @@
             },
             {
                 "<FUNCTION>": "callback3  24 ****************************************",
-                "_PTR_F_C_index": "33",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -6967,7 +6332,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -7001,275 +6367,7 @@
                             },
                             "stmt": "c_in_char_*"
                         }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback3(\ttype,\t in,\t incr,\t outbuf)",
-                            "C_call_list": "type,\t in,\t incr,\t outbuf",
-                            "C_name": "callback3",
-                            "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
-                            "C_return_type": "void",
-                            "F_C_arguments": "type,\t in,\t incr,\t outbuf",
-                            "F_C_name": "c_callback3",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        }
                     },
-                    "in": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "in",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "in",
-                            "cxx_type": "void",
-                            "cxx_var": "in",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "in",
-                            "i_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_*"
-                        }
-                    },
-                    "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "i_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        }
-                    },
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "outbuf",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "outbuf",
-                            "i_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
-                        }
-                    },
-                    "type": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "type",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) type",
-                            "cxx_type": "char",
-                            "cxx_var": "type",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "type",
-                            "i_var": "type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "callback3",
-                    "F_name_api": "callback3",
-                    "function_name": "callback3"
-                }
-            },
-            {
-                "<FUNCTION>": "callback3  33 ****************************************",
-                "_PTR_C_CXX_index": "24",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 24,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "callback3",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "type",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "ftrim_char_in": true,
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "assumedtype": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "in",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "void"
-                                },
-                                "specifier": [
-                                    "void"
-                                ],
-                                "typemap_name": "void"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "external": true,
-                                        "value": true
-                                    },
-                                    "func": {
-                                        "name": "incr",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "incr",
-                                    "params": [
-                                        {
-                                            "declarator": {
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "specifier": [
-                                                "int"
-                                            ],
-                                            "typemap_name": "int"
-                                        }
-                                    ],
-                                    "typemap_name": "void"
-                                },
-                                "specifier": [
-                                    "void"
-                                ],
-                                "typemap_name": "void"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "out"
-                                    },
-                                    "name": "outbuf",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))",
-                "doxygen": {
-                    "brief": "Test function pointer",
-                    "description": "A bufferify function will be created.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_blank_fill"
-                    ]
-                },
-                "name": "callback3",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
                     "f": {
                         "+result": {
                             "meta": {
@@ -7306,6 +6404,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "callback3(\ttype,\t in,\t incr,\t outbuf)",
+                            "C_call_list": "type,\t in,\t incr,\t outbuf",
+                            "C_name": "callback3",
+                            "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t in,\t incr,\t outbuf",
+                            "F_C_name": "c_callback3",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "callback3(\ttype,\t in,\t incr,\t outbuf)",
                             "C_call_list": "type,\t in,\t incr,\t outbuf",
@@ -7324,6 +6433,28 @@
                         }
                     },
                     "in": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "void",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "in",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -7349,6 +6480,28 @@
                         }
                     },
                     "incr": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "void",
+                            "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "incr",
+                            "i_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -7374,6 +6527,29 @@
                         }
                     },
                     "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "outbuf",
+                            "i_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_out_char_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -7404,6 +6580,29 @@
                         }
                     },
                     "type": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(char *) type",
+                            "cxx_type": "char",
+                            "cxx_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_char_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",

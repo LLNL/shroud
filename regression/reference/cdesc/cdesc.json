@@ -514,7 +514,6 @@
                 "<FUNCTION>": "GetScalar1  6 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "1",
-                "_PTR_F_C_index": "10",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -534,126 +533,6 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "api": "cdesc",
-                                        "intent": "out",
-                                        "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+api(cdesc))",
-                "declgen": "void GetScalar1(std::string & name +intent(in), int * value +api(cdesc)+intent(out)+rank(0))",
-                "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_len_trim",
-                        "array_context"
-                    ],
-                    "f": [
-                        "type_defines",
-                        "array_context"
-                    ]
-                },
-                "name": "GetScalar1",
-                "options": {},
-                "splicer": {
-                    "c_buf": [
-                        "switch(SHT_value_cdesc->type) {",
-                        "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(SHT_value_cdesc->base_addr) = getData<int>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(SHT_value_cdesc->base_addr) = getData<long>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(SHT_value_cdesc->base_addr) = getData<float>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(SHT_value_cdesc->base_addr) = getData<double>();",
-                        "  break;",
-                        "}",
-                        "// default:",
-                        "}"
-                    ]
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetScalar1",
-                    "F_name_api": "get_scalar1",
-                    "function_name": "GetScalar1",
-                    "function_suffix": "_0"
-                }
-            },
-            {
-                "<FUNCTION>": "GetScalar1  10 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "6",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 1,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetScalar1",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -866,7 +745,6 @@
                 "<FUNCTION>": "GetScalar1  7 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "1",
-                "_PTR_F_C_index": "11",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -886,126 +764,6 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "api": "cdesc",
-                                        "intent": "out",
-                                        "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "double"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+api(cdesc))",
-                "declgen": "void GetScalar1(std::string & name +intent(in), double * value +api(cdesc)+intent(out)+rank(0))",
-                "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_len_trim",
-                        "array_context"
-                    ],
-                    "f": [
-                        "type_defines",
-                        "array_context"
-                    ]
-                },
-                "name": "GetScalar1",
-                "options": {},
-                "splicer": {
-                    "c_buf": [
-                        "switch(SHT_value_cdesc->type) {",
-                        "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(SHT_value_cdesc->base_addr) = getData<int>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(SHT_value_cdesc->base_addr) = getData<long>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(SHT_value_cdesc->base_addr) = getData<float>();",
-                        "  break;",
-                        "}",
-                        "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(SHT_value_cdesc->base_addr) = getData<double>();",
-                        "  break;",
-                        "}",
-                        "// default:",
-                        "}"
-                    ]
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetScalar1",
-                    "F_name_api": "get_scalar1",
-                    "function_name": "GetScalar1",
-                    "function_suffix": "_1"
-                }
-            },
-            {
-                "<FUNCTION>": "GetScalar1  11 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 1,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetScalar1",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1788,7 +1546,6 @@
                 "<FUNCTION>": "GetScalar2  8 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "3",
-                "_PTR_F_C_index": "12",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1808,110 +1565,6 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in), int * value +intent(out))",
-                "doxygen": {
-                    "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
-                },
-                "fstatements": {
-                    "f": {
-                        "f_call": [
-                            "value = c_get_data_{stype}()"
-                        ]
-                    }
-                },
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "GetScalar2",
-                "options": {
-                    "wrap_c": false
-                },
-                "splicer": {
-                    "c_buf": [
-                        "// This function does not need to exist."
-                    ]
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetScalar2",
-                    "F_name_api": "get_scalar2",
-                    "function_name": "GetScalar2",
-                    "function_suffix": "_0",
-                    "stype": "int"
-                }
-            },
-            {
-                "<FUNCTION>": "GetScalar2  12 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "8",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 3,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetScalar2",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -2100,7 +1753,6 @@
                 "<FUNCTION>": "GetScalar2  9 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "3",
-                "_PTR_F_C_index": "13",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2120,110 +1772,6 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "double"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in), double * value +intent(out))",
-                "doxygen": {
-                    "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
-                },
-                "fstatements": {
-                    "f": {
-                        "f_call": [
-                            "value = c_get_data_{stype}()"
-                        ]
-                    }
-                },
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "GetScalar2",
-                "options": {
-                    "wrap_c": false
-                },
-                "splicer": {
-                    "c_buf": [
-                        "// This function does not need to exist."
-                    ]
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetScalar2",
-                    "F_name_api": "get_scalar2",
-                    "function_name": "GetScalar2",
-                    "function_suffix": "_1",
-                    "stype": "double"
-                }
-            },
-            {
-                "<FUNCTION>": "GetScalar2  13 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "9",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 3,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetScalar2",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",

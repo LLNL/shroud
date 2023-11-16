@@ -127,7 +127,7 @@ def lookup_f_function_stmt(node):
     declarator = ast.declarator
     subprogram = declarator.get_subprogram()
     r_meta = declarator.metaattrs
-#    r_meta = node._bind["f"]["+result"].meta
+    r_meta = node._bind["f"]["+result"].meta
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
@@ -167,7 +167,7 @@ def lookup_f_arg_stmt(node, arg):
     c_attrs = declarator.attrs
     c_meta = declarator.metaattrs
     c_meta2 = node._bind["f"][declarator.user_name].meta
-#    c_meta = c_meta2
+    c_meta = c_meta2
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
     junk, specialize = lookup_c_statements(arg)

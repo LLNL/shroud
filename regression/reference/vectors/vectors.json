@@ -15,7 +15,6 @@
         "functions": [
             {
                 "<FUNCTION>": "vector_sum  0 ****************************************",
-                "_PTR_F_C_index": "16",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -30,76 +29,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
-                "name": "vector_sum",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_sum",
-                    "F_name_api": "vector_sum",
-                    "function_name": "vector_sum"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_sum  16 ****************************************",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 0,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "vector_sum",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -142,9 +71,24 @@
                     "wrap_lua": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -163,6 +107,37 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_sum(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_sum",
+                            "C_prototype": "const int * arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_sum",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_sum(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
@@ -203,6 +178,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(&arg)",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_in_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -247,7 +250,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out  1 ****************************************",
-                "_PTR_F_C_index": "17",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -262,89 +264,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran input array"
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array",
-                        "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_out",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_out",
-                    "F_name_api": "vector_iota_out",
-                    "function_name": "vector_iota_out"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_out  17 ****************************************",
-                "_PTR_C_CXX_index": "1",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 1,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_out",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -399,9 +318,24 @@
                     "wrap_lua": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -420,6 +354,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_out(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_out",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_out",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_out(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -438,6 +383,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -486,7 +459,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_with_num  2 ****************************************",
-                "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -501,117 +473,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran input array",
-                    "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
-                },
-                "fstatements": {
-                    "c": {
-                        "c_return": [
-                            "return SHT_arg_cdesc->size;"
-                        ],
-                        "c_return_type": "long"
-                    },
-                    "f": {
-                        "c_return": [
-                            "return SHT_arg_cdesc->size;"
-                        ],
-                        "c_return_type": "long",
-                        "f_arg_decl": [
-                            "integer(C_LONG) :: {F_result}"
-                        ],
-                        "f_call": [
-                            "{F_result} = {F_C_call}({F_arg_c_call})"
-                        ],
-                        "f_module": {
-                            "iso_c_binding": [
-                                "C_LONG"
-                            ]
-                        },
-                        "f_result": "num"
-                    }
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array",
-                        "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_out_with_num",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_out_with_num",
-                    "F_name_api": "vector_iota_out_with_num",
-                    "function_name": "vector_iota_out_with_num"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_out_with_num  18 ****************************************",
-                "_PTR_C_CXX_index": "2",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 2,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_out_with_num",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -694,9 +555,25 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fstmts": "c",
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "fstmts": "f",
@@ -716,6 +593,18 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_out_with_num(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_out_with_num",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "long",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_out_with_num",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -743,6 +632,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -791,7 +708,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_with_num2  3 ****************************************",
-                "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -806,107 +722,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran input array",
-                    "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
-                },
-                "fstatements": {
-                    "f": {
-                        "f_arg_decl": [
-                            "integer(C_LONG) :: num"
-                        ],
-                        "f_module": {
-                            "iso_c_binding": [
-                                "C_LONG"
-                            ]
-                        },
-                        "f_post_call": [
-                            "num = SHT_arg_cdesc%size"
-                        ],
-                        "f_result": "num"
-                    }
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array",
-                        "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_out_with_num2",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_out_with_num2",
-                    "F_name_api": "vector_iota_out_with_num2",
-                    "function_name": "vector_iota_out_with_num2"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_out_with_num2  19 ****************************************",
-                "_PTR_C_CXX_index": "3",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 3,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_out_with_num2",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -979,9 +794,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "fstmts": "f",
@@ -1001,6 +831,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_out_with_num2(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_out_with_num2",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_out_with_num2",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num2(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -1027,6 +868,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1075,7 +944,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_alloc  4 ****************************************",
-                "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1091,91 +959,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran allocatable array"
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_out_alloc",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_out_alloc",
-                    "F_name_api": "vector_iota_out_alloc",
-                    "function_name": "vector_iota_out_alloc"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_out_alloc  20 ****************************************",
-                "_PTR_C_CXX_index": "4",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 4,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_out_alloc",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "out"
                                     },
@@ -1231,9 +1014,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1253,6 +1051,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_out_alloc(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_out_alloc",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_out_alloc",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_alloc(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -1271,6 +1080,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1320,7 +1157,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_inout_alloc  5 ****************************************",
-                "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1336,94 +1172,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "inout"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran allocatable array"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "type_defines",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_inout_alloc",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_inout_alloc",
-                    "F_name_api": "vector_iota_inout_alloc",
-                    "function_name": "vector_iota_inout_alloc"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_inout_alloc  21 ****************************************",
-                "_PTR_C_CXX_index": "5",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 5,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_inout_alloc",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "intent": "inout",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "inout"
                                     },
@@ -1482,9 +1230,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1504,6 +1267,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_inout_alloc(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_inout_alloc",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_inout_alloc",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_inout_alloc(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -1522,6 +1296,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_inout_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1575,7 +1377,6 @@
             },
             {
                 "<FUNCTION>": "vector_increment  6 ****************************************",
-                "_PTR_F_C_index": "22",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1589,87 +1390,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "type_defines",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_increment",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_increment",
-                    "F_name_api": "vector_increment",
-                    "function_name": "vector_increment"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_increment  22 ****************************************",
-                "_PTR_C_CXX_index": "6",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 6,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_increment",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "inout"
                                     },
                                     "name": "arg",
@@ -1723,9 +1443,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1744,6 +1479,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_increment(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_increment",
+                            "C_prototype": "int * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_increment",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_increment(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -1762,6 +1508,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt_name": "c_inout_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1814,7 +1588,6 @@
             },
             {
                 "<FUNCTION>": "vector_iota_out_d  7 ****************************************",
-                "_PTR_F_C_index": "23",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1829,88 +1602,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Copy vector into Fortran input array"
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array",
-                        "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "vector_iota_out_d",
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_iota_out_d",
-                    "F_name_api": "vector_iota_out_d",
-                    "function_name": "vector_iota_out_d"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_iota_out_d  23 ****************************************",
-                "_PTR_C_CXX_index": "7",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 7,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_iota_out_d",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -1964,9 +1655,24 @@
                     "wrap_lua": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1985,6 +1691,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_iota_out_d(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_iota_out_d",
+                            "C_prototype": "double * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_iota_out_d",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_d(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -2003,6 +1720,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_T": "double",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "double",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2051,7 +1796,6 @@
             },
             {
                 "<FUNCTION>": "vector_of_pointers  8 ****************************************",
-                "_PTR_F_C_index": "24",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2066,102 +1810,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg1",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "const": true,
-                                        "declarator": {
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "num",
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
-                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
-                "doxygen": {
-                    "brief": "Fortran 2-d array to vector<const double *>"
-                },
-                "name": "vector_of_pointers",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_of_pointers",
-                    "F_name_api": "vector_of_pointers",
-                    "function_name": "vector_of_pointers"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_of_pointers  24 ****************************************",
-                "_PTR_C_CXX_index": "8",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 8,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "vector_of_pointers",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "arg1",
@@ -2229,9 +1877,30 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_vector_&_targ_native_*"
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2256,6 +1925,37 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_of_pointers(\t*arg1,\t num)",
+                            "C_call_list": "*arg1,\t num",
+                            "C_name": "VEC_vector_of_pointers",
+                            "C_prototype": "double * arg1,\t int num",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg1,\t num",
+                            "F_C_name": "c_vector_of_pointers",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_of_pointers(\tSHCXX_arg1,\t num)",
                             "C_call_list": "SHCXX_arg1,\t num",
@@ -2296,6 +1996,34 @@
                         }
                     },
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_T": "const double * ",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
+                            "cxx_type": "double",
+                            "cxx_var": "arg1",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "i_dimension": "(*)",
+                            "i_var": "arg1",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(arg1)",
+                            "stmt_name": "c_in_vector_&_targ_native_*"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2331,6 +2059,29 @@
                         }
                     },
                     "num": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "num",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num",
+                            "cxx_type": "int",
+                            "cxx_var": "num",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "num",
+                            "i_var": "num",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2368,7 +2119,6 @@
             },
             {
                 "<FUNCTION>": "vector_string_count  9 ****************************************",
-                "_PTR_F_C_index": "25",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2383,85 +2133,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "std::string"
-                                        },
-                                        "specifier": [
-                                            "std::string"
-                                        ],
-                                        "typemap_name": "std::string"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +rank(1))",
-                "doxygen": {
-                    "brief": "count number of underscore in vector of strings",
-                    "decription": "The input will be copied in order to create the C++ argument\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "vector_string_count",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_string_count",
-                    "F_name_api": "vector_string_count",
-                    "function_name": "vector_string_count"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_string_count  25 ****************************************",
-                "_PTR_C_CXX_index": "9",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "vector_string_count",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -2512,9 +2183,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_vector_&_targ_string_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2533,6 +2219,37 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_string_count(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_string_count",
+                            "C_prototype": "const char * arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_string_count",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_string_count(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
@@ -2573,6 +2290,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt_name": "c_in_vector_&_targ_string_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -2626,7 +2371,6 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill  10 ****************************************",
-                "_PTR_F_C_index": "26",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2641,90 +2385,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "std::string"
-                                        },
-                                        "specifier": [
-                                            "std::string"
-                                        ],
-                                        "typemap_name": "std::string"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out)+rank(1))",
-                "doxygen": {
-                    "brief": "Fill in arg with some animal names",
-                    "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "vector_string_out"
-                    ],
-                    "f": [
-                        "type_defines",
-                        "array_context"
-                    ]
-                },
-                "name": "vector_string_fill",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_string_fill",
-                    "F_name_api": "vector_string_fill",
-                    "function_name": "vector_string_fill"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_string_fill  26 ****************************************",
-                "_PTR_C_CXX_index": "10",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 10,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_string_fill",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -2780,9 +2440,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_string_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2801,6 +2476,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_string_fill(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_string_fill",
+                            "C_prototype": "char * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_string_fill",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_string_fill(\targ)",
                             "C_call_list": "arg",
@@ -2819,6 +2505,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "std::string",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_string_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2867,7 +2581,6 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill_allocatable  11 ****************************************",
-                "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2883,91 +2596,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "std::string"
-                                        },
-                                        "specifier": [
-                                            "std::string"
-                                        ],
-                                        "typemap_name": "std::string"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1))",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "vector_string_allocatable",
-                        "vector_string_out_len"
-                    ],
-                    "f": [
-                        "array_context",
-                        "vector_string_allocatable",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "vector_string_fill_allocatable",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_string_fill_allocatable",
-                    "F_name_api": "vector_string_fill_allocatable",
-                    "function_name": "vector_string_fill_allocatable"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_string_fill_allocatable  27 ****************************************",
-                "_PTR_C_CXX_index": "11",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 11,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_string_fill_allocatable",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "out"
                                     },
@@ -3023,9 +2651,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_string_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3045,6 +2688,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_string_fill_allocatable(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_string_fill_allocatable",
+                            "C_prototype": "char * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_string_fill_allocatable",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -3063,6 +2717,34 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "std::string",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_string_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3119,7 +2801,6 @@
             },
             {
                 "<FUNCTION>": "vector_string_fill_allocatable_len  12 ****************************************",
-                "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3136,92 +2817,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::vector"
-                                },
-                                "specifier": [
-                                    "std::vector"
-                                ],
-                                "template_arguments": [
-                                    {
-                                        "declarator": {
-                                            "typemap_name": "std::string"
-                                        },
-                                        "specifier": [
-                                            "std::string"
-                                        ],
-                                        "typemap_name": "std::string"
-                                    }
-                                ],
-                                "typemap_name": "std::vector"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1))",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "vector_string_allocatable",
-                        "vector_string_out_len"
-                    ],
-                    "f": [
-                        "array_context",
-                        "vector_string_allocatable",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "vector_string_fill_allocatable_len",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "vector_string_fill_allocatable_len",
-                    "F_name_api": "vector_string_fill_allocatable_len",
-                    "function_name": "vector_string_fill_allocatable_len"
-                }
-            },
-            {
-                "<FUNCTION>": "vector_string_fill_allocatable_len  28 ****************************************",
-                "_PTR_C_CXX_index": "12",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 12,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "vector_string_fill_allocatable_len",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out",
-                                        "len": "20",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "intent": "out"
                                     },
@@ -3277,9 +2872,24 @@
                     "wrap_python": false
                 },
                 "wrap": {
+                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_vector_&_targ_string_scalar"
+                        }
+                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3299,6 +2909,17 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "vector_string_fill_allocatable_len(\t*arg)",
+                            "C_call_list": "*arg",
+                            "C_name": "VEC_vector_string_fill_allocatable_len",
+                            "C_prototype": "char * arg",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg",
+                            "F_C_name": "c_vector_string_fill_allocatable_len",
+                            "F_C_subprogram": "subroutine",
+                            "stmt_name": "c_subroutine"
+                        },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable_len(\t*SHCXX_arg)",
                             "C_call_list": "*SHCXX_arg",
@@ -3317,6 +2938,36 @@
                         }
                     },
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_char_len": "20",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "std::string",
+                            "cxx_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_char_len": "len=20",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt_name": "c_out_vector_&_targ_string_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_char_len": "20",
@@ -3443,7 +3094,6 @@
             },
             {
                 "<FUNCTION>": "ReturnVectorAlloc  14 ****************************************",
-                "_PTR_F_C_index": "29",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -3507,7 +3157,8 @@
                 "name": "ReturnVectorAlloc",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -3522,6 +3173,22 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                        },
+                        "n": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native_scalar"
                         }
                     }
                 },
@@ -3560,134 +3227,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
                             "stmt_name": "c_function_vector_scalar_targ_native_scalar"
-                        }
-                    },
-                    "n": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "n",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&n",
-                            "cxx_type": "int",
-                            "cxx_var": "n",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "n",
-                            "i_var": "n",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "ReturnVectorAlloc",
-                    "F_name_api": "return_vector_alloc",
-                    "function_name": "ReturnVectorAlloc"
-                }
-            },
-            {
-                "<FUNCTION>": "ReturnVectorAlloc  29 ****************************************",
-                "_PTR_C_CXX_index": "14",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 14,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "rank": 1
                         },
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
-                        "name": "ReturnVectorAlloc",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "n",
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "std::vector"
-                    },
-                    "specifier": [
-                        "std::vector"
-                    ],
-                    "template_arguments": [
-                        {
-                            "declarator": {
-                                "typemap_name": "int"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "typemap_name": "std::vector"
-                },
-                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)",
-                "doxygen": {
-                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "copy_array",
-                        "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
-                    ]
-                },
-                "name": "ReturnVectorAlloc",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "api": "cdesc",
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
-                        },
-                        "n": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "f_in_native_scalar"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
                             "C_call_list": "n",
@@ -3738,6 +3278,29 @@
                         }
                     },
                     "n": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "n",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&n",
+                            "cxx_type": "int",
+                            "cxx_var": "n",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "n",
+                            "i_var": "n",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",

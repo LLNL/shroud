@@ -1118,6 +1118,7 @@ class GenFunctions(object):
 
     def define_bufferify_functions(self, functions):
         """Create additional C bufferify functions."""
+        return functions
         ordered = []
         for node in functions:
             ordered.append(node)

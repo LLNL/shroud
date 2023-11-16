@@ -6127,7 +6127,6 @@
                 "<FUNCTION>": "GetPointerAsPointer  27 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "10",
-                "_PTR_F_C_index": "31",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -6149,124 +6148,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "addr",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "float"
-                                },
-                                "specifier": [
-                                    "float"
-                                ],
-                                "typemap_name": "float"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "type",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "size",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "size_t"
-                                },
-                                "specifier": [
-                                    "size_t"
-                                ],
-                                "typemap_name": "size_t"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "GetPointerAsPointer",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetPointerAsPointer",
-                    "F_name_api": "get_pointer_as_pointer",
-                    "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d"
-                }
-            },
-            {
-                "<FUNCTION>": "GetPointerAsPointer  31 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "27",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 10,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetPointerAsPointer",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "pointer",
-                                        "intent": "out",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -6505,7 +6386,6 @@
                 "<FUNCTION>": "GetPointerAsPointer  28 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "10",
-                "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -6527,124 +6407,6 @@
                                         "rank": 2
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "addr",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "float"
-                                },
-                                "specifier": [
-                                    "float"
-                                ],
-                                "typemap_name": "float"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "type",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "size",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "size_t"
-                                },
-                                "specifier": [
-                                    "size_t"
-                                ],
-                                "typemap_name": "size_t"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "GetPointerAsPointer",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "GetPointerAsPointer",
-                    "F_name_api": "get_pointer_as_pointer",
-                    "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d"
-                }
-            },
-            {
-                "<FUNCTION>": "GetPointerAsPointer  32 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "28",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 10,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "GetPointerAsPointer",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "pointer",
-                                        "intent": "out",
-                                        "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },

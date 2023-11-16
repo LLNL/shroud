@@ -53,12 +53,12 @@ const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this);
 void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
     const double * val);
 
-void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val);
 
-void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val);

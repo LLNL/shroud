@@ -735,7 +735,6 @@
                     },
                     {
                         "<FUNCTION>": "getArray  5 ****************************************",
-                        "_PTR_F_C_index": "17",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -779,6 +778,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -788,6 +788,16 @@
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native_*_cdesc_pointer"
                                 }
                             }
                         },
@@ -827,108 +837,6 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_function_native_*"
                                 },
-                                "fmtpy": {
-                                    "array_size": "self->obj->getSize()",
-                                    "c_deref": "*",
-                                    "c_var": "SHCXX_rv",
-                                    "ctor_expr": "*SHCXX_rv",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHCXX_rv",
-                                    "data_var": "SHData_rv",
-                                    "npy_dims_var": "SHD_rv",
-                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                    "npy_rank": "1",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHTPy_rv",
-                                    "rank": "1",
-                                    "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
-                                    "value_var": "SHValue_rv"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "getArray",
-                            "F_name_api": "getArray",
-                            "PY_name_impl": "PY_getArray",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "getArray"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "getArray  17 ****************************************",
-                        "_PTR_C_CXX_index": "5",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 5,
-                        "ast": {
-                            "declarator": {
-                                "attrs": {
-                                    "dimension": "getSize()"
-                                },
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ],
-                                    "intent": "function"
-                                },
-                                "name": "getArray",
-                                "params": [],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "double"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray(void) +dimension(getSize())",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "getArray",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArray(\t)",
                                     "C_name": "ARR_ArrayWrapper_getArray_bufferify",
@@ -977,6 +885,28 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "f_function_native_*_cdesc_pointer"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
                                 }
                             }
                         },
@@ -986,6 +916,7 @@
                             "F_name_function": "getArray",
                             "F_name_generic": "getArray",
                             "F_name_impl": "ArrayWrapper_getArray",
+                            "PY_name_impl": "PY_getArray",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -995,7 +926,6 @@
                     },
                     {
                         "<FUNCTION>": "getArrayConst  6 ****************************************",
-                        "_PTR_F_C_index": "18",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1040,6 +970,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -1049,6 +980,16 @@
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native_*_cdesc_pointer"
                                 }
                             }
                         },
@@ -1089,109 +1030,6 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_function_native_*"
                                 },
-                                "fmtpy": {
-                                    "array_size": "self->obj->getSize()",
-                                    "c_deref": "*",
-                                    "c_var": "SHCXX_rv",
-                                    "ctor_expr": "*SHCXX_rv",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHCXX_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHCXX_rv",
-                                    "data_var": "SHData_rv",
-                                    "npy_dims_var": "SHD_rv",
-                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                    "npy_rank": "1",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHTPy_rv",
-                                    "rank": "1",
-                                    "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
-                                    "value_var": "SHValue_rv"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "getArrayConst",
-                            "F_name_api": "getArrayConst",
-                            "PY_name_impl": "PY_getArrayConst",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "getArrayConst"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "getArrayConst  18 ****************************************",
-                        "_PTR_C_CXX_index": "6",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 6,
-                        "ast": {
-                            "declarator": {
-                                "attrs": {
-                                    "dimension": "getSize()"
-                                },
-                                "func_const": true,
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ],
-                                    "intent": "function"
-                                },
-                                "name": "getArrayConst",
-                                "params": [],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "double"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst(void) const +dimension(getSize())",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "getArrayConst",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConst(\t)",
                                     "C_name": "ARR_ArrayWrapper_getArrayConst_bufferify",
@@ -1240,6 +1078,28 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "f_function_native_*_cdesc_pointer"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "SHCXX_rv",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
                                 }
                             }
                         },
@@ -1249,6 +1109,7 @@
                             "F_name_function": "getArrayConst",
                             "F_name_generic": "getArrayConst",
                             "F_name_impl": "ArrayWrapper_getArrayConst",
+                            "PY_name_impl": "PY_getArrayConst",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1258,7 +1119,6 @@
                     },
                     {
                         "<FUNCTION>": "getArrayC  7 ****************************************",
-                        "_PTR_F_C_index": "19",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1303,6 +1163,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -1312,6 +1173,16 @@
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native_*_cdesc_pointer"
                                 }
                             }
                         },
@@ -1351,109 +1222,6 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_function_native_*"
                                 },
-                                "fmtpy": {
-                                    "array_size": "self->obj->getSize()",
-                                    "c_deref": "*",
-                                    "c_var": "SHCXX_rv",
-                                    "ctor_expr": "*SHCXX_rv",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHCXX_rv",
-                                    "data_var": "SHData_rv",
-                                    "npy_dims_var": "SHD_rv",
-                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                    "npy_rank": "1",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHTPy_rv",
-                                    "rank": "1",
-                                    "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
-                                    "value_var": "SHValue_rv"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "getArrayC",
-                            "F_name_api": "getArrayC",
-                            "PY_name_impl": "PY_getArrayC",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "getArrayC"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "getArrayC  19 ****************************************",
-                        "_PTR_C_CXX_index": "7",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 7,
-                        "ast": {
-                            "const": true,
-                            "declarator": {
-                                "attrs": {
-                                    "dimension": "getSize()"
-                                },
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ],
-                                    "intent": "function"
-                                },
-                                "name": "getArrayC",
-                                "params": [],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "double"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC(void) +dimension(getSize())",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "getArrayC",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayC(\t)",
                                     "C_name": "ARR_ArrayWrapper_getArrayC_bufferify",
@@ -1502,6 +1270,28 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "f_function_native_*_cdesc_pointer"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
                                 }
                             }
                         },
@@ -1511,6 +1301,7 @@
                             "F_name_function": "getArrayC",
                             "F_name_generic": "getArrayC",
                             "F_name_impl": "ArrayWrapper_getArrayC",
+                            "PY_name_impl": "PY_getArrayC",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1520,7 +1311,6 @@
                     },
                     {
                         "<FUNCTION>": "getArrayConstC  8 ****************************************",
-                        "_PTR_F_C_index": "20",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1566,6 +1356,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -1575,6 +1366,16 @@
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native_*_cdesc_pointer"
                                 }
                             }
                         },
@@ -1615,110 +1416,6 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_function_native_*"
                                 },
-                                "fmtpy": {
-                                    "array_size": "self->obj->getSize()",
-                                    "c_deref": "*",
-                                    "c_var": "SHCXX_rv",
-                                    "ctor_expr": "*SHCXX_rv",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHCXX_rv",
-                                    "data_var": "SHData_rv",
-                                    "npy_dims_var": "SHD_rv",
-                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
-                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                                    "npy_rank": "1",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHTPy_rv",
-                                    "rank": "1",
-                                    "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
-                                    "value_var": "SHValue_rv"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "getArrayConstC",
-                            "F_name_api": "getArrayConstC",
-                            "PY_name_impl": "PY_getArrayConstC",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "getArrayConstC"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "getArrayConstC  20 ****************************************",
-                        "_PTR_C_CXX_index": "8",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 8,
-                        "ast": {
-                            "const": true,
-                            "declarator": {
-                                "attrs": {
-                                    "dimension": "getSize()"
-                                },
-                                "func_const": true,
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ],
-                                    "intent": "function"
-                                },
-                                "name": "getArrayConstC",
-                                "params": [],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "double"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "getArrayConstC",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConstC(\t)",
                                     "C_name": "ARR_ArrayWrapper_getArrayConstC_bufferify",
@@ -1767,6 +1464,28 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "f_function_native_*_cdesc_pointer"
+                                },
+                                "fmtpy": {
+                                    "array_size": "self->obj->getSize()",
+                                    "c_deref": "*",
+                                    "c_var": "SHCXX_rv",
+                                    "ctor_expr": "*SHCXX_rv",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHCXX_rv)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "SHCXX_rv",
+                                    "data_var": "SHData_rv",
+                                    "npy_dims_var": "SHD_rv",
+                                    "npy_intp_asgn": "SHD_rv[0] = self->obj->getSize();\n",
+                                    "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHTPy_rv",
+                                    "rank": "1",
+                                    "size_var": "SHSize_rv",
+                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "value_var": "SHValue_rv"
                                 }
                             }
                         },
@@ -1776,6 +1495,7 @@
                             "F_name_function": "getArrayConstC",
                             "F_name_generic": "getArrayConstC",
                             "F_name_impl": "ArrayWrapper_getArrayConstC",
+                            "PY_name_impl": "PY_getArrayConstC",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1785,7 +1505,6 @@
                     },
                     {
                         "<FUNCTION>": "fetchArrayPtr  9 ****************************************",
-                        "_PTR_F_C_index": "21",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -1867,6 +1586,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -1889,223 +1609,7 @@
                                     },
                                     "stmt": "c_inout_native_*"
                                 }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchArrayPtr(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array,\t isize",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtr",
-                                    "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine"
-                                }
                             },
-                            "array": {
-                                "fmtc": {
-                                    "c_addr": "",
-                                    "c_array_size2": "isize",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_type": "double",
-                                    "c_var": "array",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "array",
-                                    "cxx_type": "double",
-                                    "cxx_var": "array",
-                                    "f_array_allocate": "(isize)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "array",
-                                    "i_var": "array",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native_**"
-                                },
-                                "fmtpy": {
-                                    "array_size": "isize",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_type": "double",
-                                    "c_var": "array",
-                                    "ctor_expr": "*array",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "array",
-                                    "cxx_type": "double",
-                                    "cxx_var": "array",
-                                    "data_var": "SHData_array",
-                                    "npy_dims_var": "SHD_array",
-                                    "npy_intp_asgn": "SHD_array[0] = isize;\n",
-                                    "npy_intp_decl": "npy_intp SHD_array[1];\n",
-                                    "npy_rank": "1",
-                                    "numpy_type": "NPY_DOUBLE",
-                                    "py_var": "SHPy_array",
-                                    "rank": "1",
-                                    "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_**_pointer_numpy",
-                                    "value_var": "SHValue_array"
-                                }
-                            },
-                            "isize": {
-                                "fmtc": {
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_type": "int",
-                                    "c_var": "isize",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "isize",
-                                    "cxx_type": "int",
-                                    "cxx_var": "isize",
-                                    "f_intent": "INOUT",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "isize",
-                                    "i_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native_*"
-                                },
-                                "fmtpy": {
-                                    "array_size": "1",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_type": "int",
-                                    "c_var": "isize",
-                                    "ctor_expr": "isize",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "isize",
-                                    "cxx_type": "int",
-                                    "cxx_var": "isize",
-                                    "data_var": "SHData_isize",
-                                    "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_isize",
-                                    "size_var": "SHSize_isize",
-                                    "stmt": "py_inout_native_*",
-                                    "value_var": "SHValue_isize"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "fetchArrayPtr",
-                            "F_name_api": "fetchArrayPtr",
-                            "PY_name_impl": "PY_fetchArrayPtr",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "fetchArrayPtr"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "fetchArrayPtr  21 ****************************************",
-                        "_PTR_C_CXX_index": "9",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 9,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
-                                "name": "fetchArrayPtr",
-                                "params": [
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "dimension": "isize",
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
-                                                "api": "cdesc",
-                                                "deref": "pointer",
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ],
-                                                "intent": "out"
-                                            },
-                                            "name": "array",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                },
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    },
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
-                                            "name": "isize",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "fetchArrayPtr",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
                             "f": {
                                 "+result": {
                                     "meta": {
@@ -2132,6 +1636,17 @@
                         },
                         "zz_fmtargs": {
                             "+result": {
+                                "fmtc": {
+                                    "C_call_function": "SH_this->fetchArrayPtr(\tarray,\t isize)",
+                                    "C_call_list": "array,\t isize",
+                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtr",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t array,\t isize",
+                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtr",
+                                    "F_C_subprogram": "subroutine",
+                                    "stmt_name": "c_subroutine"
+                                },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchArrayPtr(\t&array,\t &isize)",
                                     "C_call_list": "&array,\t &isize",
@@ -2150,6 +1665,33 @@
                                 }
                             },
                             "array": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_array_size2": "isize",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "array",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "f_array_allocate": "(isize)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "array",
+                                    "i_var": "array",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "c_out_native_**"
+                                },
                                 "fmtf": {
                                     "c_addr": "",
                                     "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
@@ -2186,9 +1728,56 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "f_out_native_**_cdesc_pointer"
+                                },
+                                "fmtpy": {
+                                    "array_size": "isize",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "ctor_expr": "*array",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "array",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "data_var": "SHData_array",
+                                    "npy_dims_var": "SHD_array",
+                                    "npy_intp_asgn": "SHD_array[0] = isize;\n",
+                                    "npy_intp_decl": "npy_intp SHD_array[1];\n",
+                                    "npy_rank": "1",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_array",
+                                    "rank": "1",
+                                    "size_var": "SHSize_array",
+                                    "stmt": "py_out_native_**_pointer_numpy",
+                                    "value_var": "SHValue_array"
                                 }
                             },
                             "isize": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "f_intent": "INOUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "isize",
+                                    "i_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_inout_native_*"
+                                },
                                 "fmtf": {
                                     "c_addr": "",
                                     "c_const": "",
@@ -2211,6 +1800,25 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_inout_native_*_hidden"
+                                },
+                                "fmtpy": {
+                                    "array_size": "1",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "ctor_expr": "isize",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "data_var": "SHData_isize",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_isize",
+                                    "size_var": "SHSize_isize",
+                                    "stmt": "py_inout_native_*",
+                                    "value_var": "SHValue_isize"
                                 }
                             }
                         },
@@ -2220,6 +1828,7 @@
                             "F_name_function": "fetchArrayPtr",
                             "F_name_generic": "fetchArrayPtr",
                             "F_name_impl": "ArrayWrapper_fetchArrayPtr",
+                            "PY_name_impl": "PY_fetchArrayPtr",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2229,7 +1838,6 @@
                     },
                     {
                         "<FUNCTION>": "fetchArrayRef  10 ****************************************",
-                        "_PTR_F_C_index": "22",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2311,6 +1919,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -2333,6 +1942,29 @@
                                     },
                                     "stmt": "c_inout_native_&"
                                 }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "f_subroutine"
+                                },
+                                "array": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "out"
+                                    },
+                                    "stmt": "f_out_native_*&_cdesc_pointer"
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "hidden": true,
+                                        "intent": "inout"
+                                    },
+                                    "stmt": "f_inout_native_&_hidden"
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -2347,6 +1979,22 @@
                                     "F_C_name": "c_ArrayWrapper_fetchArrayRef",
                                     "F_C_subprogram": "subroutine",
                                     "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->fetchArrayRef(\tarray,\t isize)",
+                                    "C_call_list": "array,\t isize",
+                                    "C_name": "ARR_ArrayWrapper_fetchArrayRef_bufferify",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
+                                    "F_C_name": "c_ArrayWrapper_fetchArrayRef_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
+                                    "stmt_name": "f_subroutine"
                                 }
                             },
                             "array": {
@@ -2376,6 +2024,43 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_out_native_*&"
+                                },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
+                                    "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_member": "->",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "c_var_cdesc": "SHT_array_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "array",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "array",
+                                    "f_var_cdesc": "SHT_array_cdesc",
+                                    "fc_var": "array",
+                                    "i_var": "array",
+                                    "i_var_cdesc": "SHT_array_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2426,6 +2111,29 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_inout_native_&"
                                 },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "f_intent": "INOUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "isize",
+                                    "i_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_inout_native_&_hidden"
+                                },
                                 "fmtpy": {
                                     "array_size": "1",
                                     "c_const": "",
@@ -2450,6 +2158,9 @@
                         "zz_fmtdict": {
                             "C_name_api": "fetchArrayRef",
                             "F_name_api": "fetchArrayRef",
+                            "F_name_function": "fetchArrayRef",
+                            "F_name_generic": "fetchArrayRef",
+                            "F_name_impl": "ArrayWrapper_fetchArrayRef",
                             "PY_name_impl": "PY_fetchArrayRef",
                             "c_const": "",
                             "c_deref": "*",
@@ -2459,221 +2170,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayRef  22 ****************************************",
-                        "_PTR_C_CXX_index": "10",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 10,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
-                                "name": "fetchArrayRef",
-                                "params": [
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "dimension": "isize",
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
-                                                "api": "cdesc",
-                                                "deref": "pointer",
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ],
-                                                "intent": "out"
-                                            },
-                                            "name": "array",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                },
-                                                {
-                                                    "ptr": "&"
-                                                }
-                                            ],
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    },
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
-                                            "name": "isize",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "&"
-                                                }
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "fetchArrayRef",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "f_subroutine"
-                                },
-                                "array": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "stmt": "f_out_native_*&_cdesc_pointer"
-                                },
-                                "isize": {
-                                    "meta": {
-                                        "hidden": true,
-                                        "intent": "inout"
-                                    },
-                                    "stmt": "f_inout_native_&_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayRef(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
-                                }
-                            },
-                            "array": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                    "c_array_size": "SHT_array_cdesc->shape[0]",
-                                    "c_array_size2": "isize",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_member": "->",
-                                    "c_type": "double",
-                                    "c_var": "array",
-                                    "c_var_cdesc": "SHT_array_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "array",
-                                    "cxx_type": "double",
-                                    "cxx_var": "array",
-                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "array",
-                                    "f_var_cdesc": "SHT_array_cdesc",
-                                    "fc_var": "array",
-                                    "i_var": "array",
-                                    "i_var_cdesc": "SHT_array_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
-                                }
-                            },
-                            "isize": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_type": "int",
-                                    "c_var": "isize",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&isize",
-                                    "cxx_type": "int",
-                                    "cxx_var": "isize",
-                                    "f_intent": "INOUT",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "isize",
-                                    "i_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_&_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "fetchArrayRef",
-                            "F_name_api": "fetchArrayRef",
-                            "F_name_function": "fetchArrayRef",
-                            "F_name_generic": "fetchArrayRef",
-                            "F_name_impl": "ArrayWrapper_fetchArrayRef",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "fetchArrayRef"
-                        }
-                    },
-                    {
                         "<FUNCTION>": "fetchArrayPtrConst  11 ****************************************",
-                        "_PTR_F_C_index": "23",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -2756,6 +2253,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -2778,6 +2276,29 @@
                                     },
                                     "stmt": "c_inout_native_*"
                                 }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "f_subroutine"
+                                },
+                                "array": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "out"
+                                    },
+                                    "stmt": "f_out_native_**_cdesc_pointer"
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "hidden": true,
+                                        "intent": "inout"
+                                    },
+                                    "stmt": "f_inout_native_*_hidden"
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -2792,6 +2313,22 @@
                                     "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst",
                                     "F_C_subprogram": "subroutine",
                                     "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->fetchArrayPtrConst(\t&array,\t &isize)",
+                                    "C_call_list": "&array,\t &isize",
+                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst_bufferify",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
+                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
+                                    "stmt_name": "f_subroutine"
                                 }
                             },
                             "array": {
@@ -2821,6 +2358,43 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_out_native_**"
+                                },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
+                                    "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_member": "->",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "c_var_cdesc": "SHT_array_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "array",
+                                    "f_var_cdesc": "SHT_array_cdesc",
+                                    "fc_var": "array",
+                                    "i_var": "array",
+                                    "i_var_cdesc": "SHT_array_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_out_native_**_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2871,6 +2445,29 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_inout_native_*"
                                 },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "f_intent": "INOUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "isize",
+                                    "i_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_inout_native_*_hidden"
+                                },
                                 "fmtpy": {
                                     "array_size": "1",
                                     "c_const": "",
@@ -2895,6 +2492,9 @@
                         "zz_fmtdict": {
                             "C_name_api": "fetchArrayPtrConst",
                             "F_name_api": "fetchArrayPtrConst",
+                            "F_name_function": "fetchArrayPtrConst",
+                            "F_name_generic": "fetchArrayPtrConst",
+                            "F_name_impl": "ArrayWrapper_fetchArrayPtrConst",
                             "PY_name_impl": "PY_fetchArrayPtrConst",
                             "c_const": "",
                             "c_deref": "*",
@@ -2904,222 +2504,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayPtrConst  23 ****************************************",
-                        "_PTR_C_CXX_index": "11",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 11,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
-                                "name": "fetchArrayPtrConst",
-                                "params": [
-                                    {
-                                        "const": true,
-                                        "declarator": {
-                                            "attrs": {
-                                                "dimension": "isize",
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
-                                                "api": "cdesc",
-                                                "deref": "pointer",
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ],
-                                                "intent": "out"
-                                            },
-                                            "name": "array",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                },
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    },
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
-                                            "name": "isize",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "fetchArrayPtrConst",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "f_subroutine"
-                                },
-                                "array": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "stmt": "f_out_native_**_cdesc_pointer"
-                                },
-                                "isize": {
-                                    "meta": {
-                                        "hidden": true,
-                                        "intent": "inout"
-                                    },
-                                    "stmt": "f_inout_native_*_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayPtrConst(\t&array,\t &isize)",
-                                    "C_call_list": "&array,\t &isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
-                                }
-                            },
-                            "array": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                    "c_array_size": "SHT_array_cdesc->shape[0]",
-                                    "c_array_size2": "isize",
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_member": "->",
-                                    "c_type": "double",
-                                    "c_var": "array",
-                                    "c_var_cdesc": "SHT_array_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
-                                    "cxx_type": "double",
-                                    "cxx_var": "array",
-                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "array",
-                                    "f_var_cdesc": "SHT_array_cdesc",
-                                    "fc_var": "array",
-                                    "i_var": "array",
-                                    "i_var_cdesc": "SHT_array_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_**_cdesc_pointer"
-                                }
-                            },
-                            "isize": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_type": "int",
-                                    "c_var": "isize",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "isize",
-                                    "cxx_type": "int",
-                                    "cxx_var": "isize",
-                                    "f_intent": "INOUT",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "isize",
-                                    "i_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_*_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "fetchArrayPtrConst",
-                            "F_name_api": "fetchArrayPtrConst",
-                            "F_name_function": "fetchArrayPtrConst",
-                            "F_name_generic": "fetchArrayPtrConst",
-                            "F_name_impl": "ArrayWrapper_fetchArrayPtrConst",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "fetchArrayPtrConst"
-                        }
-                    },
-                    {
                         "<FUNCTION>": "fetchArrayRefConst  12 ****************************************",
-                        "_PTR_F_C_index": "24",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -3202,6 +2587,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "fortran": true,
                             "python": true
                         },
                         "zz_bind": {
@@ -3224,6 +2610,29 @@
                                     },
                                     "stmt": "c_inout_native_&"
                                 }
+                            },
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "f_subroutine"
+                                },
+                                "array": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "out"
+                                    },
+                                    "stmt": "f_out_native_*&_cdesc_pointer"
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "hidden": true,
+                                        "intent": "inout"
+                                    },
+                                    "stmt": "f_inout_native_&_hidden"
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -3238,6 +2647,22 @@
                                     "F_C_name": "c_ArrayWrapper_fetchArrayRefConst",
                                     "F_C_subprogram": "subroutine",
                                     "stmt_name": "c_subroutine"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->fetchArrayRefConst(\tarray,\t isize)",
+                                    "C_call_list": "array,\t isize",
+                                    "C_name": "ARR_ArrayWrapper_fetchArrayRefConst_bufferify",
+                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t SHT_array_cdesc",
+                                    "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
+                                    "F_C_name": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
+                                    "F_arguments": "obj,\t array",
+                                    "F_subprogram": "subroutine",
+                                    "f_c_suffix": "_bufferify",
+                                    "stmt_name": "f_subroutine"
                                 }
                             },
                             "array": {
@@ -3267,6 +2692,43 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_out_native_*&"
+                                },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
+                                    "c_array_size": "SHT_array_cdesc->shape[0]",
+                                    "c_array_size2": "isize",
+                                    "c_const": "const ",
+                                    "c_deref": "*",
+                                    "c_helper_array_context": "ARR_SHROUD_array",
+                                    "c_member": "->",
+                                    "c_type": "double",
+                                    "c_var": "array",
+                                    "c_var_cdesc": "SHT_array_cdesc",
+                                    "cfi_type": "CFI_type_double",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
+                                    "cxx_type": "double",
+                                    "cxx_var": "array",
+                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
+                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
+                                    "f_assumed_shape": "(:)",
+                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
+                                    "f_helper_array_context": "ARR_SHROUD_array",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "array",
+                                    "f_var_cdesc": "SHT_array_cdesc",
+                                    "fc_var": "array",
+                                    "i_var": "array",
+                                    "i_var_cdesc": "SHT_array_cdesc",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -3317,6 +2779,29 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_inout_native_&"
                                 },
+                                "fmtf": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "int",
+                                    "c_var": "isize",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&isize",
+                                    "cxx_type": "int",
+                                    "cxx_var": "isize",
+                                    "f_intent": "INOUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "isize",
+                                    "i_var": "isize",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "f_inout_native_&_hidden"
+                                },
                                 "fmtpy": {
                                     "array_size": "1",
                                     "c_const": "",
@@ -3341,221 +2826,10 @@
                         "zz_fmtdict": {
                             "C_name_api": "fetchArrayRefConst",
                             "F_name_api": "fetchArrayRefConst",
-                            "PY_name_impl": "PY_fetchArrayRefConst",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "fetchArrayRefConst"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "fetchArrayRefConst  24 ****************************************",
-                        "_PTR_C_CXX_index": "12",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 12,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
-                                "name": "fetchArrayRefConst",
-                                "params": [
-                                    {
-                                        "const": true,
-                                        "declarator": {
-                                            "attrs": {
-                                                "dimension": "isize",
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
-                                                "api": "cdesc",
-                                                "deref": "pointer",
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ],
-                                                "intent": "out"
-                                            },
-                                            "name": "array",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                },
-                                                {
-                                                    "ptr": "&"
-                                                }
-                                            ],
-                                            "typemap_name": "double"
-                                        },
-                                        "specifier": [
-                                            "double"
-                                        ],
-                                        "typemap_name": "double"
-                                    },
-                                    {
-                                        "declarator": {
-                                            "attrs": {
-                                                "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
-                                            "name": "isize",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "&"
-                                                }
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    }
-                                ],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
-                        "helpers": {
-                            "c": [
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "fetchArrayRefConst",
-                        "options": {},
-                        "wrap": {
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "f": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "f_subroutine"
-                                },
-                                "array": {
-                                    "meta": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "stmt": "f_out_native_*&_cdesc_pointer"
-                                },
-                                "isize": {
-                                    "meta": {
-                                        "hidden": true,
-                                        "intent": "inout"
-                                    },
-                                    "stmt": "f_inout_native_&_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayRefConst(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
-                                }
-                            },
-                            "array": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                    "c_array_size": "SHT_array_cdesc->shape[0]",
-                                    "c_array_size2": "isize",
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_member": "->",
-                                    "c_type": "double",
-                                    "c_var": "array",
-                                    "c_var_cdesc": "SHT_array_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
-                                    "cxx_type": "double",
-                                    "cxx_var": "array",
-                                    "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "array",
-                                    "f_var_cdesc": "SHT_array_cdesc",
-                                    "fc_var": "array",
-                                    "i_var": "array",
-                                    "i_var_cdesc": "SHT_array_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
-                                }
-                            },
-                            "isize": {
-                                "fmtf": {
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_type": "int",
-                                    "c_var": "isize",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&isize",
-                                    "cxx_type": "int",
-                                    "cxx_var": "isize",
-                                    "f_intent": "INOUT",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
-                                    "f_var": "isize",
-                                    "i_var": "isize",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_&_hidden"
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "fetchArrayRefConst",
-                            "F_name_api": "fetchArrayRefConst",
                             "F_name_function": "fetchArrayRefConst",
                             "F_name_generic": "fetchArrayRefConst",
                             "F_name_impl": "ArrayWrapper_fetchArrayRefConst",
+                            "PY_name_impl": "PY_fetchArrayRefConst",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

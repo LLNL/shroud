@@ -76,7 +76,7 @@ void CXX_nested_get_parent(CXX_nested * SH_this,
 
 void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val);
 
-void CXX_nested_get_child_bufferify(CXX_nested * SH_this,
+void CXX_nested_get_child(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 
 void CXX_nested_set_child(CXX_nested * SH_this, CXX_nested * * val);

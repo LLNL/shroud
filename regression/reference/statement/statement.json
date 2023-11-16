@@ -140,7 +140,6 @@
                 "<FUNCTION>": "getNameErrorPattern  1 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "PY_error_pattern": "PY_invalid_name",
-                "_PTR_F_C_index": "2",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -175,7 +174,8 @@
                 "name": "getNameErrorPattern",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -184,6 +184,16 @@
                                 "intent": "function"
                             },
                             "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_&_buf_copy"
                         }
                     }
                 },
@@ -221,76 +231,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_function_string_&"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getNameErrorPattern",
-                    "F_name_api": "get_name_error_pattern",
-                    "function_name": "getNameErrorPattern"
-                }
-            },
-            {
-                "<FUNCTION>": "getNameErrorPattern  2 ****************************************",
-                "C_error_pattern": "C_invalid_name",
-                "PY_error_pattern": "PY_invalid_name",
-                "_PTR_C_CXX_index": "1",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 1,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "len": "get_name_length()"
                         },
-                        "metaattrs": {
-                            "api": "buf",
-                            "deref": "copy",
-                            "intent": "function"
-                        },
-                        "name": "getNameErrorPattern",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const string& getNameErrorPattern()",
-                "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
-                "helpers": {
-                    "c": [
-                        "char_copy"
-                    ]
-                },
-                "name": "getNameErrorPattern",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "api": "buf",
-                                "deref": "copy",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_string_&_buf_copy"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
                         "fmtf": {
                             "C_call_function": "getNameErrorPattern(\t)",
                             "C_name": "STMT_getNameErrorPattern_bufferify",

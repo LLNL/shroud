@@ -2508,7 +2508,6 @@
             },
             {
                 "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
-                "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2523,75 +2522,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "names",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
-                "doxygen": {
-                    "description": "Return strlen of the first index as a check.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_array_alloc",
-                        "char_array_free"
-                    ]
-                },
-                "name": "acceptCharArrayIn",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "acceptCharArrayIn",
-                    "F_name_api": "accept_char_array_in",
-                    "function_name": "acceptCharArrayIn"
-                }
-            },
-            {
-                "<FUNCTION>": "acceptCharArrayIn  46 ****************************************",
-                "_PTR_C_CXX_index": "14",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 14,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "acceptCharArrayIn",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "names",
@@ -2936,7 +2866,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToScalar  17 ****************************************",
-                "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2950,76 +2879,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "nitems",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToScalar",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToScalar",
-                    "F_name_api": "get_ptr_to_scalar",
-                    "function_name": "getPtrToScalar"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToScalar  47 ****************************************",
-                "_PTR_C_CXX_index": "17",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 17,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToScalar",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -3144,7 +3003,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
-                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3159,83 +3017,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFixedArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFixedArray",
-                    "F_name_api": "get_ptr_to_fixed_array",
-                    "function_name": "getPtrToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFixedArray  48 ****************************************",
-                "_PTR_C_CXX_index": "18",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 18,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFixedArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -3374,7 +3155,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
-                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3389,105 +3169,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "ncount",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToDynamicArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToDynamicArray",
-                    "F_name_api": "get_ptr_to_dynamic_array",
-                    "function_name": "getPtrToDynamicArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToDynamicArray  49 ****************************************",
-                "_PTR_C_CXX_index": "19",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 19,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToDynamicArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -3680,7 +3361,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
-                "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3695,84 +3375,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFuncArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFuncArray",
-                    "F_name_api": "get_ptr_to_func_array",
-                    "function_name": "getPtrToFuncArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFuncArray  50 ****************************************",
-                "_PTR_C_CXX_index": "20",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 20,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFuncArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "getLen()",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -3912,7 +3514,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
-                "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3927,77 +3528,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "nitems",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToConstScalar",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToConstScalar",
-                    "F_name_api": "get_ptr_to_const_scalar",
-                    "function_name": "getPtrToConstScalar"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToConstScalar  51 ****************************************",
-                "_PTR_C_CXX_index": "21",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 21,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToConstScalar",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "intent": "out"
                                     },
@@ -4122,7 +3652,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
-                "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4138,81 +3667,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFixedConstArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFixedConstArray",
-                    "F_name_api": "get_ptr_to_fixed_const_array",
-                    "function_name": "getPtrToFixedConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFixedConstArray  52 ****************************************",
-                "_PTR_C_CXX_index": "22",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 22,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFixedConstArray",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -4348,7 +3802,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
-                "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4364,103 +3817,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "ncount",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToDynamicConstArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToDynamicConstArray",
-                    "F_name_api": "get_ptr_to_dynamic_const_array",
-                    "function_name": "getPtrToDynamicConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToDynamicConstArray  53 ****************************************",
-                "_PTR_C_CXX_index": "23",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 23,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToDynamicConstArray",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -5564,7 +4920,6 @@
             },
             {
                 "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
-                "_PTR_F_C_index": "54",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5580,89 +4935,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
-                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "getAllocToFixedArray",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getAllocToFixedArray",
-                    "F_name_api": "get_alloc_to_fixed_array",
-                    "function_name": "getAllocToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getAllocToFixedArray  54 ****************************************",
-                "_PTR_C_CXX_index": "31",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 31,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getAllocToFixedArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
                                         "deref": "allocatable",
                                         "dimension": [
                                             {
@@ -6565,69 +5837,12 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedArray  38 ****************************************",
-                "_PTR_F_C_index": "55",
                 "ast": {
                     "declarator": {
                         "attrs": {
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntPtrToFixedArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "returnIntPtrToFixedArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntPtrToFixedArray",
-                    "F_name_api": "return_int_ptr_to_fixed_array",
-                    "function_name": "returnIntPtrToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntPtrToFixedArray  55 ****************************************",
-                "_PTR_C_CXX_index": "38",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 38,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
                             "deref": "pointer",
                             "dimension": [
                                 {
@@ -6832,7 +6047,6 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedConstArray  40 ****************************************",
-                "_PTR_F_C_index": "56",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6840,63 +6054,6 @@
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntPtrToFixedConstArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "returnIntPtrToFixedConstArray",
-                "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntPtrToFixedConstArray",
-                    "F_name_api": "return_int_ptr_to_fixed_const_array",
-                    "function_name": "returnIntPtrToFixedConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntPtrToFixedConstArray  56 ****************************************",
-                "_PTR_C_CXX_index": "40",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 40,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
                             "deref": "pointer",
                             "dimension": [
                                 {
@@ -7446,7 +6603,6 @@
             },
             {
                 "<FUNCTION>": "returnIntAllocToFixedArray  45 ****************************************",
-                "_PTR_F_C_index": "57",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7454,68 +6610,6 @@
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntAllocToFixedArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
-                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "returnIntAllocToFixedArray",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntAllocToFixedArray",
-                    "F_name_api": "return_int_alloc_to_fixed_array",
-                    "function_name": "returnIntAllocToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntAllocToFixedArray  57 ****************************************",
-                "_PTR_C_CXX_index": "45",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 45,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "deref": "allocatable",
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
                             "deref": "allocatable",
                             "dimension": [
                                 {
