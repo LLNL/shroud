@@ -50,6 +50,9 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 double * TEM_vector_double_at(TEM_vector_double * self,
     TEM_vector_double_size_type n);
 
+double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
+    TEM_vector_double_size_type n);
+
 #ifdef __cplusplus
 }
 #endif

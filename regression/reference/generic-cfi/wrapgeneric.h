@@ -28,8 +28,8 @@
 
 int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
 
-void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
-    int nto);
+void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
+    int * to, int nto);
 
 void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto);
@@ -67,8 +67,10 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv);
 
 long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew);
 
-long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew);
+long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
+    int inew);
 
-long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew);
+long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
+    long inew);
 
 #endif  // WRAPGENERIC_H

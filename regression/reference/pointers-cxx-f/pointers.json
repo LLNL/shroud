@@ -59,9 +59,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         }
                     }
@@ -71,14 +77,17 @@
                         "fmtf": {
                             "C_call_function": "intargs_in(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_intargs_in_bufferify",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_intargs_in",
+                            "F_C_call": "c_intargs_in_bufferify",
+                            "F_C_name": "intargs_in",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -110,9 +119,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_in",
                     "C_name_api": "intargs_in",
-                    "F_C_name": "intargs_in",
                     "F_name_api": "intargs_in",
                     "F_name_function": "intargs_in",
                     "F_name_generic": "intargs_in",
@@ -168,9 +175,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         }
                     }
@@ -180,14 +193,17 @@
                         "fmtf": {
                             "C_call_function": "intargs_inout(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_intargs_inout_bufferify",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_intargs_inout",
+                            "F_C_call": "c_intargs_inout_bufferify",
+                            "F_C_name": "intargs_inout",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -219,9 +235,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_inout",
                     "C_name_api": "intargs_inout",
-                    "F_C_name": "intargs_inout",
                     "F_name_api": "intargs_inout",
                     "F_name_function": "intargs_inout",
                     "F_name_generic": "intargs_inout",
@@ -277,9 +291,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -289,14 +309,17 @@
                         "fmtf": {
                             "C_call_function": "intargs_out(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_intargs_out_bufferify",
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_intargs_out",
+                            "F_C_call": "c_intargs_out_bufferify",
+                            "F_C_name": "intargs_out",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -328,9 +351,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs_out",
                     "C_name_api": "intargs_out",
-                    "F_C_name": "intargs_out",
                     "F_name_api": "intargs_out",
                     "F_name_function": "intargs_out",
                     "F_name_generic": "intargs_out",
@@ -425,15 +446,27 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "argin": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arginout": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         },
                         "argout": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -443,14 +476,17 @@
                         "fmtf": {
                             "C_call_function": "intargs(\targin,\t arginout,\t argout)",
                             "C_call_list": "argin,\t arginout,\t argout",
+                            "C_name": "POI_intargs_bufferify",
                             "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                             "C_return_type": "void",
                             "F_C_arguments": "argin,\t arginout,\t argout",
-                            "F_C_call": "c_intargs",
+                            "F_C_call": "c_intargs_bufferify",
+                            "F_C_name": "intargs",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "argin,\t arginout,\t argout",
                             "F_arguments": "argin,\t arginout,\t argout",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -534,9 +570,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_intargs",
                     "C_name_api": "intargs",
-                    "F_C_name": "intargs",
                     "F_name_api": "intargs",
                     "F_name_function": "intargs",
                     "F_name_generic": "intargs",
@@ -646,15 +680,27 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         },
                         "out": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -664,14 +710,17 @@
                         "fmtf": {
                             "C_call_function": "cos_doubles(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
+                            "C_name": "POI_cos_doubles_bufferify",
                             "C_prototype": "double * in,\t double * out,\t int sizein",
                             "C_return_type": "void",
                             "F_C_arguments": "in,\t out,\t sizein",
-                            "F_C_call": "c_cos_doubles",
+                            "F_C_call": "c_cos_doubles_bufferify",
+                            "F_C_name": "c_cos_doubles_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -764,9 +813,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_cos_doubles",
                     "C_name_api": "cos_doubles",
-                    "F_C_name": "c_cos_doubles",
                     "F_name_api": "cos_doubles",
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
@@ -876,15 +923,27 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         },
                         "out": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -894,14 +953,17 @@
                         "fmtf": {
                             "C_call_function": "truncate_to_int(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
+                            "C_name": "POI_truncate_to_int_bufferify",
                             "C_prototype": "double * in,\t int * out,\t int sizein",
                             "C_return_type": "void",
                             "F_C_arguments": "in,\t out,\t sizein",
-                            "F_C_call": "c_truncate_to_int",
+                            "F_C_call": "c_truncate_to_int_bufferify",
+                            "F_C_name": "c_truncate_to_int_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -994,9 +1056,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_truncate_to_int",
                     "C_name_api": "truncate_to_int",
-                    "F_C_name": "c_truncate_to_int",
                     "F_name_api": "truncate_to_int",
                     "F_name_function": "truncate_to_int",
                     "F_name_generic": "truncate_to_int",
@@ -1083,12 +1143,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nvalues": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "values": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -1098,14 +1167,17 @@
                         "fmtf": {
                             "C_call_function": "get_values(\tnvalues,\t values)",
                             "C_call_list": "nvalues,\t values",
+                            "C_name": "POI_get_values_bufferify",
                             "C_prototype": "int * nvalues,\t int * values",
                             "C_return_type": "void",
                             "F_C_arguments": "nvalues,\t values",
-                            "F_C_call": "c_get_values",
+                            "F_C_call": "c_get_values_bufferify",
+                            "F_C_name": "get_values",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "nvalues,\t values",
                             "F_arguments": "nvalues,\t values",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1167,9 +1239,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_get_values",
                     "C_name_api": "get_values",
-                    "F_C_name": "get_values",
                     "F_name_api": "get_values",
                     "F_name_function": "get_values",
                     "F_name_generic": "get_values",
@@ -1262,12 +1332,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -1277,14 +1356,17 @@
                         "fmtf": {
                             "C_call_function": "get_values2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "POI_get_values2_bufferify",
                             "C_prototype": "int * arg1,\t int * arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t arg2",
-                            "F_C_call": "c_get_values2",
+                            "F_C_call": "c_get_values2_bufferify",
+                            "F_C_name": "get_values2",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1350,9 +1432,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_get_values2",
                     "C_name_api": "get_values2",
-                    "F_C_name": "get_values2",
                     "F_name_api": "get_values2",
                     "F_name_function": "get_values2",
                     "F_name_generic": "get_values2",
@@ -1430,12 +1510,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nvar": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "values": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -1445,14 +1534,17 @@
                         "fmtf": {
                             "C_call_function": "iota_dimension(\tnvar,\t values)",
                             "C_call_list": "nvar,\t values",
+                            "C_name": "POI_iota_dimension_bufferify",
                             "C_prototype": "int nvar,\t int * values",
                             "C_return_type": "void",
                             "F_C_arguments": "nvar,\t values",
-                            "F_C_call": "c_iota_dimension",
+                            "F_C_call": "c_iota_dimension_bufferify",
+                            "F_C_name": "iota_dimension",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "nvar,\t values",
                             "F_arguments": "nvar,\t values",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1514,9 +1606,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_iota_dimension",
                     "C_name_api": "iota_dimension",
-                    "F_C_name": "iota_dimension",
                     "F_name_api": "iota_dimension",
                     "F_name_function": "iota_dimension",
                     "F_name_generic": "iota_dimension",
@@ -1613,15 +1703,27 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "len": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "result": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "values": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         }
                     }
@@ -1631,14 +1733,17 @@
                         "fmtf": {
                             "C_call_function": "Sum(\tlen,\t values,\t result)",
                             "C_call_list": "len,\t values,\t result",
+                            "C_name": "POI_Sum_bufferify",
                             "C_prototype": "int len,\t const int * values,\t int * result",
                             "C_return_type": "void",
                             "F_C_arguments": "len,\t values,\t result",
-                            "F_C_call": "c_sum",
+                            "F_C_call": "c_sum_bufferify",
+                            "F_C_name": "c_sum_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_len,\t values,\t result",
                             "F_arguments": "values,\t result",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1727,9 +1832,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_Sum",
                     "C_name_api": "Sum",
-                    "F_C_name": "c_sum",
                     "F_name_api": "sum",
                     "F_name_function": "sum",
                     "F_name_generic": "sum",
@@ -1794,9 +1897,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "out": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -1806,14 +1915,17 @@
                         "fmtf": {
                             "C_call_function": "fillIntArray(\tout)",
                             "C_call_list": "out",
+                            "C_name": "POI_fillIntArray_bufferify",
                             "C_prototype": "int * out",
                             "C_return_type": "void",
                             "F_C_arguments": "out",
-                            "F_C_call": "c_fill_int_array",
+                            "F_C_call": "c_fill_int_array_bufferify",
+                            "F_C_name": "fill_int_array",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "out",
                             "F_arguments": "out",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -1849,9 +1961,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fillIntArray",
                     "C_name_api": "fillIntArray",
-                    "F_C_name": "fill_int_array",
                     "F_name_api": "fill_int_array",
                     "F_name_function": "fill_int_array",
                     "F_name_generic": "fill_int_array",
@@ -1928,12 +2038,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "array": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         },
                         "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -1943,14 +2062,17 @@
                         "fmtf": {
                             "C_call_function": "incrementIntArray(\tarray,\t sizein)",
                             "C_call_list": "array,\t sizein",
+                            "C_name": "POI_incrementIntArray_bufferify",
                             "C_prototype": "int * array,\t int sizein",
                             "C_return_type": "void",
                             "F_C_arguments": "array,\t sizein",
-                            "F_C_call": "c_increment_int_array",
+                            "F_C_call": "c_increment_int_array_bufferify",
+                            "F_C_name": "c_increment_int_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "array,\t SH_sizein",
                             "F_arguments": "array",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2013,9 +2135,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_incrementIntArray",
                     "C_name_api": "incrementIntArray",
-                    "F_C_name": "c_increment_int_array",
                     "F_name_api": "increment_int_array",
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
@@ -2088,12 +2208,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "x": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_native_*"
                         },
                         "x_length": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2103,14 +2232,17 @@
                         "fmtf": {
                             "C_call_function": "fill_with_zeros(\tx,\t x_length)",
                             "C_call_list": "x,\t x_length",
+                            "C_name": "POI_fill_with_zeros_bufferify",
                             "C_prototype": "double * x,\t int x_length",
                             "C_return_type": "void",
                             "F_C_arguments": "x,\t x_length",
-                            "F_C_call": "c_fill_with_zeros",
+                            "F_C_call": "c_fill_with_zeros_bufferify",
+                            "F_C_name": "c_fill_with_zeros_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "x,\t SH_x_length",
                             "F_arguments": "x",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2173,9 +2305,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fill_with_zeros",
                     "C_name_api": "fill_with_zeros",
-                    "F_C_name": "c_fill_with_zeros",
                     "F_name_api": "fill_with_zeros",
                     "F_name_function": "fill_with_zeros",
                     "F_name_generic": "fill_with_zeros",
@@ -2249,12 +2379,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         },
                         "len": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2264,10 +2403,12 @@
                         "fmtf": {
                             "C_call_function": "accumulate(\tarr,\t len)",
                             "C_call_list": "arr,\t len",
+                            "C_name": "POI_accumulate_bufferify",
                             "C_prototype": "const int * arr,\t size_t len",
                             "C_return_type": "int",
                             "F_C_arguments": "arr,\t len",
-                            "F_C_call": "c_accumulate",
+                            "F_C_call": "c_accumulate_bufferify",
+                            "F_C_name": "c_accumulate_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arr,\t SH_len",
@@ -2285,6 +2426,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2356,9 +2498,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_accumulate",
                     "C_name_api": "accumulate",
-                    "F_C_name": "c_accumulate",
                     "F_name_api": "accumulate",
                     "F_name_function": "accumulate",
                     "F_name_generic": "accumulate",
@@ -2368,7 +2508,6 @@
             },
             {
                 "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
-                "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2422,85 +2561,22 @@
                 },
                 "name": "acceptCharArrayIn",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "acceptCharArrayIn",
-                    "F_name_api": "accept_char_array_in",
-                    "function_name": "acceptCharArrayIn"
-                }
-            },
-            {
-                "<FUNCTION>": "acceptCharArrayIn  46 ****************************************",
-                "_PTR_C_CXX_index": "14",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 14,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "acceptCharArrayIn",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "names",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
-                "doxygen": {
-                    "description": "Return strlen of the first index as a check.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_array_alloc",
-                        "char_array_free"
-                    ]
-                },
-                "name": "acceptCharArrayIn",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "names": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_**_buf"
                         }
                     }
@@ -2510,10 +2586,12 @@
                         "fmtf": {
                             "C_call_function": "acceptCharArrayIn(\tSHCXX_names)",
                             "C_call_list": "SHCXX_names",
+                            "C_name": "POI_acceptCharArrayIn_bufferify",
                             "C_prototype": "const char *names,\t size_t SHT_names_size,\t int SHT_names_len",
                             "C_return_type": "int",
                             "F_C_arguments": "names,\t SHT_names_size,\t SHT_names_len",
                             "F_C_call": "c_accept_char_array_in_bufferify",
+                            "F_C_name": "c_accept_char_array_in_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "names,\t size(names, kind=C_SIZE_T),\t len(names, kind=C_INT)",
@@ -2531,6 +2609,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2581,14 +2660,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_acceptCharArrayIn_bufferify",
                     "C_name_api": "acceptCharArrayIn",
-                    "F_C_name": "c_accept_char_array_in_bufferify",
                     "F_name_api": "accept_char_array_in",
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "acceptCharArrayIn"
                 }
             },
@@ -2635,9 +2711,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "value": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2647,14 +2729,17 @@
                         "fmtf": {
                             "C_call_function": "setGlobalInt(\tvalue)",
                             "C_call_list": "value",
+                            "C_name": "POI_setGlobalInt_bufferify",
                             "C_prototype": "int value",
                             "C_return_type": "void",
                             "F_C_arguments": "value",
-                            "F_C_call": "c_set_global_int",
+                            "F_C_call": "c_set_global_int_bufferify",
+                            "F_C_name": "set_global_int",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "value",
                             "F_arguments": "value",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2686,9 +2771,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_setGlobalInt",
                     "C_name_api": "setGlobalInt",
-                    "F_C_name": "set_global_int",
                     "F_name_api": "set_global_int",
                     "F_name_function": "set_global_int",
                     "F_name_generic": "set_global_int",
@@ -2725,6 +2808,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -2733,10 +2819,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "sumFixedArray(\t)",
+                            "C_name": "POI_sumFixedArray_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
-                            "F_C_call": "c_sum_fixed_array",
+                            "F_C_call": "c_sum_fixed_array_bufferify",
+                            "F_C_name": "sum_fixed_array",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2753,6 +2841,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2767,9 +2856,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_sumFixedArray",
                     "C_name_api": "sumFixedArray",
-                    "F_C_name": "sum_fixed_array",
                     "F_name_api": "sum_fixed_array",
                     "F_name_function": "sum_fixed_array",
                     "F_name_generic": "sum_fixed_array",
@@ -2779,7 +2866,6 @@
             },
             {
                 "<FUNCTION>": "getPtrToScalar  17 ****************************************",
-                "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -2834,86 +2920,23 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToScalar",
-                    "F_name_api": "get_ptr_to_scalar",
-                    "function_name": "getPtrToScalar"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToScalar  47 ****************************************",
-                "_PTR_C_CXX_index": "17",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 17,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToScalar",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "nitems",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToScalar",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         }
                     }
@@ -2923,14 +2946,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToScalar(\t&nitems)",
                             "C_call_list": "&nitems",
+                            "C_name": "POI_getPtrToScalar_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_nitems_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_nitems_cdesc",
                             "F_C_call": "c_get_ptr_to_scalar_bufferify",
+                            "F_C_name": "c_get_ptr_to_scalar_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_nitems_cdesc",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -2967,20 +2993,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToScalar_bufferify",
                     "C_name_api": "getPtrToScalar",
-                    "F_C_name": "c_get_ptr_to_scalar_bufferify",
                     "F_name_api": "get_ptr_to_scalar",
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
                     "F_name_impl": "get_ptr_to_scalar",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToScalar"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
-                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3042,93 +3064,23 @@
                 },
                 "name": "getPtrToFixedArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFixedArray",
-                    "F_name_api": "get_ptr_to_fixed_array",
-                    "function_name": "getPtrToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFixedArray  48 ****************************************",
-                "_PTR_C_CXX_index": "18",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 18,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFixedArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFixedArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         }
                     }
@@ -3138,14 +3090,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToFixedArray(\t&count)",
                             "C_call_list": "&count",
+                            "C_name": "POI_getPtrToFixedArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc",
                             "F_C_call": "c_get_ptr_to_fixed_array_bufferify",
+                            "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3190,20 +3145,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFixedArray_bufferify",
                     "C_name_api": "getPtrToFixedArray",
-                    "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
                     "F_name_api": "get_ptr_to_fixed_array",
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
                     "F_name_impl": "get_ptr_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedArray"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
-                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3287,118 +3238,30 @@
                 },
                 "name": "getPtrToDynamicArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToDynamicArray",
-                    "F_name_api": "get_ptr_to_dynamic_array",
-                    "function_name": "getPtrToDynamicArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToDynamicArray  49 ****************************************",
-                "_PTR_C_CXX_index": "19",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 19,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToDynamicArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "ncount",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToDynamicArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         },
                         "ncount": {
+                            "meta": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*_hidden"
                         }
                     }
@@ -3408,14 +3271,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToDynamicArray(\t&count,\t &ncount)",
                             "C_call_list": "&count,\t &ncount",
+                            "C_name": "POI_getPtrToDynamicArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc",
                             "F_C_call": "c_get_ptr_to_dynamic_array_bufferify",
+                            "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3485,20 +3351,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToDynamicArray_bufferify",
                     "C_name_api": "getPtrToDynamicArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_name_api": "get_ptr_to_dynamic_array",
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
                     "F_name_impl": "get_ptr_to_dynamic_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicArray"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
-                "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3561,94 +3423,23 @@
                 },
                 "name": "getPtrToFuncArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFuncArray",
-                    "F_name_api": "get_ptr_to_func_array",
-                    "function_name": "getPtrToFuncArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFuncArray  50 ****************************************",
-                "_PTR_C_CXX_index": "20",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 20,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFuncArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "getLen()",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFuncArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         }
                     }
@@ -3658,14 +3449,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToFuncArray(\t&count)",
                             "C_call_list": "&count",
+                            "C_name": "POI_getPtrToFuncArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc",
                             "F_C_call": "c_get_ptr_to_func_array_bufferify",
+                            "F_C_name": "c_get_ptr_to_func_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3710,20 +3504,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFuncArray_bufferify",
                     "C_name_api": "getPtrToFuncArray",
-                    "F_C_name": "c_get_ptr_to_func_array_bufferify",
                     "F_name_api": "get_ptr_to_func_array",
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
                     "F_name_impl": "get_ptr_to_func_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFuncArray"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
-                "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3779,87 +3569,23 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToConstScalar",
-                    "F_name_api": "get_ptr_to_const_scalar",
-                    "function_name": "getPtrToConstScalar"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToConstScalar  51 ****************************************",
-                "_PTR_C_CXX_index": "21",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 21,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToConstScalar",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
-                                    "name": "nitems",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToConstScalar",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         }
                     }
@@ -3869,14 +3595,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToConstScalar(\t&nitems)",
                             "C_call_list": "&nitems",
+                            "C_name": "POI_getPtrToConstScalar_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_nitems_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_nitems_cdesc",
                             "F_C_call": "c_get_ptr_to_const_scalar_bufferify",
+                            "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_nitems_cdesc",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3913,20 +3642,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToConstScalar_bufferify",
                     "C_name_api": "getPtrToConstScalar",
-                    "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
                     "F_name_api": "get_ptr_to_const_scalar",
                     "F_name_function": "get_ptr_to_const_scalar",
                     "F_name_generic": "get_ptr_to_const_scalar",
                     "F_name_impl": "get_ptr_to_const_scalar",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToConstScalar"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
-                "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -3986,91 +3711,23 @@
                 },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToFixedConstArray",
-                    "F_name_api": "get_ptr_to_fixed_const_array",
-                    "function_name": "getPtrToFixedConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToFixedConstArray  52 ****************************************",
-                "_PTR_C_CXX_index": "22",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 22,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToFixedConstArray",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToFixedConstArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         }
                     }
@@ -4080,14 +3737,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToFixedConstArray(\t&count)",
                             "C_call_list": "&count",
+                            "C_name": "POI_getPtrToFixedConstArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc",
                             "F_C_call": "c_get_ptr_to_fixed_const_array_bufferify",
+                            "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4132,20 +3792,16 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToFixedConstArray_bufferify",
                     "C_name_api": "getPtrToFixedConstArray",
-                    "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
                     "F_name_api": "get_ptr_to_fixed_const_array",
                     "F_name_function": "get_ptr_to_fixed_const_array",
                     "F_name_generic": "get_ptr_to_fixed_const_array",
                     "F_name_impl": "get_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToFixedConstArray"
                 }
             },
             {
                 "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
-                "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -4227,116 +3883,30 @@
                 },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getPtrToDynamicConstArray",
-                    "F_name_api": "get_ptr_to_dynamic_const_array",
-                    "function_name": "getPtrToDynamicConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getPtrToDynamicConstArray  53 ****************************************",
-                "_PTR_C_CXX_index": "23",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 23,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getPtrToDynamicConstArray",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "attrs": {
-                                        "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "ncount",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "getPtrToDynamicConstArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         },
                         "ncount": {
+                            "meta": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*_hidden"
                         }
                     }
@@ -4346,14 +3916,17 @@
                         "fmtf": {
                             "C_call_function": "getPtrToDynamicConstArray(\t&count,\t &ncount)",
                             "C_call_list": "&count,\t &ncount",
+                            "C_name": "POI_getPtrToDynamicConstArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc",
                             "F_C_call": "c_get_ptr_to_dynamic_const_array_bufferify",
+                            "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4423,14 +3996,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getPtrToDynamicConstArray_bufferify",
                     "C_name_api": "getPtrToDynamicConstArray",
-                    "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
                     "F_name_impl": "get_ptr_to_dynamic_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getPtrToDynamicConstArray"
                 }
             },
@@ -4490,9 +4060,16 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_raw"
                         }
                     }
@@ -4502,14 +4079,17 @@
                         "fmtf": {
                             "C_call_function": "getRawPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "POI_getRawPtrToScalar_bufferify",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
                             "F_C_arguments": "nitems",
-                            "F_C_call": "c_get_raw_ptr_to_scalar",
+                            "F_C_call": "c_get_raw_ptr_to_scalar_bufferify",
+                            "F_C_name": "get_raw_ptr_to_scalar",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "nitems",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4541,9 +4121,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToScalar",
                     "C_name_api": "getRawPtrToScalar",
-                    "F_C_name": "get_raw_ptr_to_scalar",
                     "F_name_api": "get_raw_ptr_to_scalar",
                     "F_name_function": "get_raw_ptr_to_scalar",
                     "F_name_generic": "get_raw_ptr_to_scalar",
@@ -4610,9 +4188,16 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_raw"
                         }
                     }
@@ -4622,14 +4207,17 @@
                         "fmtf": {
                             "C_call_function": "getRawPtrToScalarForce(\tnitems)",
                             "C_call_list": "nitems",
+                            "C_name": "POI_getRawPtrToScalarForce_bufferify",
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
                             "F_C_arguments": "nitems",
-                            "F_C_call": "c_get_raw_ptr_to_scalar_force",
+                            "F_C_call": "c_get_raw_ptr_to_scalar_force_bufferify",
+                            "F_C_name": "c_get_raw_ptr_to_scalar_force_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "nitems",
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4661,9 +4249,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToScalarForce",
                     "C_name_api": "getRawPtrToScalarForce",
-                    "F_C_name": "c_get_raw_ptr_to_scalar_force",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
                     "F_name_function": "get_raw_ptr_to_scalar_force",
                     "F_name_generic": "get_raw_ptr_to_scalar_force",
@@ -4727,9 +4313,16 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_raw"
                         }
                     }
@@ -4739,14 +4332,17 @@
                         "fmtf": {
                             "C_call_function": "getRawPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "POI_getRawPtrToFixedArray_bufferify",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_arguments": "count",
-                            "F_C_call": "c_get_raw_ptr_to_fixed_array",
+                            "F_C_call": "c_get_raw_ptr_to_fixed_array_bufferify",
+                            "F_C_name": "get_raw_ptr_to_fixed_array",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4778,9 +4374,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToFixedArray",
                     "C_name_api": "getRawPtrToFixedArray",
-                    "F_C_name": "get_raw_ptr_to_fixed_array",
                     "F_name_api": "get_raw_ptr_to_fixed_array",
                     "F_name_function": "get_raw_ptr_to_fixed_array",
                     "F_name_generic": "get_raw_ptr_to_fixed_array",
@@ -4847,9 +4441,16 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_raw"
                         }
                     }
@@ -4859,14 +4460,17 @@
                         "fmtf": {
                             "C_call_function": "getRawPtrToFixedArrayForce(\tcount)",
                             "C_call_list": "count",
+                            "C_name": "POI_getRawPtrToFixedArrayForce_bufferify",
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_arguments": "count",
-                            "F_C_call": "c_get_raw_ptr_to_fixed_array_force",
+                            "F_C_call": "c_get_raw_ptr_to_fixed_array_force_bufferify",
+                            "F_C_name": "c_get_raw_ptr_to_fixed_array_force_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "count",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -4898,9 +4502,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToFixedArrayForce",
                     "C_name_api": "getRawPtrToFixedArrayForce",
-                    "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
                     "F_name_function": "get_raw_ptr_to_fixed_array_force",
                     "F_name_generic": "get_raw_ptr_to_fixed_array_force",
@@ -4967,9 +4569,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_***"
                         }
                     }
@@ -4979,14 +4587,17 @@
                         "fmtf": {
                             "C_call_function": "getRawPtrToInt2d(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_getRawPtrToInt2d_bufferify",
                             "C_prototype": "int * * * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_get_raw_ptr_to_int2d",
+                            "F_C_call": "c_get_raw_ptr_to_int2d_bufferify",
+                            "F_C_name": "get_raw_ptr_to_int2d",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5018,9 +4629,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getRawPtrToInt2d",
                     "C_name_api": "getRawPtrToInt2d",
-                    "F_C_name": "get_raw_ptr_to_int2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
                     "F_name_function": "get_raw_ptr_to_int2d",
                     "F_name_generic": "get_raw_ptr_to_int2d",
@@ -5084,9 +4693,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_**"
                         }
                     }
@@ -5096,10 +4711,12 @@
                         "fmtf": {
                             "C_call_function": "checkInt2d(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_checkInt2d_bufferify",
                             "C_prototype": "int **arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_check_int2d",
+                            "F_C_call": "c_check_int2d_bufferify",
+                            "F_C_name": "check_int2d",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -5117,6 +4734,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5157,9 +4775,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_checkInt2d",
                     "C_name_api": "checkInt2d",
-                    "F_C_name": "check_int2d",
                     "F_name_api": "check_int2d",
                     "F_name_function": "check_int2d",
                     "F_name_generic": "check_int2d",
@@ -5230,9 +4846,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         }
                     }
@@ -5242,14 +4864,17 @@
                         "fmtf": {
                             "C_call_function": "DimensionIn(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "POI_DimensionIn_bufferify",
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_dimension_in",
+                            "F_C_call": "c_dimension_in_bufferify",
+                            "F_C_name": "c_dimension_in_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5285,9 +4910,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_DimensionIn",
                     "C_name_api": "DimensionIn",
-                    "F_C_name": "c_dimension_in",
                     "F_name_api": "dimension_in",
                     "F_name_function": "dimension_in",
                     "F_name_generic": "dimension_in",
@@ -5297,7 +4920,6 @@
             },
             {
                 "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
-                "_PTR_F_C_index": "54",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -5365,99 +4987,23 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getAllocToFixedArray",
-                    "F_name_api": "get_alloc_to_fixed_array",
-                    "function_name": "getAllocToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "getAllocToFixedArray  54 ****************************************",
-                "_PTR_C_CXX_index": "31",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 31,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getAllocToFixedArray",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "deref": "allocatable",
-                                        "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "name": "count",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
-                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
-                "doxygen": {
-                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "getAllocToFixedArray",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_**_cdesc_allocatable"
                         }
                     }
@@ -5467,14 +5013,17 @@
                         "fmtf": {
                             "C_call_function": "getAllocToFixedArray(\t&count)",
                             "C_call_list": "&count",
+                            "C_name": "POI_getAllocToFixedArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_count_cdesc,\t POI_SHROUD_capsule_data *SHT_count_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_count_cdesc,\t SHT_count_capsule",
                             "F_C_call": "c_get_alloc_to_fixed_array_bufferify",
+                            "F_C_name": "c_get_alloc_to_fixed_array_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_count_cdesc,\t SHT_count_capsule",
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5526,14 +5075,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_getAllocToFixedArray_bufferify",
                     "C_name_api": "getAllocToFixedArray",
-                    "F_C_name": "c_get_alloc_to_fixed_array_bufferify",
                     "F_name_api": "get_alloc_to_fixed_array",
                     "F_name_function": "get_alloc_to_fixed_array",
                     "F_name_generic": "get_alloc_to_fixed_array",
                     "F_name_impl": "get_alloc_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getAllocToFixedArray"
                 }
             },
@@ -5585,9 +5131,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_void_*"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5597,10 +5149,12 @@
                         "fmtf": {
                             "C_call_function": "returnAddress1(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "POI_returnAddress1_bufferify",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
                             "F_C_arguments": "flag",
-                            "F_C_call": "c_return_address1",
+                            "F_C_call": "c_return_address1_bufferify",
+                            "F_C_name": "return_address1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "flag",
@@ -5618,6 +5172,7 @@
                             "cxx_rv_decl": "void * SHC_rv",
                             "cxx_type": "void",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -5657,9 +5212,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnAddress1",
                     "C_name_api": "returnAddress1",
-                    "F_C_name": "return_address1",
                     "F_name_api": "return_address1",
                     "F_name_function": "return_address1",
                     "F_name_generic": "return_address1",
@@ -5717,9 +5270,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_void_*"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5729,10 +5288,12 @@
                         "fmtf": {
                             "C_call_function": "returnAddress2(\tflag)",
                             "C_call_list": "flag",
+                            "C_name": "POI_returnAddress2_bufferify",
                             "C_prototype": "int flag",
                             "C_return_type": "void *",
                             "F_C_arguments": "flag",
-                            "F_C_call": "c_return_address2",
+                            "F_C_call": "c_return_address2_bufferify",
+                            "F_C_name": "c_return_address2_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "flag",
@@ -5750,6 +5311,7 @@
                             "cxx_rv_decl": "void * SHC_rv",
                             "cxx_type": "void",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_type": "type(C_PTR)",
                             "f_type_module": "iso_c_binding",
@@ -5789,9 +5351,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnAddress2",
                     "C_name_api": "returnAddress2",
-                    "F_C_name": "c_return_address2",
                     "F_name_api": "return_address2",
                     "F_name_function": "return_address2",
                     "F_name_generic": "return_address2",
@@ -5850,9 +5410,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "addr": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_void_**"
                         }
                     }
@@ -5862,14 +5428,17 @@
                         "fmtf": {
                             "C_call_function": "fetchVoidPtr(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "POI_fetchVoidPtr_bufferify",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
                             "F_C_arguments": "addr",
-                            "F_C_call": "c_fetch_void_ptr",
+                            "F_C_call": "c_fetch_void_ptr_bufferify",
+                            "F_C_name": "fetch_void_ptr",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "addr",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -5900,9 +5469,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_fetchVoidPtr",
                     "C_name_api": "fetchVoidPtr",
-                    "F_C_name": "fetch_void_ptr",
                     "F_name_api": "fetch_void_ptr",
                     "F_name_function": "fetch_void_ptr",
                     "F_name_generic": "fetch_void_ptr",
@@ -5964,9 +5531,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "addr": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_void_**"
                         }
                     }
@@ -5976,14 +5549,17 @@
                         "fmtf": {
                             "C_call_function": "updateVoidPtr(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "POI_updateVoidPtr_bufferify",
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
                             "F_C_arguments": "addr",
-                            "F_C_call": "c_update_void_ptr",
+                            "F_C_call": "c_update_void_ptr_bufferify",
+                            "F_C_name": "c_update_void_ptr_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "addr",
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -6014,9 +5590,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_updateVoidPtr",
                     "C_name_api": "updateVoidPtr",
-                    "F_C_name": "c_update_void_ptr",
                     "F_name_api": "update_void_ptr",
                     "F_name_function": "update_void_ptr",
                     "F_name_generic": "update_void_ptr",
@@ -6078,9 +5652,15 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "addr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_void_**"
                         }
                     }
@@ -6090,10 +5670,12 @@
                         "fmtf": {
                             "C_call_function": "VoidPtrArray(\taddr)",
                             "C_call_list": "addr",
+                            "C_name": "POI_VoidPtrArray_bufferify",
                             "C_prototype": "void **addr",
                             "C_return_type": "int",
                             "F_C_arguments": "addr",
-                            "F_C_call": "c_void_ptr_array",
+                            "F_C_call": "c_void_ptr_array_bufferify",
+                            "F_C_name": "c_void_ptr_array_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "addr",
@@ -6111,6 +5693,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -6154,9 +5737,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_VoidPtrArray",
                     "C_name_api": "VoidPtrArray",
-                    "F_C_name": "c_void_ptr_array",
                     "F_name_api": "void_ptr_array",
                     "F_name_function": "void_ptr_array",
                     "F_name_generic": "void_ptr_array",
@@ -6196,6 +5777,10 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_pointer"
                         }
                     }
@@ -6204,10 +5789,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntPtrToScalar(\t)",
+                            "C_name": "POI_returnIntPtrToScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_ptr_to_scalar",
+                            "F_C_call": "c_return_int_ptr_to_scalar_bufferify",
+                            "F_C_name": "c_return_int_ptr_to_scalar_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -6224,6 +5811,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_local_ptr": "SHC_rv_ptr",
@@ -6239,9 +5827,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToScalar",
                     "C_name_api": "returnIntPtrToScalar",
-                    "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_name_api": "return_int_ptr_to_scalar",
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
@@ -6251,7 +5837,6 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedArray  38 ****************************************",
-                "_PTR_F_C_index": "55",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -6292,69 +5877,17 @@
                 },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntPtrToFixedArray",
-                    "F_name_api": "return_int_ptr_to_fixed_array",
-                    "function_name": "returnIntPtrToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntPtrToFixedArray  55 ****************************************",
-                "_PTR_C_CXX_index": "38",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 38,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntPtrToFixedArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "returnIntPtrToFixedArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_cdesc_pointer"
                         }
                     }
@@ -6363,10 +5896,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntPtrToFixedArray(\t)",
+                            "C_name": "POI_returnIntPtrToFixedArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
+                            "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -6391,6 +5926,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -6410,14 +5946,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToFixedArray_bufferify",
                     "C_name_api": "returnIntPtrToFixedArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
                     "F_name_impl": "return_int_ptr_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntPtrToFixedArray"
                 }
             },
@@ -6454,6 +5987,10 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_pointer"
                         }
                     }
@@ -6462,10 +5999,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntPtrToConstScalar(\t)",
+                            "C_name": "POI_returnIntPtrToConstScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "const int *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_ptr_to_const_scalar",
+                            "F_C_call": "c_return_int_ptr_to_const_scalar_bufferify",
+                            "F_C_name": "c_return_int_ptr_to_const_scalar_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -6482,6 +6021,7 @@
                             "cxx_rv_decl": "const int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_local_ptr": "SHC_rv_ptr",
@@ -6497,9 +6037,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToConstScalar",
                     "C_name_api": "returnIntPtrToConstScalar",
-                    "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
@@ -6509,7 +6047,6 @@
             },
             {
                 "<FUNCTION>": "returnIntPtrToFixedConstArray  40 ****************************************",
-                "_PTR_F_C_index": "56",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6551,70 +6088,17 @@
                 },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntPtrToFixedConstArray",
-                    "F_name_api": "return_int_ptr_to_fixed_const_array",
-                    "function_name": "returnIntPtrToFixedConstArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntPtrToFixedConstArray  56 ****************************************",
-                "_PTR_C_CXX_index": "40",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 40,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntPtrToFixedConstArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "returnIntPtrToFixedConstArray",
-                "options": {},
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_cdesc_pointer"
                         }
                     }
@@ -6623,10 +6107,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntPtrToFixedConstArray(\t)",
+                            "C_name": "POI_returnIntPtrToFixedConstArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc",
                             "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
+                            "F_C_name": "c_return_int_ptr_to_fixed_const_array_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc",
@@ -6651,6 +6137,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "POI_SHROUD_array",
                             "f_intent": "OUT",
@@ -6670,14 +6157,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntPtrToFixedConstArray_bufferify",
                     "C_name_api": "returnIntPtrToFixedConstArray",
-                    "F_C_name": "c_return_int_ptr_to_fixed_const_array_bufferify",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
                     "F_name_impl": "return_int_ptr_to_fixed_const_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
             },
@@ -6716,6 +6200,10 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "deref": "scalar",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_scalar"
                         }
                     }
@@ -6724,10 +6212,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntScalar(\t)",
+                            "C_name": "POI_returnIntScalar_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_scalar_extrawrapper",
+                            "F_C_call": "c_return_int_scalar_bufferify",
+                            "F_C_name": "return_int_scalar",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -6743,6 +6233,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -6757,14 +6248,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntScalar_extrawrapper",
                     "C_name_api": "returnIntScalar",
-                    "F_C_name": "return_int_scalar",
                     "F_name_api": "return_int_scalar",
                     "F_name_function": "return_int_scalar",
                     "F_name_generic": "return_int_scalar",
                     "F_name_impl": "return_int_scalar",
-                    "f_c_suffix": "_extrawrapper",
                     "function_name": "returnIntScalar"
                 }
             },
@@ -6808,6 +6296,10 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_raw"
                         }
                     }
@@ -6816,10 +6308,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntRaw(\t)",
+                            "C_name": "POI_returnIntRaw_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_int_raw",
+                            "F_C_call": "c_return_int_raw_bufferify",
+                            "F_C_name": "return_int_raw",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -6836,6 +6330,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -6850,9 +6345,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntRaw",
                     "C_name_api": "returnIntRaw",
-                    "F_C_name": "return_int_raw",
                     "F_name_api": "return_int_raw",
                     "F_name_function": "return_int_raw",
                     "F_name_generic": "return_int_raw",
@@ -6921,9 +6414,16 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_raw"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         }
                     }
@@ -6933,10 +6433,12 @@
                         "fmtf": {
                             "C_call_function": "returnIntRawWithArgs(\tname)",
                             "C_call_list": "name",
+                            "C_name": "POI_returnIntRawWithArgs_bufferify",
                             "C_prototype": "const char * name",
                             "C_return_type": "int *",
                             "F_C_arguments": "name",
-                            "F_C_call": "c_return_int_raw_with_args",
+                            "F_C_call": "c_return_int_raw_with_args_bufferify",
+                            "F_C_name": "c_return_int_raw_with_args_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR",
@@ -6954,6 +6456,7 @@
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -6994,9 +6497,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntRawWithArgs",
                     "C_name_api": "returnIntRawWithArgs",
-                    "F_C_name": "c_return_int_raw_with_args",
                     "F_name_api": "return_int_raw_with_args",
                     "F_name_function": "return_int_raw_with_args",
                     "F_name_generic": "return_int_raw_with_args",
@@ -7044,6 +6545,9 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_**"
                         }
                     }
@@ -7052,10 +6556,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnRawPtrToInt2d(\t)",
+                            "C_name": "POI_returnRawPtrToInt2d_bufferify",
                             "C_prototype": "void",
                             "C_return_type": "int * *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_return_raw_ptr_to_int2d",
+                            "F_C_call": "c_return_raw_ptr_to_int2d_bufferify",
+                            "F_C_name": "c_return_raw_ptr_to_int2d_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -7072,6 +6578,7 @@
                             "cxx_rv_decl": "int * * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -7086,9 +6593,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnRawPtrToInt2d",
                     "C_name_api": "returnRawPtrToInt2d",
-                    "F_C_name": "c_return_raw_ptr_to_int2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
                     "F_name_function": "return_raw_ptr_to_int2d",
                     "F_name_generic": "return_raw_ptr_to_int2d",
@@ -7098,7 +6603,6 @@
             },
             {
                 "<FUNCTION>": "returnIntAllocToFixedArray  45 ****************************************",
-                "_PTR_F_C_index": "57",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7145,75 +6649,17 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "returnIntAllocToFixedArray",
-                    "F_name_api": "return_int_alloc_to_fixed_array",
-                    "function_name": "returnIntAllocToFixedArray"
-                }
-            },
-            {
-                "<FUNCTION>": "returnIntAllocToFixedArray  57 ****************************************",
-                "_PTR_C_CXX_index": "45",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 45,
-                "ast": {
-                    "declarator": {
-                        "attrs": {
-                            "deref": "allocatable",
-                            "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
-                        "name": "returnIntAllocToFixedArray",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
-                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "returnIntAllocToFixedArray",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_*_cdesc_allocatable"
                         }
                     }
@@ -7222,10 +6668,12 @@
                     "+result": {
                         "fmtf": {
                             "C_call_function": "returnIntAllocToFixedArray(\t)",
+                            "C_name": "POI_returnIntAllocToFixedArray_bufferify",
                             "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc,\t POI_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_return_int_alloc_to_fixed_array_bufferify",
+                            "F_C_name": "c_return_int_alloc_to_fixed_array_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -7252,6 +6700,7 @@
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "POI_SHROUD_array",
@@ -7276,14 +6725,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_returnIntAllocToFixedArray_bufferify",
                     "C_name_api": "returnIntAllocToFixedArray",
-                    "F_C_name": "c_return_int_alloc_to_fixed_array_bufferify",
                     "F_name_api": "return_int_alloc_to_fixed_array",
                     "F_name_function": "return_int_alloc_to_fixed_array",
                     "F_name_generic": "return_int_alloc_to_fixed_array",
                     "F_name_impl": "return_int_alloc_to_fixed_array",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "returnIntAllocToFixedArray"
                 }
             }

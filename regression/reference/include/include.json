@@ -56,17 +56,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 },
                                 "comm": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_unknown_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 },
                                 "comm": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_unknown_scalar"
                                 }
                             }
@@ -76,17 +88,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->method1(\tSHCXX_comm)",
                                     "C_call_list": "SHCXX_comm",
+                                    "C_name": "LIB_Class2_method1",
                                     "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class2_method1",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method1(\tSHCXX_comm)",
                                     "C_call_list": "SHCXX_comm",
+                                    "C_name": "LIB_Class2_method1",
                                     "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t comm",
                                     "F_C_call": "c_class2_method1",
+                                    "F_C_name": "c_class2_method1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t comm",
                                     "F_arguments": "obj,\t comm",
@@ -143,9 +159,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "LIB_Class2_method1",
                             "C_name_api": "method1",
-                            "F_C_name": "c_class2_method1",
                             "F_name_api": "method1",
                             "F_name_function": "method1",
                             "F_name_generic": "method1",
@@ -203,17 +217,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 },
                                 "c2": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "c_inout_shadow_*"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 },
                                 "c2": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_shadow_*"
                                 }
                             }
@@ -223,17 +249,21 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->method2(\tSHCXX_c2)",
                                     "C_call_list": "SHCXX_c2",
+                                    "C_name": "LIB_Class2_method2",
                                     "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class2_method2",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method2(\tSHCXX_c2)",
                                     "C_call_list": "SHCXX_c2",
+                                    "C_name": "LIB_Class2_method2",
                                     "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t c2",
                                     "F_C_call": "c_class2_method2",
+                                    "F_C_name": "c_class2_method2",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t c2%cxxmem",
                                     "F_arguments": "obj,\t c2",
@@ -287,9 +317,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "LIB_Class2_method2",
                             "C_name_api": "method2",
-                            "F_C_name": "c_class2_method2",
                             "F_name_api": "method2",
                             "F_name_function": "method2",
                             "F_name_generic": "method2",
@@ -378,11 +406,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -391,16 +425,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "one::two::function1(\t)",
+                                            "C_name": "LIB_one_two_function1",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_function1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "one::two::function1(\t)",
+                                            "C_name": "LIB_one_two_function1",
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_arguments": "",
                                             "F_C_call": "c_function1",
+                                            "F_C_name": "function1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
@@ -409,9 +447,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "LIB_one_two_function1",
                                     "C_name_api": "function1",
-                                    "F_C_name": "function1",
                                     "F_name_api": "function1",
                                     "F_name_function": "function1",
                                     "F_name_generic": "function1",
@@ -532,17 +568,29 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         },
                                         "arg1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "c_in_native_scalar"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         },
                                         "arg1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            },
                                             "stmt": "f_in_native_scalar"
                                         }
                                     }
@@ -552,17 +600,21 @@
                                         "fmtc": {
                                             "C_call_function": "SH_this->method1(\targ1)",
                                             "C_call_list": "arg1",
+                                            "C_name": "LIB_three_Class1_method1",
                                             "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_class1_method1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method1(\targ1)",
                                             "C_call_list": "arg1",
+                                            "C_name": "LIB_three_Class1_method1",
                                             "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t arg1",
                                             "F_C_call": "c_class1_method1",
+                                            "F_C_name": "c_class1_method1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t arg1",
                                             "F_arguments": "obj,\t arg1",
@@ -615,9 +667,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "LIB_three_Class1_method1",
                                     "C_name_api": "method1",
-                                    "F_C_name": "c_class1_method1",
                                     "F_name_api": "method1",
                                     "F_name_function": "method1",
                                     "F_name_generic": "method1",
@@ -721,11 +771,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -734,16 +790,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->method(\t)",
+                                            "C_name": "LIB_outer1_class0_method",
                                             "C_prototype": "LIB_outer1_class0 * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_class0_method",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method(\t)",
+                                            "C_name": "LIB_outer1_class0_method",
                                             "C_prototype": "LIB_outer1_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_class0_method",
+                                            "F_C_name": "c_class0_method",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -753,9 +813,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "LIB_outer1_class0_method",
                                     "C_name_api": "method",
-                                    "F_C_name": "c_class0_method",
                                     "F_name_api": "method",
                                     "F_name_function": "method",
                                     "F_name_generic": "method",
@@ -824,11 +882,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -837,16 +901,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "outer1::outer_func(\t)",
+                                    "C_name": "LIB_outer1_outer_func",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_outer_func",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer1::outer_func(\t)",
+                                    "C_name": "LIB_outer1_outer_func",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_outer_func",
+                                    "F_C_name": "outer_func",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -855,9 +923,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "LIB_outer1_outer_func",
                             "C_name_api": "outer_func",
-                            "F_C_name": "outer_func",
                             "F_name_api": "outer_func",
                             "F_name_function": "outer_func",
                             "F_name_generic": "outer_func",
@@ -932,11 +998,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -945,16 +1017,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->method(\t)",
+                                            "C_name": "LIB_outer2_class0_method",
                                             "C_prototype": "LIB_outer2_class0 * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_class0_method",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method(\t)",
+                                            "C_name": "LIB_outer2_class0_method",
                                             "C_prototype": "LIB_outer2_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_class0_method",
+                                            "F_C_name": "c_class0_method",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -964,9 +1040,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "LIB_outer2_class0_method",
                                     "C_name_api": "method",
-                                    "F_C_name": "c_class0_method",
                                     "F_name_api": "method",
                                     "F_name_function": "method",
                                     "F_name_generic": "method",
@@ -1035,11 +1109,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -1048,16 +1128,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "outer2::outer_func(\t)",
+                                    "C_name": "LIB_outer2_outer_func",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_outer_func",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer2::outer_func(\t)",
+                                    "C_name": "LIB_outer2_outer_func",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_outer_func",
+                                    "F_C_name": "outer_func",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -1066,9 +1150,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "LIB_outer2_outer_func",
                             "C_name_api": "outer_func",
-                            "F_C_name": "outer_func",
                             "F_name_api": "outer_func",
                             "F_name_function": "outer_func",
                             "F_name_generic": "outer_func",

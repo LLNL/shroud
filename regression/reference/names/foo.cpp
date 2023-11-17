@@ -22,7 +22,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: c_ctor_shadow_scalar_capptr
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 {
@@ -36,7 +35,6 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 
 // ----------------------------------------
 // Function:  void method1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 {
@@ -48,7 +46,6 @@ void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 
 // ----------------------------------------
 // Function:  void method2
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2)
 {

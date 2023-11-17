@@ -22,7 +22,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: c_ctor_shadow_scalar_capptr
 CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
 {

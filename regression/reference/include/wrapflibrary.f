@@ -46,11 +46,9 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
@@ -63,11 +61,9 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
-        ! Attrs:     +intent(inout)
         ! Statement: f_inout_shadow_*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
@@ -84,11 +80,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
@@ -98,11 +92,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_shadow_*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1

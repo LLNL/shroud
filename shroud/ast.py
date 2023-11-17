@@ -31,6 +31,8 @@ class WrapFlags(object):
         self.f_or_c = self.fortran or self.c
         self.lua = options.wrap_lua
         self.python = options.wrap_python
+        self.signature_c = None
+        self.signature_f = None
 
     def clear(self):
         self.fortran = False
@@ -510,14 +512,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_default_args="generic",  # "generic", "optional", "require"
             F_flatten_namespace=False,
             F_line_length=72,
-            F_string_len_trim=True,
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
             F_standard=2003,
             F_struct_getter_setter=True,
             F_trim_char_in=True,
             F_auto_reference_count=False,
-            F_create_bufferify_function=True,
             F_create_generic=True,
             wrap_c=True,
             wrap_fortran=True,
@@ -1498,7 +1498,6 @@ class FunctionNode(AstNode):
         self._bind = {}
         self.splicer = {}
         self.fstatements = {}
-        self.splicer_group = None
         self.struct_parent = None         # Function is a getter/setter for a struct
 
         # Fortran wapper variables.
@@ -1668,17 +1667,6 @@ class FunctionNode(AstNode):
 
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
-
-    def update_names(self):
-        """Update C and Fortran names."""
-        fmt = self.fmtdict
-        if self.wrap.c:
-            self.eval_template("C_name")
-            self.eval_template("F_C_name")
-        if self.wrap.fortran:
-            self.eval_template("F_name_impl")
-            self.eval_template("F_name_function")
-            self.eval_template("F_name_generic")
 
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template

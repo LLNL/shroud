@@ -28,6 +28,7 @@ from . import todict
 from . import typemap
 from . import whelpers
 from . import util
+from .statements import get_func_bind, get_arg_bind
 from .util import wformat, append_format
 
 default_arg_template = """if (present({f_var})) then
@@ -703,21 +704,22 @@ rv = .false.
         cursor.push_phase("Wrapf.wrap_function_impl")
         for node in functions:
             if node.wrap.fortran:
-                self.log.write("Fortran {0.declgen} {1}\n".format(
-                    node, self.get_metaattrs(node.ast)))
+                self.log.write("Fortran {0.declgen}\n".format(
+                    node))
                 self.wrap_function_impl(cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_impl")
 
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
-            if node.wrap.fortran:
-                self.log.write("C-interface f {0.declgen} {1}\n".format(
-                    node, self.get_metaattrs(node.ast)))
-                self.wrap_function_interface("f", cls, node, fileinfo)
-            elif node.wrap.c:
-                self.log.write("C-interface c {0.declgen} {1}\n".format(
-                    node, self.get_metaattrs(node.ast)))
+            wrap = node.wrap
+            if wrap.c and wrap.signature_c != wrap.signature_f:
+                self.log.write("C-interface c {0.declgen}\n".format(
+                    node))
                 self.wrap_function_interface("c", cls, node, fileinfo)
+            if wrap.fortran:
+                self.log.write("C-interface f {0.declgen}\n".format(
+                    node))
+                self.wrap_function_interface("f", cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
@@ -973,6 +975,9 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 for i, param in enumerate(arg.declarator.params):
                     name = param.declarator.user_name
+#                    bind = get_arg_bind(node, param, "f")
+#                    intent = bind.meta["intent"]
+                    intent = param.declarator.metaattrs["intent"]
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
@@ -980,7 +985,7 @@ rv = .false.
                             fmt,
                         )
                     arg_f_names.append(name)
-                    arg_c_decl.append(param.bind_c(name=name))
+                    arg_c_decl.append(param.bind_c(intent=intent, name=name))
 
                     arg_typemap, specialize = statements.lookup_c_statements(
                         param
@@ -1024,7 +1029,7 @@ rv = .false.
     def build_arg_list_interface(
         self,
         node, fileinfo,
-        fmt,
+        fmt, meta,
         ast,
         stmts_blk,
         modules,
@@ -1038,7 +1043,7 @@ rv = .false.
             node -
             fileinfo - ModuleInfo
             fmt -
-            ast - Abstract Syntax Tree from parser
+            ast - declast.Declaration
                node.ast for subprograms
                node.declarator.params[n] for parameters
             stmts_blk - typemap.CStmts or util.Scope
@@ -1091,7 +1096,7 @@ rv = .false.
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c())
+                arg_c_decl.append(ast.bind_c(meta["intent"]))
                 arg_typemap = ast.typemap
                 if ast.template_arguments:
                     # If a template, use its type
@@ -1122,9 +1127,7 @@ rv = .false.
         func_cursor = cursor.push_node(node)
         fmtlang = "fmt" + wlang
         options = node.options
-        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        bind = node._bind[wlang]
 
         ast = node.ast
         declarator = ast.declarator
@@ -1133,16 +1136,17 @@ rv = .false.
         is_pure = declarator.attrs["pure"]
         func_is_const = declarator.func_const
 
-        r_meta = ast.declarator.metaattrs
+        r_bind = get_func_bind(node, wlang)
+        r_meta = r_bind.meta
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
         
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result= fmtargs["+result"][fmtlang]
-        result_stmt = bind["+result"].stmt
+        result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
-        self.fill_interface_result(cls, node, result_stmt, fmt_result)
+        self.fill_interface_result(cls, node, r_bind, fmt_result)
             
         stmts_comments = []
         if options.debug:
@@ -1157,6 +1161,7 @@ rv = .false.
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
 
+        notimplemented = result_stmt.notimplemented
         arg_c_names = []  # argument names for functions
         arg_c_decl = []  # declaraion of argument names
         modules = {}  # indexed as [module][variable]
@@ -1186,17 +1191,19 @@ rv = .false.
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg = fmtargs[arg_name][fmtlang]
-            arg_stmt = bind[arg_name].stmt
+            arg_bind = get_arg_bind(node, arg, wlang)
+            arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
-            self.fill_interface_arg(cls, node, arg, arg_stmt, fmt_arg)
+            self.fill_interface_arg(cls, node, arg, arg_bind, fmt_arg)
             
             attrs = declarator.attrs
-            meta = declarator.metaattrs
-            if attrs["hidden"] and node._generated:
+            meta = arg_bind.meta
+            if meta["hidden"]:
                 continue
             intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
+            notimplemented = notimplemented or arg_stmt.notimplemented
 
             if options.debug:
                 stmts_comments.append(
@@ -1206,7 +1213,7 @@ rv = .false.
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.build_arg_list_interface(
                 node, fileinfo,
-                fmt_arg,
+                fmt_arg, meta,
                 arg,
                 arg_stmt,
                 modules,
@@ -1220,7 +1227,7 @@ rv = .false.
 
         self.build_arg_list_interface(
             node, fileinfo,
-            fmt_result,
+            fmt_result, r_meta,
             ast,
             result_stmt,
             modules,
@@ -1271,7 +1278,9 @@ rv = .false.
 
         c_interface = fileinfo.c_interface
         c_interface.append("")
-
+        if notimplemented:
+            c_interface.append("#if 0")
+            c_interface.append("! Not Implemented")
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
@@ -1300,6 +1309,8 @@ rv = .false.
         if options.literalinclude:
             append_format(c_interface, "! end {F_C_name}", fmt_result)
         if node.cpp_if:
+            c_interface.append("#endif")
+        if notimplemented:
             c_interface.append("#endif")
         cursor.pop_node(node)
 
@@ -1416,9 +1427,7 @@ rv = .false.
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
-        fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        bind = node._bind["f"]
 
         # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
@@ -1434,13 +1443,19 @@ rv = .false.
         declarator = ast.declarator
         result_typemap = ast.typemap
 
-        r_meta = declarator.metaattrs
+        r_bind = get_func_bind(node, "f")
+        r_meta = r_bind.meta
         sintent = r_meta["intent"]
         fmt_result= fmtargs["+result"]["fmtf"]
-        fmt_result.F_C_call = C_node.fmtdict.F_C_name
-        result_stmt = bind["+result"].stmt
+        if C_node is node:
+            fmt_result.F_C_call = C_node._fmtargs["+result"]["fmtf"].F_C_name
+        else:
+            # node is generated, ex fortran_generic
+            # while C_node is the real function
+            fmt_result.F_C_call = C_node._fmtargs["+result"]["fmtc"].F_C_name
+        result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
-        self.fill_fortran_result(cls, node, result_stmt, fmt_result)
+        self.fill_fortran_result(cls, node, r_bind, fmt_result)
 
         subprogram = fmt_result.F_subprogram
         C_subprogram = subprogram
@@ -1522,10 +1537,11 @@ rv = .false.
                 continue
             optattr = False
             
-            arg_stmt = bind[arg_name].stmt
+            arg_bind = get_arg_bind(node, f_arg, "f")
+            arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             arg_typemap = self.fill_fortran_arg(
-                cls, node, C_node, f_arg, c_arg, arg_stmt, fmt_arg)
+                cls, node, C_node, f_arg, c_arg, arg_bind, fmt_arg)
 
             fileinfo.apply_helpers_from_stmts(node)
             
@@ -1595,7 +1611,9 @@ rv = .false.
                 if options.F_default_args == "optional" and f_arg.declarator.init is not None:
                     fmt_arg.default_value = f_arg.declarator.init
                     optattr = True
-                arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
+                intent = arg_bind.meta["intent"]
+                arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                    intent=intent, pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
             if options.debug:
@@ -1828,8 +1846,9 @@ rv = .false.
             fileinfo.impl.append("")
             fileinfo.impl.extend(impl)
         else:            
-            # Call the C function directly via bind(C).
-            C_node.fmtdict.F_C_name = fmt_result.F_name_impl
+            # Call the C function directly via bind(C)
+            # by changing the name of the F_C_name function.
+            C_node._fmtargs["+result"]["fmtf"].F_C_name = fmt_result.F_name_impl
             if options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")

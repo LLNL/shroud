@@ -31,11 +31,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReference
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg
-        ! Attrs:     +intent(inout)
         ! Statement: f_inout_struct_&
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
@@ -49,11 +47,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReferenceIn
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 & arg
-        ! Attrs:     +intent(in)
         ! Statement: f_in_struct_&
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
@@ -67,11 +63,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceInout
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
-        ! Attrs:     +intent(inout)
         ! Statement: f_inout_struct_&
         subroutine pass_struct_by_reference_inout(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceInout")
@@ -82,11 +76,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceOut
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
-        ! Attrs:     +intent(out)
         ! Statement: f_out_struct_&
         subroutine pass_struct_by_reference_out(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceOut")
@@ -105,11 +97,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStructByReference
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_struct_&
     !>
     !! Argument is modified by library, defaults to intent(inout).
@@ -129,11 +119,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStructByReferenceIn
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
-    ! Attrs:     +intent(in)
     ! Statement: f_in_struct_&
     !>
     !! const defaults to intent(in)
@@ -153,11 +141,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void passStructByReferenceInout
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(inout)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_struct_&
     subroutine pass_struct_by_reference_inout(arg)
         type(cstruct1), intent(INOUT) :: arg
@@ -171,11 +157,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void passStructByReferenceOut
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_struct_&
     subroutine pass_struct_by_reference_out(arg)
         type(cstruct1), intent(OUT) :: arg

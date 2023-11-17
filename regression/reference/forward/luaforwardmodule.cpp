@@ -36,7 +36,6 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 // Class2(void)
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: lua_ctor_scalar
 static int l_Class2_ctor(lua_State *L)
 {
@@ -55,7 +54,6 @@ static int l_Class2_ctor(lua_State *L)
 // ~Class2(void)
 // ----------------------------------------
 // Function:  ~Class2
-// Attrs:     +intent(dtor)
 // Statement: lua_dtor_scalar
 static int l_Class2_dtor(lua_State *L)
 {
@@ -71,11 +69,9 @@ static int l_Class2_dtor(lua_State *L)
 // void func1(tutorial::Class1 * arg +intent(in))
 // ----------------------------------------
 // Function:  void func1
-// Attrs:     +intent(subroutine)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: lua_in_shadow_*
 static int l_Class2_func1(lua_State *L)
 {
@@ -93,11 +89,9 @@ static int l_Class2_func1(lua_State *L)
 // void acceptClass3(Class3 * arg +intent(in))
 // ----------------------------------------
 // Function:  void acceptClass3
-// Attrs:     +intent(subroutine)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: lua_in_shadow_*
 static int l_Class2_acceptClass3(lua_State *L)
 {

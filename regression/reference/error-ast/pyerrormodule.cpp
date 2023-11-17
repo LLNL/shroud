@@ -33,7 +33,6 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void PYGoodFunction
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_PYGoodFunction__doc__[] =
 "documentation"

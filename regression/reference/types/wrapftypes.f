@@ -24,11 +24,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  short arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function short_func(arg1) &
                 result(SHT_rv) &
@@ -41,11 +39,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function int_func(arg1) &
                 result(SHT_rv) &
@@ -58,11 +54,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function long_func(arg1) &
                 result(SHT_rv) &
@@ -75,11 +69,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long long arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function long_long_func(arg1) &
                 result(SHT_rv) &
@@ -92,11 +84,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  short int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function short_int_func(arg1) &
                 result(SHT_rv) &
@@ -109,11 +99,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function long_int_func(arg1) &
                 result(SHT_rv) &
@@ -126,11 +114,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  long long int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
@@ -143,11 +129,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function unsigned_func(arg1) &
                 result(SHT_rv) &
@@ -160,11 +144,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned short arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function ushort_func(arg1) &
                 result(SHT_rv) &
@@ -177,11 +159,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function uint_func(arg1) &
                 result(SHT_rv) &
@@ -194,11 +174,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned long arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function ulong_func(arg1) &
                 result(SHT_rv) &
@@ -211,11 +189,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned long long arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
@@ -228,11 +204,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  unsigned long int arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
@@ -245,11 +219,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int8_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function int8_func(arg1) &
                 result(SHT_rv) &
@@ -262,11 +234,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int16_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function int16_func(arg1) &
                 result(SHT_rv) &
@@ -279,11 +249,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int32_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function int32_func(arg1) &
                 result(SHT_rv) &
@@ -296,11 +264,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int64_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function int64_func(arg1) &
                 result(SHT_rv) &
@@ -313,11 +279,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  uint8_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function uint8_func(arg1) &
                 result(SHT_rv) &
@@ -330,11 +294,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  uint16_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function uint16_func(arg1) &
                 result(SHT_rv) &
@@ -347,11 +309,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  uint32_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function uint32_func(arg1) &
                 result(SHT_rv) &
@@ -364,11 +324,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  uint64_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function uint64_func(arg1) &
                 result(SHT_rv) &
@@ -381,11 +339,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  size_t arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function size_func(arg1) &
                 result(SHT_rv) &
@@ -398,11 +354,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
-        ! Attrs:     +intent(function)
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  bool arg +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_bool_scalar
         function c_bool_func(arg) &
                 result(SHT_rv) &
@@ -415,11 +369,9 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
-        ! Attrs:     +intent(function)
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  int * flag +intent(out)
-        ! Attrs:     +intent(out)
         ! Statement: f_out_native_*
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
@@ -440,11 +392,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short short_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  short arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function short_func(arg1) &
             result(SHT_rv)
@@ -461,11 +411,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int int_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function int_func(arg1) &
             result(SHT_rv)
@@ -482,11 +430,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function long_func(arg1) &
             result(SHT_rv)
@@ -503,11 +449,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long long_long_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long long arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function long_long_func(arg1) &
             result(SHT_rv)
@@ -524,11 +468,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short int short_int_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  short int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function short_int_func(arg1) &
             result(SHT_rv)
@@ -545,11 +487,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long int long_int_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function long_int_func(arg1) &
             result(SHT_rv)
@@ -566,11 +506,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long int long_long_int_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long long int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function long_long_int_func(arg1) &
             result(SHT_rv)
@@ -587,11 +525,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned unsigned_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function unsigned_func(arg1) &
             result(SHT_rv)
@@ -608,11 +544,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned short ushort_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned short arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function ushort_func(arg1) &
             result(SHT_rv)
@@ -629,11 +563,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned int uint_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function uint_func(arg1) &
             result(SHT_rv)
@@ -650,11 +582,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long ulong_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function ulong_func(arg1) &
             result(SHT_rv)
@@ -671,11 +601,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long long ulong_long_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long long arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function ulong_long_func(arg1) &
             result(SHT_rv)
@@ -692,11 +620,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long int ulong_int_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  unsigned long int arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function ulong_int_func(arg1) &
             result(SHT_rv)
@@ -713,11 +639,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int8_t int8_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int8_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function int8_func(arg1) &
             result(SHT_rv)
@@ -734,11 +658,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int16_t int16_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int16_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function int16_func(arg1) &
             result(SHT_rv)
@@ -755,11 +677,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int32_t int32_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int32_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function int32_func(arg1) &
             result(SHT_rv)
@@ -776,11 +696,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int64_t int64_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int64_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function int64_func(arg1) &
             result(SHT_rv)
@@ -797,11 +715,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint8_t uint8_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint8_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function uint8_func(arg1) &
             result(SHT_rv)
@@ -818,11 +734,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint16_t uint16_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint16_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function uint16_func(arg1) &
             result(SHT_rv)
@@ -839,11 +753,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint32_t uint32_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint32_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function uint32_func(arg1) &
             result(SHT_rv)
@@ -860,11 +772,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint64_t uint64_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  uint64_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function uint64_func(arg1) &
             result(SHT_rv)
@@ -881,11 +791,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  size_t size_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  size_t arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function size_func(arg1) &
             result(SHT_rv)
@@ -900,11 +808,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool bool_func
-    ! Attrs:     +intent(function)
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool arg +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_bool_scalar
     function bool_func(arg) &
             result(SHT_rv)
@@ -920,11 +826,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
-    ! Attrs:     +intent(function)
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! \brief Function which returns bool with other intent(out) arguments

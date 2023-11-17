@@ -1757,7 +1757,6 @@ class Declaration(Node):
         """
         t = []
         attrs = self.declarator.attrs
-        meta = self.declarator.metaattrs
         ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
@@ -1772,7 +1771,6 @@ class Declaration(Node):
         t.append(typ)
         if attrs["value"]:
             t.append("value")
-        intent = intent or meta["intent"]
         if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
         elif intent == "setter":
@@ -1805,6 +1803,7 @@ class Declaration(Node):
 
     def gen_arg_as_fortran(
         self,
+        intent=None,
         bindc=False,
         local=False,
         pass_obj=False,
@@ -1820,7 +1819,6 @@ class Declaration(Node):
         t = []
         declarator = self.declarator
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         ntypemap = self.typemap
         if ntypemap.sgroup == "vector":
             # If std::vector, use its type (<int>)
@@ -1860,7 +1858,6 @@ class Declaration(Node):
         if not local:  # must be dummy argument
             if attrs["value"]:
                 t.append("value")
-            intent = meta["intent"]
             if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
             elif intent == "setter":

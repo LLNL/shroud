@@ -439,7 +439,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -464,11 +463,19 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "capptr",
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "c_ctor_shadow_scalar_capptr"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "capptr",
+                                        "intent": "ctor"
+                                    },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             }
@@ -477,8 +484,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "CXX_Class1_ctor",
                                     "C_prototype": "CXX_Class1 * SHC_rv",
                                     "C_return_type": "CXX_Class1 *",
+                                    "F_C_name": "c_class1_ctor",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "CXX_Class1",
@@ -496,10 +505,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
+                                    "C_name": "CXX_Class1_ctor",
                                     "C_prototype": "CXX_Class1 * SHC_rv",
                                     "C_return_type": "CXX_Class1 *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "c_class1_ctor",
+                                    "F_C_name": "c_class1_ctor",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
@@ -533,9 +544,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_ctor",
                             "C_name_api": "ctor",
-                            "F_C_name": "c_class1_ctor",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
                             "F_name_generic": "class1",
@@ -579,11 +588,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 }
                             }
@@ -592,8 +607,10 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "SH_this->check_length(\t)",
+                                    "C_name": "CXX_Class1_check_length_0",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_class1_check_length_0",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -611,10 +628,12 @@
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->check_length(\t)",
+                                    "C_name": "CXX_Class1_check_length_0",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_check_length_0",
+                                    "F_C_name": "c_class1_check_length_0",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -646,9 +665,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_check_length_0",
                             "C_name_api": "check_length",
-                            "F_C_name": "c_class1_check_length_0",
                             "F_name_api": "check_length",
                             "F_name_function": "check_length_0",
                             "F_name_generic": "check_length",
@@ -765,9 +782,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             }
@@ -777,9 +800,11 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
+                                    "C_name": "CXX_Class1_check_length_1",
                                     "C_prototype": "CXX_Class1 * self,\t int length",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self,\t length",
+                                    "F_C_name": "c_class1_check_length_1",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "c_const": "",
@@ -831,9 +856,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_check_length_1",
                             "C_name_api": "check_length",
-                            "F_C_name": "c_class1_check_length_1",
                             "F_name_api": "check_length",
                             "c_const": "",
                             "c_deref": "*",
@@ -905,9 +928,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -917,9 +946,11 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
+                                    "C_name": "check_length",
                                     "C_prototype": "CXX_Class1 * self,\t int length",
                                     "C_return_type": "int",
                                     "F_C_call": "c_class1_check_length_1",
+                                    "F_C_name": "c_class1_check_length_1_int",
                                     "F_arg_c_call": "obj%cxxmem,\t length",
                                     "F_arguments": "obj,\t length",
                                     "F_result_clause": "\fresult(SHT_rv)",
@@ -973,9 +1004,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "check_length",
                             "C_name_api": "check_length",
-                            "F_C_name": "c_class1_check_length_1_int",
                             "F_name_api": "check_length",
                             "F_name_function": "check_length_1_int",
                             "F_name_generic": "check_length",
@@ -1050,9 +1079,15 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -1062,9 +1097,11 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->check_length(\tlength)",
                                     "C_call_list": "length",
+                                    "C_name": "check_length",
                                     "C_prototype": "CXX_Class1 * self,\t long length",
                                     "C_return_type": "int",
                                     "F_C_call": "c_class1_check_length_1",
+                                    "F_C_name": "c_class1_check_length_1_long",
                                     "F_arg_c_call": "obj%cxxmem,\t int(length, C_INT)",
                                     "F_arguments": "obj,\t length",
                                     "F_result_clause": "\fresult(SHT_rv)",
@@ -1118,9 +1155,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "check_length",
                             "C_name_api": "check_length",
-                            "F_C_name": "c_class1_check_length_1_long",
                             "F_name_api": "check_length",
                             "F_name_function": "check_length_1_long",
                             "F_name_generic": "check_length",
@@ -1144,7 +1179,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "declare",
@@ -1190,17 +1224,31 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_*_this"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_this"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -1210,8 +1258,10 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->declare(\tflag)",
                                     "C_call_list": "flag",
+                                    "C_name": "CXX_Class1_declare_0",
                                     "C_prototype": "CXX_Class1 * self,\t int flag",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_class1_declare_0",
                                     "c_const": "",
                                     "c_type": "CXX_Class1",
                                     "c_var": "SHC_rv",
@@ -1228,10 +1278,12 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->declare(\tflag)",
                                     "C_call_list": "flag",
+                                    "C_name": "CXX_Class1_declare_0",
                                     "C_prototype": "CXX_Class1 * self,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t flag",
                                     "F_C_call": "c_class1_declare_0",
+                                    "F_C_name": "c_class1_declare_0",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem,\t flag",
@@ -1303,9 +1355,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_declare_0",
                             "C_name_api": "declare",
-                            "F_C_name": "c_class1_declare_0",
                             "F_name_api": "declare",
                             "F_name_function": "declare_0",
                             "F_name_generic": "declare",
@@ -1332,7 +1382,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "declare",
@@ -1474,12 +1523,22 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_shadow_*_this"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_native_scalar"
                                 }
                             }
@@ -1489,9 +1548,11 @@
                                 "fmtc": {
                                     "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
+                                    "C_name": "CXX_Class1_declare_1",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t flag,\t length",
+                                    "F_C_name": "c_class1_declare_1",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "c_const": "",
@@ -1567,9 +1628,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_declare_1",
                             "C_name_api": "declare",
-                            "F_C_name": "c_class1_declare_1",
                             "F_name_api": "declare",
                             "c_const": "",
                             "c_deref": "*",
@@ -1599,7 +1658,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "declare",
@@ -1661,12 +1719,22 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_this"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -1676,9 +1744,11 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
+                                    "C_name": "declare",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
                                     "C_return_type": "void",
                                     "F_C_call": "c_class1_declare_1",
+                                    "F_C_name": "c_class1_declare_1_int",
                                     "F_arg_c_call": "obj%cxxmem,\t flag,\t length",
                                     "F_arguments": "obj,\t flag,\t length",
                                     "F_subprogram": "subroutine",
@@ -1748,9 +1818,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "declare",
                             "C_name_api": "declare",
-                            "F_C_name": "c_class1_declare_1_int",
                             "F_name_api": "declare",
                             "F_name_function": "declare_1_int",
                             "F_name_generic": "declare",
@@ -1783,7 +1851,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "declare",
@@ -1845,12 +1912,22 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_shadow_*_this"
                                 },
                                 "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 },
                                 "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_native_scalar"
                                 }
                             }
@@ -1860,9 +1937,11 @@
                                 "fmtf": {
                                     "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
+                                    "C_name": "declare",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t long length",
                                     "C_return_type": "void",
                                     "F_C_call": "c_class1_declare_1",
+                                    "F_C_name": "c_class1_declare_1_long",
                                     "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, C_INT)",
                                     "F_arguments": "obj,\t flag,\t length",
                                     "F_subprogram": "subroutine",
@@ -1932,9 +2011,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "declare",
                             "C_name_api": "declare",
-                            "F_C_name": "c_class1_declare_1_long",
                             "F_name_api": "declare",
                             "F_name_function": "declare_1_long",
                             "F_name_generic": "declare",
@@ -1955,9 +2032,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_length",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1982,6 +2056,9 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    },
                                     "stmt": "f_getter_native_scalar"
                                 }
                             }
@@ -1990,10 +2067,12 @@
                             "+result": {
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_length(\t)",
+                                    "C_name": "CXX_Class1_get_length",
                                     "C_prototype": "CXX_Class1 * self",
                                     "C_return_type": "int",
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_class1_get_length",
+                                    "F_C_name": "c_class1_get_length",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "obj%cxxmem",
@@ -2023,9 +2102,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_Class1_get_length",
                             "C_name_api": "get_length",
-                            "F_C_name": "c_class1_get_length",
                             "F_name_api": "get_length",
                             "F_name_function": "get_length",
                             "F_name_generic": "get_length",
@@ -2502,11 +2579,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_bool_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_bool_scalar"
                         }
                     }
@@ -2515,8 +2598,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "defaultPtrIsNULL(\t)",
+                            "C_name": "CXX_defaultPtrIsNULL_0",
                             "C_prototype": "void",
                             "C_return_type": "bool",
+                            "F_C_name": "c_default_ptr_is_null_0",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "bool",
@@ -2534,10 +2619,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\t)",
+                            "C_name": "CXX_defaultPtrIsNULL_0",
                             "C_prototype": "void",
                             "C_return_type": "bool",
                             "F_C_arguments": "",
                             "F_C_call": "c_default_ptr_is_null_0",
+                            "F_C_name": "c_default_ptr_is_null_0",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2568,9 +2655,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_defaultPtrIsNULL_0",
                     "C_name_api": "defaultPtrIsNULL",
-                    "F_C_name": "c_default_ptr_is_null_0",
                     "F_name_api": "default_ptr_is_null",
                     "F_name_function": "default_ptr_is_null_0",
                     "F_name_generic": "default_ptr_is_null",
@@ -2640,17 +2725,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_bool_scalar"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_bool_scalar"
                         },
                         "data": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_*"
                         }
                     }
@@ -2660,8 +2757,10 @@
                         "fmtc": {
                             "C_call_function": "defaultPtrIsNULL(\tdata)",
                             "C_call_list": "data",
+                            "C_name": "CXX_defaultPtrIsNULL_1",
                             "C_prototype": "double * data",
                             "C_return_type": "bool",
+                            "F_C_name": "c_default_ptr_is_null_1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "bool",
@@ -2680,10 +2779,12 @@
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\tdata)",
                             "C_call_list": "data",
+                            "C_name": "CXX_defaultPtrIsNULL_1",
                             "C_prototype": "double * data",
                             "C_return_type": "bool",
                             "F_C_arguments": "data",
                             "F_C_call": "c_default_ptr_is_null_1",
+                            "F_C_name": "c_default_ptr_is_null_1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "data",
@@ -2799,9 +2900,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_defaultPtrIsNULL_1",
                     "C_name_api": "defaultPtrIsNULL",
-                    "F_C_name": "c_default_ptr_is_null_1",
                     "F_name_api": "default_ptr_is_null",
                     "F_name_function": "default_ptr_is_null_1",
                     "F_name_generic": "default_ptr_is_null",
@@ -2904,29 +3003,53 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "in1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "out1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "out2": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "in1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "out1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "out2": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -2936,17 +3059,21 @@
                         "fmtc": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
                             "C_call_list": "in1,\t out1,\t out2",
+                            "C_name": "CXX_defaultArgsInOut_0",
                             "C_prototype": "int in1,\t int * out1,\t int * out2",
                             "C_return_type": "void",
+                            "F_C_name": "c_default_args_in_out_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
                             "C_call_list": "in1,\t out1,\t out2",
+                            "C_name": "CXX_defaultArgsInOut_0",
                             "C_prototype": "int in1,\t int * out1,\t int * out2",
                             "C_return_type": "void",
                             "F_C_arguments": "in1,\t out1,\t out2",
                             "F_C_call": "c_default_args_in_out_0",
+                            "F_C_name": "c_default_args_in_out_0",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "in1,\t out1,\t out2",
                             "F_arguments": "in1,\t out1,\t out2",
@@ -3085,9 +3212,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_defaultArgsInOut_0",
                     "C_name_api": "defaultArgsInOut",
-                    "F_C_name": "c_default_args_in_out_0",
                     "F_name_api": "default_args_in_out",
                     "F_name_function": "default_args_in_out_0",
                     "F_name_generic": "default_args_in_out",
@@ -3209,35 +3334,65 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_bool_scalar"
                         },
                         "in1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "out1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         },
                         "out2": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "flag": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_bool_scalar"
                         },
                         "in1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "out1": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         },
                         "out2": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_*"
                         }
                     }
@@ -3247,17 +3402,21 @@
                         "fmtc": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
                             "C_call_list": "in1,\t out1,\t out2,\t flag",
+                            "C_name": "CXX_defaultArgsInOut_1",
                             "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                             "C_return_type": "void",
+                            "F_C_name": "c_default_args_in_out_1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
                             "C_call_list": "in1,\t out1,\t out2,\t flag",
+                            "C_name": "CXX_defaultArgsInOut_1",
                             "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                             "C_return_type": "void",
                             "F_C_arguments": "in1,\t out1,\t out2,\t flag",
                             "F_C_call": "c_default_args_in_out_1",
+                            "F_C_name": "c_default_args_in_out_1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "in1,\t out1,\t out2,\t SHT_flag_cxx",
                             "F_arguments": "in1,\t out1,\t out2,\t flag",
@@ -3516,9 +3675,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_defaultArgsInOut_1",
                     "C_name_api": "defaultArgsInOut",
-                    "F_C_name": "c_default_args_in_out_1",
                     "F_name_api": "default_args_in_out",
                     "F_name_function": "default_args_in_out_1",
                     "F_name_generic": "default_args_in_out",
@@ -3639,9 +3796,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
                         },
                         "idx": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     }
@@ -3651,9 +3814,11 @@
                         "fmtc": {
                             "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
+                            "C_name": "CXX_getGroupName",
                             "C_prototype": "long idx",
                             "C_return_type": "const char *",
                             "F_C_arguments": "idx",
+                            "F_C_name": "c_get_group_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": "30",
@@ -3708,9 +3873,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_getGroupName",
                     "C_name_api": "getGroupName",
-                    "F_C_name": "c_get_group_name",
                     "F_name_api": "get_group_name",
                     "function_name": "getGroupName"
                 }
@@ -3719,7 +3882,6 @@
                 "<FUNCTION>": "getGroupName  24 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "17",
-                "_PTR_F_C_index": "26",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3781,91 +3943,23 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getGroupName",
-                    "F_name_api": "get_group_name",
-                    "function_name": "getGroupName",
-                    "function_suffix": "_int32_t"
-                }
-            },
-            {
-                "<FUNCTION>": "getGroupName  26 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "24",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 17,
-                "_overloaded": true,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "len": "30"
-                        },
-                        "metaattrs": {
-                            "api": "buf",
-                            "deref": "copy",
-                            "intent": "function"
-                        },
-                        "name": "getGroupName",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "idx",
-                                    "typemap_name": "int32_t"
-                                },
-                                "specifier": [
-                                    "int32_t"
-                                ],
-                                "typemap_name": "int32_t"
-                            }
-                        ],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
-                "doxygen": {
-                    "brief": "String reference function with scalar generic args"
-                },
-                "helpers": {
-                    "c": [
-                        "char_copy"
-                    ]
-                },
-                "name": "getGroupName",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_copy"
                         },
                         "idx": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -3875,10 +3969,12 @@
                         "fmtf": {
                             "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
+                            "C_name": "CXX_getGroupName_int32_t_bufferify",
                             "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_group_name_int32_t_bufferify",
+                            "F_C_name": "c_get_group_name_int32_t_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
@@ -3898,6 +3994,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3941,14 +4038,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_getGroupName_int32_t_bufferify",
                     "C_name_api": "getGroupName",
-                    "F_C_name": "c_get_group_name_int32_t_bufferify",
                     "F_name_api": "get_group_name",
                     "F_name_function": "get_group_name_int32_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int32_t",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t"
                 }
@@ -3957,7 +4051,6 @@
                 "<FUNCTION>": "getGroupName  25 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "17",
-                "_PTR_F_C_index": "27",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4019,91 +4112,23 @@
                 "options": {
                     "wrap_python": false
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "getGroupName",
-                    "F_name_api": "get_group_name",
-                    "function_name": "getGroupName",
-                    "function_suffix": "_int64_t"
-                }
-            },
-            {
-                "<FUNCTION>": "getGroupName  27 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "25",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 17,
-                "_overloaded": true,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "len": "30"
-                        },
-                        "metaattrs": {
-                            "api": "buf",
-                            "deref": "copy",
-                            "intent": "function"
-                        },
-                        "name": "getGroupName",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "idx",
-                                    "typemap_name": "int64_t"
-                                },
-                                "specifier": [
-                                    "int64_t"
-                                ],
-                                "typemap_name": "int64_t"
-                            }
-                        ],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
-                "doxygen": {
-                    "brief": "String reference function with scalar generic args"
-                },
-                "helpers": {
-                    "c": [
-                        "char_copy"
-                    ]
-                },
-                "name": "getGroupName",
-                "options": {
-                    "wrap_python": false
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function"
+                            },
                             "stmt": "f_function_string_&_buf_copy"
                         },
                         "idx": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4113,10 +4138,12 @@
                         "fmtf": {
                             "C_call_function": "getGroupName(\tidx)",
                             "C_call_list": "idx",
+                            "C_name": "CXX_getGroupName_int64_t_bufferify",
                             "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                             "C_return_type": "void",
                             "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                             "F_C_call": "c_get_group_name_int64_t_bufferify",
+                            "F_C_name": "c_get_group_name_int64_t_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
@@ -4136,6 +4163,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4179,14 +4207,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_getGroupName_int64_t_bufferify",
                     "C_name_api": "getGroupName",
-                    "F_C_name": "c_get_group_name_int64_t_bufferify",
                     "F_name_api": "get_group_name",
                     "F_name_function": "get_group_name_int64_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int64_t",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t"
                 }
@@ -4199,18 +4224,10 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
-                            "intent": "getter"
-                        },
                         "name": "nested_get_parent",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4262,9 +4279,17 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "getter"
+                            },
                             "stmt": "f_getter_struct_*_cdesc_pointer"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_struct_*"
                         }
                     }
@@ -4274,10 +4299,12 @@
                         "fmtf": {
                             "C_call_function": "nested_get_parent(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "CXX_nested_get_parent",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                             "F_C_call": "c_nested_get_parent",
+                            "F_C_name": "c_nested_get_parent",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -4340,9 +4367,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_nested_get_parent",
                     "C_name_api": "nested_get_parent",
-                    "F_C_name": "c_nested_get_parent",
                     "F_name_api": "nested_get_parent",
                     "F_name_function": "nested_get_parent",
                     "F_name_generic": "nested_get_parent",
@@ -4368,9 +4393,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4388,9 +4410,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -4428,12 +4447,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_struct_*"
                         },
                         "val": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter_struct_*"
                         }
                     }
@@ -4443,10 +4471,12 @@
                         "fmtf": {
                             "C_call_function": "nested_set_parent(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "CXX_nested_set_parent",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_nested * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_nested_set_parent",
+                            "F_C_name": "nested_set_parent",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -4510,9 +4540,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_nested_set_parent",
                     "C_name_api": "nested_set_parent",
-                    "F_C_name": "nested_set_parent",
                     "F_name_api": "nested_set_parent",
                     "F_name_function": "nested_set_parent",
                     "F_name_generic": "nested_set_parent",
@@ -4525,7 +4553,6 @@
             },
             {
                 "<FUNCTION>": "nested_get_child  20 ****************************************",
-                "_PTR_F_C_index": "28",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -4533,22 +4560,16 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "sublevels"
                                 }
-                            ],
-                            "intent": "getter"
+                            ]
                         },
                         "name": "nested_get_child",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4591,93 +4612,6 @@
                 },
                 "name": "nested_get_child",
                 "options": {},
-                "struct_parent": "nested",
-                "user_fmt": {
-                    "field_name": "child",
-                    "struct_name": "nested",
-                    "wrapped_name": "child"
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "nested_get_child",
-                    "F_name_api": "nested_get_child",
-                    "field_name": "child",
-                    "function_name": "nested_get_child",
-                    "struct_name": "nested",
-                    "wrapped_name": "child"
-                }
-            },
-            {
-                "<FUNCTION>": "nested_get_child  28 ****************************************",
-                "_PTR_C_CXX_index": "20",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "getter/setter",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 20,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "sublevels"
-                                }
-                            ],
-                            "intent": "getter"
-                        },
-                        "name": "nested_get_child",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "SH_this",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "nested"
-                                },
-                                "specifier": [
-                                    "nested"
-                                ],
-                                "typemap_name": "nested"
-                            }
-                        ],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            },
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "nested"
-                    },
-                    "specifier": [
-                        "nested"
-                    ],
-                    "typemap_name": "nested"
-                },
-                "decl": "nested * * nested_get_child(nested *SH_this)",
-                "declgen": "nested * * nested_get_child(nested * SH_this)",
-                "helpers": {
-                    "c": [
-                        "type_defines",
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "nested_get_child",
-                "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "nested",
                 "user_fmt": {
                     "field_name": "child",
@@ -4690,9 +4624,17 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "getter"
+                            },
                             "stmt": "f_getter_struct_**_cdesc_pointer"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_struct_*"
                         }
                     }
@@ -4702,10 +4644,12 @@
                         "fmtf": {
                             "C_call_function": "nested_get_child(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "CXX_nested_get_child",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
-                            "F_C_call": "c_nested_get_child_bufferify",
+                            "F_C_call": "c_nested_get_child",
+                            "F_C_name": "c_nested_get_child",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -4776,14 +4720,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_nested_get_child_bufferify",
                     "C_name_api": "nested_get_child",
-                    "F_C_name": "c_nested_get_child_bufferify",
                     "F_name_api": "nested_get_child",
                     "F_name_function": "nested_get_child",
                     "F_name_generic": "nested_get_child",
                     "F_name_impl": "nested_get_child",
-                    "f_c_suffix": "_bufferify",
                     "field_name": "child",
                     "function_name": "nested_get_child",
                     "struct_name": "nested",
@@ -4805,9 +4746,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4832,8 +4770,7 @@
                                             {
                                                 "name": "sublevels"
                                             }
-                                        ],
-                                        "intent": "setter"
+                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -4874,12 +4811,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_struct_*"
                         },
                         "val": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter_struct_**"
                         }
                     }
@@ -4889,10 +4835,12 @@
                         "fmtf": {
                             "C_call_function": "nested_set_child(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "CXX_nested_set_child",
                             "C_prototype": "CXX_nested * SH_this,\t CXX_nested * * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_nested_set_child",
+                            "F_C_name": "nested_set_child",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -4961,9 +4909,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_nested_set_child",
                     "C_name_api": "nested_set_child",
-                    "F_C_name": "nested_set_child",
                     "F_name_api": "nested_set_child",
                     "F_name_function": "nested_set_child",
                     "F_name_generic": "nested_set_child",
@@ -5079,7 +5025,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "passStructByReference  29 ****************************************",
+                        "<FUNCTION>": "passStructByReference  26 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5128,17 +5074,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "c_inout_struct_&"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_&"
                                 }
                             }
@@ -5148,8 +5106,10 @@
                                 "fmtc": {
                                     "C_call_function": "structns::passStructByReference(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReference",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_pass_struct_by_reference",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -5168,10 +5128,12 @@
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReference(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReference",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "int",
                                     "F_C_arguments": "arg",
                                     "F_C_call": "c_pass_struct_by_reference",
+                                    "F_C_name": "pass_struct_by_reference",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "arg",
@@ -5287,9 +5249,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_structns_passStructByReference",
                             "C_name_api": "passStructByReference",
-                            "F_C_name": "pass_struct_by_reference",
                             "F_name_api": "pass_struct_by_reference",
                             "F_name_function": "pass_struct_by_reference",
                             "F_name_generic": "pass_struct_by_reference",
@@ -5299,7 +5259,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceIn  30 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceIn  27 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5349,17 +5309,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "c_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "c_in_struct_&"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    },
                                     "stmt": "f_function_native_scalar"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_struct_&"
                                 }
                             }
@@ -5369,8 +5341,10 @@
                                 "fmtc": {
                                     "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceIn",
                                     "C_prototype": "const CXX_cstruct1 * arg",
                                     "C_return_type": "int",
+                                    "F_C_name": "c_pass_struct_by_reference_in",
                                     "c_const": "",
                                     "c_get_value": "",
                                     "c_type": "int",
@@ -5389,10 +5363,12 @@
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceIn",
                                     "C_prototype": "const CXX_cstruct1 * arg",
                                     "C_return_type": "int",
                                     "F_C_arguments": "arg",
                                     "F_C_call": "c_pass_struct_by_reference_in",
+                                    "F_C_name": "pass_struct_by_reference_in",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
                                     "F_arg_c_call": "arg",
@@ -5508,9 +5484,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_structns_passStructByReferenceIn",
                             "C_name_api": "passStructByReferenceIn",
-                            "F_C_name": "pass_struct_by_reference_in",
                             "F_name_api": "pass_struct_by_reference_in",
                             "F_name_function": "pass_struct_by_reference_in",
                             "F_name_generic": "pass_struct_by_reference_in",
@@ -5520,7 +5494,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceInout  31 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceInout  28 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5569,17 +5543,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "c_inout_struct_&"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_&"
                                 }
                             }
@@ -5589,17 +5575,21 @@
                                 "fmtc": {
                                     "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceInout",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_pass_struct_by_reference_inout",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceInout",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "F_C_arguments": "arg",
                                     "F_C_call": "c_pass_struct_by_reference_inout",
+                                    "F_C_name": "pass_struct_by_reference_inout",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "arg",
                                     "F_arguments": "arg",
@@ -5677,9 +5667,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_structns_passStructByReferenceInout",
                             "C_name_api": "passStructByReferenceInout",
-                            "F_C_name": "pass_struct_by_reference_inout",
                             "F_name_api": "pass_struct_by_reference_inout",
                             "F_name_function": "pass_struct_by_reference_inout",
                             "F_name_generic": "pass_struct_by_reference_inout",
@@ -5689,7 +5677,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceOut  32 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceOut  29 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -5738,17 +5726,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "out"
+                                    },
                                     "stmt": "c_out_struct_&"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 },
                                 "arg": {
+                                    "meta": {
+                                        "intent": "out"
+                                    },
                                     "stmt": "f_out_struct_&"
                                 }
                             }
@@ -5758,17 +5758,21 @@
                                 "fmtc": {
                                     "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceOut",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_pass_struct_by_reference_out",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
                                     "C_call_list": "*arg",
+                                    "C_name": "CXX_structns_passStructByReferenceOut",
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "F_C_arguments": "arg",
                                     "F_C_call": "c_pass_struct_by_reference_out",
+                                    "F_C_name": "pass_struct_by_reference_out",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "arg",
                                     "F_arguments": "arg",
@@ -5845,9 +5849,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "CXX_structns_passStructByReferenceOut",
                             "C_name_api": "passStructByReferenceOut",
-                            "F_C_name": "pass_struct_by_reference_out",
                             "F_name_api": "pass_struct_by_reference_out",
                             "F_name_function": "pass_struct_by_reference_out",
                             "F_name_generic": "pass_struct_by_reference_out",

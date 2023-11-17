@@ -5,7 +5,7 @@
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
 !
-! Test Fortran API generated from struct.yaml.
+! Test Fortran API generated from cxxlibrary.yaml.
 !
 program tester
   use fruit

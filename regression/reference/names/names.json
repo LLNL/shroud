@@ -396,7 +396,6 @@
         "functions": [
             {
                 "<FUNCTION>": "getName  4 ****************************************",
-                "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -447,15 +446,37 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_char_*_buf"
                         }
                     }
                 },
@@ -464,11 +485,29 @@
                         "fmtc": {
                             "C_call_function": "getName(\tname)",
                             "C_call_list": "name",
+                            "C_name": "TES_getName",
                             "C_prototype": "char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
+                            "F_C_name": "c_get_name",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "getName(\tSHT_name_str)",
+                            "C_call_list": "SHT_name_str",
+                            "C_name": "TES_getName_bufferify",
+                            "C_prototype": "char *name,\t int SHT_name_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len",
+                            "F_C_call": "c_get_name_bufferify",
+                            "F_C_name": "c_get_name_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len",
+                            "F_arguments": "name",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name": {
@@ -497,124 +536,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_inout_char_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "ctor_expr": "name",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "data_var": "SHData_name",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_name",
-                            "size_var": "SHSize_name",
-                            "stmt": "py_inout_char_*",
-                            "value_var": "SHValue_name"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "TES_getName",
-                    "C_name_api": "getName",
-                    "F_C_name": "c_get_name",
-                    "F_name_api": "get_name",
-                    "PY_name_impl": "PY_getName",
-                    "function_name": "getName"
-                }
-            },
-            {
-                "<FUNCTION>": "getName  19 ****************************************",
-                "_PTR_C_CXX_index": "4",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 4,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "getName",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "len": "worklen",
-                                        "len_trim": "worktrim"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "inout"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
-                "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
-                "helpers": {
-                    "c": [
-                        "char_alloc",
-                        "char_copy",
-                        "char_free"
-                    ]
-                },
-                "name": "getName",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "stmt": "f_inout_char_*_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "getName(\tSHT_name_str)",
-                            "C_call_list": "SHT_name_str",
-                            "C_prototype": "char *name,\t int SHT_name_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_name_len",
-                            "F_C_call": "c_get_name_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name,\t SHT_name_len",
-                            "F_arguments": "name",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name": {
                         "fmtf": {
                             "c_addr": "",
                             "c_char_len": "worklen",
@@ -648,18 +569,35 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_inout_char_*_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "ctor_expr": "name",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "data_var": "SHData_name",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name",
+                            "stmt": "py_inout_char_*",
+                            "value_var": "SHValue_name"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TES_getName_bufferify",
                     "C_name_api": "getName",
-                    "F_C_name": "c_get_name_bufferify",
                     "F_name_api": "get_name",
                     "F_name_function": "get_name",
                     "F_name_generic": "get_name",
                     "F_name_impl": "get_name",
-                    "f_c_suffix": "_bufferify",
+                    "PY_name_impl": "PY_getName",
                     "function_name": "getName"
                 }
             },
@@ -691,11 +629,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -704,16 +648,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "function1(\t)",
+                            "C_name": "YYY_TES_function1",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "YYY_TES_function1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "function1(\t)",
+                            "C_name": "YYY_TES_function1",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "YYY_TES_function1",
+                            "F_C_name": "YYY_TES_function1",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -722,9 +670,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "YYY_TES_function1",
                     "C_name_api": "function1",
-                    "F_C_name": "YYY_TES_function1",
                     "F_name_api": "function1",
                     "F_name_function": "function1",
                     "F_name_generic": "function1",
@@ -766,11 +712,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -779,16 +731,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "function2(\t)",
+                            "C_name": "c_name_special",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "YYY_TES_function2",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "function2(\t)",
+                            "C_name": "c_name_special",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "f_c_name_special",
+                            "F_C_name": "f_c_name_special",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -858,17 +814,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "i": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "i": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -878,17 +846,21 @@
                         "fmtc": {
                             "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
+                            "C_name": "YYY_TES_function3a_0",
                             "C_prototype": "int i",
                             "C_return_type": "void",
+                            "F_C_name": "YYY_TES_function3a_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
+                            "C_name": "YYY_TES_function3a_0",
                             "C_prototype": "int i",
                             "C_return_type": "void",
                             "F_C_arguments": "i",
                             "F_C_call": "YYY_TES_function3a_0",
+                            "F_C_name": "YYY_TES_function3a_0",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "i",
                             "F_arguments": "i",
@@ -959,9 +931,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "YYY_TES_function3a_0",
                     "C_name_api": "function3a",
-                    "F_C_name": "YYY_TES_function3a_0",
                     "F_name_api": "function3a",
                     "F_name_function": "function3a_0",
                     "F_name_generic": "generic3",
@@ -1021,17 +991,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "i": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "i": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -1041,17 +1023,21 @@
                         "fmtc": {
                             "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
+                            "C_name": "YYY_TES_function3a_1",
                             "C_prototype": "long i",
                             "C_return_type": "void",
+                            "F_C_name": "YYY_TES_function3a_1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "function3a(\ti)",
                             "C_call_list": "i",
+                            "C_name": "YYY_TES_function3a_1",
                             "C_prototype": "long i",
                             "C_return_type": "void",
                             "F_C_arguments": "i",
                             "F_C_call": "YYY_TES_function3a_1",
+                            "F_C_name": "YYY_TES_function3a_1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "i",
                             "F_arguments": "i",
@@ -1122,9 +1108,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "YYY_TES_function3a_1",
                     "C_name_api": "function3a",
-                    "F_C_name": "YYY_TES_function3a_1",
                     "F_name_api": "function3a",
                     "F_name_function": "function3a_1",
                     "F_name_generic": "generic3",
@@ -1136,7 +1120,6 @@
             },
             {
                 "<FUNCTION>": "function4  9 ****************************************",
-                "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1182,15 +1165,37 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "rv": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "rv": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -1199,9 +1204,11 @@
                         "fmtc": {
                             "C_call_function": "function4(\tARG_rv)",
                             "C_call_list": "ARG_rv",
+                            "C_name": "YYY_TES_function4",
                             "C_prototype": "const char * rv",
                             "C_return_type": "int",
                             "F_C_arguments": "rv",
+                            "F_C_name": "YYY_TES_function4",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
@@ -1224,6 +1231,44 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "function4(\tARG_rv)",
+                            "C_call_list": "ARG_rv",
+                            "C_name": "YYY_TES_function4_bufferify",
+                            "C_prototype": "char *rv,\t int SHT_rv_len",
+                            "C_return_type": "int",
+                            "F_C_arguments": "rv,\t SHT_rv_len",
+                            "F_C_call": "YYY_TES_function4_bufferify",
+                            "F_C_name": "YYY_TES_function4_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "rv,\t SHT_rv_len",
+                            "F_arguments": "rv",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1266,141 +1311,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_string_&"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "const ",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "rv",
-                            "ctor_expr": "SH_rv.data(),\t SH_rv.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": null,
-                            "py_var": "SHPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_in_string_&",
-                            "value_var": "SHValue_rv"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "YYY_TES_function4",
-                    "C_name_api": "function4",
-                    "F_C_name": "YYY_TES_function4",
-                    "F_name_api": "function4",
-                    "PY_name_impl": "PY_function4",
-                    "function_name": "function4"
-                }
-            },
-            {
-                "<FUNCTION>": "function4  20 ****************************************",
-                "_PTR_C_CXX_index": "9",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
-                        "name": "function4",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "rv",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv)",
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "function4",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_native_scalar"
-                        },
-                        "rv": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "function4(\tARG_rv)",
-                            "C_call_list": "ARG_rv",
-                            "C_prototype": "char *rv,\t int SHT_rv_len",
-                            "C_return_type": "int",
-                            "F_C_arguments": "rv,\t SHT_rv_len",
-                            "F_C_call": "YYY_TES_function4_bufferify",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "rv,\t SHT_rv_len",
-                            "F_arguments": "rv",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
-                        }
-                    },
-                    "rv": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -1428,18 +1338,35 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_in_string_&_buf"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "const ",
+                            "c_deref": "",
+                            "c_type": "char",
+                            "c_var": "rv",
+                            "ctor_expr": "SH_rv.data(),\t SH_rv.size()",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&rv)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_in_string_&",
+                            "value_var": "SHValue_rv"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "YYY_TES_function4_bufferify",
                     "C_name_api": "function4",
-                    "F_C_name": "YYY_TES_function4_bufferify",
                     "F_name_api": "function4",
                     "F_name_function": "function4",
                     "F_name_generic": "function4",
                     "F_name_impl": "testnames_function4",
-                    "f_c_suffix": "_bufferify",
+                    "PY_name_impl": "PY_function4",
                     "function_name": "function4"
                 }
             },
@@ -1474,11 +1401,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -1487,16 +1420,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "fiveplus(\t)",
+                            "C_name": "YYY_TES_fiveplus",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "YYY_TES_fiveplus",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "fiveplus(\t)",
+                            "C_name": "YYY_TES_fiveplus",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "YYY_TES_fiveplus",
+                            "F_C_name": "YYY_TES_fiveplus",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -1505,9 +1442,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "YYY_TES_fiveplus",
                     "C_name_api": "fiveplus",
-                    "F_C_name": "YYY_TES_fiveplus",
                     "F_name_api": "fiveplus",
                     "F_name_function": "fiveplus",
                     "F_name_generic": "fiveplus",
@@ -1518,7 +1453,6 @@
             },
             {
                 "<FUNCTION>": "TestMultilineSplicer  11 ****************************************",
-                "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
                         "metaattrs": {
@@ -1606,18 +1540,49 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "c_inout_string_&"
                         },
                         "value": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_string_&_buf"
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_native_*"
                         }
                     }
                 },
@@ -1626,11 +1591,29 @@
                         "fmtc": {
                             "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
                             "C_call_list": "ARG_name,\t value",
+                            "C_name": "TES_TestMultilineSplicer",
                             "C_prototype": "char * name,\t int * value",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t value",
+                            "F_C_name": "c_test_multiline_splicer",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
+                            "C_call_list": "ARG_name,\t value",
+                            "C_name": "TES_TestMultilineSplicer_bufferify",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len,\t value",
+                            "F_C_call": "c_test_multiline_splicer_bufferify",
+                            "F_C_name": "c_test_multiline_splicer_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
+                            "F_arguments": "name,\t value",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         }
                     },
                     "name": {
@@ -1656,6 +1639,35 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_inout_string_&"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_helper_char_copy": "ShroudCharCopy",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "c_var_len": "SHT_name_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ARG_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "ARG_name",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name",
+                            "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "i_var": "name",
+                            "i_var_len": "SHT_name_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_inout_string_&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1701,195 +1713,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_out_native_*"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "value",
-                            "ctor_expr": "value",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "value",
-                            "cxx_type": "int",
-                            "cxx_var": "value",
-                            "data_var": "SHData_value",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_value",
-                            "size_var": "SHSize_value",
-                            "stmt": "py_out_native_*",
-                            "value_var": "SHValue_value"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "TES_TestMultilineSplicer",
-                    "C_name_api": "TestMultilineSplicer",
-                    "F_C_name": "c_test_multiline_splicer",
-                    "F_name_api": "test_multiline_splicer",
-                    "PY_name_impl": "PY_TestMultilineSplicer",
-                    "function_name": "TestMultilineSplicer"
-                }
-            },
-            {
-                "<FUNCTION>": "TestMultilineSplicer  21 ****************************************",
-                "_PTR_C_CXX_index": "11",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 11,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "TestMultilineSplicer",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "inout"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
-                "doxygen": {
-                    "description": "Use std::string argument to get bufferified function.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_copy",
-                        "char_len_trim"
-                    ]
-                },
-                "name": "TestMultilineSplicer",
-                "options": {},
-                "splicer": {
-                    "c": [
-                        "// line 1",
-                        "// line 2"
-                    ],
-                    "c_buf": [
-                        "// buf line 1",
-                        "// buf line 2"
-                    ],
-                    "f": [
-                        "! line 1",
-                        "! line 2"
-                    ],
-                    "py": [
-                        "// py line 1",
-                        "// py line 2"
-                    ]
-                },
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "stmt": "f_inout_string_&_buf"
-                        },
-                        "value": {
-                            "stmt": "f_out_native_*"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
-                            "C_call_list": "ARG_name,\t value",
-                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_name_len,\t value",
-                            "F_C_call": "c_test_multiline_splicer_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name,\t SHT_name_len,\t value",
-                            "F_arguments": "name,\t value",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_helper_char_copy": "ShroudCharCopy",
-                            "c_helper_char_len_trim": "ShroudCharLenTrim",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "c_var_len": "SHT_name_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ARG_name",
-                            "cxx_type": "std::string",
-                            "cxx_var": "ARG_name",
-                            "f_intent": "INOUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "name",
-                            "f_var_len": "SHT_name_len",
-                            "fc_var": "name",
-                            "i_var": "name",
-                            "i_var_len": "SHT_name_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_buf"
-                        }
-                    },
-                    "value": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1913,18 +1736,35 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_out_native_*"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "value",
+                            "ctor_expr": "value",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "value",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "data_var": "SHData_value",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_value",
+                            "size_var": "SHSize_value",
+                            "stmt": "py_out_native_*",
+                            "value_var": "SHValue_value"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TES_TestMultilineSplicer_bufferify",
                     "C_name_api": "TestMultilineSplicer",
-                    "F_C_name": "c_test_multiline_splicer_bufferify",
                     "F_name_api": "test_multiline_splicer",
                     "F_name_function": "test_multiline_splicer",
                     "F_name_generic": "test_multiline_splicer",
                     "F_name_impl": "test_multiline_splicer",
-                    "f_c_suffix": "_bufferify",
+                    "PY_name_impl": "PY_TestMultilineSplicer",
                     "function_name": "TestMultilineSplicer"
                 }
             },
@@ -2158,6 +1998,12 @@
                     "T",
                     "U"
                 ],
+                "user_fmt": {
+                    "C_name": "c_name_instantiation1",
+                    "F_C_name": "f_c_name_instantiation1",
+                    "F_name_impl": "f_name_instantiation1",
+                    "PY_name_impl": "PY_name_instantiation1"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -2166,23 +2012,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2192,17 +2056,21 @@
                         "fmtc": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "c_name_instantiation1",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
+                            "F_C_name": "c_function_tu_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "c_name_instantiation1",
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "f_c_name_instantiation1",
+                            "F_C_name": "f_c_name_instantiation1",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
@@ -2465,6 +2333,9 @@
                     "T",
                     "U"
                 ],
+                "user_fmt": {
+                    "template_suffix": "_instantiation2"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -2473,23 +2344,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2499,17 +2388,21 @@
                         "fmtc": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TES_FunctionTU_instantiation2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
+                            "F_C_name": "c_function_tu_instantiation2",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TES_FunctionTU_instantiation2",
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_function_tu_instantiation2",
+                            "F_C_name": "c_function_tu_instantiation2",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
@@ -2642,9 +2535,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<float, double>",
-                    "C_name": "TES_FunctionTU_instantiation2",
                     "C_name_api": "FunctionTU",
-                    "F_C_name": "c_function_tu_instantiation2",
                     "F_name_api": "function_tu",
                     "F_name_function": "function_tu_instantiation2",
                     "F_name_generic": "function_tu",
@@ -2762,11 +2653,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -2775,8 +2672,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
+                            "C_name": "TES_UseImplWorker_instantiation3",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_impl_worker_instantiation3",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2794,10 +2693,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
+                            "C_name": "TES_UseImplWorker_instantiation3",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_use_impl_worker_instantiation3",
+                            "F_C_name": "c_use_impl_worker_instantiation3",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2845,9 +2746,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_name": "TES_UseImplWorker_instantiation3",
                     "C_name_api": "UseImplWorker",
-                    "F_C_name": "c_use_impl_worker_instantiation3",
                     "F_name_api": "use_impl_worker",
                     "F_name_function": "use_impl_worker_instantiation3",
                     "F_name_generic": "use_impl_worker",
@@ -2910,17 +2809,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "point": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_shadow_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "point": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_shadow_*"
                         }
                     }
@@ -2930,8 +2841,10 @@
                         "fmtc": {
                             "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
                             "C_call_list": "ARG_point",
+                            "C_name": "TES_Cstruct_as_class_sum",
                             "C_prototype": "TES_Cstruct_as_class * point",
                             "C_return_type": "int",
+                            "F_C_name": "c_cstruct_as_class_sum",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2950,10 +2863,12 @@
                         "fmtf": {
                             "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
                             "C_call_list": "ARG_point",
+                            "C_name": "TES_Cstruct_as_class_sum",
                             "C_prototype": "TES_Cstruct_as_class * point",
                             "C_return_type": "int",
                             "F_C_arguments": "point",
                             "F_C_call": "c_cstruct_as_class_sum",
+                            "F_C_name": "c_cstruct_as_class_sum",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "point%cxxmem",
@@ -3068,9 +2983,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TES_Cstruct_as_class_sum",
                     "C_name_api": "Cstruct_as_class_sum",
-                    "F_C_name": "c_cstruct_as_class_sum",
                     "F_name_api": "cstruct_as_class_sum",
                     "F_name_function": "cstruct_as_class_sum",
                     "F_name_generic": "cstruct_as_class_sum",
@@ -3355,47 +3268,89 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "afree": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_void_scalar"
                         },
                         "alloc": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_void_scalar"
                         },
                         "assoc": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_void_scalar"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         },
                         "pkg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         },
                         "rdbase": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "afree": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_void_scalar"
                         },
                         "alloc": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_void_scalar"
                         },
                         "assoc": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_void_scalar"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         },
                         "pkg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         },
                         "rdbase": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_char_*"
                         }
                     }
@@ -3405,17 +3360,21 @@
                         "fmtc": {
                             "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
+                            "C_name": "TES_external_funcs",
                             "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                             "C_return_type": "void",
+                            "F_C_name": "c_external_funcs",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
+                            "C_name": "TES_external_funcs",
                             "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                             "C_return_type": "void",
                             "F_C_arguments": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "F_C_call": "c_external_funcs",
+                            "F_C_name": "c_external_funcs",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "trim(rdbase)//C_NULL_CHAR,\t trim(pkg)//C_NULL_CHAR,\t trim(name)//C_NULL_CHAR,\t alloc,\t afree,\t assoc",
                             "F_arguments": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
@@ -3680,9 +3639,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TES_external_funcs",
                     "C_name_api": "external_funcs",
-                    "F_C_name": "c_external_funcs",
                     "F_name_api": "external_funcs",
                     "F_name_function": "external_funcs",
                     "F_name_generic": "external_funcs",
@@ -3711,7 +3668,6 @@
                                             "name": "defaultctor"
                                         },
                                         "metaattrs": {
-                                            "api": "capptr",
                                             "intent": "ctor"
                                         },
                                         "params": [],
@@ -3737,11 +3693,19 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "api": "capptr",
+                                                "intent": "ctor"
+                                            },
                                             "stmt": "c_ctor_shadow_scalar_capptr"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "api": "capptr",
+                                                "intent": "ctor"
+                                            },
                                             "stmt": "f_ctor_shadow_scalar_capptr"
                                         }
                                     }
@@ -3750,8 +3714,10 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->defaultctor(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_defaultctor",
                                             "C_prototype": "TES_ns0_Names * SHC_rv",
                                             "C_return_type": "TES_ns0_Names *",
+                                            "F_C_name": "XXX_TES_names_defaultctor",
                                             "c_const": "",
                                             "c_get_value": "",
                                             "c_type": "TES_ns0_Names",
@@ -3769,10 +3735,12 @@
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->defaultctor(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_defaultctor",
                                             "C_prototype": "TES_ns0_Names * SHC_rv",
                                             "C_return_type": "TES_ns0_Names *",
                                             "F_C_arguments": "SHT_rv",
                                             "F_C_call": "XXX_TES_names_defaultctor",
+                                            "F_C_name": "XXX_TES_names_defaultctor",
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -3827,9 +3795,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "XXX_TES_ns0_Names_defaultctor",
                                     "C_name_api": "defaultctor",
-                                    "F_C_name": "XXX_TES_names_defaultctor",
                                     "F_name_api": "defaultctor",
                                     "F_name_function": "defaultctor",
                                     "F_name_generic": "FNames",
@@ -3871,11 +3837,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -3884,16 +3856,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->method1(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_method1",
                                             "C_prototype": "TES_ns0_Names * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "XXX_TES_names_method1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method1(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_method1",
                                             "C_prototype": "TES_ns0_Names * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "XXX_TES_names_method1",
+                                            "F_C_name": "XXX_TES_names_method1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -3903,9 +3879,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "XXX_TES_ns0_Names_method1",
                                     "C_name_api": "method1",
-                                    "F_C_name": "XXX_TES_names_method1",
                                     "F_name_api": "method1",
                                     "F_name_function": "type_method1",
                                     "F_name_generic": "method1",
@@ -3951,11 +3925,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -3964,16 +3944,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->method2(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_method2",
                                             "C_prototype": "TES_ns0_Names * self2",
                                             "C_return_type": "void",
+                                            "F_C_name": "XXX_TES_names_method2",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method2(\t)",
+                                            "C_name": "XXX_TES_ns0_Names_method2",
                                             "C_prototype": "TES_ns0_Names * self2",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self2",
                                             "F_C_call": "XXX_TES_names_method2",
+                                            "F_C_name": "XXX_TES_names_method2",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj2%cxxmem",
                                             "F_arguments": "obj2",
@@ -3984,10 +3968,8 @@
                                 },
                                 "zz_fmtdict": {
                                     "CXX_this": "SH_this2",
-                                    "C_name": "XXX_TES_ns0_Names_method2",
                                     "C_name_api": "method2",
                                     "C_this": "self2",
-                                    "F_C_name": "XXX_TES_names_method2",
                                     "F_name_api": "method2",
                                     "F_name_function": "method2",
                                     "F_name_generic": "method2",
@@ -4127,7 +4109,7 @@
                 "<NAMESPACE>": "ns1 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "init_ns1  22 ****************************************",
+                        "<FUNCTION>": "init_ns1  19 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4154,11 +4136,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -4167,16 +4155,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "ns1::init_ns1(\t)",
+                                    "C_name": "TES_ns1_init_ns1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_init_ns1",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "ns1::init_ns1(\t)",
+                                    "C_name": "TES_ns1_init_ns1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_init_ns1",
+                                    "F_C_name": "c_init_ns1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -4185,9 +4177,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TES_ns1_init_ns1",
                             "C_name_api": "init_ns1",
-                            "F_C_name": "c_init_ns1",
                             "F_name_api": "init_ns1",
                             "F_name_function": "init_ns1",
                             "F_name_generic": "init_ns1",
@@ -4775,11 +4765,17 @@
                                 "zz_bind": {
                                     "c": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "c_subroutine"
                                         }
                                     },
                                     "f": {
                                         "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            },
                                             "stmt": "f_subroutine"
                                         }
                                     }
@@ -4788,16 +4784,20 @@
                                     "+result": {
                                         "fmtc": {
                                             "C_call_function": "SH_this->Member1(\t)",
+                                            "C_name": "TES_capi_class1_member1",
                                             "C_prototype": "TES_capi_class1 * self",
                                             "C_return_type": "void",
+                                            "F_C_name": "c_class1_member1",
                                             "stmt_name": "c_subroutine"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->Member1(\t)",
+                                            "C_name": "TES_capi_class1_member1",
                                             "C_prototype": "TES_capi_class1 * self",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_class1_member1",
+                                            "F_C_name": "c_class1_member1",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -4807,9 +4807,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
-                                    "C_name": "TES_capi_class1_member1",
                                     "C_name_api": "member1",
-                                    "F_C_name": "c_class1_member1",
                                     "F_name_api": "member1",
                                     "F_name_function": "member1",
                                     "F_name_generic": "member1",
@@ -4852,7 +4850,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  23 ****************************************",
+                        "<FUNCTION>": "Worker1  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4878,11 +4876,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -4891,16 +4895,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "CAPI::Worker1(\t)",
+                                    "C_name": "TES_capi_worker1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_worker1",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "CAPI::Worker1(\t)",
+                                    "C_name": "TES_capi_worker1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_worker1",
+                                    "F_C_name": "c_worker1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -4909,9 +4917,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TES_capi_worker1",
                             "C_name_api": "worker1",
-                            "F_C_name": "c_worker1",
                             "F_name_api": "worker1",
                             "F_name_function": "worker1",
                             "F_name_generic": "worker1",
@@ -4956,7 +4962,7 @@
                 "<NAMESPACE>": "CAPI2 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  24 ****************************************",
+                        "<FUNCTION>": "Worker1  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4982,11 +4988,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -4995,16 +5007,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "CAPI2::Worker1(\t)",
+                                    "C_name": "TES_CAPItwo_Worker1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_worker1",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "CAPI2::Worker1(\t)",
+                                    "C_name": "TES_CAPItwo_Worker1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_worker1",
+                                    "F_C_name": "c_worker1",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -5013,9 +5029,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "TES_CAPItwo_Worker1",
                             "C_name_api": "Worker1",
-                            "F_C_name": "c_worker1",
                             "F_name_api": "worker1",
                             "F_name_function": "worker1",
                             "F_name_generic": "worker1",

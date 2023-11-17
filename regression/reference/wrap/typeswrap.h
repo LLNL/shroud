@@ -27,6 +27,22 @@ struct s_WRA_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_WRA_SHROUD_capsule_data WRA_SHROUD_capsule_data;
+#if 0
+
+// C++ capsule WRA_Class1
+struct s_WRA_Class1 {
+    Class1 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_WRA_Class1 WRA_Class1;
+#endif
+
+// C capsule WRA_Class1
+struct s_WRA_Class1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_WRA_Class1 WRA_Class1;
 
 void WRA_SHROUD_memory_destructor(WRA_SHROUD_capsule_data *cap);
 

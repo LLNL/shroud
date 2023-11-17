@@ -364,15 +364,6 @@ F_CFI
   Use the C Fortran Interface provided by *Futher Interoperability with C*
   from Fortran 2018 (initially defined in TS29113 2012).
 
-F_create_bufferify_function
-  Controls creation of a *bufferify* function.
-  If *true*, an additional C function is created which receives
-  *bufferified* arguments - i.e. the len, len_trim, and size may be
-  added as additional arguments.  Set to *false* when when you want to
-  avoid passing this information.  This will avoid a copy of
-  ``CHARACTER`` arguments required to append a trailing null.
-  Defaults to *true*.
-
 F_create_generic
   Controls creation of a generic interface.  It defaults to *true* for
   most cases but will be set to *False* if a function is templated on

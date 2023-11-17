@@ -309,7 +309,9 @@ class ToDict(visitor.Visitor):
     def visit_WrapFlags(self, node):
         d = dict()
         add_true_fields(
-            node, d, ["fortran", "c", "lua", "python"]
+            node, d, ["fortran", "c", "lua", "python",
+#                      "signature_c", "signature_f",
+            ]
         )
         return d
 
@@ -416,7 +418,6 @@ class ToDict(visitor.Visitor):
                 "doxygen",
                 "linenumber",
                 "return_this",
-                "splicer_group",
                 "have_template_args",
                 "template_parameters",
                 "C_error_pattern",
@@ -551,6 +552,18 @@ class ToDict(visitor.Visitor):
             d["stmt"] = node.stmt.name
         if node.fstmts:
             d["fstmts"] = node.fstmts
+        if node.meta is not None:
+            metaattrs = {key: value
+                         for (key, value) in node.meta.items()
+                         if value is not None}
+            if metaattrs:
+                if "struct_member" in metaattrs:
+                    # struct_member is a ast.VariableNode, add name instead
+                    # to avoid huge dump.
+                    metaattrs["struct_member"] = metaattrs["struct_member"].name
+                if "dimension" in metaattrs:
+                    metaattrs["dimension"] = self.visit(metaattrs["dimension"])
+                d["meta"] = metaattrs
         return d
     
     # Rename some attributes so they sort to the bottom of the JSON dictionary.

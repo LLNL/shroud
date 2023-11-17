@@ -89,6 +89,25 @@ double TUT_PassByValue(double arg1, int arg2)
     // splicer end function.PassByValue
 }
 
+#if 0
+! Not Implemented
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
+const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
+{
+    // splicer begin function.ConcatenateStrings
+    const std::string SHCXX_arg1(arg1);
+    const std::string SHCXX_arg2(arg2);
+    const std::string SHCXX_rv = tutorial::ConcatenateStrings(
+        SHCXX_arg1, SHCXX_arg2);
+    const char SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
+    // splicer end function.ConcatenateStrings
+}
+#endif
+
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).

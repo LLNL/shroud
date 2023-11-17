@@ -1,23 +1,23 @@
 Read yaml typedefs.yaml
 Close typedefs_types.yaml
 struct Struct1Rename
-C c TypeID typefunc(TypeID arg +value)  +intent(function)
-C f TypeID typefunc(TypeID arg +value)  +intent(function)
-C c void typestruct(Struct1Rename * arg1)  +intent(subroutine)
-C f void typestruct(Struct1Rename * arg1)  +intent(subroutine)
-C c int returnBytesForIndexType(IndexType arg +value)  +intent(function)
-C f int returnBytesForIndexType(IndexType arg +value)  +intent(function)
+C c TypeID typefunc(TypeID arg +value)
+C f TypeID typefunc(TypeID arg +value)
+C c void typestruct(Struct1Rename * arg1)
+C f void typestruct(Struct1Rename * arg1)
+C c int returnBytesForIndexType(IndexType arg +value)
+C f int returnBytesForIndexType(IndexType arg +value)
 Close wraptypedefs.h
 Close wraptypedefs.cpp
 class Struct1Rename
 typedef TypeID
 typedef IndexType
-Fortran TypeID typefunc(TypeID arg +value)  +intent(function)
-Fortran void typestruct(Struct1Rename * arg1)  +intent(subroutine)
-Fortran int returnBytesForIndexType(IndexType arg +value)  +intent(function)
-C-interface f TypeID typefunc(TypeID arg +value)  +intent(function)
-C-interface f void typestruct(Struct1Rename * arg1)  +intent(subroutine)
-C-interface f int returnBytesForIndexType(IndexType arg +value)  +intent(function)
+Fortran TypeID typefunc(TypeID arg +value)
+Fortran void typestruct(Struct1Rename * arg1)
+Fortran int returnBytesForIndexType(IndexType arg +value)
+C-interface f TypeID typefunc(TypeID arg +value)
+C-interface f void typestruct(Struct1Rename * arg1)
+C-interface f int returnBytesForIndexType(IndexType arg +value)
 Close wrapftypedefs.f
 Close utiltypedefs.cpp
 Close typestypedefs.h

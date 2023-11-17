@@ -12,27 +12,17 @@ root
         scalar -- f_function_bool_scalar
       char
         * -- f_function_char_*
-          allocatable -- f_function_char_*
           arg -- f_function_char_*_arg
           buf
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
-          cdesc
-            pointer -- f_function_char_scalar_cdesc_pointer
-          copy -- f_function_char_*
-          pointer -- f_function_char_*
-          raw -- f_function_char_*
         scalar -- f_function_char_scalar
       native
-        & -- f_function_native_&
-          pointer -- f_function_native_&
-        * -- f_function_native_&
-          allocatable -- f_function_native_**
-          caller -- f_function_native_&
-          pointer -- f_function_native_&
-          raw -- f_function_native_*_raw
+        & -- f_function_native_*_raw
+        * -- f_function_native_*_raw
+          caller -- f_function_native_*_raw
           scalar -- c_function_native_*_scalar
-        ** -- f_function_native_**
+        ** -- f_function_native_*_raw
         scalar -- f_function_native_scalar
       shadow
         &
@@ -55,28 +45,25 @@ root
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
-          cdesc
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
         * -- f_shared_function_string_scalar
           buf
             copy -- f_function_string_scalar_buf
           caller -- f_shared_function_string_scalar
-          cdesc
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
           copy -- f_shared_function_string_scalar
           library -- f_shared_function_string_scalar
-        scalar -- f_shared_function_string_scalar
+        scalar -- c_function_string_scalar
           buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
       struct
         * -- f_function_struct_*_pointer
         scalar -- f_function_struct_scalar
+      vector
+        scalar
+          targ
+            native
+              scalar -- c_function_vector_scalar_targ_native_scalar
       void
         * -- f_function_void_*
     getter
@@ -125,6 +112,12 @@ root
                 scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
               string
                 scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
+          targ
+            native
+              * -- c_shared_vector_argument
+              scalar -- c_shared_vector_argument
+            string
+              scalar -- c_shared_vector_argument
         *
           buf
             targ
@@ -167,6 +160,11 @@ root
       struct
         & -- f_shared_struct
         * -- f_shared_struct
+      vector
+        &
+          targ
+            native
+              scalar -- c_shared_vector_argument
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -233,12 +231,7 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
           hidden -- f_out/inout_native_*_hidden
         *& -- f_shared_native_scalar
-          cdesc
-            pointer -- f_out_native_*&_cdesc
         ** -- f_out_native_**_raw
-          cdesc
-            allocatable -- f_out_native_**_cdesc_allocatable
-            pointer -- f_out_native_**_cdesc_pointer
           raw -- f_out_native_**_raw
         *** -- f_shared_native_scalar
       string
@@ -247,9 +240,7 @@ root
         * -- f_out_string_*/&
           buf -- f_out_string_*/&_buf
         ** -- f_out_string_**_copy
-          allocatable -- f_out_string_**_allocatable
           cdesc
-            allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
       struct
         & -- f_shared_struct
@@ -259,8 +250,6 @@ root
           cdesc
             allocatable
               targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
                 string
                   scalar -- f_out_vector_&_cdesc_allocatable_targ_string_scalar
             targ
@@ -268,12 +257,13 @@ root
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
               string
                 scalar -- f_out_vector_&_cdesc_targ_string_scalar
+          targ
+            native
+              scalar -- c_shared_vector_argument
+            string
+              scalar -- c_shared_vector_argument
         *
           cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
             targ
               native
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
@@ -289,6 +279,9 @@ root
       string
         scalar
           buf -- f_setter_string_scalar_buf
+    shared
+      vector
+        argument -- c_shared_vector_argument
     subroutine -- f_subroutine
     test -- c_test
   f
@@ -333,8 +326,6 @@ root
         & -- f_function_native_&
           pointer -- f_function_native_&
         *
-          allocatable -- f_function_native_**
-            caller -- f_function_native_**
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
@@ -346,7 +337,7 @@ root
             caller -- f_function_native_&
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
-        ** -- f_function_native_**
+        ** -- f_function_native_*_raw
         scalar -- f_function_native_scalar
       shadow
         &
@@ -367,8 +358,7 @@ root
               native
                 scalar -- f_function_shadow_scalar_capptr
       string
-        & -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
+        &
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -388,11 +378,7 @@ root
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
-          copy -- f_shared_function_string_scalar
-        * -- f_shared_function_string_scalar
-          allocatable -- f_shared_function_string_scalar
-            caller -- f_shared_function_string_scalar
-            library -- f_shared_function_string_scalar
+        *
           buf -- f_function_string_scalar_buf
             copy -- f_function_string_scalar_buf
           cdesc
@@ -410,11 +396,7 @@ root
             pointer -- f_shared_function_string_*_cfi_pointer
               caller -- f_shared_function_string_*_cfi_pointer
               library -- f_shared_function_string_*_cfi_pointer
-          copy -- f_shared_function_string_scalar
-          pointer -- f_shared_function_string_scalar
-            caller -- f_shared_function_string_scalar
-            library -- f_shared_function_string_scalar
-        scalar -- f_shared_function_string_scalar
+        scalar
           buf -- f_function_string_scalar_buf
             arg -- f_function_string_scalar_buf_arg
             copy -- f_function_string_scalar_buf
@@ -668,16 +650,13 @@ root
         *&
           cdesc -- f_out_native_*&_cdesc
             pointer -- f_out_native_*&_cdesc
-          pointer -- f_shared_native_scalar
         **
-          allocatable -- f_shared_native_scalar
           cdesc
             allocatable -- f_out_native_**_cdesc_allocatable
             pointer -- f_out_native_**_cdesc_pointer
           cfi
             allocatable -- f_out_native_**_cfi_allocatable
             pointer -- f_out_native_**_cfi_pointer
-          pointer -- f_shared_native_scalar
           raw -- f_out_native_**_raw
         *** -- f_shared_native_scalar
       string
@@ -688,7 +667,6 @@ root
           buf -- f_out_string_*/&_buf
           cfi -- f_out_string_*/&_cfi
         **
-          allocatable -- f_out_string_**_allocatable
           cdesc
             allocatable -- f_out_string_**_cdesc_allocatable
             copy -- f_out_string_**_cdesc_copy
@@ -775,7 +753,7 @@ c_ctor_shadow_scalar_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '120'
+  index: '122'
   intent: ctor
   name: c_ctor_shadow_scalar_capptr
   owner: caller
@@ -793,7 +771,7 @@ c_dtor:
   - Call the C wrapper as a subroutine.
   impl_header:
   - <cstddef>
-  index: '121'
+  index: '123'
   intent: dtor
   lang_c:
     impl_header:
@@ -819,19 +797,9 @@ c_function_char_*:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: c_function_char_*
-  owner: library
-c_function_char_*_allocatable:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '67'
-  intent: function
-  name: c_function_char_*_allocatable
   owner: library
 c_function_char_*_arg:
   c_arg_decl:
@@ -864,7 +832,7 @@ c_function_char_*_arg:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '72'
+  index: '71'
   intent: function
   name: c_function_char_*_arg
   owner: library
@@ -899,7 +867,7 @@ c_function_char_*_buf_arg:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '72'
+  index: '71'
   intent: function
   name: c_function_char_*_buf_arg
   owner: library
@@ -927,69 +895,9 @@ c_function_char_*_buf_copy:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '71'
+  index: '70'
   intent: function
   name: c_function_char_*_buf_copy
-  owner: library
-c_function_char_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - type_defines
-  c_post_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from char * in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '76'
-  intent: function
-  name: c_function_char_*_cdesc_pointer
-  owner: library
-c_function_char_*_copy:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '67'
-  intent: function
-  name: c_function_char_*_copy
-  owner: library
-c_function_char_*_pointer:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '67'
-  intent: function
-  name: c_function_char_*_pointer
-  owner: library
-c_function_char_*_raw:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '67'
-  intent: function
-  name: c_function_char_*_raw
   owner: library
 c_function_char_scalar:
   c_arg_decl:
@@ -1006,43 +914,27 @@ c_function_char_scalar:
   i_module:
     iso_c_binding:
     - C_CHAR
-  index: '66'
+  index: '65'
   intent: function
   name: c_function_char_scalar
   owner: library
 c_function_native_&:
-  comments:
-  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '60'
+  index: '63'
   intent: function
   name: c_function_native_&
   owner: library
-c_function_native_&_pointer:
-  comments:
-  - Return a C pointer as a type(C_PTR).
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '60'
-  intent: function
-  name: c_function_native_&_pointer
-  owner: library
 c_function_native_*:
-  comments:
-  - Return a C pointer as a type(C_PTR).
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '60'
+  index: '63'
   intent: function
   name: c_function_native_*
   owner: library
@@ -1052,45 +944,11 @@ c_function_native_**:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '64'
+  index: '63'
   intent: function
   name: c_function_native_**
   owner: library
-c_function_native_*_allocatable:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '64'
-  intent: function
-  name: c_function_native_*_allocatable
-  owner: library
 c_function_native_*_caller:
-  comments:
-  - Return a C pointer as a type(C_PTR).
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '60'
-  intent: function
-  name: c_function_native_*_caller
-  owner: library
-c_function_native_*_pointer:
-  comments:
-  - Return a C pointer as a type(C_PTR).
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '60'
-  intent: function
-  name: c_function_native_*_pointer
-  owner: library
-c_function_native_*_raw:
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1098,7 +956,7 @@ c_function_native_*_raw:
   - type(C_PTR) {i_var}
   index: '63'
   intent: function
-  name: c_function_native_*_raw
+  name: c_function_native_*_caller
   owner: library
 c_function_native_*_scalar:
   i_module:
@@ -1139,7 +997,7 @@ c_function_shadow_&_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_&_capptr
   owner: library
@@ -1167,7 +1025,7 @@ c_function_shadow_&_capptr_caller:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_&_capptr_caller
   owner: library
@@ -1195,7 +1053,7 @@ c_function_shadow_&_capptr_library:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_&_capptr_library
   owner: library
@@ -1223,7 +1081,7 @@ c_function_shadow_*_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_*_capptr
   owner: library
@@ -1251,7 +1109,7 @@ c_function_shadow_*_capptr_caller:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_*_capptr_caller
   owner: library
@@ -1279,7 +1137,7 @@ c_function_shadow_*_capptr_library:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: c_function_shadow_*_capptr_library
   owner: library
@@ -1299,7 +1157,7 @@ c_function_shadow_*_capsule:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '115'
+  index: '117'
   intent: function
   name: c_function_shadow_*_capsule
   owner: library
@@ -1309,7 +1167,7 @@ c_function_shadow_*_this:
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
-  index: '116'
+  index: '118'
   intent: function
   name: c_function_shadow_*_this
   owner: library
@@ -1339,7 +1197,7 @@ c_function_shadow_scalar_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: c_function_shadow_scalar_capptr
   owner: caller
@@ -1369,7 +1227,7 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: c_function_shadow_scalar_capptr_targ_native_scalar
   owner: caller
@@ -1381,7 +1239,7 @@ c_function_string_&:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_&
   owner: library
@@ -1454,87 +1312,6 @@ c_function_string_&_buf_copy:
   intent: function
   name: c_function_string_&_buf_copy
   owner: library
-c_function_string_&_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_&_cdesc_pointer
-  owner: library
-c_function_string_&_cdesc_pointer_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_&_cdesc_pointer_caller
-  owner: library
-c_function_string_&_cdesc_pointer_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_&_cdesc_pointer_library
-  owner: library
 c_function_string_&_copy:
   c_return:
   - return {c_var};
@@ -1543,7 +1320,7 @@ c_function_string_&_copy:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_&_copy
   owner: library
@@ -1555,7 +1332,7 @@ c_function_string_*:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_*
   owner: library
@@ -1598,90 +1375,9 @@ c_function_string_*_caller:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_*_caller
-  owner: library
-c_function_string_*_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_*_cdesc_pointer
-  owner: library
-c_function_string_*_cdesc_pointer_caller:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_*_cdesc_pointer_caller
-  owner: library
-c_function_string_*_cdesc_pointer_library:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '77'
-  intent: function
-  name: c_function_string_*_cdesc_pointer_library
   owner: library
 c_function_string_*_copy:
   c_return:
@@ -1691,7 +1387,7 @@ c_function_string_*_copy:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_*_copy
   owner: library
@@ -1703,21 +1399,17 @@ c_function_string_*_library:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: function
   name: c_function_string_*_library
   owner: library
 c_function_string_scalar:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
+  comments:
+  - Cannot return a char array by value.
   index: '84'
   intent: function
   name: c_function_string_scalar
+  notimplemented: true
   owner: library
 c_function_string_scalar_buf_arg:
   c_arg_decl:
@@ -1789,6 +1481,7 @@ c_function_string_scalar_buf_copy:
   name: c_function_string_scalar_buf_copy
   owner: library
 c_function_struct_*:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   i_module:
@@ -1796,7 +1489,7 @@ c_function_struct_*:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '124'
+  index: '126'
   intent: function
   name: c_function_struct_*
   owner: library
@@ -1815,9 +1508,17 @@ c_function_struct_scalar:
   i_module:
     '{f_type_module}':
     - '{f_kind}'
-  index: '123'
+  index: '125'
   intent: function
   name: c_function_struct_scalar
+  owner: library
+c_function_vector_scalar_targ_native_scalar:
+  comments:
+  - Cannot return a std::vector<native> by value.
+  index: '92'
+  intent: function
+  name: c_function_vector_scalar_targ_native_scalar
+  notimplemented: true
   owner: library
 c_function_void_*:
   index: '56'
@@ -1829,7 +1530,7 @@ c_getter_native_*:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
-  index: '127'
+  index: '129'
   intent: getter
   name: c_getter_native_*
   owner: library
@@ -1838,7 +1539,7 @@ c_getter_native_scalar:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
-  index: '127'
+  index: '129'
   intent: getter
   name: c_getter_native_scalar
   owner: library
@@ -1862,7 +1563,7 @@ c_in_char_**:
   i_module:
     iso_c_binding:
     - C_PTR
-  index: '73'
+  index: '72'
   intent: in
   name: c_in_char_**
   owner: library
@@ -1895,7 +1596,7 @@ c_in_char_**_buf:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '74'
+  index: '73'
   intent: in
   name: c_in_char_**_buf
   owner: library
@@ -1925,7 +1626,7 @@ c_in_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '68'
+  index: '67'
   intent: in
   name: c_in_char_*_buf
   owner: library
@@ -1944,7 +1645,7 @@ c_in_char_scalar:
   i_module:
     iso_c_binding:
     - C_CHAR
-  index: '65'
+  index: '64'
   intent: in
   name: c_in_char_scalar
   owner: library
@@ -2017,7 +1718,7 @@ c_in_shadow_&:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '117'
+  index: '119'
   intent: in
   name: c_in_shadow_&
   owner: library
@@ -2034,7 +1735,7 @@ c_in_shadow_*:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: in
   name: c_in_shadow_*
   owner: library
@@ -2051,7 +1752,7 @@ c_in_shadow_scalar:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '113'
+  index: '115'
   intent: in
   name: c_in_shadow_scalar
   owner: library
@@ -2059,7 +1760,7 @@ c_in_string_&:
   c_pre_call:
   - '{c_const}std::string {cxx_var}({c_var});'
   cxx_local_var: scalar
-  index: '78'
+  index: '77'
   intent: in
   name: c_in_string_&
   owner: library
@@ -2084,7 +1785,7 @@ c_in_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '81'
+  index: '80'
   intent: in
   name: c_in_string_&_buf
   owner: library
@@ -2092,7 +1793,7 @@ c_in_string_*:
   c_pre_call:
   - '{c_const}std::string {cxx_var}({c_var});'
   cxx_local_var: scalar
-  index: '78'
+  index: '77'
   intent: in
   name: c_in_string_*
   owner: library
@@ -2117,7 +1818,7 @@ c_in_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '81'
+  index: '80'
   intent: in
   name: c_in_string_*_buf
   owner: library
@@ -2166,17 +1867,17 @@ c_in_string_scalar_buf:
   name: c_in_string_scalar_buf
   owner: library
 c_in_struct_&:
-  index: '122'
+  index: '124'
   intent: in
   name: c_in_struct_&
   owner: library
 c_in_struct_*:
-  index: '122'
+  index: '124'
   intent: in
   name: c_in_struct_*
   owner: library
 c_in_struct_scalar:
-  index: '122'
+  index: '124'
   intent: in
   name: c_in_struct_scalar
   owner: library
@@ -2211,7 +1912,7 @@ c_in_vector_&_buf_targ_native_*:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '98'
+  index: '100'
   intent: in
   name: c_in_vector_&_buf_targ_native_*
   owner: library
@@ -2234,7 +1935,7 @@ c_in_vector_&_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: c_in_vector_&_buf_targ_native_scalar
   owner: library
@@ -2279,9 +1980,33 @@ c_in_vector_&_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: c_in_vector_&_buf_targ_string_scalar
+  owner: library
+c_in_vector_&_targ_native_*:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: in
+  name: c_in_vector_&_targ_native_*
+  notimplemented: true
+  owner: library
+c_in_vector_&_targ_native_scalar:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: in
+  name: c_in_vector_&_targ_native_scalar
+  notimplemented: true
+  owner: library
+c_in_vector_&_targ_string_scalar:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: in
+  name: c_in_vector_&_targ_string_scalar
+  notimplemented: true
   owner: library
 c_in_vector_*_buf_targ_native_scalar:
   c_arg_decl:
@@ -2302,7 +2027,7 @@ c_in_vector_*_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: c_in_vector_*_buf_targ_native_scalar
   owner: library
@@ -2347,7 +2072,7 @@ c_in_vector_*_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: c_in_vector_*_buf_targ_string_scalar
   owner: library
@@ -2370,7 +2095,7 @@ c_in_vector_scalar_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: c_in_vector_scalar_buf_targ_native_scalar
   owner: library
@@ -2415,7 +2140,7 @@ c_in_vector_scalar_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: c_in_vector_scalar_buf_targ_string_scalar
   owner: library
@@ -2508,7 +2233,7 @@ c_inout_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '70'
+  index: '69'
   intent: inout
   name: c_inout_char_*_buf
   owner: library
@@ -2580,7 +2305,7 @@ c_inout_shadow_&:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: inout
   name: c_inout_shadow_&
   owner: library
@@ -2597,7 +2322,7 @@ c_inout_shadow_*:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: inout
   name: c_inout_shadow_*
   owner: library
@@ -2609,7 +2334,7 @@ c_inout_string_&:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '80'
+  index: '79'
   intent: inout
   lang_cxx:
     impl_header:
@@ -2640,7 +2365,7 @@ c_inout_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '83'
+  index: '82'
   intent: inout
   name: c_inout_string_&_buf
   owner: library
@@ -2652,7 +2377,7 @@ c_inout_string_*:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '80'
+  index: '79'
   intent: inout
   lang_cxx:
     impl_header:
@@ -2683,19 +2408,27 @@ c_inout_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '83'
+  index: '82'
   intent: inout
   name: c_inout_string_*_buf
   owner: library
 c_inout_struct_&:
-  index: '122'
+  index: '124'
   intent: inout
   name: c_inout_struct_&
   owner: library
 c_inout_struct_*:
-  index: '122'
+  index: '124'
   intent: inout
   name: c_inout_struct_*
+  owner: library
+c_inout_vector_&_targ_native_scalar:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: inout
+  name: c_inout_vector_&_targ_native_scalar
+  notimplemented: true
   owner: library
 c_inout_void_**:
   c_arg_decl:
@@ -2745,7 +2478,7 @@ c_mixin_arg_cfi:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  index: '133'
+  index: '135'
   intent: mixin
   name: c_mixin_arg_cfi
   owner: library
@@ -2763,7 +2496,7 @@ c_mixin_arg_character_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '136'
+  index: '138'
   intent: mixin
   name: c_mixin_arg_character_cfi
   owner: library
@@ -2782,7 +2515,7 @@ c_mixin_arg_native_cfi:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '137'
+  index: '139'
   intent: mixin
   name: c_mixin_arg_native_cfi
   owner: library
@@ -2920,7 +2653,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '96'
+  index: '98'
   intent: mixin
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
   owner: library
@@ -2959,7 +2692,7 @@ c_mixin_native_cfi_allocatable:
   c_temps:
   - extents
   - lower
-  index: '138'
+  index: '140'
   intent: mixin
   name: c_mixin_native_cfi_allocatable
   owner: library
@@ -2983,7 +2716,7 @@ c_mixin_native_cfi_pointer:
   c_temps:
   - extents
   - lower
-  index: '139'
+  index: '141'
   intent: mixin
   name: c_mixin_native_cfi_pointer
   owner: library
@@ -3018,7 +2751,7 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
-  index: '94'
+  index: '96'
   intent: mixin
   name: c_mixin_out_vector_cdesc_targ_native_scalar
   owner: library
@@ -3032,7 +2765,7 @@ c_mixin_shadow:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '112'
+  index: '114'
   intent: mixin
   name: c_mixin_shadow
   owner: library
@@ -3046,7 +2779,7 @@ c_mixin_vector_cdesc_fill-cdesc:
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  index: '93'
+  index: '95'
   intent: mixin
   name: c_mixin_vector_cdesc_fill-cdesc
   owner: library
@@ -3080,7 +2813,7 @@ c_out_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '69'
+  index: '68'
   intent: out
   name: c_out_char_*_buf
   owner: library
@@ -3113,37 +2846,6 @@ c_out_native_*&:
   intent: out
   name: c_out_native_*&
   owner: library
-c_out_native_*&_cdesc_pointer:
-  c_arg_call:
-  - '{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '48'
-  intent: out
-  name: c_out_native_*&_cdesc_pointer
-  owner: library
 c_out_native_**:
   index: '51'
   intent: out
@@ -3153,80 +2855,6 @@ c_out_native_***:
   index: '39'
   intent: out
   name: c_out_native_***
-  owner: library
-c_out_native_**_cdesc_allocatable:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_helper:
-  - array_context
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  - capsule
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Allocate Fortran native array for argument
-  - then fill from cdesc using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
-  - Release memory from capsule.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  - '{i_var_capsule}'
-  i_import:
-  - '{F_array_type}'
-  - '{F_capsule_data_type}'
-  index: '49'
-  intent: out
-  name: c_out_native_**_cdesc_allocatable
-  owner: library
-c_out_native_**_cdesc_pointer:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '50'
-  intent: out
-  name: c_out_native_**_cdesc_pointer
   owner: library
 c_out_native_**_raw:
   index: '51'
@@ -3277,7 +2905,7 @@ c_out_string_&:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '79'
+  index: '78'
   intent: out
   lang_cxx:
     impl_header:
@@ -3307,7 +2935,7 @@ c_out_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '82'
+  index: '81'
   intent: out
   name: c_out_string_&_buf
   owner: library
@@ -3319,7 +2947,7 @@ c_out_string_*:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '79'
+  index: '78'
   intent: out
   lang_cxx:
     impl_header:
@@ -3327,63 +2955,10 @@ c_out_string_*:
   name: c_out_string_*
   owner: library
 c_out_string_**:
-  index: '160'
+  index: '162'
   intent: out
   name: c_out_string_**
   notimplemented: true
-  owner: library
-c_out_string_**_allocatable:
-  index: '163'
-  intent: out
-  name: c_out_string_**_allocatable
-  notimplemented: true
-  owner: library
-c_out_string_**_cdesc_allocatable:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_helper:
-  - array_context
-  - array_string_allocatable
-  - array_string_out_len
-  c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
-  - if ({c_char_len} > 0) {{+
-  - '{c_var_cdesc}->elem_len = {c_char_len};'
-  - -}} else {{+
-  - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
-  - -}}
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  c_pre_call:
-  - std::string *{cxx_var};
-  c_temps:
-  - cdesc
-  - capsule
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
-  - Allocate Fortran array from cdesc.
-  - Allocate a vector<string> variable.
-  - Assign to std::string pointer from C++ function.
-  - Copy into Fortran allocated memory.
-  - Assign to capsule in C wrapper.
-  - Release memory from capsule.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  - '{i_var_capsule}'
-  i_import:
-  - '{F_array_type}'
-  - '{F_capsule_data_type}'
-  index: '162'
-  intent: out
-  name: c_out_string_**_cdesc_allocatable
   owner: library
 c_out_string_**_cdesc_copy:
   c_arg_call:
@@ -3406,7 +2981,7 @@ c_out_string_**_cdesc_copy:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '159'
+  index: '161'
   intent: out
   name: c_out_string_**_cdesc_copy
   owner: library
@@ -3433,52 +3008,19 @@ c_out_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '82'
+  index: '81'
   intent: out
   name: c_out_string_*_buf
   owner: library
 c_out_struct_&:
-  index: '122'
+  index: '124'
   intent: out
   name: c_out_struct_&
   owner: library
 c_out_struct_*:
-  index: '122'
+  index: '124'
   intent: out
   name: c_out_struct_*
-  owner: library
-c_out_vector_&_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '109'
-  intent: out
-  name: c_out_vector_&_cdesc_allocatable_targ_native_scalar
   owner: library
 c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   c_arg_call:
@@ -3522,7 +3064,7 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
-  index: '106'
+  index: '108'
   intent: out
   name: c_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
@@ -3556,7 +3098,7 @@ c_out_vector_&_cdesc_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '95'
+  index: '97'
   intent: out
   name: c_out_vector_&_cdesc_targ_native_scalar
   owner: library
@@ -3581,42 +3123,25 @@ c_out_vector_&_cdesc_targ_string_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '104'
+  index: '106'
   intent: out
   name: c_out_vector_&_cdesc_targ_string_scalar
   owner: library
-c_out_vector_*_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
+c_out_vector_&_targ_native_scalar:
   comments:
-  - Pass cdesc as argument to C wrapper.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  index: '109'
+  - Need to know the length of the vector from C
+  index: '93'
   intent: out
-  name: c_out_vector_*_cdesc_allocatable_targ_native_scalar
+  name: c_out_vector_&_targ_native_scalar
+  notimplemented: true
+  owner: library
+c_out_vector_&_targ_string_scalar:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: out
+  name: c_out_vector_&_targ_string_scalar
+  notimplemented: true
   owner: library
 c_out_vector_*_cdesc_targ_native_scalar:
   c_arg_decl:
@@ -3648,7 +3173,7 @@ c_out_vector_*_cdesc_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '95'
+  index: '97'
   intent: out
   name: c_out_vector_*_cdesc_targ_native_scalar
   owner: library
@@ -3701,21 +3226,21 @@ c_out_void_*_cdesc:
 c_setter:
   c_call:
   - // skip call c_setter
-  index: '128'
+  index: '130'
   intent: setter
   name: c_setter
   owner: library
 c_setter_native_*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  index: '129'
+  index: '131'
   intent: setter
   name: c_setter_native_*
   owner: library
 c_setter_native_scalar:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  index: '129'
+  index: '131'
   intent: setter
   name: c_setter_native_scalar
   owner: library
@@ -3737,9 +3262,17 @@ c_setter_string_scalar_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '132'
+  index: '134'
   intent: setter
   name: c_setter_string_scalar_buf
+  owner: library
+c_shared_vector_argument:
+  comments:
+  - Need to know the length of the vector from C
+  index: '93'
+  intent: shared
+  name: c_shared_vector_argument
+  notimplemented: true
   owner: library
 c_subroutine:
   index: '1'
@@ -3747,7 +3280,7 @@ c_subroutine:
   name: c_subroutine
   owner: library
 c_test:
-  index: '169'
+  index: '170'
   intent: test
   lang_c:
     field2:
@@ -3809,7 +3342,7 @@ f_ctor_shadow_scalar_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '120'
+  index: '122'
   intent: ctor
   name: f_ctor_shadow_scalar_capptr
   owner: caller
@@ -3829,7 +3362,7 @@ f_dtor:
   - call {F_C_call}({F_arg_c_call})
   impl_header:
   - <cstddef>
-  index: '121'
+  index: '123'
   intent: dtor
   name: f_dtor
   owner: library
@@ -3847,7 +3380,7 @@ f_function_char_*:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: f_function_char_*
   owner: library
@@ -3859,7 +3392,7 @@ f_function_char_*_allocatable:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: f_function_char_*_allocatable
   owner: library
@@ -3914,7 +3447,7 @@ f_function_char_*_arg:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '72'
+  index: '71'
   intent: function
   name: f_function_char_*_arg
   owner: library
@@ -3969,7 +3502,7 @@ f_function_char_*_buf_arg:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '72'
+  index: '71'
   intent: function
   name: f_function_char_*_buf_arg
   owner: library
@@ -4012,7 +3545,7 @@ f_function_char_*_buf_copy:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '71'
+  index: '70'
   intent: function
   name: f_function_char_*_buf_copy
   owner: library
@@ -4061,7 +3594,7 @@ f_function_char_*_cdesc_allocatable:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '75'
+  index: '74'
   intent: function
   name: f_function_char_*_cdesc_allocatable
   owner: library
@@ -4110,7 +3643,7 @@ f_function_char_*_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '76'
+  index: '75'
   intent: function
   name: f_function_char_*_cdesc_pointer
   owner: library
@@ -4143,7 +3676,7 @@ f_function_char_*_cfi_allocatable:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '134'
+  index: '136'
   intent: function
   name: f_function_char_*_cfi_allocatable
   owner: library
@@ -4181,7 +3714,7 @@ f_function_char_*_cfi_arg:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '145'
+  index: '147'
   intent: function
   name: f_function_char_*_cfi_arg
   owner: library
@@ -4210,7 +3743,7 @@ f_function_char_*_cfi_copy:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '144'
+  index: '146'
   intent: function
   name: f_function_char_*_cfi_copy
   owner: library
@@ -4257,7 +3790,7 @@ f_function_char_*_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '135'
+  index: '137'
   intent: function
   name: f_function_char_*_cfi_pointer
   owner: library
@@ -4269,7 +3802,7 @@ f_function_char_*_copy:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: f_function_char_*_copy
   owner: library
@@ -4281,7 +3814,7 @@ f_function_char_*_pointer:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: f_function_char_*_pointer
   owner: library
@@ -4293,7 +3826,7 @@ f_function_char_*_raw:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '67'
+  index: '66'
   intent: function
   name: f_function_char_*_raw
   owner: library
@@ -4316,7 +3849,7 @@ f_function_char_scalar:
   i_module:
     iso_c_binding:
     - C_CHAR
-  index: '66'
+  index: '65'
   intent: function
   name: f_function_char_scalar
   owner: library
@@ -4365,7 +3898,7 @@ f_function_char_scalar_cdesc_allocatable:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '75'
+  index: '74'
   intent: function
   name: f_function_char_scalar_cdesc_allocatable
   owner: library
@@ -4414,7 +3947,7 @@ f_function_char_scalar_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '76'
+  index: '75'
   intent: function
   name: f_function_char_scalar_cdesc_pointer
   owner: library
@@ -4447,7 +3980,7 @@ f_function_char_scalar_cfi_allocatable:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '134'
+  index: '136'
   intent: function
   name: f_function_char_scalar_cfi_allocatable
   owner: library
@@ -4494,11 +4027,12 @@ f_function_char_scalar_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '135'
+  index: '137'
   intent: function
   name: f_function_char_scalar_cfi_pointer
   owner: library
 f_function_native_&:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -4525,6 +4059,7 @@ f_function_native_&:
   name: f_function_native_&
   owner: library
 f_function_native_&_pointer:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -4561,39 +4096,9 @@ f_function_native_**:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '64'
+  index: '63'
   intent: function
   name: f_function_native_**
-  owner: library
-f_function_native_*_allocatable:
-  f_arg_decl:
-  - 'type(C_PTR) :: {f_var}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '64'
-  intent: function
-  name: f_function_native_*_allocatable
-  owner: library
-f_function_native_*_allocatable_caller:
-  f_arg_decl:
-  - 'type(C_PTR) :: {f_var}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '64'
-  intent: function
-  name: f_function_native_*_allocatable_caller
   owner: library
 f_function_native_*_cdesc_allocatable:
   c_arg_decl:
@@ -4811,7 +4316,7 @@ f_function_native_*_cfi_allocatable:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '167'
+  index: '168'
   intent: function
   name: f_function_native_*_cfi_allocatable
   owner: library
@@ -4859,11 +4364,12 @@ f_function_native_*_cfi_pointer:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '168'
+  index: '169'
   intent: function
   name: f_function_native_*_cfi_pointer
   owner: library
 f_function_native_*_pointer:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -4890,6 +4396,7 @@ f_function_native_*_pointer:
   name: f_function_native_*_pointer
   owner: library
 f_function_native_*_pointer_caller:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -4983,7 +4490,7 @@ f_function_shadow_&_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_&_capptr
   owner: library
@@ -5024,7 +4531,7 @@ f_function_shadow_&_capptr_caller:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_&_capptr_caller
   owner: library
@@ -5065,7 +4572,7 @@ f_function_shadow_&_capptr_library:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_&_capptr_library
   owner: library
@@ -5106,7 +4613,7 @@ f_function_shadow_*_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_*_capptr
   owner: library
@@ -5147,7 +4654,7 @@ f_function_shadow_*_capptr_caller:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_*_capptr_caller
   owner: library
@@ -5188,7 +4695,7 @@ f_function_shadow_*_capptr_library:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '118'
+  index: '120'
   intent: function
   name: f_function_shadow_*_capptr_library
   owner: library
@@ -5215,7 +4722,7 @@ f_function_shadow_*_capsule:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '115'
+  index: '117'
   intent: function
   name: f_function_shadow_*_capsule
   owner: library
@@ -5228,7 +4735,7 @@ f_function_shadow_*_this:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
-  index: '116'
+  index: '118'
   intent: function
   name: f_function_shadow_*_this
   owner: library
@@ -5271,7 +4778,7 @@ f_function_shadow_scalar_capptr:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: f_function_shadow_scalar_capptr
   owner: caller
@@ -5314,7 +4821,7 @@ f_function_shadow_scalar_capptr_caller:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: f_function_shadow_scalar_capptr_caller
   owner: caller
@@ -5357,7 +4864,7 @@ f_function_shadow_scalar_capptr_library:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: f_function_shadow_scalar_capptr_library
   owner: caller
@@ -5400,34 +4907,10 @@ f_function_shadow_scalar_capptr_targ_native_scalar:
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
-  index: '119'
+  index: '121'
   intent: function
   name: f_function_shadow_scalar_capptr_targ_native_scalar
   owner: caller
-f_function_string_&:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_&
-  owner: library
-f_function_string_&_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_&_allocatable
-  owner: library
 f_function_string_&_buf:
   c_arg_decl:
   - char *{c_var}
@@ -5806,7 +5289,7 @@ f_function_string_&_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_&_cdesc_pointer
   owner: library
@@ -5852,7 +5335,7 @@ f_function_string_&_cdesc_pointer_caller:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_&_cdesc_pointer_caller
   owner: library
@@ -5898,7 +5381,7 @@ f_function_string_&_cdesc_pointer_library:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_&_cdesc_pointer_library
   owner: library
@@ -5931,7 +5414,7 @@ f_function_string_&_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_&_cfi_allocatable
   owner: library
@@ -5964,7 +5447,7 @@ f_function_string_&_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_&_cfi_allocatable_caller
   owner: library
@@ -5997,7 +5480,7 @@ f_function_string_&_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_&_cfi_allocatable_library
   owner: library
@@ -6039,7 +5522,7 @@ f_function_string_&_cfi_arg:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '151'
+  index: '153'
   intent: function
   name: f_function_string_&_cfi_arg
   owner: library
@@ -6072,7 +5555,7 @@ f_function_string_&_cfi_copy:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '150'
+  index: '152'
   intent: function
   name: f_function_string_&_cfi_copy
   owner: library
@@ -6119,7 +5602,7 @@ f_function_string_&_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_&_cfi_pointer
   owner: library
@@ -6166,7 +5649,7 @@ f_function_string_&_cfi_pointer_caller:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_&_cfi_pointer_caller
   owner: library
@@ -6213,69 +5696,9 @@ f_function_string_&_cfi_pointer_library:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_&_cfi_pointer_library
-  owner: library
-f_function_string_&_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_&_copy
-  owner: library
-f_function_string_*:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*
-  owner: library
-f_function_string_*_allocatable:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_allocatable
-  owner: library
-f_function_string_*_allocatable_caller:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_allocatable_caller
-  owner: library
-f_function_string_*_allocatable_library:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_allocatable_library
   owner: library
 f_function_string_*_buf:
   c_arg_decl:
@@ -6597,7 +6020,7 @@ f_function_string_*_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_*_cdesc_pointer
   owner: library
@@ -6643,7 +6066,7 @@ f_function_string_*_cdesc_pointer_caller:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_*_cdesc_pointer_caller
   owner: library
@@ -6689,7 +6112,7 @@ f_function_string_*_cdesc_pointer_library:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '77'
+  index: '76'
   intent: function
   name: f_function_string_*_cdesc_pointer_library
   owner: library
@@ -6722,7 +6145,7 @@ f_function_string_*_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_*_cfi_allocatable
   owner: library
@@ -6755,7 +6178,7 @@ f_function_string_*_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_*_cfi_allocatable_caller
   owner: library
@@ -6788,7 +6211,7 @@ f_function_string_*_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_*_cfi_allocatable_library
   owner: library
@@ -6821,7 +6244,7 @@ f_function_string_*_cfi_copy:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '150'
+  index: '152'
   intent: function
   name: f_function_string_*_cfi_copy
   owner: library
@@ -6868,7 +6291,7 @@ f_function_string_*_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_*_cfi_pointer
   owner: library
@@ -6915,7 +6338,7 @@ f_function_string_*_cfi_pointer_caller:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_*_cfi_pointer_caller
   owner: library
@@ -6962,69 +6385,9 @@ f_function_string_*_cfi_pointer_library:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_*_cfi_pointer_library
-  owner: library
-f_function_string_*_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_copy
-  owner: library
-f_function_string_*_pointer:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_pointer
-  owner: library
-f_function_string_*_pointer_caller:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_pointer_caller
-  owner: library
-f_function_string_*_pointer_library:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_*_pointer_library
-  owner: library
-f_function_string_scalar:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  index: '84'
-  intent: function
-  name: f_function_string_scalar
   owner: library
 f_function_string_scalar_buf:
   c_arg_decl:
@@ -7410,7 +6773,7 @@ f_function_string_scalar_cfi_allocatable:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '155'
+  index: '157'
   intent: function
   name: f_function_string_scalar_cfi_allocatable
   owner: library
@@ -7443,7 +6806,7 @@ f_function_string_scalar_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_scalar_cfi_allocatable_caller
   owner: library
@@ -7476,7 +6839,7 @@ f_function_string_scalar_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  index: '154'
+  index: '156'
   intent: function
   name: f_function_string_scalar_cfi_allocatable_library
   owner: library
@@ -7518,7 +6881,7 @@ f_function_string_scalar_cfi_arg:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '151'
+  index: '153'
   intent: function
   name: f_function_string_scalar_cfi_arg
   owner: library
@@ -7551,7 +6914,7 @@ f_function_string_scalar_cfi_copy:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '150'
+  index: '152'
   intent: function
   name: f_function_string_scalar_cfi_copy
   owner: library
@@ -7598,7 +6961,7 @@ f_function_string_scalar_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_scalar_cfi_pointer
   owner: library
@@ -7645,7 +7008,7 @@ f_function_string_scalar_cfi_pointer_caller:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_scalar_cfi_pointer_caller
   owner: library
@@ -7692,11 +7055,12 @@ f_function_string_scalar_cfi_pointer_library:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: function
   name: f_function_string_scalar_cfi_pointer_library
   owner: library
 f_function_struct_*_pointer:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -7718,7 +7082,7 @@ f_function_struct_*_pointer:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '124'
+  index: '126'
   intent: function
   name: f_function_struct_*_pointer
   owner: library
@@ -7741,7 +7105,7 @@ f_function_struct_scalar:
   i_module:
     '{f_type_module}':
     - '{f_kind}'
-  index: '123'
+  index: '125'
   intent: function
   name: f_function_struct_scalar
   owner: library
@@ -7758,7 +7122,7 @@ f_function_vector_scalar_cdesc:
     - C_SIZE_T
   f_post_call:
   - "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  index: '108'
+  index: '110'
   intent: function
   name: f_function_vector_scalar_cdesc
   owner: library
@@ -7814,7 +7178,7 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '97'
+  index: '99'
   intent: function
   name: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
   owner: library
@@ -7871,7 +7235,7 @@ f_getter_native_*_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '130'
+  index: '132'
   intent: getter
   name: f_getter_native_*_cdesc_pointer
   owner: library
@@ -7880,7 +7244,7 @@ f_getter_native_*_pointer:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
-  index: '127'
+  index: '129'
   intent: getter
   name: f_getter_native_*_pointer
   owner: library
@@ -7889,7 +7253,7 @@ f_getter_native_scalar:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
-  index: '127'
+  index: '129'
   intent: getter
   name: f_getter_native_scalar
   owner: library
@@ -7935,7 +7299,7 @@ f_getter_string_scalar_cdesc_allocatable:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '131'
+  index: '133'
   intent: getter
   name: f_getter_string_scalar_cdesc_allocatable
   owner: library
@@ -7982,7 +7346,7 @@ f_getter_struct_**_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '130'
+  index: '132'
   intent: getter
   name: f_getter_struct_**_cdesc_pointer
   owner: library
@@ -8029,7 +7393,7 @@ f_getter_struct_*_cdesc_pointer:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '130'
+  index: '132'
   intent: getter
   name: f_getter_struct_*_cdesc_pointer
   owner: library
@@ -8042,7 +7406,7 @@ f_getter_struct_*_fapi_pointer:
     iso_c_binding:
     - c_f_pointer
   f_need_wrapper: true
-  index: '125'
+  index: '127'
   intent: getter
   name: f_getter_struct_*_fapi_pointer
   owner: library
@@ -8074,7 +7438,7 @@ f_in_char_**:
   i_module:
     iso_c_binding:
     - C_PTR
-  index: '73'
+  index: '72'
   intent: in
   name: f_in_char_**
   owner: library
@@ -8116,7 +7480,7 @@ f_in_char_**_buf:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '74'
+  index: '73'
   intent: in
   name: f_in_char_**_buf
   owner: library
@@ -8144,7 +7508,7 @@ f_in_char_**_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '146'
+  index: '148'
   intent: in
   name: f_in_char_**_cfi
   owner: library
@@ -8187,7 +7551,7 @@ f_in_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '68'
+  index: '67'
   intent: in
   name: f_in_char_*_buf
   owner: library
@@ -8217,7 +7581,7 @@ f_in_char_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '141'
+  index: '143'
   intent: in
   name: f_in_char_*_cfi
   owner: library
@@ -8233,7 +7597,7 @@ f_in_char_scalar:
   i_module:
     iso_c_binding:
     - C_CHAR
-  index: '65'
+  index: '64'
   intent: in
   name: f_in_char_scalar
   owner: library
@@ -8320,7 +7684,7 @@ f_in_native_*_cfi:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '140'
+  index: '142'
   intent: in
   name: f_in_native_*_cfi
   owner: library
@@ -8347,7 +7711,7 @@ f_in_shadow_&:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '117'
+  index: '119'
   intent: in
   name: f_in_shadow_&
   owner: library
@@ -8369,7 +7733,7 @@ f_in_shadow_*:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: in
   name: f_in_shadow_*
   owner: library
@@ -8391,7 +7755,7 @@ f_in_shadow_scalar:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '113'
+  index: '115'
   intent: in
   name: f_in_shadow_scalar
   owner: library
@@ -8399,7 +7763,7 @@ f_in_string_&:
   c_pre_call:
   - '{c_const}std::string {cxx_var}({c_var});'
   cxx_local_var: scalar
-  index: '78'
+  index: '77'
   intent: in
   name: f_in_string_&
   owner: library
@@ -8437,7 +7801,7 @@ f_in_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '81'
+  index: '80'
   intent: in
   name: f_in_string_&_buf
   owner: library
@@ -8461,7 +7825,7 @@ f_in_string_&_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '147'
+  index: '149'
   intent: in
   name: f_in_string_&_cfi
   owner: library
@@ -8469,7 +7833,7 @@ f_in_string_*:
   c_pre_call:
   - '{c_const}std::string {cxx_var}({c_var});'
   cxx_local_var: scalar
-  index: '78'
+  index: '77'
   intent: in
   name: f_in_string_*
   owner: library
@@ -8507,7 +7871,7 @@ f_in_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '81'
+  index: '80'
   intent: in
   name: f_in_string_*_buf
   owner: library
@@ -8531,7 +7895,7 @@ f_in_string_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '147'
+  index: '149'
   intent: in
   name: f_in_string_*_cfi
   owner: library
@@ -8614,22 +7978,22 @@ f_in_string_scalar_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '147'
+  index: '149'
   intent: in
   name: f_in_string_scalar_cfi
   owner: library
 f_in_struct_&:
-  index: '122'
+  index: '124'
   intent: in
   name: f_in_struct_&
   owner: library
 f_in_struct_*:
-  index: '122'
+  index: '124'
   intent: in
   name: f_in_struct_*
   owner: library
 f_in_struct_scalar:
-  index: '122'
+  index: '124'
   intent: in
   name: f_in_struct_scalar
   owner: library
@@ -8674,7 +8038,7 @@ f_in_vector_&_buf_targ_native_*:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '98'
+  index: '100'
   intent: in
   name: f_in_vector_&_buf_targ_native_*
   owner: library
@@ -8704,7 +8068,7 @@ f_in_vector_&_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: f_in_vector_&_buf_targ_native_scalar
   owner: library
@@ -8758,7 +8122,7 @@ f_in_vector_&_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: f_in_vector_&_buf_targ_string_scalar
   owner: library
@@ -8793,7 +8157,7 @@ f_in_vector_*_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: f_in_vector_*_buf_targ_native_scalar
   owner: library
@@ -8847,7 +8211,7 @@ f_in_vector_*_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: f_in_vector_*_buf_targ_string_scalar
   owner: library
@@ -8877,7 +8241,7 @@ f_in_vector_scalar_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '92'
+  index: '94'
   intent: in
   name: f_in_vector_scalar_buf_targ_native_scalar
   owner: library
@@ -8931,7 +8295,7 @@ f_in_vector_scalar_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '99'
+  index: '101'
   intent: in
   name: f_in_vector_scalar_buf_targ_string_scalar
   owner: library
@@ -9091,7 +8455,7 @@ f_inout_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '70'
+  index: '69'
   intent: inout
   name: f_inout_char_*_buf
   owner: library
@@ -9118,7 +8482,7 @@ f_inout_char_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '143'
+  index: '145'
   intent: inout
   name: f_inout_char_*_cfi
   owner: library
@@ -9200,7 +8564,7 @@ f_inout_native_*_cfi:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '140'
+  index: '142'
   intent: inout
   name: f_inout_native_*_cfi
   owner: library
@@ -9231,7 +8595,7 @@ f_inout_shadow_&:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: inout
   name: f_inout_shadow_&
   owner: library
@@ -9253,7 +8617,7 @@ f_inout_shadow_*:
   i_module:
     '{f_type_module}':
     - '{f_capsule_data_type}'
-  index: '114'
+  index: '116'
   intent: inout
   name: f_inout_shadow_*
   owner: library
@@ -9278,7 +8642,7 @@ f_inout_string_&:
   - len
   impl_header:
   - <cstring>
-  index: '80'
+  index: '79'
   intent: inout
   name: f_inout_string_&
   owner: library
@@ -9319,7 +8683,7 @@ f_inout_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '83'
+  index: '82'
   intent: inout
   name: f_inout_string_&_buf
   owner: library
@@ -9347,7 +8711,7 @@ f_inout_string_&_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '149'
+  index: '151'
   intent: inout
   name: f_inout_string_&_cfi
   owner: library
@@ -9372,7 +8736,7 @@ f_inout_string_*:
   - len
   impl_header:
   - <cstring>
-  index: '80'
+  index: '79'
   intent: inout
   name: f_inout_string_*
   owner: library
@@ -9413,7 +8777,7 @@ f_inout_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '83'
+  index: '82'
   intent: inout
   name: f_inout_string_*_buf
   owner: library
@@ -9441,17 +8805,17 @@ f_inout_string_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '149'
+  index: '151'
   intent: inout
   name: f_inout_string_*_cfi
   owner: library
 f_inout_struct_&:
-  index: '122'
+  index: '124'
   intent: inout
   name: f_inout_struct_&
   owner: library
 f_inout_struct_*:
-  index: '122'
+  index: '124'
   intent: inout
   name: f_inout_struct_*
   owner: library
@@ -9517,7 +8881,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '110'
+  index: '112'
   intent: inout
   name: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
   owner: library
@@ -9581,7 +8945,7 @@ f_inout_vector_&_cdesc_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
-  index: '107'
+  index: '109'
   intent: inout
   name: f_inout_vector_&_cdesc_targ_native_scalar
   owner: library
@@ -9648,7 +9012,7 @@ f_inout_vector_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '101'
+  index: '103'
   intent: inout
   name: f_inout_vector_buf_targ_string_scalar
   owner: library
@@ -9807,6 +9171,7 @@ f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
   owner: library
 f_mixin_function_c-ptr:
+  c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
   f_arg_decl:
@@ -9889,7 +9254,7 @@ f_mixin_function_string_scalar_cfi_allocatable:
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_need_wrapper: true
-  index: '153'
+  index: '155'
   intent: mixin
   name: f_mixin_function_string_scalar_cfi_allocatable
   owner: library
@@ -9917,7 +9282,7 @@ f_mixin_helper_array_string_allocatable:
   - array_string_allocatable
   f_post_call:
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
-  index: '161'
+  index: '163'
   intent: mixin
   name: f_mixin_helper_array_string_allocatable
   owner: library
@@ -9944,7 +9309,7 @@ f_mixin_helper_vector_string_allocatable:
   - vector_string_allocatable
   f_post_call:
   - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
-  index: '105'
+  index: '107'
   intent: mixin
   name: f_mixin_helper_vector_string_allocatable
   owner: library
@@ -10088,7 +9453,7 @@ f_mixin_inout_char_array_cdesc:
   - array_context
   f_temps:
   - cdesc
-  index: '102'
+  index: '104'
   intent: mixin
   name: f_mixin_inout_char_array_cdesc
   owner: library
@@ -10196,7 +9561,7 @@ f_mixin_out_string_**_cfi:
   - std::string *{c_var_cxx};
   c_temps:
   - cxx
-  index: '156'
+  index: '158'
   intent: mixin
   name: f_mixin_out_string_**_cfi
   owner: library
@@ -10260,7 +9625,7 @@ f_mixin_shadow-arg:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
-  index: '111'
+  index: '113'
   intent: mixin
   name: f_mixin_shadow-arg
   owner: library
@@ -10279,7 +9644,7 @@ f_mixin_str_array:
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
   - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
-  index: '103'
+  index: '105'
   intent: mixin
   name: f_mixin_str_array
   owner: library
@@ -10375,7 +9740,7 @@ f_out_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '69'
+  index: '68'
   intent: out
   name: f_out_char_*_buf
   owner: library
@@ -10397,7 +9762,7 @@ f_out_char_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '142'
+  index: '144'
   intent: out
   name: f_out_char_*_cfi
   owner: library
@@ -10516,20 +9881,10 @@ f_out_native_*&_cdesc_pointer:
   intent: out
   name: f_out_native_*&_cdesc_pointer
   owner: library
-f_out_native_*&_pointer:
-  index: '39'
-  intent: out
-  name: f_out_native_*&_pointer
-  owner: library
 f_out_native_***:
   index: '39'
   intent: out
   name: f_out_native_***
-  owner: library
-f_out_native_**_allocatable:
-  index: '39'
-  intent: out
-  name: f_out_native_**_allocatable
   owner: library
 f_out_native_**_cdesc_allocatable:
   c_arg_call:
@@ -10675,7 +10030,7 @@ f_out_native_**_cfi_allocatable:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '165'
+  index: '166'
   intent: out
   name: f_out_native_**_cfi_allocatable
   owner: library
@@ -10716,14 +10071,9 @@ f_out_native_**_cfi_pointer:
     - '{f_kind}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '166'
+  index: '167'
   intent: out
   name: f_out_native_**_cfi_pointer
-  owner: library
-f_out_native_**_pointer:
-  index: '39'
-  intent: out
-  name: f_out_native_**_pointer
   owner: library
 f_out_native_**_raw:
   f_arg_decl:
@@ -10778,7 +10128,7 @@ f_out_native_*_cdesc:
   name: f_out_native_*_cdesc
   owner: library
 f_out_native_*_cfi_allocatable:
-  index: '164'
+  index: '165'
   intent: out
   name: f_out_native_*_cfi_allocatable
   owner: library
@@ -10799,7 +10149,7 @@ f_out_string_&:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '79'
+  index: '78'
   intent: out
   name: f_out_string_&
   owner: library
@@ -10839,7 +10189,7 @@ f_out_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '82'
+  index: '81'
   intent: out
   name: f_out_string_&_buf
   owner: library
@@ -10863,7 +10213,7 @@ f_out_string_&_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '148'
+  index: '150'
   intent: out
   name: f_out_string_&_cfi
   owner: library
@@ -10875,15 +10225,9 @@ f_out_string_*:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
-  index: '79'
+  index: '78'
   intent: out
   name: f_out_string_*
-  owner: library
-f_out_string_**_allocatable:
-  index: '163'
-  intent: out
-  name: f_out_string_**_allocatable
-  notimplemented: true
   owner: library
 f_out_string_**_cdesc_allocatable:
   c_arg_call:
@@ -10953,7 +10297,7 @@ f_out_string_**_cdesc_allocatable:
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
-  index: '162'
+  index: '164'
   intent: out
   name: f_out_string_**_cdesc_allocatable
   owner: library
@@ -10999,7 +10343,7 @@ f_out_string_**_cdesc_copy:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '159'
+  index: '161'
   intent: out
   name: f_out_string_**_cdesc_copy
   owner: library
@@ -11021,7 +10365,7 @@ f_out_string_**_cfi_allocatable:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '157'
+  index: '159'
   intent: out
   name: f_out_string_**_cfi_allocatable
   owner: library
@@ -11043,12 +10387,12 @@ f_out_string_**_cfi_copy:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '158'
+  index: '160'
   intent: out
   name: f_out_string_**_cfi_copy
   owner: library
 f_out_string_**_copy:
-  index: '160'
+  index: '162'
   intent: out
   name: f_out_string_**_copy
   notimplemented: true
@@ -11089,7 +10433,7 @@ f_out_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '82'
+  index: '81'
   intent: out
   name: f_out_string_*_buf
   owner: library
@@ -11113,17 +10457,17 @@ f_out_string_*_cfi:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '148'
+  index: '150'
   intent: out
   name: f_out_string_*_cfi
   owner: library
 f_out_struct_&:
-  index: '122'
+  index: '124'
   intent: out
   name: f_out_struct_&
   owner: library
 f_out_struct_*:
-  index: '122'
+  index: '124'
   intent: out
   name: f_out_struct_*
   owner: library
@@ -11174,7 +10518,7 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '109'
+  index: '111'
   intent: out
   name: f_out_vector_&_cdesc_allocatable_targ_native_scalar
   owner: library
@@ -11245,7 +10589,7 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   i_import:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
-  index: '106'
+  index: '108'
   intent: out
   name: f_out_vector_&_cdesc_allocatable_targ_string_scalar
   owner: library
@@ -11296,7 +10640,7 @@ f_out_vector_&_cdesc_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '95'
+  index: '97'
   intent: out
   name: f_out_vector_&_cdesc_targ_native_scalar
   owner: library
@@ -11342,7 +10686,7 @@ f_out_vector_&_cdesc_targ_string_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '104'
+  index: '106'
   intent: out
   name: f_out_vector_&_cdesc_targ_string_scalar
   owner: library
@@ -11393,7 +10737,7 @@ f_out_vector_*_cdesc_allocatable_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '109'
+  index: '111'
   intent: out
   name: f_out_vector_*_cdesc_allocatable_targ_native_scalar
   owner: library
@@ -11444,7 +10788,7 @@ f_out_vector_*_cdesc_targ_native_scalar:
   - '{i_var_cdesc}'
   i_import:
   - '{F_array_type}'
-  index: '95'
+  index: '97'
   intent: out
   name: f_out_vector_*_cdesc_targ_native_scalar
   owner: library
@@ -11500,7 +10844,7 @@ f_out_vector_buf_targ_string_scalar:
     - C_CHAR
     - C_SIZE_T
     - C_INT
-  index: '100'
+  index: '102'
   intent: out
   name: f_out_vector_buf_targ_string_scalar
   owner: library
@@ -11575,7 +10919,7 @@ f_setter:
   - // skip call c_setter
   f_call:
   - call {F_C_call}({F_arg_c_call})
-  index: '128'
+  index: '130'
   intent: setter
   name: f_setter
   owner: library
@@ -11584,7 +10928,7 @@ f_setter_native_*:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
-  index: '129'
+  index: '131'
   intent: setter
   name: f_setter_native_*
   owner: library
@@ -11593,7 +10937,7 @@ f_setter_native_scalar:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
-  index: '129'
+  index: '131'
   intent: setter
   name: f_setter_native_scalar
   owner: library
@@ -11628,7 +10972,7 @@ f_setter_string_scalar_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
-  index: '132'
+  index: '134'
   intent: setter
   name: f_setter_string_scalar_buf
   owner: library
@@ -11639,7 +10983,7 @@ f_setter_struct_*:
   - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
   - '{i_var}'
-  index: '126'
+  index: '128'
   intent: setter
   name: f_setter_struct_*
   owner: library
@@ -11650,7 +10994,7 @@ f_setter_struct_**:
   - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
   - '{i_var}'
-  index: '126'
+  index: '128'
   intent: setter
   name: f_setter_struct_**
   owner: library
@@ -11661,7 +11005,7 @@ f_setter_struct_*_pointer:
   - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
   - '{i_var}'
-  index: '126'
+  index: '128'
   intent: setter
   name: f_setter_struct_*_pointer
   owner: library
@@ -11708,7 +11052,7 @@ f_shared_function_string_*_cfi_pointer:
   - '{i_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  index: '152'
+  index: '154'
   intent: shared
   name: f_shared_function_string_*_cfi_pointer
   owner: library
@@ -11720,7 +11064,7 @@ f_shared_function_string_scalar:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
-  index: '84'
+  index: '83'
   intent: shared
   name: f_shared_function_string_scalar
   owner: library
@@ -11730,7 +11074,7 @@ f_shared_native_scalar:
   name: f_shared_native_scalar
   owner: library
 f_shared_struct:
-  index: '122'
+  index: '124'
   intent: shared
   name: f_shared_struct
   owner: library
@@ -11742,7 +11086,7 @@ f_subroutine:
   name: f_subroutine
   owner: library
 f_test:
-  index: '170'
+  index: '171'
   intent: test
   name: f_test
   owner: library

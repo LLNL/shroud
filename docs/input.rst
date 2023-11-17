@@ -607,6 +607,8 @@ For example, setting the shape of a pointer function:
  
 .. assumed intent(out)
 
+The api attribute will be set to *hidden* before looking up the
+Fortran statement group.
 
 implied
 ^^^^^^^

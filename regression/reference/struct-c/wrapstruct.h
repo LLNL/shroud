@@ -28,8 +28,14 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 
 void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv);
 
+Cstruct1 * STR_returnStructPtr1(int i, double d);
+
+Cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf);
+
 Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
     int SHT_outbuf_len);
+
+Cstruct_list * STR_get_global_struct_list(void);
 
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv);
@@ -47,12 +53,12 @@ const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this);
 void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
     const double * val);
 
-void STR_Cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val);
 
-void STR_Cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val);

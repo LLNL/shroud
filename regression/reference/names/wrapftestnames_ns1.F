@@ -24,7 +24,6 @@ module testnames_ns1_mod
 
         ! ----------------------------------------
         ! Function:  void init_ns1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine c_init_ns1() &
                 bind(C, name="TES_ns1_init_ns1")
@@ -39,7 +38,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void init_ns1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine testnames_init_ns1()
         ! splicer begin namespace.ns1.function.init_ns1

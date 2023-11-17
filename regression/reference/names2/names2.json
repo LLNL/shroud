@@ -37,11 +37,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -50,16 +56,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "ignore1::ignore2::AFunction(\t)",
+                            "C_name": "NAM_AFunction",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_a_function",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "ignore1::ignore2::AFunction(\t)",
+                            "C_name": "NAM_AFunction",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_a_function",
+                            "F_C_name": "a_function",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -68,9 +78,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "NAM_AFunction",
                     "C_name_api": "AFunction",
-                    "F_C_name": "a_function",
                     "F_name_api": "a_function",
                     "F_name_function": "a_function",
                     "F_name_generic": "a_function",

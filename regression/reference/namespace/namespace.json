@@ -19,7 +19,6 @@
         "functions": [
             {
                 "<FUNCTION>": "LastFunctionCalled  1 ****************************************",
-                "_PTR_F_C_index": "3",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -59,12 +58,26 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_&_cdesc_allocatable"
                         }
                     }
                 },
@@ -72,9 +85,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "LastFunctionCalled(\t)",
+                            "C_name": "NS_LastFunctionCalled",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_last_function_called",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "const ",
@@ -99,99 +114,14 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_function_string_&"
                         },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_deref": "",
-                            "c_var": "SHCXX_rv",
-                            "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": null,
-                            "py_var": "SHTPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
-                            "value_var": "SHValue_rv"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "NS_LastFunctionCalled",
-                    "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called",
-                    "F_name_api": "last_function_called",
-                    "PY_name_impl": "PY_LastFunctionCalled",
-                    "function_name": "LastFunctionCalled"
-                }
-            },
-            {
-                "<FUNCTION>": "LastFunctionCalled  3 ****************************************",
-                "_PTR_C_CXX_index": "1",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 1,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
-                        "name": "LastFunctionCalled",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "string_to_cdesc",
-                        "copy_string"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_string",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "LastFunctionCalled",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_&_cdesc_allocatable"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
                         "fmtf": {
                             "C_call_function": "LastFunctionCalled(\t)",
+                            "C_name": "NS_LastFunctionCalled_bufferify",
                             "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc,\t NS_SHROUD_capsule_data *SHT_rv_capsule",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                             "F_C_call": "c_last_function_called_bufferify",
+                            "F_C_name": "c_last_function_called_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
@@ -213,6 +143,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_helper_array_context": "NS_SHROUD_array",
                             "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "NS_SHROUD_copy_string",
@@ -230,18 +161,33 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_function_string_&_cdesc_allocatable"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_string_&",
+                            "value_var": "SHValue_rv"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_LastFunctionCalled_bufferify",
                     "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called_bufferify",
                     "F_name_api": "last_function_called",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "f_c_suffix": "_bufferify",
+                    "PY_name_impl": "PY_LastFunctionCalled",
                     "function_name": "LastFunctionCalled"
                 }
             },
@@ -273,11 +219,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -286,16 +238,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "One(\t)",
+                            "C_name": "NS_One",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_one",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "One(\t)",
+                            "C_name": "NS_One",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_one",
+                            "F_C_name": "one",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -304,9 +260,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_One",
                     "C_name_api": "One",
-                    "F_C_name": "one",
                     "F_name_api": "one",
                     "F_name_function": "one",
                     "F_name_generic": "one",
@@ -655,7 +609,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "One  4 ****************************************",
+                        "<FUNCTION>": "One  3 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -682,11 +636,17 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "c_subroutine"
                                 }
                             },
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    },
                                     "stmt": "f_subroutine"
                                 }
                             }
@@ -695,16 +655,20 @@
                             "+result": {
                                 "fmtc": {
                                     "C_call_function": "outer::One(\t)",
+                                    "C_name": "NS_outer_One",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_name": "c_one",
                                     "stmt_name": "c_subroutine"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer::One(\t)",
+                                    "C_name": "NS_outer_One",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_arguments": "",
                                     "F_C_call": "c_one",
+                                    "F_C_name": "one",
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
@@ -713,9 +677,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "NS_outer_One",
                             "C_name_api": "One",
-                            "F_C_name": "one",
                             "F_name_api": "one",
                             "F_name_function": "one",
                             "F_name_generic": "one",

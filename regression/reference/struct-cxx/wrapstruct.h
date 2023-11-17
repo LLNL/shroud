@@ -126,12 +126,12 @@ const double * STR_Cstruct_ptr_get_const_dvalue(
 void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
     const double * val);
 
-void STR_Cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val);
 
-void STR_Cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
 void STR_Cstruct_list_set_dvalue(STR_cstruct_list * SH_this,

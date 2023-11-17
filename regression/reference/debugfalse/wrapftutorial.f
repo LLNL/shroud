@@ -126,6 +126,21 @@ module tutorial_mod
         end function pass_by_value
     end interface
 
+#if 0
+    ! Not Implemented
+    interface
+        function c_concatenate_strings(arg1, arg2) &
+                result(SHT_rv) &
+                bind(C, name="TUT_ConcatenateStrings")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: arg1(*)
+            character(kind=C_CHAR), intent(IN) :: arg2(*)
+            character(kind=C_CHAR) :: SHT_rv(*)
+        end function c_concatenate_strings
+    end interface
+#endif
+
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
                 arg2, SHT_arg2_len, SHT_rv_cdesc, SHT_rv_capsule) &

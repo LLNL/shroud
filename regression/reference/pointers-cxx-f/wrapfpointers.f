@@ -81,16 +81,14 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_in
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! start intargs_in
     interface
         subroutine intargs_in(arg) &
-                bind(C, name="POI_intargs_in")
+                bind(C, name="POI_intargs_in_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg
@@ -100,16 +98,14 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_inout
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! start intargs_inout
     interface
         subroutine intargs_inout(arg) &
-                bind(C, name="POI_intargs_inout")
+                bind(C, name="POI_intargs_inout_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: arg
@@ -119,16 +115,14 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_out
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start intargs_out
     interface
         subroutine intargs_out(arg) &
-                bind(C, name="POI_intargs_out")
+                bind(C, name="POI_intargs_out_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: arg
@@ -138,24 +132,20 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * argout +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start intargs
     interface
         subroutine intargs(argin, arginout, argout) &
-                bind(C, name="POI_intargs")
+                bind(C, name="POI_intargs_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: argin
@@ -167,78 +157,67 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void cos_doubles
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(size(in))+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_cos_doubles
+    ! start c_cos_doubles_bufferify
     interface
-        subroutine c_cos_doubles(in, out, sizein) &
-                bind(C, name="POI_cos_doubles")
+        subroutine c_cos_doubles_bufferify(in, out, sizein) &
+                bind(C, name="POI_cos_doubles_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(*)
             real(C_DOUBLE), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_cos_doubles
+        end subroutine c_cos_doubles_bufferify
     end interface
-    ! end c_cos_doubles
+    ! end c_cos_doubles_bufferify
 
     ! ----------------------------------------
     ! Function:  void truncate_to_int
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * out +dimension(size(in))+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_truncate_to_int
+    ! start c_truncate_to_int_bufferify
     interface
-        subroutine c_truncate_to_int(in, out, sizein) &
-                bind(C, name="POI_truncate_to_int")
+        subroutine c_truncate_to_int_bufferify(in, out, sizein) &
+                bind(C, name="POI_truncate_to_int_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(*)
             integer(C_INT), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_truncate_to_int
+        end subroutine c_truncate_to_int_bufferify
     end interface
-    ! end c_truncate_to_int
+    ! end c_truncate_to_int_bufferify
 
     ! ----------------------------------------
     ! Function:  void get_values
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * values +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start get_values
     interface
         subroutine get_values(nvalues, values) &
-                bind(C, name="POI_get_values")
+                bind(C, name="POI_get_values_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: nvalues
@@ -249,20 +228,17 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void get_values2
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start get_values2
     interface
         subroutine get_values2(arg1, arg2) &
-                bind(C, name="POI_get_values2")
+                bind(C, name="POI_get_values2_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: arg1(*)
@@ -273,20 +249,17 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void iota_dimension
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start iota_dimension
     interface
         subroutine iota_dimension(nvar, values) &
-                bind(C, name="POI_iota_dimension")
+                bind(C, name="POI_iota_dimension_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: nvar
@@ -297,45 +270,39 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void Sum
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
-    ! start c_sum
+    ! start c_sum_bufferify
     interface
-        subroutine c_sum(len, values, result) &
-                bind(C, name="POI_Sum")
+        subroutine c_sum_bufferify(len, values, result) &
+                bind(C, name="POI_Sum_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
-        end subroutine c_sum
+        end subroutine c_sum_bufferify
     end interface
-    ! end c_sum
+    ! end c_sum_bufferify
 
     ! ----------------------------------------
     ! Function:  void fillIntArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start fill_int_array
     interface
         subroutine fill_int_array(out) &
-                bind(C, name="POI_fillIntArray")
+                bind(C, name="POI_fillIntArray_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: out(*)
@@ -345,86 +312,74 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void incrementIntArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(array))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_increment_int_array
+    ! start c_increment_int_array_bufferify
     interface
-        subroutine c_increment_int_array(array, sizein) &
-                bind(C, name="POI_incrementIntArray")
+        subroutine c_increment_int_array_bufferify(array, sizein) &
+                bind(C, name="POI_incrementIntArray_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: array(*)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_increment_int_array
+        end subroutine c_increment_int_array_bufferify
     end interface
-    ! end c_increment_int_array
+    ! end c_increment_int_array_bufferify
 
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int x_length +implied(size(x))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_fill_with_zeros
+    ! start c_fill_with_zeros_bufferify
     interface
-        subroutine c_fill_with_zeros(x, x_length) &
-                bind(C, name="POI_fill_with_zeros")
+        subroutine c_fill_with_zeros_bufferify(x, x_length) &
+                bind(C, name="POI_fill_with_zeros_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(INOUT) :: x(*)
             integer(C_INT), value, intent(IN) :: x_length
-        end subroutine c_fill_with_zeros
+        end subroutine c_fill_with_zeros_bufferify
     end interface
-    ! end c_fill_with_zeros
+    ! end c_fill_with_zeros_bufferify
 
     ! ----------------------------------------
     ! Function:  int accumulate
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  size_t len +implied(size(arr))+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_accumulate
+    ! start c_accumulate_bufferify
     interface
-        function c_accumulate(arr, len) &
+        function c_accumulate_bufferify(arr, len) &
                 result(SHT_rv) &
-                bind(C, name="POI_accumulate")
+                bind(C, name="POI_accumulate_bufferify")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
             integer(C_INT), intent(IN) :: arr(*)
             integer(C_SIZE_T), value, intent(IN) :: len
             integer(C_INT) :: SHT_rv
-        end function c_accumulate
+        end function c_accumulate_bufferify
     end interface
-    ! end c_accumulate
+    ! end c_accumulate_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
-    ! Attrs:     +api(buf)+intent(in)
     ! Statement: f_in_char_**_buf
     ! start c_accept_char_array_in_bufferify
     interface
@@ -444,16 +399,14 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void setGlobalInt
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int value +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start set_global_int
     interface
         subroutine set_global_int(value) &
-                bind(C, name="POI_setGlobalInt")
+                bind(C, name="POI_setGlobalInt_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: value
@@ -463,13 +416,12 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int sumFixedArray
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! start sum_fixed_array
     interface
         function sum_fixed_array() &
                 result(SHT_rv) &
-                bind(C, name="POI_sumFixedArray")
+                bind(C, name="POI_sumFixedArray_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -477,14 +429,11 @@ module pointers_mod
     end interface
     ! end sum_fixed_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_scalar_bufferify
     interface
@@ -497,14 +446,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_scalar_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
@@ -517,14 +463,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_fixed_array_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
@@ -537,14 +480,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_dynamic_array_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_func_array_bufferify
     interface
@@ -557,14 +497,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_func_array_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
@@ -577,14 +514,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_const_scalar_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
@@ -598,14 +532,11 @@ module pointers_mod
     end interface
     ! end c_get_ptr_to_fixed_const_array_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
@@ -621,16 +552,14 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     ! start get_raw_ptr_to_scalar
     interface
         subroutine get_raw_ptr_to_scalar(nitems) &
-                bind(C, name="POI_getRawPtrToScalar")
+                bind(C, name="POI_getRawPtrToScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
@@ -640,35 +569,31 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
-    ! start c_get_raw_ptr_to_scalar_force
+    ! start c_get_raw_ptr_to_scalar_force_bufferify
     interface
-        subroutine c_get_raw_ptr_to_scalar_force(nitems) &
-                bind(C, name="POI_getRawPtrToScalarForce")
+        subroutine c_get_raw_ptr_to_scalar_force_bufferify(nitems) &
+                bind(C, name="POI_getRawPtrToScalarForce_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
-        end subroutine c_get_raw_ptr_to_scalar_force
+        end subroutine c_get_raw_ptr_to_scalar_force_bufferify
     end interface
-    ! end c_get_raw_ptr_to_scalar_force
+    ! end c_get_raw_ptr_to_scalar_force_bufferify
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     ! start get_raw_ptr_to_fixed_array
     interface
         subroutine get_raw_ptr_to_fixed_array(count) &
-                bind(C, name="POI_getRawPtrToFixedArray")
+                bind(C, name="POI_getRawPtrToFixedArray_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
@@ -678,35 +603,31 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
-    ! start c_get_raw_ptr_to_fixed_array_force
+    ! start c_get_raw_ptr_to_fixed_array_force_bufferify
     interface
-        subroutine c_get_raw_ptr_to_fixed_array_force(count) &
-                bind(C, name="POI_getRawPtrToFixedArrayForce")
+        subroutine c_get_raw_ptr_to_fixed_array_force_bufferify(count) &
+                bind(C, name="POI_getRawPtrToFixedArrayForce_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_raw_ptr_to_fixed_array_force
+        end subroutine c_get_raw_ptr_to_fixed_array_force_bufferify
     end interface
-    ! end c_get_raw_ptr_to_fixed_array_force
+    ! end c_get_raw_ptr_to_fixed_array_force_bufferify
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_***
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
-                bind(C, name="POI_getRawPtrToInt2d")
+                bind(C, name="POI_getRawPtrToInt2d_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: arg
@@ -716,17 +637,15 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int checkInt2d
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_**
     ! start check_int2d
     interface
         function check_int2d(arg) &
                 result(SHT_rv) &
-                bind(C, name="POI_checkInt2d")
+                bind(C, name="POI_checkInt2d_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(IN), value :: arg
@@ -737,31 +656,26 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void DimensionIn
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
-    ! start c_dimension_in
+    ! start c_dimension_in_bufferify
     interface
-        subroutine c_dimension_in(arg) &
-                bind(C, name="POI_DimensionIn")
+        subroutine c_dimension_in_bufferify(arg) &
+                bind(C, name="POI_DimensionIn_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg(*)
-        end subroutine c_dimension_in
+        end subroutine c_dimension_in_bufferify
     end interface
-    ! end c_dimension_in
+    ! end c_dimension_in_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_native_**_cdesc_allocatable
     ! start c_get_alloc_to_fixed_array_bufferify
     interface
@@ -778,17 +692,15 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress1
-    ! Attrs:     +intent(function)
     ! Statement: f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start return_address1
     interface
         function return_address1(flag) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnAddress1")
+                bind(C, name="POI_returnAddress1_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
@@ -799,37 +711,33 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
-    ! Attrs:     +intent(function)
     ! Statement: f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
-    ! start c_return_address2
+    ! start c_return_address2_bufferify
     interface
-        function c_return_address2(flag) &
+        function c_return_address2_bufferify(flag) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnAddress2")
+                bind(C, name="POI_returnAddress2_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(C_PTR) :: SHT_rv
-        end function c_return_address2
+        end function c_return_address2_bufferify
     end interface
-    ! end c_return_address2
+    ! end c_return_address2_bufferify
 
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_void_**
     ! start fetch_void_ptr
     interface
         subroutine fetch_void_ptr(addr) &
-                bind(C, name="POI_fetchVoidPtr")
+                bind(C, name="POI_fetchVoidPtr_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: addr
@@ -839,64 +747,57 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void updateVoidPtr
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_void_**
-    ! start c_update_void_ptr
+    ! start c_update_void_ptr_bufferify
     interface
-        subroutine c_update_void_ptr(addr) &
-                bind(C, name="POI_updateVoidPtr")
+        subroutine c_update_void_ptr_bufferify(addr) &
+                bind(C, name="POI_updateVoidPtr_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(INOUT) :: addr
-        end subroutine c_update_void_ptr
+        end subroutine c_update_void_ptr_bufferify
     end interface
-    ! end c_update_void_ptr
+    ! end c_update_void_ptr_bufferify
 
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_void_**
-    ! start c_void_ptr_array
+    ! start c_void_ptr_array_bufferify
     interface
-        function c_void_ptr_array(addr) &
+        function c_void_ptr_array_bufferify(addr) &
                 result(SHT_rv) &
-                bind(C, name="POI_VoidPtrArray")
+                bind(C, name="POI_VoidPtrArray_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(IN) :: addr(*)
             integer(C_INT) :: SHT_rv
-        end function c_void_ptr_array
+        end function c_void_ptr_array_bufferify
     end interface
-    ! end c_void_ptr_array
+    ! end c_void_ptr_array_bufferify
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Attrs:     +deref(pointer)+intent(function)
     ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_scalar
+    ! start c_return_int_ptr_to_scalar_bufferify
     interface
-        function c_return_int_ptr_to_scalar() &
+        function c_return_int_ptr_to_scalar_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToScalar")
+                bind(C, name="POI_returnIntPtrToScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_scalar
+        end function c_return_int_ptr_to_scalar_bufferify
     end interface
-    ! end c_return_int_ptr_to_scalar
+    ! end c_return_int_ptr_to_scalar_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Statement: f_function_native_*_cdesc_pointer
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
@@ -912,24 +813,21 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Attrs:     +deref(pointer)+intent(function)
     ! Statement: f_function_native_*_pointer
-    ! start c_return_int_ptr_to_const_scalar
+    ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
-        function c_return_int_ptr_to_const_scalar() &
+        function c_return_int_ptr_to_const_scalar_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntPtrToConstScalar")
+                bind(C, name="POI_returnIntPtrToConstScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_const_scalar
+        end function c_return_int_ptr_to_const_scalar_bufferify
     end interface
-    ! end c_return_int_ptr_to_const_scalar
+    ! end c_return_int_ptr_to_const_scalar_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Statement: f_function_native_*_cdesc_pointer
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
@@ -945,13 +843,12 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Attrs:     +deref(scalar)+intent(function)
     ! Statement: f_function_native_*_scalar
     ! start return_int_scalar
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntScalar_extrawrapper")
+                bind(C, name="POI_returnIntScalar_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -961,13 +858,12 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
-    ! Attrs:     +deref(raw)+intent(function)
     ! Statement: f_function_native_*_raw
     ! start return_int_raw
     interface
         function return_int_raw() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRaw")
+                bind(C, name="POI_returnIntRaw_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -977,45 +873,40 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
-    ! Attrs:     +deref(raw)+intent(function)
     ! Statement: f_function_native_*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
-    ! Attrs:     +intent(in)
     ! Statement: f_in_char_*
-    ! start c_return_int_raw_with_args
+    ! start c_return_int_raw_with_args_bufferify
     interface
-        function c_return_int_raw_with_args(name) &
+        function c_return_int_raw_with_args_bufferify(name) &
                 result(SHT_rv) &
-                bind(C, name="POI_returnIntRawWithArgs")
+                bind(C, name="POI_returnIntRawWithArgs_bufferify")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(C_PTR) SHT_rv
-        end function c_return_int_raw_with_args
+        end function c_return_int_raw_with_args_bufferify
     end interface
-    ! end c_return_int_raw_with_args
+    ! end c_return_int_raw_with_args_bufferify
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_**
-    ! start c_return_raw_ptr_to_int2d
+    ! start c_return_raw_ptr_to_int2d_bufferify
     interface
-        function c_return_raw_ptr_to_int2d() &
+        function c_return_raw_ptr_to_int2d_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="POI_returnRawPtrToInt2d")
+                bind(C, name="POI_returnRawPtrToInt2d_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_raw_ptr_to_int2d
+        end function c_return_raw_ptr_to_int2d_bufferify
     end interface
-    ! end c_return_raw_ptr_to_int2d
+    ! end c_return_raw_ptr_to_int2d_bufferify
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_native_*_cdesc_allocatable
     ! start c_return_int_alloc_to_fixed_array_bufferify
     interface
@@ -1063,18 +954,16 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void intargs_in
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! start intargs_in
     subroutine intargs_in(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(IN) :: arg
         ! splicer begin function.intargs_in
-        call c_intargs_in(arg)
+        call c_intargs_in_bufferify(arg)
         ! splicer end function.intargs_in
     end subroutine intargs_in
     ! end intargs_in
@@ -1084,11 +973,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void intargs_inout
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     !>
     !! Argument is modified by library, defaults to intent(inout).
@@ -1098,7 +985,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: arg
         ! splicer begin function.intargs_inout
-        call c_intargs_inout(arg)
+        call c_intargs_inout_bufferify(arg)
         ! splicer end function.intargs_inout
     end subroutine intargs_inout
     ! end intargs_inout
@@ -1108,18 +995,16 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void intargs_out
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start intargs_out
     subroutine intargs_out(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(OUT) :: arg
         ! splicer begin function.intargs_out
-        call c_intargs_out(arg)
+        call c_intargs_out_bufferify(arg)
         ! splicer end function.intargs_out
     end subroutine intargs_out
     ! end intargs_out
@@ -1129,19 +1014,15 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void intargs
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! ----------------------------------------
     ! Argument:  int * argout +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start intargs
     subroutine intargs(argin, arginout, argout)
@@ -1150,7 +1031,7 @@ contains
         integer(C_INT), intent(INOUT) :: arginout
         integer(C_INT), intent(OUT) :: argout
         ! splicer begin function.intargs
-        call c_intargs(argin, arginout, argout)
+        call c_intargs_bufferify(argin, arginout, argout)
         ! splicer end function.intargs
     end subroutine intargs
     ! end intargs
@@ -1158,15 +1039,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  void cos_doubles
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  double * out +dimension(size(in))+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! \brief compute cos of IN and save in OUT
@@ -1181,22 +1059,19 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.cos_doubles
         SH_sizein = size(in,kind=C_INT)
-        call c_cos_doubles(in, out, SH_sizein)
+        call c_cos_doubles_bufferify(in, out, SH_sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
     ! end cos_doubles
 
     ! ----------------------------------------
     ! Function:  void truncate_to_int
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * out +dimension(size(in))+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! \brief truncate IN argument and save in OUT
@@ -1212,7 +1087,7 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.truncate_to_int
         SH_sizein = size(in,kind=C_INT)
-        call c_truncate_to_int(in, out, SH_sizein)
+        call c_truncate_to_int_bufferify(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
@@ -1221,15 +1096,12 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void get_values
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(OUT)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * values +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! \brief fill values into array
@@ -1245,7 +1117,7 @@ contains
         integer(C_INT), intent(OUT) :: nvalues
         integer(C_INT), intent(OUT) :: values(:)
         ! splicer begin function.get_values
-        call c_get_values(nvalues, values)
+        call c_get_values_bufferify(nvalues, values)
         ! splicer end function.get_values
     end subroutine get_values
     ! end get_values
@@ -1255,15 +1127,12 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void get_values2
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
     ! Argument:  int * arg2 +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! \brief fill values into two arrays
@@ -1277,7 +1146,7 @@ contains
         integer(C_INT), intent(OUT) :: arg1(:)
         integer(C_INT), intent(OUT) :: arg2(:)
         ! splicer begin function.get_values2
-        call c_get_values2(arg1, arg2)
+        call c_get_values2_bufferify(arg1, arg2)
         ! splicer end function.get_values2
     end subroutine get_values2
     ! end get_values2
@@ -1287,15 +1156,12 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void iota_dimension
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start iota_dimension
     subroutine iota_dimension(nvar, values)
@@ -1303,7 +1169,7 @@ contains
         integer(C_INT), value, intent(IN) :: nvar
         integer(C_INT), intent(OUT) :: values(:)
         ! splicer begin function.iota_dimension
-        call c_iota_dimension(nvar, values)
+        call c_iota_dimension_bufferify(nvar, values)
         ! splicer end function.iota_dimension
     end subroutine iota_dimension
     ! end iota_dimension
@@ -1311,15 +1177,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Sum
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     ! start sum
     subroutine sum(values, result)
@@ -1329,7 +1192,7 @@ contains
         integer(C_INT), intent(OUT) :: result
         ! splicer begin function.sum
         SH_len = size(values,kind=C_INT)
-        call c_sum(SH_len, values, result)
+        call c_sum_bufferify(SH_len, values, result)
         ! splicer end function.sum
     end subroutine sum
     ! end sum
@@ -1338,11 +1201,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void fillIntArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_*
     !>
     !! Return three values into memory the user provides.
@@ -1352,7 +1213,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(OUT) :: out(:)
         ! splicer begin function.fill_int_array
-        call c_fill_int_array(out)
+        call c_fill_int_array_bufferify(out)
         ! splicer end function.fill_int_array
     end subroutine fill_int_array
     ! end fill_int_array
@@ -1360,11 +1221,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void incrementIntArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     !>
     !! Increment array in place using intent(INOUT).
@@ -1376,18 +1235,16 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.increment_int_array
         SH_sizein = size(array,kind=C_INT)
-        call c_increment_int_array(array, SH_sizein)
+        call c_increment_int_array_bufferify(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
     ! end increment_int_array
 
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_native_*
     ! start fill_with_zeros
     subroutine fill_with_zeros(x)
@@ -1396,18 +1253,16 @@ contains
         integer(C_INT) :: SH_x_length
         ! splicer begin function.fill_with_zeros
         SH_x_length = size(x,kind=C_INT)
-        call c_fill_with_zeros(x, SH_x_length)
+        call c_fill_with_zeros_bufferify(x, SH_x_length)
         ! splicer end function.fill_with_zeros
     end subroutine fill_with_zeros
     ! end fill_with_zeros
 
     ! ----------------------------------------
     ! Function:  int accumulate
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     ! start accumulate
     function accumulate(arr) &
@@ -1418,19 +1273,16 @@ contains
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accumulate
         SH_len = size(arr,kind=C_SIZE_T)
-        SHT_rv = c_accumulate(arr, SH_len)
+        SHT_rv = c_accumulate_bufferify(arr, SH_len)
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
-    ! Attrs:     +api(buf)+intent(in)
     ! Statement: f_in_char_**_buf
     !>
     !! Return strlen of the first index as a check.
@@ -1452,18 +1304,16 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void setGlobalInt
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int value +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start set_global_int
     subroutine set_global_int(value)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: value
         ! splicer begin function.set_global_int
-        call c_set_global_int(value)
+        call c_set_global_int_bufferify(value)
         ! splicer end function.set_global_int
     end subroutine set_global_int
     ! end set_global_int
@@ -1473,7 +1323,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int sumFixedArray
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     !>
     !! Used to test values global_array.
@@ -1484,20 +1333,17 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum_fixed_array
-        SHT_rv = c_sum_fixed_array()
+        SHT_rv = c_sum_fixed_array_bufferify()
         ! splicer end function.sum_fixed_array
     end function sum_fixed_array
     ! end sum_fixed_array
 #endif
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
@@ -1511,14 +1357,11 @@ contains
     end subroutine get_ptr_to_scalar
     ! end get_ptr_to_scalar
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is always the same length.
@@ -1536,14 +1379,11 @@ contains
     end subroutine get_ptr_to_fixed_array
     ! end get_ptr_to_fixed_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is the length of
@@ -1562,14 +1402,11 @@ contains
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     !>
     !! Return a Fortran pointer to an array which is the length
@@ -1589,14 +1426,11 @@ contains
     end subroutine get_ptr_to_func_array
     ! end get_ptr_to_func_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
@@ -1610,14 +1444,11 @@ contains
     end subroutine get_ptr_to_const_scalar
     ! end get_ptr_to_const_scalar
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
@@ -1632,14 +1463,11 @@ contains
     end subroutine get_ptr_to_fixed_const_array
     ! end get_ptr_to_fixed_const_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Statement: f_out_native_**_cdesc_pointer
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
@@ -1658,11 +1486,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     !>
     !! Called directly via an interface in Fortran.
@@ -1672,7 +1498,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar
-        call c_get_raw_ptr_to_scalar(nitems)
+        call c_get_raw_ptr_to_scalar_bufferify(nitems)
         ! splicer end function.get_raw_ptr_to_scalar
     end subroutine get_raw_ptr_to_scalar
     ! end get_raw_ptr_to_scalar
@@ -1680,11 +1506,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     !>
     !! Create a Fortran wrapper.
@@ -1694,7 +1518,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar_force
-        call c_get_raw_ptr_to_scalar_force(nitems)
+        call c_get_raw_ptr_to_scalar_force_bufferify(nitems)
         ! splicer end function.get_raw_ptr_to_scalar_force
     end subroutine get_raw_ptr_to_scalar_force
     ! end get_raw_ptr_to_scalar_force
@@ -1703,11 +1527,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
@@ -1719,7 +1541,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array
-        call c_get_raw_ptr_to_fixed_array(count)
+        call c_get_raw_ptr_to_fixed_array_bufferify(count)
         ! splicer end function.get_raw_ptr_to_fixed_array
     end subroutine get_raw_ptr_to_fixed_array
     ! end get_raw_ptr_to_fixed_array
@@ -1727,11 +1549,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
     ! Statement: f_out_native_**_raw
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
@@ -1742,7 +1562,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array_force
-        call c_get_raw_ptr_to_fixed_array_force(count)
+        call c_get_raw_ptr_to_fixed_array_force_bufferify(count)
         ! splicer end function.get_raw_ptr_to_fixed_array_force
     end subroutine get_raw_ptr_to_fixed_array_force
     ! end get_raw_ptr_to_fixed_array_force
@@ -1751,11 +1571,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * * arg +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_native_***
     !>
     !! Test multiple layers of indirection.
@@ -1765,7 +1583,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(OUT) :: arg
         ! splicer begin function.get_raw_ptr_to_int2d
-        call c_get_raw_ptr_to_int2d(arg)
+        call c_get_raw_ptr_to_int2d_bufferify(arg)
         ! splicer end function.get_raw_ptr_to_int2d
     end subroutine get_raw_ptr_to_int2d
     ! end get_raw_ptr_to_int2d
@@ -1775,11 +1593,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int checkInt2d
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_**
     !>
     !! Check results of getRawPtrToInt2d.
@@ -1791,7 +1607,7 @@ contains
         integer(C_INT), intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.check_int2d
-        SHT_rv = c_check_int2d(arg)
+        SHT_rv = c_check_int2d_bufferify(arg)
         ! splicer end function.check_int2d
     end function check_int2d
     ! end check_int2d
@@ -1799,11 +1615,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void DimensionIn
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * arg +dimension(10,20)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_*
     !>
     !! Test +dimension(10,20) +intent(in) together.
@@ -1814,19 +1628,16 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(IN) :: arg(10,20)
         ! splicer begin function.dimension_in
-        call c_dimension_in(arg)
+        call c_dimension_in_bufferify(arg)
         ! splicer end function.dimension_in
     end subroutine dimension_in
     ! end dimension_in
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
     ! Statement: f_out_native_**_cdesc_allocatable
     !>
     !! Return a Fortran pointer to an array which is always the same length.
@@ -1852,11 +1663,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void * returnAddress1
-    ! Attrs:     +intent(function)
     ! Statement: f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start return_address1
     function return_address1(flag) &
@@ -1865,7 +1674,7 @@ contains
         integer(C_INT), value, intent(IN) :: flag
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_address1
-        SHT_rv = c_return_address1(flag)
+        SHT_rv = c_return_address1_bufferify(flag)
         ! splicer end function.return_address1
     end function return_address1
     ! end return_address1
@@ -1873,11 +1682,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
-    ! Attrs:     +intent(function)
     ! Statement: f_function_void_*
     ! ----------------------------------------
     ! Argument:  int flag +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start return_address2
     function return_address2(flag) &
@@ -1886,7 +1693,7 @@ contains
         integer(C_INT), value, intent(IN) :: flag
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_address2
-        SHT_rv = c_return_address2(flag)
+        SHT_rv = c_return_address2_bufferify(flag)
         ! splicer end function.return_address2
     end function return_address2
     ! end return_address2
@@ -1895,18 +1702,16 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Attrs:     +intent(out)
     ! Statement: f_out_void_**
     ! start fetch_void_ptr
     subroutine fetch_void_ptr(addr)
         use iso_c_binding, only : C_PTR
         type(C_PTR), intent(OUT) :: addr
         ! splicer begin function.fetch_void_ptr
-        call c_fetch_void_ptr(addr)
+        call c_fetch_void_ptr_bufferify(addr)
         ! splicer end function.fetch_void_ptr
     end subroutine fetch_void_ptr
     ! end fetch_void_ptr
@@ -1914,29 +1719,25 @@ contains
 
     ! ----------------------------------------
     ! Function:  void updateVoidPtr
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(inout)
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_void_**
     ! start update_void_ptr
     subroutine update_void_ptr(addr)
         use iso_c_binding, only : C_PTR
         type(C_PTR), intent(INOUT) :: addr
         ! splicer begin function.update_void_ptr
-        call c_update_void_ptr(addr)
+        call c_update_void_ptr_bufferify(addr)
         ! splicer end function.update_void_ptr
     end subroutine update_void_ptr
     ! end update_void_ptr
 
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_void_**
     ! start void_ptr_array
     function void_ptr_array(addr) &
@@ -1945,14 +1746,13 @@ contains
         type(C_PTR), intent(IN) :: addr(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.void_ptr_array
-        SHT_rv = c_void_ptr_array(addr)
+        SHT_rv = c_void_ptr_array_bufferify(addr)
         ! splicer end function.void_ptr_array
     end function void_ptr_array
     ! end void_ptr_array
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Attrs:     +deref(pointer)+intent(function)
     ! Statement: f_function_native_*_pointer
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
@@ -1961,16 +1761,14 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_return_int_ptr_to_scalar()
+        SHC_rv_ptr = c_return_int_ptr_to_scalar_bufferify()
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Statement: f_function_native_*_cdesc_pointer
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
@@ -1988,7 +1786,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Attrs:     +deref(pointer)+intent(function)
     ! Statement: f_function_native_*_pointer
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
@@ -1997,16 +1794,14 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
         type(C_PTR) :: SHC_rv_ptr
-        SHC_rv_ptr = c_return_int_ptr_to_const_scalar()
+        SHC_rv_ptr = c_return_int_ptr_to_const_scalar_bufferify()
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
     ! end return_int_ptr_to_const_scalar
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Statement: f_function_native_*_cdesc_pointer
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
@@ -2026,7 +1821,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Attrs:     +deref(scalar)+intent(function)
     ! Statement: f_function_native_*_scalar
     ! start return_int_scalar
     function return_int_scalar() &
@@ -2034,7 +1828,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_int_scalar
-        SHT_rv = c_return_int_scalar_extrawrapper()
+        SHT_rv = c_return_int_scalar_bufferify()
         ! splicer end function.return_int_scalar
     end function return_int_scalar
     ! end return_int_scalar
@@ -2044,7 +1838,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
-    ! Attrs:     +deref(raw)+intent(function)
     ! Statement: f_function_native_*_raw
     !>
     !! Call directly via interface.
@@ -2055,7 +1848,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw
-        SHT_rv = c_return_int_raw()
+        SHT_rv = c_return_int_raw_bufferify()
         ! splicer end function.return_int_raw
     end function return_int_raw
     ! end return_int_raw
@@ -2063,7 +1856,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
-    ! Attrs:     +deref(raw)+intent(function)
     ! Statement: f_function_native_*_raw
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
@@ -2076,14 +1868,13 @@ contains
         character(len=*), intent(IN) :: name
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args
-        SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
+        SHT_rv = c_return_int_raw_with_args_bufferify(trim(name)//C_NULL_CHAR)
         ! splicer end function.return_int_raw_with_args
     end function return_int_raw_with_args
     ! end return_int_raw_with_args
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_**
     !>
     !! Test multiple layers of indirection.
@@ -2095,15 +1886,13 @@ contains
         use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_raw_ptr_to_int2d
-        SHT_rv = c_return_raw_ptr_to_int2d()
+        SHT_rv = c_return_raw_ptr_to_int2d_bufferify()
         ! splicer end function.return_raw_ptr_to_int2d
     end function return_raw_ptr_to_int2d
     ! end return_raw_ptr_to_int2d
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Statement: f_function_native_*_cdesc_allocatable
     ! start return_int_alloc_to_fixed_array
     function return_int_alloc_to_fixed_array() &

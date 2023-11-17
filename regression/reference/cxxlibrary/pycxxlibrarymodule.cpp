@@ -38,11 +38,9 @@ PyArray_Descr *PY_nested_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByReferenceCls
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg
-// Attrs:     +intent(inout)
 // Statement: py_inout_struct_&_class
 static char PY_passStructByReferenceCls__doc__[] =
 "documentation"
@@ -80,11 +78,9 @@ PY_passStructByReferenceCls(
 
 // ----------------------------------------
 // Function:  int passStructByReferenceInCls
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1_cls & arg
-// Attrs:     +intent(in)
 // Statement: py_in_struct_&_class
 static char PY_passStructByReferenceInCls__doc__[] =
 "documentation"
@@ -126,11 +122,9 @@ PY_passStructByReferenceInCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInoutCls
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(inout)
-// Attrs:     +intent(inout)
 // Statement: py_inout_struct_&_class
 static char PY_passStructByReferenceInoutCls__doc__[] =
 "documentation"
@@ -164,11 +158,9 @@ PY_passStructByReferenceInoutCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOutCls
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_struct_&_class
 static char PY_passStructByReferenceOutCls__doc__[] =
 "documentation"
@@ -203,11 +195,9 @@ fail:
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
-// Attrs:     +intent(in)
 // Statement: py_in_native_*_pointer_numpy
 static char PY_defaultPtrIsNULL_1__doc__[] =
 "documentation"
@@ -280,23 +270,18 @@ fail:
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int in1 +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_native_*
 // ----------------------------------------
 // Argument:  bool flag=false +value
-// Attrs:     +intent(in)
 // Statement: py_in_bool_scalar
 static char PY_defaultArgsInOut_1__doc__[] =
 "documentation"

@@ -24,7 +24,6 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  void Function1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine function1() &
                 bind(C, name="Function1")
@@ -33,15 +32,12 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg1 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int arg2 +value
-        ! Attrs:     +intent(in)
         ! Statement: f_in_native_scalar
         function function2(arg1, arg2) &
                 result(SHT_rv) &
@@ -63,7 +59,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void Function1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine function1()
         ! splicer begin function.function1
@@ -76,15 +71,12 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double Function2
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg2 +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     function function2(arg1, arg2) &
             result(SHT_rv)

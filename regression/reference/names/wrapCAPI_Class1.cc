@@ -20,7 +20,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Member1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 void TES_capi_class1_member1(TES_capi_class1 * self)
 {

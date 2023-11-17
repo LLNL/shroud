@@ -207,6 +207,9 @@ is now:
    changed.  `c_buf` and `f` fields need to be merged.  A fstatements
    now has both the C and Fortran variables.
 
+   Likewise, *patterns* used by *C_error_pattern* and local splicers
+   use *buf* and *cfi* and will need to change.
+
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a
   scalar was returned. The C wrapper will now return a pointer giving

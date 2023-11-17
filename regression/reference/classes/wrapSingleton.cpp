@@ -22,7 +22,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  static Singleton & getReference
-// Attrs:     +api(capptr)+intent(function)
 // Statement: c_function_shadow_&_capptr
 // start CLA_Singleton_getReference
 CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)

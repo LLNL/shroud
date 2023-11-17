@@ -27,7 +27,6 @@ extern "C" {
 // ~Class1(void)
 // ----------------------------------------
 // Function:  ~Class1
-// Attrs:     +intent(dtor)
 // Statement: lua_dtor_scalar
 static int l_Class1_dtor(lua_State *L)
 {

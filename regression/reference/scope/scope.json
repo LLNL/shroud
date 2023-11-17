@@ -502,7 +502,6 @@
         "functions": [
             {
                 "<FUNCTION>": "DataPointer_get_items  0 ****************************************",
-                "_PTR_F_C_index": "2",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -510,21 +509,16 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "nitems"
                                 }
-                            ],
-                            "intent": "getter"
+                            ]
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -564,89 +558,6 @@
                 },
                 "name": "DataPointer_get_items",
                 "options": {},
-                "struct_parent": "ns3::DataPointer",
-                "user_fmt": {
-                    "field_name": "items",
-                    "struct_name": "DataPointer",
-                    "wrapped_name": "items"
-                },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "DataPointer_get_items",
-                    "F_name_api": "data_pointer_get_items",
-                    "field_name": "items",
-                    "function_name": "DataPointer_get_items",
-                    "struct_name": "DataPointer",
-                    "wrapped_name": "items"
-                }
-            },
-            {
-                "<FUNCTION>": "DataPointer_get_items  2 ****************************************",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "getter/setter",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 0,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "nitems"
-                                }
-                            ],
-                            "intent": "getter"
-                        },
-                        "name": "DataPointer_get_items",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "SH_this",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "ns3::DataPointer"
-                                },
-                                "specifier": [
-                                    "ns3::DataPointer"
-                                ],
-                                "typemap_name": "ns3::DataPointer"
-                            }
-                        ],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
-                "helpers": {
-                    "c": [
-                        "type_defines",
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
-                "name": "DataPointer_get_items",
-                "options": {},
-                "splicer_group": "buf",
                 "struct_parent": "ns3::DataPointer",
                 "user_fmt": {
                     "field_name": "items",
@@ -659,9 +570,17 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "getter"
+                            },
                             "stmt": "f_getter_native_*_cdesc_pointer"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_struct_*"
                         }
                     }
@@ -671,10 +590,12 @@
                         "fmtf": {
                             "C_call_function": "DataPointer_get_items(\tSH_this)",
                             "C_call_list": "SH_this",
+                            "C_name": "SCO_DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
-                            "F_C_call": "c_data_pointer_get_items_bufferify",
+                            "F_C_call": "c_data_pointer_get_items",
+                            "F_C_name": "c_data_pointer_get_items",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -744,14 +665,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "SCO_DataPointer_get_items_bufferify",
                     "C_name_api": "DataPointer_get_items",
-                    "F_C_name": "c_data_pointer_get_items_bufferify",
                     "F_name_api": "data_pointer_get_items",
                     "F_name_function": "data_pointer_get_items",
                     "F_name_generic": "data_pointer_get_items",
                     "F_name_impl": "data_pointer_get_items",
-                    "f_c_suffix": "_bufferify",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
                     "struct_name": "DataPointer",
@@ -773,9 +691,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -800,8 +715,7 @@
                                             {
                                                 "name": "nitems"
                                             }
-                                        ],
-                                        "intent": "setter"
+                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -839,12 +753,21 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter"
                         },
                         "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
                             "stmt": "f_inout_struct_*"
                         },
                         "val": {
+                            "meta": {
+                                "intent": "setter"
+                            },
                             "stmt": "f_setter_native_*"
                         }
                     }
@@ -854,10 +777,12 @@
                         "fmtf": {
                             "C_call_function": "DataPointer_set_items(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
+                            "C_name": "SCO_DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_data_pointer_set_items",
+                            "F_C_name": "data_pointer_set_items",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
@@ -925,9 +850,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "SCO_DataPointer_set_items",
                     "C_name_api": "DataPointer_set_items",
-                    "F_C_name": "data_pointer_set_items",
                     "F_name_api": "data_pointer_set_items",
                     "F_name_function": "data_pointer_set_items",
                     "F_name_generic": "data_pointer_set_items",
@@ -1111,8 +1034,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "DataPointer_get_items  3 ****************************************",
-                        "_PTR_F_C_index": "5",
+                        "<FUNCTION>": "DataPointer_get_items  2 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -1120,21 +1042,16 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "name": "nitems"
                                         }
-                                    ],
-                                    "intent": "getter"
+                                    ]
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1174,90 +1091,6 @@
                         },
                         "name": "DataPointer_get_items",
                         "options": {},
-                        "struct_parent": "ns1::DataPointer",
-                        "user_fmt": {
-                            "field_name": "items",
-                            "struct_name": "DataPointer",
-                            "wrapped_name": "items"
-                        },
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "C_name_api": "DataPointer_get_items",
-                            "F_name_api": "data_pointer_get_items",
-                            "field_name": "items",
-                            "function_name": "DataPointer_get_items",
-                            "struct_name": "DataPointer",
-                            "wrapped_name": "items"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "DataPointer_get_items  5 ****************************************",
-                        "_PTR_C_CXX_index": "3",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "getter/setter",
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 3,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ],
-                                    "intent": "getter"
-                                },
-                                "name": "DataPointer_get_items",
-                                "params": [
-                                    {
-                                        "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "name": "SH_this",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "ns1::DataPointer"
-                                        },
-                                        "specifier": [
-                                            "ns1::DataPointer"
-                                        ],
-                                        "typemap_name": "ns1::DataPointer"
-                                    }
-                                ],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "int"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
-                        "helpers": {
-                            "c": [
-                                "type_defines",
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "DataPointer_get_items",
-                        "options": {},
-                        "splicer_group": "buf",
                         "struct_parent": "ns1::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
@@ -1270,9 +1103,17 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_struct_*"
                                 }
                             }
@@ -1282,10 +1123,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns1::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
+                                    "C_name": "SCO_ns1_DataPointer_get_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_data_pointer_get_items_bufferify",
+                                    "F_C_call": "c_data_pointer_get_items",
+                                    "F_C_name": "c_data_pointer_get_items",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -1355,14 +1198,11 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
-                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
@@ -1370,7 +1210,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "DataPointer_set_items  4 ****************************************",
+                        "<FUNCTION>": "DataPointer_set_items  3 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -1384,9 +1224,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1411,8 +1248,7 @@
                                                     {
                                                         "name": "nitems"
                                                     }
-                                                ],
-                                                "intent": "setter"
+                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -1450,12 +1286,21 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_*"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
                                     "stmt": "f_setter_native_*"
                                 }
                             }
@@ -1465,10 +1310,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns1::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
+                                    "C_name": "SCO_ns1_DataPointer_set_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",
+                                    "F_C_name": "data_pointer_set_items",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
@@ -1536,9 +1383,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns1_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
-                            "F_C_name": "data_pointer_set_items",
                             "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
@@ -1749,8 +1594,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "DataPointer_get_items  6 ****************************************",
-                        "_PTR_F_C_index": "8",
+                        "<FUNCTION>": "DataPointer_get_items  4 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -1758,21 +1602,16 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "name": "nitems"
                                         }
-                                    ],
-                                    "intent": "getter"
+                                    ]
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1812,90 +1651,6 @@
                         },
                         "name": "DataPointer_get_items",
                         "options": {},
-                        "struct_parent": "ns2::DataPointer",
-                        "user_fmt": {
-                            "field_name": "items",
-                            "struct_name": "DataPointer",
-                            "wrapped_name": "items"
-                        },
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "C_name_api": "DataPointer_get_items",
-                            "F_name_api": "data_pointer_get_items",
-                            "field_name": "items",
-                            "function_name": "DataPointer_get_items",
-                            "struct_name": "DataPointer",
-                            "wrapped_name": "items"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "DataPointer_get_items  8 ****************************************",
-                        "_PTR_C_CXX_index": "6",
-                        "_generated": "arg_to_buffer",
-                        "_generated_path": [
-                            "getter/setter",
-                            "arg_to_buffer"
-                        ],
-                        "_orig_node_index": 6,
-                        "ast": {
-                            "declarator": {
-                                "metaattrs": {
-                                    "api": "cdesc",
-                                    "deref": "pointer",
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ],
-                                    "intent": "getter"
-                                },
-                                "name": "DataPointer_get_items",
-                                "params": [
-                                    {
-                                        "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "name": "SH_this",
-                                            "pointer": [
-                                                {
-                                                    "ptr": "*"
-                                                }
-                                            ],
-                                            "typemap_name": "ns2::DataPointer"
-                                        },
-                                        "specifier": [
-                                            "ns2::DataPointer"
-                                        ],
-                                        "typemap_name": "ns2::DataPointer"
-                                    }
-                                ],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "int"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
-                        "helpers": {
-                            "c": [
-                                "type_defines",
-                                "array_context"
-                            ],
-                            "f": [
-                                "array_context"
-                            ]
-                        },
-                        "name": "DataPointer_get_items",
-                        "options": {},
-                        "splicer_group": "buf",
                         "struct_parent": "ns2::DataPointer",
                         "user_fmt": {
                             "field_name": "items",
@@ -1908,9 +1663,17 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    },
                                     "stmt": "f_in_struct_*"
                                 }
                             }
@@ -1920,10 +1683,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns2::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
+                                    "C_name": "SCO_ns2_DataPointer_get_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_data_pointer_get_items_bufferify",
+                                    "F_C_call": "c_data_pointer_get_items",
+                                    "F_C_name": "c_data_pointer_get_items",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
@@ -1993,14 +1758,11 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
                             "C_name_api": "DataPointer_get_items",
-                            "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
-                            "f_c_suffix": "_bufferify",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
@@ -2008,7 +1770,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "DataPointer_set_items  7 ****************************************",
+                        "<FUNCTION>": "DataPointer_set_items  5 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -2022,9 +1784,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -2049,8 +1808,7 @@
                                                     {
                                                         "name": "nitems"
                                                     }
-                                                ],
-                                                "intent": "setter"
+                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -2088,12 +1846,21 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
                                     "stmt": "f_setter"
                                 },
                                 "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    },
                                     "stmt": "f_inout_struct_*"
                                 },
                                 "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
                                     "stmt": "f_setter_native_*"
                                 }
                             }
@@ -2103,10 +1870,12 @@
                                 "fmtf": {
                                     "C_call_function": "ns2::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
+                                    "C_name": "SCO_ns2_DataPointer_set_items",
                                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",
+                                    "F_C_name": "data_pointer_set_items",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
@@ -2174,9 +1943,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "C_name": "SCO_ns2_DataPointer_set_items",
                             "C_name_api": "DataPointer_set_items",
-                            "F_C_name": "data_pointer_set_items",
                             "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",

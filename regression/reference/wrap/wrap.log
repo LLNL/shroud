@@ -1,8 +1,12 @@
 Read yaml wrap.yaml
 Close wrap_types.yaml
 class Class1
-Fortran void FuncInClass(void)  +intent(subroutine)
-C-interface f void FuncInClass(void)  +intent(subroutine)
+C f int FuncInClass(void)
+Close wrapClass1.h
+Close wrapClass1.cpp
+class Class1
+Fortran int FuncInClass(void)
+C-interface f int FuncInClass(void)
 Close wrapfwrap.f
 Close utilwrap.cpp
 Close typeswrap.h

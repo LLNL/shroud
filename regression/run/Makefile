@@ -88,7 +88,8 @@ fortran-test-list-std = \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
-  test-fortran-templates
+  test-fortran-templates \
+  test-fortran-wrap
 
 fortran-test-list-cfi = \
   test-fortran-pointers-cfi \

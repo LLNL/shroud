@@ -24,7 +24,6 @@ module wrapped_inner1_mod
 
         ! ----------------------------------------
         ! Function:  void worker
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine worker() &
                 bind(C, name="WWW_inner1_worker")
@@ -41,7 +40,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine worker()
         ! splicer begin namespace.inner1.function.worker

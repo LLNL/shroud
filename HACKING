@@ -135,7 +135,7 @@ file dependency
 
 main.py
 wrapX.py  generate.py
-fcfmt.py
+fcfmt.py  metaattrs.py
 ast.py
 declast.py
 whelpers.py

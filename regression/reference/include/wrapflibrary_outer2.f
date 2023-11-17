@@ -42,7 +42,6 @@ module library_outer2_mod
 
         ! ----------------------------------------
         ! Function:  void method
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine c_class0_method(self) &
                 bind(C, name="LIB_outer2_class0_method")
@@ -53,7 +52,6 @@ module library_outer2_mod
 
         ! ----------------------------------------
         ! Function:  void outer_func
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine outer_func() &
                 bind(C, name="LIB_outer2_outer_func")
@@ -66,7 +64,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine class0_method(obj)
         class(class0) :: obj
@@ -101,7 +98,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void outer_func
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine outer_func()
         call c_outer_func()

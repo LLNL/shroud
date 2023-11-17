@@ -40,11 +40,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -53,16 +59,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "Function1(\t)",
+                            "C_name": "Function1",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_function1",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "Function1(\t)",
+                            "C_name": "Function1",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_function1",
+                            "F_C_name": "function1",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -71,9 +81,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "Function1",
                     "C_name_api": "Function1",
-                    "F_C_name": "function1",
                     "F_name_api": "function1",
                     "F_name_function": "function1",
                     "F_name_generic": "function1",
@@ -141,23 +149,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -167,8 +193,10 @@
                         "fmtc": {
                             "C_call_function": "Function2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "Function2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
+                            "F_C_name": "c_function2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -187,10 +215,12 @@
                         "fmtf": {
                             "C_call_function": "Function2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "Function2",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_function2",
+                            "F_C_name": "function2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t arg2",
@@ -308,9 +338,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "Function2",
                     "C_name_api": "Function2",
-                    "F_C_name": "function2",
                     "F_name_api": "function2",
                     "F_name_function": "function2",
                     "F_name_generic": "function2",

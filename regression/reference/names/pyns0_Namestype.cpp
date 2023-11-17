@@ -39,7 +39,6 @@ PY_Names_tp_del (PY_Names *self)
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 static int
 PY_Names_tp_init(
@@ -60,7 +59,6 @@ PY_Names_tp_init(
 
 // ----------------------------------------
 // Function:  void method1
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_method1__doc__[] =
 "documentation"
@@ -80,7 +78,6 @@ PY_method1(
 
 // ----------------------------------------
 // Function:  void method2
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_method2__doc__[] =
 "documentation"

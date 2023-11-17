@@ -9,6 +9,7 @@
 from . import error
 from .util import wformat
 
+import collections
 import yaml
 
 try:
@@ -34,11 +35,49 @@ fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
 
 class BindArg(object):
+    """
+    Information to create wrapper (binding) for a result or argument.
+
+    Use get functions to access instance.
+        r_bind = get_func_bind(node, wlang)
+        arg_bind = get_arg_bind(node, arg, "f")
+
+    The get_func_find function hides the "+result" implementation
+    detail used for function results."
+    """
     def __init__(self):
         self.stmt = None
         self.meta = None
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
+
+def fetch_func_metaattrs(node, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault("+result", BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
+
+def fetch_arg_metaattrs(node, arg, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault(arg.declarator.user_name, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
+
+def get_func_metaattrs(node, wlang):
+    return node._bind[wlang]["+result"].meta
+
+def get_arg_metaattrs(node, arg, wlang):
+    return node._bind[wlang][arg.declarator.user_name].meta
+
+def get_func_bind(node, wlang):
+    return node._bind[wlang]["+result"]
+
+def get_arg_bind(node, arg, wlang):
+    return node._bind[wlang][arg.declarator.user_name]
+
+######################################################################
 
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
@@ -100,7 +139,7 @@ def lookup_c_function_stmt(node):
     ast = node.ast
     declarator = ast.declarator
     subprogram = declarator.get_subprogram()
-    r_meta = declarator.metaattrs
+    r_meta = get_func_bind(node, "c").meta
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
@@ -125,7 +164,7 @@ def lookup_f_function_stmt(node):
     ast = node.ast
     declarator = ast.declarator
     subprogram = declarator.get_subprogram()
-    r_meta = declarator.metaattrs
+    r_meta = get_func_bind(node, "f").meta
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
@@ -146,15 +185,12 @@ def lookup_c_arg_stmt(node, arg):
     """Lookup the C statements for an argument."""
     declarator = arg.declarator
     c_attrs = declarator.attrs
-    c_meta = declarator.metaattrs
+    c_meta = get_arg_bind(node, arg, "c").meta
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    if c_attrs["hidden"] and node._generated:
-        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
-        sapi = "hidden"
     stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
 #             c_meta["deref"],   # XXX - No deref for C wrapper
              c_attrs["owner"]] + specialize
@@ -165,14 +201,13 @@ def lookup_f_arg_stmt(node, arg):
     """Lookup the Fortran statements for an argument."""
     declarator = arg.declarator
     c_attrs = declarator.attrs
-    c_meta = declarator.metaattrs
+    c_meta = get_arg_bind(node, arg, "f").meta
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    if c_attrs["hidden"] and node._generated:
-        # XXX - only hidden in generated Fortran wrapper. Exists in non-bufferified C wrappers.
+    if c_meta["hidden"]:
         sapi = "hidden"
     stmts = ["f", c_meta["intent"], sgroup, spointer,
              sapi, c_meta["deref"], c_attrs["owner"]] + specialize
@@ -910,6 +945,8 @@ fc_statements = [
         comments=[
             "Return a C pointer as a type(C_PTR).",
         ],
+        # XXX - need c wrapper to avoid confusion of type signature with f_mixin_function_ptr
+        c_need_wrapper=True,
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         f_arg_decl=[
             "{f_type}, pointer :: {f_var}",
@@ -1475,7 +1512,6 @@ fc_statements = [
             "f_out_native_&",
             "c_out_native_&",
 
-            "f_out_native_*&_pointer",
             "c_out_native_*&",
 
             "f_inout_native_*",
@@ -1484,9 +1520,6 @@ fc_statements = [
             "f_inout_native_&",
             "c_inout_native_&",
             
-            "f_out_native_**_allocatable",
-            "f_out_native_**_pointer",
-
             "f_out_native_***",
             "c_out_native_***",
             
@@ -1505,7 +1538,7 @@ fc_statements = [
             "f_in_char_*_capi",
             "c_in_char_*_capi",
 
-            
+
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",
         ],
@@ -1607,7 +1640,6 @@ fc_statements = [
         ],
         alias=[
             "f_out_native_*&_cdesc_pointer",
-            "c_out_native_*&_cdesc_pointer",
         ],
         c_pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
@@ -1648,9 +1680,6 @@ fc_statements = [
             "f_mixin_out_native_cdesc_allocate",
             "f_mixin_use_capsule",
         ],
-        alias=[
-            "c_out_native_**_cdesc_allocatable",
-        ],
     ),
     dict(
         # deref(pointer)
@@ -1662,9 +1691,6 @@ fc_statements = [
             "c_mixin_out_native_**",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer",
-        ],
-        alias=[
-            "c_out_native_**_cdesc_pointer",
         ],
     ),
     dict(
@@ -1842,12 +1868,8 @@ fc_statements = [
         alias=[
             "f_function_native_*_pointer",   # XXX - change base to &?
             "f_function_native_*_pointer_caller",
-            "c_function_native_*_pointer",
             "f_function_native_&_pointer",
-            "c_function_native_&_pointer",
 #            "f_function_native_&_buf_pointer",  # XXX - untested
-            "c_function_native_*/&",
-            "c_function_native_*_caller",
         ],
     ),
     dict(
@@ -1878,22 +1900,11 @@ fc_statements = [
             "f_mixin_function_ptr",
         ],
         alias=[
-            "c_function_native_*_raw",
-        ],
-    ),
-    dict(
-        # int **func(void)
-        # regardless of deref value.
-        name="f_function_native_**",
-        mixin=[
-            "f_mixin_function_ptr",
-        ],
-        alias=[
+            "c_function_native_*",
+            "c_function_native_&",
+            "c_function_native_*_caller",
             "c_function_native_**",
-
-            "f_function_native_*_allocatable",
-            "f_function_native_*_allocatable_caller",
-            "c_function_native_*_allocatable",
+            "f_function_native_**",
         ],
     ),
     
@@ -1966,15 +1977,14 @@ fc_statements = [
 #    ),
     
     dict(
-        # c_function_char_*_allocatable
-        # c_function_char_*_copy
-        # c_function_char_*_pointer
-        # c_function_char_*_raw
+        # f_function_char_*_allocatable
+        # f_function_char_*_copy
+        # f_function_char_*_pointer
+        # f_function_char_*_raw
         name="f_function_char_*",
         alias=[
             "c_function_char_*",
             "f_function_char_*_allocatable/copy/pointer/raw",
-            "c_function_char_*_allocatable/copy/pointer/raw",
         ],
 
         f_arg_decl=[
@@ -2158,14 +2168,11 @@ fc_statements = [
         ],
         alias=[
             "f_function_char_*_cdesc_pointer",
-            "c_function_char_*_cdesc_pointer",
         ],
     ),
     dict(
         # f_function_string_scalar_cdesc_pointer
         # f_function_string_*_cdesc_pointer
-        # c_function_string_*_cdesc_pointer
-        # c_function_string_&_cdesc_pointer
         name="f_function_string_*_cdesc_pointer",
         mixin=[
             "f_mixin_function-to-subroutine",
@@ -2176,8 +2183,6 @@ fc_statements = [
         alias=[
             "f_function_string_&_cdesc_pointer",
             "f_function_string_*/&_cdesc_pointer_caller/library",
-            "c_function_string_*/&_cdesc_pointer",
-            "c_function_string_*/&_cdesc_pointer_caller/library",
         ],
     ),
 
@@ -2303,19 +2308,9 @@ fc_statements = [
         # c_function_string_&
         name="f_shared_function_string_scalar",
         alias=[
-            "f_function_string_scalar/*/&",
-            "c_function_string_scalar/*/&",
-            "f_function_string_*_allocatable",
-            "f_function_string_*_allocatable_caller",
-            "f_function_string_*_allocatable_library",
-            "f_function_string_*_copy",
+            "c_function_string_*/&",
             "c_function_string_*_caller/library",
             "c_function_string_*_copy",
-            "f_function_string_*_pointer",
-            "f_function_string_*_pointer_caller",
-            "f_function_string_*_pointer_library",
-            "f_function_string_&_allocatable",
-            "f_function_string_&_copy",
             "c_function_string_&_copy",
         ],
         # cxx_to_c creates a pointer from a value via c_str()
@@ -2327,6 +2322,17 @@ fc_statements = [
             "type(C_PTR) {i_var}",
         ],
         i_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="c_function_string_scalar",
+        notimplemented=True,
+        comments=[
+            "Cannot return a char array by value."
+            # If a C++ function returns a std::string instance,
+            # the default wrapper will not compile since the wrapper
+            # will be declared as char. It will also want to return the
+            # c_str of a stack variable. Warn and turn off the wrapper.
+        ],
     ),
 
     # std::string
@@ -2509,6 +2515,31 @@ fc_statements = [
     ########################################
     # vector
     # Specialize for std::vector<native>
+    dict(
+        name="c_function_vector_scalar_targ_native_scalar",
+        notimplemented=True,
+        comments=[
+            "Cannot return a std::vector<native> by value."
+            # Can return a pointer but then there would be lifetime issues.
+        ],
+    ),
+    dict(
+        name="c_shared_vector_argument",
+        notimplemented=True,
+        comments=[
+            "Need to know the length of the vector from C",
+        ],
+        alias=[
+            "c_in_vector_&_targ_native_scalar",
+            "c_out_vector_&_targ_native_scalar",
+            "c_inout_vector_&_targ_native_scalar",
+
+            "c_in_vector_&_targ_native_*",
+
+            "c_in_vector_&_targ_string_scalar",
+            "c_out_vector_&_targ_string_scalar",
+        ],
+    ),
     dict(
         # f_in_vector_scalar_buf_targ_native_scalar
         # f_in_vector_*_buf_targ_native_scalar
@@ -2920,10 +2951,6 @@ fc_statements = [
         mixin=[
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
-        ],
-        alias=[
-            "c_out_vector_*_cdesc_allocatable_targ_native_scalar",
-            "c_out_vector_&_cdesc_allocatable_targ_native_scalar",
         ],
         c_helper=["copy_array"],
         f_helper=["copy_array"],
@@ -4106,20 +4133,6 @@ fc_statements = [
             "c_mixin_native_capsule_fill",
             "f_mixin_capsule_dtor",
         ],
-        alias=[
-            "c_out_string_**_cdesc_allocatable",
-        ],
-    ),
-
-    dict(
-        # std::string **arg+intent(out)+dimension(size)+deref(allocatable)
-        # Returning a pointer to a string*. However, this needs additional mapping
-        # for the C interface.  Fortran calls the +api(cdesc) variant.
-        name="f_out_string_**_allocatable",
-        alias=[
-            "c_out_string_**_allocatable",
-        ],
-        notimplemented=True,
     ),
 
     ########################################

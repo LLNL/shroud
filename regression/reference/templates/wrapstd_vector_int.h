@@ -49,6 +49,9 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value);
 int * TEM_vector_int_at(TEM_vector_int * self,
     TEM_vector_int_size_type n);
 
+int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
+    TEM_vector_int_size_type n);
+
 #ifdef __cplusplus
 }
 #endif

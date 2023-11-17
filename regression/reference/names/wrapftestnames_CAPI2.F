@@ -24,7 +24,6 @@ module testnames_capi2_mod
 
         ! ----------------------------------------
         ! Function:  void Worker1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine c_worker1() &
                 bind(C, name="TES_CAPItwo_Worker1")
@@ -39,7 +38,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Worker1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine worker1()
         ! splicer begin namespace.CAPI2.function.worker1

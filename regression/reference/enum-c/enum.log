@@ -1,9 +1,9 @@
 Read yaml enum.yaml
-C c int convert_to_int(enum Color in +value)  +intent(function)
-C f int convert_to_int(enum Color in +value)  +intent(function)
+C c int convert_to_int(enum Color in +value)
+C f int convert_to_int(enum Color in +value)
 Close wrapenum.h
-Fortran int convert_to_int(enum Color in +value)  +intent(function)
-C-interface f int convert_to_int(enum Color in +value)  +intent(function)
+Fortran int convert_to_int(enum Color in +value)
+C-interface f int convert_to_int(enum Color in +value)
 Close wrapfenum.f
 Close utilenum.c
 Close typesenum.h

@@ -68,7 +68,6 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Attrs:     +api(capptr)+intent(ctor)
         ! Statement: f_ctor_shadow_scalar_capptr
         function c_class2_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -82,7 +81,6 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  ~Class2
-        ! Attrs:     +intent(dtor)
         ! Statement: f_dtor
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
@@ -93,11 +91,9 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void func1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
-        ! Attrs:     +intent(in)
         ! Statement: f_in_shadow_*
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
@@ -110,11 +106,9 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void acceptClass3
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
-        ! Attrs:     +intent(in)
         ! Statement: f_in_shadow_*
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_acceptClass3")
@@ -126,11 +120,9 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  int passStruct1
-        ! Attrs:     +intent(function)
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
-        ! Attrs:     +intent(in)
         ! Statement: f_in_struct_*
         function pass_struct1(arg) &
                 result(SHT_rv) &
@@ -180,7 +172,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Attrs:     +api(capptr)+intent(ctor)
     ! Statement: f_ctor_shadow_scalar_capptr
     function class2_ctor() &
             result(SHT_rv)
@@ -194,7 +185,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Class2
-    ! Attrs:     +intent(dtor)
     ! Statement: f_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj
@@ -205,11 +195,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void func1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_shadow_*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
@@ -222,11 +210,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void acceptClass3
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
-    ! Attrs:     +intent(in)
     ! Statement: f_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
@@ -266,11 +252,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStruct1
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
-    ! Attrs:     +intent(in)
     ! Statement: f_in_struct_*
     function pass_struct1(arg) &
             result(SHT_rv)

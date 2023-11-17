@@ -49,11 +49,9 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  TypeID typefunc
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start typefunc
     interface
@@ -70,11 +68,9 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  void typestruct
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_struct_*
     ! start typestruct
     interface
@@ -89,11 +85,9 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     interface
@@ -118,11 +112,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  TypeID typefunc
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
@@ -140,11 +132,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void typestruct
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
-    ! Attrs:     +intent(inout)
     ! Statement: f_inout_struct_*
     ! start typestruct
     subroutine typestruct(arg1)
@@ -160,11 +150,9 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
-    ! Attrs:     +intent(function)
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg +value
-    ! Attrs:     +intent(in)
     ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     function return_bytes_for_index_type(arg) &

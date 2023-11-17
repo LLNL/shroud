@@ -24,7 +24,6 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker3
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine inner3_worker3() &
                 bind(C, name="WWW_inner3_worker3")
@@ -33,7 +32,6 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine worker() &
                 bind(C, name="WWW_worker")
@@ -42,7 +40,6 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker4
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")
@@ -59,7 +56,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker3
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine inner3_worker3()
         ! splicer begin function.worker3
@@ -72,7 +68,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine worker()
         ! splicer begin function.worker
@@ -88,7 +83,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void worker4
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine inner4_worker4()
         ! splicer begin namespace.inner2.function.worker4

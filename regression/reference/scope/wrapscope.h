@@ -67,7 +67,7 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void SCO_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
+void SCO_DataPointer_get_items(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc);
 
 void SCO_DataPointer_set_items(SCO_datapointer * SH_this, int * val);

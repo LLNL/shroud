@@ -43,7 +43,6 @@ PY_ArrayWrapper_tp_del (PY_ArrayWrapper *self)
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: py_default
 static int
 PY_ArrayWrapper_tp_init(
@@ -64,11 +63,9 @@ PY_ArrayWrapper_tp_init(
 
 // ----------------------------------------
 // Function:  void setSize
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int size +value
-// Attrs:     +intent(in)
 // Statement: py_in_native_scalar
 static char PY_setSize__doc__[] =
 "documentation"
@@ -97,7 +94,6 @@ PY_setSize(
 
 // ----------------------------------------
 // Function:  int getSize
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 static char PY_getSize__doc__[] =
 "documentation"
@@ -123,11 +119,9 @@ PY_getSize(
 
 // ----------------------------------------
 // Function:  void fillSize
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int & size +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_native_&
 static char PY_fillSize__doc__[] =
 "documentation"
@@ -154,7 +148,6 @@ PY_fillSize(
 
 // ----------------------------------------
 // Function:  void allocate
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_allocate__doc__[] =
 "documentation"
@@ -174,7 +167,6 @@ PY_allocate(
 
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 static char PY_getArray__doc__[] =
 "documentation"
@@ -208,7 +200,6 @@ fail:
 
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 static char PY_getArrayConst__doc__[] =
 "documentation"
@@ -242,7 +233,6 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 static char PY_getArrayC__doc__[] =
 "documentation"
@@ -276,7 +266,6 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: py_function_native_*_pointer_numpy
 static char PY_getArrayConstC__doc__[] =
 "documentation"
@@ -310,15 +299,12 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtr
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Attrs:     +deref(pointer)+intent(out)
 // Statement: py_out_native_**_pointer_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Attrs:     +intent(inout)
 // Statement: py_inout_native_*
 static char PY_fetchArrayPtr__doc__[] =
 "documentation"
@@ -354,15 +340,12 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRef
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Attrs:     +deref(pointer)+intent(out)
 // Statement: py_out_native_*&_pointer_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Attrs:     +intent(inout)
 // Statement: py_inout_native_&
 static char PY_fetchArrayRef__doc__[] =
 "documentation"
@@ -398,15 +381,12 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Attrs:     +deref(pointer)+intent(out)
 // Statement: py_out_native_**_pointer_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Attrs:     +intent(inout)
 // Statement: py_inout_native_*
 static char PY_fetchArrayPtrConst__doc__[] =
 "documentation"
@@ -442,15 +422,12 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Attrs:     +deref(pointer)+intent(out)
 // Statement: py_out_native_*&_pointer_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Attrs:     +intent(inout)
 // Statement: py_inout_native_&
 static char PY_fetchArrayRefConst__doc__[] =
 "documentation"
@@ -486,11 +463,9 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_void_**
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
@@ -517,11 +492,9 @@ PY_fetchVoidPtr(
 
 // ----------------------------------------
 // Function:  void fetchVoidRef
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
-// Attrs:     +intent(out)
 // Statement: py_out_void_*&
 static char PY_fetchVoidRef__doc__[] =
 "documentation"
@@ -548,11 +521,9 @@ PY_fetchVoidRef(
 
 // ----------------------------------------
 // Function:  bool checkPtr
-// Attrs:     +intent(function)
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  void * array +value
-// Attrs:     +intent(in)
 // Statement: py_in_void_*
 static char PY_checkPtr__doc__[] =
 "documentation"
@@ -598,7 +569,6 @@ fail:
 
 // ----------------------------------------
 // Function:  double sumArray
-// Attrs:     +intent(function)
 // Statement: py_function_native_scalar
 static char PY_sumArray__doc__[] =
 "documentation"

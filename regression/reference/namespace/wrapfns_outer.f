@@ -31,7 +31,6 @@ module ns_outer_mod
 
         ! ----------------------------------------
         ! Function:  void One
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine one() &
                 bind(C, name="NS_outer_One")
@@ -48,7 +47,6 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void One
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine one()
         ! splicer begin namespace.outer.function.one

@@ -22,6 +22,7 @@ from . import statements
 from . import typemap
 from . import whelpers
 from . import util
+from .statements import get_func_bind, get_arg_bind
 from .util import append_format, wformat
 
 default_owner = "library"
@@ -143,7 +144,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self._push_splicer("class")
         structs = []
         for cls in node.classes:
-            if not node.wrap.c:
+            if not (node.wrap.c or node.wrap.fortran):
                 continue
             if cls.wrap_as == "struct":
                 structs.append(cls)
@@ -175,8 +176,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             if cls.wrap_as == "class":
                 self.wrap_class(cls)
         else:
-            self.wrap_typedefs(ns)
-            self.wrap_enums(ns)
+            if node.wrap.c:
+                self.wrap_typedefs(ns)
+                self.wrap_enums(ns)
             self.wrap_functions(ns)
 
         c_header = fmt.C_header_filename
@@ -674,7 +676,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             fmt.cpp_if = ""
             fmt.cpp_endif = ""
-            
+
         fmt.lang = "C"
         fmt.capsule_type = "void"
         self.add_class_capsule_worker(self.capsule_impl_c, fmt, literalinclude)
@@ -722,9 +724,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.compute_idtor(node)
         self.add_class_capsule_structs(node)
-
-        self.wrap_typedefs(node)
-        self.wrap_enums(node)
+        if node.wrap.c:
+            self.wrap_typedefs(node)
+            self.wrap_enums(node)
 
         self._push_splicer("method")
         for method in node.functions:
@@ -913,12 +915,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmtlang = "fmt" + wlang
 
-        self.log.write("C {2} {0.declgen} {1}\n".format(
-            node, self.get_metaattrs(node.ast), wlang))
+        self.log.write("C {0} {1.declgen}\n".format(
+            wlang, node))
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        bind = node._bind[wlang]
 
         if node.C_force_wrapper:
             need_wrapper = True
@@ -946,7 +947,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
         r_attrs = declarator.attrs
-        r_meta = declarator.metaattrs
+        r_bind = get_func_bind(node, wlang)
+        r_meta = r_bind.meta
         result_typemap = ast.typemap
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
@@ -960,12 +962,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_indexes = []
         fmt_result= fmtargs["+result"][fmtlang]
-        bind_arg = bind["+result"]
-        result_stmt = bind_arg.stmt
+        result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
-        if bind_arg.fstmts:
-            stmt_indexes.append(bind_arg.fstmts)
+        if r_bind.fstmts:
+            stmt_indexes.append(r_bind.fstmts)
+        any_cfi = False
+        if r_meta["api"] == 'cfi':
+            any_cfi = True
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
@@ -1051,8 +1055,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             declarator = arg.declarator
             arg_name = declarator.user_name
             fmt_arg = fmtargs[arg_name][fmtlang]
+            arg_bind = get_arg_bind(node, arg, wlang)
             c_attrs = declarator.attrs
-            c_meta = declarator.metaattrs
+            c_meta = arg_bind.meta
+            if c_meta["api"] == 'cfi':
+                any_cfi = True
 
             arg_typemap = arg.typemap  # XXX - look up vector
 
@@ -1060,9 +1067,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     
             arg_typemap, junk = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
-            hidden = c_attrs["hidden"] and node._generated
+            hidden = c_meta["hidden"]
 
-            arg_stmt = bind[arg_name].stmt
+            arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
             self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg)
@@ -1144,8 +1151,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         # generate the C body
         post_call_pattern = []
         if node.C_error_pattern is not None:
+            if wlang == "f":
+                suffix = "buf"
+            else:
+                suffix = None
             C_error_pattern = statements.compute_name(
-                [node.C_error_pattern, node.splicer_group])
+                [node.C_error_pattern, suffix])
             if C_error_pattern in self.patterns:
                 need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
@@ -1233,7 +1244,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_name = statements.compute_name(["c", node.splicer_group])
+        splicer_list = ["c"]
+        if wlang == "f":
+            splicer_list.append("buf")
+        splicer_name = statements.compute_name(splicer_list)
         if splicer_name in node.splicer:
             need_wrapper = True
             C_force = node.splicer[splicer_name]
@@ -1253,7 +1267,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             need_wrapper = False
 
         need_wrapper = need_wrapper or stmt_need_wrapper
-            
+        if wlang == "c":
+            node.wrap.signature_c = signature
+        elif wlang == "f":
+            node.wrap.signature_f = signature
+
         if need_wrapper:
             impl = []
             if options.doxygen and node.doxygen:
@@ -1262,16 +1280,19 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 impl.append("#" + node.cpp_if)
             impl.extend(stmts_comments)
 
-            if node.C_signature != None and node.C_signature != signature:
-                # The Fortran wrapper has different signature, change name
-                fmt_func.f_c_suffix = "_extrawrapper"
-                node.reeval_template("C_name")
-                node.reeval_template("F_C_name")
-            elif stmt_need_wrapper:
-                # The statements requires a wrapper (usually the Fortran statements)
-                fmt_func.f_c_suffix = "_extrawrapper"
-                node.reeval_template("C_name")
-                node.reeval_template("F_C_name")
+            if wlang == "f":
+                if node.C_signature != signature:
+                    mmm = get_func_bind(node, "f").meta
+                    if mmm["intent"] not in ["getter", "setter"]:
+                        if any_cfi:
+                            fmt_result.f_c_suffix = fmt_func.C_cfi_suffix
+                        else:
+                            fmt_result.f_c_suffix = fmt_func.C_bufferify_suffix
+            node.eval_template("C_name", fmt=fmt_result)
+            node.eval_template("F_C_name", fmt=fmt_result)
+            if "C_name" in node.user_fmt:
+                # XXX - this needs to distinguish between wlang
+                fmt_result.C_name = node.user_fmt["C_name"]
             
             if options.literalinclude:
                 append_format(impl, "// start {C_name}", fmt_result)
@@ -1315,10 +1336,17 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 if node.cpp_if:
                     self.header_proto_c.append("#endif")
                 node.C_signature = signature
-                
+
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node.ast.declarator.name
+            fmt_result.C_name = node.ast.declarator.name
+            # Needed to create interface for C only wrappers.
+            node.eval_template("F_C_name", fmt=fmt_result)
+
+        if wlang == "f":
+            if "F_C_name" in node.user_fmt:
+                fmt_result.F_C_name = node.user_fmt["F_C_name"]
+            
         cursor.pop_node(node)
 
     def set_capsule_headers(self, headers):

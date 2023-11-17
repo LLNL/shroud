@@ -257,17 +257,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -277,8 +289,10 @@
                         "fmtc": {
                             "C_call_function": "convert_to_int(\tin)",
                             "C_call_list": "in",
+                            "C_name": "convert_to_int",
                             "C_prototype": "int in",
                             "C_return_type": "int",
+                            "F_C_name": "c_convert_to_int",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -297,10 +311,12 @@
                         "fmtf": {
                             "C_call_function": "convert_to_int(\tin)",
                             "C_call_list": "in",
+                            "C_name": "convert_to_int",
                             "C_prototype": "int in",
                             "C_return_type": "int",
                             "F_C_arguments": "in",
                             "F_C_call": "c_convert_to_int",
+                            "F_C_name": "convert_to_int",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "in",
@@ -411,9 +427,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "convert_to_int",
                     "C_name_api": "convert_to_int",
-                    "F_C_name": "convert_to_int",
                     "F_name_api": "convert_to_int",
                     "F_name_function": "convert_to_int",
                     "F_name_generic": "convert_to_int",

@@ -75,10 +75,10 @@ int CLA_Class1_get_test(CLA_Class1 * self);
 
 void CLA_Class1_set_test(CLA_Class1 * self, int val);
 
-void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
+void CLA_Class1_get_m_name(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc);
 
-void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self, char *val,
+void CLA_Class1_set_m_name(CLA_Class1 * self, char *val,
     int SHT_val_len);
 
 #ifdef __cplusplus

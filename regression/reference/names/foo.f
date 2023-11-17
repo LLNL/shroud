@@ -53,7 +53,6 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Attrs:     +api(capptr)+intent(ctor)
         ! Statement: f_ctor_shadow_scalar_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
@@ -67,7 +66,6 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine XXX_TES_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
@@ -78,7 +76,6 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Attrs:     +intent(subroutine)
         ! Statement: f_subroutine
         subroutine XXX_TES_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
@@ -99,7 +96,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Attrs:     +api(capptr)+intent(ctor)
     ! Statement: f_ctor_shadow_scalar_capptr
     function names_defaultctor() &
             result(SHT_rv)
@@ -113,7 +109,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine names_method1(obj)
         class(FNames) :: obj
@@ -124,7 +119,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
-    ! Attrs:     +intent(subroutine)
     ! Statement: f_subroutine
     subroutine names_method2(obj2)
         class(FNames) :: obj2

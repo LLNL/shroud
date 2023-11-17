@@ -22,7 +22,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: c_ctor_shadow_scalar_capptr
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {
@@ -36,7 +35,6 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 
 // ----------------------------------------
 // Function:  int get_ivar
-// Attrs:     +intent(function)
 // Statement: c_function_native_scalar
 int CLA_Shape_get_ivar(const CLA_Shape * self)
 {

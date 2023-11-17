@@ -332,31 +332,6 @@ class CheckAst(unittest.TestCase):
         f1 = cls1.add_declaration("void push_back( const T& value );")
         self.assertIsInstance(f1, ast.FunctionNode)
 
-    def test_d_generate1(self):
-        """char bufferify
-        Generate an additional function with len and len_trim attributes.
-        """
-        library = ast.LibraryNode()
-        self.assertEqual(len(library.functions), 0)
-        library.add_function("void func1(char * arg)")
-        self.assertEqual(len(library.functions), 1)
-
-        generate.generate_functions(library, None)
-#        import json
-#        from shroud import todict
-#        print(json.dumps(todict.to_dict(library),
-#                         indent=4, sort_keys=True, separators=(',', ': ')))
-        
-        self.assertEqual(len(library.functions), 2)
-        self.assertEqual(
-            library.functions[0].declgen,
-            "void func1(char * arg)",
-        )
-        self.assertEqual(
-            library.functions[1].declgen,
-            "void func1(char * arg)",
-        )
-
     def test_function_template1(self):
         """Test function templates.
         """

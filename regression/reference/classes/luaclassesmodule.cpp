@@ -28,15 +28,12 @@ extern "C" {
 // Class1(int flag +value)
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: lua_ctor_scalar
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: lua_ctor_scalar
 // ----------------------------------------
 // Argument:  int flag +value
-// Attrs:     +intent(in)
 // Statement: lua_in_native_scalar
 static int l_Class1_ctor(lua_State *L)
 {
@@ -84,7 +81,6 @@ static int l_Class1_ctor(lua_State *L)
 // ~Class1(void) +name(delete)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
-// Attrs:     +intent(dtor)
 // Statement: lua_dtor_scalar
 static int l_Class1_delete(lua_State *L)
 {
@@ -100,7 +96,6 @@ static int l_Class1_delete(lua_State *L)
 // int Method1(void)
 // ----------------------------------------
 // Function:  int Method1
-// Attrs:     +intent(function)
 // Statement: lua_function_native_scalar
 /**
  * \brief returns the value of flag member
@@ -120,7 +115,6 @@ static int l_Class1_Method1(lua_State *L)
 // const std::string & getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: lua_function_string_&
 /**
  * \brief test helper
@@ -140,11 +134,9 @@ static int l_Class1_getName(lua_State *L)
 // DIRECTION directionFunc(DIRECTION arg +value)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Attrs:     +intent(function)
 // Statement: lua_function_native_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
-// Attrs:     +intent(in)
 // Statement: lua_in_native_scalar
 static int l_Class1_directionFunc(lua_State *L)
 {
@@ -176,7 +168,6 @@ static const struct luaL_Reg l_Class1_Reg [] = {
 // const std::string & getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(function)
 // Statement: lua_function_string_&
 /**
  * \brief test helper
@@ -206,7 +197,6 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // Shape(void)
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: lua_ctor_scalar
 static int l_Shape_ctor(lua_State *L)
 {
@@ -225,7 +215,6 @@ static int l_Shape_ctor(lua_State *L)
 // int get_ivar(void) const
 // ----------------------------------------
 // Function:  int get_ivar
-// Attrs:     +intent(function)
 // Statement: lua_function_native_scalar
 static int l_Shape_get_ivar(lua_State *L)
 {
@@ -251,7 +240,6 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // Circle(void)
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: lua_ctor_scalar
 static int l_Circle_ctor(lua_State *L)
 {
@@ -279,11 +267,9 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Attrs:     +intent(function)
 // Statement: lua_function_native_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
-// Attrs:     +intent(in)
 // Statement: lua_in_native_scalar
 static int l_directionFunc(lua_State *L)
 {
@@ -299,11 +285,9 @@ static int l_directionFunc(lua_State *L)
 // void set_global_flag(int arg +value)
 // ----------------------------------------
 // Function:  void set_global_flag
-// Attrs:     +intent(subroutine)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
-// Attrs:     +intent(in)
 // Statement: lua_in_native_scalar
 static int l_set_global_flag(lua_State *L)
 {
@@ -317,7 +301,6 @@ static int l_set_global_flag(lua_State *L)
 // int get_global_flag(void)
 // ----------------------------------------
 // Function:  int get_global_flag
-// Attrs:     +intent(function)
 // Statement: lua_function_native_scalar
 static int l_get_global_flag(lua_State *L)
 {
@@ -331,7 +314,6 @@ static int l_get_global_flag(lua_State *L)
 // const std::string & LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Attrs:     +deref(copy)+intent(function)
 // Statement: lua_function_string_&
 static int l_LastFunctionCalled(lua_State *L)
 {

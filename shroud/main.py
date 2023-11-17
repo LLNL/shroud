@@ -24,6 +24,7 @@ from . import ast
 from . import declast
 from . import fcfmt
 from . import generate
+from . import metaattrs
 from . import metadata
 from . import splicer
 from . import statements
@@ -538,6 +539,7 @@ def main_with_args(args):
         wrap = newlibrary.wrap
 
         if wrap.c or wrap.fortran:
+            metaattrs.FillMeta(newlibrary).meta_library()
             fcfmt.FillFormat(newlibrary).fmt_library()
         
         # Wrap C functions first to see which actually generate wrappers

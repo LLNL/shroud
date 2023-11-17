@@ -12,6 +12,8 @@ copyright:
 
 library: wrap
 
+cxx_header: wrap.hpp
+
 options:
   # Do not wrap anything by default
   wrap_c: False
@@ -22,7 +24,7 @@ options:
 declarations:
 - decl: class Class1
   declarations:
-  - decl: void FuncInClass(void)
+  - decl: int FuncInClass(void)
     options:
       wrap_fortran: True
 

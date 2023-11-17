@@ -32,7 +32,6 @@
 
 // ----------------------------------------
 // Function:  void One
-// Attrs:     +intent(subroutine)
 // Statement: py_default
 static char PY_One__doc__[] =
 "documentation"

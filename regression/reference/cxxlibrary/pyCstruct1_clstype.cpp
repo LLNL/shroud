@@ -43,15 +43,12 @@ PY_Cstruct1_cls_tp_del (PY_Cstruct1_cls *self)
 
 // ----------------------------------------
 // Function:  Cstruct1_cls +name(Cstruct1_cls_ctor)
-// Attrs:     +intent(ctor)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int ifield
-// Attrs:     +intent(in)
 // Statement: py_ctor_native_scalar_numpy
 // ----------------------------------------
 // Argument:  double dfield
-// Attrs:     +intent(in)
 // Statement: py_ctor_native_scalar_numpy
 static int
 PY_Cstruct1_cls_tp_init(

@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# run/references
+# run/arrayclass
 #
 include $(top)/regression/run/defaults.mk
 

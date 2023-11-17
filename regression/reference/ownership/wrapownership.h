@@ -32,9 +32,11 @@ int * OWN_ReturnIntPtrRaw(void);
 
 int * OWN_ReturnIntPtrScalar(void);
 
-int OWN_ReturnIntPtrScalar_extrawrapper(void);
+int OWN_ReturnIntPtrScalar_bufferify(void);
 
 int * OWN_ReturnIntPtrPointer(void);
+
+int * OWN_ReturnIntPtrPointer_bufferify(void);
 
 int * OWN_ReturnIntPtrDimRaw(int * len);
 

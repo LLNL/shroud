@@ -26,7 +26,6 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +api(capptr)+intent(ctor)
 // Statement: c_ctor_shadow_scalar_capptr
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
@@ -40,7 +39,6 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 
 // ----------------------------------------
 // Function:  ~Class2
-// Attrs:     +intent(dtor)
 // Statement: c_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
@@ -54,11 +52,9 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 
 // ----------------------------------------
 // Function:  void func1
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: c_in_shadow_*
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
@@ -73,11 +69,9 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 
 // ----------------------------------------
 // Function:  void acceptClass3
-// Attrs:     +intent(subroutine)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: c_in_shadow_*
 void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg)
 {

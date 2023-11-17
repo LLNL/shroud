@@ -110,11 +110,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -123,16 +129,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::NoReturnNoArguments(\t)",
+                            "C_name": "TUT_NoReturnNoArguments",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_no_return_no_arguments",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::NoReturnNoArguments(\t)",
+                            "C_name": "TUT_NoReturnNoArguments",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_no_return_no_arguments",
+                            "F_C_name": "no_return_no_arguments",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -144,9 +154,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_NoReturnNoArguments",
                     "C_name_api": "NoReturnNoArguments",
-                    "F_C_name": "no_return_no_arguments",
                     "F_name_api": "no_return_no_arguments",
                     "F_name_function": "no_return_no_arguments",
                     "F_name_generic": "no_return_no_arguments",
@@ -220,23 +228,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -246,8 +272,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_PassByValue",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
+                            "F_C_name": "c_pass_by_value",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -266,10 +294,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_PassByValue",
                             "C_prototype": "double arg1,\t int arg2",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_pass_by_value",
+                            "F_C_name": "pass_by_value",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t arg2",
@@ -474,9 +504,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_PassByValue",
                     "C_name_api": "PassByValue",
-                    "F_C_name": "pass_by_value",
                     "F_name_api": "pass_by_value",
                     "F_name_function": "pass_by_value",
                     "F_name_generic": "pass_by_value",
@@ -490,7 +518,6 @@
             },
             {
                 "<FUNCTION>": "ConcatenateStrings  2 ****************************************",
-                "_PTR_F_C_index": "30",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -567,11 +594,141 @@
                 "name": "ConcatenateStrings",
                 "options": {},
                 "wrap": {
+                    "c": true,
+                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_string_scalar"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string_&"
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
+                        },
+                        "arg2": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
+                        "fmtc": {
+                            "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
+                            "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
+                            "C_name": "TUT_ConcatenateStrings",
+                            "C_prototype": "const char * arg1,\t const char * arg2",
+                            "C_return_type": "const char",
+                            "F_C_arguments": "arg1,\t arg2",
+                            "F_C_name": "c_concatenate_strings",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "const ",
+                            "c_get_value": "",
+                            "c_rv_decl": "const char SHC_rv",
+                            "c_type": "char",
+                            "c_val": "SHCXX_rv.c_str()",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_rv_decl": "const std::string SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_string_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
+                            "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
+                            "C_name": "TUT_ConcatenateStrings_bufferify",
+                            "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc,\t TUT_SHROUD_capsule_data *SHT_rv_capsule",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_C_call": "c_concatenate_strings_bufferify",
+                            "F_C_name": "c_concatenate_strings_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
+                            "F_arguments": "arg1,\t arg2",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "const ",
+                            "c_helper_array_context": "TUT_SHROUD_array",
+                            "c_helper_copy_string": "TUT_ShroudCopyString",
+                            "c_helper_string_to_cdesc": "ShroudStringToCdesc",
+                            "c_type": "char",
+                            "c_var": "SHC_rv",
+                            "c_var_capsule": "SHT_rv_capsule",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                            "cxx_rv_decl": "*SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_helper_array_context": "TUT_SHROUD_array",
+                            "f_helper_capsule_dtor": "TUT_SHROUD_capsule_dtor",
+                            "f_helper_copy_string": "TUT_SHROUD_copy_string",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_capsule": "SHT_rv_capsule",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_capsule": "SHT_rv_capsule",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                        },
                         "fmtl": {
                             "c_var": "SHCXX_rv.c_str()",
                             "cxx_addr": "&",
@@ -599,6 +756,57 @@
                         }
                     },
                     "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "i_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_string_&"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "c_var_len": "SHT_arg1_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "f_var_len": "SHT_arg1_len",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
+                            "i_var_len": "SHT_arg1_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_string_&_buf"
+                        },
                         "fmtl": {
                             "LUA_index": 1,
                             "c_deref": "",
@@ -633,6 +841,57 @@
                         }
                     },
                     "arg2": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg2",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg2",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg2",
+                            "i_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_string_&"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "arg2",
+                            "c_var_len": "SHT_arg2_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg2",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg2",
+                            "f_var_len": "SHT_arg2_len",
+                            "fc_var": "arg2",
+                            "i_var": "arg2",
+                            "i_var_len": "SHT_arg2_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_string_&_buf"
+                        },
                         "fmtl": {
                             "LUA_index": 2,
                             "c_deref": "",
@@ -670,235 +929,13 @@
                 "zz_fmtdict": {
                     "C_name_api": "ConcatenateStrings",
                     "F_name_api": "concatenate_strings",
+                    "F_name_function": "concatenate_strings",
+                    "F_name_generic": "concatenate_strings",
+                    "F_name_impl": "concatenate_strings",
                     "LUA_name": "ConcatenateStrings",
                     "LUA_name_api": "ConcatenateStrings",
                     "LUA_name_impl": "l_ConcatenateStrings",
                     "PY_name_impl": "PY_ConcatenateStrings",
-                    "function_name": "ConcatenateStrings"
-                }
-            },
-            {
-                "<FUNCTION>": "ConcatenateStrings  30 ****************************************",
-                "_PTR_C_CXX_index": "2",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 2,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
-                        "name": "ConcatenateStrings",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "arg1",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "arg2",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)",
-                "doxygen": {
-                    "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
-                },
-                "helpers": {
-                    "c": [
-                        "array_context",
-                        "string_to_cdesc",
-                        "copy_string",
-                        "char_len_trim"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_string",
-                        "capsule_dtor"
-                    ]
-                },
-                "name": "ConcatenateStrings",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
-                        },
-                        "arg1": {
-                            "stmt": "f_in_string_&_buf"
-                        },
-                        "arg2": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
-                            "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
-                            "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc,\t TUT_SHROUD_capsule_data *SHT_rv_capsule",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
-                            "F_C_call": "c_concatenate_strings_bufferify",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc,\t SHT_rv_capsule",
-                            "F_arguments": "arg1,\t arg2",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "const ",
-                            "c_helper_array_context": "TUT_SHROUD_array",
-                            "c_helper_copy_string": "TUT_ShroudCopyString",
-                            "c_helper_string_to_cdesc": "ShroudStringToCdesc",
-                            "c_type": "char",
-                            "c_var": "SHC_rv",
-                            "c_var_capsule": "SHT_rv_capsule",
-                            "c_var_cdesc": "SHT_rv_cdesc",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                            "cxx_rv_decl": "*SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "f_helper_array_context": "TUT_SHROUD_array",
-                            "f_helper_capsule_dtor": "TUT_SHROUD_capsule_dtor",
-                            "f_helper_copy_string": "TUT_SHROUD_copy_string",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "f_var_capsule": "SHT_rv_capsule",
-                            "f_var_cdesc": "SHT_rv_cdesc",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "i_var_capsule": "SHT_rv_capsule",
-                            "i_var_cdesc": "SHT_rv_cdesc",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
-                        }
-                    },
-                    "arg1": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_helper_char_len_trim": "ShroudCharLenTrim",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "c_var_len": "SHT_arg1_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_arg1",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg1",
-                            "f_var_len": "SHT_arg1_len",
-                            "fc_var": "arg1",
-                            "i_var": "arg1",
-                            "i_var_len": "SHT_arg1_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_buf"
-                        }
-                    },
-                    "arg2": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_helper_char_len_trim": "ShroudCharLenTrim",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "arg2",
-                            "c_var_len": "SHT_arg2_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_arg2",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg2",
-                            "f_var_len": "SHT_arg2_len",
-                            "fc_var": "arg2",
-                            "i_var": "arg2",
-                            "i_var_len": "SHT_arg2_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "TUT_ConcatenateStrings_bufferify",
-                    "C_name_api": "ConcatenateStrings",
-                    "F_C_name": "c_concatenate_strings_bufferify",
-                    "F_name_api": "concatenate_strings",
-                    "F_name_function": "concatenate_strings",
-                    "F_name_generic": "concatenate_strings",
-                    "F_name_impl": "concatenate_strings",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "ConcatenateStrings"
                 }
             },
@@ -942,11 +979,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -955,8 +998,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\t)",
+                            "C_name": "TUT_UseDefaultArguments",
                             "C_prototype": "void",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -974,10 +1019,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\t)",
+                            "C_name": "TUT_UseDefaultArguments",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
                             "F_C_call": "c_use_default_arguments",
+                            "F_C_name": "c_use_default_arguments",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -1008,9 +1055,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
@@ -1077,17 +1122,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -1097,8 +1154,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TUT_UseDefaultArguments_arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments_arg1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1117,10 +1176,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
                             "C_call_list": "arg1",
+                            "C_name": "TUT_UseDefaultArguments_arg1",
                             "C_prototype": "double arg1",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_use_default_arguments_arg1",
+                            "F_C_name": "c_use_default_arguments_arg1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1",
@@ -1195,9 +1256,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments_arg1",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments_arg1",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments_arg1",
                     "F_name_generic": "use_default_arguments",
@@ -1287,23 +1346,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_bool_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_bool_scalar"
                         }
                     }
@@ -1313,8 +1390,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
+                            "F_C_name": "c_use_default_arguments_arg1_arg2",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -1333,10 +1412,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
+                            "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                             "C_prototype": "double arg1,\t bool arg2",
                             "C_return_type": "double",
                             "F_C_arguments": "arg1,\t arg2",
                             "F_C_call": "c_use_default_arguments_arg1_arg2",
+                            "F_C_name": "c_use_default_arguments_arg1_arg2",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg1,\t SHT_arg2_cxx",
@@ -1544,9 +1625,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultArguments_arg1_arg2",
                     "C_name_api": "UseDefaultArguments",
-                    "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_name_api": "use_default_arguments",
                     "F_name_function": "use_default_arguments_arg1_arg2",
                     "F_name_generic": "use_default_arguments",
@@ -1562,7 +1641,6 @@
             },
             {
                 "<FUNCTION>": "OverloadedFunction  4 ****************************************",
-                "_PTR_F_C_index": "31",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1612,16 +1690,38 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
                         }
                     }
                 },
@@ -1630,11 +1730,29 @@
                         "fmtc": {
                             "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
                             "C_call_list": "SHCXX_name",
+                            "C_name": "TUT_OverloadedFunction_from_name",
                             "C_prototype": "const char * name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
+                            "F_C_name": "c_overloaded_function_from_name",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
+                            "C_call_list": "SHCXX_name",
+                            "C_name": "TUT_OverloadedFunction_from_name_bufferify",
+                            "C_prototype": "char *name,\t int SHT_name_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "name,\t SHT_name_len",
+                            "F_C_call": "c_overloaded_function_from_name_bufferify",
+                            "F_C_name": "c_overloaded_function_from_name_bufferify",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "name,\t SHT_name_len",
+                            "F_arguments": "name",
+                            "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
+                            "stmt_name": "f_subroutine"
                         },
                         "fmtl": {
                             "stmt": "lua_subroutine"
@@ -1663,6 +1781,34 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_string_&"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "c_var_len": "SHT_name_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name",
+                            "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "i_var": "name",
+                            "i_var_len": "SHT_name_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_string_&_buf"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1699,144 +1845,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_name",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_name",
-                    "F_name_api": "overloaded_function",
-                    "LUA_name": "OverloadedFunction",
-                    "LUA_name_api": "OverloadedFunction",
-                    "LUA_name_impl": "l_OverloadedFunction",
-                    "PY_name_impl": "PY_OverloadedFunction_from_name",
-                    "function_name": "OverloadedFunction",
-                    "function_suffix": "_from_name"
-                }
-            },
-            {
-                "<FUNCTION>": "OverloadedFunction  31 ****************************************",
-                "_PTR_C_CXX_index": "4",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 4,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "OverloadedFunction",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name)",
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "OverloadedFunction",
-                "options": {},
-                "splicer_group": "buf",
-                "user_fmt": {
-                    "function_suffix": "_from_name"
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_subroutine"
-                        },
-                        "name": {
-                            "stmt": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "tutorial::OverloadedFunction(\tSHCXX_name)",
-                            "C_call_list": "SHCXX_name",
-                            "C_prototype": "char *name,\t int SHT_name_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_name_len",
-                            "F_C_call": "c_overloaded_function_from_name_bufferify",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "name,\t SHT_name_len",
-                            "F_arguments": "name",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
-                        }
-                    },
-                    "name": {
-                        "fmtf": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_helper_char_len_trim": "ShroudCharLenTrim",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "c_var_len": "SHT_name_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_name",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "name",
-                            "f_var_len": "SHT_name_len",
-                            "fc_var": "name",
-                            "i_var": "name",
-                            "i_var_len": "SHT_name_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_buf"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_name_bufferify",
-                    "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_name_api": "overloaded_function",
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
                     "F_name_impl": "overloaded_function_from_name",
-                    "f_c_suffix": "_bufferify",
+                    "LUA_name": "OverloadedFunction",
+                    "LUA_name_api": "OverloadedFunction",
+                    "LUA_name_impl": "l_OverloadedFunction",
+                    "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name"
                 }
@@ -1891,17 +1908,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "indx": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "indx": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -1911,17 +1940,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
+                            "C_name": "TUT_OverloadedFunction_from_index",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
+                            "F_C_name": "c_overloaded_function_from_index",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::OverloadedFunction(\tindx)",
                             "C_call_list": "indx",
+                            "C_name": "TUT_OverloadedFunction_from_index",
                             "C_prototype": "int indx",
                             "C_return_type": "void",
                             "F_C_arguments": "indx",
                             "F_C_call": "c_overloaded_function_from_index",
+                            "F_C_name": "c_overloaded_function_from_index",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "indx",
                             "F_arguments": "indx",
@@ -2008,9 +2041,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_OverloadedFunction_from_index",
                     "C_name_api": "OverloadedFunction",
-                    "F_C_name": "c_overloaded_function_from_index",
                     "F_name_api": "overloaded_function",
                     "F_name_function": "overloaded_function_from_index",
                     "F_name_generic": "overloaded_function",
@@ -2178,17 +2209,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2198,17 +2241,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_int",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_template_argument_int",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateArgument<int>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_int",
                             "C_prototype": "int arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_template_argument_int",
+                            "F_C_name": "c_template_argument_int",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
@@ -2296,9 +2343,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateArgument_int",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_int",
                     "F_name_api": "template_argument",
                     "F_name_function": "template_argument_int",
                     "F_name_generic": "template_argument",
@@ -2395,17 +2440,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -2415,17 +2472,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_double",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
+                            "F_C_name": "c_template_argument_double",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateArgument<double>(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_TemplateArgument_double",
                             "C_prototype": "double arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_template_argument_double",
+                            "F_C_name": "c_template_argument_double",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
@@ -2513,9 +2574,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateArgument_double",
                     "C_name_api": "TemplateArgument",
-                    "F_C_name": "c_template_argument_double",
                     "F_name_api": "template_argument",
                     "F_name_function": "template_argument_double",
                     "F_name_generic": "template_argument",
@@ -2654,11 +2713,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -2667,8 +2732,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateReturn<int>(\t)",
+                            "C_name": "TUT_TemplateReturn_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
+                            "F_C_name": "c_template_return_int",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -2686,10 +2753,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<int>(\t)",
+                            "C_name": "TUT_TemplateReturn_int",
                             "C_prototype": "void",
                             "C_return_type": "int",
                             "F_C_arguments": "",
                             "F_C_call": "c_template_return_int",
+                            "F_C_name": "c_template_return_int",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2721,9 +2790,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_TemplateReturn_int",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_int",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
@@ -2801,11 +2868,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         }
                     }
@@ -2814,8 +2887,10 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::TemplateReturn<double>(\t)",
+                            "C_name": "TUT_TemplateReturn_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
+                            "F_C_name": "c_template_return_double",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "double",
@@ -2833,10 +2908,12 @@
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<double>(\t)",
+                            "C_name": "TUT_TemplateReturn_double",
                             "C_prototype": "void",
                             "C_return_type": "double",
                             "F_C_arguments": "",
                             "F_C_call": "c_template_return_double",
+                            "F_C_name": "c_template_return_double",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arguments": "",
@@ -2868,9 +2945,7 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_TemplateReturn_double",
                     "C_name_api": "TemplateReturn",
-                    "F_C_name": "c_template_return_double",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
@@ -2909,11 +2984,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         }
                     }
@@ -2922,16 +3003,20 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
+                            "C_name": "TUT_FortranGenericOverloaded_0",
                             "C_prototype": "void",
                             "C_return_type": "void",
+                            "F_C_name": "c_fortran_generic_overloaded_0",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\t)",
+                            "C_name": "TUT_FortranGenericOverloaded_0",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
                             "F_C_call": "c_fortran_generic_overloaded_0",
+                            "F_C_name": "c_fortran_generic_overloaded_0",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
@@ -2943,9 +3028,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_0",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_0",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_0",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -3114,12 +3197,21 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_string_&"
                         }
                     }
@@ -3129,9 +3221,11 @@
                         "fmtc": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1",
                             "C_prototype": "const char * name,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t arg2",
+                            "F_C_name": "c_fortran_generic_overloaded_1",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
@@ -3254,9 +3348,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1",
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "function_name": "FortranGenericOverloaded",
@@ -3267,7 +3359,6 @@
                 "<FUNCTION>": "FortranGenericOverloaded  28 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "9",
-                "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3335,100 +3426,28 @@
                 "options": {
                     "F_string_len_trim": true
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "FortranGenericOverloaded",
-                    "F_name_api": "fortran_generic_overloaded",
-                    "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_float"
-                }
-            },
-            {
-                "<FUNCTION>": "FortranGenericOverloaded  32 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "28",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "FortranGenericOverloaded",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg2",
-                                    "typemap_name": "float"
-                                },
-                                "specifier": [
-                                    "float"
-                                ],
-                                "typemap_name": "float"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "FortranGenericOverloaded",
-                "options": {
-                    "F_string_len_trim": true
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
                             "stmt": "f_in_string_&_buf"
                         }
                     }
@@ -3438,14 +3457,17 @@
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                             "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
+                            "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3507,14 +3529,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_float",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float"
                 }
@@ -3523,7 +3542,6 @@
                 "<FUNCTION>": "FortranGenericOverloaded  29 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "9",
-                "_PTR_F_C_index": "33",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3591,100 +3609,28 @@
                 "options": {
                     "F_string_len_trim": true
                 },
-                "wrap": {},
-                "zz_fmtdict": {
-                    "C_name_api": "FortranGenericOverloaded",
-                    "F_name_api": "fortran_generic_overloaded",
-                    "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_double"
-                }
-            },
-            {
-                "<FUNCTION>": "FortranGenericOverloaded  33 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "29",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "fortran_generic",
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 9,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
-                        "name": "FortranGenericOverloaded",
-                        "params": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "arg2",
-                                    "typemap_name": "double"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
-                "helpers": {
-                    "c": [
-                        "char_len_trim"
-                    ]
-                },
-                "name": "FortranGenericOverloaded",
-                "options": {
-                    "F_string_len_trim": true
-                },
-                "splicer_group": "buf",
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
                             "stmt": "f_in_string_&_buf"
                         }
                     }
@@ -3694,14 +3640,17 @@
                         "fmtf": {
                             "C_call_function": "tutorial::FortranGenericOverloaded(\tSHCXX_name,\t arg2)",
                             "C_call_list": "SHCXX_name,\t arg2",
+                            "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
                             "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                             "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
+                            "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                             "F_arguments": "name,\t arg2",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -3763,14 +3712,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
                     "C_name_api": "FortranGenericOverloaded",
-                    "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_name_api": "fortran_generic_overloaded",
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_double",
-                    "f_c_suffix": "_bufferify",
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double"
                 }
@@ -3830,17 +3776,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -3850,8 +3808,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
+                            "C_name": "TUT_UseDefaultOverload_num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -3870,10 +3830,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
                             "C_call_list": "num",
+                            "C_name": "TUT_UseDefaultOverload_num",
                             "C_prototype": "int num",
                             "C_return_type": "int",
                             "F_C_arguments": "num",
                             "F_C_call": "c_use_default_overload_num",
+                            "F_C_name": "c_use_default_overload_num",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num",
@@ -3948,9 +3910,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num",
                     "F_name_generic": "use_default_overload",
@@ -4031,23 +3991,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4057,8 +4035,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_num_offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num_offset",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4077,10 +4057,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
                             "C_call_list": "num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_num_offset",
                             "C_prototype": "int num,\t int offset",
                             "C_return_type": "int",
                             "F_C_arguments": "num,\t offset",
                             "F_C_call": "c_use_default_overload_num_offset",
+                            "F_C_name": "c_use_default_overload_num_offset",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num,\t offset",
@@ -4198,9 +4180,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num_offset",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num_offset",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num_offset",
                     "F_name_generic": "use_default_overload",
@@ -4304,29 +4284,53 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "stride": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "stride": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4336,8 +4340,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_num_offset_stride",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4356,10 +4362,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
                             "C_call_list": "num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                             "C_prototype": "int num,\t int offset,\t int stride",
                             "C_return_type": "int",
                             "F_C_arguments": "num,\t offset,\t stride",
                             "F_C_call": "c_use_default_overload_num_offset_stride",
+                            "F_C_name": "c_use_default_overload_num_offset_stride",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "num,\t offset,\t stride",
@@ -4638,9 +4646,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_num_offset_stride",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_num_offset_stride",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_num_offset_stride",
                     "F_name_generic": "use_default_overload",
@@ -4720,23 +4726,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -4746,8 +4770,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
+                            "C_name": "TUT_UseDefaultOverload_3",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_3",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -4766,10 +4792,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
                             "C_call_list": "type,\t num",
+                            "C_name": "TUT_UseDefaultOverload_3",
                             "C_prototype": "double type,\t int num",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num",
                             "F_C_call": "c_use_default_overload_3",
+                            "F_C_name": "c_use_default_overload_3",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num",
@@ -4887,9 +4915,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_3",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_3",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_3",
                     "F_name_generic": "use_default_overload",
@@ -4981,29 +5007,53 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5013,8 +5063,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_4",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_4",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5033,10 +5085,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
                             "C_call_list": "type,\t num,\t offset",
+                            "C_name": "TUT_UseDefaultOverload_4",
                             "C_prototype": "double type,\t int num,\t int offset",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num,\t offset",
                             "F_C_call": "c_use_default_overload_4",
+                            "F_C_name": "c_use_default_overload_4",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num,\t offset",
@@ -5197,9 +5251,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_4",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_4",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_4",
                     "F_name_generic": "use_default_overload",
@@ -5314,35 +5366,65 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "stride": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "num": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "offset": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "stride": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "type": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5352,8 +5434,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_5",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
+                            "F_C_name": "c_use_default_overload_5",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -5372,10 +5456,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
                             "C_call_list": "type,\t num,\t offset,\t stride",
+                            "C_name": "TUT_UseDefaultOverload_5",
                             "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                             "C_return_type": "int",
                             "F_C_arguments": "type,\t num,\t offset,\t stride",
                             "F_C_call": "c_use_default_overload_5",
+                            "F_C_name": "c_use_default_overload_5",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "type,\t num,\t offset,\t stride",
@@ -5728,9 +5814,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_UseDefaultOverload_5",
                     "C_name_api": "UseDefaultOverload",
-                    "F_C_name": "c_use_default_overload_5",
                     "F_name_api": "use_default_overload",
                     "F_name_function": "use_default_overload_5",
                     "F_name_generic": "use_default_overload",
@@ -5787,17 +5871,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -5807,8 +5903,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_typefunc",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
+                            "F_C_name": "c_typefunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "TUT_TypeID",
@@ -5827,10 +5925,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::typefunc(\targ)",
                             "C_call_list": "arg",
+                            "C_name": "TUT_typefunc",
                             "C_prototype": "TUT_TypeID arg",
                             "C_return_type": "TUT_TypeID",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc",
+                            "F_C_name": "typefunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -5961,9 +6061,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_typefunc",
                     "C_name_api": "typefunc",
-                    "F_C_name": "typefunc",
                     "F_name_api": "typefunc",
                     "F_name_function": "typefunc",
                     "F_name_generic": "typefunc",
@@ -6021,17 +6119,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -6041,8 +6151,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_enumfunc",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
+                            "F_C_name": "c_enumfunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TUT_EnumTypeID SHC_rv",
@@ -6063,10 +6175,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_enumfunc",
                             "C_prototype": "TUT_EnumTypeID arg",
                             "C_return_type": "TUT_EnumTypeID",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_enumfunc",
+                            "F_C_name": "enumfunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -6205,9 +6319,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_enumfunc",
                     "C_name_api": "enumfunc",
-                    "F_C_name": "enumfunc",
                     "F_name_api": "enumfunc",
                     "F_name_function": "enumfunc",
                     "F_name_generic": "enumfunc",
@@ -6265,17 +6377,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "arg": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -6285,8 +6409,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_colorfunc",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
+                            "F_C_name": "c_colorfunc",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "int SHC_rv",
@@ -6307,10 +6433,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
+                            "C_name": "TUT_colorfunc",
                             "C_prototype": "int arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_colorfunc",
+                            "F_C_name": "colorfunc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
@@ -6449,9 +6577,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_colorfunc",
                     "C_name_api": "colorfunc",
-                    "F_C_name": "colorfunc",
                     "F_name_api": "colorfunc",
                     "F_name_function": "colorfunc",
                     "F_name_generic": "colorfunc",
@@ -6540,23 +6666,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "c_subroutine"
                         },
                         "max": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_&"
                         },
                         "min": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "c_out_native_&"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
                             "stmt": "f_subroutine"
                         },
                         "max": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_&"
                         },
                         "min": {
+                            "meta": {
+                                "intent": "out"
+                            },
                             "stmt": "f_out_native_&"
                         }
                     }
@@ -6566,17 +6710,21 @@
                         "fmtc": {
                             "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
+                            "C_name": "TUT_getMinMax",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
+                            "F_C_name": "c_get_min_max",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::getMinMax(\t*min,\t *max)",
                             "C_call_list": "*min,\t *max",
+                            "C_name": "TUT_getMinMax",
                             "C_prototype": "int * min,\t int * max",
                             "C_return_type": "void",
                             "F_C_arguments": "min,\t max",
                             "F_C_call": "c_get_min_max",
+                            "F_C_name": "get_min_max",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "min,\t max",
                             "F_arguments": "min,\t max",
@@ -6710,9 +6858,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_getMinMax",
                     "C_name_api": "getMinMax",
-                    "F_C_name": "get_min_max",
                     "F_name_api": "get_min_max",
                     "F_name_function": "get_min_max",
                     "F_name_generic": "get_min_max",
@@ -6811,23 +6957,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         },
                         "incr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "c_in_native_scalar"
                         }
                     },
                     "f": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "f_function_native_scalar"
                         },
                         "in": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         },
                         "incr": {
+                            "meta": {
+                                "intent": "in"
+                            },
                             "stmt": "f_in_native_scalar"
                         }
                     }
@@ -6837,8 +7001,10 @@
                         "fmtc": {
                             "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
+                            "C_name": "TUT_callback1",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
+                            "F_C_name": "c_callback1",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "int",
@@ -6857,10 +7023,12 @@
                         "fmtf": {
                             "C_call_function": "tutorial::callback1(\tin,\t incr)",
                             "C_call_list": "in,\t incr",
+                            "C_name": "TUT_callback1",
                             "C_prototype": "int in,\t int ( * incr)(\tint)",
                             "C_return_type": "int",
                             "F_C_arguments": "in,\t incr",
                             "F_C_call": "c_callback1",
+                            "F_C_name": "callback1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "in,\t incr",
@@ -6978,9 +7146,7 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_callback1",
                     "C_name_api": "callback1",
-                    "F_C_name": "callback1",
                     "F_name_api": "callback1",
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
@@ -6990,7 +7156,6 @@
             },
             {
                 "<FUNCTION>": "LastFunctionCalled  17 ****************************************",
-                "_PTR_F_C_index": "34",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7026,13 +7191,27 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
                             "stmt": "c_function_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_&_buf_copy"
                         }
                     }
                 },
@@ -7040,9 +7219,11 @@
                     "+result": {
                         "fmtc": {
                             "C_call_function": "tutorial::LastFunctionCalled(\t)",
+                            "C_name": "TUT_LastFunctionCalled",
                             "C_prototype": "void",
                             "C_return_type": "const char *",
                             "F_C_arguments": "",
+                            "F_C_name": "c_last_function_called",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_char_len": "30",
@@ -7068,6 +7249,48 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_function_string_&"
+                        },
+                        "fmtf": {
+                            "C_call_function": "tutorial::LastFunctionCalled(\t)",
+                            "C_name": "TUT_LastFunctionCalled_bufferify",
+                            "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv,\t SHT_rv_len",
+                            "F_C_call": "c_last_function_called_bufferify",
+                            "F_C_name": "c_last_function_called_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_char_len": "30",
+                            "c_const": "const ",
+                            "c_helper_char_copy": "ShroudCharCopy",
+                            "c_type": "char",
+                            "c_var": "SHC_rv",
+                            "c_var_len": "SHT_rv_len",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_rv_decl": "const std::string & SHCXX_rv",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_char_len": "len=30",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_len": "SHT_rv_len",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_len": "SHT_rv_len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_string_&_buf_copy"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv.c_str()",
@@ -7098,122 +7321,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_LastFunctionCalled",
                     "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called",
-                    "F_name_api": "last_function_called",
-                    "LUA_name": "LastFunctionCalled",
-                    "LUA_name_api": "LastFunctionCalled",
-                    "LUA_name_impl": "l_LastFunctionCalled",
-                    "PY_name_impl": "PY_LastFunctionCalled",
-                    "function_name": "LastFunctionCalled"
-                }
-            },
-            {
-                "<FUNCTION>": "LastFunctionCalled  34 ****************************************",
-                "_PTR_C_CXX_index": "17",
-                "_generated": "arg_to_buffer",
-                "_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_orig_node_index": 17,
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "attrs": {
-                            "len": "30"
-                        },
-                        "metaattrs": {
-                            "api": "buf",
-                            "deref": "copy",
-                            "intent": "function"
-                        },
-                        "name": "LastFunctionCalled",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
-                "helpers": {
-                    "c": [
-                        "char_copy"
-                    ]
-                },
-                "name": "LastFunctionCalled",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "stmt": "f_function_string_&_buf_copy"
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "tutorial::LastFunctionCalled(\t)",
-                            "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
-                            "C_return_type": "void",
-                            "F_C_arguments": "SHT_rv,\t SHT_rv_len",
-                            "F_C_call": "c_last_function_called_bufferify",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
-                            "F_arguments": "",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_char_len": "30",
-                            "c_const": "const ",
-                            "c_helper_char_copy": "ShroudCharCopy",
-                            "c_type": "char",
-                            "c_var": "SHC_rv",
-                            "c_var_len": "SHT_rv_len",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                            "cxx_rv_decl": "const std::string & SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "f_char_len": "len=30",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "f_var_len": "SHT_rv_len",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "i_var_len": "SHT_rv_len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name": "TUT_LastFunctionCalled_bufferify",
-                    "C_name_api": "LastFunctionCalled",
-                    "F_C_name": "c_last_function_called_bufferify",
                     "F_name_api": "last_function_called",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "f_c_suffix": "_bufferify",
+                    "LUA_name": "LastFunctionCalled",
+                    "LUA_name_api": "LastFunctionCalled",
+                    "LUA_name_impl": "l_LastFunctionCalled",
+                    "PY_name_impl": "PY_LastFunctionCalled",
                     "function_name": "LastFunctionCalled"
                 }
             }

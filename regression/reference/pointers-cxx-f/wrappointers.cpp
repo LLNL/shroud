@@ -69,82 +69,73 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 
 // ----------------------------------------
 // Function:  void intargs_in
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * arg
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
-// start POI_intargs_in
-void POI_intargs_in(const int * arg)
+// start POI_intargs_in_bufferify
+void POI_intargs_in_bufferify(const int * arg)
 {
-    // splicer begin function.intargs_in
+    // splicer begin function.intargs_in_bufferify
     intargs_in(arg);
-    // splicer end function.intargs_in
+    // splicer end function.intargs_in_bufferify
 }
-// end POI_intargs_in
+// end POI_intargs_in_bufferify
 
 /**
  * Argument is modified by library, defaults to intent(inout).
  */
 // ----------------------------------------
 // Function:  void intargs_inout
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * arg
-// Attrs:     +intent(inout)
 // Statement: f_inout_native_*
-// start POI_intargs_inout
-void POI_intargs_inout(int * arg)
+// start POI_intargs_inout_bufferify
+void POI_intargs_inout_bufferify(int * arg)
 {
-    // splicer begin function.intargs_inout
+    // splicer begin function.intargs_inout_bufferify
     intargs_inout(arg);
-    // splicer end function.intargs_inout
+    // splicer end function.intargs_inout_bufferify
 }
-// end POI_intargs_inout
+// end POI_intargs_inout_bufferify
 
 // ----------------------------------------
 // Function:  void intargs_out
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_intargs_out
-void POI_intargs_out(int * arg)
+// start POI_intargs_out_bufferify
+void POI_intargs_out_bufferify(int * arg)
 {
-    // splicer begin function.intargs_out
+    // splicer begin function.intargs_out_bufferify
     intargs_out(arg);
-    // splicer end function.intargs_out
+    // splicer end function.intargs_out_bufferify
 }
-// end POI_intargs_out
+// end POI_intargs_out_bufferify
 
 // ----------------------------------------
 // Function:  void intargs
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
-// Attrs:     +intent(inout)
 // Statement: f_inout_native_*
 // ----------------------------------------
 // Argument:  int * argout +intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_intargs
-void POI_intargs(const int argin, int * arginout, int * argout)
+// start POI_intargs_bufferify
+void POI_intargs_bufferify(const int argin, int * arginout,
+    int * argout)
 {
-    // splicer begin function.intargs
+    // splicer begin function.intargs_bufferify
     intargs(argin, arginout, argout);
-    // splicer end function.intargs
+    // splicer end function.intargs_bufferify
 }
-// end POI_intargs
+// end POI_intargs_bufferify
 
 /**
  * \brief compute cos of IN and save in OUT
@@ -153,28 +144,24 @@ void POI_intargs(const int argin, int * arginout, int * argout)
  */
 // ----------------------------------------
 // Function:  void cos_doubles
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
 // ----------------------------------------
 // Argument:  double * out +dimension(size(in))+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_cos_doubles
-void POI_cos_doubles(double * in, double * out, int sizein)
+// start POI_cos_doubles_bufferify
+void POI_cos_doubles_bufferify(double * in, double * out, int sizein)
 {
-    // splicer begin function.cos_doubles
+    // splicer begin function.cos_doubles_bufferify
     cos_doubles(in, out, sizein);
-    // splicer end function.cos_doubles
+    // splicer end function.cos_doubles_bufferify
 }
-// end POI_cos_doubles
+// end POI_cos_doubles_bufferify
 
 /**
  * \brief truncate IN argument and save in OUT
@@ -184,28 +171,24 @@ void POI_cos_doubles(double * in, double * out, int sizein)
  */
 // ----------------------------------------
 // Function:  void truncate_to_int
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
 // ----------------------------------------
 // Argument:  int * out +dimension(size(in))+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_truncate_to_int
-void POI_truncate_to_int(double * in, int * out, int sizein)
+// start POI_truncate_to_int_bufferify
+void POI_truncate_to_int_bufferify(double * in, int * out, int sizein)
 {
-    // splicer begin function.truncate_to_int
+    // splicer begin function.truncate_to_int_bufferify
     truncate_to_int(in, out, sizein);
-    // splicer end function.truncate_to_int
+    // splicer end function.truncate_to_int_bufferify
 }
-// end POI_truncate_to_int
+// end POI_truncate_to_int_bufferify
 
 /**
  * \brief fill values into array
@@ -217,24 +200,21 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  */
 // ----------------------------------------
 // Function:  void get_values
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * nvalues +intent(OUT)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_get_values
-void POI_get_values(int * nvalues, int * values)
+// start POI_get_values_bufferify
+void POI_get_values_bufferify(int * nvalues, int * values)
 {
-    // splicer begin function.get_values
+    // splicer begin function.get_values_bufferify
     get_values(nvalues, values);
-    // splicer end function.get_values
+    // splicer end function.get_values_bufferify
 }
-// end POI_get_values
+// end POI_get_values_bufferify
 
 /**
  * \brief fill values into two arrays
@@ -244,169 +224,145 @@ void POI_get_values(int * nvalues, int * values)
  */
 // ----------------------------------------
 // Function:  void get_values2
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_get_values2
-void POI_get_values2(int * arg1, int * arg2)
+// start POI_get_values2_bufferify
+void POI_get_values2_bufferify(int * arg1, int * arg2)
 {
-    // splicer begin function.get_values2
+    // splicer begin function.get_values2_bufferify
     get_values2(arg1, arg2);
-    // splicer end function.get_values2
+    // splicer end function.get_values2_bufferify
 }
-// end POI_get_values2
+// end POI_get_values2_bufferify
 
 // ----------------------------------------
 // Function:  void iota_dimension
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int nvar +value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_iota_dimension
-void POI_iota_dimension(int nvar, int * values)
+// start POI_iota_dimension_bufferify
+void POI_iota_dimension_bufferify(int nvar, int * values)
 {
-    // splicer begin function.iota_dimension
+    // splicer begin function.iota_dimension_bufferify
     iota_dimension(nvar, values);
-    // splicer end function.iota_dimension
+    // splicer end function.iota_dimension_bufferify
 }
-// end POI_iota_dimension
+// end POI_iota_dimension_bufferify
 
 // ----------------------------------------
 // Function:  void Sum
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int len +implied(size(values))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
 // ----------------------------------------
 // Argument:  int * result +intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_Sum
-void POI_Sum(int len, const int * values, int * result)
+// start POI_Sum_bufferify
+void POI_Sum_bufferify(int len, const int * values, int * result)
 {
-    // splicer begin function.Sum
+    // splicer begin function.Sum_bufferify
     Sum(len, values, result);
-    // splicer end function.Sum
+    // splicer end function.Sum_bufferify
 }
-// end POI_Sum
+// end POI_Sum_bufferify
 
 /**
  * Return three values into memory the user provides.
  */
 // ----------------------------------------
 // Function:  void fillIntArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*
-// start POI_fillIntArray
-void POI_fillIntArray(int * out)
+// start POI_fillIntArray_bufferify
+void POI_fillIntArray_bufferify(int * out)
 {
-    // splicer begin function.fillIntArray
+    // splicer begin function.fillIntArray_bufferify
     fillIntArray(out);
-    // splicer end function.fillIntArray
+    // splicer end function.fillIntArray_bufferify
 }
-// end POI_fillIntArray
+// end POI_fillIntArray_bufferify
 
 /**
  * Increment array in place using intent(INOUT).
  */
 // ----------------------------------------
 // Function:  void incrementIntArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
-// Attrs:     +intent(inout)
 // Statement: f_inout_native_*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_incrementIntArray
-void POI_incrementIntArray(int * array, int sizein)
+// start POI_incrementIntArray_bufferify
+void POI_incrementIntArray_bufferify(int * array, int sizein)
 {
-    // splicer begin function.incrementIntArray
+    // splicer begin function.incrementIntArray_bufferify
     incrementIntArray(array, sizein);
-    // splicer end function.incrementIntArray
+    // splicer end function.incrementIntArray_bufferify
 }
-// end POI_incrementIntArray
+// end POI_incrementIntArray_bufferify
 
 // ----------------------------------------
 // Function:  void fill_with_zeros
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double * x +rank(1)
-// Attrs:     +intent(inout)
 // Statement: f_inout_native_*
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_fill_with_zeros
-void POI_fill_with_zeros(double * x, int x_length)
+// start POI_fill_with_zeros_bufferify
+void POI_fill_with_zeros_bufferify(double * x, int x_length)
 {
-    // splicer begin function.fill_with_zeros
+    // splicer begin function.fill_with_zeros_bufferify
     fill_with_zeros(x, x_length);
-    // splicer end function.fill_with_zeros
+    // splicer end function.fill_with_zeros_bufferify
 }
-// end POI_fill_with_zeros
+// end POI_fill_with_zeros_bufferify
 
 // ----------------------------------------
 // Function:  int accumulate
-// Attrs:     +intent(function)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))+value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_accumulate
-int POI_accumulate(const int * arr, size_t len)
+// start POI_accumulate_bufferify
+int POI_accumulate_bufferify(const int * arr, size_t len)
 {
-    // splicer begin function.accumulate
+    // splicer begin function.accumulate_bufferify
     int SHC_rv = accumulate(arr, len);
     return SHC_rv;
-    // splicer end function.accumulate
+    // splicer end function.accumulate_bufferify
 }
-// end POI_accumulate
+// end POI_accumulate_bufferify
 
 /**
  * Return strlen of the first index as a check.
  */
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Attrs:     +intent(function)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
-// Attrs:     +api(buf)+intent(in)
 // Statement: f_in_char_**_buf
 // start POI_acceptCharArrayIn_bufferify
 int POI_acceptCharArrayIn_bufferify(const char *names,
@@ -424,46 +380,40 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
 
 // ----------------------------------------
 // Function:  void setGlobalInt
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int value +value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_setGlobalInt
-void POI_setGlobalInt(int value)
+// start POI_setGlobalInt_bufferify
+void POI_setGlobalInt_bufferify(int value)
 {
-    // splicer begin function.setGlobalInt
+    // splicer begin function.setGlobalInt_bufferify
     setGlobalInt(value);
-    // splicer end function.setGlobalInt
+    // splicer end function.setGlobalInt_bufferify
 }
-// end POI_setGlobalInt
+// end POI_setGlobalInt_bufferify
 
 /**
  * Used to test values global_array.
  */
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Attrs:     +intent(function)
 // Statement: f_function_native_scalar
-// start POI_sumFixedArray
-int POI_sumFixedArray(void)
+// start POI_sumFixedArray_bufferify
+int POI_sumFixedArray_bufferify(void)
 {
-    // splicer begin function.sumFixedArray
+    // splicer begin function.sumFixedArray_bufferify
     int SHC_rv = sumFixedArray();
     return SHC_rv;
-    // splicer end function.sumFixedArray
+    // splicer end function.sumFixedArray_bufferify
 }
-// end POI_sumFixedArray
+// end POI_sumFixedArray_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToScalar
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
@@ -483,14 +433,11 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 /**
  * Return a Fortran pointer to an array which is always the same length.
  */
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
@@ -512,18 +459,14 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
  * Return a Fortran pointer to an array which is the length of
  * the argument ncount.
  */
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 // start POI_getPtrToDynamicArray_bufferify
 void POI_getPtrToDynamicArray_bufferify(
@@ -548,14 +491,11 @@ void POI_getPtrToDynamicArray_bufferify(
  * is computed by C++ function getLen.
  * getLen will be called from C/C++ to compute the shape.
  */
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
@@ -573,14 +513,11 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 }
 // end POI_getPtrToFuncArray_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // start POI_getPtrToConstScalar_bufferify
 void POI_getPtrToConstScalar_bufferify(
@@ -598,14 +535,11 @@ void POI_getPtrToConstScalar_bufferify(
 }
 // end POI_getPtrToConstScalar_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // start POI_getPtrToFixedConstArray_bufferify
 void POI_getPtrToFixedConstArray_bufferify(
@@ -624,18 +558,14 @@ void POI_getPtrToFixedConstArray_bufferify(
 }
 // end POI_getPtrToFixedConstArray_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Statement: f_out_native_**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_*_hidden
 // start POI_getPtrToDynamicConstArray_bufferify
 void POI_getPtrToDynamicConstArray_bufferify(
@@ -660,40 +590,36 @@ void POI_getPtrToDynamicConstArray_bufferify(
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
 // Statement: f_out_native_**_raw
-// start POI_getRawPtrToScalar
-void POI_getRawPtrToScalar(int * * nitems)
+// start POI_getRawPtrToScalar_bufferify
+void POI_getRawPtrToScalar_bufferify(int * * nitems)
 {
-    // splicer begin function.getRawPtrToScalar
+    // splicer begin function.getRawPtrToScalar_bufferify
     getRawPtrToScalar(nitems);
-    // splicer end function.getRawPtrToScalar
+    // splicer end function.getRawPtrToScalar_bufferify
 }
-// end POI_getRawPtrToScalar
+// end POI_getRawPtrToScalar_bufferify
 
 /**
  * Create a Fortran wrapper.
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalarForce
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
 // Statement: f_out_native_**_raw
-// start POI_getRawPtrToScalarForce
-void POI_getRawPtrToScalarForce(int * * nitems)
+// start POI_getRawPtrToScalarForce_bufferify
+void POI_getRawPtrToScalarForce_bufferify(int * * nitems)
 {
-    // splicer begin function.getRawPtrToScalarForce
+    // splicer begin function.getRawPtrToScalarForce_bufferify
     getRawPtrToScalarForce(nitems);
-    // splicer end function.getRawPtrToScalarForce
+    // splicer end function.getRawPtrToScalarForce_bufferify
 }
-// end POI_getRawPtrToScalarForce
+// end POI_getRawPtrToScalarForce_bufferify
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
@@ -702,20 +628,18 @@ void POI_getRawPtrToScalarForce(int * * nitems)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
 // Statement: f_out_native_**_raw
-// start POI_getRawPtrToFixedArray
-void POI_getRawPtrToFixedArray(int * * count)
+// start POI_getRawPtrToFixedArray_bufferify
+void POI_getRawPtrToFixedArray_bufferify(int * * count)
 {
-    // splicer begin function.getRawPtrToFixedArray
+    // splicer begin function.getRawPtrToFixedArray_bufferify
     getRawPtrToFixedArray(count);
-    // splicer end function.getRawPtrToFixedArray
+    // splicer end function.getRawPtrToFixedArray_bufferify
 }
-// end POI_getRawPtrToFixedArray
+// end POI_getRawPtrToFixedArray_bufferify
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
@@ -723,61 +647,55 @@ void POI_getRawPtrToFixedArray(int * * count)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArrayForce
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
 // Statement: f_out_native_**_raw
-// start POI_getRawPtrToFixedArrayForce
-void POI_getRawPtrToFixedArrayForce(int * * count)
+// start POI_getRawPtrToFixedArrayForce_bufferify
+void POI_getRawPtrToFixedArrayForce_bufferify(int * * count)
 {
-    // splicer begin function.getRawPtrToFixedArrayForce
+    // splicer begin function.getRawPtrToFixedArrayForce_bufferify
     getRawPtrToFixedArrayForce(count);
-    // splicer end function.getRawPtrToFixedArrayForce
+    // splicer end function.getRawPtrToFixedArrayForce_bufferify
 }
-// end POI_getRawPtrToFixedArrayForce
+// end POI_getRawPtrToFixedArrayForce_bufferify
 
 /**
  * Test multiple layers of indirection.
  */
 // ----------------------------------------
 // Function:  void getRawPtrToInt2d
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * * arg +intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_native_***
-// start POI_getRawPtrToInt2d
-void POI_getRawPtrToInt2d(int * * * arg)
+// start POI_getRawPtrToInt2d_bufferify
+void POI_getRawPtrToInt2d_bufferify(int * * * arg)
 {
-    // splicer begin function.getRawPtrToInt2d
+    // splicer begin function.getRawPtrToInt2d_bufferify
     getRawPtrToInt2d(arg);
-    // splicer end function.getRawPtrToInt2d
+    // splicer end function.getRawPtrToInt2d_bufferify
 }
-// end POI_getRawPtrToInt2d
+// end POI_getRawPtrToInt2d_bufferify
 
 /**
  * Check results of getRawPtrToInt2d.
  */
 // ----------------------------------------
 // Function:  int checkInt2d
-// Attrs:     +intent(function)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
-// Attrs:     +intent(in)
 // Statement: f_in_native_**
-// start POI_checkInt2d
-int POI_checkInt2d(int **arg)
+// start POI_checkInt2d_bufferify
+int POI_checkInt2d_bufferify(int **arg)
 {
-    // splicer begin function.checkInt2d
+    // splicer begin function.checkInt2d_bufferify
     int SHC_rv = checkInt2d(arg);
     return SHC_rv;
-    // splicer end function.checkInt2d
+    // splicer end function.checkInt2d_bufferify
 }
-// end POI_checkInt2d
+// end POI_checkInt2d_bufferify
 
 /**
  * Test +dimension(10,20) +intent(in) together.
@@ -785,32 +703,27 @@ int POI_checkInt2d(int **arg)
  */
 // ----------------------------------------
 // Function:  void DimensionIn
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * arg +dimension(10,20)
-// Attrs:     +intent(in)
 // Statement: f_in_native_*
-// start POI_DimensionIn
-void POI_DimensionIn(const int * arg)
+// start POI_DimensionIn_bufferify
+void POI_DimensionIn_bufferify(const int * arg)
 {
-    // splicer begin function.DimensionIn
+    // splicer begin function.DimensionIn_bufferify
     DimensionIn(arg);
-    // splicer end function.DimensionIn
+    // splicer end function.DimensionIn_bufferify
 }
-// end POI_DimensionIn
+// end POI_DimensionIn_bufferify
 
 /**
  * Return a Fortran pointer to an array which is always the same length.
  */
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  void getAllocToFixedArray
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Statement: f_out_native_**_cdesc_allocatable
 // start POI_getAllocToFixedArray_bufferify
 void POI_getAllocToFixedArray_bufferify(
@@ -834,110 +747,97 @@ void POI_getAllocToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Attrs:     +intent(function)
 // Statement: f_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_returnAddress1
-void * POI_returnAddress1(int flag)
+// start POI_returnAddress1_bufferify
+void * POI_returnAddress1_bufferify(int flag)
 {
-    // splicer begin function.returnAddress1
+    // splicer begin function.returnAddress1_bufferify
     void * SHC_rv = returnAddress1(flag);
     return SHC_rv;
-    // splicer end function.returnAddress1
+    // splicer end function.returnAddress1_bufferify
 }
-// end POI_returnAddress1
+// end POI_returnAddress1_bufferify
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Attrs:     +intent(function)
 // Statement: f_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
-// Attrs:     +intent(in)
 // Statement: f_in_native_scalar
-// start POI_returnAddress2
-void * POI_returnAddress2(int flag)
+// start POI_returnAddress2_bufferify
+void * POI_returnAddress2_bufferify(int flag)
 {
-    // splicer begin function.returnAddress2
+    // splicer begin function.returnAddress2_bufferify
     void * SHC_rv = returnAddress2(flag);
     return SHC_rv;
-    // splicer end function.returnAddress2
+    // splicer end function.returnAddress2_bufferify
 }
-// end POI_returnAddress2
+// end POI_returnAddress2_bufferify
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
-// Attrs:     +intent(out)
 // Statement: f_out_void_**
-// start POI_fetchVoidPtr
-void POI_fetchVoidPtr(void **addr)
+// start POI_fetchVoidPtr_bufferify
+void POI_fetchVoidPtr_bufferify(void **addr)
 {
-    // splicer begin function.fetchVoidPtr
+    // splicer begin function.fetchVoidPtr_bufferify
     fetchVoidPtr(addr);
-    // splicer end function.fetchVoidPtr
+    // splicer end function.fetchVoidPtr_bufferify
 }
-// end POI_fetchVoidPtr
+// end POI_fetchVoidPtr_bufferify
 
 // ----------------------------------------
 // Function:  void updateVoidPtr
-// Attrs:     +intent(subroutine)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  void * * addr +intent(inout)
-// Attrs:     +intent(inout)
 // Statement: f_inout_void_**
-// start POI_updateVoidPtr
-void POI_updateVoidPtr(void **addr)
+// start POI_updateVoidPtr_bufferify
+void POI_updateVoidPtr_bufferify(void **addr)
 {
-    // splicer begin function.updateVoidPtr
+    // splicer begin function.updateVoidPtr_bufferify
     updateVoidPtr(addr);
-    // splicer end function.updateVoidPtr
+    // splicer end function.updateVoidPtr_bufferify
 }
-// end POI_updateVoidPtr
+// end POI_updateVoidPtr_bufferify
 
 // ----------------------------------------
 // Function:  int VoidPtrArray
-// Attrs:     +intent(function)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
-// Attrs:     +intent(in)
 // Statement: f_in_void_**
-// start POI_VoidPtrArray
-int POI_VoidPtrArray(void **addr)
+// start POI_VoidPtrArray_bufferify
+int POI_VoidPtrArray_bufferify(void **addr)
 {
-    // splicer begin function.VoidPtrArray
+    // splicer begin function.VoidPtrArray_bufferify
     int SHC_rv = VoidPtrArray(addr);
     return SHC_rv;
-    // splicer end function.VoidPtrArray
+    // splicer end function.VoidPtrArray_bufferify
 }
-// end POI_VoidPtrArray
+// end POI_VoidPtrArray_bufferify
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: f_function_native_*_pointer
-// start POI_returnIntPtrToScalar
-int * POI_returnIntPtrToScalar(void)
+// start POI_returnIntPtrToScalar_bufferify
+int * POI_returnIntPtrToScalar_bufferify(void)
 {
-    // splicer begin function.returnIntPtrToScalar
+    // splicer begin function.returnIntPtrToScalar_bufferify
     int * SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
-    // splicer end function.returnIntPtrToScalar
+    // splicer end function.returnIntPtrToScalar_bufferify
 }
-// end POI_returnIntPtrToScalar
+// end POI_returnIntPtrToScalar_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
 // Statement: f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
@@ -957,22 +857,19 @@ void POI_returnIntPtrToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Attrs:     +deref(pointer)+intent(function)
 // Statement: f_function_native_*_pointer
-// start POI_returnIntPtrToConstScalar
-const int * POI_returnIntPtrToConstScalar(void)
+// start POI_returnIntPtrToConstScalar_bufferify
+const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
-    // splicer begin function.returnIntPtrToConstScalar
+    // splicer begin function.returnIntPtrToConstScalar_bufferify
     const int * SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
-    // splicer end function.returnIntPtrToConstScalar
+    // splicer end function.returnIntPtrToConstScalar_bufferify
 }
-// end POI_returnIntPtrToConstScalar
+// end POI_returnIntPtrToConstScalar_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
 // Statement: f_function_native_*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
@@ -992,34 +889,32 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Attrs:     +deref(scalar)+intent(function)
 // Statement: f_function_native_*_scalar
-// start POI_returnIntScalar_extrawrapper
-int POI_returnIntScalar_extrawrapper(void)
+// start POI_returnIntScalar_bufferify
+int POI_returnIntScalar_bufferify(void)
 {
-    // splicer begin function.returnIntScalar_extrawrapper
+    // splicer begin function.returnIntScalar_bufferify
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
-    // splicer end function.returnIntScalar_extrawrapper
+    // splicer end function.returnIntScalar_bufferify
 }
-// end POI_returnIntScalar_extrawrapper
+// end POI_returnIntScalar_bufferify
 
 /**
  * Call directly via interface.
  */
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
-// Attrs:     +deref(raw)+intent(function)
 // Statement: f_function_native_*_raw
-// start POI_returnIntRaw
-int * POI_returnIntRaw(void)
+// start POI_returnIntRaw_bufferify
+int * POI_returnIntRaw_bufferify(void)
 {
-    // splicer begin function.returnIntRaw
+    // splicer begin function.returnIntRaw_bufferify
     int * SHC_rv = returnIntRaw();
     return SHC_rv;
-    // splicer end function.returnIntRaw
+    // splicer end function.returnIntRaw_bufferify
 }
-// end POI_returnIntRaw
+// end POI_returnIntRaw_bufferify
 
 /**
  * Like returnIntRaw but with another argument to force a wrapper.
@@ -1027,21 +922,19 @@ int * POI_returnIntRaw(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
-// Attrs:     +deref(raw)+intent(function)
 // Statement: f_function_native_*_raw
 // ----------------------------------------
 // Argument:  const char * name
-// Attrs:     +intent(in)
 // Statement: f_in_char_*
-// start POI_returnIntRawWithArgs
-int * POI_returnIntRawWithArgs(const char * name)
+// start POI_returnIntRawWithArgs_bufferify
+int * POI_returnIntRawWithArgs_bufferify(const char * name)
 {
-    // splicer begin function.returnIntRawWithArgs
+    // splicer begin function.returnIntRawWithArgs_bufferify
     int * SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
-    // splicer end function.returnIntRawWithArgs
+    // splicer end function.returnIntRawWithArgs_bufferify
 }
-// end POI_returnIntRawWithArgs
+// end POI_returnIntRawWithArgs_bufferify
 
 /**
  * Test multiple layers of indirection.
@@ -1049,22 +942,19 @@ int * POI_returnIntRawWithArgs(const char * name)
  */
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
-// Attrs:     +intent(function)
 // Statement: f_function_native_**
-// start POI_returnRawPtrToInt2d
-int * * POI_returnRawPtrToInt2d(void)
+// start POI_returnRawPtrToInt2d_bufferify
+int * * POI_returnRawPtrToInt2d_bufferify(void)
 {
-    // splicer begin function.returnRawPtrToInt2d
+    // splicer begin function.returnRawPtrToInt2d_bufferify
     int * * SHC_rv = returnRawPtrToInt2d();
     return SHC_rv;
-    // splicer end function.returnRawPtrToInt2d
+    // splicer end function.returnRawPtrToInt2d_bufferify
 }
-// end POI_returnRawPtrToInt2d
+// end POI_returnRawPtrToInt2d_bufferify
 
-// Generated by arg_to_buffer
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Statement: f_function_native_*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
