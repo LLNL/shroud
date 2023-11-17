@@ -3528,7 +3528,6 @@
                             "owner": "library"
                         },
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getClassStatic",
@@ -3677,7 +3676,6 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getClassNew",

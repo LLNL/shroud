@@ -3668,7 +3668,6 @@
                                             "name": "defaultctor"
                                         },
                                         "metaattrs": {
-                                            "api": "capptr",
                                             "intent": "ctor"
                                         },
                                         "params": [],

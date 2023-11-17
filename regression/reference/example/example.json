@@ -39,7 +39,6 @@
                                                     "_name": "ctor"
                                                 },
                                                 "metaattrs": {
-                                                    "api": "capptr",
                                                     "intent": "ctor"
                                                 },
                                                 "params": [],
@@ -200,7 +199,6 @@
                                                     "_name": "ctor"
                                                 },
                                                 "metaattrs": {
-                                                    "api": "capptr",
                                                     "intent": "ctor"
                                                 },
                                                 "params": [
@@ -2173,7 +2171,6 @@
                                                     "_name": "ctor"
                                                 },
                                                 "metaattrs": {
-                                                    "api": "capptr",
                                                     "intent": "ctor"
                                                 },
                                                 "params": [
@@ -3486,7 +3483,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "api": "capptr",
                                                     "intent": "function"
                                                 },
                                                 "name": "get_class1",
@@ -3767,7 +3763,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",
@@ -3975,7 +3970,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",
@@ -4354,7 +4348,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",
@@ -4550,7 +4543,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "api": "this",
                                                     "intent": "function"
                                                 },
                                                 "name": "declare",

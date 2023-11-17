@@ -499,7 +499,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -1323,7 +1322,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -2150,7 +2148,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "returnUserType",
@@ -3450,7 +3447,6 @@
                                             "_name": "ctor"
                                         },
                                         "metaattrs": {
-                                            "api": "capptr",
                                             "intent": "ctor"
                                         },
                                         "params": [],
@@ -4329,7 +4325,6 @@
                                             "_name": "ctor"
                                         },
                                         "metaattrs": {
-                                            "api": "capptr",
                                             "intent": "ctor"
                                         },
                                         "params": [],

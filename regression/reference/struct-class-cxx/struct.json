@@ -3157,7 +3157,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "Create_Cstruct_as_class",
@@ -3194,7 +3193,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "Create_Cstruct_as_class_args",
@@ -3320,7 +3318,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "Create_Cstruct_as_subclass_args",

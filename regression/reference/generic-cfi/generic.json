@@ -6012,7 +6012,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "CreateStructAsClass",

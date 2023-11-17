@@ -25,7 +25,6 @@
                                     "name": "new"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [
@@ -233,7 +232,6 @@
                                     "name": "new"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [
@@ -517,7 +515,6 @@
                                     "name": "new"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [

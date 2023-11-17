@@ -105,7 +105,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -269,7 +268,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [
@@ -1018,7 +1016,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "this",
                                     "intent": "function"
                                 },
                                 "name": "returnThis",
@@ -1144,7 +1141,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "function"
                                 },
                                 "name": "returnThisBuffer",
@@ -1462,7 +1458,6 @@
                             "declarator": {
                                 "func_const": true,
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "function"
                                 },
                                 "name": "getclass3",
@@ -3018,7 +3013,6 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "function"
                                 },
                                 "name": "getReference",
@@ -3228,7 +3222,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -3594,7 +3587,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -4042,7 +4034,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
@@ -5531,7 +5522,6 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getclass2",
@@ -5659,7 +5649,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getclass3",
@@ -5809,7 +5798,6 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "api": "capsule",
                             "intent": "function"
                         },
                         "name": "getclass2_void",
@@ -5935,7 +5923,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capsule",
                             "intent": "function"
                         },
                         "name": "getclass3_void",
@@ -6062,7 +6049,6 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getConstClassReference",
@@ -6187,7 +6173,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getClassReference",
@@ -6333,7 +6318,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "api": "capptr",
                             "intent": "function"
                         },
                         "name": "getClassCopy",

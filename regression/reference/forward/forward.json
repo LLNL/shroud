@@ -72,7 +72,6 @@
                                     "_name": "ctor"
                                 },
                                 "metaattrs": {
-                                    "api": "capptr",
                                     "intent": "ctor"
                                 },
                                 "params": [],
