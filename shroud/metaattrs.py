@@ -29,36 +29,8 @@ Fortran:
 
 """
 
-import collections
-
 from . import error
 from . import statements
-
-def fetch_func_metaattrs(node, wlang):
-    bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault("+result", statements.BindArg())
-    if bindarg.meta is None:
-        bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
-
-def fetch_arg_metaattrs(node, arg, wlang):
-    bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault(arg.declarator.user_name, statements.BindArg())
-    if bindarg.meta is None:
-        bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
-
-def get_func_metaattrs(node, wlang):
-    return node._bind[wlang]["+result"].meta
-
-def get_arg_metaattrs(node, arg, wlang):
-    return node._bind[wlang][arg.declarator.user_name].meta
-
-def get_func_bind(node, wlang):
-    return node._bind[wlang]["+result"]
-
-def get_arg_bind(node, arg, wlang):
-    return node._bind[wlang][arg.declarator.user_name]
 
 class FillMeta(object):
     """Loop over Nodes and fill meta attributes.
@@ -100,7 +72,7 @@ class FillMeta(object):
         ast = node.ast
         declarator = ast.declarator
 
-        r_meta = fetch_func_metaattrs(node, wlang)
+        r_meta = statements.fetch_func_metaattrs(node, wlang)
 
         self.set_func_intent(node, r_meta)
         if wlang == "c":
@@ -115,7 +87,7 @@ class FillMeta(object):
             declarator = arg.declarator
             arg_name = declarator.user_name
 
-            meta = fetch_arg_metaattrs(node, arg, wlang)
+            meta = statements.fetch_arg_metaattrs(node, arg, wlang)
 
             self.set_arg_intent(node, arg, meta)
             if wlang == "f":

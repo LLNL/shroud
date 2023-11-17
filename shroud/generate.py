@@ -18,7 +18,6 @@ import copy
 from . import ast
 from . import declast
 from . import error
-from . import metaattrs
 from . import todict
 from . import statements
 from . import typemap
@@ -885,7 +884,7 @@ class GenFunctions(object):
         meta["intent"] = "getter"
         meta["deref"] = deref
         meta["api"] = api
-        meta = metaattrs.fetch_func_metaattrs(fcn, "f")
+        meta = statements.fetch_func_metaattrs(fcn, "f")
         meta["intent"] = "getter"
         meta["deref"] = deref
         meta["api"] = api
@@ -893,7 +892,7 @@ class GenFunctions(object):
             params = fcn.ast.declarator.params
             meta = params[0].declarator.metaattrs
             meta["intent"] = "in"
-            meta = metaattrs.fetch_arg_metaattrs(fcn, params[0], "f")
+            meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
             meta["intent"] = "in"
             fcn.struct_parent = cls
         fcn.wrap.assign(fortran=True)
@@ -921,20 +920,20 @@ class GenFunctions(object):
         fcn = parent.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
         fcn.ast.declarator.metaattrs["intent"] = "setter"
-        meta = metaattrs.fetch_func_metaattrs(fcn, "f")
+        meta = statements.fetch_func_metaattrs(fcn, "f")
         meta["intent"] = "setter"
         iarg = 0
         params = fcn.ast.declarator.params
         if is_struct:
             meta = params[0].declarator.metaattrs
             meta["intent"] = "inout"
-            meta = metaattrs.fetch_arg_metaattrs(fcn, params[0], "f")
+            meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
             meta["intent"] = "inout"
             iarg = 1
         meta = params[iarg].declarator.metaattrs
         meta.update(declarator.metaattrs)
         meta["intent"] = "setter"
-        meta = metaattrs.fetch_arg_metaattrs(fcn, params[iarg], "f")
+        meta = statements.fetch_arg_metaattrs(fcn, params[iarg], "f")
         meta["intent"] = "setter"
         fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"

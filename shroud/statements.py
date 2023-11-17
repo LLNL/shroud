@@ -9,6 +9,7 @@
 from . import error
 from .util import wformat
 
+import collections
 import yaml
 
 try:
@@ -49,6 +50,34 @@ class BindArg(object):
         self.meta = None
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
+
+def fetch_func_metaattrs(node, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault("+result", BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
+
+def fetch_arg_metaattrs(node, arg, wlang):
+    bind = node._bind.setdefault(wlang, {})
+    bindarg = bind.setdefault(arg.declarator.user_name, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg.meta
+
+def get_func_metaattrs(node, wlang):
+    return node._bind[wlang]["+result"].meta
+
+def get_arg_metaattrs(node, arg, wlang):
+    return node._bind[wlang][arg.declarator.user_name].meta
+
+def get_func_bind(node, wlang):
+    return node._bind[wlang]["+result"]
+
+def get_arg_bind(node, arg, wlang):
+    return node._bind[wlang][arg.declarator.user_name]
+
+######################################################################
 
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.

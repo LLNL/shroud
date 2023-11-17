@@ -28,7 +28,7 @@ from . import todict
 from . import typemap
 from . import whelpers
 from . import util
-from .metaattrs import get_func_bind, get_arg_bind
+from .statements import get_func_bind, get_arg_bind
 from .util import wformat, append_format
 
 default_arg_template = """if (present({f_var})) then

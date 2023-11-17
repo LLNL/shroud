@@ -22,7 +22,7 @@ from . import statements
 from . import typemap
 from . import whelpers
 from . import util
-from .metaattrs import get_func_bind, get_arg_bind
+from .statements import get_func_bind, get_arg_bind
 from .util import append_format, wformat
 
 default_owner = "library"
