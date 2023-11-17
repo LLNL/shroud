@@ -36,7 +36,7 @@ fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
 
 class BindArg(object):
     """
-    Information to create wrapper for a result/argument.
+    Information to create wrapper (binding) for a result or argument.
 
     Use get functions to access instance.
         r_bind = get_func_bind(node, wlang)
