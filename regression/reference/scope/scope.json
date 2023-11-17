@@ -509,21 +509,16 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "nitems"
                                 }
-                            ],
-                            "intent": "getter"
+                            ]
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -696,9 +691,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -723,8 +715,7 @@
                                             {
                                                 "name": "nitems"
                                             }
-                                        ],
-                                        "intent": "setter"
+                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -1051,21 +1042,16 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "name": "nitems"
                                         }
-                                    ],
-                                    "intent": "getter"
+                                    ]
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1238,9 +1224,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1265,8 +1248,7 @@
                                                     {
                                                         "name": "nitems"
                                                     }
-                                                ],
-                                                "intent": "setter"
+                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -1620,21 +1602,16 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "name": "nitems"
                                         }
-                                    ],
-                                    "intent": "getter"
+                                    ]
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1807,9 +1784,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1834,8 +1808,7 @@
                                                     {
                                                         "name": "nitems"
                                                     }
-                                                ],
-                                                "intent": "setter"
+                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [

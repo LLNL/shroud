@@ -1663,9 +1663,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_field1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1759,9 +1756,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_field2",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1855,9 +1849,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_field3",
                                 "params": [],
                                 "typemap_name": "int"

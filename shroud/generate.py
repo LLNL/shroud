@@ -881,17 +881,12 @@ class GenFunctions(object):
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
         meta = fcn.ast.declarator.metaattrs
         meta.update(declarator.metaattrs)
-        meta["intent"] = "getter"
-        meta["deref"] = deref
-        meta["api"] = api
         meta = statements.fetch_func_metaattrs(fcn, "f")
         meta["intent"] = "getter"
         meta["deref"] = deref
         meta["api"] = api
         if is_struct:
             params = fcn.ast.declarator.params
-            meta = params[0].declarator.metaattrs
-            meta["intent"] = "in"
             meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
             meta["intent"] = "in"
             fcn.struct_parent = cls
@@ -925,14 +920,11 @@ class GenFunctions(object):
         iarg = 0
         params = fcn.ast.declarator.params
         if is_struct:
-            meta = params[0].declarator.metaattrs
-            meta["intent"] = "inout"
             meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
             meta["intent"] = "inout"
             iarg = 1
         meta = params[iarg].declarator.metaattrs
         meta.update(declarator.metaattrs)
-        meta["intent"] = "setter"
         meta = statements.fetch_arg_metaattrs(fcn, params[iarg], "f")
         meta["intent"] = "setter"
         fcn.wrap.assign(fortran=True)

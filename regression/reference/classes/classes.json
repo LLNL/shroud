@@ -2074,9 +2074,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_m_flag",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2170,9 +2167,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_test",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2276,9 +2270,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -2393,10 +2384,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "deref": "allocatable",
-                                    "intent": "getter"
-                                },
                                 "name": "get_m_name",
                                 "params": [],
                                 "typemap_name": "std::string"
@@ -2518,9 +2505,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "std::string"
@@ -4266,9 +4250,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_nitems",
                                 "params": [],
                                 "typemap_name": "int"
@@ -4372,9 +4353,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -4490,13 +4468,11 @@
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "name": "nitems"
                                         }
-                                    ],
-                                    "intent": "getter"
+                                    ]
                                 },
                                 "name": "get_items",
                                 "params": [],
@@ -4636,8 +4612,7 @@
                                                     {
                                                         "name": "nitems"
                                                     }
-                                                ],
-                                                "intent": "setter"
+                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [

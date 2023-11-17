@@ -17,9 +17,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -123,9 +120,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -240,9 +234,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -346,9 +337,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -463,9 +451,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_z1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -569,9 +554,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"

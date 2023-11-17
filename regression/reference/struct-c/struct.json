@@ -655,9 +655,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -761,9 +758,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -878,9 +872,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -984,9 +975,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1197,9 +1185,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1303,9 +1288,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1420,9 +1402,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1526,9 +1505,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1643,9 +1619,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_z1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1749,9 +1722,6 @@
                                             "attrs": {
                                                 "intent": "in",
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -5366,17 +5336,10 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "getter"
-                        },
                         "name": "Cstruct_ptr_get_const_dvalue",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5526,9 +5489,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5547,9 +5507,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -5699,7 +5656,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "left": {
@@ -5710,16 +5666,12 @@
                                         "name": "nitems"
                                     }
                                 }
-                            ],
-                            "intent": "getter"
+                            ]
                         },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5892,9 +5844,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5925,8 +5874,7 @@
                                                     "name": "nitems"
                                                 }
                                             }
-                                        ],
-                                        "intent": "setter"
+                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -6081,7 +6029,6 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "left": {
@@ -6092,16 +6039,12 @@
                                         "name": "TWO"
                                     }
                                 }
-                            ],
-                            "intent": "getter"
+                            ]
                         },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -6274,9 +6217,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -6307,8 +6247,7 @@
                                                     "name": "TWO"
                                                 }
                                             }
-                                        ],
-                                        "intent": "setter"
+                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [

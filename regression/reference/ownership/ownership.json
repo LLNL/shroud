@@ -111,9 +111,6 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "getter"
-                                },
                                 "name": "get_flag",
                                 "params": [],
                                 "typemap_name": "int"
