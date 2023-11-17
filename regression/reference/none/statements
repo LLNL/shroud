@@ -9651,6 +9651,8 @@ f_mixin_str_array:
 f_mixin_unknown:
   c_arg_decl:
   - ===>{c_var}<===
+  comments:
+  - Default returned by lookup_fc_stmts when group is not found.
   index: '28'
   intent: mixin
   name: f_mixin_unknown
@@ -11142,14 +11144,10 @@ root
         scalar -- py_function_char_scalar
       native
         &
-          pointer
-            numpy -- py_function_native_*/&_pointer_numpy
+          numpy -- py_function_native_*/&_numpy
         *
-          allocatable
-            numpy -- py_function_native_*/&_pointer_numpy
-          pointer
-            list -- py_function_native_*_pointer_list
-            numpy -- py_function_native_*/&_pointer_numpy
+          list -- py_function_native_*_list
+          numpy -- py_function_native_*/&_numpy
           scalar -- py_defaulttmp
         scalar -- py_defaulttmp
       shadow
@@ -11185,9 +11183,8 @@ root
       native
         & -- py_in_native_&
         * -- py_in_native_*
-          pointer
-            list -- py_in_native_*_pointer_list
-            numpy -- py_in_native_*_pointer_numpy
+          list -- py_in_native_*_list
+          numpy -- py_in_native_*_numpy
         scalar -- py_defaulttmp
       shadow
         & -- py_in_shadow_&
@@ -11225,9 +11222,8 @@ root
       native
         & -- py_inout_native_&
         * -- py_inout_native_*
-          pointer
-            list -- py_inout_native_*_pointer_list
-            numpy -- py_inout_native_*_pointer_numpy
+          list -- py_inout_native_*_list
+          numpy -- py_inout_native_*_numpy
       shadow
         * -- py_inout_shadow_*
       string
@@ -11243,6 +11239,8 @@ root
           list -- py_inout_struct_*_list
           numpy -- py_inout_struct_*_numpy
         list -- py_inout_struct_list
+    mixin
+      unknown -- py_mixin_unknown
     out
       bool -- py_out_bool
         * -- py_out_bool_*
@@ -11252,19 +11250,13 @@ root
       native
         & -- py_out_native_&
         * -- py_out_native_*
-          allocatable
-            list -- py_out_native_*_allocatable/pointer_list
-            numpy -- py_out_native_*_allocatable/pointer_numpy
-          pointer
-            list -- py_out_native_*_allocatable/pointer_list
-            numpy -- py_out_native_*_allocatable/pointer_numpy
+          list -- py_out_native_*_list
+          numpy -- py_out_native_*_numpy
         *&
-          pointer
-            numpy -- py_out_native_*&_pointer_numpy
+          numpy -- py_out_native_*&_numpy
         **
-          pointer
-            list -- py_out_native_**_pointer_list
-            numpy -- py_out_native_**_pointer_numpy
+          list -- py_out_native_**_list
+          numpy -- py_out_native_**_numpy
           raw -- py_out_native_**_raw
       shadow
         * -- py_out_shadow_*
@@ -11808,7 +11800,7 @@ py_function_char_scalar:
   object_created: true
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
-py_function_native_&_pointer_numpy:
+py_function_native_&_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   declare_capsule:
@@ -11819,7 +11811,7 @@ py_function_native_&_pointer_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: function
-  name: py_function_native_&_pointer_numpy
+  name: py_function_native_&_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -11833,32 +11825,7 @@ py_function_native_&_pointer_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-py_function_native_*_allocatable_numpy:
-  declare:
-  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  fail:
-  - Py_XDECREF({py_var});
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
-  goto_fail: true
-  intent: function
-  name: py_function_native_*_allocatable_numpy
-  need_numpy: true
-  object_created: true
-  post_call:
-  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
-    \ {numpy_type},\t {cxx_nonconst_ptr});"
-  - if ({py_var} == {nullptr}) goto fail;
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-py_function_native_*_pointer_list:
+py_function_native_*_list:
   c_helper: to_PyList_{cxx_type}
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -11866,12 +11833,12 @@ py_function_native_*_pointer_list:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: function
-  name: py_function_native_*_pointer_list
+  name: py_function_native_*_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
-py_function_native_*_pointer_numpy:
+py_function_native_*_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   declare_capsule:
@@ -11882,7 +11849,7 @@ py_function_native_*_pointer_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: function
-  name: py_function_native_*_pointer_numpy
+  name: py_function_native_*_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -12138,7 +12105,7 @@ py_in_native_*:
   - '{c_type} {c_var};'
   intent: in
   name: py_in_native_*
-py_in_native_*_pointer_list:
+py_in_native_*_list:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -12155,7 +12122,7 @@ py_in_native_*_pointer_list:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
   intent: in
-  name: py_in_native_*_pointer_list
+  name: py_in_native_*_list
   parse_args:
   - '&{pytmp_var}'
   parse_format: O
@@ -12164,7 +12131,7 @@ py_in_native_*_pointer_list:
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
-py_in_native_*_pointer_numpy:
+py_in_native_*_numpy:
   arg_call:
   - '{c_var}'
   cleanup:
@@ -12182,7 +12149,7 @@ py_in_native_*_pointer_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_in_native_*_pointer_numpy
+  name: py_in_native_*_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -12509,7 +12476,7 @@ py_inout_native_*:
     ctor_expr: '{c_var}'
   intent: inout
   name: py_inout_native_*
-py_inout_native_*_pointer_list:
+py_inout_native_*_list:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -12527,7 +12494,7 @@ py_inout_native_*_pointer_list:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
   intent: inout
-  name: py_inout_native_*_pointer_list
+  name: py_inout_native_*_list
   object_created: true
   parse_args:
   - '&{pytmp_var}'
@@ -12540,7 +12507,7 @@ py_inout_native_*_pointer_list:
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
-py_inout_native_*_pointer_numpy:
+py_inout_native_*_numpy:
   arg_call:
   - '{c_var}'
   declare:
@@ -12556,7 +12523,7 @@ py_inout_native_*_pointer_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_inout_native_*_pointer_numpy
+  name: py_inout_native_*_numpy
   need_numpy: true
   object_created: true
   parse_args:
@@ -12702,6 +12669,9 @@ py_inout_struct_*_numpy:
 py_inout_struct_list:
   intent: inout
   name: py_inout_struct_list
+py_mixin_unknown:
+  intent: mixin
+  name: py_mixin_unknown
 py_out_bool:
   arg_declare:
   - bool {cxx_var};
@@ -12755,7 +12725,7 @@ py_out_native_*:
     ctor_expr: '{c_var}'
   intent: out
   name: py_out_native_*
-py_out_native_*&_pointer_numpy:
+py_out_native_*&_numpy:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -12770,7 +12740,7 @@ py_out_native_*&_pointer_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: out
-  name: py_out_native_*&_pointer_numpy
+  name: py_out_native_*&_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -12784,7 +12754,7 @@ py_out_native_*&_pointer_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-py_out_native_**_pointer_list:
+py_out_native_**_list:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -12796,12 +12766,12 @@ py_out_native_**_pointer_list:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
-  name: py_out_native_**_pointer_list
+  name: py_out_native_**_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
-py_out_native_**_pointer_numpy:
+py_out_native_**_numpy:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -12816,7 +12786,7 @@ py_out_native_**_pointer_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: out
-  name: py_out_native_**_pointer_numpy
+  name: py_out_native_**_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -12842,7 +12812,7 @@ py_out_native_**_raw:
   object_created: true
   post_call:
   - '{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);'
-py_out_native_*_allocatable_list:
+py_out_native_*_list:
   arg_call:
   - '{c_var}'
   arg_declare:
@@ -12877,7 +12847,7 @@ py_out_native_*_allocatable_list:
     - PyErr_NoMemory();
     - goto fail;
     - -}}
-  name: py_out_native_*_allocatable_list
+  name: py_out_native_*_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
@@ -12888,7 +12858,7 @@ py_out_native_*_allocatable_list:
   - PyErr_NoMemory();
   - goto fail;
   - -}}
-py_out_native_*_allocatable_numpy:
+py_out_native_*_numpy:
   arg_call:
   - '{c_var}'
   declare:
@@ -12903,81 +12873,7 @@ py_out_native_*_allocatable_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_out_native_*_allocatable_numpy
-  need_numpy: true
-  object_created: true
-  post_parse:
-  - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
-    {npy_dims_var}, {numpy_type}){cast2};'
-  - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
-    );"
-  - goto fail;
-  - -}}
-  pre_call:
-  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_out_native_*_pointer_list:
-  arg_call:
-  - '{c_var}'
-  arg_declare:
-  - '{cxx_type} * {cxx_var} = {nullptr};'
-  c_header:
-  - <stdlib.h>
-  c_helper: to_PyList_{cxx_type}
-  cleanup:
-  - '{stdlib}free({cxx_var});'
-  - '{cxx_var} = {nullptr};'
-  cxx_header:
-  - <cstdlib>
-  declare:
-  - PyObject *{py_var} = {nullptr};
-  fail:
-  - Py_XDECREF({py_var});
-  - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
-  goto_fail: true
-  intent: out
-  lang_c:
-    pre_call:
-    - "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));"
-    - if ({cxx_var} == {nullptr}) {{+
-    - PyErr_NoMemory();
-    - goto fail;
-    - -}}
-  lang_cxx:
-    pre_call:
-    - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) *\
-      \ ({array_size})));"
-    - if ({cxx_var} == {nullptr}) {{+
-    - PyErr_NoMemory();
-    - goto fail;
-    - -}}
-  name: py_out_native_*_pointer_list
-  object_created: true
-  post_call:
-  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
-  - if ({py_var} == {nullptr}) goto fail;
-  pre_call:
-  - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));"
-  - if ({cxx_var} == {nullptr}) {{+
-  - PyErr_NoMemory();
-  - goto fail;
-  - -}}
-py_out_native_*_pointer_numpy:
-  arg_call:
-  - '{c_var}'
-  declare:
-  - '{npy_intp_decl}PyArrayObject * {py_var} = {nullptr};'
-  fail:
-  - Py_XDECREF({py_var});
-  goto_fail: true
-  intent: out
-  lang_c:
-    pre_call:
-    - '{c_var} = PyArray_DATA({py_var});'
-  lang_cxx:
-    pre_call:
-    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_out_native_*_pointer_numpy
+  name: py_out_native_*_numpy
   need_numpy: true
   object_created: true
   post_parse:

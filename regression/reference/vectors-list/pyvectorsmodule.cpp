@@ -312,7 +312,7 @@ fail:
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
-// Statement: py_in_native_*_pointer_list
+// Statement: py_in_native_*_list
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))+value
 // Exact:     py_default

@@ -68,7 +68,6 @@ Phase: Wrapp.wrap_functions
 ----------------------------------------
 Node: AssumedRank
 line 51
-Statement: py_default
 Detected assumed-rank dimension
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp

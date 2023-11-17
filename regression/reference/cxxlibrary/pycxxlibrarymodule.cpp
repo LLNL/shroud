@@ -198,7 +198,7 @@ fail:
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
-// Statement: py_in_native_*_pointer_numpy
+// Statement: py_in_native_*_numpy
 static char PY_defaultPtrIsNULL_1__doc__[] =
 "documentation"
 ;

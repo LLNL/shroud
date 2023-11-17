@@ -8832,7 +8832,7 @@
                             "pytmp_var": "SHTPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_in_native_*_pointer_list",
+                            "stmt": "py_in_native_*_list",
                             "value_var": "SHValue_count"
                         }
                     },

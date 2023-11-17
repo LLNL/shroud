@@ -61,7 +61,7 @@ PY_ReturnIntPtrScalar(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
 ;
@@ -91,7 +91,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*
@@ -127,7 +127,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-// Statement: py_function_native_*_allocatable_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*
@@ -163,7 +163,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*
@@ -199,7 +199,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*
@@ -235,7 +235,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
-// Statement: py_function_native_*_allocatable_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*
@@ -271,7 +271,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Statement: py_out_native_*

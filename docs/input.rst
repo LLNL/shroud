@@ -487,6 +487,10 @@ scalar
    Fortran, copy into existing argument.
    Python, useful for *intent(inout)*.
 
+.. Python provides a different set of values:
+     scalar, raw, numpy, list.
+   See option PY_array_arg.
+
 dimension
 ^^^^^^^^^
 

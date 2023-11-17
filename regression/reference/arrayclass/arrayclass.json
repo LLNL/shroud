@@ -904,7 +904,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "stmt": "py_function_native_*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1097,7 +1097,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "stmt": "py_function_native_*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1289,7 +1289,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "stmt": "py_function_native_*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1483,7 +1483,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_pointer_numpy",
+                                    "stmt": "py_function_native_*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1749,7 +1749,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_**_pointer_numpy",
+                                    "stmt": "py_out_native_**_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2082,7 +2082,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_*&_pointer_numpy",
+                                    "stmt": "py_out_native_*&_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2416,7 +2416,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_**_pointer_numpy",
+                                    "stmt": "py_out_native_**_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2750,7 +2750,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_*&_pointer_numpy",
+                                    "stmt": "py_out_native_*&_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },

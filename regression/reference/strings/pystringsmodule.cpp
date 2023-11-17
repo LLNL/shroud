@@ -1258,7 +1258,7 @@ PY_CreturnChar(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
-// Statement: py_in_native_*_pointer_list
+// Statement: py_in_native_*_list
 // ----------------------------------------
 // Argument:  std::string & name
 // Statement: py_inout_string_&

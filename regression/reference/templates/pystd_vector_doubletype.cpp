@@ -94,7 +94,7 @@ PY_push_back(
 
 // ----------------------------------------
 // Function:  double & at
-// Statement: py_function_native_&_pointer_numpy
+// Statement: py_function_native_&_numpy
 // ----------------------------------------
 // Argument:  size_type n +value
 // Statement: py_in_native_scalar

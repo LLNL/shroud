@@ -1276,6 +1276,7 @@ return 1;""",
         offset = 0
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
+            func_cursor.stmt = None
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
@@ -1339,7 +1340,9 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = meta["deref"] or "pointer"
+            deref = meta["deref"]
+            if deref not in ["scalar", "raw"]:
+                deref = None
             if intent_blk is not None:
                 pass
             elif declarator.is_function_pointer():
@@ -1361,7 +1364,7 @@ return 1;""",
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", intent, sgroup, spointer,
-                         deref, options.PY_array_arg]
+                         options.PY_array_arg]
             elif deref == "raw":
                 # A single pointer.
                 stmts = ["py", intent, sgroup, spointer, deref]
@@ -2044,9 +2047,10 @@ return 1;""",
             spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
-                deref = meta["deref"] or "pointer"
-                stmts.append(deref)
-                if deref != "scalar":
+                deref = meta["deref"]
+                if deref == "scalar":
+                    stmts.append(deref)
+                else:
                     stmts.append(options.PY_array_arg)
         else:
             spointer = declarator.get_indirect_stmt()
@@ -3620,7 +3624,8 @@ def lookup_stmts(path):
     name = statements.compute_name(path)
     stmt = py_dict.get(name, None)
     if stmt is None:
-       raise RuntimeError("Unknown py statement: %s" % name)
+        stmt = py_dict["py_mixin_unknown"]
+        error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
 PyStmts = util.Scope(
@@ -3700,7 +3705,9 @@ fail_capsule=[
 # sgroup     "native", "string", "char"
 # spointer   "scalar" "*" "**", "&"
 # generated  "buf"
-# deref      "allocatable", "pointer"
+# deref      "numpy", "list", "scalar", "raw"
+#      PY_array_arg
+#      typemap.PY_struct_as   class, list
 # owner      "caller"
 
 
@@ -3711,6 +3718,14 @@ fail_capsule=[
 # It doesn't hurt to add them, but I dislike the clutter.
 py_statements = [
 
+########################################
+#
+    dict(
+        name="py_mixin_unknown",
+        comments=[
+            "Default returned by lookup_fc_stmts when group is not found.",
+        ],
+    ),
     dict(
         name="py_defaulttmp",
         alias=[
@@ -3873,7 +3888,7 @@ py_statements = [
 ####################
 ## numpy
     dict(
-        name="py_in_native_*_pointer_numpy",
+        name="py_in_native_*_numpy",
         need_numpy=True,
         declare=[
             "PyObject * {pytmp_var};",
@@ -3910,7 +3925,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_inout_native_*_pointer_numpy",
+        name="py_inout_native_*_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3941,9 +3956,7 @@ py_statements = [
     ),
 
     dict(
-        # py_out_native_*_allocatable_numpy
-        # py_out_native_*_pointer_numpy
-        name="py_out_native_*_allocatable/pointer_numpy",
+        name="py_out_native_*_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
@@ -3973,7 +3986,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_function_native_*_pointer_list",
+        name="py_function_native_*_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -3990,12 +4003,9 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        # py_function_native_*_pointer_numpy
-        # py_function_native_&_pointer_numpy
-        name="py_function_native_*/&_pointer_numpy",
-        alias=[
-            "py_function_native_*_allocatable_numpy",
-        ],
+        # py_function_native_*_numpy
+        # py_function_native_&_numpy
+        name="py_function_native_*/&_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4019,8 +4029,8 @@ py_statements = [
     ),
 
     dict(
-        name="py_out_native_**_pointer_numpy",
-        base="py_function_native_*_pointer_numpy",
+        name="py_out_native_**_numpy",
+        base="py_function_native_*_numpy",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4032,15 +4042,15 @@ py_statements = [
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_out_native_*&_pointer_numpy",
-        base="py_out_native_**_pointer_numpy",
+        name="py_out_native_*&_numpy",
+        base="py_out_native_**_numpy",
         arg_call=["{cxx_var}"],
     ),
 
 ########################################
 ## list
     dict(
-        name="py_in_native_*_pointer_list",
+        name="py_in_native_*_list",
         c_helper="get_from_object_{cxx_type}_list",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4070,7 +4080,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_inout_native_*_pointer_list",
+        name="py_inout_native_*_list",
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="get_from_object_{cxx_type}_list to_PyList_{cxx_type}",
         parse_format="O",
@@ -4108,9 +4118,7 @@ py_statements = [
     ),
 
     dict(
-        # py_out_native_*_allocatable_list
-        # py_out_native_*_pointer_list
-        name="py_out_native_*_allocatable/pointer_list",
+        name="py_out_native_*_list",
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4147,8 +4155,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_out_native_**_pointer_list",
-        base="py_function_native_*_pointer_list",
+        name="py_out_native_**_list",
+        base="py_function_native_*_list",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
