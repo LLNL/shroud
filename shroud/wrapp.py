@@ -52,17 +52,18 @@ from collections import OrderedDict
 py_dict = OrderedDict() # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
-# If multiple values are returned, save up into to build a tuple to return.
+# If multiple values are returned, save up to build a tuple to return.
 # else build value from ctor, then return ctorvar.
 # The value may be built earlier (bool, array), if so blk0 will be None.
 # format   - Format arg to PyBuild_Tuple.
 # vargs    - Variable for PyBuild_Tuple.
-# blk0     - PyStmts when there is only one return value.
+# blk0     - How to build object when not using Py_BuildValue.
+#            i.e. there is a single object to return.
 # blk      - PyStmts when there are more than one return value.
 # ctorvar  - Variable created by blk0.
 #            This may not be the function return value but may be
 #            from a single intent(out) argument.
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar")
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar incref")
 
 # type_object_creation - code to add variables to module.
 ModuleTuple = collections.namedtuple(
@@ -1040,14 +1041,19 @@ return 1;""",
         Return a BuildTuple instance.
         """
         blk = None
+        incref = False
         
         if intent_blk.object_created:
             # Explicit code exists to create object.
             # For example, NumPy intent(OUT) arguments as part of pre-call.
             # If post_call is None, the Object has already been created
-            build_format = "O"
+            build_format = "O"  # increments reference; "N" does not.
             vargs = fmt.py_var
             blk0 = None
+            if intent_blk.incref_on_return:
+                # Used when there is only one return value and the object
+                # was not created by the function.
+                incref = wformat("Py_INCREF({py_var});", fmt)
         else:
             # Decide values for Py_BuildValue
             build_format = typemap.PY_build_format or typemap.PY_format
@@ -1087,7 +1093,7 @@ return 1;""",
                 post_call=[wformat(post_call0, fmt)],
             )
 
-        return BuildTuple(build_format, vargs, blk0, blk, fmt.py_var)
+        return BuildTuple(build_format, vargs, blk0, blk, fmt.py_var, incref)
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
@@ -1751,10 +1757,13 @@ return 1;""",
         elif len(build_tuples) == 1:
             # Return a single object already created in build_tuples
             blk0 = build_tuples[0].blk0
+            incref = build_tuples[0].incref
             if blk0 is not None:
                 # Format variables are already expanded in intent_out.
                 declare_code.extend(blk0.declare)
                 post_call_code.extend(blk0.post_call)
+            elif incref:
+                post_call_code.append(incref)
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
@@ -3642,6 +3651,7 @@ PyStmts = util.Scope(
     cxx_header=[], cxx_local_var=None,
     need_numpy=False,
     object_created=False,
+    incref_on_return=False,
     parse_format=None, parse_args=[],
     declare=[], post_parse=[], pre_call=[],
     post_call=[],
@@ -4568,6 +4578,7 @@ py_statements = [
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
         object_created=True,
+        incref_on_return=True,
     ),
     dict(
         name="py_out_struct_*_class",

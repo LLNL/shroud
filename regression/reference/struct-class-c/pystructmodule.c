@@ -284,6 +284,10 @@ PY_acceptStructInOutPtr(
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     acceptStructInOutPtr(arg);
+
+    // post_call
+    Py_INCREF(SHPy_arg);
+
     return (PyObject *) SHPy_arg;
 // splicer end function.acceptStructInOutPtr
 }

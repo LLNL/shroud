@@ -152,6 +152,10 @@ PY_passStructByReferenceInoutCls(
     Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     passStructByReferenceInoutCls(*arg);
+
+    // post_call
+    Py_INCREF(SHPy_arg);
+
     return (PyObject *) SHPy_arg;
 // splicer end function.passStructByReferenceInoutCls
 }

@@ -12581,6 +12581,7 @@ py_inout_struct_&_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  incref_on_return: true
   intent: inout
   name: py_inout_struct_&_class
   object_created: true
@@ -12623,6 +12624,7 @@ py_inout_struct_&_numpy:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_inout_struct_*_class:
   cxx_local_var: pointer
+  incref_on_return: true
   intent: inout
   name: py_inout_struct_*_class
   object_created: true
