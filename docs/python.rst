@@ -341,7 +341,8 @@ cxx_local_var
 ^^^^^^^^^^^^^
 
 Set when a C++ variable is created by post_parse.
-*scalar*
+Set to *scalar* or *pointer* depending on the declaration in *post_declare*
+*post_parse* or *pre_call*.
 
 Used to set format fields *cxx_member*
 
@@ -392,12 +393,6 @@ parse_args
 
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
-
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set to *scalar* or *pointer* depending on the declaration in *post_declare*
-*post_parse* or *pre_call*.
 
 post_declare
 ^^^^^^^^^^^^
@@ -472,6 +467,17 @@ be inserted into the code/
 
 .. object conversion
 
+incref_on_return
+^^^^^^^^^^^^^^^^
+
+Used to control reference counting on returned objects.  When the
+format ``O`` is passed to ``PyArg_ParseTupleAndKeywords`` a ``PyObject
+*`` is returned without incrementing the reference count.  If the
+attribute *intent(inout)* is set, then the same object may be returned
+by the function. The reference count must be incremented before it is
+returned.  This can be done by ``Py_BuildValue`` with the ``O`` format
+field. But when there is only one return value, ``Py_INCREF`` will be
+called explicitly.
 
 object_created
 ^^^^^^^^^^^^^^
@@ -481,6 +487,8 @@ This prevents ``Py_BuildValue`` from converting it into an Object.
 For example, when a pointer is converted into a ``PyCapsule`` or
 when NumPy is used to create an object.
 
+.. Also when the returned object is also an input argument.
+   py_inout_struct_*_class
 
 Predefined Types
 ----------------

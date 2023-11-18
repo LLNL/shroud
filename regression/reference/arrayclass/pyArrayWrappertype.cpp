@@ -167,7 +167,7 @@ PY_allocate(
 
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 static char PY_getArray__doc__[] =
 "documentation"
 ;
@@ -200,7 +200,7 @@ fail:
 
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 static char PY_getArrayConst__doc__[] =
 "documentation"
 ;
@@ -233,7 +233,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 static char PY_getArrayC__doc__[] =
 "documentation"
 ;
@@ -266,7 +266,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
-// Statement: py_function_native_*_pointer_numpy
+// Statement: py_function_native_*_numpy
 static char PY_getArrayConstC__doc__[] =
 "documentation"
 ;
@@ -302,7 +302,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Statement: py_out_native_**_pointer_numpy
+// Statement: py_out_native_**_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Statement: py_inout_native_*
@@ -343,7 +343,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Statement: py_out_native_*&_pointer_numpy
+// Statement: py_out_native_*&_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Statement: py_inout_native_&
@@ -384,7 +384,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Statement: py_out_native_**_pointer_numpy
+// Statement: py_out_native_**_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Statement: py_inout_native_*
@@ -425,7 +425,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Statement: py_out_native_*&_pointer_numpy
+// Statement: py_out_native_*&_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Statement: py_inout_native_&

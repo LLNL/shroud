@@ -2894,7 +2894,7 @@
                             "pytmp_var": "SHTPy_data",
                             "rank": "1",
                             "size_var": "SHSize_data",
-                            "stmt": "py_in_native_*_pointer_numpy",
+                            "stmt": "py_in_native_*_numpy",
                             "value_var": "SHValue_data"
                         }
                     }

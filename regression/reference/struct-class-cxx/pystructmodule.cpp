@@ -285,6 +285,10 @@ PY_acceptStructInOutPtr(
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     acceptStructInOutPtr(arg);
+
+    // post_call
+    Py_INCREF(SHPy_arg);
+
     return (PyObject *) SHPy_arg;
 // splicer end function.acceptStructInOutPtr
 }
@@ -445,7 +449,7 @@ PY_returnStructPtr2(
     // post_call
     SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
     if (SHTPy_rv == nullptr) goto fail;
-    SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    SHPyResult = Py_BuildValue("Ns", SHTPy_rv, outbuf);
 
     return SHPyResult;
 

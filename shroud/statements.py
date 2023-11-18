@@ -509,8 +509,10 @@ def process_mixin(stmts, defaults, stmtdict):
         intent = parts[1]
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
-                print("XXX - base not found for", name, ":", stmt["base"])
-            node = util.Scope(stmtdict[stmt["base"]])
+                error.cursor.warning("Base not found for {}: {}".format(
+                    name, stmt["base"]))
+            else:
+                node = util.Scope(stmtdict[stmt["base"]])
         else:
             node = util.Scope(defaults[lang])
         node.update(stmt)
@@ -1300,8 +1302,10 @@ fc_statements = [
     ),
     
     dict(
-        # Default returned by lookup_fc_stmts when group is not found.
         name="f_mixin_unknown",
+        comments=[
+            "Default returned by lookup_fc_stmts when group is not found.",
+        ],
         # Point out where there are problems in the wrapper...
         c_arg_decl=["===>{c_var}<==="],
     ),

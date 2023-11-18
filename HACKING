@@ -130,6 +130,19 @@ to the VPATH.  For the Python tests, there is an explicit run to force
 the use of CXX.  The VPATH finds both the C and C++ files since they
 have the same stem.
 
+reference counting
+------------------
+
+``Python-3.9.12/Misc/valgrind-python.supp``
+
+```
+valgrind --tool=memcheck --suppressions=valgrind-python.supp \
+                                          python -E -tt ./my_python_script.py
+```
+
+Build Python with ``--with-address-sanitizer --with-pydebug``
+
+
 file dependency
 ---------------
 

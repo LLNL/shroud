@@ -52,17 +52,18 @@ from collections import OrderedDict
 py_dict = OrderedDict() # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
-# If multiple values are returned, save up into to build a tuple to return.
+# If multiple values are returned, save up to build a tuple to return.
 # else build value from ctor, then return ctorvar.
 # The value may be built earlier (bool, array), if so blk0 will be None.
 # format   - Format arg to PyBuild_Tuple.
 # vargs    - Variable for PyBuild_Tuple.
-# blk0     - PyStmts when there is only one return value.
+# blk0     - How to build object when not using Py_BuildValue.
+#            i.e. there is a single object to return.
 # blk      - PyStmts when there are more than one return value.
 # ctorvar  - Variable created by blk0.
 #            This may not be the function return value but may be
 #            from a single intent(out) argument.
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar")
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar incref")
 
 # type_object_creation - code to add variables to module.
 ModuleTuple = collections.namedtuple(
@@ -1040,14 +1041,19 @@ return 1;""",
         Return a BuildTuple instance.
         """
         blk = None
+        incref = False
         
         if intent_blk.object_created:
             # Explicit code exists to create object.
             # For example, NumPy intent(OUT) arguments as part of pre-call.
             # If post_call is None, the Object has already been created
-            build_format = "O"
+            build_format = "N"  # "O" increments reference; "N" does not.
             vargs = fmt.py_var
             blk0 = None
+            if intent_blk.incref_on_return:
+                # Used when there is only one return value and the object
+                # was not created by the function.
+                incref = wformat("Py_INCREF({py_var});", fmt)
         else:
             # Decide values for Py_BuildValue
             build_format = typemap.PY_build_format or typemap.PY_format
@@ -1087,7 +1093,7 @@ return 1;""",
                 post_call=[wformat(post_call0, fmt)],
             )
 
-        return BuildTuple(build_format, vargs, blk0, blk, fmt.py_var)
+        return BuildTuple(build_format, vargs, blk0, blk, fmt.py_var, incref)
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
@@ -1276,6 +1282,7 @@ return 1;""",
         offset = 0
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
+            func_cursor.stmt = None
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
@@ -1339,7 +1346,9 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = meta["deref"] or "pointer"
+            deref = meta["deref"]
+            if deref not in ["scalar", "raw"]:
+                deref = None
             if intent_blk is not None:
                 pass
             elif declarator.is_function_pointer():
@@ -1361,7 +1370,7 @@ return 1;""",
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", intent, sgroup, spointer,
-                         deref, options.PY_array_arg]
+                         options.PY_array_arg]
             elif deref == "raw":
                 # A single pointer.
                 stmts = ["py", intent, sgroup, spointer, deref]
@@ -1729,7 +1738,7 @@ return 1;""",
             ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
-            if ttt0.format == "O":
+            if ttt0.format in ["O", "N"]:
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
@@ -1748,10 +1757,13 @@ return 1;""",
         elif len(build_tuples) == 1:
             # Return a single object already created in build_tuples
             blk0 = build_tuples[0].blk0
+            incref = build_tuples[0].incref
             if blk0 is not None:
                 # Format variables are already expanded in intent_out.
                 declare_code.extend(blk0.declare)
                 post_call_code.extend(blk0.post_call)
+            elif incref:
+                post_call_code.append(incref)
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
@@ -2044,9 +2056,10 @@ return 1;""",
             spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
-                deref = meta["deref"] or "pointer"
-                stmts.append(deref)
-                if deref != "scalar":
+                deref = meta["deref"]
+                if deref == "scalar":
+                    stmts.append(deref)
+                else:
                     stmts.append(options.PY_array_arg)
         else:
             spointer = declarator.get_indirect_stmt()
@@ -3620,7 +3633,8 @@ def lookup_stmts(path):
     name = statements.compute_name(path)
     stmt = py_dict.get(name, None)
     if stmt is None:
-       raise RuntimeError("Unknown py statement: %s" % name)
+        stmt = py_dict["py_mixin_unknown"]
+        error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
 PyStmts = util.Scope(
@@ -3637,6 +3651,7 @@ PyStmts = util.Scope(
     cxx_header=[], cxx_local_var=None,
     need_numpy=False,
     object_created=False,
+    incref_on_return=False,
     parse_format=None, parse_args=[],
     declare=[], post_parse=[], pre_call=[],
     post_call=[],
@@ -3700,7 +3715,9 @@ fail_capsule=[
 # sgroup     "native", "string", "char"
 # spointer   "scalar" "*" "**", "&"
 # generated  "buf"
-# deref      "allocatable", "pointer"
+# deref      "numpy", "list", "scalar", "raw"
+#      PY_array_arg
+#      typemap.PY_struct_as   class, list
 # owner      "caller"
 
 
@@ -3711,6 +3728,14 @@ fail_capsule=[
 # It doesn't hurt to add them, but I dislike the clutter.
 py_statements = [
 
+########################################
+#
+    dict(
+        name="py_mixin_unknown",
+        comments=[
+            "Default returned by lookup_fc_stmts when group is not found.",
+        ],
+    ),
     dict(
         name="py_defaulttmp",
         alias=[
@@ -3873,7 +3898,7 @@ py_statements = [
 ####################
 ## numpy
     dict(
-        name="py_in_native_*_pointer_numpy",
+        name="py_in_native_*_numpy",
         need_numpy=True,
         declare=[
             "PyObject * {pytmp_var};",
@@ -3910,7 +3935,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_inout_native_*_pointer_numpy",
+        name="py_inout_native_*_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3941,9 +3966,7 @@ py_statements = [
     ),
 
     dict(
-        # py_out_native_*_allocatable_numpy
-        # py_out_native_*_pointer_numpy
-        name="py_out_native_*_allocatable/pointer_numpy",
+        name="py_out_native_*_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
@@ -3973,7 +3996,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_function_native_*_pointer_list",
+        name="py_function_native_*_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -3990,12 +4013,9 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        # py_function_native_*_pointer_numpy
-        # py_function_native_&_pointer_numpy
-        name="py_function_native_*/&_pointer_numpy",
-        alias=[
-            "py_function_native_*_allocatable_numpy",
-        ],
+        # py_function_native_*_numpy
+        # py_function_native_&_numpy
+        name="py_function_native_*/&_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4019,8 +4039,8 @@ py_statements = [
     ),
 
     dict(
-        name="py_out_native_**_pointer_numpy",
-        base="py_function_native_*_pointer_numpy",
+        name="py_out_native_**_numpy",
+        base="py_function_native_*_numpy",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4032,15 +4052,15 @@ py_statements = [
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_out_native_*&_pointer_numpy",
-        base="py_out_native_**_pointer_numpy",
+        name="py_out_native_*&_numpy",
+        base="py_out_native_**_numpy",
         arg_call=["{cxx_var}"],
     ),
 
 ########################################
 ## list
     dict(
-        name="py_in_native_*_pointer_list",
+        name="py_in_native_*_list",
         c_helper="get_from_object_{cxx_type}_list",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4070,7 +4090,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_inout_native_*_pointer_list",
+        name="py_inout_native_*_list",
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="get_from_object_{cxx_type}_list to_PyList_{cxx_type}",
         parse_format="O",
@@ -4108,9 +4128,7 @@ py_statements = [
     ),
 
     dict(
-        # py_out_native_*_allocatable_list
-        # py_out_native_*_pointer_list
-        name="py_out_native_*_allocatable/pointer_list",
+        name="py_out_native_*_list",
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4147,8 +4165,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_out_native_**_pointer_list",
-        base="py_function_native_*_pointer_list",
+        name="py_out_native_**_list",
+        base="py_function_native_*_list",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4560,6 +4578,7 @@ py_statements = [
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
         object_created=True,
+        incref_on_return=True,
     ),
     dict(
         name="py_out_struct_*_class",

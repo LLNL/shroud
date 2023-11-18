@@ -70,7 +70,7 @@ PY_passStructByReferenceCls(
     int SHCXX_rv = passStructByReferenceCls(*arg);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
+    SHTPy_rv = Py_BuildValue("iN", SHCXX_rv, SHPy_arg);
 
     return SHTPy_rv;
 // splicer end function.passStructByReferenceCls
@@ -152,6 +152,10 @@ PY_passStructByReferenceInoutCls(
     Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     passStructByReferenceInoutCls(*arg);
+
+    // post_call
+    Py_INCREF(SHPy_arg);
+
     return (PyObject *) SHPy_arg;
 // splicer end function.passStructByReferenceInoutCls
 }
@@ -198,7 +202,7 @@ fail:
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
-// Statement: py_in_native_*_pointer_numpy
+// Statement: py_in_native_*_numpy
 static char PY_defaultPtrIsNULL_1__doc__[] =
 "documentation"
 ;

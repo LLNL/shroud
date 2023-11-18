@@ -904,7 +904,7 @@ PY_returnBoolAndOthers(
     // post_call
     SHTPy_rv = PyBool_FromLong(SHCXX_rv);
     if (SHTPy_rv == nullptr) goto fail;
-    SHPyResult = Py_BuildValue("Oi", SHTPy_rv, flag);
+    SHPyResult = Py_BuildValue("Ni", SHTPy_rv, flag);
 
     return SHPyResult;
 

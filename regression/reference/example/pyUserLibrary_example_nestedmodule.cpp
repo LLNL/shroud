@@ -639,10 +639,10 @@ PP_verylongfunctionname2(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
-// Statement: py_in_native_*_pointer_numpy
+// Statement: py_in_native_*_numpy
 // ----------------------------------------
 // Argument:  double * out +dimension(shape(in))+intent(out)
-// Statement: py_out_native_*_pointer_numpy
+// Statement: py_out_native_*_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default

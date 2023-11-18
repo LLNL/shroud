@@ -12381,7 +12381,7 @@
                                             "pytmp_var": "SHTPy_in",
                                             "rank": "2",
                                             "size_var": "SHSize_in",
-                                            "stmt": "py_in_native_*_pointer_numpy",
+                                            "stmt": "py_in_native_*_numpy",
                                             "value_var": "SHValue_in"
                                         }
                                     },
@@ -12466,7 +12466,7 @@
                                             "py_var": "SHPy_out",
                                             "rank": "1",
                                             "size_var": "SHSize_out",
-                                            "stmt": "py_out_native_*_pointer_numpy",
+                                            "stmt": "py_out_native_*_numpy",
                                             "value_var": "SHValue_out"
                                         }
                                     },

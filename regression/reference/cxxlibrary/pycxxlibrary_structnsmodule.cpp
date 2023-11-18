@@ -86,7 +86,7 @@ PY_passStructByReference(
     SHCXX_rv = structns::passStructByReference(*arg);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
+    SHTPy_rv = Py_BuildValue("iN", SHCXX_rv, SHPy_arg);
 
     return SHTPy_rv;
 

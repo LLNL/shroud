@@ -421,6 +421,7 @@ if __name__ == "__main__":
                  cmdline=[
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
+                     "--option", "PY_array_arg=numpy",
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
