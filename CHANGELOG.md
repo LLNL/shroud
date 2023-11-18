@@ -54,6 +54,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
 
+### Fixed
+- Avoid memory leaks by using 'N' instead of 'O' in `Py_BuildValue`
+  for objects which have just been created.
+
 ## v0.13.0 - 2023-08-23
 ### Added
 - Python hello-world-python example for a simple library in examples directory.

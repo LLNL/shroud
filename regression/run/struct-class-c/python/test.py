@@ -11,6 +11,7 @@
 from __future__ import print_function
 
 import numpy as np
+import sys
 import unittest
 import cstruct
 
@@ -75,8 +76,10 @@ class Struct(unittest.TestCase):
 
     def test_acceptStructInOutPtr(self):
         str = cstruct.Cstruct1(22, 22.8)
+        self.assertEqual(1, sys.getrefcount(str) - 1)
         out = cstruct.acceptStructInOutPtr(str)
         self.assertIs(str, out)
+        self.assertEqual(2, sys.getrefcount(out) - 1)
         self.assertEqual(23,   out.ifield)
         self.assertEqual(23.8, out.dfield)
 
@@ -100,6 +103,7 @@ class Struct(unittest.TestCase):
 
     def test_returnStructPtr2(self):
         out, name = cstruct.returnStructPtr2(35, 35.5)
+        self.assertEqual(1, sys.getrefcount(out) - 1)
         self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(35,   out.ifield)
         self.assertEqual(35.5, out.dfield)

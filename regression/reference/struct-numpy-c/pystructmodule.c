@@ -562,7 +562,7 @@ PY_returnStructPtr2(
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
-    SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    SHPyResult = Py_BuildValue("Ns", SHTPy_rv, outbuf);
 
     return SHPyResult;
 

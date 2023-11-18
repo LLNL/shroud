@@ -70,7 +70,7 @@ PY_passStructByReferenceCls(
     int SHCXX_rv = passStructByReferenceCls(*arg);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
+    SHTPy_rv = Py_BuildValue("iN", SHCXX_rv, SHPy_arg);
 
     return SHTPy_rv;
 // splicer end function.passStructByReferenceCls

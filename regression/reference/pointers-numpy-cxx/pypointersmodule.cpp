@@ -516,7 +516,7 @@ PY_get_values(
     get_values(&nvalues, values);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+    SHTPy_rv = Py_BuildValue("iN", nvalues, SHPy_values);
 
     return SHTPy_rv;
 
@@ -585,7 +585,7 @@ PY_get_values2(
     get_values2(arg1, arg2);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+    SHTPy_rv = Py_BuildValue("NN", SHPy_arg1, SHPy_arg2);
 
     return SHTPy_rv;
 

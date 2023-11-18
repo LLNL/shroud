@@ -225,7 +225,7 @@ PY_checkBool(
     if (SHPy_arg2 == NULL) goto fail;
     SHPy_arg3 = PyBool_FromLong(arg3);
     if (SHPy_arg3 == NULL) goto fail;
-    SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    SHTPy_rv = Py_BuildValue("NN", SHPy_arg2, SHPy_arg3);
 
     return SHTPy_rv;
 

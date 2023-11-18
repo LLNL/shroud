@@ -449,7 +449,7 @@ PY_returnStructPtr2(
     // post_call
     SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
     if (SHTPy_rv == nullptr) goto fail;
-    SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    SHPyResult = Py_BuildValue("Ns", SHTPy_rv, outbuf);
 
     return SHPyResult;
 

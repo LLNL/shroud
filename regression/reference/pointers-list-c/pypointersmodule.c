@@ -613,7 +613,7 @@ PY_get_values(
     // post_call
     SHPy_values = SHROUD_to_PyList_int(values, 3);
     if (SHPy_values == NULL) goto fail;
-    SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+    SHTPy_rv = Py_BuildValue("iN", nvalues, SHPy_values);
 
     // cleanup
     free(values);
@@ -679,7 +679,7 @@ PY_get_values2(
     if (SHPy_arg1 == NULL) goto fail;
     SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
     if (SHPy_arg2 == NULL) goto fail;
-    SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+    SHTPy_rv = Py_BuildValue("NN", SHPy_arg1, SHPy_arg2);
 
     // cleanup
     free(arg1);

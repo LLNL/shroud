@@ -1047,7 +1047,7 @@ return 1;""",
             # Explicit code exists to create object.
             # For example, NumPy intent(OUT) arguments as part of pre-call.
             # If post_call is None, the Object has already been created
-            build_format = "O"  # increments reference; "N" does not.
+            build_format = "N"  # "O" increments reference; "N" does not.
             vargs = fmt.py_var
             blk0 = None
             if intent_blk.incref_on_return:
@@ -1738,7 +1738,7 @@ return 1;""",
             ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
-            if ttt0.format == "O":
+            if ttt0.format in ["O", "N"]:
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
