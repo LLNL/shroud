@@ -65,6 +65,13 @@ def fetch_arg_metaattrs(node, arg, wlang):
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg.meta
 
+def fetch_name_bind(bind, wlang, name):
+    bind = bind.setdefault(wlang, {})
+    bindarg = bind.setdefault(name, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg
+
 def get_func_metaattrs(node, wlang):
     return node._bind[wlang]["+result"].meta
 

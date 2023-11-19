@@ -50,4 +50,23 @@ declarations:
 
 - decl: void AssumedRank(int *data+dimension(..))
 
+#####
+# Test declast.check_attrs
+
+- decl: void testattrs1()
+  bind:
+    f:
+      decl:  (+attr)
+- decl: void testattrs2()
+  bind:
+    f:
+      decl:  ( name, )
+- decl: void testattrs3()
+  bind:
+    f:
+      decl:  ( name
+- decl: void testattrs4()
+  bind:
+    f:
+      decl:  ( ) name
 ######################################################################
