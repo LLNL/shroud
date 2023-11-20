@@ -159,10 +159,7 @@ def lookup_c_function_stmt(node):
         # intent will be "function", "ctor", "getter"
         junk, specialize = lookup_c_statements(ast)
         stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"],
-#                 r_meta["deref"],   # XXX - No deref for C wrapper
-                 r_attrs["owner"]
-        ] + specialize
+                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -198,9 +195,8 @@ def lookup_c_arg_stmt(node, arg):
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
-#             c_meta["deref"],   # XXX - No deref for C wrapper
-             c_attrs["owner"]] + specialize
+    stmts = ["c", c_meta["intent"], sgroup, spointer,
+             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
