@@ -1320,8 +1320,10 @@ fc_statements = [
     ##########
     # array
     dict(
-        # Pass argument and size to C.
         name="f_mixin_in_array_buf",
+        comments=[
+            "Pass argument and size by value to C.",
+        ],
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_need_wrapper=True,
@@ -1334,6 +1336,27 @@ fc_statements = [
         i_arg_decl=[
             "{f_type}, intent(IN) :: {i_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
+        name="f_mixin_out_array_buf",
+        comments=[
+            "Pass argument and size by reference to C.",
+        ],
+        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_need_wrapper=True,
+
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t *{c_var_size}",
+        ],
+        i_arg_names=["{i_var}", "{i_var_size}"],
+        i_arg_decl=[
+            "{f_type}, intent(IN) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent(IN) :: {i_var_size}",
         ],
         i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
         c_temps=["size"],
@@ -2570,6 +2593,40 @@ fc_statements = [
             )
         ],
     ),
+    dict(
+        # c_out_vector_scalar_buf_targ_native_scalar
+        # c_out_vector_*_buf_targ_native_scalar
+        # c_out_vector_&_buf_targ_native_scalar
+        name="c_out_vector_scalar/*/&_buf_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_buf",
+        ],
+        cxx_local_var="scalar",
+        c_post_call=[
+            "*{c_var_size} = {cxx_var}->size()",
+        ],
+        notimplemented=True,
+    ),
+    dict(
+        # c_inout_vector_scalar_buf_targ_native_scalar
+        # c_inout_vector_*_buf_targ_native_scalar
+        # c_inout_vector_&_buf_targ_native_scalar
+        name="c_inout_vector_scalar/*/&_buf_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_buf",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            (
+                "{c_const}std::vector<{cxx_T}> "
+                "{cxx_var}({c_var}, {c_var} + *{c_var_size});"
+            )
+        ],
+        c_post_call=[
+            "*{c_var_size} = {cxx_var}->size()",
+        ],
+        notimplemented=True,
+    ),
 
     dict(
         # Fill cdesc with vector information
@@ -2698,6 +2755,10 @@ fc_statements = [
         # f_in_vector_scalar_buf_targ_string_scalar
         # f_in_vector_*_buf_targ_string_scalar
         # f_in_vector_&_buf_targ_string_scalar
+
+        # c_in_vector_scalar_buf_targ_string_scalar
+        # c_in_vector_*_buf_targ_string_scalar
+        # c_in_vector_&_buf_targ_string_scalar
         name="f_in_vector_scalar/*/&_buf_targ_string_scalar",
         mixin=[
             "f_mixin_in_string_array_buf",
@@ -2723,6 +2784,15 @@ fc_statements = [
         ],
         c_local=["i", "n", "s"],
     ),
+
+    # c_out_vector_scalar_buf_targ_string_scalar
+    # c_out_vector_*_buf_targ_string_scalar
+    # c_out_vector_&_buf_targ_string_scalar
+    dict(
+        name="c_out_vector_scalar/*/&_buf_targ_string_scalar",
+        notimplemented=True,
+    ),
+    
     # XXX untested [cf]_out_vector_buf_string
     dict(
         name="f_out_vector_buf_targ_string_scalar",

@@ -20,15 +20,16 @@ VPATH = \
     $(top)/regression/run/vectors \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     vectors.o \
-    wrapfvectors.o \
-    utilvectors.o \
     wrapvectors.o \
+    utilvectors.o
+F_OBJS = \
+    wrapfvectors.o \
     fruit.o \
     main.o
 
-vectors : $(OBJS)
+vectors : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS)  $^ -o $@ $(FLIBS)
 
 clean :
@@ -41,3 +42,7 @@ main.o : fruit.o wrapfvectors.o
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapvectors.o vectors.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CLIBS)
+
+testc.o : testc.c wrapvectors.h vectors.hpp
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

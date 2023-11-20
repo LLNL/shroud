@@ -43,27 +43,14 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-// Statement: c_in_native_*
-void CDE_Rank2In(int * arg)
+// Statement: c_in_native_*_cdesc
+void CDE_Rank2In(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In
-    Rank2In(arg);
-    // splicer end function.Rank2In
-}
-
-// ----------------------------------------
-// Function:  void Rank2In
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-// Statement: f_in_native_*_cdesc
-void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
-{
-    // splicer begin function.Rank2In_bufferify
     int * arg = static_cast<int *>
         (const_cast<void *>(SHT_arg_cdesc->base_addr));
     Rank2In(arg);
-    // splicer end function.Rank2In_bufferify
+    // splicer end function.Rank2In
 }
 
 /**
@@ -86,11 +73,13 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // Statement: c_in_string_&
 // ----------------------------------------
 // Argument:  void * value +api(cdesc)+intent(in)+rank(0)+value
-// Statement: c_in_void_*
-void CDE_GetScalar1(char * name, void * value)
+// Statement: c_in_void_*_cdesc
+void CDE_GetScalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.GetScalar1
     std::string SHCXX_name(name);
+    void * value = static_cast<void *>
+        (const_cast<void *>(SHT_value_cdesc->base_addr));
     GetScalar1(SHCXX_name, value);
     // splicer end function.GetScalar1
 }

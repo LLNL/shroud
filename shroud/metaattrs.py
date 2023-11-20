@@ -77,7 +77,7 @@ class FillMeta(object):
         self.set_func_intent(node, r_meta)
         if wlang == "c":
             self.set_func_api(wlang, node, r_meta)
-        else:
+        elif wlang == "f":
             self.set_func_deref(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
 
@@ -90,9 +90,11 @@ class FillMeta(object):
             meta = statements.fetch_arg_metaattrs(node, arg, wlang)
 
             self.set_arg_intent(node, arg, meta)
-            if wlang == "f":
+            if wlang == "c":
+                self.set_arg_api_c(node, arg, meta)
+            elif wlang == "f":
                 self.set_arg_deref(arg, meta)
-                self.set_arg_api(node, arg, meta)
+                self.set_arg_api_fortran(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
             
         # --- End loop over function parameters
@@ -338,7 +340,26 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
-    def set_arg_api(self, node, arg, meta):
+    def set_arg_api_c(self, node, arg, meta):
+        declarator = arg.declarator
+        ntypemap = arg.typemap
+        attrs = declarator.attrs
+        shared = declarator.metaattrs
+        api = attrs["api"]
+
+        # XXX - from check_common_attrs
+        if api:
+            meta["api"] = api
+
+        # arg_to_buffer
+        if meta["api"]:
+            # API explicitly set by user.
+            return
+
+        if ntypemap.sgroup == "vector":
+            meta["api"] = "buf"
+        
+    def set_arg_api_fortran(self, node, arg, meta):
         """
         Based on other meta attrs: deref
         """

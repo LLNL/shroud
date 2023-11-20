@@ -79,47 +79,25 @@ module vectors_mod
     end type VEC_SHROUD_capsule_data
     ! end helper capsule_data_helper
 
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  int vector_sum
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  const std::vector<int> & arg +rank(1)
-    ! Statement: c_in_vector_&_targ_native_scalar
-    ! start c_vector_sum
-    interface
-        function c_vector_sum(arg) &
-                result(SHT_rv) &
-                bind(C, name="VEC_vector_sum")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_INT) :: SHT_rv
-        end function c_vector_sum
-    end interface
-    ! end c_vector_sum
-#endif
-
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Statement: f_in_vector_&_buf_targ_native_scalar
-    ! start c_vector_sum_bufferify
+    ! start c_vector_sum
     interface
-        function c_vector_sum_bufferify(arg, SHT_arg_size) &
+        function c_vector_sum(arg, SHT_arg_size) &
                 result(SHT_rv) &
-                bind(C, name="VEC_vector_sum_bufferify")
+                bind(C, name="VEC_vector_sum")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
             integer(C_INT), intent(IN) :: arg(*)
             integer(C_SIZE_T), intent(IN), value :: SHT_arg_size
             integer(C_INT) :: SHT_rv
-        end function c_vector_sum_bufferify
+        end function c_vector_sum
     end interface
-    ! end c_vector_sum_bufferify
+    ! end c_vector_sum
 
 #if 0
     ! Not Implemented
@@ -128,14 +106,15 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_targ_native_scalar
     ! start c_vector_iota_out
     interface
-        subroutine c_vector_iota_out(arg) &
+        subroutine c_vector_iota_out(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_out
     end interface
     ! end c_vector_iota_out
@@ -165,15 +144,16 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_targ_native_scalar
     ! start c_vector_iota_out_with_num
     interface
-        function c_vector_iota_out_with_num(arg) &
+        function c_vector_iota_out_with_num(arg, SHT_arg_size) &
                 result(SHT_rv) &
                 bind(C, name="VEC_vector_iota_out_with_num")
-            use iso_c_binding, only : C_INT, C_LONG
+            use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
             implicit none
-            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
             integer(C_LONG) :: SHT_rv
         end function c_vector_iota_out_with_num
     end interface
@@ -207,14 +187,15 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_targ_native_scalar
     ! start c_vector_iota_out_with_num2
     interface
-        subroutine c_vector_iota_out_with_num2(arg) &
+        subroutine c_vector_iota_out_with_num2(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out_with_num2")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_out_with_num2
     end interface
     ! end c_vector_iota_out_with_num2
@@ -244,14 +225,15 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_targ_native_scalar
     ! start c_vector_iota_out_alloc
     interface
-        subroutine c_vector_iota_out_alloc(arg) &
+        subroutine c_vector_iota_out_alloc(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out_alloc")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_out_alloc
     end interface
     ! end c_vector_iota_out_alloc
@@ -281,14 +263,15 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-    ! Statement: c_inout_vector_&_targ_native_scalar
+    ! Statement: c_inout_vector_&_buf_targ_native_scalar
     ! start c_vector_iota_inout_alloc
     interface
-        subroutine c_vector_iota_inout_alloc(arg) &
+        subroutine c_vector_iota_inout_alloc(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_inout_alloc")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(INOUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_inout_alloc
     end interface
     ! end c_vector_iota_inout_alloc
@@ -322,13 +305,14 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
-    ! Statement: c_inout_vector_&_targ_native_scalar
+    ! Statement: c_inout_vector_&_buf_targ_native_scalar
     interface
-        subroutine c_vector_increment(arg) &
+        subroutine c_vector_increment(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_increment")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(INOUT) :: arg(*)
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_increment
     end interface
 #endif
@@ -359,13 +343,14 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_targ_native_scalar
     interface
-        subroutine c_vector_iota_out_d(arg) &
+        subroutine c_vector_iota_out_d(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out_d")
-            use iso_c_binding, only : C_DOUBLE
+            use iso_c_binding, only : C_DOUBLE, C_SIZE_T
             implicit none
-            real(C_DOUBLE), intent(OUT) :: arg(*)
+            real(C_DOUBLE), intent(IN) :: arg(*)
+            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_out_d
     end interface
 #endif
@@ -385,30 +370,6 @@ module vectors_mod
         end subroutine c_vector_iota_out_d_bufferify
     end interface
 
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  int vector_of_pointers
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
-    ! Statement: c_in_vector_&_targ_native_*
-    ! ----------------------------------------
-    ! Argument:  int num +value
-    ! Statement: c_in_native_scalar
-    interface
-        function c_vector_of_pointers(arg1, num) &
-                result(SHT_rv) &
-                bind(C, name="VEC_vector_of_pointers")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            implicit none
-            real(C_DOUBLE), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: num
-            integer(C_INT) :: SHT_rv
-        end function c_vector_of_pointers
-    end interface
-#endif
-
     ! ----------------------------------------
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native_scalar
@@ -419,10 +380,10 @@ module vectors_mod
     ! Argument:  int num +value
     ! Statement: f_in_native_scalar
     interface
-        function c_vector_of_pointers_bufferify(arg1, SHT_arg1_len, &
-                SHT_arg1_size, num) &
+        function c_vector_of_pointers(arg1, SHT_arg1_len, SHT_arg1_size, &
+                num) &
                 result(SHT_rv) &
-                bind(C, name="VEC_vector_of_pointers_bufferify")
+                bind(C, name="VEC_vector_of_pointers")
             use iso_c_binding, only : C_DOUBLE, C_INT, C_SIZE_T
             implicit none
             real(C_DOUBLE), intent(IN) :: arg1(*)
@@ -430,28 +391,8 @@ module vectors_mod
             integer(C_SIZE_T), intent(IN), value :: SHT_arg1_size
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
-        end function c_vector_of_pointers_bufferify
+        end function c_vector_of_pointers
     end interface
-
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  int vector_string_count
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  const std::vector<std::string> & arg +rank(1)
-    ! Statement: c_in_vector_&_targ_string_scalar
-    interface
-        function c_vector_string_count(arg) &
-                result(SHT_rv) &
-                bind(C, name="VEC_vector_string_count")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg(*)
-            integer(C_INT) :: SHT_rv
-        end function c_vector_string_count
-    end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  int vector_string_count
@@ -460,17 +401,16 @@ module vectors_mod
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Statement: f_in_vector_&_buf_targ_string_scalar
     interface
-        function c_vector_string_count_bufferify(arg, SHT_arg_size, &
-                SHT_arg_len) &
+        function c_vector_string_count(arg, SHT_arg_size, SHT_arg_len) &
                 result(SHT_rv) &
-                bind(C, name="VEC_vector_string_count_bufferify")
+                bind(C, name="VEC_vector_string_count")
             use iso_c_binding, only : C_CHAR, C_INT, C_SIZE_T
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg(*)
             integer(C_SIZE_T), intent(IN), value :: SHT_arg_size
             integer(C_INT), intent(IN), value :: SHT_arg_len
             integer(C_INT) :: SHT_rv
-        end function c_vector_string_count_bufferify
+        end function c_vector_string_count
     end interface
 
 #if 0
@@ -480,7 +420,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_targ_string_scalar
     interface
         subroutine c_vector_string_fill(arg) &
                 bind(C, name="VEC_vector_string_fill")
@@ -513,7 +453,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Statement: c_out_vector_&_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable(arg) &
                 bind(C, name="VEC_vector_string_fill_allocatable")
@@ -548,7 +488,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
-    ! Statement: c_out_vector_&_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable_len(arg) &
                 bind(C, name="VEC_vector_string_fill_allocatable_len")
@@ -687,7 +627,7 @@ contains
         integer(C_INT), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_sum
-        SHT_rv = c_vector_sum_bufferify(arg, size(arg, kind=C_SIZE_T))
+        SHT_rv = c_vector_sum(arg, size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_sum
     end function vector_sum
     ! end vector_sum
@@ -881,7 +821,7 @@ contains
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_of_pointers
-        SHT_rv = c_vector_of_pointers_bufferify(arg1, &
+        SHT_rv = c_vector_of_pointers(arg1, &
             size(arg1, 1, kind=C_SIZE_T), size(arg1, 2, kind=C_SIZE_T), &
             num)
         ! splicer end function.vector_of_pointers
@@ -903,8 +843,8 @@ contains
         character(len=*), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_string_count
-        SHT_rv = c_vector_string_count_bufferify(arg, &
-            size(arg, kind=C_SIZE_T), len(arg, kind=C_INT))
+        SHT_rv = c_vector_string_count(arg, size(arg, kind=C_SIZE_T), &
+            len(arg, kind=C_INT))
         ! splicer end function.vector_string_count
     end function vector_string_count
 

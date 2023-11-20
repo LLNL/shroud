@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Create an executable program for the tutorial
+# Test use of cdesc  (C descriptor struct)
 
 library: cdesc
 cxx_header: cdesc.hpp

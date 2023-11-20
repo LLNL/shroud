@@ -8206,9 +8206,10 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char_*_capi"
                         }
                     },
                     "f": {
@@ -8353,7 +8354,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char_*_capi"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8484,9 +8485,10 @@
                         },
                         "src": {
                             "meta": {
+                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char_*_capi"
                         }
                     },
                     "f": {
@@ -8659,7 +8661,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char_*_capi"
                         },
                         "fmtf": {
                             "c_addr": "",
