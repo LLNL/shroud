@@ -92,6 +92,9 @@ declarations:
     wrap_python: False
     wrap_lua: False
     literalinclude: True
+  bind:
+    c:
+      decl: (arg+deref(malloc))
 
 - decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
   doxygen:
@@ -100,6 +103,9 @@ declarations:
     wrap_python: False
     wrap_lua: False
     literalinclude: True
+  bind:
+    c:
+      decl: (arg+deref(malloc))
 
 # defaults to intent(inout)
 - decl: void vector_increment(std::vector<int> &arg)

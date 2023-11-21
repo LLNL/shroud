@@ -211,15 +211,18 @@ class FillMeta(object):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
+
+        Use meta attributes define in YAML as:
+          bind:
+            c:
+              decl: (arg+deref(malloc))
         """
-        if meta["deref"]:
-            return
         declarator = arg.declarator
         attrs = declarator.attrs
         ntypemap = arg.typemap
         is_ptr = declarator.is_indirect()
 
-        deref = attrs["derefXXX"]
+        deref = meta["deref"]
         if deref is not None:
             if deref not in ["malloc", "copy", "raw", "scalar"]:
                 self.cursor.generate(
@@ -229,8 +232,6 @@ class FillMeta(object):
                 )
                 return
             nindirect = declarator.is_indirect()
-#            if ntypemap.name == "void":
-#                # void cannot be dereferenced.
             if ntypemap.sgroup == "vector":
                 pass
             elif nindirect != 2:
@@ -242,7 +243,6 @@ class FillMeta(object):
                 self.cursor.generate(
                     "Cannot have attribute 'deref' on intent(in) argument"
                     " '{}'".format(declarator.name))
-            meta["deref"] = attrs["deref"]
             return
 
         # Set deref attribute for arguments which return values.

@@ -111,8 +111,8 @@ module vectors_mod
                 bind(C, name="VEC_vector_iota_out")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
         end subroutine c_vector_iota_out
     end interface
     ! end c_vector_iota_out
@@ -147,8 +147,8 @@ module vectors_mod
                 bind(C, name="VEC_vector_iota_out_with_num")
             use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
             integer(C_LONG) :: SHT_rv
         end function c_vector_iota_out_with_num
     end interface
@@ -186,8 +186,8 @@ module vectors_mod
                 bind(C, name="VEC_vector_iota_out_with_num2")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            integer(C_INT), intent(OUT) :: arg(*)
+            integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
         end subroutine c_vector_iota_out_with_num2
     end interface
     ! end c_vector_iota_out_with_num2
@@ -214,15 +214,15 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_malloc_targ_native_scalar
     ! start c_vector_iota_out_alloc
     interface
         subroutine c_vector_iota_out_alloc(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out_alloc")
-            use iso_c_binding, only : C_INT, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            type(C_PTR), intent(OUT) :: arg
+            integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
         end subroutine c_vector_iota_out_alloc
     end interface
     ! end c_vector_iota_out_alloc
@@ -244,26 +244,23 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_alloc_bufferify
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-    ! Statement: c_inout_vector_&_buf_copy_targ_native_scalar
+    ! Statement: c_inout_vector_&_buf_malloc_targ_native_scalar
     ! start c_vector_iota_inout_alloc
     interface
         subroutine c_vector_iota_inout_alloc(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_inout_alloc")
-            use iso_c_binding, only : C_INT, C_SIZE_T
+            use iso_c_binding, only : C_PTR, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            type(C_PTR), intent(INOUT) :: arg
+            integer(C_SIZE_T), intent(INOUT) :: SHT_arg_size
         end subroutine c_vector_iota_inout_alloc
     end interface
     ! end c_vector_iota_inout_alloc
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
@@ -299,8 +296,8 @@ module vectors_mod
                 bind(C, name="VEC_vector_increment")
             use iso_c_binding, only : C_INT, C_SIZE_T
             implicit none
-            integer(C_INT), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            integer(C_INT), intent(INOUT) :: arg(*)
+            integer(C_SIZE_T), intent(INOUT) :: SHT_arg_size
         end subroutine c_vector_increment
     end interface
 #endif
@@ -335,8 +332,8 @@ module vectors_mod
                 bind(C, name="VEC_vector_iota_out_d")
             use iso_c_binding, only : C_DOUBLE, C_SIZE_T
             implicit none
-            real(C_DOUBLE), intent(IN) :: arg(*)
-            integer(C_SIZE_T), intent(IN) :: SHT_arg_size
+            real(C_DOUBLE), intent(OUT) :: arg(*)
+            integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
         end subroutine c_vector_iota_out_d
     end interface
 

@@ -472,6 +472,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "arg": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
@@ -542,6 +551,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "arg": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",

@@ -1351,10 +1351,27 @@ fc_statements = [
         ],
         i_arg_names=["{i_var}", "{i_var_size}"],
         i_arg_decl=[
-            "{f_type}, intent(IN) :: {i_var}(*)",
-            "integer(C_SIZE_T), intent(IN) :: {i_var_size}",
+            "{f_type}, intent({f_intent}) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
         ],
         i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
+        name="c_mixin_out_array_buf_malloc",
+        comments=[
+            "Pass raw pointer and size by reference to C.",
+        ],
+        c_arg_decl=[
+            "{cxx_type} **{c_var}",   # XXX c_type   cxx_T
+            "size_t *{c_var_size}",
+        ],
+        i_arg_names=["{i_var}", "{i_var_size}"],
+        i_arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {i_var}",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR", "C_SIZE_T"]),
         c_temps=["size"],
     ),
     dict(
@@ -2628,6 +2645,59 @@ fc_statements = [
             "*{c_var_size} = {cxx_var}->size()",
         ],
         notimplemented=True,
+    ),
+
+    dict(
+        # c_out_vector_scalar_buf_malloc_targ_native_scalar
+        # c_out_vector_*_buf_malloc_targ_native_scalar
+        # c_out_vector_&_buf_malloc_targ_native_scalar
+        name="c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        comments=[
+            "Create empty local vector then copy result to",
+            "malloc allocated array."
+        ],
+        mixin=[
+            "c_mixin_out_array_buf_malloc",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> {cxx_var};",
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
+    ),
+    dict(
+        # c_inout_vector_scalar_buf_malloc_targ_native_scalar
+        # c_inout_vector_*_buf_malloc_targ_native_scalar
+        # c_inout_vector_&_buf_malloc_targ_native_scalar
+        name="c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        comments=[
+            "Create local vector from arguments then copy result to",
+            "malloc allocated array."
+        ],
+        mixin=[
+            "c_mixin_out_array_buf_malloc",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> "
+            "{cxx_var}(*{c_var}, *{c_var} + *{c_var_size});"
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t"
+            "(std::realloc(*{c_var},\t {c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
     ),
 
     dict(

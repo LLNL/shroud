@@ -13,6 +13,7 @@
 #include <vector>
 // shroud
 #include <cstring>
+#include <cstdlib>
 #include "wrapvectors.h"
 
 // splicer begin CXX_definitions
@@ -234,18 +235,17 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_copy_targ_native_scalar
+// Statement: c_out_vector_&_buf_malloc_targ_native_scalar
 // start VEC_vector_iota_out_alloc
-void VEC_vector_iota_out_alloc(int *arg, size_t *SHT_arg_size)
+void VEC_vector_iota_out_alloc(int **arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out_alloc
     std::vector<int> SHCXX_arg;
     vector_iota_out_alloc(SHCXX_arg);
-    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
-        *SHT_arg_size : SHCXX_arg.size();
-    std::memcpy(arg, SHCXX_arg.data(),
-        SHC_arg_size*sizeof(SHCXX_arg[0]));
-    *SHT_arg_size = SHC_arg_size;
+    size_t SHC_arg_bytes = SHCXX_arg.size()*sizeof(SHCXX_arg[0]);
+    *arg = static_cast<int *>(std::malloc(SHC_arg_bytes));
+    std::memcpy(*arg, SHCXX_arg.data(), SHC_arg_bytes);
+    *SHT_arg_size = SHCXX_arg.size();
     // splicer end function.vector_iota_out_alloc
 }
 // end VEC_vector_iota_out_alloc
@@ -277,8 +277,6 @@ void VEC_vector_iota_out_alloc_bufferify(
 }
 // end VEC_vector_iota_out_alloc_bufferify
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -288,18 +286,20 @@ void VEC_vector_iota_out_alloc_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-// Statement: c_inout_vector_&_buf_copy_targ_native_scalar
+// Statement: c_inout_vector_&_buf_malloc_targ_native_scalar
 // start VEC_vector_iota_inout_alloc
-void VEC_vector_iota_inout_alloc(int *arg, size_t *SHT_arg_size)
+void VEC_vector_iota_inout_alloc(int **arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_inout_alloc
-    std::vector<int> SHCXX_arg(arg, arg + *SHT_arg_size);
+    std::vector<int> SHCXX_arg(*arg, *arg + *SHT_arg_size);
     vector_iota_inout_alloc(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
+    size_t SHC_arg_bytes = SHCXX_arg.size()*sizeof(SHCXX_arg[0]);
+    *arg = static_cast<int *>(std::realloc(*arg, SHC_arg_bytes));
+    std::memcpy(*arg, SHCXX_arg.data(), SHC_arg_bytes);
+    *SHT_arg_size = SHCXX_arg.size();
     // splicer end function.vector_iota_inout_alloc
 }
 // end VEC_vector_iota_inout_alloc
-#endif
 
 /**
  * \brief Copy vector into Fortran allocatable array

@@ -1028,10 +1028,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "deref": "copy",
+                                "deref": "malloc",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_malloc_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1057,7 +1057,7 @@
                             "C_call_function": "vector_iota_out_alloc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "VEC_vector_iota_out_alloc",
-                            "C_prototype": "int *arg,\t size_t *SHT_arg_size",
+                            "C_prototype": "int **arg,\t size_t *SHT_arg_size",
                             "C_return_type": "void",
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_alloc",
@@ -1086,7 +1086,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
-                            "c_local_size": "SHC_arg_size",
+                            "c_local_bytes": "SHC_arg_bytes",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -1105,14 +1105,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
-                            "i_local_size": "SHC_arg_size",
+                            "i_local_bytes": "SHC_arg_bytes",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_malloc_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1250,10 +1250,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "deref": "copy",
+                                "deref": "malloc",
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_inout_vector_&_buf_malloc_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1279,7 +1279,7 @@
                             "C_call_function": "vector_iota_inout_alloc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "VEC_vector_iota_inout_alloc",
-                            "C_prototype": "int *arg,\t size_t *SHT_arg_size",
+                            "C_prototype": "int **arg,\t size_t *SHT_arg_size",
                             "C_return_type": "void",
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_inout_alloc",
@@ -1308,6 +1308,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_bytes": "SHC_arg_bytes",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -1326,13 +1327,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_bytes": "SHC_arg_bytes",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_inout_vector_&_buf_malloc_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
