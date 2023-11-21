@@ -85,9 +85,31 @@ void test_vector_int(void)
 #endif
 }
 
+void test_return(void)
+{
+    int *rv1;
+    size_t rv1size;
+
+    rv1 = NULL;
+    rv1 = VEC_ReturnVectorAlloc(10, &rv1size);
+    assert(rv1 != NULL && "ReturnVectorAlloc allocated");
+    assert(10 == rv1size && "ReturnVectorAlloc size");
+    assert(rv1[0] ==  1 && "ReturnVectorAlloc rv1[0]");
+    assert(rv1[1] ==  2 && "ReturnVectorAlloc rv1[1]");
+    assert(rv1[2] ==  3 && "ReturnVectorAlloc rv1[2]");
+    assert(rv1[3] ==  4 && "ReturnVectorAlloc rv1[3]");
+    assert(rv1[4] ==  5 && "ReturnVectorAlloc rv1[4]");
+    assert(rv1[5] ==  6 && "ReturnVectorAlloc rv1[5]");
+    assert(rv1[6] ==  7 && "ReturnVectorAlloc rv1[6]");
+    assert(rv1[7] ==  8 && "ReturnVectorAlloc rv1[7]");
+    assert(rv1[8] ==  9 && "ReturnVectorAlloc rv1[8]");
+    assert(rv1[9] == 10 && "ReturnVectorAlloc rv1[9]");
+}
+
 int main(int argc, char *argv[])
 {
   test_vector_int();
+  test_return();
 
   return 0;
 }

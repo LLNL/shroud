@@ -498,25 +498,23 @@ module vectors_mod
         end subroutine c_vector_string_fill_allocatable_len_bufferify
     end interface
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-    ! Statement: c_function_vector_scalar_targ_native_scalar
+    ! Statement: c_function_vector_scalar_malloc_targ_native_scalar
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Statement: c_in_native_scalar
     interface
-        function c_return_vector_alloc(n) &
+        function c_return_vector_alloc(n, SHT_rv_size) &
                 result(SHT_rv) &
                 bind(C, name="VEC_ReturnVectorAlloc")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
             implicit none
             integer(C_INT), value, intent(IN) :: n
-            integer(C_INT) :: SHT_rv(*)
+            integer(C_SIZE_T), intent(OUT) :: SHT_rv_size
+            type(C_PTR) :: SHT_rv
         end function c_return_vector_alloc
     end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)

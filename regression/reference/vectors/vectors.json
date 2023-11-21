@@ -3156,9 +3156,10 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "deref": "malloc",
                                 "intent": "function"
                             },
-                            "stmt": "c_function_vector_scalar_targ_native_scalar"
+                            "stmt": "c_function_vector_scalar_malloc_targ_native_scalar"
                         },
                         "n": {
                             "meta": {
@@ -3190,35 +3191,38 @@
                             "C_call_function": "ReturnVectorAlloc(\tn)",
                             "C_call_list": "n",
                             "C_name": "VEC_ReturnVectorAlloc",
-                            "C_prototype": "int n",
-                            "C_return_type": "int",
-                            "F_C_arguments": "n",
+                            "C_prototype": "int n,\t size_t *SHT_rv_size",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "n,\t SHT_rv_size",
                             "F_C_name": "c_return_vector_alloc",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_local_bytes": "SHC_rv_bytes",
                             "c_type": null,
                             "c_var": "SHC_rv",
+                            "c_var_size": "SHT_rv_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_rv_decl": "int SHCXX_rv",
                             "cxx_type": "std::vector<{cxx_T}>",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_type": null,
                             "f_var": "SHT_rv",
                             "i_dimension": "(*)",
+                            "i_local_bytes": "SHC_rv_bytes",
                             "i_var": "SHT_rv",
+                            "i_var_size": "SHT_rv_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "c_function_vector_scalar_targ_native_scalar"
+                            "stmt_name": "c_function_vector_scalar_malloc_targ_native_scalar"
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",

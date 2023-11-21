@@ -1210,6 +1210,15 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {

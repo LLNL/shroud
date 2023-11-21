@@ -190,6 +190,9 @@ declarations:
       Implement iota function.
       Return a vector as an ALLOCATABLE array.
       Copy results into the new array.
+  bind:
+    c:
+      decl: () +deref(malloc)
 
 ######################################################################
 # Test implied with two arguments

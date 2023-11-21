@@ -77,6 +77,8 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc,
     VEC_SHROUD_capsule_data *SHT_arg_capsule);
 
+int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size);
+
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 

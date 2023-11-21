@@ -596,8 +596,6 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
     // splicer end function.vector_string_fill_allocatable_len_bufferify
 }
 
-#if 0
-! Not Implemented
 /**
  * Implement iota function.
  * Return a vector as an ALLOCATABLE array.
@@ -605,18 +603,22 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Statement: c_function_vector_scalar_targ_native_scalar
+// Statement: c_function_vector_scalar_malloc_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Statement: c_in_native_scalar
-int VEC_ReturnVectorAlloc(int n)
+int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
 {
     // splicer begin function.ReturnVectorAlloc
-    int SHC_rv = ReturnVectorAlloc(n);
+    std::vector<int> SHCXX_rv;
+    SHCXX_rv = ReturnVectorAlloc(n);
+    size_t SHC_rv_bytes = SHCXX_rv.size()*sizeof(SHCXX_rv[0]);
+    int *SHC_rv = static_cast<int *>(std::malloc(SHC_rv_bytes));
+    std::memcpy(SHC_rv, SHCXX_rv.data(), SHC_rv_bytes);
+    *SHT_rv_size = SHCXX_rv.size();
     return SHC_rv;
     // splicer end function.ReturnVectorAlloc
 }
-#endif
 
 /**
  * Implement iota function.

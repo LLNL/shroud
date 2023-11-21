@@ -1375,6 +1375,26 @@ fc_statements = [
         c_temps=["size"],
     ),
     dict(
+        name="c_mixin_function_array_malloc",
+        comments=[
+            "Return pointer to array type.",
+            "Add an argument to return the length of the array",
+        ],
+        c_return_type="{cxx_T} *",
+        c_arg_decl=[
+            "size_t *{c_var_size}",
+        ],
+        i_result_decl=[
+            "type(C_PTR) :: {i_var}",
+        ],
+        i_arg_names=["{i_var_size}"],
+        i_arg_decl=[
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
         # Pass argument, len and size to C.
         name="f_mixin_in_2d_array_buf",
         f_arg_decl=[
@@ -2804,6 +2824,34 @@ fc_statements = [
         ],
     ),
 
+
+    dict(
+        name="c_function_vector_scalar_malloc_targ_native_scalar",
+        comments=[
+            "Create empty local vector then copy result to",
+            "malloc allocated array.",
+            "Add an argument with the length of the array.",
+        ],
+        mixin=[
+            "c_mixin_function_array_malloc",
+        ],
+        cxx_local_var="result",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}>\t {cxx_var};"
+        ],
+        c_call=[
+            "{cxx_var} = {C_call_function};",
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "{cxx_T} *{c_var} =\t static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
+    ),
+    
     # Specialize for std::vector<native *>
     dict(
         # Create a vector for pointers

@@ -194,7 +194,12 @@ contains
     integer(C_INT), allocatable :: rv1(:)
 
     rv1 = return_vector_alloc(10)
-    call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]), "return_vector_alloc")
+    call assert_true(allocated(rv1), &
+         "ReturnVectorAlloc allocated")
+    call assert_equals(10, size(rv1), &
+         "ReturnVectorAlloc size")
+    call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]), &
+         "ReturnVectorAlloc values")
     
   end subroutine test_return
 
