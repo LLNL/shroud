@@ -286,7 +286,7 @@
                 "fstatements": {
                     "c": {
                         "c_return": [
-                            "return SHT_arg_cdesc->size;"
+                            "return SHC_arg_size;"
                         ],
                         "c_return_type": "long"
                     },

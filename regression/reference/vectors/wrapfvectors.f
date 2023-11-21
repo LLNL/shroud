@@ -99,14 +99,12 @@ module vectors_mod
     end interface
     ! end c_vector_sum
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_out
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
     ! start c_vector_iota_out
     interface
         subroutine c_vector_iota_out(arg, SHT_arg_size) &
@@ -118,7 +116,6 @@ module vectors_mod
         end subroutine c_vector_iota_out
     end interface
     ! end c_vector_iota_out
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out
@@ -137,14 +134,12 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_bufferify
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
     ! start c_vector_iota_out_with_num
     interface
         function c_vector_iota_out_with_num(arg, SHT_arg_size) &
@@ -158,7 +153,6 @@ module vectors_mod
         end function c_vector_iota_out_with_num
     end interface
     ! end c_vector_iota_out_with_num
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
@@ -180,14 +174,12 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_with_num_bufferify
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
     ! start c_vector_iota_out_with_num2
     interface
         subroutine c_vector_iota_out_with_num2(arg, SHT_arg_size) &
@@ -199,7 +191,6 @@ module vectors_mod
         end subroutine c_vector_iota_out_with_num2
     end interface
     ! end c_vector_iota_out_with_num2
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
@@ -218,14 +209,12 @@ module vectors_mod
     end interface
     ! end c_vector_iota_out_with_num2_bufferify
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
     ! start c_vector_iota_out_alloc
     interface
         subroutine c_vector_iota_out_alloc(arg, SHT_arg_size) &
@@ -237,7 +226,6 @@ module vectors_mod
         end subroutine c_vector_iota_out_alloc
     end interface
     ! end c_vector_iota_out_alloc
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
@@ -263,7 +251,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-    ! Statement: c_inout_vector_&_buf_targ_native_scalar
+    ! Statement: c_inout_vector_&_buf_copy_targ_native_scalar
     ! start c_vector_iota_inout_alloc
     interface
         subroutine c_vector_iota_inout_alloc(arg, SHT_arg_size) &
@@ -305,7 +293,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
-    ! Statement: c_inout_vector_&_buf_targ_native_scalar
+    ! Statement: c_inout_vector_&_buf_copy_targ_native_scalar
     interface
         subroutine c_vector_increment(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_increment")
@@ -336,14 +324,12 @@ module vectors_mod
         end subroutine c_vector_increment_bufferify
     end interface
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_native_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_native_scalar
     interface
         subroutine c_vector_iota_out_d(arg, SHT_arg_size) &
                 bind(C, name="VEC_vector_iota_out_d")
@@ -353,7 +339,6 @@ module vectors_mod
             integer(C_SIZE_T), intent(IN) :: SHT_arg_size
         end subroutine c_vector_iota_out_d
     end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
@@ -420,7 +405,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_string_scalar
     interface
         subroutine c_vector_string_fill(arg) &
                 bind(C, name="VEC_vector_string_fill")
@@ -453,7 +438,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable(arg) &
                 bind(C, name="VEC_vector_string_fill_allocatable")
@@ -488,7 +473,7 @@ module vectors_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
-    ! Statement: c_out_vector_&_buf_targ_string_scalar
+    ! Statement: c_out_vector_&_buf_copy_targ_string_scalar
     interface
         subroutine c_vector_string_fill_allocatable_len(arg) &
                 bind(C, name="VEC_vector_string_fill_allocatable_len")

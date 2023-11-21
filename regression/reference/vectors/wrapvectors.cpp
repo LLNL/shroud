@@ -12,6 +12,7 @@
 // typemap
 #include <vector>
 // shroud
+#include <cstring>
 #include "wrapvectors.h"
 
 // splicer begin CXX_definitions
@@ -55,8 +56,6 @@ int VEC_vector_sum(int *arg, size_t SHT_arg_size)
 }
 // end VEC_vector_sum
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -66,17 +65,21 @@ int VEC_vector_sum(int *arg, size_t SHT_arg_size)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_native_scalar
+// Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out
 void VEC_vector_iota_out(int *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out
+    std::vector<int> SHCXX_arg;
     vector_iota_out(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
+    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
+        *SHT_arg_size : SHCXX_arg.size();
+    std::memcpy(arg, SHCXX_arg.data(),
+        SHC_arg_size*sizeof(SHCXX_arg[0]));
+    *SHT_arg_size = SHC_arg_size;
     // splicer end function.vector_iota_out
 }
 // end VEC_vector_iota_out
-#endif
 
 /**
  * \brief Copy vector into Fortran input array
@@ -104,8 +107,6 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 }
 // end VEC_vector_iota_out_bufferify
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -118,18 +119,22 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_native_scalar
+// Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out_with_num
 long VEC_vector_iota_out_with_num(int *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out_with_num
+    std::vector<int> SHCXX_arg;
     vector_iota_out_with_num(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
-    return SHT_arg_cdesc->size;
+    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
+        *SHT_arg_size : SHCXX_arg.size();
+    std::memcpy(arg, SHCXX_arg.data(),
+        SHC_arg_size*sizeof(SHCXX_arg[0]));
+    *SHT_arg_size = SHC_arg_size;
+    return SHC_arg_size;
     // splicer end function.vector_iota_out_with_num
 }
 // end VEC_vector_iota_out_with_num
-#endif
 
 /**
  * \brief Copy vector into Fortran input array
@@ -162,8 +167,6 @@ long VEC_vector_iota_out_with_num_bufferify(
 }
 // end VEC_vector_iota_out_with_num_bufferify
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -176,17 +179,21 @@ long VEC_vector_iota_out_with_num_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_native_scalar
+// Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out_with_num2
 void VEC_vector_iota_out_with_num2(int *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out_with_num2
+    std::vector<int> SHCXX_arg;
     vector_iota_out_with_num2(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
+    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
+        *SHT_arg_size : SHCXX_arg.size();
+    std::memcpy(arg, SHCXX_arg.data(),
+        SHC_arg_size*sizeof(SHCXX_arg[0]));
+    *SHT_arg_size = SHC_arg_size;
     // splicer end function.vector_iota_out_with_num2
 }
 // end VEC_vector_iota_out_with_num2
-#endif
 
 /**
  * \brief Copy vector into Fortran input array
@@ -218,8 +225,6 @@ void VEC_vector_iota_out_with_num2_bufferify(
 }
 // end VEC_vector_iota_out_with_num2_bufferify
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -229,17 +234,21 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_native_scalar
+// Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out_alloc
 void VEC_vector_iota_out_alloc(int *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out_alloc
+    std::vector<int> SHCXX_arg;
     vector_iota_out_alloc(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
+    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
+        *SHT_arg_size : SHCXX_arg.size();
+    std::memcpy(arg, SHCXX_arg.data(),
+        SHC_arg_size*sizeof(SHCXX_arg[0]));
+    *SHT_arg_size = SHC_arg_size;
     // splicer end function.vector_iota_out_alloc
 }
 // end VEC_vector_iota_out_alloc
-#endif
 
 /**
  * \brief Copy vector into Fortran allocatable array
@@ -279,7 +288,7 @@ void VEC_vector_iota_out_alloc_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-// Statement: c_inout_vector_&_buf_targ_native_scalar
+// Statement: c_inout_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_inout_alloc
 void VEC_vector_iota_inout_alloc(int *arg, size_t *SHT_arg_size)
 {
@@ -327,7 +336,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
-// Statement: c_inout_vector_&_buf_targ_native_scalar
+// Statement: c_inout_vector_&_buf_copy_targ_native_scalar
 void VEC_vector_increment(int *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_increment
@@ -360,8 +369,6 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     // splicer end function.vector_increment_bufferify
 }
 
-#if 0
-! Not Implemented
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -371,15 +378,19 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_native_scalar
+// Statement: c_out_vector_&_buf_copy_targ_native_scalar
 void VEC_vector_iota_out_d(double *arg, size_t *SHT_arg_size)
 {
     // splicer begin function.vector_iota_out_d
+    std::vector<double> SHCXX_arg;
     vector_iota_out_d(SHCXX_arg);
-    *SHT_arg_size = SHCXX_arg->size()
+    size_t SHC_arg_size = *SHT_arg_size < SHCXX_arg.size() ?
+        *SHT_arg_size : SHCXX_arg.size();
+    std::memcpy(arg, SHCXX_arg.data(),
+        SHC_arg_size*sizeof(SHCXX_arg[0]));
+    *SHT_arg_size = SHC_arg_size;
     // splicer end function.vector_iota_out_d
 }
-#endif
 
 /**
  * \brief Copy vector into Fortran input array
@@ -475,7 +486,7 @@ int VEC_vector_string_count(const char *arg, size_t SHT_arg_size,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_string_scalar
+// Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill(char * arg)
 {
     // splicer begin function.vector_string_fill
@@ -512,7 +523,7 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
-// Statement: c_out_vector_&_buf_targ_string_scalar
+// Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill_allocatable(char * arg)
 {
     // splicer begin function.vector_string_fill_allocatable
@@ -552,7 +563,7 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
-// Statement: c_out_vector_&_buf_targ_string_scalar
+// Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len(char * arg)
 {
     // splicer begin function.vector_string_fill_allocatable_len

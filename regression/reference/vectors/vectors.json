@@ -314,9 +314,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -370,6 +371,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -388,13 +390,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_size": "SHC_arg_size",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -501,7 +504,7 @@
                 "fstatements": {
                     "c": {
                         "c_return": [
-                            "return SHT_arg_cdesc->size;"
+                            "return SHC_arg_size;"
                         ],
                         "c_return_type": "long"
                     },
@@ -555,9 +558,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -622,6 +626,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -640,13 +645,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_size": "SHC_arg_size",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -796,9 +802,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -861,6 +868,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -879,13 +887,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_size": "SHC_arg_size",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1019,9 +1028,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1076,6 +1086,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
@@ -1094,13 +1105,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_size": "SHC_arg_size",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1238,9 +1250,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1319,7 +1332,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_inout_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1454,9 +1467,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1534,7 +1548,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_inout_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1669,9 +1683,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
                     },
                     "f": {
@@ -1725,6 +1740,7 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_type": "double",
                             "c_var": "arg",
@@ -1743,13 +1759,14 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
+                            "i_local_size": "SHC_arg_size",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2421,9 +2438,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
                     },
                     "f": {
@@ -2499,7 +2517,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2633,9 +2651,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
                     },
                     "f": {
@@ -2712,7 +2731,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2855,9 +2874,10 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
+                                "deref": "copy",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
                     },
                     "f": {
@@ -2936,7 +2956,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
                         },
                         "fmtf": {
                             "c_addr": "",

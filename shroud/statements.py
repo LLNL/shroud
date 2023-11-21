@@ -236,7 +236,7 @@ def lookup_local_stmts(path, parent, node):
     mode - "update", "replace"
 
     Args:
-        path   - list of path components ["c", "buf"]
+        path   - list of path components ["c"]
         parent - parent Scope.
         node   - FunctionNode.
     """
@@ -2583,31 +2583,37 @@ fc_statements = [
         ],
         cxx_local_var="scalar",
         c_pre_call=[
-            (
-                "{c_const}std::vector<{cxx_T}> "
-                "{cxx_var}({c_var}, {c_var} + {c_var_size});"
-            )
+            "{c_const}std::vector<{cxx_T}> "
+            "{cxx_var}({c_var}, {c_var} + {c_var_size});"
         ],
     ),
     dict(
-        # c_out_vector_scalar_buf_targ_native_scalar
-        # c_out_vector_*_buf_targ_native_scalar
-        # c_out_vector_&_buf_targ_native_scalar
-        name="c_out_vector_scalar/*/&_buf_targ_native_scalar",
+        # c_out_vector_scalar_buf_copy_targ_native_scalar
+        # c_out_vector_*_buf_copy_targ_native_scalar
+        # c_out_vector_&_buf_copy_targ_native_scalar
+        name="c_out_vector_scalar/*/&_buf_copy_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_buf",
         ],
         cxx_local_var="scalar",
-        c_post_call=[
-            "*{c_var_size} = {cxx_var}->size()",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> {cxx_var};",
         ],
-        notimplemented=True,
+        c_post_call=[
+            "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t "
+            "*{c_var_size} :\t {cxx_var}.size();",
+            "std::memcpy({c_var},\t {cxx_var}.data(),"
+            "\t {c_local_size}*sizeof({cxx_var}[0]));",
+             "*{c_var_size} = {c_local_size};",
+        ],
+        c_local=["size"],
+        impl_header=["<cstring>"],
     ),
     dict(
-        # c_inout_vector_scalar_buf_targ_native_scalar
-        # c_inout_vector_*_buf_targ_native_scalar
-        # c_inout_vector_&_buf_targ_native_scalar
-        name="c_inout_vector_scalar/*/&_buf_targ_native_scalar",
+        # c_inout_vector_scalar_buf_copy_targ_native_scalar
+        # c_inout_vector_*_buf_copy_targ_native_scalar
+        # c_inout_vector_&_buf_copy_targ_native_scalar
+        name="c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar",
         mixin=[
             "f_mixin_out_array_buf",
         ],
@@ -2781,11 +2787,11 @@ fc_statements = [
         c_local=["i", "n", "s"],
     ),
 
-    # c_out_vector_scalar_buf_targ_string_scalar
-    # c_out_vector_*_buf_targ_string_scalar
-    # c_out_vector_&_buf_targ_string_scalar
+    # c_out_vector_scalar_buf_copy_targ_string_scalar
+    # c_out_vector_*_buf_copy_targ_string_scalar
+    # c_out_vector_&_buf_copy_targ_string_scalar
     dict(
-        name="c_out_vector_scalar/*/&_buf_targ_string_scalar",
+        name="c_out_vector_scalar/*/&_buf_copy_targ_string_scalar",
         notimplemented=True,
     ),
     

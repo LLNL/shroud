@@ -98,7 +98,7 @@ class FillMeta(object):
                 self.set_arg_deref_fortran(arg, meta)
                 self.set_arg_api_fortran(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
-            
+
         # --- End loop over function parameters
         func_cursor.arg = None
 
@@ -214,13 +214,12 @@ class FillMeta(object):
         """
         if meta["deref"]:
             return
-        return
         declarator = arg.declarator
         attrs = declarator.attrs
         ntypemap = arg.typemap
         is_ptr = declarator.is_indirect()
 
-        deref = attrs["deref"]
+        deref = attrs["derefXXX"]
         if deref is not None:
             if deref not in ["malloc", "copy", "raw", "scalar"]:
                 self.cursor.generate(
@@ -245,6 +244,23 @@ class FillMeta(object):
                     " '{}'".format(declarator.name))
             meta["deref"] = attrs["deref"]
             return
+
+        # Set deref attribute for arguments which return values.
+        intent = meta["intent"]
+        spointer = declarator.get_indirect_stmt()
+        if ntypemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif intent not in ["out", "inout"]:
+            pass
+        elif ntypemap.sgroup == "vector":
+            meta["deref"] = "copy"
+#        elif spointer in ["**", "*&"]:
+#            if ntypemap.sgroup == "string":
+#                # strings are not contiguous, so copy into argument.
+#                meta["deref"] = "copy"
+#            else:
+#                meta["deref"] = "copy"
 
     def set_arg_deref_fortran(self, arg, meta):
         """Check deref attr and set default for variable.
@@ -292,7 +308,9 @@ class FillMeta(object):
         if ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
-        elif spointer in ["**", "*&"] and intent == "out":
+        elif intent not in ["out", "inout"]:
+            pass
+        elif spointer in ["**", "*&"]:
             if ntypemap.sgroup == "string":
                 # strings are not contiguous, so copy into argument.
                 meta["deref"] = "copy"

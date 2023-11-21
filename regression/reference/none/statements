@@ -163,22 +163,25 @@ root
       vector
         &
           buf
-            targ
-              native
-                scalar -- c_inout_vector_scalar/*/&_buf_targ_native_scalar
+            copy
+              targ
+                native
+                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
           targ
             native
               scalar -- c_shared_vector_argument
         *
           buf
-            targ
-              native
-                scalar -- c_inout_vector_scalar/*/&_buf_targ_native_scalar
+            copy
+              targ
+                native
+                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
         scalar
           buf
-            targ
-              native
-                scalar -- c_inout_vector_scalar/*/&_buf_targ_native_scalar
+            copy
+              targ
+                native
+                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -262,11 +265,12 @@ root
       vector
         &
           buf
-            targ
-              native
-                scalar -- c_out_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- c_out_vector_scalar/*/&_buf_targ_string_scalar
+            copy
+              targ
+                native
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
+                string
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
           cdesc
             allocatable
               targ
@@ -284,22 +288,24 @@ root
               scalar -- c_shared_vector_argument
         *
           buf
-            targ
-              native
-                scalar -- c_out_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- c_out_vector_scalar/*/&_buf_targ_string_scalar
+            copy
+              targ
+                native
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
+                string
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
           cdesc
             targ
               native
                 scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
         scalar
           buf
-            targ
-              native
-                scalar -- c_out_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- c_out_vector_scalar/*/&_buf_targ_string_scalar
+            copy
+              targ
+                native
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
+                string
+                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
       void
         *
           cdesc -- f_in/out/inout_native_*_cdesc
@@ -2462,7 +2468,7 @@ c_inout_struct_*:
   intent: inout
   name: c_inout_struct_*
   owner: library
-c_inout_vector_&_buf_targ_native_scalar:
+c_inout_vector_&_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
@@ -2487,7 +2493,7 @@ c_inout_vector_&_buf_targ_native_scalar:
     - C_SIZE_T
   index: '97'
   intent: inout
-  name: c_inout_vector_&_buf_targ_native_scalar
+  name: c_inout_vector_&_buf_copy_targ_native_scalar
   notimplemented: true
   owner: library
 c_inout_vector_&_targ_native_scalar:
@@ -2498,7 +2504,7 @@ c_inout_vector_&_targ_native_scalar:
   name: c_inout_vector_&_targ_native_scalar
   notimplemented: true
   owner: library
-c_inout_vector_*_buf_targ_native_scalar:
+c_inout_vector_*_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
@@ -2523,10 +2529,10 @@ c_inout_vector_*_buf_targ_native_scalar:
     - C_SIZE_T
   index: '97'
   intent: inout
-  name: c_inout_vector_*_buf_targ_native_scalar
+  name: c_inout_vector_*_buf_copy_targ_native_scalar
   notimplemented: true
   owner: library
-c_inout_vector_scalar_buf_targ_native_scalar:
+c_inout_vector_scalar_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
@@ -2551,7 +2557,7 @@ c_inout_vector_scalar_buf_targ_native_scalar:
     - C_SIZE_T
   index: '97'
   intent: inout
-  name: c_inout_vector_scalar_buf_targ_native_scalar
+  name: c_inout_vector_scalar_buf_copy_targ_native_scalar
   notimplemented: true
   owner: library
 c_inout_void_**:
@@ -3146,12 +3152,19 @@ c_out_struct_*:
   intent: out
   name: c_out_struct_*
   owner: library
-c_out_vector_&_buf_targ_native_scalar:
+c_out_vector_&_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - size
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
+    \ :\t {cxx_var}.size();"
+  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
+  - '*{c_var_size} = {c_local_size};'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
   c_temps:
   - size
   comments:
@@ -3167,15 +3180,16 @@ c_out_vector_&_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
+  impl_header:
+  - <cstring>
   index: '96'
   intent: out
-  name: c_out_vector_&_buf_targ_native_scalar
-  notimplemented: true
+  name: c_out_vector_&_buf_copy_targ_native_scalar
   owner: library
-c_out_vector_&_buf_targ_string_scalar:
+c_out_vector_&_buf_copy_targ_string_scalar:
   index: '105'
   intent: out
-  name: c_out_vector_&_buf_targ_string_scalar
+  name: c_out_vector_&_buf_copy_targ_string_scalar
   notimplemented: true
   owner: library
 c_out_vector_&_cdesc_allocatable_targ_string_scalar:
@@ -3299,12 +3313,19 @@ c_out_vector_&_targ_string_scalar:
   name: c_out_vector_&_targ_string_scalar
   notimplemented: true
   owner: library
-c_out_vector_*_buf_targ_native_scalar:
+c_out_vector_*_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - size
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
+    \ :\t {cxx_var}.size();"
+  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
+  - '*{c_var_size} = {c_local_size};'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
   c_temps:
   - size
   comments:
@@ -3320,15 +3341,16 @@ c_out_vector_*_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
+  impl_header:
+  - <cstring>
   index: '96'
   intent: out
-  name: c_out_vector_*_buf_targ_native_scalar
-  notimplemented: true
+  name: c_out_vector_*_buf_copy_targ_native_scalar
   owner: library
-c_out_vector_*_buf_targ_string_scalar:
+c_out_vector_*_buf_copy_targ_string_scalar:
   index: '105'
   intent: out
-  name: c_out_vector_*_buf_targ_string_scalar
+  name: c_out_vector_*_buf_copy_targ_string_scalar
   notimplemented: true
   owner: library
 c_out_vector_*_cdesc_targ_native_scalar:
@@ -3365,12 +3387,19 @@ c_out_vector_*_cdesc_targ_native_scalar:
   intent: out
   name: c_out_vector_*_cdesc_targ_native_scalar
   owner: library
-c_out_vector_scalar_buf_targ_native_scalar:
+c_out_vector_scalar_buf_copy_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - size
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
+    \ :\t {cxx_var}.size();"
+  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
+  - '*{c_var_size} = {c_local_size};'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
   c_temps:
   - size
   comments:
@@ -3386,15 +3415,16 @@ c_out_vector_scalar_buf_targ_native_scalar:
     iso_c_binding:
     - '{f_kind}'
     - C_SIZE_T
+  impl_header:
+  - <cstring>
   index: '96'
   intent: out
-  name: c_out_vector_scalar_buf_targ_native_scalar
-  notimplemented: true
+  name: c_out_vector_scalar_buf_copy_targ_native_scalar
   owner: library
-c_out_vector_scalar_buf_targ_string_scalar:
+c_out_vector_scalar_buf_copy_targ_string_scalar:
   index: '105'
   intent: out
-  name: c_out_vector_scalar_buf_targ_string_scalar
+  name: c_out_vector_scalar_buf_copy_targ_string_scalar
   notimplemented: true
   owner: library
 c_out_void_*&:

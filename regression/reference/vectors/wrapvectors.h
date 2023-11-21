@@ -30,13 +30,21 @@ extern "C" {
 
 int VEC_vector_sum(int *arg, size_t SHT_arg_size);
 
+void VEC_vector_iota_out(int *arg, size_t *SHT_arg_size);
+
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
+
+long VEC_vector_iota_out_with_num(int *arg, size_t *SHT_arg_size);
 
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc);
 
+void VEC_vector_iota_out_with_num2(int *arg, size_t *SHT_arg_size);
+
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc);
+
+void VEC_vector_iota_out_alloc(int *arg, size_t *SHT_arg_size);
 
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc);
@@ -46,6 +54,8 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc);
+
+void VEC_vector_iota_out_d(double *arg, size_t *SHT_arg_size);
 
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 

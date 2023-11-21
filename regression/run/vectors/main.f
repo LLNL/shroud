@@ -45,29 +45,31 @@ contains
 
     intv = [1,2,3,4,5]
     irv = vector_sum(intv)
-    call assert_true(irv .eq. 15)
+    call assert_true(irv .eq. 15, "vector_sum")
 
     intv(:) = 0
     call vector_iota_out(intv)
-    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
+    call assert_true(all(intv(:) .eq. [1,2,3,4,5]), "vector_iota_out values")
 
     ! Fortran and C wrappers have custom statements.
     intv2(:) = 0
     num = vector_iota_out_with_num(intv2)
-    call assert_true(5 == num)
-    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]))
+    call assert_true(5 == num, "vector_iota_out_with_num size")
+    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]), &
+         "vector_iota_out_with_num values")
 
     ! Only Fortran wrapper has custom statements.
     intv2(:) = 0
     num = vector_iota_out_with_num2(intv2)
-    call assert_true(5 == num)
-    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]))
+    call assert_true(5 == num, "vector_iota_out_with_num2 size")
+    call assert_true(all(intv2(:num) .eq. [1,2,3,4,5]), &
+         "vector_iota_out_with_num2 values")
 
     ! inta is intent(out), so it will be deallocated upon entry
     ! to vector_iota_out_alloc.
     call vector_iota_out_alloc(inta)
-    call assert_true(allocated(inta))
-    call assert_equals(5 , size(inta))
+    call assert_true(allocated(inta), "vector_iota_out_alloc")
+    call assert_equals(5 , size(inta), "vector_iota_out_alloc size")
     call assert_true( all(inta == [1,2,3,4,5]), &
          "vector_iota_out_alloc value")
 
@@ -75,15 +77,16 @@ contains
     ! to vector_iota_inout_alloc.
     ! Use previous value to append
     call vector_iota_inout_alloc(inta)
-    call assert_true(allocated(inta))
-    call assert_equals(10 , size(inta))
+    call assert_true(allocated(inta), "vector_iota_inout_alloc allocated")
+    call assert_equals(10 , size(inta), "vector_iota_inout_alloc size")
     call assert_true( all(inta == [1,2,3,4,5,11,12,13,14,15]), &
          "vector_iota_inout_alloc value")
     deallocate(inta)
 
     intv = [1,2,3,4,5]
     call vector_increment(intv)
-    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
+    call assert_true(all(intv(:) .eq. [2,3,4,5,6]), &
+         "vector_increment values")
   end subroutine test_vector_int
 
   subroutine test_vector_double
@@ -99,7 +102,8 @@ contains
 
     intv(:) = 0
     call vector_iota_out_d(intv)
-    call assert_true(all(intv(:) .eq. [1.,2.,3.,4.,5.]))
+    call assert_true(all(intv(:) .eq. [1.,2.,3.,4.,5.]), &
+         "vector_iota_out_d values")
 
     ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
 !    call vector_iota_out_alloc(inta)
@@ -131,7 +135,7 @@ contains
     datain = reshape([1,2,3,4,5,6], shape(datain))
 
     rvsum = vector_of_pointers(datain, size(datain, 1))
-    call assert_true(sum(datain) == rvsum)
+    call assert_true(sum(datain) == rvsum, "vector_of_pointers")
 
   end subroutine test_vector_double_ptr
   
@@ -146,7 +150,7 @@ contains
     ! count number of underscores
     names = [ "dog_cat   ", "bird_mouse", "__        " ]
     irv = vector_string_count(names)
-    call assert_true(irv == 4)
+    call assert_true(irv == 4, "vector_string_count")
 
     ! Fill strings into names
     names = " "
@@ -190,7 +194,7 @@ contains
     integer(C_INT), allocatable :: rv1(:)
 
     rv1 = return_vector_alloc(10)
-    call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]))
+    call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]), "return_vector_alloc")
     
   end subroutine test_return
 
