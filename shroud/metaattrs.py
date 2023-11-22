@@ -60,69 +60,7 @@ class FillMeta(object):
 
     def meta_functions(self, cls, functions):
         for node in functions:
-            if node.wrap.c:
-                self.meta_function("c", cls, node)
-            if node.wrap.fortran:
-                self.meta_function("f", cls, node)
-            if node.wrap.python:
-                self.meta_function("py", cls, node)
-
-    def meta_function(self, wlang, cls, node):
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
-        #####
-        ast = node.ast
-        declarator = ast.declarator
-
-        r_bind = statements.fetch_func_bind(node, wlang)
-        r_meta = r_bind.meta
-
-        self.set_func_intent(node, r_meta)
-        if wlang == "c":
-            self.set_func_deref_c(node, r_meta)
-            self.set_func_api(wlang, node, r_meta)
-            stmt0 = statements.lookup_c_function_stmt(node)
-        elif wlang == "f":
-            self.set_func_deref_fortran(node, r_meta)
-            self.set_func_api(wlang, node, r_meta)
-            stmt0 = statements.lookup_f_function_stmt(node)
-        elif wlang == "py":
-            stmt0 = None
-
-        if stmt0:
-            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
-            r_bind.stmt = result_stmt
-            if stmt0 is not result_stmt:
-                r_bind.fstmts = wlang
-
-        # --- Loop over function parameters
-        for arg in ast.declarator.params:
-            func_cursor.arg = arg
-            declarator = arg.declarator
-            arg_name = declarator.user_name
-
-            a_bind = statements.fetch_arg_bind(node, arg, wlang)
-            meta = a_bind.meta
-
-            self.set_arg_intent(node, arg, meta)
-            if wlang == "c":
-                self.set_arg_deref_c(arg, meta)
-                self.set_arg_api_c(node, arg, meta)
-                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
-            elif wlang == "f":
-                self.set_arg_deref_fortran(arg, meta)
-                self.set_arg_api_fortran(node, arg, meta)
-                self.set_arg_hidden(arg, meta)
-                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
-            elif wlang == "py":
-                arg_stmt = None
-            a_bind.stmt = arg_stmt
-
-        # --- End loop over function parameters
-        func_cursor.arg = None
-
-        #####
-        cursor.pop_node(node)
+            self.meta_function(cls, node)
 
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
@@ -514,4 +452,180 @@ class FillMeta(object):
 
         if hidden:
             meta["hidden"] = hidden
+        
+######################################################################
+#
+
+class FillMetaShare(FillMeta):
+    def meta_function(self, cls, node):
+        wlang = "share"
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        #####
+        ast = node.ast
+        declarator = ast.declarator
+
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
+
+        self.set_func_intent(node, r_meta)
+
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
+
+            self.set_arg_intent(node, arg, meta)
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+
+######################################################################
+#
+
+class FillMetaC(FillMeta):
+    def meta_function(self, cls, node):
+        if not node.wrap.c:
+            return
+        wlang = "c"
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        #####
+        ast = node.ast
+        declarator = ast.declarator
+
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
+
+        self.set_func_intent(node, r_meta)
+        self.set_func_deref_c(node, r_meta)
+        self.set_func_api(wlang, node, r_meta)
+        stmt0 = statements.lookup_c_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+        r_bind.stmt = result_stmt
+        if stmt0 is not result_stmt:
+            r_bind.fstmts = wlang
+
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
+
+            self.set_arg_intent(node, arg, meta)
+            self.set_arg_deref_c(arg, meta)
+            self.set_arg_api_c(node, arg, meta)
+            arg_stmt = statements.lookup_c_arg_stmt(node, arg)
+            a_bind.stmt = arg_stmt
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+            
+######################################################################
+#
+
+class FillMetaFortran(FillMeta):
+    def meta_function(self, cls, node):
+        if not node.wrap.fortran:
+            return
+        wlang = "f"
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        #####
+        ast = node.ast
+        declarator = ast.declarator
+
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
+
+        self.set_func_intent(node, r_meta)
+        self.set_func_deref_fortran(node, r_meta)
+        self.set_func_api(wlang, node, r_meta)
+        
+        stmt0 = statements.lookup_f_function_stmt(node)
+        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+        r_bind.stmt = result_stmt
+        if stmt0 is not result_stmt:
+            r_bind.fstmts = wlang
+
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
+
+            self.set_arg_intent(node, arg, meta)
+            self.set_arg_deref_fortran(arg, meta)
+            self.set_arg_api_fortran(node, arg, meta)
+            self.set_arg_hidden(arg, meta)
+            arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            a_bind.stmt = arg_stmt
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+
+######################################################################
+#
+
+class FillMetaPython(FillMeta):
+    def meta_function(self, cls, node):
+        if not node.wrap.python:
+            return
+        wlang = "py"
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        #####
+        ast = node.ast
+        declarator = ast.declarator
+
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
+
+        self.set_func_intent(node, r_meta)
+        stmt0 = None
+
+        if stmt0:
+            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+            r_bind.stmt = result_stmt
+            if stmt0 is not result_stmt:
+                r_bind.fstmts = wlang
+
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
+
+            self.set_arg_intent(node, arg, meta)
+            arg_stmt = None
+            a_bind.stmt = arg_stmt
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+
+######################################################################
+#
+
+process_map=dict(
+    share=FillMetaShare,
+    c=FillMetaC,
+    f=FillMetaFortran,
+    py=FillMetaPython,
+)
+
+def process_metaattrs(newlibrary, wlang):
+    process_map[wlang](newlibrary).meta_library()
         

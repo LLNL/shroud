@@ -538,7 +538,10 @@ def main_with_args(args):
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
 
-        metaattrs.FillMeta(newlibrary).meta_library()
+        if wrap.c:
+            metaattrs.process_metaattrs(newlibrary, "c")
+        if wrap.fortran:
+            metaattrs.process_metaattrs(newlibrary, "f")
         
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
@@ -555,6 +558,7 @@ def main_with_args(args):
             clibrary.write_post_fortran()
 
         if wrap.python:
+            metaattrs.process_metaattrs(newlibrary, "py")
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()
 
         if wrap.lua:
