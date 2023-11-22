@@ -51,19 +51,25 @@ class BindArg(object):
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
 
-def fetch_func_metaattrs(node, wlang):
+def fetch_func_bind(node, wlang):
     bind = node._bind.setdefault(wlang, {})
     bindarg = bind.setdefault("+result", BindArg())
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
+    return bindarg
 
-def fetch_arg_metaattrs(node, arg, wlang):
+def fetch_arg_bind(node, arg, wlang):
     bind = node._bind.setdefault(wlang, {})
     bindarg = bind.setdefault(arg.declarator.user_name, BindArg())
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
+    return bindarg
+
+def fetch_func_metaattrs(node, wlang):
+    return fetch_func_bind(node, wlang).meta
+
+def fetch_arg_metaattrs(node, arg, wlang):
+    return fetch_arg_bind(node, arg, wlang).meta
 
 def fetch_name_bind(bind, wlang, name):
     bind = bind.setdefault(wlang, {})

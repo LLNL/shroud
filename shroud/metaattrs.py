@@ -72,15 +72,23 @@ class FillMeta(object):
         ast = node.ast
         declarator = ast.declarator
 
-        r_meta = statements.fetch_func_metaattrs(node, wlang)
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
 
         self.set_func_intent(node, r_meta)
         if wlang == "c":
             self.set_func_deref_c(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
+            stmt0 = statements.lookup_c_function_stmt(node)
         elif wlang == "f":
             self.set_func_deref_fortran(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
+            stmt0 = statements.lookup_f_function_stmt(node)
+
+        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+        r_bind.stmt = result_stmt
+        if stmt0 is not result_stmt:
+            r_bind.fstmts = wlang
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -88,16 +96,20 @@ class FillMeta(object):
             declarator = arg.declarator
             arg_name = declarator.user_name
 
-            meta = statements.fetch_arg_metaattrs(node, arg, wlang)
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
 
             self.set_arg_intent(node, arg, meta)
             if wlang == "c":
                 self.set_arg_deref_c(arg, meta)
                 self.set_arg_api_c(node, arg, meta)
+                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
             elif wlang == "f":
                 self.set_arg_deref_fortran(arg, meta)
                 self.set_arg_api_fortran(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
+                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            a_bind.stmt = arg_stmt
 
         # --- End loop over function parameters
         func_cursor.arg = None
