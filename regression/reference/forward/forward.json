@@ -113,6 +113,13 @@
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -267,6 +274,13 @@
                                     },
                                     "stmt": "f_dtor"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -390,6 +404,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -594,6 +620,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },

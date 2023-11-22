@@ -538,15 +538,14 @@ def main_with_args(args):
         statements.update_fc_statements_for_language(newlibrary.language)
         wrap = newlibrary.wrap
 
-        if wrap.c or wrap.fortran:
-            metaattrs.FillMeta(newlibrary).meta_library()
-            fcfmt.FillFormat(newlibrary).fmt_library()
+        metaattrs.FillMeta(newlibrary).meta_library()
         
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.
         clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
         if wrap.c or wrap.fortran:
+            fcfmt.FillFormat(newlibrary).fmt_library()
             clibrary.wrap_library()
 
         if wrap.fortran:

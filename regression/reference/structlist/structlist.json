@@ -83,6 +83,25 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "count": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtpy": {

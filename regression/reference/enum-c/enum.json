@@ -282,6 +282,18 @@
                             },
                             "stmt": "f_in_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {

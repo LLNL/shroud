@@ -168,6 +168,15 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "PYGoodFunction",
                     "F_name_api": "py_good_function",

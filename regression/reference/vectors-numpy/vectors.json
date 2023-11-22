@@ -73,6 +73,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -189,6 +203,20 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -690,6 +718,20 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1220,6 +1262,18 @@
                                 "deref": "malloc"
                             }
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "n": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1340,6 +1394,25 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

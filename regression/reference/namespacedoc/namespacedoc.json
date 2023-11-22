@@ -51,6 +51,13 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -128,6 +135,13 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -212,6 +226,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -327,6 +348,13 @@
                                     },
                                     "stmt": "f_subroutine"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -440,6 +468,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

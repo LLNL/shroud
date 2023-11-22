@@ -123,6 +123,13 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -259,6 +266,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -583,6 +607,23 @@
                             },
                             "stmt": "f_out_native_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -821,6 +862,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1115,6 +1168,28 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_bool_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "arg3": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -1471,6 +1546,23 @@
                             },
                             "stmt": "f_in_char_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1792,6 +1884,18 @@
                             },
                             "stmt": "f_in_char_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1980,6 +2084,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "s": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -2187,6 +2303,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name1": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2424,6 +2552,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "name2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2729,6 +2874,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "ltext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "text": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3051,6 +3213,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "ltext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "text": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3469,6 +3653,28 @@
                             },
                             "stmt": "f_in_char_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "ltext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "text": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3822,6 +4028,18 @@
                             },
                             "stmt": "f_in_bool_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4051,6 +4269,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_bool_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

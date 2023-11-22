@@ -76,6 +76,25 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "dfield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "ifield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtpy": {
@@ -2235,6 +2254,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -2334,6 +2367,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -2432,6 +2479,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
@@ -2511,6 +2572,20 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2749,6 +2824,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3394,6 +3481,33 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "in1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "out2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5099,6 +5213,18 @@
                                     },
                                     "stmt": "f_inout_struct_&"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -5334,6 +5460,18 @@
                                     },
                                     "stmt": "f_in_struct_&"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -5568,6 +5706,18 @@
                                     },
                                     "stmt": "f_inout_struct_&"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -5750,6 +5900,18 @@
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_struct_&"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
                                 }
                             }
                         },

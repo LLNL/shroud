@@ -182,6 +182,18 @@
                             },
                             "stmt": "f_in_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -405,6 +417,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },

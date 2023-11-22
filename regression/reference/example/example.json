@@ -80,6 +80,13 @@
                                                     },
                                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -282,6 +289,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                },
+                                                "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -541,6 +560,13 @@
                                                     },
                                                     "stmt": "f_dtor"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -659,6 +685,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "incr": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -905,6 +943,13 @@
                                                     },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -1093,6 +1138,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_buf_arg"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -1288,6 +1340,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -1543,6 +1607,18 @@
                                                     },
                                                     "stmt": "f_in_native_scalar"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -1793,6 +1869,18 @@
                                                     },
                                                     "stmt": "f_in_bool_scalar"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -2019,6 +2107,13 @@
                                                         "intent": "subroutine"
                                                     },
                                                     "stmt": "f_subroutine"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
                                                 }
                                             }
                                         },
@@ -2255,6 +2350,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                },
+                                                "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -2515,6 +2622,13 @@
                                                     },
                                                     "stmt": "f_dtor"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -2622,6 +2736,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_buf_copy"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -2810,6 +2931,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -3002,6 +3130,13 @@
                                                     },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -3193,6 +3328,13 @@
                                                     },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -3371,6 +3513,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -3558,6 +3707,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_shadow_*"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -4130,6 +4291,23 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "c_in_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "len": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                },
+                                                "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -4760,6 +4938,13 @@
                                                     },
                                                     "stmt": "f_subroutine"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -4850,6 +5035,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -5190,6 +5382,18 @@
                                                     },
                                                     "stmt": "f_in_native_scalar"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -5443,6 +5647,18 @@
                                                     },
                                                     "stmt": "f_in_native_scalar"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -5692,6 +5908,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -5948,6 +6176,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             }
                                         },
@@ -6211,6 +6451,13 @@
                                                     },
                                                     "stmt": "f_function_native_scalar"
                                                 }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
                                             }
                                         },
                                         "zz_fmtargs": {
@@ -6399,6 +6646,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "py": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             }
                                         },
@@ -6614,6 +6868,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -6747,6 +7008,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -6989,6 +7262,13 @@
                                             },
                                             "stmt": "f_function_bool_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -7173,6 +7453,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -7420,6 +7712,23 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "flag": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -7986,6 +8295,23 @@
                                             },
                                             "stmt": "f_in_native_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "j": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -8224,6 +8550,13 @@
                                             },
                                             "stmt": "f_function_native_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -8399,6 +8732,18 @@
                                             },
                                             "stmt": "f_in_unknown_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "comm": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -8572,6 +8917,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -8696,6 +9048,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_void_scalar"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -8900,6 +9264,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_*"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -9132,6 +9508,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -9659,6 +10047,18 @@
                                             },
                                             "stmt": "f_in_void_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -10151,6 +10551,63 @@
                                                 "intent": "inout"
                                             },
                                             "stmt": "f_inout_native_*"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
                                         }
                                     }
                                 },
@@ -11275,6 +11732,63 @@
                                             },
                                             "stmt": "f_in_native_scalar"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -12272,6 +12786,28 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "in": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "out": {
+                                            "meta": {
+                                                "intent": "out"
+                                            }
+                                        },
+                                        "sizein": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },

@@ -55,6 +55,13 @@
                                     },
                                     "stmt": "f_dtor"
                                 }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -432,6 +439,13 @@
                             },
                             "stmt": "f_function_native_*_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -582,6 +596,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -928,6 +949,18 @@
                             },
                             "stmt": "f_out_native_*_hidden"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1225,6 +1258,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1525,6 +1570,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1973,6 +2030,18 @@
                             },
                             "stmt": "f_out_native_*_hidden"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2246,6 +2315,18 @@
                             },
                             "stmt": "c_out_native_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2464,6 +2545,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3419,6 +3512,18 @@
                             },
                             "stmt": "f_in_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3572,6 +3677,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr_library"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3752,6 +3864,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

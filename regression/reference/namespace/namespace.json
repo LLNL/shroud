@@ -79,6 +79,13 @@
                             },
                             "stmt": "f_function_string_&_cdesc_allocatable"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -231,6 +238,13 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -425,6 +439,25 @@
                                 },
                                 "wrap": {
                                     "python": true
+                                },
+                                "zz_bind": {
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        },
+                                        "dfield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "ifield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
                                 },
                                 "zz_fmtargs": {
                                     "+result": {
@@ -648,6 +681,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

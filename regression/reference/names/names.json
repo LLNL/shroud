@@ -478,6 +478,18 @@
                             },
                             "stmt": "f_inout_char_*_buf"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -642,6 +654,13 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -724,6 +743,13 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -838,6 +864,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1015,6 +1053,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1196,6 +1246,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "rv": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1414,6 +1476,13 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1583,6 +1652,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2049,6 +2135,23 @@
                             },
                             "stmt": "f_in_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2381,6 +2484,23 @@
                             },
                             "stmt": "f_in_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2666,6 +2786,13 @@
                             },
                             "stmt": "f_function_native_scalar"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2833,6 +2960,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3871,6 +4010,13 @@
                                             },
                                             "stmt": "f_ctor_shadow_scalar_capptr"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -4013,6 +4159,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -4100,6 +4253,13 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -4311,6 +4471,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

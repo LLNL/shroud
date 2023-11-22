@@ -242,6 +242,18 @@
                             },
                             "stmt": "f_inout_native_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -423,6 +435,18 @@
                             },
                             "stmt": "f_out_native_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -597,6 +621,25 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "arg1": {
                         "fmtpy": {
@@ -762,6 +805,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },

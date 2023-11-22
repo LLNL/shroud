@@ -64,6 +64,8 @@ class FillMeta(object):
                 self.meta_function("c", cls, node)
             if node.wrap.fortran:
                 self.meta_function("f", cls, node)
+            if node.wrap.python:
+                self.meta_function("py", cls, node)
 
     def meta_function(self, wlang, cls, node):
         cursor = self.cursor
@@ -84,11 +86,14 @@ class FillMeta(object):
             self.set_func_deref_fortran(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
             stmt0 = statements.lookup_f_function_stmt(node)
+        elif wlang == "py":
+            stmt0 = None
 
-        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
-        r_bind.stmt = result_stmt
-        if stmt0 is not result_stmt:
-            r_bind.fstmts = wlang
+        if stmt0:
+            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+            r_bind.stmt = result_stmt
+            if stmt0 is not result_stmt:
+                r_bind.fstmts = wlang
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -109,6 +114,8 @@ class FillMeta(object):
                 self.set_arg_api_fortran(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
                 arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            elif wlang == "py":
+                arg_stmt = None
             a_bind.stmt = arg_stmt
 
         # --- End loop over function parameters

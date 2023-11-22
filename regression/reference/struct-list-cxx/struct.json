@@ -949,6 +949,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -1045,6 +1059,20 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1167,6 +1195,25 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -1286,6 +1333,20 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1420,6 +1481,30 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
@@ -1541,6 +1626,20 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
@@ -1633,6 +1732,25 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1772,6 +1890,25 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1935,6 +2072,30 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "+result": {
                         "fmtpy": {
@@ -2059,6 +2220,15 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
