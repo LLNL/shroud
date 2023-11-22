@@ -749,6 +749,8 @@ def print_tree_statements(fp, statements, defaults):
         for key in base.__dict__.keys():
             if key[0] == "_":
                 continue
+            if key == "index":
+                continue
             if key not in value:
                 print("XXX key not in value", key, value.name)
             if value[key]:
