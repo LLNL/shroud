@@ -81,9 +81,10 @@
                         },
                         "arg": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native_*_cdesc"
                         }
                     },
                     "f": {
@@ -108,27 +109,24 @@
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
                             "C_name": "CDE_Rank2In",
-                            "C_prototype": "int * arg",
+                            "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
-                            "F_C_arguments": "arg",
                             "F_C_name": "c_rank2_in",
-                            "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
-                            "C_name": "CDE_Rank2In_bufferify",
+                            "C_name": "CDE_Rank2In",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_arg_cdesc",
-                            "F_C_call": "c_rank2_in_bufferify",
-                            "F_C_name": "c_rank2_in_bufferify",
+                            "F_C_call": "c_rank2_in",
+                            "F_C_name": "c_rank2_in",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -137,28 +135,20 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_helper_array_context": "CDE_SHROUD_array",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
+                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
                             "cxx_type": "int",
                             "cxx_var": "arg",
-                            "f_assumed_shape": "(:,:)",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "arg",
-                            "i_dimension": "(*)",
-                            "i_var": "arg",
                             "idtor": "0",
-                            "rank": "2",
                             "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native_*_cdesc"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -380,8 +370,8 @@
                 ],
                 "helpers": {
                     "c": [
-                        "char_len_trim",
-                        "array_context"
+                        "array_context",
+                        "char_len_trim"
                     ],
                     "f": [
                         "type_defines",
@@ -432,9 +422,10 @@
                         },
                         "value": {
                             "meta": {
+                                "api": "cdesc",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_void_*"
+                            "stmt": "c_in_void_*_cdesc"
                         }
                     }
                 },
@@ -444,9 +435,9 @@
                             "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_name": "CDE_GetScalar1",
-                            "C_prototype": "char * name,\t void * value",
+                            "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
                             "C_return_type": "void",
-                            "F_C_arguments": "name,\t value",
+                            "F_C_arguments": "name,\t SHT_value_cdesc",
                             "F_C_name": "c_get_scalar1",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
@@ -482,9 +473,11 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_helper_array_context": "CDE_SHROUD_array",
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "value",
+                            "c_var_cdesc": "SHT_value_cdesc",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -496,11 +489,12 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
+                            "i_var_cdesc": "SHT_value_cdesc",
                             "idtor": "0",
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "1",
-                            "stmt_name": "c_in_void_*"
+                            "stmt_name": "c_in_void_*_cdesc"
                         }
                     }
                 },
@@ -587,8 +581,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_len_trim",
-                        "array_context"
+                        "array_context",
+                        "char_len_trim"
                     ],
                     "f": [
                         "type_defines",
@@ -818,8 +812,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_len_trim",
-                        "array_context"
+                        "array_context",
+                        "char_len_trim"
                     ],
                     "f": [
                         "type_defines",

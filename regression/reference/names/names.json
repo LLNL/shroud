@@ -1887,7 +1887,7 @@
                 }
             },
             {
-                "<FUNCTION>": "FunctionTU  16 ****************************************",
+                "<FUNCTION>": "FunctionTU  17 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -2216,7 +2216,7 @@
                 }
             },
             {
-                "<FUNCTION>": "FunctionTU  17 ****************************************",
+                "<FUNCTION>": "FunctionTU  18 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -2598,7 +2598,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseImplWorker  18 ****************************************",
+                "<FUNCTION>": "UseImplWorker  19 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -3646,6 +3646,169 @@
                     "F_name_impl": "external_funcs",
                     "function_name": "external_funcs"
                 }
+            },
+            {
+                "<FUNCTION>": "bindtest  16 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "bindtest",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void bindtest(int arg1)",
+                "declgen": "void bindtest(int arg1 +value)",
+                "name": "bindtest",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "attr": true,
+                                "foo": 1,
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "attr": true,
+                                "bar": 2,
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "arg2": {
+                            "meta": {
+                                "attr": true,
+                                "attr2": "34+43"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "bindtest(\targ1)",
+                            "C_call_list": "arg1",
+                            "C_name": "TES_bindtest",
+                            "C_prototype": "int arg1",
+                            "C_return_type": "void",
+                            "F_C_name": "c_bindtest",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "bindtest(\targ1)",
+                            "C_call_list": "arg1",
+                            "C_name": "TES_bindtest",
+                            "C_prototype": "int arg1",
+                            "C_return_type": "void",
+                            "F_C_arguments": "arg1",
+                            "F_C_call": "c_bindtest",
+                            "F_C_name": "c_bindtest",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "arg1",
+                            "F_arguments": "arg1",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "arg1",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg1",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg1",
+                            "fc_var": "arg1",
+                            "i_var": "arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "bindtest",
+                    "F_name_api": "bindtest",
+                    "F_name_function": "bindtest",
+                    "F_name_generic": "bindtest",
+                    "F_name_impl": "bindtest",
+                    "function_name": "bindtest"
+                }
             }
         ],
         "language": "cxx",
@@ -4109,7 +4272,7 @@
                 "<NAMESPACE>": "ns1 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "init_ns1  19 ****************************************",
+                        "<FUNCTION>": "init_ns1  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4850,7 +5013,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  20 ****************************************",
+                        "<FUNCTION>": "Worker1  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {
@@ -4962,7 +5125,7 @@
                 "<NAMESPACE>": "CAPI2 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "Worker1  21 ****************************************",
+                        "<FUNCTION>": "Worker1  22 ****************************************",
                         "ast": {
                             "declarator": {
                                 "metaattrs": {

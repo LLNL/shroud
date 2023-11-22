@@ -76,9 +76,10 @@ class FillMeta(object):
 
         self.set_func_intent(node, r_meta)
         if wlang == "c":
+            self.set_func_deref_c(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
-        else:
-            self.set_func_deref(node, r_meta)
+        elif wlang == "f":
+            self.set_func_deref_fortran(node, r_meta)
             self.set_func_api(wlang, node, r_meta)
 
         # --- Loop over function parameters
@@ -90,11 +91,14 @@ class FillMeta(object):
             meta = statements.fetch_arg_metaattrs(node, arg, wlang)
 
             self.set_arg_intent(node, arg, meta)
-            if wlang == "f":
-                self.set_arg_deref(arg, meta)
-                self.set_arg_api(node, arg, meta)
+            if wlang == "c":
+                self.set_arg_deref_c(arg, meta)
+                self.set_arg_api_c(node, arg, meta)
+            elif wlang == "f":
+                self.set_arg_deref_fortran(arg, meta)
+                self.set_arg_api_fortran(node, arg, meta)
                 self.set_arg_hidden(arg, meta)
-            
+
         # --- End loop over function parameters
         func_cursor.arg = None
 
@@ -138,7 +142,11 @@ class FillMeta(object):
             intent = intent.lower()
         meta["intent"] = intent
 
-    def set_func_deref(self, node, meta):
+    def set_func_deref_c(self, node, meta):
+        if meta["deref"]:
+            return
+
+    def set_func_deref_fortran(self, node, meta):
         """
         Function which return pointers or objects (std::string)
         set the deref meta attribute.
@@ -199,7 +207,62 @@ class FillMeta(object):
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
 
-    def set_arg_deref(self, arg, meta):
+    def set_arg_deref_c(self, arg, meta):
+        """Check deref attr and set default for variable.
+
+        Pointer variables set the default deref meta attribute.
+
+        Use meta attributes define in YAML as:
+          bind:
+            c:
+              decl: (arg+deref(malloc))
+        """
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        ntypemap = arg.typemap
+        is_ptr = declarator.is_indirect()
+
+        deref = meta["deref"]
+        if deref is not None:
+            if deref not in ["malloc", "copy", "raw", "scalar"]:
+                self.cursor.generate(
+                    "Illegal value '{}' for deref attribute. "
+                    "Must be 'malloc', 'copy', 'raw', "
+                    "or 'scalar'.".format(deref)
+                )
+                return
+            nindirect = declarator.is_indirect()
+            if ntypemap.sgroup == "vector":
+                pass
+            elif nindirect != 2:
+                self.cursor.generate(
+                    "Can only have attribute 'deref' on arguments which"
+                    " return a pointer:"
+                    " '{}'".format(declarator.name))
+            elif meta["intent"] == "in":
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on intent(in) argument"
+                    " '{}'".format(declarator.name))
+            return
+
+        # Set deref attribute for arguments which return values.
+        intent = meta["intent"]
+        spointer = declarator.get_indirect_stmt()
+        if ntypemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif intent not in ["out", "inout"]:
+            pass
+        elif ntypemap.sgroup == "vector":
+            meta["deref"] = "copy"
+#        elif spointer in ["**", "*&"]:
+#            if ntypemap.sgroup == "string":
+#                # strings are not contiguous, so copy into argument.
+#                meta["deref"] = "copy"
+#            else:
+#                meta["deref"] = "copy"
+
+    def set_arg_deref_fortran(self, arg, meta):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
@@ -226,11 +289,7 @@ class FillMeta(object):
 #            if ntypemap.name == "void":
 #                # void cannot be dereferenced.
             if ntypemap.sgroup == "vector":
-                if deref:
-                    mderef = deref
-                else:
-                    # Copy vector to new array.
-                    mderef = "allocatable"
+                pass
             elif nindirect != 2:
                 self.cursor.generate(
                     "Can only have attribute 'deref' on arguments which"
@@ -249,7 +308,9 @@ class FillMeta(object):
         if ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
-        elif spointer in ["**", "*&"] and intent == "out":
+        elif intent not in ["out", "inout"]:
+            pass
+        elif spointer in ["**", "*&"]:
             if ntypemap.sgroup == "string":
                 # strings are not contiguous, so copy into argument.
                 meta["deref"] = "copy"
@@ -338,7 +399,26 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
-    def set_arg_api(self, node, arg, meta):
+    def set_arg_api_c(self, node, arg, meta):
+        declarator = arg.declarator
+        ntypemap = arg.typemap
+        attrs = declarator.attrs
+        shared = declarator.metaattrs
+        api = attrs["api"]
+
+        # XXX - from check_common_attrs
+        if api:
+            meta["api"] = api
+
+        # arg_to_buffer
+        if meta["api"]:
+            # API explicitly set by user.
+            return
+
+        if ntypemap.sgroup == "vector":
+            meta["api"] = "buf"
+        
+    def set_arg_api_fortran(self, node, arg, meta):
         """
         Based on other meta attrs: deref
         """

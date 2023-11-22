@@ -1027,6 +1027,59 @@ class Parser(ExprParser):
 
 
 ######################################################################
+# Attribute only parser
+
+class AttrParser(Parser):
+    def attrs(self, bind, bindfcn):
+        """
+        <arg> ::= name [ +attrs ]*
+        <list> ::= [ ( ]  <arg> [ , <arg> ]* [ ) ] [ +attrs ]*
+
+        Attributes are filled directly into bind[name].meta
+        """
+        more = True
+        have_func = False
+        if self.have("LPAREN"):
+            have_func = True
+        if self.peek("RPAREN"):
+            more = False
+
+        while more:
+            tok = self.mustbe("ID")
+
+            attrs = {}
+            self.attribute(attrs)
+            if attrs:
+                bindarg = bind.setdefault(tok.value, bindfcn())
+                if bindarg.meta is None:
+                    bindarg.meta = collections.defaultdict(lambda: None)
+                bindarg.meta.update(attrs)
+
+            if not self.have("COMMA"):
+                break
+
+        if have_func and self.mustbe("RPAREN"):
+            attrs = {}
+            self.attribute(attrs)
+            if attrs:
+                bindarg = bind.setdefault("+result", bindfcn())
+                if bindarg.meta is None:
+                    bindarg.meta = collections.defaultdict(lambda: None)
+                bindarg.meta.update(attrs)
+            
+        self.mustbe("EOF")
+        
+def check_attrs(decl, bind, bindfcn, trace=False):
+    """ parse an attribute expression.
+           (arg1 +attr, arg2+attr)  +attr
+
+    namespace - An ast.AstNode subclass.
+    """
+    #trace = True   # GGG For debug
+    a = AttrParser(decl, None, trace).attrs(bind, bindfcn)
+    return a
+
+######################################################################
 # Abstract Syntax Tree Nodes
 
 class Node(object):

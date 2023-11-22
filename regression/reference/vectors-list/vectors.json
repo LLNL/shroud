@@ -286,7 +286,7 @@
                 "fstatements": {
                     "c": {
                         "c_return": [
-                            "return SHT_arg_cdesc->size;"
+                            "return SHC_arg_size;"
                         ],
                         "c_return_type": "long"
                     },
@@ -471,6 +471,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "arg": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_alloc",
                     "F_name_api": "vector_iota_out_alloc",
@@ -541,6 +550,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "arg": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_inout_alloc",
                     "F_name_api": "vector_iota_inout_alloc",
@@ -1191,6 +1209,15 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "deref": "malloc"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

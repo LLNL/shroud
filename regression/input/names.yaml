@@ -278,6 +278,21 @@ declarations:
     wrap_python: False
 
 ########################################
+# Test bind
+
+- decl: void bindtest(int arg1)
+  options:
+    wrap_python: False
+  bind:
+    f:
+      decl:  (arg1 +attr, arg2+attr+attr2(34+43))  +attr
+      attrs:
+        +result:
+          foo: 1
+        arg1:
+          bar: 2
+
+########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

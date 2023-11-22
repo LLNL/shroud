@@ -1,3 +1,34 @@
+
+----------------------------------------
+Phase: Create library
+----------------------------------------
+Node: testattrs1
+line 56
+Error in 'decl' field
+(+attr)
+^
+Expected ID, found PLUS
+--------------------
+Node: testattrs2
+line 60
+Error in 'decl' field
+( name, )
+       ^
+Expected ID, found RPAREN
+--------------------
+Node: testattrs3
+line 64
+Error in 'decl' field
+( name
+^
+Expected RPAREN, found EOF
+--------------------
+Node: testattrs4
+line 68
+Error in 'decl' field
+( ) name
+   ^
+Expected EOF, found ID
 Wrote error_types.yaml
 Wrote wrapCstruct_as_subclass.h
 Wrote wrapCstruct_as_subclass.cpp

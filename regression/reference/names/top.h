@@ -77,6 +77,8 @@ void TES_external_funcs(const char * rdbase, const char * pkg,
     void ( * afree)(double * arr), void ( * assoc)(double * arr,
     int * err));
 
+void TES_bindtest(int arg1);
+
 #ifdef __cplusplus
 }
 #endif

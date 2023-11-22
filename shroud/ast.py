@@ -1411,14 +1411,12 @@ class FunctionNode(AstNode):
 
     _bind = {
        'f': {
-          -----'args': {
              '+result': { }
              'arg1': {    statements.BindArg
                 stmt: Scope
                 meta: collections.defaultdict(lambda: None)
                 fmtdict:  Scope(_fmtfunc)
               }
-          -----}
         }
     }
 
@@ -1618,6 +1616,24 @@ class FunctionNode(AstNode):
                 if key in ["c", "c_buf", "f", "py"]:
                     # remove __line__?
                     self.fstatements[key] = util.Scope(None, **value)
+        if "bind" in kwargs:
+            # lang must be a dict
+            for wlang, langdict in kwargs["bind"].items():
+                # langdict must be a dict
+                if wlang not in ["c", "f", "py"]:
+                    continue  # error
+                value = langdict.get("decl")
+                if value:
+                    bind = self._bind.setdefault(wlang, {})
+                    ast = declast.check_attrs(value, bind, statements.BindArg)
+                value = langdict.get("attrs")
+                if value:
+                    for argname, attrs in value.items():
+                        if argname == "__line__":
+                            continue
+                        bind = statements.fetch_name_bind(
+                            self._bind, wlang, argname)
+                        bind.meta.update(attrs)
 
         # XXX - waring about unused fields in attrs
         error.cursor.pop_node(self)

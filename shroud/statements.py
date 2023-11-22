@@ -65,6 +65,13 @@ def fetch_arg_metaattrs(node, arg, wlang):
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg.meta
 
+def fetch_name_bind(bind, wlang, name):
+    bind = bind.setdefault(wlang, {})
+    bindarg = bind.setdefault(name, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg
+
 def get_func_metaattrs(node, wlang):
     return node._bind[wlang]["+result"].meta
 
@@ -152,10 +159,7 @@ def lookup_c_function_stmt(node):
         # intent will be "function", "ctor", "getter"
         junk, specialize = lookup_c_statements(ast)
         stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"],
-#                 r_meta["deref"],   # XXX - No deref for C wrapper
-                 r_attrs["owner"]
-        ] + specialize
+                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -191,9 +195,8 @@ def lookup_c_arg_stmt(node, arg):
     junk, specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
-    stmts = ["c", c_meta["intent"], sgroup, spointer, sapi,
-#             c_meta["deref"],   # XXX - No deref for C wrapper
-             c_attrs["owner"]] + specialize
+    stmts = ["c", c_meta["intent"], sgroup, spointer,
+             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
@@ -233,7 +236,7 @@ def lookup_local_stmts(path, parent, node):
     mode - "update", "replace"
 
     Args:
-        path   - list of path components ["c", "buf"]
+        path   - list of path components ["c"]
         parent - parent Scope.
         node   - FunctionNode.
     """
@@ -1313,8 +1316,10 @@ fc_statements = [
     ##########
     # array
     dict(
-        # Pass argument and size to C.
         name="f_mixin_in_array_buf",
+        comments=[
+            "Pass argument and size by value to C.",
+        ],
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_need_wrapper=True,
@@ -1329,6 +1334,64 @@ fc_statements = [
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
         ],
         i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
+        name="f_mixin_out_array_buf",
+        comments=[
+            "Pass argument and size by reference to C.",
+        ],
+        f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        f_need_wrapper=True,
+
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t *{c_var_size}",
+        ],
+        i_arg_names=["{i_var}", "{i_var_size}"],
+        i_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["{f_kind}", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
+        name="c_mixin_out_array_buf_malloc",
+        comments=[
+            "Pass raw pointer and size by reference to C.",
+        ],
+        c_arg_decl=[
+            "{cxx_type} **{c_var}",   # XXX c_type   cxx_T
+            "size_t *{c_var_size}",
+        ],
+        i_arg_names=["{i_var}", "{i_var_size}"],
+        i_arg_decl=[
+            "type(C_PTR), intent({f_intent}) :: {i_var}",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR", "C_SIZE_T"]),
+        c_temps=["size"],
+    ),
+    dict(
+        name="c_mixin_function_array_malloc",
+        comments=[
+            "Return pointer to array type.",
+            "Add an argument to return the length of the array",
+        ],
+        c_return_type="{cxx_T} *",
+        c_arg_decl=[
+            "size_t *{c_var_size}",
+        ],
+        i_result_decl=[
+            "type(C_PTR) :: {i_var}",
+        ],
+        i_arg_names=["{i_var_size}"],
+        i_arg_decl=[
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR", "C_SIZE_T"]),
         c_temps=["size"],
     ),
     dict(
@@ -2557,11 +2620,104 @@ fc_statements = [
         ],
         cxx_local_var="scalar",
         c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> "
+            "{cxx_var}({c_var}, {c_var} + {c_var_size});"
+        ],
+    ),
+    dict(
+        # c_out_vector_scalar_buf_copy_targ_native_scalar
+        # c_out_vector_*_buf_copy_targ_native_scalar
+        # c_out_vector_&_buf_copy_targ_native_scalar
+        name="c_out_vector_scalar/*/&_buf_copy_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_buf",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> {cxx_var};",
+        ],
+        c_post_call=[
+            "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t "
+            "*{c_var_size} :\t {cxx_var}.size();",
+            "std::memcpy({c_var},\t {cxx_var}.data(),"
+            "\t {c_local_size}*sizeof({cxx_var}[0]));",
+             "*{c_var_size} = {c_local_size};",
+        ],
+        c_local=["size"],
+        impl_header=["<cstring>"],
+    ),
+    dict(
+        # c_inout_vector_scalar_buf_copy_targ_native_scalar
+        # c_inout_vector_*_buf_copy_targ_native_scalar
+        # c_inout_vector_&_buf_copy_targ_native_scalar
+        name="c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar",
+        mixin=[
+            "f_mixin_out_array_buf",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
             (
                 "{c_const}std::vector<{cxx_T}> "
-                "{cxx_var}({c_var}, {c_var} + {c_var_size});"
+                "{cxx_var}({c_var}, {c_var} + *{c_var_size});"
             )
         ],
+        c_post_call=[
+            "*{c_var_size} = {cxx_var}->size()",
+        ],
+        notimplemented=True,
+    ),
+
+    dict(
+        # c_out_vector_scalar_buf_malloc_targ_native_scalar
+        # c_out_vector_*_buf_malloc_targ_native_scalar
+        # c_out_vector_&_buf_malloc_targ_native_scalar
+        name="c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        comments=[
+            "Create empty local vector then copy result to",
+            "malloc allocated array."
+        ],
+        mixin=[
+            "c_mixin_out_array_buf_malloc",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> {cxx_var};",
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
+    ),
+    dict(
+        # c_inout_vector_scalar_buf_malloc_targ_native_scalar
+        # c_inout_vector_*_buf_malloc_targ_native_scalar
+        # c_inout_vector_&_buf_malloc_targ_native_scalar
+        name="c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        comments=[
+            "Create local vector from arguments then copy result to",
+            "malloc allocated array."
+        ],
+        mixin=[
+            "c_mixin_out_array_buf_malloc",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}> "
+            "{cxx_var}(*{c_var}, *{c_var} + *{c_var_size});"
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t"
+            "(std::realloc(*{c_var},\t {c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
     ),
 
     dict(
@@ -2668,6 +2824,34 @@ fc_statements = [
         ],
     ),
 
+
+    dict(
+        name="c_function_vector_scalar_malloc_targ_native_scalar",
+        comments=[
+            "Create empty local vector then copy result to",
+            "malloc allocated array.",
+            "Add an argument with the length of the array.",
+        ],
+        mixin=[
+            "c_mixin_function_array_malloc",
+        ],
+        cxx_local_var="result",
+        c_pre_call=[
+            "{c_const}std::vector<{cxx_T}>\t {cxx_var};"
+        ],
+        c_call=[
+            "{cxx_var} = {C_call_function};",
+        ],
+        c_post_call=[
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "{cxx_T} *{c_var} =\t static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();",
+        ],
+        c_local=["bytes"],
+        impl_header=["<cstdlib>", "<cstring>"],
+    ),
+    
     # Specialize for std::vector<native *>
     dict(
         # Create a vector for pointers
@@ -2691,6 +2875,10 @@ fc_statements = [
         # f_in_vector_scalar_buf_targ_string_scalar
         # f_in_vector_*_buf_targ_string_scalar
         # f_in_vector_&_buf_targ_string_scalar
+
+        # c_in_vector_scalar_buf_targ_string_scalar
+        # c_in_vector_*_buf_targ_string_scalar
+        # c_in_vector_&_buf_targ_string_scalar
         name="f_in_vector_scalar/*/&_buf_targ_string_scalar",
         mixin=[
             "f_mixin_in_string_array_buf",
@@ -2716,6 +2904,15 @@ fc_statements = [
         ],
         c_local=["i", "n", "s"],
     ),
+
+    # c_out_vector_scalar_buf_copy_targ_string_scalar
+    # c_out_vector_*_buf_copy_targ_string_scalar
+    # c_out_vector_&_buf_copy_targ_string_scalar
+    dict(
+        name="c_out_vector_scalar/*/&_buf_copy_targ_string_scalar",
+        notimplemented=True,
+    ),
+    
     # XXX untested [cf]_out_vector_buf_string
     dict(
         name="f_out_vector_buf_targ_string_scalar",

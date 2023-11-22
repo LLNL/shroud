@@ -377,6 +377,19 @@ module top_module
             procedure(external_funcs_afree) :: afree
             procedure(external_funcs_assoc) :: assoc
         end subroutine c_external_funcs
+
+        ! ----------------------------------------
+        ! Function:  void bindtest
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  int arg1 +value
+        ! Statement: f_in_native_scalar
+        subroutine c_bindtest(arg1) &
+                bind(C, name="TES_bindtest")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+        end subroutine c_bindtest
     end interface
 
     interface function_tu
@@ -731,6 +744,20 @@ contains
             afree, assoc)
         ! splicer end function.external_funcs
     end subroutine external_funcs
+
+    ! ----------------------------------------
+    ! Function:  void bindtest
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  int arg1 +value
+    ! Statement: f_in_native_scalar
+    subroutine bindtest(arg1)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: arg1
+        ! splicer begin function.bindtest
+        call c_bindtest(arg1)
+        ! splicer end function.bindtest
+    end subroutine bindtest
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -344,4 +344,17 @@ void TES_external_funcs(const char * rdbase, const char * pkg,
     // splicer end function.external_funcs
 }
 
+// ----------------------------------------
+// Function:  void bindtest
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  int arg1 +value
+// Statement: c_in_native_scalar
+void TES_bindtest(int arg1)
+{
+    // splicer begin function.bindtest
+    bindtest(arg1);
+    // splicer end function.bindtest
+}
+
 }  // extern "C"
