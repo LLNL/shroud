@@ -961,6 +961,18 @@
                                 "intent": "in"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1062,6 +1074,18 @@
                 },
                 "zz_bind": {
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "function"
@@ -1212,6 +1236,23 @@
                                 "intent": "in"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1336,6 +1377,18 @@
                 },
                 "zz_bind": {
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "function"
@@ -1503,6 +1556,28 @@
                                 "intent": "in"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1638,6 +1713,18 @@
                                 "intent": "inout"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1735,6 +1822,23 @@
                 },
                 "zz_bind": {
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "function"
@@ -1893,6 +1997,23 @@
                 },
                 "zz_bind": {
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "function"
@@ -2094,6 +2215,28 @@
                                 "intent": "out"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2228,6 +2371,13 @@
                                 "intent": "function"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2294,6 +2444,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class",
                     "F_name_api": "create_cstruct_as_class",
@@ -2362,6 +2521,25 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class_args",
                     "F_name_api": "create_cstruct_as_class_args",
@@ -2418,6 +2596,20 @@
                     "F_name_function": "sum"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_as_class_sum",
                     "F_name_api": "cstruct_as_class_sum",
@@ -2503,6 +2695,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",

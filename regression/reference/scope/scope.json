@@ -583,6 +583,18 @@
                             },
                             "stmt": "f_in_struct_*"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -769,6 +781,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1116,6 +1145,18 @@
                                     },
                                     "stmt": "f_in_struct_*"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1302,6 +1343,23 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1676,6 +1734,18 @@
                                     },
                                     "stmt": "f_in_struct_*"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1862,6 +1932,23 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },

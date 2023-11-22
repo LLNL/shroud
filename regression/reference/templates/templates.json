@@ -131,6 +131,25 @@
                             "U"
                         ],
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "nested",
                             "F_name_api": "nested",
@@ -263,6 +282,23 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"
@@ -555,6 +591,13 @@
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -699,6 +742,18 @@
                                     },
                                     "stmt": "f_in_native_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "n": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -826,6 +881,13 @@
                                     },
                                     "stmt": "f_function_native_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -941,6 +1003,20 @@
                         "name": "set_value",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "v": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_value",
                             "F_name_api": "set_value",
@@ -1021,6 +1097,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "v": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1130,6 +1218,15 @@
                         "name": "get_value",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_value",
                             "F_name_api": "get_value",
@@ -1183,6 +1280,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -1378,6 +1482,13 @@
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1522,6 +1633,18 @@
                                     },
                                     "stmt": "f_in_native_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "n": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1649,6 +1772,13 @@
                                     },
                                     "stmt": "f_function_native_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1764,6 +1894,20 @@
                         "name": "set_value",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "v": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_value",
                             "F_name_api": "set_value",
@@ -1844,6 +1988,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "v": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1953,6 +2109,15 @@
                         "name": "get_value",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "C_name_api": "get_value",
                             "F_name_api": "get_value",
@@ -2006,6 +2171,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -2215,6 +2387,13 @@
                             },
                             "stmt": "f_function_shadow_scalar_capptr_targ_native_scalar"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2394,6 +2573,25 @@
                     "U"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
@@ -2550,6 +2748,23 @@
                         }
                     },
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "subroutine"
@@ -2900,6 +3115,23 @@
                                 "intent": "in"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3125,6 +3357,15 @@
                     "T"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
@@ -3213,6 +3454,13 @@
                         }
                     },
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "function"
@@ -3399,6 +3647,13 @@
                                 "intent": "function"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3559,6 +3814,13 @@
                                                 "intent": "ctor"
                                             }
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -3710,6 +3972,13 @@
                                                 "intent": "dtor"
                                             }
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "dtor"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -3797,6 +4066,20 @@
                                 "name": "push_back",
                                 "options": {},
                                 "wrap": {},
+                                "zz_bind": {
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "value": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
+                                },
                                 "zz_fmtdict": {
                                     "C_name_api": "push_back",
                                     "F_name_api": "push_back",
@@ -3887,6 +4170,18 @@
                                         }
                                     },
                                     "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "value": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
                                         "+result": {
                                             "meta": {
                                                 "intent": "subroutine"
@@ -4048,6 +4343,20 @@
                                 "name": "at",
                                 "options": {},
                                 "wrap": {},
+                                "zz_bind": {
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "n": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
+                                },
                                 "zz_fmtdict": {
                                     "C_name_api": "at",
                                     "F_name_api": "at",
@@ -4141,6 +4450,18 @@
                                         }
                                     },
                                     "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "n": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
                                         "+result": {
                                             "meta": {
                                                 "intent": "function"
@@ -4475,6 +4796,13 @@
                                                 "intent": "ctor"
                                             }
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -4626,6 +4954,13 @@
                                                 "intent": "dtor"
                                             }
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "dtor"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -4713,6 +5048,20 @@
                                 "name": "push_back",
                                 "options": {},
                                 "wrap": {},
+                                "zz_bind": {
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "value": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
+                                },
                                 "zz_fmtdict": {
                                     "C_name_api": "push_back",
                                     "F_name_api": "push_back",
@@ -4803,6 +5152,18 @@
                                         }
                                     },
                                     "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "value": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
                                         "+result": {
                                             "meta": {
                                                 "intent": "subroutine"
@@ -4964,6 +5325,20 @@
                                 "name": "at",
                                 "options": {},
                                 "wrap": {},
+                                "zz_bind": {
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "n": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
+                                },
                                 "zz_fmtdict": {
                                     "C_name_api": "at",
                                     "F_name_api": "at",
@@ -5057,6 +5432,18 @@
                                         }
                                     },
                                     "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "n": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
                                         "+result": {
                                             "meta": {
                                                 "intent": "function"

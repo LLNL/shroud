@@ -86,6 +86,13 @@
                                 "intent": "function"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -241,6 +248,13 @@
                         }
                     },
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "subroutine"
@@ -442,6 +456,23 @@
                                 },
                                 "zz_bind": {
                                     "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        },
+                                        "dfield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "ifield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
                                         "+result": {
                                             "meta": {
                                                 "intent": "ctor"
@@ -684,6 +715,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"

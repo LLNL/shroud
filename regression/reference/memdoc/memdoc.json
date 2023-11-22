@@ -74,6 +74,13 @@
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {

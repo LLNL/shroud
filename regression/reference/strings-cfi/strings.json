@@ -57,6 +57,13 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -164,6 +171,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -322,6 +341,18 @@
                             },
                             "stmt": "f_in_char_scalar"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -446,6 +477,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -636,6 +674,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -870,6 +925,18 @@
                             },
                             "stmt": "f_inout_char_*_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "s": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1020,6 +1087,13 @@
                             },
                             "stmt": "f_function_char_*_cfi_allocatable"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1164,6 +1238,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1315,6 +1396,13 @@
                             },
                             "stmt": "f_function_char_*_cfi_arg"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1454,6 +1542,13 @@
                             },
                             "stmt": "f_function_char_*_raw"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1581,6 +1676,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cfi_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1723,6 +1825,13 @@
                             },
                             "stmt": "f_function_string_scalar_cfi_allocatable"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1863,6 +1972,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2010,6 +2126,13 @@
                             },
                             "stmt": "f_function_string_scalar_cfi_arg"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2138,6 +2261,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cfi_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2277,6 +2407,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2423,6 +2560,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2575,6 +2719,13 @@
                             },
                             "stmt": "f_function_string_&_cfi_arg"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2720,6 +2871,13 @@
                             },
                             "stmt": "f_function_string_&_cfi_copy"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -2857,6 +3015,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cfi_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3011,6 +3176,13 @@
                             },
                             "stmt": "f_function_string_*_cfi_copy"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3152,6 +3324,13 @@
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_library"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3290,6 +3469,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3431,6 +3617,13 @@
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -3569,6 +3762,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cfi_pointer_library"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3745,6 +3945,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3926,6 +4138,18 @@
                             },
                             "stmt": "f_out_string_&_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4103,6 +4327,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -4282,6 +4518,18 @@
                             },
                             "stmt": "f_in_string_*_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -4458,6 +4706,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -4639,6 +4899,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4848,6 +5120,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5112,6 +5401,23 @@
                             },
                             "stmt": "f_out_native_*"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -5333,6 +5639,18 @@
                             },
                             "stmt": "f_in_string_scalar_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -5541,6 +5859,25 @@
                     "wrap_fortran": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnStrings",
                     "F_name_api": "return_strings",
@@ -5672,6 +6009,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5950,6 +6304,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6230,6 +6601,23 @@
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -6435,6 +6823,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnMany",
                     "F_name_api": "return_many",
@@ -6525,6 +6927,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6706,6 +7120,18 @@
                             },
                             "stmt": "f_out_char_*_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -6878,6 +7304,18 @@
                             },
                             "stmt": "f_in_char_scalar"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -7004,6 +7442,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -7198,6 +7643,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7470,6 +7932,23 @@
                             },
                             "stmt": "f_in_char_*_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -7737,6 +8216,23 @@
                             },
                             "stmt": "f_inout_string_&_cfi"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -7977,6 +8473,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -8231,6 +8739,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -8511,6 +9036,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

@@ -58,6 +58,13 @@
                                 "intent": "subroutine"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -138,6 +145,13 @@
                         }
                     },
                     "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
                         "+result": {
                             "meta": {
                                 "intent": "subroutine"
@@ -229,6 +243,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"
@@ -355,6 +376,13 @@
                                         "intent": "subroutine"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -471,6 +499,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"

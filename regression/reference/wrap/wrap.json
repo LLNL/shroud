@@ -42,6 +42,13 @@
                                     },
                                     "stmt": "f_function_native_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {

@@ -66,6 +66,13 @@
                                         "intent": "ctor"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -246,6 +253,18 @@
                                         "intent": "in"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "size": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -395,6 +414,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"
@@ -581,6 +607,18 @@
                                         "intent": "out"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "size": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -735,6 +773,13 @@
                                         "intent": "subroutine"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -845,6 +890,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"
@@ -1044,6 +1096,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"
@@ -1249,6 +1308,13 @@
                                         "intent": "function"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -1444,6 +1510,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"
@@ -1706,6 +1779,23 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"
@@ -2056,6 +2146,23 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "subroutine"
@@ -2422,6 +2529,23 @@
                                         "intent": "inout"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -2773,6 +2897,23 @@
                                         "intent": "inout"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                },
+                                "isize": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -3067,6 +3208,18 @@
                                         "intent": "out"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -3262,6 +3415,18 @@
                                         "intent": "out"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -3444,6 +3609,18 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "array": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"
@@ -3655,6 +3832,13 @@
                                 }
                             },
                             "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
                                 "+result": {
                                     "meta": {
                                         "intent": "function"

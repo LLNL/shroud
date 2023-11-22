@@ -60,7 +60,9 @@ def fetch_func_bind(node, wlang):
 
 def fetch_arg_bind(node, arg, wlang):
     bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault(arg.declarator.user_name, BindArg())
+    # XXX - better to turn off wrapping when 'Argument must have name'
+    name = arg.declarator.user_name or "no-name"
+    bindarg = bind.setdefault(name, BindArg())
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg

@@ -100,6 +100,23 @@
                                         "intent": "in"
                                     }
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "count": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {

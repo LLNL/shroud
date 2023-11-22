@@ -81,6 +81,18 @@
                                     },
                                     "stmt": "f_in_unknown_scalar"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "comm": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -241,6 +253,18 @@
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_shadow_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "c2": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
                                 }
                             }
                         },
@@ -419,6 +443,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -592,6 +623,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "arg1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -784,6 +827,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -894,6 +944,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -1011,6 +1068,13 @@
                                             },
                                             "stmt": "f_subroutine"
                                         }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
                                     }
                                 },
                                 "zz_fmtargs": {
@@ -1121,6 +1185,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
