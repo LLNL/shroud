@@ -56,6 +56,13 @@
                                     "stmt": "f_dtor"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -461,6 +468,13 @@
                             "stmt": "f_function_native_*_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -624,6 +638,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     },
                     "py": {
@@ -997,6 +1018,18 @@
                             "stmt": "f_out_native_*_hidden"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -1317,6 +1350,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     },
                     "py": {
@@ -1641,6 +1686,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     },
                     "py": {
@@ -2126,6 +2183,18 @@
                             "stmt": "f_out_native_*_hidden"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -2423,6 +2492,18 @@
                             "stmt": "c_out_native_*"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -2664,6 +2745,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     },
                     "py": {
@@ -3796,6 +3889,18 @@
                             "stmt": "f_in_native_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -3972,6 +4077,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr_library"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     },
                     "py": {
@@ -4166,6 +4278,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     },
                     "py": {

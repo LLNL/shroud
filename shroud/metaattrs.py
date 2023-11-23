@@ -636,11 +636,54 @@ class FillMetaPython(FillMeta):
 ######################################################################
 #
 
+class FillMetaLua(FillMeta):
+    def meta_function(self, cls, node):
+        if not node.wrap.python:
+            return
+        wlang = "lua"
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+        #####
+        ast = node.ast
+        declarator = ast.declarator
+
+        r_bind = statements.fetch_func_bind(node, wlang)
+        r_meta = r_bind.meta
+
+        self.set_func_share(node, r_meta)
+        stmt0 = None
+
+        if stmt0:
+            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+            r_bind.stmt = result_stmt
+            if stmt0 is not result_stmt:
+                r_bind.fstmts = wlang
+
+        # --- Loop over function parameters
+        for arg in ast.declarator.params:
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+
+            a_bind = statements.fetch_arg_bind(node, arg, wlang)
+            meta = a_bind.meta
+
+            self.set_arg_share(node, arg, meta)
+            arg_stmt = None
+            a_bind.stmt = arg_stmt
+
+        # --- End loop over function parameters
+        func_cursor.arg = None
+
+######################################################################
+#
+
 process_map=dict(
     share=FillMetaShare,
     c=FillMetaC,
     f=FillMetaFortran,
     py=FillMetaPython,
+    lua=FillMetaLua,
 )
 
 def process_metaattrs(newlibrary, wlang):

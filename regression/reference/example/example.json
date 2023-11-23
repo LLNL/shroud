@@ -81,6 +81,13 @@
                                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -296,6 +303,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                },
+                                                "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -580,6 +599,13 @@
                                                     "stmt": "f_dtor"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -711,6 +737,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "incr": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -982,6 +1020,13 @@
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -1183,6 +1228,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_buf_arg"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -1392,6 +1444,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -1672,6 +1736,18 @@
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -1946,6 +2022,18 @@
                                                     "stmt": "f_in_bool_scalar"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -2197,6 +2285,13 @@
                                                     "stmt": "f_subroutine"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -2445,6 +2540,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_string_*_buf"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "ctor"
+                                                    }
+                                                },
+                                                "name": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -2730,6 +2837,13 @@
                                                     "stmt": "f_dtor"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "dtor"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -2850,6 +2964,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_buf_copy"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -3052,6 +3173,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -3259,6 +3387,13 @@
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -3464,6 +3599,13 @@
                                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -3655,6 +3797,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -3856,6 +4005,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_shadow_*"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "in": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -4464,6 +4625,23 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "c_in_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                },
+                                                "len": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                },
+                                                "type": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -5163,6 +5341,13 @@
                                                     "stmt": "f_subroutine"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -5266,6 +5451,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -5635,6 +5827,18 @@
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -5912,6 +6116,18 @@
                                                     "stmt": "f_in_native_scalar"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -6184,6 +6400,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -6464,6 +6692,18 @@
                                                         "intent": "in"
                                                     },
                                                     "stmt": "f_in_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "subroutine"
+                                                    }
+                                                },
+                                                "value": {
+                                                    "meta": {
+                                                        "intent": "in"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -6761,6 +7001,13 @@
                                                     "stmt": "f_function_native_scalar"
                                                 }
                                             },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
+                                                }
+                                            },
                                             "py": {
                                                 "+result": {
                                                     "meta": {
@@ -6962,6 +7209,13 @@
                                                         "intent": "function"
                                                     },
                                                     "stmt": "f_function_native_scalar"
+                                                }
+                                            },
+                                            "lua": {
+                                                "+result": {
+                                                    "meta": {
+                                                        "intent": "function"
+                                                    }
                                                 }
                                             },
                                             "py": {
@@ -7192,6 +7446,13 @@
                                             "stmt": "f_subroutine"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -7338,6 +7599,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -7605,6 +7878,13 @@
                                             "stmt": "f_function_bool_scalar"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -7802,6 +8082,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -8073,6 +8365,23 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_string_&_buf"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "flag": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "name": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -8693,6 +9002,23 @@
                                             "stmt": "f_in_native_scalar"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "i": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "j": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -8965,6 +9291,13 @@
                                             "stmt": "f_function_native_scalar"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -9152,6 +9485,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_unknown_scalar"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "comm": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -9351,6 +9696,13 @@
                                             "stmt": "f_subroutine"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -9488,6 +9840,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_void_scalar"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -9716,6 +10080,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_*"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -9972,6 +10348,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -10536,6 +10924,18 @@
                                             "stmt": "f_in_void_scalar"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "get": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -11051,6 +11451,63 @@
                                                 "intent": "inout"
                                             },
                                             "stmt": "f_inout_native_*"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
                                         }
                                     },
                                     "py": {
@@ -12290,6 +12747,63 @@
                                             "stmt": "f_in_native_scalar"
                                         }
                                     },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
                                     "py": {
                                         "+result": {
                                             "meta": {
@@ -13400,6 +13914,28 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "lua": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "in": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "out": {
+                                            "meta": {
+                                                "intent": "out"
+                                            }
+                                        },
+                                        "sizein": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     },
                                     "py": {

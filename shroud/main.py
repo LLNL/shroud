@@ -564,6 +564,7 @@ def main_with_args(args):
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()
 
         if wrap.lua:
+            metaattrs.process_metaattrs(newlibrary, "lua")
             wrapl.Wrapl(newlibrary, config, splicers["lua"]).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.

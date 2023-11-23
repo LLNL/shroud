@@ -114,6 +114,13 @@
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -282,6 +289,13 @@
                                     "stmt": "f_dtor"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -418,6 +432,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             },
                             "py": {
@@ -646,6 +672,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             },
                             "py": {

@@ -150,6 +150,13 @@
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -354,6 +361,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             },
                             "py": {
@@ -609,6 +628,13 @@
                                     "stmt": "f_dtor"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -714,6 +740,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             },
                             "py": {
@@ -912,6 +945,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_&"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             },
                             "py": {
@@ -1621,6 +1666,13 @@
                                     "stmt": "f_function_shadow_*_capptr"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -1798,6 +1850,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             },
                             "py": {
@@ -2011,6 +2070,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             },
                             "py": {
@@ -3042,6 +3113,13 @@
                                     "stmt": "f_function_string_&_cdesc_allocatable"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -3285,6 +3363,13 @@
                                     "stmt": "f_function_shadow_&_capptr"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -3503,6 +3588,13 @@
                                     "stmt": "f_ctor_shadow_scalar_capptr"
                                 }
                             },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
                             "py": {
                                 "+result": {
                                     "meta": {
@@ -3666,6 +3758,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             },
                             "py": {
@@ -3894,6 +3993,13 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             },
                             "py": {
@@ -5268,6 +5374,18 @@
                             "stmt": "f_in_native_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -5554,6 +5672,18 @@
                             "stmt": "f_in_shadow_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -5757,6 +5887,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_*"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     },
                     "py": {
@@ -6127,6 +6269,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     },
                     "py": {
@@ -6685,6 +6834,13 @@
                             "stmt": "f_function_shadow_&_capptr"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -7073,6 +7229,18 @@
                             "stmt": "f_in_native_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -7259,6 +7427,13 @@
                             "stmt": "f_function_native_scalar"
                         }
                     },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
                     "py": {
                         "+result": {
                             "meta": {
@@ -7430,6 +7605,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     },
                     "py": {
