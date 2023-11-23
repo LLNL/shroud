@@ -66,8 +66,8 @@ class FillMeta(object):
         declarator = node.ast.declarator
         if meta["intent"]:
             # getter/setter
-            return
-        if declarator.is_ctor():
+            pass
+        elif declarator.is_ctor():
             meta["intent"] = "ctor"
         elif declarator.is_dtor():
             meta["intent"] = "dtor"
@@ -452,7 +452,24 @@ class FillMeta(object):
 
         if hidden:
             meta["hidden"] = hidden
-        
+
+    def set_func_share(self, node, meta):
+        """Use shared meta attribute unless already set.
+
+        May already be set for getter/setter.
+        """
+        share_meta = statements.get_func_metaattrs(node, "share")
+
+        if not meta["intent"]:
+            meta["intent"] = share_meta["intent"]
+
+    def set_arg_share(self, node, arg, meta):
+        """Use shared meta attribute unless already set."""
+        share_meta = statements.get_arg_metaattrs(node, arg, "share")
+
+        if not meta["intent"]:
+            meta["intent"] = share_meta["intent"]
+            
 ######################################################################
 #
 
@@ -501,7 +518,7 @@ class FillMetaC(FillMeta):
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
 
-        self.set_func_intent(node, r_meta)
+        self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
         self.set_func_api(wlang, node, r_meta)
         stmt0 = statements.lookup_c_function_stmt(node)
@@ -519,7 +536,7 @@ class FillMetaC(FillMeta):
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
-            self.set_arg_intent(node, arg, meta)
+            self.set_arg_share(node, arg, meta)
             self.set_arg_deref_c(arg, meta)
             self.set_arg_api_c(node, arg, meta)
             arg_stmt = statements.lookup_c_arg_stmt(node, arg)
@@ -545,7 +562,7 @@ class FillMetaFortran(FillMeta):
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
 
-        self.set_func_intent(node, r_meta)
+        self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api(wlang, node, r_meta)
         
@@ -564,7 +581,7 @@ class FillMetaFortran(FillMeta):
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
-            self.set_arg_intent(node, arg, meta)
+            self.set_arg_share(node, arg, meta)
             self.set_arg_deref_fortran(arg, meta)
             self.set_arg_api_fortran(node, arg, meta)
             self.set_arg_hidden(arg, meta)
@@ -591,7 +608,7 @@ class FillMetaPython(FillMeta):
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
 
-        self.set_func_intent(node, r_meta)
+        self.set_func_share(node, r_meta)
         stmt0 = None
 
         if stmt0:
@@ -609,7 +626,7 @@ class FillMetaPython(FillMeta):
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
-            self.set_arg_intent(node, arg, meta)
+            self.set_arg_share(node, arg, meta)
             arg_stmt = None
             a_bind.stmt = arg_stmt
 
