@@ -975,9 +975,7 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 for i, param in enumerate(arg.declarator.params):
                     name = param.declarator.user_name
-#                    bind = get_arg_bind(node, param, "f")
-#                    intent = bind.meta["intent"]
-                    intent = param.declarator.metaattrs["intent"]
+                    intent = param.declarator.attrs["intent"]
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(

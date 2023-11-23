@@ -3346,9 +3346,6 @@
                                                 "attrs": {
                                                     "intent": "inout"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "inout"
-                                                },
                                                 "name": "arr",
                                                 "pointer": [
                                                     {
@@ -3365,9 +3362,6 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "out"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "out"
                                                 },
                                                 "name": "err",
@@ -3415,9 +3409,6 @@
                                                 "attrs": {
                                                     "intent": "inout"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "inout"
-                                                },
                                                 "name": "arr",
                                                 "pointer": [
                                                     {
@@ -3463,9 +3454,6 @@
                                                 "attrs": {
                                                     "intent": "in"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "in"
-                                                },
                                                 "name": "arr",
                                                 "pointer": [
                                                     {
@@ -3482,9 +3470,6 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "out"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "out"
                                                 },
                                                 "name": "err",

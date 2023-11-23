@@ -187,10 +187,7 @@ class VerifyAttrs(object):
         is_ptr = declarator.is_indirect()
         intent = attrs["intent"]
         if intent is None:
-            if node is None:
-                # do not default intent for function pointers
-                pass
-            elif declarator.is_function_pointer():
+            if declarator.is_function_pointer():
                 intent = "in"
             elif not is_ptr:
                 intent = "in"
@@ -603,10 +600,6 @@ class VerifyAttrs(object):
         # Flag node if any argument is assumed-rank.
         if meta["assumed-rank"]:
             node._gen_fortran_generic = True
-
-        if declarator.is_function_pointer():
-            for arg1 in declarator.params:
-                self.check_arg_attrs(None, arg1, options)
 
     def parse_dim_attrs(self, dim, meta):
         """Parse dimension attributes and save the AST.

@@ -2080,11 +2080,8 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "none",
+                                                    "intent": "inout",
                                                     "value": true
-                                                },
-                                                "metaattrs": {
-                                                    "intent": "inout"
                                                 },
                                                 "name": "tc",
                                                 "typemap_name": "int"
@@ -2111,7 +2108,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
-                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)+value) +value)",
+                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)",
                 "name": "callback_set_alloc",
                 "options": {},
                 "wrap": {},

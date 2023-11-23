@@ -74,16 +74,40 @@ class FillMeta(object):
         else:
             meta["intent"] = declarator.get_subprogram()
 
+    def check_intent(self, arg):
+        intent = arg.declarator.attrs["intent"]
+        if intent:
+            intent = intent.lower()
+            if intent not in ["in", "out", "inout"]:
+                intent = arg.declarator.attrs["intent"]
+                self.cursor.generate("Bad value for intent: " + intent)
+                intent = "inout"
+            elif intent != "in" and not arg.declarator.is_indirect():
+                # Nonpointers can only be intent(in).
+                self.cursor.generate("Only pointer arguments may have intent of 'out' or 'inout'")
+        return intent
+
+    def check_value(self, arg):
+        attrs = arg.declarator.attrs
+        if attrs["value"] is None:
+            if arg.declarator.is_indirect():
+                if arg.typemap.name == "void":
+                    # This causes Fortran to dereference the C_PTR
+                    # Otherwise a void * argument becomes void **
+                    if len(arg.declarator.pointer) == 1:
+                        attrs["value"] = True  # void *
+#                    else:
+#                        attrs["value"] = None # void **  XXX intent(out)?
+            else:
+                attrs["value"] = True
+        
     def set_arg_intent(self, node, arg, meta):
         if meta["intent"]:
             return
         declarator = arg.declarator
         intent = declarator.attrs["intent"]
         if intent is None:
-            if node is None:
-                # do not default intent for function pointers
-                pass
-            elif declarator.is_function_pointer():
+            if declarator.is_function_pointer():
                 intent = "in"
             elif not declarator.is_indirect():
                 intent = "in"
@@ -498,8 +522,15 @@ class FillMetaShare(FillMeta):
 
             self.set_arg_intent(node, arg, meta)
 
+            if declarator.is_function_pointer():
+                for arg1 in declarator.params:
+                    attrs = arg1.declarator.attrs
+                    attrs["intent"] = self.check_intent(arg1)
+                    self.check_value(arg1)
+            
         # --- End loop over function parameters
         func_cursor.arg = None
+        cursor.pop_node(node)
 
 ######################################################################
 #
@@ -544,6 +575,7 @@ class FillMetaC(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
+        cursor.pop_node(node)
             
 ######################################################################
 #
@@ -590,6 +622,7 @@ class FillMetaFortran(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
+        cursor.pop_node(node)
 
 ######################################################################
 #
@@ -632,6 +665,7 @@ class FillMetaPython(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
+        cursor.pop_node(node)
 
 ######################################################################
 #
@@ -674,6 +708,7 @@ class FillMetaLua(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
+        cursor.pop_node(node)
 
 ######################################################################
 #

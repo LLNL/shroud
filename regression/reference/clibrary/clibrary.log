@@ -50,8 +50,8 @@ C c void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *
 C f void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *) +external+value)
 C c void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))
 C f void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))
-C c void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value)
-C f void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value)
+C c void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)) +value)
+C f void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)) +value)
 Close wrapClibrary.h
 Close wrapClibrary.c
 class array_info
@@ -82,7 +82,7 @@ Fortran void callback1(int type +value, void ( * incr)(void) +external+value)
 Fortran void callback1a(int type +value, void ( * incr)(void) +external+value)
 Fortran void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *) +external+value)
 Fortran void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))
-Fortran void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value)
+Fortran void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)) +value)
 C-interface f void NoReturnNoArguments(void)
 C-interface f double PassByValue(double arg1 +value, int arg2 +value)
 C-interface f void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
@@ -116,7 +116,7 @@ C-interface f void callback1a(int type +value, void ( * incr)(void) +external+va
 C-interface f void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *) +external+value)
 C-interface c void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))
 C-interface f void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))
-C-interface f void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value)
+C-interface f void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)) +value)
 Close wrapfclibrary.f
 Close utilClibrary.c
 Close typesClibrary.h
