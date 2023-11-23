@@ -75,6 +75,8 @@ declarations:
                      int ntext+implied(len(text2)),
                      int mtext+implied(len_trim(text3)))
 
+- decl: void callback_set_alloc(void (*alloc)(int tc+intent(none)))
+
 
 ##########
 

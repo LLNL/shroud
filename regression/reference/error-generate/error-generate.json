@@ -2051,6 +2051,89 @@
                     "F_name_api": "func13d",
                     "function_name": "func13d"
                 }
+            },
+            {
+                "<FUNCTION>": "callback_set_alloc  31 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_set_alloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "alloc",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "alloc",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "metaattrs": {
+                                                    "intent": "inout"
+                                                },
+                                                "name": "tc",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
+                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)+value) +value)",
+                "name": "callback_set_alloc",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "alloc": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_set_alloc",
+                    "F_name_api": "callback_set_alloc",
+                    "function_name": "callback_set_alloc"
+                }
             }
         ],
         "language": "cxx",
