@@ -1316,6 +1316,7 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
             meta = declarator.metaattrs
+            meta2 = statements.get_arg_metaattrs(node, arg, "py")
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
@@ -1325,7 +1326,7 @@ return 1;""",
             dimension = attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
-            intent = meta["intent"]
+            intent = meta2["intent"]
             sgroup = arg_typemap.sgroup
             spointer = declarator.get_indirect_stmt()
             stmts = None
