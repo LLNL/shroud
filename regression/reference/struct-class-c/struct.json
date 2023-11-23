@@ -2188,9 +2188,6 @@
                 "<FUNCTION>": "passStructByValue  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByValue",
                         "params": [
                             {
@@ -2308,9 +2305,6 @@
                 "<FUNCTION>": "passStruct1  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct1",
                         "params": [
                             {
@@ -2432,9 +2426,6 @@
                 "<FUNCTION>": "passStruct2  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct2",
                         "params": [
                             {
@@ -2611,9 +2602,6 @@
                 "<FUNCTION>": "acceptStructInPtr  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptStructInPtr",
                         "params": [
                             {
@@ -2735,9 +2723,6 @@
                 "<FUNCTION>": "acceptStructOutPtr  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructOutPtr",
                         "params": [
                             {
@@ -2935,9 +2920,6 @@
                 "<FUNCTION>": "acceptStructInOutPtr  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructInOutPtr",
                         "params": [
                             {
@@ -3041,9 +3023,6 @@
                 "<FUNCTION>": "returnStructByValue  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnStructByValue",
                         "params": [
                             {
@@ -3208,8 +3187,7 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "returnStructPtr1",
                         "params": [
@@ -3382,8 +3360,7 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "returnStructPtr2",
                         "params": [
@@ -3610,8 +3587,7 @@
                 "ast": {
                     "declarator": {
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "get_global_struct_list",
                         "params": [],
@@ -3686,9 +3662,6 @@
                 "<FUNCTION>": "Create_Cstruct_as_class  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class",
                         "params": [],
                         "pointer": [
@@ -3731,9 +3704,6 @@
                 "<FUNCTION>": "Create_Cstruct_as_class_args  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class_args",
                         "params": [
                             {
@@ -3818,9 +3788,6 @@
                 "<FUNCTION>": "Cstruct_as_class_sum  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Cstruct_as_class_sum",
                         "params": [
                             {
@@ -3889,9 +3856,6 @@
                 "<FUNCTION>": "Create_Cstruct_as_subclass_args  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_subclass_args",
                         "params": [
                             {

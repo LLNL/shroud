@@ -21,9 +21,6 @@
                 "<FUNCTION>": "init_test  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "init_test",
                         "params": [],
                         "typemap_name": "void"
@@ -113,9 +110,6 @@
                 "<FUNCTION>": "passChar  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passChar",
                         "params": [
                             {
@@ -312,9 +306,6 @@
                 "<FUNCTION>": "passCharForce  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharForce",
                         "params": [
                             {
@@ -481,9 +472,6 @@
                 "<FUNCTION>": "returnChar  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnChar",
                         "params": [],
                         "typemap_name": "char"
@@ -624,9 +612,6 @@
                 "<FUNCTION>": "passCharPtr  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharPtr",
                         "params": [
                             {
@@ -963,9 +948,6 @@
                 "<FUNCTION>": "passCharPtrInOut  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharPtrInOut",
                         "params": [
                             {
@@ -1195,8 +1177,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getCharPtr1",
                         "params": [],
@@ -1384,8 +1365,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getCharPtr2",
                         "params": [],
@@ -1565,8 +1545,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getCharPtr3",
                         "params": [],
@@ -1747,8 +1726,7 @@
                             "deref": "raw"
                         },
                         "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
+                            "deref": "raw"
                         },
                         "name": "getCharPtr4",
                         "params": [],
@@ -1881,8 +1859,7 @@
                             "deref": "pointer"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "getCharPtr5",
                         "params": [],
@@ -2040,8 +2017,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringResult",
                         "params": [],
@@ -2230,8 +2206,7 @@
                             "len": 30
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getConstStringLen",
                         "params": [],
@@ -2406,8 +2381,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringAsArg",
                         "params": [],
@@ -2579,8 +2553,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringAlloc",
                         "params": [],
@@ -2762,8 +2735,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringRefPure",
                         "params": [],
@@ -2959,8 +2931,7 @@
                             "len": 30
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getConstStringRefLen",
                         "params": [],
@@ -3141,8 +3112,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringRefAsArg",
                         "params": [],
@@ -3324,8 +3294,7 @@
                             "len": 30
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getConstStringRefLenEmpty",
                         "params": [],
@@ -3504,8 +3473,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringRefAlloc",
                         "params": [],
@@ -3695,8 +3663,7 @@
                             "len": 30
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getConstStringPtrLen",
                         "params": [],
@@ -3887,8 +3854,7 @@
                             "owner": "library"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringPtrAlloc",
                         "params": [],
@@ -4078,8 +4044,7 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringPtrOwnsAlloc",
                         "params": [],
@@ -4273,8 +4238,7 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "getConstStringPtrOwnsAllocPattern",
                         "params": [],
@@ -4468,8 +4432,7 @@
                             "owner": "library"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "getConstStringPtrPointer",
                         "params": [],
@@ -4623,9 +4586,6 @@
                 "<FUNCTION>": "acceptStringConstReference  25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringConstReference",
                         "params": [
                             {
@@ -4845,9 +4805,6 @@
                 "<FUNCTION>": "acceptStringReferenceOut  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringReferenceOut",
                         "params": [
                             {
@@ -5069,9 +5026,6 @@
                 "<FUNCTION>": "acceptStringReference  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringReference",
                         "params": [
                             {
@@ -5294,9 +5248,6 @@
                 "<FUNCTION>": "acceptStringPointerConst  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointerConst",
                         "params": [
                             {
@@ -5515,9 +5466,6 @@
                 "<FUNCTION>": "acceptStringPointer  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointer",
                         "params": [
                             {
@@ -5737,9 +5685,6 @@
                 "<FUNCTION>": "fetchStringPointer  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchStringPointer",
                         "params": [
                             {
@@ -5961,9 +5906,6 @@
                 "<FUNCTION>": "acceptStringPointerLen  31 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointerLen",
                         "params": [
                             {
@@ -6295,9 +6237,6 @@
                 "<FUNCTION>": "fetchStringPointerLen  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchStringPointerLen",
                         "params": [
                             {
@@ -6630,9 +6569,6 @@
                 "<FUNCTION>": "acceptStringInstance  33 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptStringInstance",
                         "params": [
                             {
@@ -6907,9 +6843,6 @@
                 "<FUNCTION>": "returnStrings  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "returnStrings",
                         "params": [
                             {
@@ -7066,9 +6999,6 @@
                 "<FUNCTION>": "fetchArrayStringArg  35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringArg",
                         "params": [
                             {
@@ -7374,9 +7304,6 @@
                 "<FUNCTION>": "fetchArrayStringAlloc  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringAlloc",
                         "params": [
                             {
@@ -7694,9 +7621,6 @@
                 "<FUNCTION>": "fetchArrayStringAllocLen  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringAllocLen",
                         "params": [
                             {
@@ -8018,9 +7942,6 @@
                 "<FUNCTION>": "returnMany  38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnMany",
                         "params": [
                             {
@@ -8088,9 +8009,6 @@
                 "<FUNCTION>": "explicit1  39 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "explicit1",
                         "params": [
                             {
@@ -8295,9 +8213,6 @@
                 "<FUNCTION>": "explicit2  40 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "explicit2",
                         "params": [
                             {
@@ -8490,9 +8405,6 @@
                 "<FUNCTION>": "CpassChar  41 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassChar",
                         "params": [
                             {
@@ -8691,9 +8603,6 @@
                 "<FUNCTION>": "CreturnChar  42 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CreturnChar",
                         "params": [],
                         "typemap_name": "char"
@@ -8836,9 +8745,6 @@
                 "<FUNCTION>": "CpassCharPtr  43 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassCharPtr",
                         "params": [
                             {
@@ -9132,9 +9038,6 @@
                 "<FUNCTION>": "CpassCharPtrBlank  44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassCharPtrBlank",
                         "params": [
                             {
@@ -9424,9 +9327,6 @@
                 "<FUNCTION>": "PostDeclare  45 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "PostDeclare",
                         "params": [
                             {
@@ -9770,9 +9670,6 @@
                 "<FUNCTION>": "CpassCharPtrNotrim  46 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrNotrim",
                         "params": [
                             {
@@ -10007,9 +9904,6 @@
                 "<FUNCTION>": "CpassCharPtrCAPI  47 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrCAPI",
                         "params": [
                             {
@@ -10300,9 +10194,6 @@
                 "<FUNCTION>": "CpassCharPtrCAPI2  48 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrCAPI2",
                         "params": [
                             {

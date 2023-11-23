@@ -104,9 +104,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "classes::Class1"
                             },
@@ -287,9 +284,6 @@
                                 "attrs": {
                                     "_constructor": true,
                                     "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
                                 },
                                 "params": [
                                     {
@@ -589,9 +583,6 @@
                                     "_name": "dtor",
                                     "name": "delete"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -700,9 +691,6 @@
                         "<FUNCTION>": "Method1  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "Method1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -872,9 +860,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "equivalent",
                                 "params": [
                                     {
@@ -1150,9 +1135,6 @@
                         "<FUNCTION>": "returnThis  5 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "returnThis",
                                 "params": [],
                                 "pointer": [
@@ -1282,9 +1264,6 @@
                         "<FUNCTION>": "returnThisBuffer  6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "returnThisBuffer",
                                 "params": [
                                     {
@@ -1616,9 +1595,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "getclass3",
                                 "params": [],
                                 "pointer": [
@@ -1791,8 +1767,7 @@
                             "const": true,
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "allocatable",
-                                    "intent": "function"
+                                    "deref": "allocatable"
                                 },
                                 "name": "getName",
                                 "params": [],
@@ -2004,9 +1979,6 @@
                         "<FUNCTION>": "directionFunc  9 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "directionFunc",
                                 "params": [
                                     {
@@ -3052,8 +3024,7 @@
                             "const": true,
                             "declarator": {
                                 "metaattrs": {
-                                    "deref": "allocatable",
-                                    "intent": "function"
+                                    "deref": "allocatable"
                                 },
                                 "name": "getName",
                                 "params": [],
@@ -3315,9 +3286,6 @@
                         "<FUNCTION>": "getReference  16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "getReference",
                                 "params": [],
                                 "pointer": [
@@ -3545,9 +3513,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "classes::Shape"
                             },
@@ -3721,9 +3686,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_ivar",
                                 "params": [],
                                 "typemap_name": "int"
@@ -3952,9 +3914,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "classes::Circle"
                             },
@@ -4179,9 +4138,6 @@
                         "<FUNCTION>": "allocate  20 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "allocate",
                                 "params": [
                                     {
@@ -4346,9 +4302,6 @@
                         "<FUNCTION>": "free  21 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "free",
                                 "params": [],
                                 "typemap_name": "void"
@@ -4438,9 +4391,6 @@
                                 "attrs": {
                                     "_constructor": true,
                                     "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
                                 },
                                 "params": [],
                                 "typemap_name": "classes::Data"
@@ -4567,9 +4517,6 @@
                                 "attrs": {
                                     "_destructor": "Data",
                                     "_name": "dtor"
-                                },
-                                "metaattrs": {
-                                    "intent": "dtor"
                                 },
                                 "params": [],
                                 "typemap_name": "void"
@@ -5306,9 +5253,6 @@
                 "<FUNCTION>": "directionFunc  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "directionFunc",
                         "params": [
                             {
@@ -5600,9 +5544,6 @@
                 "<FUNCTION>": "passClassByValue  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passClassByValue",
                         "params": [
                             {
@@ -5817,9 +5758,6 @@
                 "<FUNCTION>": "useclass  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "useclass",
                         "params": [
                             {
@@ -6087,9 +6025,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass2",
                         "params": [],
                         "pointer": [
@@ -6221,9 +6156,6 @@
                 "<FUNCTION>": "getclass3  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass3",
                         "params": [],
                         "pointer": [
@@ -6391,9 +6323,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass2_void",
                         "params": [],
                         "pointer": [
@@ -6523,9 +6452,6 @@
                 "<FUNCTION>": "getclass3_void  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass3_void",
                         "params": [],
                         "pointer": [
@@ -6656,9 +6582,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getConstClassReference",
                         "params": [],
                         "pointer": [
@@ -6787,9 +6710,6 @@
                 "<FUNCTION>": "getClassReference  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassReference",
                         "params": [],
                         "pointer": [
@@ -6953,9 +6873,6 @@
                 "<FUNCTION>": "getClassCopy  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassCopy",
                         "params": [
                             {
@@ -7161,9 +7078,6 @@
                 "<FUNCTION>": "set_global_flag  38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "set_global_flag",
                         "params": [
                             {
@@ -7388,9 +7302,6 @@
                 "<FUNCTION>": "get_global_flag  39 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "get_global_flag",
                         "params": [],
                         "typemap_name": "int"
@@ -7556,8 +7467,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "LastFunctionCalled",
                         "params": [],

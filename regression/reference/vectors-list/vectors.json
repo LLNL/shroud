@@ -17,9 +17,6 @@
                 "<FUNCTION>": "vector_sum  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_sum",
                         "params": [
                             {
@@ -158,9 +155,6 @@
                 "<FUNCTION>": "vector_iota_out  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out",
                         "params": [
                             {
@@ -283,9 +277,6 @@
                 "<FUNCTION>": "vector_iota_out_with_num  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_with_num",
                         "params": [
                             {
@@ -392,9 +383,6 @@
                 "<FUNCTION>": "vector_iota_out_with_num2  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_with_num2",
                         "params": [
                             {
@@ -491,9 +479,6 @@
                 "<FUNCTION>": "vector_iota_out_alloc  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_alloc",
                         "params": [
                             {
@@ -582,9 +567,6 @@
                 "<FUNCTION>": "vector_iota_inout_alloc  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_inout_alloc",
                         "params": [
                             {
@@ -673,9 +655,6 @@
                 "<FUNCTION>": "vector_increment  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_increment",
                         "params": [
                             {
@@ -750,9 +729,6 @@
                 "<FUNCTION>": "vector_iota_out_d  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_d",
                         "params": [
                             {
@@ -874,9 +850,6 @@
                 "<FUNCTION>": "vector_of_pointers  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_of_pointers",
                         "params": [
                             {
@@ -982,9 +955,6 @@
                 "<FUNCTION>": "vector_string_count  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_string_count",
                         "params": [
                             {
@@ -1063,9 +1033,6 @@
                 "<FUNCTION>": "vector_string_fill  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill",
                         "params": [
                             {
@@ -1145,9 +1112,6 @@
                 "<FUNCTION>": "vector_string_fill_allocatable  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill_allocatable",
                         "params": [
                             {
@@ -1225,9 +1189,6 @@
                 "<FUNCTION>": "vector_string_fill_allocatable_len  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill_allocatable_len",
                         "params": [
                             {
@@ -1306,9 +1267,6 @@
                 "<FUNCTION>": "vector_string_append  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_append",
                         "params": [
                             {
@@ -1393,8 +1351,7 @@
                             "rank": 1
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "ReturnVectorAlloc",
                         "params": [
@@ -1533,9 +1490,6 @@
                 "<FUNCTION>": "returnDim2  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnDim2",
                         "params": [
                             {

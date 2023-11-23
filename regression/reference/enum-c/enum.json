@@ -216,9 +216,6 @@
                 "<FUNCTION>": "convert_to_int  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "convert_to_int",
                         "params": [
                             {

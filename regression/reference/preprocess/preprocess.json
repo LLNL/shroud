@@ -14,9 +14,6 @@
                         "<FUNCTION>": "method1  0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -111,9 +108,6 @@
                         "<FUNCTION>": "method2  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method2",
                                 "params": [],
                                 "typemap_name": "void"
@@ -214,9 +208,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method3def",
                                 "params": [],
                                 "typemap_name": "void"
@@ -312,9 +303,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method3def",
                                 "params": [
                                     {
@@ -558,9 +546,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "exfunc",
                                 "params": [],
                                 "typemap_name": "void"
@@ -657,9 +642,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "exfunc",
                                 "params": [
                                     {

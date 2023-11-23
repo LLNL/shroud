@@ -116,9 +116,6 @@
                 "<FUNCTION>": "typefunc  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "typefunc",
                         "params": [
                             {
@@ -362,9 +359,6 @@
                 "<FUNCTION>": "typestruct  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "typestruct",
                         "params": [
                             {
@@ -564,9 +558,6 @@
                 "<FUNCTION>": "returnBytesForIndexType  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnBytesForIndexType",
                         "params": [
                             {

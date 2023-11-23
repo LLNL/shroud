@@ -862,9 +862,6 @@
                 "<FUNCTION>": "BadFstatements  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "BadFstatements",
                         "params": [],
                         "typemap_name": "void"
@@ -985,9 +982,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
@@ -1244,9 +1238,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
@@ -1387,9 +1378,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
@@ -1532,9 +1520,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {

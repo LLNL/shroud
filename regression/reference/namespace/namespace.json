@@ -23,8 +23,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "LastFunctionCalled",
                         "params": [],
@@ -209,9 +208,6 @@
                 "<FUNCTION>": "One  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "One",
                         "params": [],
                         "typemap_name": "void"
@@ -676,9 +672,6 @@
                         "<FUNCTION>": "One  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "One",
                                 "params": [],
                                 "typemap_name": "void"

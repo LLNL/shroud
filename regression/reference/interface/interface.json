@@ -17,9 +17,6 @@
                 "<FUNCTION>": "Function1  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Function1",
                         "params": [],
                         "typemap_name": "void"
@@ -100,9 +97,6 @@
                 "<FUNCTION>": "Function2  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Function2",
                         "params": [
                             {

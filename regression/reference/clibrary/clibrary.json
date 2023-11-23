@@ -84,9 +84,6 @@
                 "<FUNCTION>": "NoReturnNoArguments  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "NoReturnNoArguments",
                         "params": [],
                         "typemap_name": "void"
@@ -178,9 +175,6 @@
                 "<FUNCTION>": "PassByValue  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "PassByValue",
                         "params": [
                             {
@@ -525,9 +519,6 @@
                 "<FUNCTION>": "PassByReference  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "PassByReference",
                         "params": [
                             {
@@ -833,9 +824,6 @@
                 "<FUNCTION>": "PassByValueMacro  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "PassByValueMacro",
                         "params": [
                             {
@@ -1084,9 +1072,6 @@
                 "<FUNCTION>": "checkBool  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "checkBool",
                         "params": [
                             {
@@ -1507,8 +1492,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "Function4a",
                         "params": [
@@ -1904,9 +1888,6 @@
                 "<FUNCTION>": "acceptName  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptName",
                         "params": [
                             {
@@ -2106,9 +2087,6 @@
                 "<FUNCTION>": "passCharPtrInOut  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharPtrInOut",
                         "params": [
                             {
@@ -2336,9 +2314,6 @@
                 "<FUNCTION>": "returnOneName  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "returnOneName",
                         "params": [
                             {
@@ -2564,9 +2539,6 @@
                 "<FUNCTION>": "returnTwoNames  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "returnTwoNames",
                         "params": [
                             {
@@ -2908,9 +2880,6 @@
                 "<FUNCTION>": "ImpliedTextLen  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "ImpliedTextLen",
                         "params": [
                             {
@@ -3242,9 +3211,6 @@
                 "<FUNCTION>": "ImpliedLen  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ImpliedLen",
                         "params": [
                             {
@@ -3703,9 +3669,6 @@
                 "<FUNCTION>": "ImpliedLenTrim  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ImpliedLenTrim",
                         "params": [
                             {
@@ -4164,9 +4127,6 @@
                 "<FUNCTION>": "ImpliedBoolTrue  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ImpliedBoolTrue",
                         "params": [
                             {
@@ -4418,9 +4378,6 @@
                 "<FUNCTION>": "ImpliedBoolFalse  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ImpliedBoolFalse",
                         "params": [
                             {
@@ -4672,9 +4629,6 @@
                 "<FUNCTION>": "bindC1  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "bindC1",
                         "params": [],
                         "typemap_name": "void"
@@ -4766,9 +4720,6 @@
                 "<FUNCTION>": "bindC2  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "bindC2",
                         "params": [
                             {
@@ -4962,9 +4913,6 @@
                 "<FUNCTION>": "passVoidStarStar  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passVoidStarStar",
                         "params": [
                             {
@@ -5220,9 +5168,6 @@
                 "<FUNCTION>": "passAssumedType  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passAssumedType",
                         "params": [
                             {
@@ -5429,9 +5374,6 @@
                 "<FUNCTION>": "passAssumedTypeDim  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passAssumedTypeDim",
                         "params": [
                             {
@@ -5607,9 +5549,6 @@
                 "<FUNCTION>": "passAssumedTypeBuf  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passAssumedTypeBuf",
                         "params": [
                             {
@@ -5927,9 +5866,6 @@
                 "<FUNCTION>": "callback1  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "callback1",
                         "params": [
                             {
@@ -6183,9 +6119,6 @@
                 "<FUNCTION>": "callback1a  22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "callback1a",
                         "params": [
                             {
@@ -6441,9 +6374,6 @@
                 "<FUNCTION>": "callback2  23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "callback2",
                         "params": [
                             {
@@ -6791,9 +6721,6 @@
                 "<FUNCTION>": "callback3  24 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "callback3",
                         "params": [
                             {
@@ -7262,9 +7189,6 @@
                 "<FUNCTION>": "callback_set_alloc  25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "callback_set_alloc",
                         "params": [
                             {

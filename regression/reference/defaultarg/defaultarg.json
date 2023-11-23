@@ -24,9 +24,6 @@
                                     "_name": "ctor",
                                     "name": "new"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [
                                     {
                                         "declarator": {
@@ -242,9 +239,6 @@
                                     "_constructor": true,
                                     "_name": "ctor",
                                     "name": "new"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
                                 },
                                 "params": [
                                     {
@@ -542,9 +536,6 @@
                                     "_constructor": true,
                                     "_name": "ctor",
                                     "name": "new"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
                                 },
                                 "params": [
                                     {
@@ -910,9 +901,6 @@
                                     "_name": "dtor",
                                     "name": "delete"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -1005,9 +993,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
@@ -1182,9 +1167,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
@@ -1440,9 +1422,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
@@ -2207,9 +2186,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -2384,9 +2360,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -2642,9 +2615,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -2973,9 +2943,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -3230,9 +3197,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -3568,9 +3532,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
@@ -3975,9 +3936,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_require",
                         "params": [
                             {
@@ -4300,9 +4258,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_require",
                         "params": [
                             {
@@ -4705,9 +4660,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_optional",
                         "params": [
                             {
@@ -5032,9 +4984,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_optional",
                         "params": [
                             {

@@ -474,9 +474,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "Class1"
                             },
@@ -605,9 +602,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [],
                                 "typemap_name": "int"
@@ -741,9 +735,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
@@ -947,9 +938,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
@@ -1110,9 +1098,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
@@ -1264,9 +1249,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
@@ -1479,9 +1461,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
@@ -1772,9 +1751,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
@@ -1982,9 +1958,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
@@ -2353,9 +2326,6 @@
                 "<FUNCTION>": "passStructByReferenceCls  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByReferenceCls",
                         "params": [
                             {
@@ -2474,9 +2444,6 @@
                 "<FUNCTION>": "passStructByReferenceInCls  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByReferenceInCls",
                         "params": [
                             {
@@ -2599,9 +2566,6 @@
                 "<FUNCTION>": "passStructByReferenceInoutCls  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passStructByReferenceInoutCls",
                         "params": [
                             {
@@ -2705,9 +2669,6 @@
                 "<FUNCTION>": "passStructByReferenceOutCls  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passStructByReferenceOutCls",
                         "params": [
                             {
@@ -2816,9 +2777,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "defaultPtrIsNULL",
                         "params": [],
                         "typemap_name": "bool"
@@ -2944,9 +2902,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "defaultPtrIsNULL",
                         "params": [
                             {
@@ -3212,9 +3167,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "defaultArgsInOut",
                         "params": [
                             {
@@ -3547,9 +3499,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "defaultArgsInOut",
                         "params": [
                             {
@@ -4063,8 +4012,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getGroupName",
                         "params": [
@@ -4274,8 +4222,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getGroupName",
                         "params": [
@@ -4455,8 +4402,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "getGroupName",
                         "params": [
@@ -5489,9 +5435,6 @@
                         "<FUNCTION>": "passStructByReference  26 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "passStructByReference",
                                 "params": [
                                     {
@@ -5747,9 +5690,6 @@
                         "<FUNCTION>": "passStructByReferenceIn  27 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "passStructByReferenceIn",
                                 "params": [
                                     {
@@ -6006,9 +5946,6 @@
                         "<FUNCTION>": "passStructByReferenceInout  28 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "passStructByReferenceInout",
                                 "params": [
                                     {
@@ -6213,9 +6150,6 @@
                         "<FUNCTION>": "passStructByReferenceOut  29 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "passStructByReferenceOut",
                                 "params": [
                                     {

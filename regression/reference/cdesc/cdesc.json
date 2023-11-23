@@ -17,9 +17,6 @@
                 "<FUNCTION>": "Rank2In  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Rank2In",
                         "params": [
                             {
@@ -212,9 +209,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
@@ -545,9 +539,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
@@ -793,9 +784,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
@@ -1034,9 +1022,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1112,9 +1097,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1271,9 +1253,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1429,9 +1408,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {
@@ -1653,9 +1629,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {
@@ -1877,9 +1850,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {

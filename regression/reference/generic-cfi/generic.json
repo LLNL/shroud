@@ -59,9 +59,6 @@
                 "<FUNCTION>": "UpdateAsFloat  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "UpdateAsFloat",
                         "params": [
                             {
@@ -227,9 +224,6 @@
                 "<FUNCTION>": "UpdateAsDouble  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "UpdateAsDouble",
                         "params": [
                             {
@@ -395,9 +389,6 @@
                 "<FUNCTION>": "GetGlobalDouble  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GetGlobalDouble",
                         "params": [],
                         "typemap_name": "double"
@@ -514,9 +505,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
@@ -686,9 +674,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
@@ -818,9 +803,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
@@ -944,9 +926,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
@@ -1219,9 +1198,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
@@ -1422,9 +1398,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
@@ -1619,9 +1592,6 @@
                 "_gen_fortran_generic": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "SumValues",
                         "params": [
                             {
@@ -1940,9 +1910,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
@@ -2462,9 +2429,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
@@ -2761,9 +2725,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
@@ -3070,9 +3031,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
@@ -3382,9 +3340,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
@@ -3739,9 +3694,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
@@ -3994,9 +3946,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
@@ -4242,9 +4191,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
@@ -4628,9 +4574,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
@@ -4911,9 +4854,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
@@ -5186,9 +5126,6 @@
                 "<FUNCTION>": "GetPointer  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointer",
                         "params": [
                             {
@@ -5519,9 +5456,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
@@ -5920,9 +5854,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
@@ -6201,9 +6132,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
@@ -6474,9 +6402,6 @@
                 "<FUNCTION>": "CreateStructAsClass  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CreateStructAsClass",
                         "params": [],
                         "pointer": [
@@ -6606,9 +6531,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {
@@ -6885,9 +6807,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {
@@ -7095,9 +7014,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {

@@ -38,9 +38,6 @@
                                                     "_constructor": true,
                                                     "_name": "ctor"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "ctor"
-                                                },
                                                 "params": [],
                                                 "typemap_name": "example::nested::ExClass1"
                                             },
@@ -218,9 +215,6 @@
                                                 "attrs": {
                                                     "_constructor": true,
                                                     "_name": "ctor"
-                                                },
-                                                "metaattrs": {
-                                                    "intent": "ctor"
                                                 },
                                                 "params": [
                                                     {
@@ -553,9 +547,6 @@
                                                     "_destructor": "ExClass1",
                                                     "_name": "dtor"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "dtor"
-                                                },
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },
@@ -671,9 +662,6 @@
                                         "<FUNCTION>": "incrementCount  3 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "incrementCount",
                                                 "params": [
                                                     {
@@ -962,8 +950,7 @@
                                             "declarator": {
                                                 "func_const": true,
                                                 "metaattrs": {
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
+                                                    "deref": "allocatable"
                                                 },
                                                 "name": "getNameErrorCheck",
                                                 "params": [],
@@ -1176,8 +1163,7 @@
                                             "declarator": {
                                                 "func_const": true,
                                                 "metaattrs": {
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
+                                                    "deref": "allocatable"
                                                 },
                                                 "name": "getNameArg",
                                                 "params": [],
@@ -1375,9 +1361,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getValue",
                                                 "params": [
                                                     {
@@ -1668,9 +1651,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getValue",
                                                 "params": [
                                                     {
@@ -1954,9 +1934,6 @@
                                         "<FUNCTION>": "hasAddr  8 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "hasAddr",
                                                 "params": [
                                                     {
@@ -2246,9 +2223,6 @@
                                         "<FUNCTION>": "SplicerSpecial  9 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "SplicerSpecial",
                                                 "params": [],
                                                 "typemap_name": "void"
@@ -2454,9 +2428,6 @@
                                                 "attrs": {
                                                     "_constructor": true,
                                                     "_name": "ctor"
-                                                },
-                                                "metaattrs": {
-                                                    "intent": "ctor"
                                                 },
                                                 "params": [
                                                     {
@@ -2792,9 +2763,6 @@
                                                     "_destructor": "ExClass2",
                                                     "_name": "dtor"
                                                 },
-                                                "metaattrs": {
-                                                    "intent": "dtor"
-                                                },
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },
@@ -2915,8 +2883,7 @@
                                                 },
                                                 "func_const": true,
                                                 "metaattrs": {
-                                                    "deref": "copy",
-                                                    "intent": "function"
+                                                    "deref": "copy"
                                                 },
                                                 "name": "getName",
                                                 "params": [],
@@ -3117,8 +3084,7 @@
                                             "const": true,
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
+                                                    "deref": "allocatable"
                                                 },
                                                 "name": "getName2",
                                                 "params": [],
@@ -3329,8 +3295,7 @@
                                             "declarator": {
                                                 "func_const": true,
                                                 "metaattrs": {
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
+                                                    "deref": "allocatable"
                                                 },
                                                 "name": "getName3",
                                                 "params": [],
@@ -3541,8 +3506,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "metaattrs": {
-                                                    "deref": "allocatable",
-                                                    "intent": "function"
+                                                    "deref": "allocatable"
                                                 },
                                                 "name": "getName4",
                                                 "params": [],
@@ -3752,9 +3716,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "GetNameLength",
                                                 "params": [],
                                                 "typemap_name": "int"
@@ -3929,9 +3890,6 @@
                                         "<FUNCTION>": "get_class1  17 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "get_class1",
                                                 "params": [
                                                     {
@@ -4245,9 +4203,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "declare",
                                                 "params": [
                                                     {
@@ -4464,9 +4419,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "declare",
                                                 "params": [
                                                     {
@@ -4893,9 +4845,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "declare",
                                                 "params": [
                                                     {
@@ -5105,9 +5054,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "declare",
                                                 "params": [
                                                     {
@@ -5302,9 +5248,6 @@
                                         "<FUNCTION>": "destroyall  19 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "destroyall",
                                                 "params": [],
                                                 "typemap_name": "void"
@@ -5414,9 +5357,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getTypeID",
                                                 "params": [],
                                                 "typemap_name": "TypeID"
@@ -5588,9 +5528,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "setValue",
                                                 "params": [
                                                     {
@@ -5709,9 +5646,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "setValue",
                                                 "params": [
                                                     {
@@ -5998,9 +5932,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "setValue",
                                                 "params": [
                                                     {
@@ -6284,9 +6215,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "setValue",
                                                 "params": [
                                                     {
@@ -6570,9 +6498,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "subroutine"
-                                                },
                                                 "name": "setValue",
                                                 "params": [
                                                     {
@@ -6857,9 +6782,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getValue",
                                                 "params": []
                                             },
@@ -6932,9 +6854,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getValue",
                                                 "params": []
                                             },
@@ -7138,9 +7057,6 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "intent": "function"
-                                                },
                                                 "name": "getValue",
                                                 "params": []
                                             },
@@ -7407,9 +7323,6 @@
                                 "<FUNCTION>": "local_function1  32 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "local_function1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -7513,9 +7426,6 @@
                                 "<FUNCTION>": "isNameValid  33 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "function"
-                                        },
                                         "name": "isNameValid",
                                         "params": [
                                             {
@@ -7839,9 +7749,6 @@
                                 "<FUNCTION>": "isInitialized  34 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "function"
-                                        },
                                         "name": "isInitialized",
                                         "params": [],
                                         "typemap_name": "bool"
@@ -8004,9 +7911,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "test_names",
                                         "params": [
                                             {
@@ -8259,9 +8163,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "test_names",
                                         "params": [
                                             {
@@ -8639,9 +8540,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "testoptional",
                                         "params": [],
                                         "typemap_name": "void"
@@ -8729,9 +8627,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "testoptional",
                                         "params": [
                                             {
@@ -8904,9 +8799,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "testoptional",
                                         "params": [
                                             {
@@ -9252,9 +9144,6 @@
                                 "<FUNCTION>": "test_size_t  38 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "function"
-                                        },
                                         "name": "test_size_t",
                                         "params": [],
                                         "typemap_name": "size_t"
@@ -9416,9 +9305,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "testmpi",
                                         "params": [
                                             {
@@ -9654,9 +9540,6 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "testmpi",
                                         "params": [],
                                         "typemap_name": "void"
@@ -9761,9 +9644,6 @@
                                 "<FUNCTION>": "FuncPtr1  41 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "FuncPtr1",
                                         "params": [
                                             {
@@ -9999,9 +9879,6 @@
                                 "<FUNCTION>": "FuncPtr2  42 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "FuncPtr2",
                                         "params": [
                                             {
@@ -10241,9 +10118,6 @@
                                 "<FUNCTION>": "FuncPtr3  43 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "FuncPtr3",
                                         "params": [
                                             {
@@ -10508,9 +10382,6 @@
                                 "<FUNCTION>": "FuncPtr4  44 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "FuncPtr4",
                                         "params": [
                                             {
@@ -10715,9 +10586,6 @@
                                 "<FUNCTION>": "FuncPtr5  45 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "FuncPtr5",
                                         "params": [
                                             {
@@ -11081,9 +10949,6 @@
                                 "<FUNCTION>": "verylongfunctionname1  46 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "verylongfunctionname1",
                                         "params": [
                                             {
@@ -12423,9 +12288,6 @@
                                 "<FUNCTION>": "verylongfunctionname2  47 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "function"
-                                        },
                                         "name": "verylongfunctionname2",
                                         "params": [
                                             {
@@ -13764,9 +13626,6 @@
                                 "<FUNCTION>": "cos_doubles  48 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "cos_doubles",
                                         "params": [
                                             {

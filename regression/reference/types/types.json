@@ -17,9 +17,6 @@
                 "<FUNCTION>": "short_func  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "short_func",
                         "params": [
                             {
@@ -263,9 +260,6 @@
                 "<FUNCTION>": "int_func  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "int_func",
                         "params": [
                             {
@@ -509,9 +503,6 @@
                 "<FUNCTION>": "long_func  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "long_func",
                         "params": [
                             {
@@ -755,9 +746,6 @@
                 "<FUNCTION>": "long_long_func  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "long_long_func",
                         "params": [
                             {
@@ -1005,9 +993,6 @@
                 "<FUNCTION>": "short_int_func  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "short_int_func",
                         "params": [
                             {
@@ -1253,9 +1238,6 @@
                 "<FUNCTION>": "long_int_func  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "long_int_func",
                         "params": [
                             {
@@ -1501,9 +1483,6 @@
                 "<FUNCTION>": "long_long_int_func  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "long_long_int_func",
                         "params": [
                             {
@@ -1753,9 +1732,6 @@
                 "<FUNCTION>": "unsigned_func  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "unsigned_func",
                         "params": [
                             {
@@ -1999,9 +1975,6 @@
                 "<FUNCTION>": "ushort_func  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ushort_func",
                         "params": [
                             {
@@ -2247,9 +2220,6 @@
                 "<FUNCTION>": "uint_func  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "uint_func",
                         "params": [
                             {
@@ -2495,9 +2465,6 @@
                 "<FUNCTION>": "ulong_func  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ulong_func",
                         "params": [
                             {
@@ -2743,9 +2710,6 @@
                 "<FUNCTION>": "ulong_long_func  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ulong_long_func",
                         "params": [
                             {
@@ -2995,9 +2959,6 @@
                 "<FUNCTION>": "ulong_int_func  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "ulong_int_func",
                         "params": [
                             {
@@ -3245,9 +3206,6 @@
                 "<FUNCTION>": "int8_func  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "int8_func",
                         "params": [
                             {
@@ -3491,9 +3449,6 @@
                 "<FUNCTION>": "int16_func  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "int16_func",
                         "params": [
                             {
@@ -3737,9 +3692,6 @@
                 "<FUNCTION>": "int32_func  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "int32_func",
                         "params": [
                             {
@@ -3983,9 +3935,6 @@
                 "<FUNCTION>": "int64_func  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "int64_func",
                         "params": [
                             {
@@ -4229,9 +4178,6 @@
                 "<FUNCTION>": "uint8_func  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "uint8_func",
                         "params": [
                             {
@@ -4475,9 +4421,6 @@
                 "<FUNCTION>": "uint16_func  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "uint16_func",
                         "params": [
                             {
@@ -4721,9 +4664,6 @@
                 "<FUNCTION>": "uint32_func  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "uint32_func",
                         "params": [
                             {
@@ -4967,9 +4907,6 @@
                 "<FUNCTION>": "uint64_func  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "uint64_func",
                         "params": [
                             {
@@ -5213,9 +5150,6 @@
                 "<FUNCTION>": "size_func  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "size_func",
                         "params": [
                             {
@@ -5459,9 +5393,6 @@
                 "<FUNCTION>": "bool_func  22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "bool_func",
                         "params": [
                             {
@@ -5709,9 +5640,6 @@
                 "<FUNCTION>": "returnBoolAndOthers  23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnBoolAndOthers",
                         "params": [
                             {

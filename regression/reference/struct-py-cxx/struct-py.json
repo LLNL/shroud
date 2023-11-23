@@ -393,9 +393,6 @@
                 "<FUNCTION>": "acceptBothStructs  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptBothStructs",
                         "params": [
                             {

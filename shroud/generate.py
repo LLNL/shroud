@@ -157,12 +157,6 @@ class VerifyAttrs(object):
 
         if ast.typemap is None:
             print("XXXXXX typemap is None")
-        if declarator.is_ctor():
-            meta["intent"] = "ctor"
-        elif declarator.is_dtor():
-            meta["intent"] = "dtor"
-        else:
-            meta["intent"] = declarator.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 

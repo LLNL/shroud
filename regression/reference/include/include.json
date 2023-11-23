@@ -16,9 +16,6 @@
                         "<FUNCTION>": "method1  0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method1",
                                 "params": [
                                     {
@@ -187,9 +184,6 @@
                         "<FUNCTION>": "method2  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method2",
                                 "params": [
                                     {
@@ -407,9 +401,6 @@
                                 "<FUNCTION>": "function1  5 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "function1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -559,9 +550,6 @@
                                 "<FUNCTION>": "method1  2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method1",
                                         "params": [
                                             {
@@ -791,9 +779,6 @@
                                 "<FUNCTION>": "method  3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method",
                                         "params": [],
                                         "typemap_name": "void"
@@ -909,9 +894,6 @@
                         "<FUNCTION>": "outer_func  6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "outer_func",
                                 "params": [],
                                 "typemap_name": "void"
@@ -1032,9 +1014,6 @@
                                 "<FUNCTION>": "method  4 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method",
                                         "params": [],
                                         "typemap_name": "void"
@@ -1150,9 +1129,6 @@
                         "<FUNCTION>": "outer_func  7 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "outer_func",
                                 "params": [],
                                 "typemap_name": "void"

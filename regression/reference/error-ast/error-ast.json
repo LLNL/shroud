@@ -54,9 +54,6 @@
                 "<FUNCTION>": "FortranGenericOverloaded3  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded3",
                         "params": [
                             {
@@ -158,9 +155,6 @@
                 "<FUNCTION>": "PYGoodFunction  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "PYGoodFunction",
                         "params": [],
                         "typemap_name": "void"

@@ -61,9 +61,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "nested",
                                 "params": [
                                     {
@@ -166,9 +163,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "nested",
                                 "params": [
                                     {
@@ -551,9 +545,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "structAsClass"
                             },
@@ -677,9 +668,6 @@
                         "_orig_node_index": 4,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_npts",
                                 "params": [
                                     {
@@ -845,9 +833,6 @@
                         "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_npts",
                                 "params": [],
                                 "typemap_name": "int"
@@ -969,9 +954,6 @@
                         "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_value",
                                 "params": [
                                     {
@@ -1032,9 +1014,6 @@
                         "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_value",
                                 "params": [
                                     {
@@ -1201,9 +1180,6 @@
                         "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_value",
                                 "params": []
                             },
@@ -1242,9 +1218,6 @@
                         "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_value",
                                 "params": []
                             },
@@ -1442,9 +1415,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "structAsClass"
                             },
@@ -1568,9 +1538,6 @@
                         "_orig_node_index": 4,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_npts",
                                 "params": [
                                     {
@@ -1736,9 +1703,6 @@
                         "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_npts",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1860,9 +1824,6 @@
                         "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_value",
                                 "params": [
                                     {
@@ -1923,9 +1884,6 @@
                         "_orig_node_index": 6,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "set_value",
                                 "params": [
                                     {
@@ -2092,9 +2050,6 @@
                         "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_value",
                                 "params": []
                             },
@@ -2133,9 +2088,6 @@
                         "_orig_node_index": 7,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_value",
                                 "params": []
                             },
@@ -2336,9 +2288,6 @@
                 "<FUNCTION>": "returnUserType  38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnUserType",
                         "params": [],
                         "typemap_name": "user"
@@ -2475,9 +2424,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -2608,9 +2554,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -2954,9 +2897,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -3301,9 +3241,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -3382,9 +3319,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -3566,9 +3500,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -3766,9 +3697,6 @@
                                             "_constructor": true,
                                             "_name": "ctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
                                         "params": [],
                                         "typemap_name": "std::vector"
                                     },
@@ -3928,9 +3856,6 @@
                                             "_destructor": "vector",
                                             "_name": "dtor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "dtor"
-                                        },
                                         "params": [],
                                         "typemap_name": "void"
                                     },
@@ -4026,9 +3951,6 @@
                                 "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "push_back",
                                         "params": [
                                             {
@@ -4095,9 +4017,6 @@
                                 "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "push_back",
                                         "params": [
                                             {
@@ -4304,8 +4223,7 @@
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
-                                            "deref": "pointer",
-                                            "intent": "function"
+                                            "deref": "pointer"
                                         },
                                         "name": "at",
                                         "params": [
@@ -4373,8 +4291,7 @@
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
-                                            "deref": "pointer",
-                                            "intent": "function"
+                                            "deref": "pointer"
                                         },
                                         "name": "at",
                                         "params": [
@@ -4748,9 +4665,6 @@
                                             "_constructor": true,
                                             "_name": "ctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
                                         "params": [],
                                         "typemap_name": "std::vector"
                                     },
@@ -4910,9 +4824,6 @@
                                             "_destructor": "vector",
                                             "_name": "dtor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "dtor"
-                                        },
                                         "params": [],
                                         "typemap_name": "void"
                                     },
@@ -5008,9 +4919,6 @@
                                 "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "push_back",
                                         "params": [
                                             {
@@ -5077,9 +4985,6 @@
                                 "_orig_node_index": 24,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "push_back",
                                         "params": [
                                             {
@@ -5286,8 +5191,7 @@
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
-                                            "deref": "pointer",
-                                            "intent": "function"
+                                            "deref": "pointer"
                                         },
                                         "name": "at",
                                         "params": [
@@ -5355,8 +5259,7 @@
                                 "ast": {
                                     "declarator": {
                                         "metaattrs": {
-                                            "deref": "pointer",
-                                            "intent": "function"
+                                            "deref": "pointer"
                                         },
                                         "name": "at",
                                         "params": [

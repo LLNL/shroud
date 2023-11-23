@@ -189,9 +189,6 @@
                         "attrs": {
                             "badfunc": true
                         },
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func0",
                         "params": [],
                         "typemap_name": "void"
@@ -225,9 +222,6 @@
                 "<FUNCTION>": "func0a  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func0a",
                         "params": [
                             {
@@ -285,9 +279,6 @@
                         "attrs": {
                             "deref": "pointer"
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "func0b",
                         "params": [],
                         "pointer": [
@@ -335,9 +326,6 @@
                         "attrs": {
                             "deref": "pointer"
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "func0c",
                         "params": [],
                         "typemap_name": "int"
@@ -375,8 +363,7 @@
                             "dimension": true
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "func0e",
                         "params": [],
@@ -424,8 +411,7 @@
                                 {
                                     "constant": "10"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "func0f",
                         "params": [],
@@ -460,9 +446,6 @@
                 "<FUNCTION>": "func1  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func1",
                         "params": [
                             {
@@ -519,9 +502,6 @@
                 "<FUNCTION>": "func2  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func2",
                         "params": [
                             {
@@ -578,9 +558,6 @@
                 "<FUNCTION>": "func3  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3",
                         "params": [
                             {
@@ -637,9 +614,6 @@
                 "<FUNCTION>": "func3b  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3b",
                         "params": [
                             {
@@ -696,9 +670,6 @@
                 "<FUNCTION>": "func3c  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3c",
                         "params": [
                             {
@@ -759,9 +730,6 @@
                 "<FUNCTION>": "func4  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func4",
                         "params": [
                             {
@@ -822,9 +790,6 @@
                 "<FUNCTION>": "func6  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func6",
                         "params": [
                             {
@@ -885,9 +850,6 @@
                 "<FUNCTION>": "func7  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func7",
                         "params": [
                             {
@@ -948,9 +910,6 @@
                 "<FUNCTION>": "func8  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func8",
                         "params": [
                             {
@@ -1007,9 +966,6 @@
                 "<FUNCTION>": "func8a  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func8a",
                         "params": [
                             {
@@ -1066,9 +1022,6 @@
                 "<FUNCTION>": "func9  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9",
                         "params": [
                             {
@@ -1129,9 +1082,6 @@
                 "<FUNCTION>": "func9b  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9b",
                         "params": [
                             {
@@ -1193,9 +1143,6 @@
                 "<FUNCTION>": "func9c  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9c",
                         "params": [
                             {
@@ -1261,9 +1208,6 @@
                 "<FUNCTION>": "func10  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10",
                         "params": [
                             {
@@ -1320,9 +1264,6 @@
                 "<FUNCTION>": "func10b  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10b",
                         "params": [
                             {
@@ -1380,9 +1321,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10c",
                         "params": [
                             {
@@ -1445,9 +1383,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10c",
                         "params": [
                             {
@@ -1510,9 +1445,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
@@ -1571,9 +1503,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
@@ -1632,9 +1561,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
@@ -1693,9 +1619,6 @@
                 "<FUNCTION>": "func12  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func12",
                         "params": [
                             {
@@ -1761,9 +1684,6 @@
                 "<FUNCTION>": "func13  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13",
                         "params": [
                             {
@@ -1847,9 +1767,6 @@
                 "<FUNCTION>": "func13b  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13b",
                         "params": [
                             {
@@ -1933,9 +1850,6 @@
                 "<FUNCTION>": "func13c  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13c",
                         "params": [
                             {
@@ -2039,9 +1953,6 @@
                 "<FUNCTION>": "func13d  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13d",
                         "params": [
                             {

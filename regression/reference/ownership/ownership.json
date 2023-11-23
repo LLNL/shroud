@@ -17,9 +17,6 @@
                                     "_destructor": "Class1",
                                     "_name": "dtor"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -329,8 +326,7 @@
                             "deref": "raw"
                         },
                         "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
+                            "deref": "raw"
                         },
                         "name": "ReturnIntPtrRaw",
                         "params": [],
@@ -422,8 +418,7 @@
                             "deref": "scalar"
                         },
                         "metaattrs": {
-                            "deref": "scalar",
-                            "intent": "function"
+                            "deref": "scalar"
                         },
                         "name": "ReturnIntPtrScalar",
                         "params": [],
@@ -594,8 +589,7 @@
                             "deref": "pointer"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
+                            "deref": "pointer"
                         },
                         "name": "ReturnIntPtrPointer",
                         "params": [],
@@ -768,8 +762,7 @@
                             "deref": "raw"
                         },
                         "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
+                            "deref": "raw"
                         },
                         "name": "ReturnIntPtrDimRaw",
                         "params": [
@@ -926,8 +919,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimPointer",
                         "params": [
@@ -1257,8 +1249,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimAlloc",
                         "params": [
@@ -1597,8 +1588,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimDefault",
                         "params": [
@@ -1927,8 +1917,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimRawNew",
                         "params": [
@@ -2091,8 +2080,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimPointerNew",
                         "params": [
@@ -2426,8 +2414,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimAllocNew",
                         "params": [
@@ -2655,8 +2642,7 @@
                                 {
                                     "name": "len"
                                 }
-                            ],
-                            "intent": "function"
+                            ]
                         },
                         "name": "ReturnIntPtrDimDefaultNew",
                         "params": [
@@ -2979,9 +2965,6 @@
                 "<FUNCTION>": "IntPtrDimRaw  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimRaw",
                         "params": [
                             {
@@ -3079,9 +3062,6 @@
                 "<FUNCTION>": "IntPtrDimPointer  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimPointer",
                         "params": [
                             {
@@ -3186,9 +3166,6 @@
                 "<FUNCTION>": "IntPtrDimAlloc  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimAlloc",
                         "params": [
                             {
@@ -3293,9 +3270,6 @@
                 "<FUNCTION>": "IntPtrDimDefault  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimDefault",
                         "params": [
                             {
@@ -3399,9 +3373,6 @@
                 "<FUNCTION>": "IntPtrDimRawNew  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimRawNew",
                         "params": [
                             {
@@ -3500,9 +3471,6 @@
                 "<FUNCTION>": "IntPtrDimPointerNew  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimPointerNew",
                         "params": [
                             {
@@ -3607,9 +3575,6 @@
                 "<FUNCTION>": "IntPtrDimAllocNew  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimAllocNew",
                         "params": [
                             {
@@ -3714,9 +3679,6 @@
                 "<FUNCTION>": "IntPtrDimDefaultNew  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimDefaultNew",
                         "params": [
                             {
@@ -3820,9 +3782,6 @@
                 "<FUNCTION>": "createClassStatic  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "createClassStatic",
                         "params": [
                             {
@@ -4032,9 +3991,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassStatic",
                         "params": [],
                         "pointer": [
@@ -4200,9 +4156,6 @@
                     "declarator": {
                         "attrs": {
                             "owner": "caller"
-                        },
-                        "metaattrs": {
-                            "intent": "function"
                         },
                         "name": "getClassNew",
                         "params": [

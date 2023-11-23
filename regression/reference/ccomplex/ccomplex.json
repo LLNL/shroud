@@ -17,9 +17,6 @@
                 "<FUNCTION>": "acceptFloatComplexInoutPtr  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptFloatComplexInoutPtr",
                         "params": [
                             {
@@ -185,9 +182,6 @@
                 "<FUNCTION>": "acceptDoubleComplexInoutPtr  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptDoubleComplexInoutPtr",
                         "params": [
                             {
@@ -387,9 +381,6 @@
                 "<FUNCTION>": "acceptDoubleComplexOutPtr  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptDoubleComplexOutPtr",
                         "params": [
                             {
@@ -591,9 +582,6 @@
                 "<FUNCTION>": "acceptDoubleComplexInoutPtrFlag  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptDoubleComplexInoutPtrFlag",
                         "params": [
                             {
@@ -751,9 +739,6 @@
                 "<FUNCTION>": "acceptDoubleComplexOutPtrFlag  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptDoubleComplexOutPtrFlag",
                         "params": [
                             {

@@ -398,9 +398,6 @@
                 "<FUNCTION>": "getName  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getName",
                         "params": [
                             {
@@ -629,9 +626,6 @@
                 "<FUNCTION>": "function1  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function1",
                         "params": [],
                         "typemap_name": "void"
@@ -721,9 +715,6 @@
                 "<FUNCTION>": "function2  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function2",
                         "params": [],
                         "typemap_name": "void"
@@ -821,9 +812,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function3a",
                         "params": [
                             {
@@ -1022,9 +1010,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function3a",
                         "params": [
                             {
@@ -1222,9 +1207,6 @@
                 "<FUNCTION>": "function4  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "function4",
                         "params": [
                             {
@@ -1501,9 +1483,6 @@
                         "attrs": {
                             "name": "fiveplus"
                         },
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function5",
                         "params": [],
                         "typemap_name": "void"
@@ -1593,9 +1572,6 @@
                 "<FUNCTION>": "TestMultilineSplicer  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TestMultilineSplicer",
                         "params": [
                             {
@@ -1945,9 +1921,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -2087,9 +2060,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -2450,9 +2420,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
@@ -2809,9 +2776,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -2875,9 +2839,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -3042,9 +3003,6 @@
                 "<FUNCTION>": "Cstruct_as_class_sum  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Cstruct_as_class_sum",
                         "params": [
                             {
@@ -3302,9 +3260,6 @@
                 "<FUNCTION>": "external_funcs  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "external_funcs",
                         "params": [
                             {
@@ -3994,9 +3949,6 @@
                 "<FUNCTION>": "bindtest  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "bindtest",
                         "params": [
                             {
@@ -4185,9 +4137,6 @@
                                             "_name": "ctor",
                                             "name": "defaultctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
                                         "params": [],
                                         "typemap_name": "ns0::Names"
                                     },
@@ -4342,9 +4291,6 @@
                                 "<FUNCTION>": "method1  1 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -4442,9 +4388,6 @@
                                 "<FUNCTION>": "method2  2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method2",
                                         "params": [],
                                         "typemap_name": "void"
@@ -4672,9 +4615,6 @@
                         "<FUNCTION>": "init_ns1  20 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "init_ns1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -5316,9 +5256,6 @@
                                 "<FUNCTION>": "Member1  3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "Member1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -5434,9 +5371,6 @@
                         "<FUNCTION>": "Worker1  21 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "Worker1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -5553,9 +5487,6 @@
                         "<FUNCTION>": "Worker1  22 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "Worker1",
                                 "params": [],
                                 "typemap_name": "void"

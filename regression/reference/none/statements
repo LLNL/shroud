@@ -13333,6 +13333,7 @@ root
     mixin
       callfunction -- lua_mixin_callfunction
       push -- lua_mixin_push
+      unknown -- lua_mixin_unknown
     out
       native
         * -- lua_defaulttmp
@@ -13446,6 +13447,9 @@ lua_mixin_push:
   name: lua_mixin_push
   post_call:
   - '{push_expr};'
+lua_mixin_unknown:
+  intent: mixin
+  name: lua_mixin_unknown
 lua_out_native_*:
   intent: out
   name: lua_out_native_*

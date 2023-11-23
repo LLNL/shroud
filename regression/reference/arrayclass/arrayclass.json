@@ -18,9 +18,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "ArrayWrapper"
                             },
@@ -175,9 +172,6 @@
                         "<FUNCTION>": "setSize  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "setSize",
                                 "params": [
                                     {
@@ -375,9 +369,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "getSize",
                                 "params": [],
                                 "typemap_name": "int"
@@ -524,9 +515,6 @@
                         "<FUNCTION>": "fillSize  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fillSize",
                                 "params": [
                                     {
@@ -729,9 +717,6 @@
                         "<FUNCTION>": "allocate  4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "allocate",
                                 "params": [],
                                 "typemap_name": "void"
@@ -836,8 +821,7 @@
                                             "args": [],
                                             "name": "getSize"
                                         }
-                                    ],
-                                    "intent": "function"
+                                    ]
                                 },
                                 "name": "getArray",
                                 "params": [],
@@ -1042,8 +1026,7 @@
                                             "args": [],
                                             "name": "getSize"
                                         }
-                                    ],
-                                    "intent": "function"
+                                    ]
                                 },
                                 "name": "getArrayConst",
                                 "params": [],
@@ -1249,8 +1232,7 @@
                                             "args": [],
                                             "name": "getSize"
                                         }
-                                    ],
-                                    "intent": "function"
+                                    ]
                                 },
                                 "name": "getArrayC",
                                 "params": [],
@@ -1456,8 +1438,7 @@
                                             "args": [],
                                             "name": "getSize"
                                         }
-                                    ],
-                                    "intent": "function"
+                                    ]
                                 },
                                 "name": "getArrayConstC",
                                 "params": [],
@@ -1652,9 +1633,6 @@
                         "<FUNCTION>": "fetchArrayPtr  9 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchArrayPtr",
                                 "params": [
                                     {
@@ -2019,9 +1997,6 @@
                         "<FUNCTION>": "fetchArrayRef  10 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchArrayRef",
                                 "params": [
                                     {
@@ -2386,9 +2361,6 @@
                         "<FUNCTION>": "fetchArrayPtrConst  11 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchArrayPtrConst",
                                 "params": [
                                     {
@@ -2754,9 +2726,6 @@
                         "<FUNCTION>": "fetchArrayRefConst  12 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchArrayRefConst",
                                 "params": [
                                     {
@@ -3122,9 +3091,6 @@
                         "<FUNCTION>": "fetchVoidPtr  13 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchVoidPtr",
                                 "params": [
                                     {
@@ -3329,9 +3295,6 @@
                         "<FUNCTION>": "fetchVoidRef  14 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "fetchVoidRef",
                                 "params": [
                                     {
@@ -3536,9 +3499,6 @@
                         "<FUNCTION>": "checkPtr  15 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "checkPtr",
                                 "params": [
                                     {
@@ -3793,9 +3753,6 @@
                         "<FUNCTION>": "sumArray  16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "sumArray",
                                 "params": [],
                                 "typemap_name": "double"

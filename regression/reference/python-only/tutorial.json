@@ -79,9 +79,6 @@
                 "<FUNCTION>": "NoReturnNoArguments  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "NoReturnNoArguments",
                         "params": [],
                         "typemap_name": "void"
@@ -127,9 +124,6 @@
                 "<FUNCTION>": "PassByValue  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "PassByValue",
                         "params": [
                             {
@@ -288,8 +282,7 @@
                     "const": true,
                     "declarator": {
                         "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
+                            "deref": "allocatable"
                         },
                         "name": "ConcatenateStrings",
                         "params": [
@@ -459,9 +452,6 @@
                 "_has_default_arg": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultArguments",
                         "params": [
                             {
@@ -631,9 +621,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "OverloadedFunction",
                         "params": [
                             {
@@ -735,9 +722,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "OverloadedFunction",
                         "params": [
                             {
@@ -835,9 +819,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
@@ -932,9 +913,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
@@ -1063,9 +1041,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
@@ -1193,9 +1168,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -1271,9 +1243,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -1347,9 +1316,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -1422,9 +1388,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [],
                         "typemap_name": "void"
@@ -1470,9 +1433,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [
                             {
@@ -1704,9 +1664,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
@@ -1920,9 +1877,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
@@ -2175,9 +2129,6 @@
                 "<FUNCTION>": "typefunc  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "typefunc",
                         "params": [
                             {
@@ -2288,9 +2239,6 @@
                 "<FUNCTION>": "enumfunc  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "enumfunc",
                         "params": [
                             {
@@ -2403,9 +2351,6 @@
                 "<FUNCTION>": "colorfunc  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "colorfunc",
                         "params": [
                             {
@@ -2518,9 +2463,6 @@
                 "<FUNCTION>": "getMinMax  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getMinMax",
                         "params": [
                             {
@@ -2677,9 +2619,6 @@
                 "<FUNCTION>": "callback1  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "callback1",
                         "params": [
                             {
@@ -2791,8 +2730,7 @@
                             "len": "30"
                         },
                         "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
+                            "deref": "copy"
                         },
                         "name": "LastFunctionCalled",
                         "params": [],

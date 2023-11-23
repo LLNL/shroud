@@ -14,9 +14,6 @@
                 "<FUNCTION>": "worker3  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "worker3",
                         "params": [],
                         "typemap_name": "void"
@@ -106,9 +103,6 @@
                 "<FUNCTION>": "worker  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "worker",
                         "params": [],
                         "typemap_name": "void"
@@ -204,9 +198,6 @@
                         "<FUNCTION>": "worker  2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "worker",
                                 "params": [],
                                 "typemap_name": "void"
@@ -332,9 +323,6 @@
                         "<FUNCTION>": "worker  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "worker",
                                 "params": [],
                                 "typemap_name": "void"
@@ -460,9 +448,6 @@
                         "<FUNCTION>": "worker4  4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "worker4",
                                 "params": [],
                                 "typemap_name": "void"

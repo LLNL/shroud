@@ -71,9 +71,6 @@
                                     "_constructor": true,
                                     "_name": "ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
                                 "params": [],
                                 "typemap_name": "forward::Class2"
                             },
@@ -250,9 +247,6 @@
                                     "_destructor": "Class2",
                                     "_name": "dtor"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -361,9 +355,6 @@
                         "<FUNCTION>": "func1  2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "func1",
                                 "params": [
                                     {
@@ -601,9 +592,6 @@
                         "<FUNCTION>": "acceptClass3  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "acceptClass3",
                                 "params": [
                                     {
@@ -902,9 +890,6 @@
                 "<FUNCTION>": "passStruct1  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct1",
                         "params": [
                             {
