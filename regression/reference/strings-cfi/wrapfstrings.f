@@ -1280,7 +1280,7 @@ module strings_mod
     ! Statement: c_in_char_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
-    ! Statement: c_in_char_*_capi
+    ! Statement: c_in_char_*
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &

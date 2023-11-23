@@ -108,11 +108,6 @@ line 52
 void func9c(int * * arg1 +deref(pointer)+intent(in))
 Cannot have attribute 'deref' on intent(in) argument 'arg1'
 --------------------
-Node: func10
-line 55
-void func10(int arg1 +api(none))
-'api' attribute must 'capi', 'buf', 'cdesc' or 'cfi'
---------------------
 Node: func10b
 line 56
 void func10b(int arg1 +rank)
@@ -229,6 +224,11 @@ Node: callback_set_alloc
 line 78
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)
 Bad value for intent: none
+--------------------
+Node: func10
+line 55
+void func10(int arg1 +api(none)+value)
+'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
 Wrote wraperror.h
 Wrote wrapferror.f
 Wrote utilerror.cpp

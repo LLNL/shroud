@@ -346,17 +346,6 @@ class VerifyAttrs(object):
         ntypemap = ast.typemap
         is_ptr = declarator.is_indirect()
 
-        # api
-        api = attrs["api"]
-        if api is None:
-            pass
-        elif api not in ["capi", "buf", "cdesc", "cfi"]:
-                self.cursor.generate(
-                    "'api' attribute must 'capi', 'buf', 'cdesc' or 'cfi'"
-                )
-        else:
-            meta["api"] = api
-
         # dimension
         dimension = attrs["dimension"]
         rank = attrs["rank"]
@@ -554,7 +543,7 @@ class VerifyAttrs(object):
         elif char_ptr_in:
             arg.blanknull = options.F_blanknull
 
-        if meta["api"]:  # User set
+        if attrs["api"]:  # User set
             pass
         elif (
             options.F_CFI is False and

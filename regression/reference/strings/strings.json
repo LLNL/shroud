@@ -9934,7 +9934,6 @@
                                         "api": "capi"
                                     },
                                     "metaattrs": {
-                                        "api": "capi",
                                         "intent": "in"
                                     },
                                     "name": "src",
@@ -9988,10 +9987,9 @@
                         },
                         "src": {
                             "meta": {
-                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*_capi"
+                            "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
@@ -10153,7 +10151,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -10223,7 +10221,6 @@
                                         "api": "capi"
                                     },
                                     "metaattrs": {
-                                        "api": "capi",
                                         "intent": "in"
                                     },
                                     "name": "src",
@@ -10276,10 +10273,9 @@
                         },
                         "src": {
                             "meta": {
-                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*_capi"
+                            "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
@@ -10442,7 +10438,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*"
                         },
                         "fmtf": {
                             "c_addr": "",

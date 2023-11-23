@@ -387,11 +387,6 @@ class FillMeta(object):
         shared = declarator.metaattrs
         api = attrs["api"]
 
-        # XXX - from check_common_attrs
-        if api:
-            meta["api"] = api
-
-        # arg_to_buffer
         if meta["api"]:
             # API explicitly set by user.
             return
@@ -409,13 +404,15 @@ class FillMeta(object):
         shared = declarator.metaattrs
         api = attrs["api"]
 
-        # XXX - from check_common_attrs
-        if api:
+        if api is None:
+            pass
+        elif api not in ["capi", "buf", "cdesc", "cfi"]:
+                self.cursor.generate(
+                    "'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'"
+                )
+                api = None
+        else:
             meta["api"] = api
-
-        # arg_to_buffer
-        if meta["api"]:
-            # API explicitly set by user.
             return
 
         if node.options.F_CFI:

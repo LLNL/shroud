@@ -80,7 +80,6 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_in_char_*_buf
-          capi -- f_shared_native_scalar
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
@@ -1691,10 +1690,6 @@ c_in_char_*_buf:
     - C_INT
   intent: in
   name: c_in_char_*_buf
-  owner: library
-c_in_char_*_capi:
-  intent: in
-  name: c_in_char_*_capi
   owner: library
 c_in_char_scalar:
   c_arg_decl:

@@ -491,6 +491,9 @@ scalar
      scalar, raw, numpy, list.
    See option PY_array_arg.
 
+.. With the `decl` field, deref only applies to the Fortran wrapper.
+   Must be added to a `bind.X.decl` to apply to other languages.
+
 dimension
 ^^^^^^^^^
 

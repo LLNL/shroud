@@ -28,9 +28,11 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void CDE_Rank2In(CDE_SHROUD_array *SHT_arg_cdesc);
+void CDE_Rank2In(int * arg);
 
-void CDE_GetScalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc);
+void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc);
+
+void CDE_GetScalar1(char * name, void * value);
 
 void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc);
