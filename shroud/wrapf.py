@@ -1537,6 +1537,7 @@ rv = .false.
             
             arg_bind = get_arg_bind(node, f_arg, "f")
             arg_stmt = arg_bind.stmt
+            arg_meta = arg_bind.meta
             func_cursor.stmt = arg_stmt
             arg_typemap = self.fill_fortran_arg(
                 cls, node, C_node, f_arg, c_arg, arg_bind, fmt_arg)
@@ -1546,7 +1547,7 @@ rv = .false.
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
 
-            if f_arg.ftrim_char_in:
+            if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
                     "character(len=*), intent(IN) :: {}".format(fmt_arg.f_var)

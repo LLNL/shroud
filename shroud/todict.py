@@ -173,7 +173,6 @@ class ToDict(visitor.Visitor):
         
         add_true_fields(node, d, [
             "const", "volatile",
-            "ftrim_char_in", "blanknull",
             "is_ctor", "is_dtor",
         ])
         if node.declarator:

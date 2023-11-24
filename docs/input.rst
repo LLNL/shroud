@@ -360,6 +360,8 @@ Used with ``const char *`` arguments to convert a blank string to a
 ``NULL`` pointer instead of an empty C string (``'\0'``).
 Can be applied to all arguments with the option **F_blanknull**.
 
+.. intent(in)
+
 charlen
 ^^^^^^^
 

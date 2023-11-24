@@ -767,6 +767,36 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "api": "buf",
+                                "blanknull": true,
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_char_*_buf"
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -1894,7 +1924,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1997,7 +2026,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],

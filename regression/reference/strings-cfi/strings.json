@@ -7455,7 +7455,6 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
@@ -7546,6 +7545,7 @@
                         "src": {
                             "meta": {
                                 "api": "cfi",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -7654,7 +7654,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7744,7 +7743,6 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
                                     "metaattrs": {
@@ -7831,6 +7829,7 @@
                         "src": {
                             "meta": {
                                 "api": "cfi",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_cfi"
@@ -7939,7 +7938,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",

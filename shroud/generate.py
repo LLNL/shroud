@@ -526,36 +526,6 @@ class VerifyAttrs(object):
             elif charlen is True:
                 cursor.generate("charlen attribute must have a value")
 
-        char_ptr_in = (
-            is_ptr == 1 and
-            intent == "in" and
-            arg_typemap.name == "char")
-            
-        blanknull = attrs["blanknull"]
-        if blanknull is not None:
-            if not char_ptr_in:
-                cursor.generate(
-                    "blanknull attribute can only be "
-                    "used on intent(in) 'char *'"
-                )
-            else:
-                arg.blanknull = blanknull
-        elif char_ptr_in:
-            arg.blanknull = options.F_blanknull
-
-        if attrs["api"]:  # User set
-            pass
-        elif (
-            options.F_CFI is False and
-            char_ptr_in and
-            arg.blanknull is False
-        ):
-            # const char *arg
-            # char *arg+intent(in)
-            # Add terminating NULL in Fortran wrapper.
-            # Avoid a C wrapper just to do the NULL terminate.
-            arg.ftrim_char_in = options.F_trim_char_in
-
         if node:
             if declarator.init is not None:
                 node._has_default_arg = True

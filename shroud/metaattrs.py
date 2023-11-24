@@ -102,6 +102,11 @@ class FillMeta(object):
                 attrs["value"] = True
         
     def set_arg_intent(self, node, arg, meta):
+        """Set default intent meta-attribute.
+
+        Intent is only valid on arguments.
+        intent: lower case, no parens, must be in, out, or inout
+        """
         if meta["intent"]:
             return
         declarator = arg.declarator
@@ -441,7 +446,7 @@ class FillMeta(object):
             else:
                 has_buf_arg = "buf"
         elif ntypemap.sgroup == "char":
-            if arg.ftrim_char_in:
+            if meta["ftrim_char_in"]:
                 pass
             elif declarator.is_indirect():
                 if meta["deref"] in ["allocatable", "pointer"]:
@@ -611,6 +616,7 @@ class FillMetaFortran(FillMeta):
             meta = a_bind.meta
 
             self.set_arg_share(node, arg, meta)
+            self.set_arg_fortran(node, arg, meta)
             self.set_arg_deref_fortran(arg, meta)
             self.set_arg_api_fortran(node, arg, meta)
             self.set_arg_hidden(arg, meta)
@@ -621,6 +627,45 @@ class FillMetaFortran(FillMeta):
         func_cursor.arg = None
         cursor.pop_node(node)
 
+    def set_arg_fortran(self, node, arg, meta):
+        """
+        Deal with Fortran specific attributes.
+        """
+        options = node.options
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        is_ptr = declarator.is_indirect()
+
+        char_ptr_in = (
+            is_ptr == 1 and
+            meta["intent"] == "in" and
+            arg.typemap.name == "char")
+            
+        blanknull = attrs["blanknull"]
+        if blanknull is not None:
+            if not char_ptr_in:
+                self.cursor.generate(
+                    "blanknull attribute can only be "
+                    "used on intent(in) 'char *'"
+                )
+        elif char_ptr_in:
+            blanknull = options.F_blanknull
+        if blanknull:
+            meta["blanknull"] = blanknull
+
+        if attrs["api"]:  # User set
+            pass
+        elif (
+            options.F_CFI is False and
+            char_ptr_in and
+            blanknull is False
+        ):
+            # const char *arg
+            # char *arg+intent(in)
+            # Add terminating NULL in Fortran wrapper.
+            # Avoid a C wrapper just to do the NULL terminate.
+            meta["ftrim_char_in"] = options.F_trim_char_in
+        
 ######################################################################
 #
 

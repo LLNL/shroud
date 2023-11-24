@@ -4887,7 +4887,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],

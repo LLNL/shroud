@@ -105,7 +105,7 @@ class FillFormat(object):
             
         cursor.pop_node(node)
 
-    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast):
+    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast, meta):
         ast = node.ast
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
@@ -156,9 +156,9 @@ class FillFormat(object):
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
-        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
+        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
 
-    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg):
+    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg, meta):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap  # XXX - look up vector
@@ -168,7 +168,7 @@ class FillFormat(object):
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
+        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, meta, False)
         self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
@@ -308,7 +308,7 @@ class FillFormat(object):
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
-    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, is_func):
+    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta2, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -321,7 +321,6 @@ class FillFormat(object):
             fmt      - scope.Util
             is_func  - True if function.
         """
-
         declarator = ast.declarator
         if is_func:
             rootname = fmt.C_result
@@ -341,7 +340,7 @@ class FillFormat(object):
             if ntypemap.base != "shadow" and ast.template_arguments:
                 fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
             
-            if ast.blanknull:
+            if meta2["blanknull"]:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         

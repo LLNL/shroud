@@ -1510,7 +1510,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1530,7 +1529,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1595,12 +1593,14 @@
                         },
                         "arg1": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
                         },
                         "arg2": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -1904,7 +1904,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1953,6 +1952,7 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -3227,7 +3227,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3338,6 +3337,7 @@
                         },
                         "text": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -3685,7 +3685,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3796,6 +3795,7 @@
                         },
                         "text": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -6737,7 +6737,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -6916,6 +6915,7 @@
                         },
                         "type": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"

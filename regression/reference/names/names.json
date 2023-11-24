@@ -3276,7 +3276,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3296,7 +3295,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3316,7 +3314,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3583,18 +3580,21 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
                         },
                         "pkg": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
                         },
                         "rdbase": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"

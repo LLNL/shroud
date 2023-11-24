@@ -1582,9 +1582,6 @@ class Declaration(Node):
 
         self.typemap = None
 
-        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
-        self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
-
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""
         self.typemap = ntypemap

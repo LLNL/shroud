@@ -650,7 +650,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -722,6 +721,7 @@
                         },
                         "src": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -8028,7 +8028,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -8078,6 +8077,7 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -8769,7 +8769,6 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
@@ -8860,6 +8859,7 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
@@ -8969,7 +8969,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -9062,7 +9061,6 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
                                     "metaattrs": {
@@ -9149,6 +9147,7 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
@@ -9258,7 +9257,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -9744,6 +9742,7 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "ftrim_char_in": false,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
@@ -10208,7 +10207,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -10287,6 +10285,7 @@
                         },
                         "in": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
