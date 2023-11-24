@@ -215,6 +215,16 @@ Wrote error_types.yaml
 ----------------------------------------
 Phase: FillMeta function
 ----------------------------------------
+Node: func8
+line 47
+void func8(int arg1 +intent(none)+value)
+Bad value for intent: none
+--------------------
+Node: func8a
+line 48
+void func8a(int arg1 +intent(out)+value)
+Only pointer arguments may have intent of 'out' or 'inout'
+--------------------
 Node: callback_set_alloc
 line 78
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)

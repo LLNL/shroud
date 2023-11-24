@@ -110,7 +110,8 @@ class FillMeta(object):
         if meta["intent"]:
             return
         declarator = arg.declarator
-        intent = declarator.attrs["intent"]
+        intent = self.check_intent(arg)
+
         if intent is None:
             if declarator.is_function_pointer():
                 intent = "in"
@@ -554,11 +555,6 @@ class FillMetaC(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
         self.set_func_api(wlang, node, r_meta)
-        stmt0 = statements.lookup_c_function_stmt(node)
-        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
-        r_bind.stmt = result_stmt
-        if stmt0 is not result_stmt:
-            r_bind.fstmts = wlang
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -572,11 +568,21 @@ class FillMetaC(FillMeta):
             self.set_arg_share(node, arg, meta)
             self.set_arg_deref_c(arg, meta)
             self.set_arg_api_c(node, arg, meta)
-            arg_stmt = statements.lookup_c_arg_stmt(node, arg)
-            a_bind.stmt = arg_stmt
-
         # --- End loop over function parameters
         func_cursor.arg = None
+
+        # Lookup statements if there are no meta attribute errors
+        if node.wrap.c:
+            stmt0 = statements.lookup_c_function_stmt(node)
+            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+            r_bind.stmt = result_stmt
+            if stmt0 is not result_stmt:
+                r_bind.fstmts = wlang
+            for arg in ast.declarator.params:
+                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
+                a_bind = statements.get_arg_bind(node, arg, wlang)
+                a_bind.stmt = arg_stmt
+        
         cursor.pop_node(node)
             
 ######################################################################
@@ -600,12 +606,6 @@ class FillMetaFortran(FillMeta):
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api(wlang, node, r_meta)
         
-        stmt0 = statements.lookup_f_function_stmt(node)
-        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
-        r_bind.stmt = result_stmt
-        if stmt0 is not result_stmt:
-            r_bind.fstmts = wlang
-
         # --- Loop over function parameters
         for arg in ast.declarator.params:
             func_cursor.arg = arg
@@ -620,11 +620,21 @@ class FillMetaFortran(FillMeta):
             self.set_arg_deref_fortran(arg, meta)
             self.set_arg_api_fortran(node, arg, meta)
             self.set_arg_hidden(arg, meta)
-            arg_stmt = statements.lookup_f_arg_stmt(node, arg)
-            a_bind.stmt = arg_stmt
-
         # --- End loop over function parameters
         func_cursor.arg = None
+
+        # Lookup statements if there are no meta attribute errors
+        if node.wrap.fortran:
+            stmt0 = statements.lookup_f_function_stmt(node)
+            result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
+            r_bind.stmt = result_stmt
+            if stmt0 is not result_stmt:
+                r_bind.fstmts = wlang
+            for arg in ast.declarator.params:
+                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+                a_bind = statements.get_arg_bind(node, arg, wlang)
+                a_bind.stmt = arg_stmt
+        
         cursor.pop_node(node)
 
     def set_arg_fortran(self, node, arg, meta):

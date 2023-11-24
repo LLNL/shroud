@@ -537,7 +537,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = a_declarator.attrs
-            meta = a_declarator.metaattrs
+            meta = statements.fetch_arg_metaattrs(node, arg, "lua")
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type

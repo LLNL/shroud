@@ -785,16 +785,14 @@
                         "+result": {
                             "meta": {
                                 "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
+                            }
                         },
                         "arg1": {
                             "meta": {
                                 "api": "buf",
                                 "blanknull": true,
                                 "intent": "inout"
-                            },
-                            "stmt": "f_inout_char_*_buf"
+                            }
                         }
                     },
                     "share": {
@@ -981,7 +979,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "none"
+                                "intent": "inout"
                             }
                         }
                     }
@@ -1289,14 +1287,12 @@
                         "+result": {
                             "meta": {
                                 "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
+                            }
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in"
-                            },
-                            "stmt": "f_in_native_scalar"
+                            }
                         }
                     },
                     "share": {
