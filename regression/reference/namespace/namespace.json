@@ -22,9 +22,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "LastFunctionCalled",
                         "params": [],
                         "pointer": [

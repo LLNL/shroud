@@ -23,16 +23,6 @@ line 24
 void func0a(int)
 Argument must have name in void func0a(int)
 --------------------
-Node: func0b
-line 25
-int * * * func0b(void) +deref(pointer)
-Cannot have attribute 'deref' on function which returns multiple indirections
---------------------
-Node: func0c
-line 26
-int func0c(void) +deref(pointer)
-Cannot have attribute 'deref' on non-pointer function
---------------------
 Node: func0e
 line 28
 int * func0e(void) +dimension
@@ -239,6 +229,20 @@ Node: callback_set_alloc
 line 78
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)
 Bad value for intent: none
+--------------------
+Node: func0b
+line 25
+Unknown statement: c_function_native_***
+--------------------
+Node: func0b
+line 25
+int * * * func0b(void) +deref(pointer)
+Cannot have attribute 'deref' on function which returns multiple indirections
+--------------------
+Node: func0c
+line 26
+int func0c(void) +deref(pointer)
+Cannot have attribute 'deref' on non-pointer function
 --------------------
 Node: func4
 line 39

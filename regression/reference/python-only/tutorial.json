@@ -281,9 +281,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "ConcatenateStrings",
                         "params": [
                             {
@@ -2728,9 +2725,6 @@
                     "declarator": {
                         "attrs": {
                             "len": "30"
-                        },
-                        "metaattrs": {
-                            "deref": "copy"
                         },
                         "name": "LastFunctionCalled",
                         "params": [],

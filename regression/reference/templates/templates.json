@@ -4222,9 +4222,6 @@
                                 "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "deref": "pointer"
-                                        },
                                         "name": "at",
                                         "params": [
                                             {
@@ -4290,9 +4287,6 @@
                                 "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "deref": "pointer"
-                                        },
                                         "name": "at",
                                         "params": [
                                             {
@@ -5190,9 +5184,6 @@
                                 "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "deref": "pointer"
-                                        },
                                         "name": "at",
                                         "params": [
                                             {
@@ -5258,9 +5249,6 @@
                                 "_orig_node_index": 25,
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "deref": "pointer"
-                                        },
                                         "name": "at",
                                         "params": [
                                             {

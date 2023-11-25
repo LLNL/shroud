@@ -815,7 +815,6 @@
                                     "dimension": "getSize()"
                                 },
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "args": [],
@@ -1020,7 +1019,6 @@
                                 },
                                 "func_const": true,
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "args": [],
@@ -1226,7 +1224,6 @@
                                     "dimension": "getSize()"
                                 },
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "args": [],
@@ -1432,7 +1429,6 @@
                                 },
                                 "func_const": true,
                                 "metaattrs": {
-                                    "deref": "pointer",
                                     "dimension": [
                                         {
                                             "args": [],

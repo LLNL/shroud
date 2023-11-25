@@ -1176,9 +1176,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getCharPtr1",
                         "params": [],
                         "pointer": [
@@ -1364,9 +1361,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getCharPtr2",
                         "params": [],
                         "pointer": [
@@ -1544,9 +1538,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getCharPtr3",
                         "params": [],
                         "pointer": [
@@ -1725,9 +1716,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw"
-                        },
                         "name": "getCharPtr4",
                         "params": [],
                         "pointer": [
@@ -1856,9 +1844,6 @@
                     "const": true,
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer"
-                        },
-                        "metaattrs": {
                             "deref": "pointer"
                         },
                         "name": "getCharPtr5",
@@ -2016,9 +2001,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringResult",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2205,9 +2187,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getConstStringLen",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2380,9 +2359,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringAsArg",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2552,9 +2528,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringAlloc",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2734,9 +2707,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringRefPure",
                         "params": [],
                         "pointer": [
@@ -2930,9 +2900,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getConstStringRefLen",
                         "params": [],
                         "pointer": [
@@ -3111,9 +3078,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringRefAsArg",
                         "params": [],
                         "pointer": [
@@ -3293,9 +3257,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getConstStringRefLenEmpty",
                         "params": [],
                         "pointer": [
@@ -3472,9 +3433,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringRefAlloc",
                         "params": [],
                         "pointer": [
@@ -3661,9 +3619,6 @@
                     "declarator": {
                         "attrs": {
                             "len": 30
-                        },
-                        "metaattrs": {
-                            "deref": "copy"
                         },
                         "name": "getConstStringPtrLen",
                         "params": [],
@@ -3853,9 +3808,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringPtrAlloc",
                         "params": [],
                         "pointer": [
@@ -4042,9 +3994,6 @@
                     "declarator": {
                         "attrs": {
                             "owner": "caller"
-                        },
-                        "metaattrs": {
-                            "deref": "allocatable"
                         },
                         "name": "getConstStringPtrOwnsAlloc",
                         "params": [],
@@ -4237,9 +4186,6 @@
                             "free_pattern": "C_string_free",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringPtrOwnsAllocPattern",
                         "params": [],
                         "pointer": [
@@ -4430,9 +4376,6 @@
                         "attrs": {
                             "deref": "pointer",
                             "owner": "library"
-                        },
-                        "metaattrs": {
-                            "deref": "pointer"
                         },
                         "name": "getConstStringPtrPointer",
                         "params": [],

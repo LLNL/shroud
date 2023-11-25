@@ -377,6 +377,21 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_mixin_unknown"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -413,6 +428,21 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -433,9 +463,6 @@
                     "declarator": {
                         "attrs": {
                             "dimension": true
-                        },
-                        "metaattrs": {
-                            "deref": "pointer"
                         },
                         "name": "func0e",
                         "params": [],

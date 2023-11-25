@@ -4011,9 +4011,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getGroupName",
                         "params": [
                             {
@@ -4221,9 +4218,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getGroupName",
                         "params": [
                             {
@@ -4400,9 +4394,6 @@
                     "declarator": {
                         "attrs": {
                             "len": "30"
-                        },
-                        "metaattrs": {
-                            "deref": "copy"
                         },
                         "name": "getGroupName",
                         "params": [

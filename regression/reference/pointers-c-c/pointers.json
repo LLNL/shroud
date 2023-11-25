@@ -5129,9 +5129,6 @@
                 "<FUNCTION>": "returnIntPtrToScalar  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer"
-                        },
                         "name": "returnIntPtrToScalar",
                         "params": [],
                         "pointer": [
@@ -5209,7 +5206,6 @@
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "constant": "10"
@@ -5292,9 +5288,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer"
-                        },
                         "name": "returnIntPtrToConstScalar",
                         "params": [],
                         "pointer": [
@@ -5373,7 +5366,6 @@
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "constant": "10"
@@ -5458,9 +5450,6 @@
                         "attrs": {
                             "deref": "scalar"
                         },
-                        "metaattrs": {
-                            "deref": "scalar"
-                        },
                         "name": "returnIntScalar",
                         "params": [],
                         "pointer": [
@@ -5535,9 +5524,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "raw"
-                        },
-                        "metaattrs": {
                             "deref": "raw"
                         },
                         "name": "returnIntRaw",
@@ -5619,9 +5605,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "raw"
-                        },
-                        "metaattrs": {
                             "deref": "raw"
                         },
                         "name": "returnIntRawWithArgs",
@@ -5840,7 +5823,6 @@
                             "dimension": "10"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
                             "dimension": [
                                 {
                                     "constant": "10"

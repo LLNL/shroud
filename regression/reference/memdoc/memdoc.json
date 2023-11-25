@@ -18,9 +18,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "getConstStringPtrAlloc",
                         "params": [],
                         "pointer": [

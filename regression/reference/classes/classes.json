@@ -1766,9 +1766,6 @@
                         "ast": {
                             "const": true,
                             "declarator": {
-                                "metaattrs": {
-                                    "deref": "allocatable"
-                                },
                                 "name": "getName",
                                 "params": [],
                                 "pointer": [
@@ -3023,9 +3020,6 @@
                         "ast": {
                             "const": true,
                             "declarator": {
-                                "metaattrs": {
-                                    "deref": "allocatable"
-                                },
                                 "name": "getName",
                                 "params": [],
                                 "pointer": [
@@ -7465,9 +7459,6 @@
                     "declarator": {
                         "attrs": {
                             "len": "30"
-                        },
-                        "metaattrs": {
-                            "deref": "copy"
                         },
                         "name": "LastFunctionCalled",
                         "params": [],

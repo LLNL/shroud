@@ -3794,9 +3794,6 @@
                 "<FUNCTION>": "returnStructPtr1  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer"
-                        },
                         "name": "returnStructPtr1",
                         "params": [
                             {
@@ -4080,9 +4077,6 @@
                 "<FUNCTION>": "returnStructPtr2  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer"
-                        },
                         "name": "returnStructPtr2",
                         "params": [
                             {
@@ -4487,9 +4481,6 @@
                 "<FUNCTION>": "get_global_struct_list  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer"
-                        },
                         "name": "get_global_struct_list",
                         "params": [],
                         "pointer": [

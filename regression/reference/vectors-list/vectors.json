@@ -1350,9 +1350,6 @@
                         "attrs": {
                             "rank": 1
                         },
-                        "metaattrs": {
-                            "deref": "allocatable"
-                        },
                         "name": "ReturnVectorAlloc",
                         "params": [
                             {

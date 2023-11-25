@@ -949,9 +949,6 @@
                                             "const": true,
                                             "declarator": {
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "deref": "allocatable"
-                                                },
                                                 "name": "getNameErrorCheck",
                                                 "params": [],
                                                 "pointer": [
@@ -1162,9 +1159,6 @@
                                             "const": true,
                                             "declarator": {
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "deref": "allocatable"
-                                                },
                                                 "name": "getNameArg",
                                                 "params": [],
                                                 "pointer": [
@@ -2882,9 +2876,6 @@
                                                     "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                 },
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "deref": "copy"
-                                                },
                                                 "name": "getName",
                                                 "params": [],
                                                 "pointer": [
@@ -3083,9 +3074,6 @@
                                         "ast": {
                                             "const": true,
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "deref": "allocatable"
-                                                },
                                                 "name": "getName2",
                                                 "params": [],
                                                 "pointer": [
@@ -3294,9 +3282,6 @@
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
-                                                "metaattrs": {
-                                                    "deref": "allocatable"
-                                                },
                                                 "name": "getName3",
                                                 "params": [],
                                                 "pointer": [
@@ -3505,9 +3490,6 @@
                                         "<FUNCTION>": "getName4  15 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "metaattrs": {
-                                                    "deref": "allocatable"
-                                                },
                                                 "name": "getName4",
                                                 "params": [],
                                                 "pointer": [

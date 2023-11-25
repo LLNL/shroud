@@ -1491,9 +1491,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "Function4a",
                         "params": [
                             {

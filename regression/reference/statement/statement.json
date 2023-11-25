@@ -150,9 +150,6 @@
                         "attrs": {
                             "len": "get_name_length()"
                         },
-                        "metaattrs": {
-                            "deref": "copy"
-                        },
                         "name": "getNameErrorPattern",
                         "params": [],
                         "pointer": [

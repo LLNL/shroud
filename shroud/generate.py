@@ -221,6 +221,7 @@ class VerifyAttrs(object):
         node : FunctionNode
         ast : declast.Declaration
         """
+        return#GGG
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs

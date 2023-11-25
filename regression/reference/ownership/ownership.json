@@ -325,9 +325,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw"
-                        },
                         "name": "ReturnIntPtrRaw",
                         "params": [],
                         "pointer": [
@@ -415,9 +412,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "scalar"
-                        },
-                        "metaattrs": {
                             "deref": "scalar"
                         },
                         "name": "ReturnIntPtrScalar",
@@ -587,9 +581,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer"
-                        },
-                        "metaattrs": {
                             "deref": "pointer"
                         },
                         "name": "ReturnIntPtrPointer",
@@ -762,9 +753,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw"
-                        },
                         "name": "ReturnIntPtrDimRaw",
                         "params": [
                             {
@@ -915,7 +903,6 @@
                             "dimension": "len"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -1245,7 +1232,6 @@
                             "dimension": "len"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -1584,7 +1570,6 @@
                             "dimension": "len"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -1913,7 +1898,6 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -2076,7 +2060,6 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -2410,7 +2393,6 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "allocatable",
                             "dimension": [
                                 {
                                     "name": "len"
@@ -2638,7 +2620,6 @@
                             "owner": "caller"
                         },
                         "metaattrs": {
-                            "deref": "pointer",
                             "dimension": [
                                 {
                                     "name": "len"
