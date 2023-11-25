@@ -508,6 +508,9 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "dimension": "nitems"
+                        },
                         "metaattrs": {
                             "dimension": [
                                 {
@@ -546,7 +549,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this) +dimension(nitems)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -1070,6 +1073,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
                                 "metaattrs": {
                                     "dimension": [
                                         {
@@ -1108,7 +1114,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this) +dimension(nitems)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1659,6 +1665,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
                                 "metaattrs": {
                                     "dimension": [
                                         {
@@ -1697,7 +1706,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this) +dimension(nitems)",
                         "helpers": {
                             "c": [
                                 "type_defines",

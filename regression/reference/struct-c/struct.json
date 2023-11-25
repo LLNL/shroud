@@ -5873,6 +5873,9 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "dimension": "nitems+nitems"
+                        },
                         "metaattrs": {
                             "dimension": [
                                 {
@@ -5917,7 +5920,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
-                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this) +dimension(nitems+nitems)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -6275,6 +6278,9 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "dimension": "nitems*TWO"
+                        },
                         "metaattrs": {
                             "dimension": [
                                 {
@@ -6319,7 +6325,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
-                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this) +dimension(nitems*TWO)",
                 "helpers": {
                     "c": [
                         "type_defines",

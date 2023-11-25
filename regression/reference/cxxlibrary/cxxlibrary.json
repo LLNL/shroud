@@ -4829,6 +4829,9 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "dimension": "sublevels"
+                        },
                         "metaattrs": {
                             "dimension": [
                                 {
@@ -4870,7 +4873,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this)",
-                "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "declgen": "nested * * nested_get_child(nested * SH_this) +dimension(sublevels)",
                 "helpers": {
                     "c": [
                         "type_defines",

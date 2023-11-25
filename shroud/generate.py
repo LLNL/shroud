@@ -651,7 +651,10 @@ class GenFunctions(object):
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
         decl = "{}({})".format(argdecl, this_get)
 
-        fattrs = {}
+        fattrs = dict(
+            dimension=declarator.attrs["dimension"],
+            deref=declarator.attrs["deref"],
+        )
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
         meta = fcn.ast.declarator.metaattrs

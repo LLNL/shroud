@@ -4820,6 +4820,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
                                 "metaattrs": {
                                     "dimension": [
                                         {
@@ -4842,7 +4845,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * get_items()",
-                        "declgen": "int * get_items(void)",
+                        "declgen": "int * get_items(void) +dimension(nitems)",
                         "helpers": {
                             "c": [
                                 "type_defines",
