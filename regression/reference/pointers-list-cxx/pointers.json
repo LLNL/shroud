@@ -3389,6 +3389,7 @@
                         },
                         "nitems": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             }
                         }
@@ -3566,6 +3567,7 @@
                         },
                         "count": {
                             "meta": {
+                                "deref": "raw",
                                 "intent": "out"
                             }
                         }
@@ -4796,6 +4798,7 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             }
                         }

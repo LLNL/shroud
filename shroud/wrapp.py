@@ -1347,7 +1347,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = meta["deref"]
+            deref = meta2["deref"]
             if deref not in ["scalar", "raw"]:
                 deref = None
             if intent_blk is not None:
@@ -2004,6 +2004,7 @@ return 1;""",
         meta = declarator.metaattrs
         is_ctor = declarator.is_ctor()
         result_typemap = ast.typemap
+        meta2 = statements.get_func_metaattrs(node, "py")
 
         result_blk = default_scope
 
@@ -2057,7 +2058,7 @@ return 1;""",
             spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
-                deref = meta["deref"]
+                deref = meta2["deref"]
                 if deref == "scalar":
                     stmts.append(deref)
                 else:

@@ -130,6 +130,10 @@ class FillMeta(object):
         meta["intent"] = intent
 
     def set_func_deref_c(self, node, meta):
+        """
+        XXX check meta attribute values?
+        possible values: malloc
+        """
         if meta["deref"]:
             return
 
@@ -694,6 +698,7 @@ class FillMetaPython(FillMeta):
         r_meta = r_bind.meta
 
         self.set_func_share(node, r_meta)
+        self.set_func_deref(node, r_meta)
         stmt0 = None
 
         if stmt0:
@@ -712,6 +717,7 @@ class FillMetaPython(FillMeta):
             meta = a_bind.meta
 
             self.set_arg_share(node, arg, meta)
+            self.set_arg_deref(arg, meta)
             arg_stmt = None
             a_bind.stmt = arg_stmt
 
@@ -719,6 +725,34 @@ class FillMetaPython(FillMeta):
         func_cursor.arg = None
         cursor.pop_node(node)
 
+    def filter_deref(self, deref):
+        """
+        Filter top level decl values of deref
+        to only allow a subset of raw and scalar.
+        Remove values which are intended for Fortran:
+        allocatable, pointer.
+        """
+        if deref in ["raw", "scalar"]:
+            return deref
+        return None
+        
+    def set_func_deref(self, node, meta):
+        ast = node.ast
+        declarator = ast.declarator
+        attrs = declarator.attrs
+        deref = self.filter_deref(attrs["deref"])
+
+        if deref:
+            meta["deref"] = deref
+
+    def set_arg_deref(self, arg, meta):
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        deref = self.filter_deref(attrs["deref"])
+
+        if deref:
+            meta["deref"] = deref
+        
 ######################################################################
 #
 

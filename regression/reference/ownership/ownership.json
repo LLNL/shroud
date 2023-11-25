@@ -473,6 +473,7 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "deref": "scalar",
                                 "intent": "function"
                             }
                         }
