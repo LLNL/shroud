@@ -204,12 +204,12 @@ void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext 
 Unknown argument 'text3': len_trim(text3)
 --------------------
 Node: AssignValues
-line 104
+line 106
 void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
 'rank' attribute must be 0-7, not '8'
 --------------------
 Node: AssignValues
-line 104
+line 106
 void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 
@@ -217,7 +217,7 @@ Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointe
 Phase: generate functions
 ----------------------------------------
 Node: nested
-line 99
+line 101
 struct nested
 process_class: class nested already exists in class_map
 Wrote error_types.yaml
@@ -250,6 +250,7 @@ line 55
 void func10(int arg1 +api(none)+value)
 'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
 Wrote wraperror.h
+Wrote wraperror.cpp
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h

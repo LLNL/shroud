@@ -36,6 +36,8 @@ using ERR_nested = nested;
 typedef struct s_ERR_struct1 ERR_struct1;
 struct s_ERR_struct1 {
     int arg1;
+    int narg2;
+    int * arg2;
 };
 
 typedef struct s_ERR_nested ERR_nested;
@@ -50,6 +52,11 @@ extern "C" {
 
 // splicer begin C_declarations
 // splicer end C_declarations
+
+void ERR_struct1_get_arg2(ERR_struct1 * SH_this,
+    ERR_SHROUD_array *SHT_rv_cdesc);
+
+void ERR_struct1_set_arg2(ERR_struct1 * SH_this, int * val);
 
 #ifdef __cplusplus
 }

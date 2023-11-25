@@ -49,6 +49,78 @@
                             "variable_name": "arg1",
                             "variable_upper": "ARG1"
                         }
+                    },
+                    {
+                        "<VARIABLE>": "narg2 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "narg2",
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "narg2",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "narg2",
+                            "variable_lower": "narg2",
+                            "variable_name": "narg2",
+                            "variable_upper": "NARG2"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "arg2 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointerxx",
+                                    "dimension": "narg2"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "narg2"
+                                        }
+                                    ]
+                                },
+                                "name": "arg2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "arg2",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "arg2",
+                            "variable_lower": "arg2",
+                            "variable_name": "arg2",
+                            "variable_upper": "ARG2"
+                        }
                     }
                 ],
                 "wrap": {
@@ -2469,6 +2541,396 @@
                     "C_name_api": "AssignValues",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues"
+                }
+            },
+            {
+                "<FUNCTION>": "struct1_get_arg2  33 ****************************************",
+                "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "dimension": [
+                                {
+                                    "name": "narg2"
+                                }
+                            ]
+                        },
+                        "name": "struct1_get_arg2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "struct1"
+                                },
+                                "specifier": [
+                                    "struct1"
+                                ],
+                                "typemap_name": "struct1"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * struct1_get_arg2(struct1 *SH_this)",
+                "declgen": "int * struct1_get_arg2(struct1 * SH_this)",
+                "helpers": {
+                    "c": [
+                        "type_defines",
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
+                "name": "struct1_get_arg2",
+                "options": {},
+                "struct_parent": "struct1",
+                "user_fmt": {
+                    "field_name": "arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "getter"
+                            },
+                            "stmt": "f_getter_native_*_cdesc_pointer"
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "struct1_get_arg2(\tSH_this)",
+                            "C_call_list": "SH_this",
+                            "C_name": "ERR_struct1_get_arg2",
+                            "C_prototype": "ERR_struct1 * SH_this,\t ERR_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
+                            "F_C_call": "c_struct1_get_arg2",
+                            "F_C_name": "c_struct1_get_arg2",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                            "F_arguments": "SH_this",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->narg2;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "SH_this->narg2",
+                            "c_const": "",
+                            "c_helper_array_context": "ERR_SHROUD_array",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_helper_array_context": "ERR_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_getter_native_*_cdesc_pointer"
+                        }
+                    },
+                    "SH_this": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "ERR_struct1",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "struct1",
+                            "cxx_var": "SH_this",
+                            "f_derived_type": "struct1",
+                            "f_intent": "IN",
+                            "f_kind": "struct1",
+                            "f_type": "type(struct1)",
+                            "f_type_module": "error_mod",
+                            "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_in_struct_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "struct1_get_arg2",
+                    "F_name_api": "struct1_get_arg2",
+                    "F_name_function": "struct1_get_arg2",
+                    "F_name_generic": "struct1_get_arg2",
+                    "F_name_impl": "struct1_get_arg2",
+                    "field_name": "arg2",
+                    "function_name": "struct1_get_arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                }
+            },
+            {
+                "<FUNCTION>": "struct1_set_arg2  34 ****************************************",
+                "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
+                "ast": {
+                    "declarator": {
+                        "metaattrs": {
+                            "intent": "setter"
+                        },
+                        "name": "struct1_set_arg2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "struct1"
+                                },
+                                "specifier": [
+                                    "struct1"
+                                ],
+                                "typemap_name": "struct1"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "narg2"
+                                            }
+                                        ]
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void struct1_set_arg2(struct1 *SH_this,int * val)",
+                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(in)+rank(1))",
+                "name": "struct1_set_arg2",
+                "options": {},
+                "user_fmt": {
+                    "field_name": "arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            },
+                            "stmt": "f_setter"
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_struct_*"
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            },
+                            "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "struct1_set_arg2(\tSH_this,\t val)",
+                            "C_call_list": "SH_this,\t val",
+                            "C_name": "ERR_struct1_set_arg2",
+                            "C_prototype": "ERR_struct1 * SH_this,\t int * val",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SH_this,\t val",
+                            "F_C_call": "c_struct1_set_arg2",
+                            "F_C_name": "struct1_set_arg2",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SH_this,\t val",
+                            "F_arguments": "SH_this,\t val",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_setter"
+                        }
+                    },
+                    "SH_this": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "ERR_struct1",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "struct1",
+                            "cxx_var": "SH_this",
+                            "f_derived_type": "struct1",
+                            "f_intent": "INOUT",
+                            "f_kind": "struct1",
+                            "f_type": "type(struct1)",
+                            "f_type_module": "error_mod",
+                            "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_inout_struct_*"
+                        }
+                    },
+                    "val": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_array_size2": "narg2",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "int",
+                            "cxx_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "val",
+                            "fc_var": "val",
+                            "i_dimension": "(*)",
+                            "i_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(val)",
+                            "stmt_name": "f_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "struct1_set_arg2",
+                    "F_name_api": "struct1_set_arg2",
+                    "F_name_function": "struct1_set_arg2",
+                    "F_name_generic": "struct1_set_arg2",
+                    "F_name_impl": "struct1_set_arg2",
+                    "field_name": "arg2",
+                    "function_name": "struct1_set_arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
                 }
             }
         ],

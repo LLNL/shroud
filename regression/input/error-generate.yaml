@@ -83,6 +83,8 @@ declarations:
 - decl: struct struct1
   declarations:
   - decl: int arg1+badvar+dimension(10)
+  - decl: int narg2
+  - decl: int *arg2 +dimension(narg2)+deref(pointerxx)
 
 
 
