@@ -32,10 +32,6 @@ class VerifyAttrs(object):
     """
     Check attributes and set some defaults in metaattrs.
     Generate types for classes.
-
-    check order:
-      intent - check_intent_attr
-      deref - check_deref_attr_func / check_deref_attr_var
     """
 
     def __init__(self, newlibrary, config):
@@ -157,7 +153,6 @@ class VerifyAttrs(object):
 
         if ast.typemap is None:
             print("XXXXXX typemap is None")
-        self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
         for arg in declarator.params:
@@ -175,166 +170,6 @@ class VerifyAttrs(object):
         else:
             check_implied_attrs(node, declarator.params)
 
-    def check_intent_attr(self, node, arg):
-        """Set default intent meta-attribute.
-
-        Intent is only valid on arguments.
-        intent: lower case, no parens, must be in, out, or inout
-        """
-        return#GGG
-        declarator = arg.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        is_ptr = declarator.is_indirect()
-        intent = attrs["intent"]
-        if intent is None:
-            if declarator.is_function_pointer():
-                intent = "in"
-            elif not is_ptr:
-                intent = "in"
-            elif arg.const:
-                intent = "in"
-            elif arg.typemap.sgroup == "void":
-                # void *
-                intent = "in"  # XXX must coordinate with VALUE
-            else:
-                intent = "inout"
-            # XXX - Do hidden arguments need intent?
-        else:
-            intent = intent.lower()
-            if intent not in ["in", "out", "inout"]:
-                self.cursor.generate("Bad value for intent: " + attrs["intent"])
-                intent = "inout"
-            elif not is_ptr and intent != "in":
-                # Nonpointers can only be intent(in).
-                self.cursor.generate("Only pointer arguments may have intent of 'out' or 'inout'")
-        meta["intent"] = intent
-        return intent    
-        
-    def check_deref_attr_func(self, node):
-        """Check deref attr and set default for function.
-
-        Function which return pointers or objects (std::string)
-        set the deref meta attribute.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        ast : declast.Declaration
-        """
-        return#GGG
-        ast = node.ast
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        deref = attrs["deref"]
-        mderef = None
-        ntypemap = ast.typemap
-        nindirect = declarator.is_indirect()
-        meta = ast.declarator.metaattrs
-
-        if declarator.get_subprogram() == "subroutine":
-            pass
-        if ntypemap.sgroup == "void":
-            # Unable to set Fortran pointer for void
-            # if deref set, error
-            pass
-        elif ntypemap.sgroup == "shadow":
-            # Change a C++ pointer into a Fortran pointer
-            # return 'void *' as 'type(C_PTR)'
-            # 'shadow' assigns pointer to type(C_PTR) in a derived type
-            # Array of shadow?
-            pass
-        elif ntypemap.sgroup == "string":
-            if deref:
-                mderef = deref
-            elif attrs["len"]:
-                mderef = "copy"
-            else:
-                mderef = "allocatable"
-        elif ntypemap.sgroup == "vector":
-            if deref:
-                mderef = deref
-            else:
-                mderef = "allocatable"
-        elif nindirect > 1:
-            if deref:
-                self.cursor.generate(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections")
-        elif nindirect == 1:
-            # pointer to a POD  e.g. int *
-            if deref:
-                mderef = deref
-            elif ntypemap.sgroup == "char":  # char *
-                if attrs["len"]:
-                    mderef = "copy"
-                else:
-                    mderef = "allocatable"
-            elif attrs["dimension"]:  # XXX - or rank?
-                mderef = "pointer"
-            else:
-                mderef = node.options.return_scalar_pointer
-        elif deref:
-            self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
-        meta["deref"] = mderef
-        
-    def check_deref_attr_var(self, node, ast):
-        """Check deref attr and set default for variable.
-
-        Pointer variables set the default deref meta attribute.
-
-        Parameters
-        ----------
-        node - ast.FunctionNode or ast.FortranGeneric
-        ast : declast.Declaration
-        """
-        return#GGG
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        ntypemap = ast.typemap
-        is_ptr = declarator.is_indirect()
-
-        deref = attrs["deref"]
-        if deref is not None:
-            if deref not in ["allocatable", "pointer", "raw", "scalar"]:
-                self.cursor.generate(
-                    "Illegal value '{}' for deref attribute. "
-                    "Must be 'allocatable', 'pointer', 'raw', "
-                    "or 'scalar'.".format(deref)
-                )
-                return
-            nindirect = declarator.is_indirect()
-            if ntypemap.sgroup == "vector":
-                if deref:
-                    mderef = deref
-                else:
-                    # Copy vector to new array.
-                    mderef = "allocatable"
-            elif nindirect != 2:
-                self.cursor.generate(
-                    "Can only have attribute 'deref' on arguments which"
-                    " return a pointer:"
-                    " '{}'".format(declarator.name))
-            elif meta["intent"] == "in":
-                self.cursor.generate(
-                    "Cannot have attribute 'deref' on intent(in) argument"
-                    " '{}'".format(declarator.name))
-            meta["deref"] = attrs["deref"]
-            return
-
-        # Set deref attribute for arguments which return values.
-        intent = meta["intent"]
-        spointer = declarator.get_indirect_stmt()
-        if ntypemap.name == "void":
-            # void cannot be dereferenced.
-            pass
-        elif spointer in ["**", "*&"] and intent == "out":
-            if ntypemap.sgroup == "string":
-                # strings are not contiguous, so copy into argument.
-                meta["deref"] = "copy"
-            else:
-                meta["deref"] = "pointer"
-            
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
         This includes: dimension, free_pattern, owner, rank
@@ -483,8 +318,6 @@ class VerifyAttrs(object):
                 )
             )
 
-        intent = self.check_intent_attr(node, arg)
-        self.check_deref_attr_var(node, arg)
         self.check_common_attrs(arg)
 
         is_ptr = declarator.is_indirect()
