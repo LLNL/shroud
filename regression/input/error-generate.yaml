@@ -97,3 +97,16 @@ declarations:
   declarations:
   - decl: int sublevels
   - decl: struct nested *parent
+
+##########
+# fortran generic
+
+- decl: void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)
+  options:
+    wrap_c: False
+    wrap_python: False
+  fortran_generic:
+  - decl: (const int *from, int *to+rank(8))
+    function_suffix: _broadcast
+  - decl: (const int *from, int *to+deref(allocatable2))
+    function_suffix: _broadcast2

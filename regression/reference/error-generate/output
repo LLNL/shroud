@@ -202,6 +202,16 @@ Node: func13d
 line 74
 void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)
 Unknown argument 'text3': len_trim(text3)
+--------------------
+Node: AssignValues
+line 104
+void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
+'rank' attribute must be 0-7, not '8'
+--------------------
+Node: AssignValues
+line 104
+void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
+Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 
 ----------------------------------------
 Phase: generate functions
