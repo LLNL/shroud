@@ -3078,7 +3078,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -3225,7 +3224,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "constant": "10"
@@ -3386,7 +3384,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "ncount"
@@ -3606,7 +3603,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "args": [],
@@ -3768,7 +3764,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -3916,7 +3911,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "constant": "10"
@@ -4075,7 +4069,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "ncount"
@@ -4292,7 +4285,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -4425,7 +4417,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -4561,7 +4552,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -4694,7 +4684,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -5263,7 +5252,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "dimension": [
                                             {
                                                 "constant": "10"

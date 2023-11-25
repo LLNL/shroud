@@ -1638,7 +1638,6 @@
                                                 "intent": "out"
                                             },
                                             "metaattrs": {
-                                                "deref": "pointer",
                                                 "dimension": [
                                                     {
                                                         "name": "isize"
@@ -2002,7 +2001,6 @@
                                                 "intent": "out"
                                             },
                                             "metaattrs": {
-                                                "deref": "pointer",
                                                 "dimension": [
                                                     {
                                                         "name": "isize"
@@ -2367,7 +2365,6 @@
                                                 "intent": "out"
                                             },
                                             "metaattrs": {
-                                                "deref": "pointer",
                                                 "dimension": [
                                                     {
                                                         "name": "isize"
@@ -2732,7 +2729,6 @@
                                                 "intent": "out"
                                             },
                                             "metaattrs": {
-                                                "deref": "pointer",
                                                 "dimension": [
                                                     {
                                                         "name": "isize"

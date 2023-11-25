@@ -1186,6 +1186,32 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -1217,7 +1243,6 @@
                                         "deref": "pointer"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "inout"
                                     },
                                     "name": "arg1",
@@ -1247,6 +1272,33 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "inout"
+                            }
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -1279,7 +1331,6 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "in"
                                     },
                                     "name": "arg1",
@@ -1312,6 +1363,33 @@
                 "options": {},
                 "wrap": {},
                 "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "in"
+                            }
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -1781,7 +1859,6 @@
                                         "owner": "none"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "arg1",

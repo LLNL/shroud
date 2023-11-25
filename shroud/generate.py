@@ -286,6 +286,7 @@ class VerifyAttrs(object):
         node - ast.FunctionNode or ast.FortranGeneric
         ast : declast.Declaration
         """
+        return#GGG
         declarator = ast.declarator
         attrs = declarator.attrs
         meta = declarator.metaattrs

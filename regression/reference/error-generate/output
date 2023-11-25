@@ -78,21 +78,6 @@ line 48
 void func8a(int arg1 +intent(out))
 Only pointer arguments may have intent of 'out' or 'inout'
 --------------------
-Node: func9
-line 50
-void func9(int * arg1 +deref(none))
-Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
---------------------
-Node: func9b
-line 51
-void func9b(int * arg1 +deref(pointer))
-Can only have attribute 'deref' on arguments which return a pointer: 'arg1'
---------------------
-Node: func9c
-line 52
-void func9c(int * * arg1 +deref(pointer)+intent(in))
-Cannot have attribute 'deref' on intent(in) argument 'arg1'
---------------------
 Node: func10b
 line 56
 void func10b(int arg1 +rank)
@@ -197,11 +182,6 @@ Node: AssignValues
 line 106
 void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
 'rank' attribute must be 0-7, not '8'
---------------------
-Node: AssignValues
-line 106
-void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
-Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 
 ----------------------------------------
 Phase: generate functions
@@ -248,6 +228,21 @@ Node: func4
 line 39
 void func4(char * arg1 +blanknull)
 blanknull attribute can only be used on intent(in) 'char *'
+--------------------
+Node: func9
+line 50
+void func9(int * arg1 +deref(none))
+Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
+--------------------
+Node: func9b
+line 51
+void func9b(int * arg1 +deref(pointer))
+Can only have attribute 'deref' on arguments which return a pointer: 'arg1'
+--------------------
+Node: func9c
+line 52
+void func9c(int * * arg1 +deref(pointer)+intent(in))
+Cannot have attribute 'deref' on intent(in) argument 'arg1'
 --------------------
 Node: func10
 line 55

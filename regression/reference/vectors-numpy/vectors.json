@@ -490,7 +490,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -578,7 +577,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "intent": "inout"
                                     },
                                     "name": "arg",
@@ -1125,7 +1123,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -1203,7 +1200,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "intent": "out"
                                     },
                                     "name": "arg",

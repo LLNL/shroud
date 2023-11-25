@@ -6215,7 +6215,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -6292,7 +6291,6 @@
                                         "rank": 2
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -6540,7 +6538,6 @@
                                         "rank": 1
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -6818,7 +6815,6 @@
                                         "rank": 2
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "addr",

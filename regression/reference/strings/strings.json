@@ -6951,7 +6951,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "copy",
                                         "dimension": [
                                             {
                                                 "name": "nstrs"
@@ -7257,7 +7256,6 @@
                                         "intent": "out"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "dimension": [
                                             {
                                                 "name": "nstrs"
@@ -7575,7 +7573,6 @@
                                         "len": "20"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "dimension": [
                                             {
                                                 "name": "nstrs"

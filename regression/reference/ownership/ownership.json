@@ -2957,7 +2957,6 @@
                                         "owner": "library"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "array",
@@ -3055,7 +3054,6 @@
                                         "owner": "library"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "len"
@@ -3159,7 +3157,6 @@
                                         "owner": "library"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "dimension": [
                                             {
                                                 "name": "len"
@@ -3262,7 +3259,6 @@
                                         "owner": "library"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "len"
@@ -3365,7 +3361,6 @@
                                         "owner": "caller"
                                     },
                                     "metaattrs": {
-                                        "deref": "raw",
                                         "intent": "out"
                                     },
                                     "name": "array",
@@ -3464,7 +3459,6 @@
                                         "owner": "caller"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "len"
@@ -3568,7 +3562,6 @@
                                         "owner": "caller"
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable",
                                         "dimension": [
                                             {
                                                 "name": "len"
@@ -3671,7 +3664,6 @@
                                         "owner": "caller"
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "len"
