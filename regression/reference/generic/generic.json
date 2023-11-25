@@ -1547,11 +1547,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1600,11 +1595,6 @@
                                     "attrs": {
                                         "rank": 0
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1643,11 +1633,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1685,11 +1670,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1745,6 +1725,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*"
@@ -1763,6 +1746,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             }
                         }
@@ -1881,11 +1867,6 @@
                                     "attrs": {
                                         "rank": 0
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1948,6 +1929,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -1966,6 +1950,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             }
                         }
@@ -2098,11 +2085,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -2165,6 +2147,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -2183,6 +2168,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             }
                         }
@@ -2317,11 +2305,6 @@
                                     "attrs": {
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -2384,6 +2367,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -2402,6 +2388,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             }
                         }

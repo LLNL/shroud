@@ -13467,18 +13467,6 @@
                                                         "dimension": "shape(in)",
                                                         "intent": "out"
                                                     },
-                                                    "metaattrs": {
-                                                        "dimension": [
-                                                            {
-                                                                "args": [
-                                                                    {
-                                                                        "name": "in"
-                                                                    }
-                                                                ],
-                                                                "name": "shape"
-                                                            }
-                                                        ]
-                                                    },
                                                     "name": "out",
                                                     "pointer": [
                                                         {
@@ -13545,6 +13533,16 @@
                                         },
                                         "out": {
                                             "meta": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
                                                 "intent": "out"
                                             },
                                             "stmt": "c_out_native_*"
@@ -13571,6 +13569,16 @@
                                         },
                                         "out": {
                                             "meta": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
                                                 "intent": "out"
                                             },
                                             "stmt": "f_out_native_*"
@@ -13595,6 +13603,16 @@
                                         },
                                         "out": {
                                             "meta": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
                                                 "intent": "out"
                                             }
                                         },
@@ -13617,6 +13635,16 @@
                                         },
                                         "out": {
                                             "meta": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
                                                 "intent": "out"
                                             }
                                         },
@@ -13639,6 +13667,16 @@
                                         },
                                         "out": {
                                             "meta": {
+                                                "dimension": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
                                                 "intent": "out"
                                             }
                                         },

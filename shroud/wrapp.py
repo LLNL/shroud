@@ -901,7 +901,7 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, fcn, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, bind, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -937,7 +937,7 @@ return 1;""",
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = declarator.metaattrs["dimension"]
+        dimension = bind.meta["dimension"]
         rank = declarator.attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
@@ -1316,9 +1316,10 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
             meta = declarator.metaattrs
-            meta2 = statements.get_arg_metaattrs(node, arg, "py")
+            bind =  statements.get_arg_bind(node, arg, "py")
+            meta2 = bind.meta
 
-            self.set_fmt_fields(cls, node, arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
@@ -2004,7 +2005,8 @@ return 1;""",
         meta = declarator.metaattrs
         is_ctor = declarator.is_ctor()
         result_typemap = ast.typemap
-        meta2 = statements.get_func_metaattrs(node, "py")
+        bind = statements.get_func_bind(node, "py")
+        meta2 = bind.meta
 
         result_blk = default_scope
 
@@ -2041,7 +2043,7 @@ return 1;""",
         fmt_result.numpy_type = result_typemap.PYN_typenum
         update_fmt_from_typemap(fmt_result, result_typemap)
 
-        self.set_fmt_fields(cls, node, ast, fmt_result, True)
+        self.set_fmt_fields(cls, node, ast, bind, fmt_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
         stmts = None

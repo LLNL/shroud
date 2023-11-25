@@ -633,18 +633,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -707,6 +695,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -731,6 +729,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -887,18 +895,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -961,6 +957,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -985,6 +991,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -1140,13 +1156,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1195,6 +1204,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1213,6 +1227,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1314,13 +1333,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -1339,13 +1351,6 @@
                                     "attrs": {
                                         "dimension": "3",
                                         "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
                                     },
                                     "name": "arg2",
                                     "pointer": [
@@ -1389,12 +1394,22 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
                         },
                         "arg2": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1408,11 +1423,21 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1531,13 +1556,6 @@
                                         "dimension": "nvar",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nvar"
-                                            }
-                                        ]
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1582,6 +1600,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1600,6 +1623,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1936,13 +1964,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -1984,6 +2005,11 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1997,6 +2023,11 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3144,13 +3175,6 @@
                                         "dimension": "10",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -3205,6 +3229,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3218,6 +3247,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3303,13 +3337,6 @@
                                         "dimension": "ncount",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -3383,6 +3410,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3403,6 +3435,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3518,14 +3555,6 @@
                                         "dimension": "getLen()",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -3580,6 +3609,12 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3593,6 +3628,12 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3822,13 +3863,6 @@
                                         "dimension": "10",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -3880,6 +3914,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3893,6 +3932,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3979,13 +4023,6 @@
                                         "dimension": "ncount",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -4056,6 +4093,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -4076,6 +4118,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -4996,16 +5043,6 @@
                                     "attrs": {
                                         "dimension": "10,20"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            },
-                                            {
-                                                "constant": "20"
-                                            }
-                                        ]
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -5050,6 +5087,14 @@
                         },
                         "arg": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -5063,6 +5108,14 @@
                         },
                         "arg": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }
@@ -5139,13 +5192,6 @@
                                         "dimension": "10",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -5205,6 +5251,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_allocatable"
@@ -5218,6 +5269,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -6085,13 +6141,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntPtrToFixedArray",
                         "params": [],
                         "pointer": [
@@ -6127,6 +6176,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -6135,6 +6189,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -6304,13 +6363,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntPtrToFixedConstArray",
                         "params": [],
                         "pointer": [
@@ -6346,6 +6398,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -6354,6 +6411,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -6877,13 +6939,6 @@
                             "deref": "allocatable",
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntAllocToFixedArray",
                         "params": [],
                         "pointer": [
@@ -6924,6 +6979,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -6932,6 +6992,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }

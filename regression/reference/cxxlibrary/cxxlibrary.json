@@ -4832,13 +4832,6 @@
                         "attrs": {
                             "dimension": "sublevels"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "sublevels"
-                                }
-                            ]
-                        },
                         "name": "nested_get_child",
                         "params": [
                             {
@@ -4900,6 +4893,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_struct_**_cdesc_pointer"
@@ -4914,6 +4912,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -5050,13 +5053,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "sublevels"
-                                            }
-                                        ]
-                                    },
                                     "name": "val",
                                     "pointer": [
                                         {
@@ -5109,6 +5105,11 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_struct_**"
@@ -5127,6 +5128,11 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }

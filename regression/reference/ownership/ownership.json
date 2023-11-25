@@ -899,13 +899,6 @@
                             "deref": "pointer",
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimPointer",
                         "params": [
                             {
@@ -964,6 +957,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -980,6 +978,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -995,6 +998,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1007,6 +1015,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1019,6 +1032,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1225,13 +1243,6 @@
                             "deref": "allocatable",
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimAlloc",
                         "params": [
                             {
@@ -1293,6 +1304,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1309,6 +1325,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -1324,6 +1345,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1336,6 +1362,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1348,6 +1379,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1560,13 +1596,6 @@
                         "attrs": {
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimDefault",
                         "params": [
                             {
@@ -1624,6 +1653,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1640,6 +1674,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1655,6 +1694,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1667,6 +1711,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1679,6 +1728,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -1885,13 +1939,6 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimRawNew",
                         "params": [
                             {
@@ -1941,6 +1988,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -1955,6 +2007,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2044,13 +2101,6 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimPointerNew",
                         "params": [
                             {
@@ -2109,6 +2159,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2125,6 +2180,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2140,6 +2200,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2152,6 +2217,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2164,6 +2234,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2374,13 +2449,6 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimAllocNew",
                         "params": [
                             {
@@ -2430,6 +2498,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2444,6 +2517,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2456,6 +2534,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2468,6 +2551,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2598,13 +2686,6 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ]
-                        },
                         "name": "ReturnIntPtrDimDefaultNew",
                         "params": [
                             {
@@ -2663,6 +2744,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2679,6 +2765,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2694,6 +2785,11 @@
                     "lua": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2706,6 +2802,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2718,6 +2819,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -3023,13 +3129,6 @@
                                         "intent": "out",
                                         "owner": "library"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
-                                    },
                                     "name": "array",
                                     "pointer": [
                                         {
@@ -3092,6 +3191,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3121,13 +3225,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3191,6 +3288,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3219,13 +3321,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3289,6 +3384,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3410,13 +3510,6 @@
                                         "intent": "out",
                                         "owner": "caller"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
-                                    },
                                     "name": "array",
                                     "pointer": [
                                         {
@@ -3479,6 +3572,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3508,13 +3606,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3578,6 +3669,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3606,13 +3702,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3676,6 +3765,11 @@
                         },
                         "array": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },

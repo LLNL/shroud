@@ -315,6 +315,7 @@ class FillMeta(object):
         # from check_fcn_attrs  (C and Fortran)
         ast = node.ast
         ntypemap = ast.typemap
+        attrs = ast.declarator.attrs
         api = ast.declarator.attrs["api"]
         shared = ast.declarator.metaattrs
 
@@ -381,7 +382,7 @@ class FillMeta(object):
             need_buf_result = "cdesc"
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
-                if shared["dimension"]:
+                if attrs["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)
                     need_buf_result = "cdesc"
         if need_buf_result:
@@ -493,6 +494,7 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
+        meta["dimension"] = share_meta["dimension"]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -500,6 +502,7 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
+        meta["dimension"] = share_meta["dimension"]
             
 ######################################################################
 #
@@ -516,6 +519,10 @@ class FillMetaShare(FillMeta):
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
 
+        x_meta = declarator.metaattrs
+        r_meta["dimension"] = x_meta["dimension"]
+        x_meta["dimension"] = None
+        
         self.set_func_intent(node, r_meta)
 
         # --- Loop over function parameters
@@ -526,6 +533,10 @@ class FillMetaShare(FillMeta):
 
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
+
+            x_meta = declarator.metaattrs
+            meta["dimension"] = x_meta["dimension"]
+            x_meta["dimension"] = None
 
             self.set_arg_intent(node, arg, meta)
 

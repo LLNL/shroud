@@ -214,7 +214,7 @@ class FillFormat(object):
             self.set_fmt_fields_iface(node, ast, bind, fmt_result,
                                       fmt_result.F_result, result_typemap,
                                       "function")
-            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result, bind)
 
         if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
@@ -241,10 +241,10 @@ class FillFormat(object):
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)
-        self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
+        self.set_fmt_fields_dimension(cls, node, arg, fmt_arg, bind)
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
-        
+
     def fill_fortran_result(self, cls, node, bind, fmt_result):
         ast = node.ast
         declarator = ast.declarator
@@ -267,7 +267,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind, fmt_result,
                               subprogram, result_typemap)
-        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
+        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result, bind)
         self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
@@ -279,7 +279,7 @@ class FillFormat(object):
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
-        self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
+        self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg, bind)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
         return arg_typemap
@@ -347,7 +347,7 @@ class FillFormat(object):
         attrs = declarator.attrs
         meta = declarator.metaattrs
         
-        if meta["dimension"]:
+        if meta2["dimension"]:
             if cls is not None:
                 parent = cls
                 class_context = wformat("{CXX_this}->", fmt)
@@ -359,7 +359,7 @@ class FillFormat(object):
                 parent = None
                 class_context = ""
             visitor = ToDimensionC(parent, fcn, fmt, class_context)
-            visitor.visit(meta["dimension"])
+            visitor.visit(meta2["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 fmtdim = []
@@ -489,7 +489,7 @@ class FillFormat(object):
                 fmt.f_type = ntypemap.f_class
         return ntypemap
 
-    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
+    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt, bind):
         """Set fmt fields based on dimension attribute.
 
         f_assumed_shape is used in both implementation and interface.
@@ -503,7 +503,8 @@ class FillFormat(object):
         """
         f_attrs = f_ast.declarator.attrs
         f_meta = f_ast.declarator.metaattrs
-        dim = f_meta["dimension"]
+        meta = bind.meta
+        dim = meta["dimension"]
         rank = f_attrs["rank"]
         if f_meta["assumed-rank"]:
             fmt.i_dimension = "(..)"

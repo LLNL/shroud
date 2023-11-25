@@ -6896,13 +6896,6 @@
                                         "dimension": "nstrs",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ]
-                                    },
                                     "name": "strs",
                                     "pointer": [
                                         {
@@ -6984,6 +6977,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7007,6 +7005,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "copy",
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_copy"
@@ -7025,6 +7028,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -7197,13 +7205,6 @@
                                         "dimension": "nstrs",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ]
-                                    },
                                     "name": "strs",
                                     "pointer": [
                                         {
@@ -7288,6 +7289,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7311,6 +7317,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7329,6 +7340,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -7510,13 +7526,6 @@
                                         "intent": "out",
                                         "len": "20"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ]
-                                    },
                                     "name": "strs",
                                     "pointer": [
                                         {
@@ -7601,6 +7610,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7624,6 +7638,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7642,6 +7661,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }

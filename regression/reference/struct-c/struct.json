@@ -5876,19 +5876,6 @@
                         "attrs": {
                             "dimension": "nitems+nitems"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "left": {
-                                        "name": "nitems"
-                                    },
-                                    "op": "+",
-                                    "right": {
-                                        "name": "nitems"
-                                    }
-                                }
-                            ]
-                        },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
                             {
@@ -5947,6 +5934,17 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -5961,6 +5959,17 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -6096,19 +6105,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "+",
-                                                "right": {
-                                                    "name": "nitems"
-                                                }
-                                            }
-                                        ]
-                                    },
                                     "name": "val",
                                     "pointer": [
                                         {
@@ -6158,6 +6154,17 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -6176,6 +6183,17 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }
@@ -6281,19 +6299,6 @@
                         "attrs": {
                             "dimension": "nitems*TWO"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "left": {
-                                        "name": "nitems"
-                                    },
-                                    "op": "*",
-                                    "right": {
-                                        "name": "TWO"
-                                    }
-                                }
-                            ]
-                        },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
                             {
@@ -6352,6 +6357,17 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -6366,6 +6382,17 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -6501,19 +6528,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "*",
-                                                "right": {
-                                                    "name": "TWO"
-                                                }
-                                            }
-                                        ]
-                                    },
                                     "name": "val",
                                     "pointer": [
                                         {
@@ -6563,6 +6577,17 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -6581,6 +6606,17 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }

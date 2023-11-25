@@ -516,18 +516,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -588,6 +576,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -610,6 +608,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -728,18 +736,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -800,6 +796,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -822,6 +828,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -939,13 +955,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -992,6 +1001,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1009,6 +1023,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1082,13 +1101,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -1107,13 +1119,6 @@
                                     "attrs": {
                                         "dimension": "3",
                                         "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
                                     },
                                     "name": "arg2",
                                     "pointer": [
@@ -1156,11 +1161,21 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1173,11 +1188,21 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1269,13 +1294,6 @@
                                         "dimension": "nvar",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nvar"
-                                            }
-                                        ]
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1318,6 +1336,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1335,6 +1358,11 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1599,13 +1627,6 @@
                                         "dimension": "3",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ]
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -1646,6 +1667,11 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -1658,6 +1684,11 @@
                         },
                         "out": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -2492,13 +2523,6 @@
                                         "dimension": "10",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -2542,6 +2566,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -2554,6 +2583,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -2605,13 +2639,6 @@
                                     "attrs": {
                                         "dimension": "ncount",
                                         "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -2675,6 +2702,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -2692,6 +2724,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -2770,14 +2807,6 @@
                                         "dimension": "getLen()",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -2821,6 +2850,12 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -2833,6 +2868,12 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -2949,13 +2990,6 @@
                                         "dimension": "10",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -2996,6 +3030,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3008,6 +3047,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -3060,13 +3104,6 @@
                                     "attrs": {
                                         "dimension": "ncount",
                                         "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -3127,6 +3164,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3144,6 +3186,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         },
@@ -3695,16 +3742,6 @@
                                     "attrs": {
                                         "dimension": "10,20"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            },
-                                            {
-                                                "constant": "20"
-                                            }
-                                        ]
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -3746,6 +3783,14 @@
                         },
                         "arg": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }
@@ -3769,13 +3814,6 @@
                                         "deref": "allocatable",
                                         "dimension": "10",
                                         "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -3820,6 +3858,11 @@
                         },
                         "count": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             }
                         }
@@ -4359,13 +4402,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntPtrToFixedArray",
                         "params": [],
                         "pointer": [
@@ -4391,6 +4427,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -4398,6 +4439,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -4514,13 +4560,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntPtrToFixedConstArray",
                         "params": [],
                         "pointer": [
@@ -4546,6 +4585,11 @@
                     "py": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -4553,6 +4597,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -4833,13 +4882,6 @@
                             "deref": "allocatable",
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "returnIntAllocToFixedArray",
                         "params": [],
                         "pointer": [
@@ -4865,6 +4907,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }

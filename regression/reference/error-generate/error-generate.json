@@ -502,13 +502,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ]
-                        },
                         "name": "func0f",
                         "params": [],
                         "typemap_name": "int"
@@ -527,6 +520,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         }
@@ -2524,13 +2522,6 @@
                             "deref": "pointerxx",
                             "dimension": "narg2"
                         },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "narg2"
-                                }
-                            ]
-                        },
                         "name": "struct1_get_arg2",
                         "params": [
                             {
@@ -2589,6 +2580,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dimension": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -2603,6 +2599,11 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
                                 "intent": "function"
                             }
                         },
@@ -2738,13 +2739,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "narg2"
-                                            }
-                                        ]
-                                    },
                                     "name": "val",
                                     "pointer": [
                                         {
@@ -2794,6 +2788,11 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -2812,6 +2811,11 @@
                         },
                         "val": {
                             "meta": {
+                                "dimension": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
                                 "intent": "in"
                             }
                         }

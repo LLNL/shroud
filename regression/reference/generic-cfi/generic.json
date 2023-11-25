@@ -1550,10 +1550,7 @@
                                         "dimension": ".."
                                     },
                                     "metaattrs": {
-                                        "assumed-rank": true,
-                                        "dimension": {
-                                            "assumedrank": true
-                                        }
+                                        "assumed-rank": true
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1618,6 +1615,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*"
@@ -1639,6 +1639,9 @@
                         "values": {
                             "meta": {
                                 "api": "cfi",
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -1657,6 +1660,9 @@
                         },
                         "values": {
                             "meta": {
+                                "dimension": {
+                                    "assumedrank": true
+                                },
                                 "intent": "in"
                             }
                         }

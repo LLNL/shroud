@@ -644,17 +644,6 @@
                                                 "dimension": "nitems+nitems"
                                             },
                                             "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "left": {
-                                                            "name": "nitems"
-                                                        },
-                                                        "op": "+",
-                                                        "right": {
-                                                            "name": "nitems"
-                                                        }
-                                                    }
-                                                ],
                                                 "intent": "in",
                                                 "struct_member": "ivalue"
                                             },
@@ -677,17 +666,6 @@
                                                 "dimension": "nitems*TWO"
                                             },
                                             "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "left": {
-                                                            "name": "nitems"
-                                                        },
-                                                        "op": "*",
-                                                        "right": {
-                                                            "name": "TWO"
-                                                        }
-                                                    }
-                                                ],
                                                 "intent": "in",
                                                 "struct_member": "dvalue"
                                             },
@@ -710,11 +688,6 @@
                                                 "dimension": "nitems"
                                             },
                                             "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ],
                                                 "intent": "in",
                                                 "struct_member": "svalue"
                                             },
@@ -763,11 +736,33 @@
                                 },
                                 "dvalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "*",
+                                                "right": {
+                                                    "name": "TWO"
+                                                }
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
                                 "ivalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "+",
+                                                "right": {
+                                                    "name": "nitems"
+                                                }
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
@@ -778,6 +773,11 @@
                                 },
                                 "svalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 }
@@ -790,11 +790,33 @@
                                 },
                                 "dvalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "*",
+                                                "right": {
+                                                    "name": "TWO"
+                                                }
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
                                 "ivalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "+",
+                                                "right": {
+                                                    "name": "nitems"
+                                                }
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
@@ -805,6 +827,11 @@
                                 },
                                 "svalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 }
@@ -1221,11 +1248,6 @@
                                                 "dimension": "nitems"
                                             },
                                             "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ],
                                                 "intent": "in",
                                                 "struct_member": "ivalue"
                                             },
@@ -1248,11 +1270,6 @@
                                                 "dimension": "nitems"
                                             },
                                             "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ],
                                                 "intent": "in",
                                                 "struct_member": "dvalue"
                                             },
@@ -1298,11 +1315,21 @@
                                 },
                                 "dvalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
                                 "ivalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
@@ -1320,11 +1347,21 @@
                                 },
                                 "dvalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },
                                 "ivalue": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "inout"
                                     }
                                 },

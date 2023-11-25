@@ -808,14 +808,6 @@
                                 "attrs": {
                                     "dimension": "getSize()"
                                 },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ]
-                                },
                                 "name": "getArray",
                                 "params": [],
                                 "pointer": [
@@ -851,6 +843,12 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -861,6 +859,12 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -869,6 +873,12 @@
                             "py": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -876,6 +886,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1012,14 +1028,6 @@
                                     "dimension": "getSize()"
                                 },
                                 "func_const": true,
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ]
-                                },
                                 "name": "getArrayConst",
                                 "params": [],
                                 "pointer": [
@@ -1055,6 +1063,12 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1065,6 +1079,12 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1073,6 +1093,12 @@
                             "py": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1080,6 +1106,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1217,14 +1249,6 @@
                                 "attrs": {
                                     "dimension": "getSize()"
                                 },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ]
-                                },
                                 "name": "getArrayC",
                                 "params": [],
                                 "pointer": [
@@ -1260,6 +1284,12 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1270,6 +1300,12 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1278,6 +1314,12 @@
                             "py": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1285,6 +1327,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1422,14 +1470,6 @@
                                     "dimension": "getSize()"
                                 },
                                 "func_const": true,
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "args": [],
-                                            "name": "getSize"
-                                        }
-                                    ]
-                                },
                                 "name": "getArrayConstC",
                                 "params": [],
                                 "pointer": [
@@ -1465,6 +1505,12 @@
                             "c": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1475,6 +1521,12 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1483,6 +1535,12 @@
                             "py": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1490,6 +1548,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "args": [],
+                                                "name": "getSize"
+                                            }
+                                        ],
                                         "intent": "function"
                                     }
                                 }
@@ -1631,13 +1695,6 @@
                                                 "dimension": "isize",
                                                 "intent": "out"
                                             },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ]
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -1707,6 +1764,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -1729,6 +1791,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_**_cdesc_pointer"
@@ -1749,6 +1816,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -1766,6 +1838,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -1990,13 +2067,6 @@
                                                 "dimension": "isize",
                                                 "intent": "out"
                                             },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ]
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -2066,6 +2136,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
@@ -2088,6 +2163,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_*&_cdesc_pointer"
@@ -2108,6 +2188,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -2125,6 +2210,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -2350,13 +2440,6 @@
                                                 "dimension": "isize",
                                                 "intent": "out"
                                             },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ]
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -2426,6 +2509,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -2448,6 +2536,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_**_cdesc_pointer"
@@ -2468,6 +2561,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -2485,6 +2583,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -2710,13 +2813,6 @@
                                                 "dimension": "isize",
                                                 "intent": "out"
                                             },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "isize"
-                                                    }
-                                                ]
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -2786,6 +2882,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
@@ -2808,6 +2909,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_*&_cdesc_pointer"
@@ -2828,6 +2934,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
@@ -2845,6 +2956,11 @@
                                 },
                                 "array": {
                                     "meta": {
+                                        "dimension": [
+                                            {
+                                                "name": "isize"
+                                            }
+                                        ],
                                         "intent": "out"
                                     }
                                 },
