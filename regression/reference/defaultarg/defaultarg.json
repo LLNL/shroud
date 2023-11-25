@@ -30,9 +30,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -246,9 +243,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -263,9 +257,6 @@
                                                 "value": true
                                             },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -543,9 +534,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -560,9 +548,6 @@
                                                 "value": true
                                             },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -577,9 +562,6 @@
                                                 "value": true
                                             },
                                             "init": 2,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg3",
                                             "typemap_name": "int"
                                         },
@@ -1000,9 +982,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1174,9 +1153,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1191,9 +1167,6 @@
                                                 "value": true
                                             },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -1429,9 +1402,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1446,9 +1416,6 @@
                                                 "value": true
                                             },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -1463,9 +1430,6 @@
                                                 "value": true
                                             },
                                             "init": 2,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg3",
                                             "typemap_name": "int"
                                         },
@@ -2193,9 +2157,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2367,9 +2328,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2384,9 +2342,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -2622,9 +2577,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2639,9 +2591,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -2656,9 +2605,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -2950,9 +2896,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -2965,9 +2908,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
@@ -3204,9 +3144,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3219,9 +3156,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
@@ -3237,9 +3171,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3539,9 +3470,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3554,9 +3482,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
@@ -3572,9 +3497,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3589,9 +3511,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -3943,9 +3862,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3960,9 +3876,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3977,9 +3890,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4265,9 +4175,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -4280,9 +4187,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
@@ -4298,9 +4202,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -4315,9 +4216,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4667,9 +4565,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4684,9 +4579,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -4701,9 +4593,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4991,9 +4880,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -5006,9 +4892,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
@@ -5024,9 +4907,6 @@
                                         "value": true
                                     },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -5041,9 +4921,6 @@
                                         "value": true
                                     },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },

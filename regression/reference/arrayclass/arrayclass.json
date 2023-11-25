@@ -179,9 +179,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "size",
                                             "typemap_name": "int"
                                         },
@@ -520,9 +517,6 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "out"
                                             },
                                             "name": "size",
@@ -1642,8 +1636,7 @@
                                                     {
                                                         "name": "isize"
                                                     }
-                                                ],
-                                                "intent": "out"
+                                                ]
                                             },
                                             "name": "array",
                                             "pointer": [
@@ -1665,9 +1658,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
                                             },
                                             "name": "isize",
                                             "pointer": [
@@ -2005,8 +1995,7 @@
                                                     {
                                                         "name": "isize"
                                                     }
-                                                ],
-                                                "intent": "out"
+                                                ]
                                             },
                                             "name": "array",
                                             "pointer": [
@@ -2028,9 +2017,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
                                             },
                                             "name": "isize",
                                             "pointer": [
@@ -2369,8 +2355,7 @@
                                                     {
                                                         "name": "isize"
                                                     }
-                                                ],
-                                                "intent": "out"
+                                                ]
                                             },
                                             "name": "array",
                                             "pointer": [
@@ -2392,9 +2377,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
                                             },
                                             "name": "isize",
                                             "pointer": [
@@ -2733,8 +2715,7 @@
                                                     {
                                                         "name": "isize"
                                                     }
-                                                ],
-                                                "intent": "out"
+                                                ]
                                             },
                                             "name": "array",
                                             "pointer": [
@@ -2756,9 +2737,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "hidden": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "inout"
                                             },
                                             "name": "isize",
                                             "pointer": [
@@ -3090,9 +3068,6 @@
                                             "attrs": {
                                                 "intent": "out"
                                             },
-                                            "metaattrs": {
-                                                "intent": "out"
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -3292,9 +3267,6 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "out"
                                             },
                                             "name": "array",
@@ -3497,9 +3469,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "array",
                                             "pointer": [

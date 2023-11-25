@@ -61,9 +61,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -90,9 +87,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -111,9 +105,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg2",
                                     "typemap_name": "double"

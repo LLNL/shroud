@@ -362,9 +362,6 @@
                                             "attrs": {
                                                 "intent": "in"
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg",
                                             "pointer": [
                                                 {
@@ -597,9 +594,6 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "in"
                                             },
                                             "name": "arg",
@@ -895,9 +889,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {

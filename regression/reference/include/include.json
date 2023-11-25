@@ -23,9 +23,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "comm",
                                             "typemap_name": "MPI_Comm"
                                         },
@@ -188,9 +185,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "c2",
                                             "pointer": [
                                                 {
@@ -556,9 +550,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "arg1",
                                                     "typemap_name": "CustomType"

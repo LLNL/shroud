@@ -22,9 +22,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -117,9 +114,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -216,9 +210,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -318,9 +309,6 @@
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "argin",
                                     "typemap_name": "int"
                                 },
@@ -332,9 +320,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arginout",
@@ -353,9 +338,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "argout",
@@ -515,9 +497,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in",
                                     "pointer": [
                                         {
@@ -547,8 +526,7 @@
                                                 ],
                                                 "name": "size"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "out",
                                     "pointer": [
@@ -568,9 +546,6 @@
                                     "attrs": {
                                         "implied": "size(in)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -736,9 +711,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in",
                                     "pointer": [
                                         {
@@ -768,8 +740,7 @@
                                                 ],
                                                 "name": "size"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "out",
                                     "pointer": [
@@ -789,9 +760,6 @@
                                     "attrs": {
                                         "implied": "size(in)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -956,9 +924,6 @@
                                     "attrs": {
                                         "intent": "OUT"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "nvalues",
                                     "pointer": [
                                         {
@@ -983,8 +948,7 @@
                                             {
                                                 "constant": "3"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1128,8 +1092,7 @@
                                             {
                                                 "constant": "3"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1155,8 +1118,7 @@
                                             {
                                                 "constant": "3"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "arg2",
                                     "pointer": [
@@ -1300,9 +1262,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvar",
                                     "typemap_name": "int"
                                 },
@@ -1322,8 +1281,7 @@
                                             {
                                                 "name": "nvar"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1457,9 +1415,6 @@
                                         "implied": "size(values)",
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "len",
                                     "typemap_name": "int"
                                 },
@@ -1473,9 +1428,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1493,9 +1445,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "result",
@@ -1664,8 +1613,7 @@
                                             {
                                                 "constant": "3"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "out",
                                     "pointer": [
@@ -1772,9 +1720,6 @@
                                         "intent": "inout",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "array",
                                     "pointer": [
                                         {
@@ -1793,9 +1738,6 @@
                                     "attrs": {
                                         "implied": "size(array)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1923,9 +1865,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "x",
                                     "pointer": [
                                         {
@@ -1944,9 +1883,6 @@
                                     "attrs": {
                                         "implied": "size(x)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "x_length",
                                     "typemap_name": "int"
@@ -2072,9 +2008,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arr",
                                     "pointer": [
                                         {
@@ -2093,9 +2026,6 @@
                                     "attrs": {
                                         "implied": "size(arr)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "len",
                                     "typemap_name": "size_t"
@@ -2238,9 +2168,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "names",
                                     "pointer": [
                                         {
@@ -2361,9 +2288,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "value",
                                     "typemap_name": "int"
@@ -2520,9 +2444,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "nitems",
                                     "pointer": [
                                         {
@@ -2591,8 +2512,7 @@
                                             {
                                                 "constant": "10"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -2707,8 +2627,7 @@
                                             {
                                                 "name": "ncount"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -2730,9 +2649,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -2877,8 +2793,7 @@
                                                 "args": [],
                                                 "name": "getLen"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -2988,9 +2903,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "nitems",
                                     "pointer": [
                                         {
@@ -3060,8 +2972,7 @@
                                             {
                                                 "constant": "10"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -3174,8 +3085,7 @@
                                             {
                                                 "name": "ncount"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -3197,9 +3107,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -3335,9 +3242,6 @@
                                         "deref": "raw",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "nitems",
                                     "pointer": [
                                         {
@@ -3441,9 +3345,6 @@
                                         "deref": "raw",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "nitems",
                                     "pointer": [
                                         {
@@ -3509,9 +3410,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3617,9 +3515,6 @@
                                         "deref": "raw",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "count",
                                     "pointer": [
                                         {
@@ -3684,9 +3579,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -3755,9 +3647,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -3834,8 +3723,7 @@
                                             {
                                                 "constant": "20"
                                             }
-                                        ],
-                                        "intent": "in"
+                                        ]
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -3907,8 +3795,7 @@
                                             {
                                                 "constant": "10"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -3974,9 +3861,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "flag",
                                     "typemap_name": "int"
@@ -4090,9 +3974,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "flag",
                                     "typemap_name": "int"
@@ -4209,9 +4090,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -4310,9 +4188,6 @@
                                     "attrs": {
                                         "intent": "inout"
                                     },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -4375,9 +4250,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4874,9 +4746,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {

@@ -989,8 +989,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1026,8 +1025,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1056,8 +1054,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1086,8 +1083,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1248,8 +1244,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1388,8 +1383,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1530,8 +1524,7 @@
                                     "metaattrs": {
                                         "dimension": {
                                             "assumedrank": true
-                                        },
-                                        "intent": "inout"
+                                        }
                                     },
                                     "name": "data",
                                     "pointer": [

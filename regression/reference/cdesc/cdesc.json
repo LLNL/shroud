@@ -26,9 +26,6 @@
                                         "intent": "in",
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -225,9 +222,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -248,9 +242,6 @@
                                         "intent": "in",
                                         "rank": 0,
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -286,9 +277,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -308,9 +296,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -336,9 +321,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -358,9 +340,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -548,9 +527,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -570,9 +546,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -792,9 +765,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -814,9 +784,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -1415,9 +1382,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1436,9 +1400,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -1474,9 +1435,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1493,9 +1451,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1525,9 +1480,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1544,9 +1496,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1636,9 +1585,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1655,9 +1601,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1857,9 +1800,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1876,9 +1816,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",

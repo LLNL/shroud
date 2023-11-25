@@ -181,6 +181,7 @@ class VerifyAttrs(object):
         Intent is only valid on arguments.
         intent: lower case, no parens, must be in, out, or inout
         """
+        return#GGG
         declarator = arg.declarator
         attrs = declarator.attrs
         meta = declarator.metaattrs

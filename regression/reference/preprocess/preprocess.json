@@ -311,9 +311,6 @@
                                                 "value": true
                                             },
                                             "init": 0,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "i",
                                             "typemap_name": "int"
                                         },
@@ -648,9 +645,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "flag",
                                             "typemap_name": "int"

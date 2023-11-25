@@ -68,9 +68,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1"
                                         },
                                         "specifier": [
@@ -82,9 +79,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "arg2"
                                         },
@@ -170,9 +164,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1"
                                         },
                                         "specifier": [
@@ -185,9 +176,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "arg2"
                                         },
@@ -675,9 +663,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -961,9 +946,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -1020,9 +1002,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "v"
                                         },
@@ -1545,9 +1524,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -1831,9 +1807,6 @@
                                             "attrs": {
                                                 "value": true
                                             },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -1890,9 +1863,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
                                             },
                                             "name": "v"
                                         },
@@ -2431,9 +2401,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2445,9 +2412,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg2"
                                 },
@@ -2561,9 +2525,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2576,9 +2537,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg2"
                                 },
@@ -2904,9 +2862,6 @@
                                     "attrs": {
                                         "value": true
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2919,9 +2874,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg2"
                                 },
@@ -3959,9 +3911,6 @@
                                                     "attrs": {
                                                         "intent": "in"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "value",
                                                     "pointer": [
                                                         {
@@ -4023,9 +3972,6 @@
                                                 "const": true,
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "in"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "in"
                                                     },
                                                     "name": "value",
@@ -4229,9 +4175,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -4293,9 +4236,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
@@ -4921,9 +4861,6 @@
                                                     "attrs": {
                                                         "intent": "in"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "value",
                                                     "pointer": [
                                                         {
@@ -4985,9 +4922,6 @@
                                                 "const": true,
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "in"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "in"
                                                     },
                                                     "name": "value",
@@ -5191,9 +5125,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -5255,9 +5186,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"

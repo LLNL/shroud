@@ -400,9 +400,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "s1",
                                     "pointer": [
                                         {
@@ -419,9 +416,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "s2",

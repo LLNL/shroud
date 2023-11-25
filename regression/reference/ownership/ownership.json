@@ -760,9 +760,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "len",
                                     "pointer": [
                                         {
@@ -915,9 +912,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1244,9 +1238,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1584,9 +1575,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "len",
                                     "pointer": [
                                         {
@@ -1912,9 +1900,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "len",
                                     "pointer": [
                                         {
@@ -2072,9 +2057,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2407,9 +2389,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "len",
                                     "pointer": [
                                         {
@@ -2632,9 +2611,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2956,9 +2932,6 @@
                                         "intent": "out",
                                         "owner": "library"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "array",
                                     "pointer": [
                                         {
@@ -2978,9 +2951,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3058,8 +3028,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3081,9 +3050,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3161,8 +3127,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3184,9 +3149,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3263,8 +3225,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3286,9 +3247,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3360,9 +3318,6 @@
                                         "intent": "out",
                                         "owner": "caller"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "array",
                                     "pointer": [
                                         {
@@ -3383,9 +3338,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3463,8 +3415,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3486,9 +3437,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3566,8 +3514,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3589,9 +3536,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3668,8 +3612,7 @@
                                             {
                                                 "name": "len"
                                             }
-                                        ],
-                                        "intent": "out"
+                                        ]
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3691,9 +3634,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3762,9 +3702,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "flag",
                                     "typemap_name": "int"
@@ -4137,9 +4074,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "flag",
                                     "typemap_name": "int"

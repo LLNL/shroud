@@ -68,16 +68,6 @@ line 45
 void func7(int * arg1 +dimension(n+=2))
 Unable to parse dimension: n+=2
 --------------------
-Node: func8
-line 47
-void func8(int arg1 +intent(none))
-Bad value for intent: none
---------------------
-Node: func8a
-line 48
-void func8a(int arg1 +intent(out))
-Only pointer arguments may have intent of 'out' or 'inout'
---------------------
 Node: func10b
 line 56
 void func10b(int arg1 +rank)

@@ -25,9 +25,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -251,9 +248,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -474,9 +468,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -739,9 +730,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -991,9 +979,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1217,9 +1202,6 @@
                                         "deref": "allocatable",
                                         "intent": "inout",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1450,9 +1432,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1675,9 +1654,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1898,9 +1874,6 @@
                                         "intent": "in",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -1935,9 +1908,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "num",
                                     "typemap_name": "int"
@@ -2212,9 +2182,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2460,9 +2427,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2681,9 +2645,6 @@
                                         "deref": "allocatable",
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -2912,9 +2873,6 @@
                                         "intent": "out",
                                         "len": "20",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -3145,9 +3103,6 @@
                                         "intent": "inout",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -3226,9 +3181,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "n",
                                     "typemap_name": "int"
@@ -3481,9 +3433,6 @@
                                         "intent": "in",
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -3502,9 +3451,6 @@
                                     "attrs": {
                                         "implied": "size(arg,2)",
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "len",
                                     "typemap_name": "int"

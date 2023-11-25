@@ -220,9 +220,6 @@
                                                     {
                                                         "const": true,
                                                         "declarator": {
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "name",
                                                             "pointer": [
                                                                 {
@@ -668,9 +665,6 @@
                                                         "declarator": {
                                                             "attrs": {
                                                                 "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
                                                             },
                                                             "name": "incr",
                                                             "typemap_name": "int"
@@ -1362,9 +1356,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "value",
                                                             "typemap_name": "int"
                                                         },
@@ -1652,9 +1643,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "value",
                                                             "typemap_name": "long"
                                                         },
@@ -1934,9 +1922,6 @@
                                                         "declarator": {
                                                             "attrs": {
                                                                 "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
                                                             },
                                                             "name": "in",
                                                             "typemap_name": "bool"
@@ -2429,9 +2414,6 @@
                                                         "declarator": {
                                                             "attrs": {
                                                                 "len_trim": "trim_name"
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
                                                             },
                                                             "name": "name",
                                                             "pointer": [
@@ -3877,9 +3859,6 @@
                                                     {
                                                         "const": true,
                                                         "declarator": {
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "in",
                                                             "pointer": [
                                                                 {
@@ -4192,9 +4171,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4408,9 +4384,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4425,9 +4398,6 @@
                                                                 "value": true
                                                             },
                                                             "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "len",
                                                             "typemap_name": "SidreLength"
                                                         },
@@ -4459,9 +4429,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4476,9 +4443,6 @@
                                                                 "value": true
                                                             },
                                                             "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "len",
                                                             "typemap_name": "int"
                                                         },
@@ -4498,9 +4462,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4515,9 +4476,6 @@
                                                                 "value": true
                                                             },
                                                             "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "len",
                                                             "typemap_name": "long"
                                                         },
@@ -4834,9 +4792,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4851,9 +4806,6 @@
                                                                 "value": true
                                                             },
                                                             "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "len",
                                                             "typemap_name": "int"
                                                         },
@@ -5043,9 +4995,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -5060,9 +5009,6 @@
                                                                 "value": true
                                                             },
                                                             "init": 1,
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "len",
                                                             "typemap_name": "long"
                                                         },
@@ -5517,9 +5463,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -5634,9 +5577,6 @@
                                                         "declarator": {
                                                             "attrs": {
                                                                 "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
                                                             },
                                                             "name": "value"
                                                         },
@@ -5921,9 +5861,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -6204,9 +6141,6 @@
                                                             "attrs": {
                                                                 "value": true
                                                             },
-                                                            "metaattrs": {
-                                                                "intent": "in"
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -6486,9 +6420,6 @@
                                                         "declarator": {
                                                             "attrs": {
                                                                 "value": true
-                                                            },
-                                                            "metaattrs": {
-                                                                "intent": "in"
                                                             },
                                                             "name": "value"
                                                         },
@@ -7413,9 +7344,6 @@
                                             {
                                                 "const": true,
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "name",
                                                     "pointer": [
                                                         {
@@ -7898,9 +7826,6 @@
                                             {
                                                 "const": true,
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "name",
                                                     "pointer": [
                                                         {
@@ -8150,9 +8075,6 @@
                                             {
                                                 "const": true,
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "name",
                                                     "pointer": [
                                                         {
@@ -8170,9 +8092,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "flag",
                                                     "typemap_name": "int"
@@ -8617,9 +8536,6 @@
                                                         "value": true
                                                     },
                                                     "init": 1,
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "i",
                                                     "typemap_name": "int"
                                                 },
@@ -8789,9 +8705,6 @@
                                                         "value": true
                                                     },
                                                     "init": 1,
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "i",
                                                     "typemap_name": "int"
                                                 },
@@ -8806,9 +8719,6 @@
                                                         "value": true
                                                     },
                                                     "init": 2,
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "j",
                                                     "typemap_name": "long"
                                                 },
@@ -9294,9 +9204,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "comm",
                                                     "typemap_name": "MPI_Comm"
                                                 },
@@ -9642,9 +9549,6 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "get",
                                                     "params": [],
                                                     "typemap_name": "void"
@@ -9873,9 +9777,6 @@
                                                             }
                                                         ],
                                                         "typemap_name": "double"
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "get",
                                                     "params": [],
@@ -10115,9 +10016,6 @@
                                                             }
                                                         ],
                                                         "typemap_name": "double"
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "get",
                                                     "params": [
@@ -10380,9 +10278,6 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "get",
                                                     "params": [
                                                         {
@@ -10583,9 +10478,6 @@
                                                             }
                                                         ],
                                                         "typemap_name": "void"
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "get",
                                                     "params": [
@@ -10938,9 +10830,6 @@
                                                     "attrs": {
                                                         "intent": "inout"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "inout"
-                                                    },
                                                     "name": "verylongname1",
                                                     "pointer": [
                                                         {
@@ -10957,9 +10846,6 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "inout"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "inout"
                                                     },
                                                     "name": "verylongname2",
@@ -10980,9 +10866,6 @@
                                                     "attrs": {
                                                         "intent": "inout"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "inout"
-                                                    },
                                                     "name": "verylongname3",
                                                     "pointer": [
                                                         {
@@ -10999,9 +10882,6 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "inout"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "inout"
                                                     },
                                                     "name": "verylongname4",
@@ -11022,9 +10902,6 @@
                                                     "attrs": {
                                                         "intent": "inout"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "inout"
-                                                    },
                                                     "name": "verylongname5",
                                                     "pointer": [
                                                         {
@@ -11041,9 +10918,6 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "inout"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "inout"
                                                     },
                                                     "name": "verylongname6",
@@ -11064,9 +10938,6 @@
                                                     "attrs": {
                                                         "intent": "inout"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "inout"
-                                                    },
                                                     "name": "verylongname7",
                                                     "pointer": [
                                                         {
@@ -11083,9 +10954,6 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "inout"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "inout"
                                                     },
                                                     "name": "verylongname8",
@@ -11106,9 +10974,6 @@
                                                     "attrs": {
                                                         "intent": "inout"
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "inout"
-                                                    },
                                                     "name": "verylongname9",
                                                     "pointer": [
                                                         {
@@ -11125,9 +10990,6 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "intent": "inout"
-                                                    },
-                                                    "metaattrs": {
                                                         "intent": "inout"
                                                     },
                                                     "name": "verylongname10",
@@ -12277,9 +12139,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "verylongname1",
                                                     "typemap_name": "int"
                                                 },
@@ -12292,9 +12151,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "verylongname2",
                                                     "typemap_name": "int"
@@ -12309,9 +12165,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "verylongname3",
                                                     "typemap_name": "int"
                                                 },
@@ -12324,9 +12177,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "verylongname4",
                                                     "typemap_name": "int"
@@ -12341,9 +12191,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "verylongname5",
                                                     "typemap_name": "int"
                                                 },
@@ -12356,9 +12203,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "verylongname6",
                                                     "typemap_name": "int"
@@ -12373,9 +12217,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "verylongname7",
                                                     "typemap_name": "int"
                                                 },
@@ -12388,9 +12229,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "verylongname8",
                                                     "typemap_name": "int"
@@ -12405,9 +12243,6 @@
                                                     "attrs": {
                                                         "value": true
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "verylongname9",
                                                     "typemap_name": "int"
                                                 },
@@ -12420,9 +12255,6 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "verylongname10",
                                                     "typemap_name": "int"
@@ -13616,9 +13448,6 @@
                                                         "intent": "in",
                                                         "rank": 2
                                                     },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "in",
                                                     "pointer": [
                                                         {
@@ -13648,8 +13477,7 @@
                                                                 ],
                                                                 "name": "shape"
                                                             }
-                                                        ],
-                                                        "intent": "out"
+                                                        ]
                                                     },
                                                     "name": "out",
                                                     "pointer": [
@@ -13669,9 +13497,6 @@
                                                     "attrs": {
                                                         "implied": "size(in)",
                                                         "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
                                                     },
                                                     "name": "sizein",
                                                     "typemap_name": "int"
