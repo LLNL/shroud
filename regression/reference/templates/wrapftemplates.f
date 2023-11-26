@@ -105,10 +105,10 @@ module templates_mod
         ! Function:  void nested
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int arg1 +value
+        ! Argument:  int arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  double arg2 +value
+        ! Argument:  double arg2
         ! Statement: f_in_native_scalar
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
@@ -137,7 +137,7 @@ module templates_mod
         ! Function:  void set_npts
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int n +value
+        ! Argument:  int n
         ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_int_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_int_set_npts")
@@ -166,7 +166,7 @@ module templates_mod
         ! Function:  void set_value
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int v +value
+        ! Argument:  int v
         ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_int_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_int_set_value")
@@ -208,7 +208,7 @@ module templates_mod
         ! Function:  void set_npts
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int n +value
+        ! Argument:  int n
         ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_double_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_double_set_npts")
@@ -237,7 +237,7 @@ module templates_mod
         ! Function:  void set_value
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double v +value
+        ! Argument:  double v
         ! Statement: f_in_native_scalar
         subroutine c_struct_as_class_double_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_double_set_value")
@@ -280,10 +280,10 @@ module templates_mod
         ! Function:  void FunctionTU
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int arg1 +value
+        ! Argument:  int arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  long arg2 +value
+        ! Argument:  long arg2
         ! Statement: f_in_native_scalar
         subroutine c_function_tu_0(arg1, arg2) &
                 bind(C, name="TEM_FunctionTU_0")
@@ -298,10 +298,10 @@ module templates_mod
         ! Function:  void FunctionTU
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  float arg1 +value
+        ! Argument:  float arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  double arg2 +value
+        ! Argument:  double arg2
         ! Statement: f_in_native_scalar
         subroutine c_function_tu_1(arg1, arg2) &
                 bind(C, name="TEM_FunctionTU_1")
@@ -385,10 +385,10 @@ contains
     ! Function:  void nested
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: f_in_native_scalar
     subroutine user_int_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -443,7 +443,7 @@ contains
     ! Function:  void set_npts
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     subroutine struct_as_class_int_set_npts(obj, n)
         use iso_c_binding, only : C_INT
@@ -472,7 +472,7 @@ contains
     ! Function:  void set_value
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int v +value
+    ! Argument:  int v
     ! Statement: f_in_native_scalar
     subroutine struct_as_class_int_set_value(obj, v)
         use iso_c_binding, only : C_INT
@@ -540,7 +540,7 @@ contains
     ! Function:  void set_npts
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     subroutine struct_as_class_double_set_npts(obj, n)
         use iso_c_binding, only : C_INT
@@ -569,7 +569,7 @@ contains
     ! Function:  void set_value
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double v +value
+    ! Argument:  double v
     ! Statement: f_in_native_scalar
     subroutine struct_as_class_double_set_value(obj, v)
         use iso_c_binding, only : C_DOUBLE
@@ -638,10 +638,10 @@ contains
     ! Function:  void FunctionTU
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg2 +value
+    ! Argument:  long arg2
     ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.
@@ -661,10 +661,10 @@ contains
     ! Function:  void FunctionTU
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float arg1 +value
+    ! Argument:  float arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.

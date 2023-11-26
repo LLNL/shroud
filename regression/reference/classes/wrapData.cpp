@@ -25,7 +25,7 @@ extern "C" {
 // Function:  void allocate
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: c_in_native_scalar
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
@@ -99,7 +99,7 @@ int CLA_Data_get_nitems(CLA_Data * self)
 // Function:  void set_nitems
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 // start CLA_Data_set_nitems
 void CLA_Data_set_nitems(CLA_Data * self, int val)

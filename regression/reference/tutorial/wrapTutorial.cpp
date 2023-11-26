@@ -91,10 +91,10 @@ void TUT_NoReturnNoArguments(void)
 // Function:  double PassByValue
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1 +value
+// Argument:  double arg1
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int arg2 +value
+// Argument:  int arg2
 // Statement: c_in_native_scalar
 double TUT_PassByValue(double arg1, int arg2)
 {
@@ -181,7 +181,7 @@ double TUT_UseDefaultArguments(void)
 // Function:  double UseDefaultArguments
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +value
+// Argument:  double arg1=3.1415
 // Statement: c_in_native_scalar
 // start TUT_UseDefaultArguments_arg1
 double TUT_UseDefaultArguments_arg1(double arg1)
@@ -197,10 +197,10 @@ double TUT_UseDefaultArguments_arg1(double arg1)
 // Function:  double UseDefaultArguments
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +value
+// Argument:  double arg1=3.1415
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  bool arg2=true +value
+// Argument:  bool arg2=true
 // Statement: c_in_bool_scalar
 // start TUT_UseDefaultArguments_arg1_arg2
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
@@ -246,7 +246,7 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 // Function:  void OverloadedFunction
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int indx +value
+// Argument:  int indx
 // Statement: c_in_native_scalar
 void TUT_OverloadedFunction_from_index(int indx)
 {
@@ -260,7 +260,7 @@ void TUT_OverloadedFunction_from_index(int indx)
 // Function:  void TemplateArgument
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int arg +value
+// Argument:  int arg
 // Statement: c_in_native_scalar
 void TUT_TemplateArgument_int(int arg)
 {
@@ -274,7 +274,7 @@ void TUT_TemplateArgument_int(int arg)
 // Function:  void TemplateArgument
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double arg +value
+// Argument:  double arg
 // Statement: c_in_native_scalar
 void TUT_TemplateArgument_double(double arg)
 {
@@ -324,7 +324,7 @@ void TUT_FortranGenericOverloaded_0(void)
 // Argument:  const std::string & name
 // Statement: c_in_string_&
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: c_in_native_scalar
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
@@ -342,7 +342,7 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // Argument:  const std::string & name
 // Statement: f_in_string_&_buf
 // ----------------------------------------
-// Argument:  float arg2 +value
+// Argument:  float arg2
 // Statement: f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
@@ -362,7 +362,7 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // Argument:  const std::string & name
 // Statement: f_in_string_&_buf
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: f_in_native_scalar
 void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
@@ -379,7 +379,7 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_num(int num)
 {
@@ -394,10 +394,10 @@ int TUT_UseDefaultOverload_num(int num)
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
@@ -411,13 +411,13 @@ int TUT_UseDefaultOverload_num_offset(int num, int offset)
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int stride=1 +value
+// Argument:  int stride=1
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
@@ -433,10 +433,10 @@ int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double type +value
+// Argument:  double type
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_3(double type, int num)
 {
@@ -451,13 +451,13 @@ int TUT_UseDefaultOverload_3(double type, int num)
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double type +value
+// Argument:  double type
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
@@ -471,16 +471,16 @@ int TUT_UseDefaultOverload_4(double type, int num, int offset)
 // Function:  int UseDefaultOverload
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  double type +value
+// Argument:  double type
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int stride=1 +value
+// Argument:  int stride=1
 // Statement: c_in_native_scalar
 int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
@@ -496,7 +496,7 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 // Function:  TypeID typefunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg +value
+// Argument:  TypeID arg
 // Statement: c_in_native_scalar
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
@@ -510,7 +510,7 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 // Function:  EnumTypeID enumfunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  EnumTypeID arg +value
+// Argument:  EnumTypeID arg
 // Statement: c_in_native_scalar
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 {
@@ -527,7 +527,7 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 // Function:  Color colorfunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  Color arg +value
+// Argument:  Color arg
 // Statement: c_in_native_scalar
 int TUT_colorfunc(int arg)
 {
@@ -569,10 +569,10 @@ void TUT_getMinMax(int * min, int * max)
 // Function:  int callback1
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int in +value
+// Argument:  int in
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int ( * incr)(int +value) +value
+// Argument:  int ( * incr)(int +value)
 // Statement: c_in_native_scalar
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))

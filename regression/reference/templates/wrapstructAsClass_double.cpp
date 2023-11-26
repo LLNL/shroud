@@ -38,7 +38,7 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 // Function:  void set_npts
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: c_in_native_scalar
 void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
     int n)
@@ -68,7 +68,7 @@ int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 // Function:  void set_value
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double v +value
+// Argument:  double v
 // Statement: c_in_native_scalar
 void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
     double v)

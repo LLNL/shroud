@@ -125,8 +125,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "in"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -145,7 +144,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in)+value)",
+                        "declgen": "void set_x1(int val +intent(in))",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -361,8 +360,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "in"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -381,7 +379,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in)+value)",
+                        "declgen": "void set_y1(int val +intent(in))",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -597,8 +595,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "in"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -617,7 +614,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_z1(int val)",
-                        "declgen": "void set_z1(int val +intent(in)+value)",
+                        "declgen": "void set_z1(int val +intent(in))",
                         "name": "set_z1",
                         "options": {},
                         "user_fmt": {

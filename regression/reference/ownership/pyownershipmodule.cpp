@@ -309,7 +309,7 @@ fail:
 // Function:  void createClassStatic
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static char PY_createClassStatic__doc__[] =
 "documentation"
@@ -364,7 +364,7 @@ PY_getClassStatic(
 // Function:  Class1 * getClassNew +owner(caller)
 // Statement: py_function_shadow_*
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static char PY_getClassNew__doc__[] =
 "documentation"

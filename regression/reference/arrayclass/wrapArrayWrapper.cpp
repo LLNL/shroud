@@ -37,7 +37,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 // Function:  void setSize
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int size +value
+// Argument:  int size
 // Statement: c_in_native_scalar
 void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size)
 {
@@ -420,7 +420,7 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
 // Function:  bool checkPtr
 // Statement: c_function_bool_scalar
 // ----------------------------------------
-// Argument:  void * array +value
+// Argument:  void * array
 // Statement: c_in_void_*
 bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
 {

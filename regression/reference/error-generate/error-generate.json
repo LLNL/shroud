@@ -298,9 +298,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "typemap_name": "int"
                                 },
                                 "specifier": [
@@ -317,7 +314,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func0a(int)",
-                "declgen": "void func0a(int +value)",
+                "declgen": "void func0a(int)",
                 "name": "func0a",
                 "options": {},
                 "wrap": {},
@@ -545,8 +542,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "bad": true,
-                                        "value": true
+                                        "bad": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -565,7 +561,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func1(int arg1 +bad)",
-                "declgen": "void func1(int arg1 +bad+value)",
+                "declgen": "void func1(int arg1 +bad)",
                 "name": "func1",
                 "options": {},
                 "wrap": {},
@@ -651,8 +647,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "charlen": true,
-                                        "value": true
+                                        "charlen": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -671,7 +666,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3(int arg1 +charlen)",
-                "declgen": "void func3(int arg1 +charlen+value)",
+                "declgen": "void func3(int arg1 +charlen)",
                 "name": "func3",
                 "options": {},
                 "wrap": {},
@@ -704,8 +699,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "charlen": true,
-                                        "value": true
+                                        "charlen": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "char"
@@ -724,7 +718,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3b(char arg1 +charlen)",
-                "declgen": "void func3b(char arg1 +charlen+value)",
+                "declgen": "void func3b(char arg1 +charlen)",
                 "name": "func3b",
                 "options": {},
                 "wrap": {},
@@ -1013,8 +1007,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "none",
-                                        "value": true
+                                        "intent": "none"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1033,7 +1026,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func8(int arg1+intent(none))",
-                "declgen": "void func8(int arg1 +intent(none)+value)",
+                "declgen": "void func8(int arg1 +intent(none))",
                 "name": "func8",
                 "options": {},
                 "wrap": {},
@@ -1066,8 +1059,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1086,7 +1078,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func8a(int arg1+intent(out))",
-                "declgen": "void func8a(int arg1 +intent(out)+value)",
+                "declgen": "void func8a(int arg1 +intent(out))",
                 "name": "func8a",
                 "options": {},
                 "wrap": {},
@@ -1374,8 +1366,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "api": "none",
-                                        "value": true
+                                        "api": "none"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1394,7 +1385,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10(int arg1 +api(none))",
-                "declgen": "void func10(int arg1 +api(none)+value)",
+                "declgen": "void func10(int arg1 +api(none))",
                 "name": "func10",
                 "options": {},
                 "wrap": {},
@@ -1453,8 +1444,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": true,
-                                        "value": true
+                                        "rank": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1473,7 +1463,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10b(int arg1+rank)",
-                "declgen": "void func10b(int arg1 +rank+value)",
+                "declgen": "void func10b(int arg1 +rank)",
                 "name": "func10b",
                 "options": {},
                 "wrap": {},
@@ -1625,8 +1615,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "dimension": true,
-                                        "value": true
+                                        "dimension": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1645,7 +1634,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func11(int arg1 +dimension)",
-                "declgen": "void func11(int arg1 +dimension+value)",
+                "declgen": "void func11(int arg1 +dimension)",
                 "name": "func11",
                 "options": {},
                 "wrap": {},
@@ -1736,8 +1725,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": true,
-                                        "rank": 2,
-                                        "value": true
+                                        "rank": 2
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1756,7 +1744,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func11(int arg1 +dimension+rank(2))",
-                "declgen": "void func11(int arg1 +dimension+rank(2)+value)",
+                "declgen": "void func11(int arg1 +dimension+rank(2))",
                 "name": "func11",
                 "options": {},
                 "wrap": {},
@@ -1870,8 +1858,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in,2,3)",
-                                        "value": true
+                                        "implied": "size(in,2,3)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1890,7 +1877,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13(double *in     +intent(in)  +rank(1), int     sizein +implied(size(in,2,3)))",
-                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3))+value)",
+                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
                 "name": "func13",
                 "options": {},
                 "wrap": {},
@@ -1947,8 +1934,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(none)",
-                                        "value": true
+                                        "implied": "size(none)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1967,7 +1953,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13b(double *in     +intent(in)  +rank(1), int     sizein +implied(size(none)))",
-                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none))+value)",
+                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))",
                 "name": "func13b",
                 "options": {},
                 "wrap": {},
@@ -2021,8 +2007,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text,2)",
-                                        "value": true
+                                        "implied": "len(text,2)"
                                     },
                                     "name": "ntext",
                                     "typemap_name": "int"
@@ -2035,8 +2020,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len_trim(text,3)",
-                                        "value": true
+                                        "implied": "len_trim(text,3)"
                                     },
                                     "name": "mtext",
                                     "typemap_name": "int"
@@ -2055,7 +2039,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13c(const char *text, int ntext+implied(len(text,2)), int mtext+implied(len_trim(text,3)))",
-                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2))+value, int mtext +implied(len_trim(text,3))+value)",
+                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
                 "name": "func13c",
                 "options": {},
                 "wrap": {},
@@ -2114,8 +2098,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text2)",
-                                        "value": true
+                                        "implied": "len(text2)"
                                     },
                                     "name": "ntext",
                                     "typemap_name": "int"
@@ -2128,8 +2111,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len_trim(text3)",
-                                        "value": true
+                                        "implied": "len_trim(text3)"
                                     },
                                     "name": "mtext",
                                     "typemap_name": "int"
@@ -2148,7 +2130,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13d(const char *text, int ntext+implied(len(text2)), int mtext+implied(len_trim(text3)))",
-                "declgen": "void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)",
+                "declgen": "void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
                 "name": "func13d",
                 "options": {},
                 "wrap": {},
@@ -2190,9 +2172,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "alloc",
                                         "pointer": [
@@ -2235,7 +2214,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
-                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)",
+                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)))",
                 "name": "callback_set_alloc",
                 "options": {},
                 "wrap": {},
@@ -2283,9 +2262,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2314,9 +2290,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2334,7 +2307,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -2356,9 +2329,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2387,9 +2357,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2422,9 +2389,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2453,9 +2417,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },

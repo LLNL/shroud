@@ -26,7 +26,7 @@ module types_mod
         ! Function:  short short_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  short arg1 +value
+        ! Argument:  short arg1
         ! Statement: f_in_native_scalar
         function short_func(arg1) &
                 result(SHT_rv) &
@@ -41,7 +41,7 @@ module types_mod
         ! Function:  int int_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int arg1 +value
+        ! Argument:  int arg1
         ! Statement: f_in_native_scalar
         function int_func(arg1) &
                 result(SHT_rv) &
@@ -56,7 +56,7 @@ module types_mod
         ! Function:  long long_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  long arg1 +value
+        ! Argument:  long arg1
         ! Statement: f_in_native_scalar
         function long_func(arg1) &
                 result(SHT_rv) &
@@ -71,7 +71,7 @@ module types_mod
         ! Function:  long long long_long_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  long long arg1 +value
+        ! Argument:  long long arg1
         ! Statement: f_in_native_scalar
         function long_long_func(arg1) &
                 result(SHT_rv) &
@@ -86,7 +86,7 @@ module types_mod
         ! Function:  short int short_int_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  short int arg1 +value
+        ! Argument:  short int arg1
         ! Statement: f_in_native_scalar
         function short_int_func(arg1) &
                 result(SHT_rv) &
@@ -101,7 +101,7 @@ module types_mod
         ! Function:  long int long_int_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  long int arg1 +value
+        ! Argument:  long int arg1
         ! Statement: f_in_native_scalar
         function long_int_func(arg1) &
                 result(SHT_rv) &
@@ -116,7 +116,7 @@ module types_mod
         ! Function:  long long int long_long_int_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  long long int arg1 +value
+        ! Argument:  long long int arg1
         ! Statement: f_in_native_scalar
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
@@ -131,7 +131,7 @@ module types_mod
         ! Function:  unsigned unsigned_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned arg1 +value
+        ! Argument:  unsigned arg1
         ! Statement: f_in_native_scalar
         function unsigned_func(arg1) &
                 result(SHT_rv) &
@@ -146,7 +146,7 @@ module types_mod
         ! Function:  unsigned short ushort_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned short arg1 +value
+        ! Argument:  unsigned short arg1
         ! Statement: f_in_native_scalar
         function ushort_func(arg1) &
                 result(SHT_rv) &
@@ -161,7 +161,7 @@ module types_mod
         ! Function:  unsigned int uint_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned int arg1 +value
+        ! Argument:  unsigned int arg1
         ! Statement: f_in_native_scalar
         function uint_func(arg1) &
                 result(SHT_rv) &
@@ -176,7 +176,7 @@ module types_mod
         ! Function:  unsigned long ulong_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned long arg1 +value
+        ! Argument:  unsigned long arg1
         ! Statement: f_in_native_scalar
         function ulong_func(arg1) &
                 result(SHT_rv) &
@@ -191,7 +191,7 @@ module types_mod
         ! Function:  unsigned long long ulong_long_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned long long arg1 +value
+        ! Argument:  unsigned long long arg1
         ! Statement: f_in_native_scalar
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
@@ -206,7 +206,7 @@ module types_mod
         ! Function:  unsigned long int ulong_int_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  unsigned long int arg1 +value
+        ! Argument:  unsigned long int arg1
         ! Statement: f_in_native_scalar
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
@@ -221,7 +221,7 @@ module types_mod
         ! Function:  int8_t int8_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int8_t arg1 +value
+        ! Argument:  int8_t arg1
         ! Statement: f_in_native_scalar
         function int8_func(arg1) &
                 result(SHT_rv) &
@@ -236,7 +236,7 @@ module types_mod
         ! Function:  int16_t int16_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int16_t arg1 +value
+        ! Argument:  int16_t arg1
         ! Statement: f_in_native_scalar
         function int16_func(arg1) &
                 result(SHT_rv) &
@@ -251,7 +251,7 @@ module types_mod
         ! Function:  int32_t int32_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int32_t arg1 +value
+        ! Argument:  int32_t arg1
         ! Statement: f_in_native_scalar
         function int32_func(arg1) &
                 result(SHT_rv) &
@@ -266,7 +266,7 @@ module types_mod
         ! Function:  int64_t int64_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int64_t arg1 +value
+        ! Argument:  int64_t arg1
         ! Statement: f_in_native_scalar
         function int64_func(arg1) &
                 result(SHT_rv) &
@@ -281,7 +281,7 @@ module types_mod
         ! Function:  uint8_t uint8_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  uint8_t arg1 +value
+        ! Argument:  uint8_t arg1
         ! Statement: f_in_native_scalar
         function uint8_func(arg1) &
                 result(SHT_rv) &
@@ -296,7 +296,7 @@ module types_mod
         ! Function:  uint16_t uint16_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  uint16_t arg1 +value
+        ! Argument:  uint16_t arg1
         ! Statement: f_in_native_scalar
         function uint16_func(arg1) &
                 result(SHT_rv) &
@@ -311,7 +311,7 @@ module types_mod
         ! Function:  uint32_t uint32_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  uint32_t arg1 +value
+        ! Argument:  uint32_t arg1
         ! Statement: f_in_native_scalar
         function uint32_func(arg1) &
                 result(SHT_rv) &
@@ -326,7 +326,7 @@ module types_mod
         ! Function:  uint64_t uint64_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  uint64_t arg1 +value
+        ! Argument:  uint64_t arg1
         ! Statement: f_in_native_scalar
         function uint64_func(arg1) &
                 result(SHT_rv) &
@@ -341,7 +341,7 @@ module types_mod
         ! Function:  size_t size_func
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  size_t arg1 +value
+        ! Argument:  size_t arg1
         ! Statement: f_in_native_scalar
         function size_func(arg1) &
                 result(SHT_rv) &
@@ -356,7 +356,7 @@ module types_mod
         ! Function:  bool bool_func
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
-        ! Argument:  bool arg +value
+        ! Argument:  bool arg
         ! Statement: f_in_bool_scalar
         function c_bool_func(arg) &
                 result(SHT_rv) &
@@ -394,7 +394,7 @@ contains
     ! Function:  short short_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  short arg1 +value
+    ! Argument:  short arg1
     ! Statement: f_in_native_scalar
     function short_func(arg1) &
             result(SHT_rv)
@@ -413,7 +413,7 @@ contains
     ! Function:  int int_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
     function int_func(arg1) &
             result(SHT_rv)
@@ -432,7 +432,7 @@ contains
     ! Function:  long long_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg1 +value
+    ! Argument:  long arg1
     ! Statement: f_in_native_scalar
     function long_func(arg1) &
             result(SHT_rv)
@@ -451,7 +451,7 @@ contains
     ! Function:  long long long_long_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long long arg1 +value
+    ! Argument:  long long arg1
     ! Statement: f_in_native_scalar
     function long_long_func(arg1) &
             result(SHT_rv)
@@ -470,7 +470,7 @@ contains
     ! Function:  short int short_int_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  short int arg1 +value
+    ! Argument:  short int arg1
     ! Statement: f_in_native_scalar
     function short_int_func(arg1) &
             result(SHT_rv)
@@ -489,7 +489,7 @@ contains
     ! Function:  long int long_int_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long int arg1 +value
+    ! Argument:  long int arg1
     ! Statement: f_in_native_scalar
     function long_int_func(arg1) &
             result(SHT_rv)
@@ -508,7 +508,7 @@ contains
     ! Function:  long long int long_long_int_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long long int arg1 +value
+    ! Argument:  long long int arg1
     ! Statement: f_in_native_scalar
     function long_long_int_func(arg1) &
             result(SHT_rv)
@@ -527,7 +527,7 @@ contains
     ! Function:  unsigned unsigned_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned arg1 +value
+    ! Argument:  unsigned arg1
     ! Statement: f_in_native_scalar
     function unsigned_func(arg1) &
             result(SHT_rv)
@@ -546,7 +546,7 @@ contains
     ! Function:  unsigned short ushort_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned short arg1 +value
+    ! Argument:  unsigned short arg1
     ! Statement: f_in_native_scalar
     function ushort_func(arg1) &
             result(SHT_rv)
@@ -565,7 +565,7 @@ contains
     ! Function:  unsigned int uint_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned int arg1 +value
+    ! Argument:  unsigned int arg1
     ! Statement: f_in_native_scalar
     function uint_func(arg1) &
             result(SHT_rv)
@@ -584,7 +584,7 @@ contains
     ! Function:  unsigned long ulong_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned long arg1 +value
+    ! Argument:  unsigned long arg1
     ! Statement: f_in_native_scalar
     function ulong_func(arg1) &
             result(SHT_rv)
@@ -603,7 +603,7 @@ contains
     ! Function:  unsigned long long ulong_long_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned long long arg1 +value
+    ! Argument:  unsigned long long arg1
     ! Statement: f_in_native_scalar
     function ulong_long_func(arg1) &
             result(SHT_rv)
@@ -622,7 +622,7 @@ contains
     ! Function:  unsigned long int ulong_int_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  unsigned long int arg1 +value
+    ! Argument:  unsigned long int arg1
     ! Statement: f_in_native_scalar
     function ulong_int_func(arg1) &
             result(SHT_rv)
@@ -641,7 +641,7 @@ contains
     ! Function:  int8_t int8_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int8_t arg1 +value
+    ! Argument:  int8_t arg1
     ! Statement: f_in_native_scalar
     function int8_func(arg1) &
             result(SHT_rv)
@@ -660,7 +660,7 @@ contains
     ! Function:  int16_t int16_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int16_t arg1 +value
+    ! Argument:  int16_t arg1
     ! Statement: f_in_native_scalar
     function int16_func(arg1) &
             result(SHT_rv)
@@ -679,7 +679,7 @@ contains
     ! Function:  int32_t int32_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int32_t arg1 +value
+    ! Argument:  int32_t arg1
     ! Statement: f_in_native_scalar
     function int32_func(arg1) &
             result(SHT_rv)
@@ -698,7 +698,7 @@ contains
     ! Function:  int64_t int64_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int64_t arg1 +value
+    ! Argument:  int64_t arg1
     ! Statement: f_in_native_scalar
     function int64_func(arg1) &
             result(SHT_rv)
@@ -717,7 +717,7 @@ contains
     ! Function:  uint8_t uint8_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  uint8_t arg1 +value
+    ! Argument:  uint8_t arg1
     ! Statement: f_in_native_scalar
     function uint8_func(arg1) &
             result(SHT_rv)
@@ -736,7 +736,7 @@ contains
     ! Function:  uint16_t uint16_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  uint16_t arg1 +value
+    ! Argument:  uint16_t arg1
     ! Statement: f_in_native_scalar
     function uint16_func(arg1) &
             result(SHT_rv)
@@ -755,7 +755,7 @@ contains
     ! Function:  uint32_t uint32_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  uint32_t arg1 +value
+    ! Argument:  uint32_t arg1
     ! Statement: f_in_native_scalar
     function uint32_func(arg1) &
             result(SHT_rv)
@@ -774,7 +774,7 @@ contains
     ! Function:  uint64_t uint64_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  uint64_t arg1 +value
+    ! Argument:  uint64_t arg1
     ! Statement: f_in_native_scalar
     function uint64_func(arg1) &
             result(SHT_rv)
@@ -793,7 +793,7 @@ contains
     ! Function:  size_t size_func
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t arg1 +value
+    ! Argument:  size_t arg1
     ! Statement: f_in_native_scalar
     function size_func(arg1) &
             result(SHT_rv)
@@ -810,7 +810,7 @@ contains
     ! Function:  bool bool_func
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
-    ! Argument:  bool arg +value
+    ! Argument:  bool arg
     ! Statement: f_in_bool_scalar
     function bool_func(arg) &
             result(SHT_rv)

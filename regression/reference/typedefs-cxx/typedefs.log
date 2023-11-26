@@ -1,27 +1,27 @@
 Read yaml typedefs.yaml
 Close typedefs_types.yaml
 struct Struct1Rename
-C c TypeID typefunc(TypeID arg +value)
-C f TypeID typefunc(TypeID arg +value)
+C c TypeID typefunc(TypeID arg)
+C f TypeID typefunc(TypeID arg)
 C c void typestruct(Struct1Rename * arg1)
 C f void typestruct(Struct1Rename * arg1)
-C c int returnBytesForIndexType(IndexType arg +value)
-C f int returnBytesForIndexType(IndexType arg +value)
+C c int returnBytesForIndexType(IndexType arg)
+C f int returnBytesForIndexType(IndexType arg)
 Close wraptypedefs.h
 Close wraptypedefs.cpp
 class Struct1Rename
 typedef TypeID
 typedef IndexType
-Fortran TypeID typefunc(TypeID arg +value)
+Fortran TypeID typefunc(TypeID arg)
 Fortran void typestruct(Struct1Rename * arg1)
-Fortran int returnBytesForIndexType(IndexType arg +value)
-C-interface f TypeID typefunc(TypeID arg +value)
+Fortran int returnBytesForIndexType(IndexType arg)
+C-interface f TypeID typefunc(TypeID arg)
 C-interface f void typestruct(Struct1Rename * arg1)
-C-interface f int returnBytesForIndexType(IndexType arg +value)
+C-interface f int returnBytesForIndexType(IndexType arg)
 Close wrapftypedefs.f
 Close utiltypedefs.cpp
 Close typestypedefs.h
-Python function TypeID typefunc(TypeID arg +value)
+Python function TypeID typefunc(TypeID arg)
 Python function void typestruct(Struct1Rename * arg1)
 Close pytypedefsmodule.cpp
 Close pytypedefsmodule.hpp

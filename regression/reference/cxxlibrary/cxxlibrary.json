@@ -739,9 +739,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -760,7 +757,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(int length=1 +value)",
+                        "declgen": "int check_length(int length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -769,9 +766,6 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -789,9 +783,6 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "long"
@@ -933,9 +924,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -954,7 +942,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(int length=1 +value)",
+                        "declgen": "int check_length(int length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -1090,9 +1078,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "long"
@@ -1111,7 +1096,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(long length=1 +value)",
+                        "declgen": "int check_length(long length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -1238,9 +1223,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1263,7 +1245,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value)",
+                        "declgen": "Class1 * declare(int flag)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1447,9 +1429,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1460,9 +1439,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -1486,15 +1462,12 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, int length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, int length=1)",
                         "fortran_generic": [
                             {
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1505,9 +1478,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -1525,9 +1495,6 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1538,9 +1505,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "long"
@@ -1719,9 +1683,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1732,9 +1693,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "int"
@@ -1758,7 +1716,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, int length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, int length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1920,9 +1878,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1933,9 +1888,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "length",
                                             "typemap_name": "long"
@@ -1959,7 +1911,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, long length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, long length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -3108,9 +3060,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "in1",
                                     "typemap_name": "int"
                                 },
@@ -3164,7 +3113,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))",
+                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out))",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3431,9 +3380,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "in1",
                                     "typemap_name": "int"
                                 },
@@ -3480,9 +3426,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": "false",
                                     "name": "flag",
                                     "typemap_name": "bool"
@@ -3501,7 +3444,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)",
+                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out), bool flag=false)",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3931,9 +3874,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "idx",
                                     "typemap_name": "long"
                                 },
@@ -3956,7 +3896,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(long idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(long idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -3965,9 +3905,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int32_t"
                                 },
@@ -3984,9 +3921,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int64_t"
                                 },
@@ -4129,9 +4063,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int32_t"
                                 },
@@ -4154,7 +4085,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(int32_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4303,9 +4234,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int64_t"
                                 },
@@ -4328,7 +4256,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(int64_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },

@@ -1796,7 +1796,28 @@ class Declaration(Node):
         
     ##############
 
-    def bind_c(self, intent=None, **kwargs):
+    def append_fortran_value(self, t, is_result=False):
+        declarator = self.declarator
+        attrs = declarator.attrs
+        if is_result:
+            pass
+        elif attrs["value"]:
+            t.append("value")
+        elif attrs["value"] is None:
+            is_ptr = declarator.is_indirect()
+            if is_ptr:
+                if self.typemap.name == "void":
+                    # This causes Fortran to dereference the C_PTR
+                    # Otherwise a void * argument becomes void **
+                    if len(declarator.pointer) == 1:
+                        t.append("value")     # void *
+            else:
+                if self.typemap.sgroup == "string":
+                    pass
+                else:
+                    t.append("value")
+    
+    def bind_c(self, intent=None, is_result=False, **kwargs):
         """Generate an argument used with the bind(C) interface from Fortran.
 
         Args:
@@ -1819,8 +1840,7 @@ class Declaration(Node):
                 "Type {} has no value for i_type".format(self.typename)
             )
         t.append(typ)
-        if attrs["value"]:
-            t.append("value")
+        self.append_fortran_value(t, is_result)
         if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
         elif intent == "setter":
@@ -1906,8 +1926,7 @@ class Declaration(Node):
             t.append(ntypemap.f_type)
 
         if not local:  # must be dummy argument
-            if attrs["value"]:
-                t.append("value")
+            self.append_fortran_value(t)
             if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
             elif intent == "setter":

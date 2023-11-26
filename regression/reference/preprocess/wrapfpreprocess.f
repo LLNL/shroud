@@ -137,7 +137,7 @@ module preprocess_mod
         ! Function:  void method3def
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int i=0 +value
+        ! Argument:  int i=0
         ! Statement: f_in_native_scalar
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
@@ -167,7 +167,7 @@ module preprocess_mod
         ! Function:  void exfunc
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int flag +value
+        ! Argument:  int flag
         ! Statement: f_in_native_scalar
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
@@ -244,7 +244,7 @@ contains
     ! Function:  void method3def
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int i=0 +value
+    ! Argument:  int i=0
     ! Statement: f_in_native_scalar
     subroutine user1_method3def_1(obj, i)
         use iso_c_binding, only : C_INT
@@ -300,7 +300,7 @@ contains
     ! Function:  void exfunc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     subroutine user2_exfunc_1(obj, flag)
         use iso_c_binding, only : C_INT

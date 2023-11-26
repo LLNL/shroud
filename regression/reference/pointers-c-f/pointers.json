@@ -384,8 +384,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "value": true
+                                        "intent": "in"
                                     },
                                     "name": "argin",
                                     "typemap_name": "int"
@@ -440,7 +439,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
-                "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
+                "declgen": "void intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))",
                 "name": "intargs",
                 "options": {},
                 "wrap": {
@@ -649,8 +648,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -669,7 +667,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -911,8 +909,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -931,7 +928,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -1539,9 +1536,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvar",
                                     "typemap_name": "int"
                                 },
@@ -1578,7 +1572,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar, int * values +dimension(nvar)+intent(out))",
                 "name": "iota_dimension",
                 "options": {},
                 "wrap": {
@@ -1726,8 +1720,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(values)",
-                                        "value": true
+                                        "implied": "size(values)"
                                     },
                                     "name": "len",
                                     "typemap_name": "int"
@@ -1783,7 +1776,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values)), const int * values +rank(1), int * result +intent(out))",
                 "name": "Sum",
                 "options": {
                     "wrap_lua": false
@@ -2119,8 +2112,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(array)",
-                                        "value": true
+                                        "implied": "size(array)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -2139,7 +2131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array)))",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -2299,8 +2291,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(x)",
-                                        "value": true
+                                        "implied": "size(x)"
                                     },
                                     "name": "x_length",
                                     "typemap_name": "int"
@@ -2319,7 +2310,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x)))",
                 "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
@@ -2477,8 +2468,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(arr)",
-                                        "value": true
+                                        "implied": "size(arr)"
                                     },
                                     "name": "len",
                                     "typemap_name": "size_t"
@@ -2497,7 +2487,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr)))",
                 "name": "accumulate",
                 "options": {},
                 "wrap": {
@@ -2825,9 +2815,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "value",
                                     "typemap_name": "int"
                                 },
@@ -2845,7 +2832,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void setGlobalInt(int value)",
-                "declgen": "void setGlobalInt(int value +value)",
+                "declgen": "void setGlobalInt(int value)",
                 "name": "setGlobalInt",
                 "options": {},
                 "wrap": {
@@ -5362,9 +5349,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -5387,7 +5371,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag +value)",
+                "declgen": "void * returnAddress1(int flag)",
                 "name": "returnAddress1",
                 "options": {},
                 "wrap": {
@@ -5504,9 +5488,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -5529,7 +5510,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag +value)",
+                "declgen": "void * returnAddress2(int flag)",
                 "name": "returnAddress2",
                 "options": {
                     "F_force_wrapper": true

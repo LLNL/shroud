@@ -181,7 +181,7 @@ module top_module
         ! Function:  void function3a
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int i +value
+        ! Argument:  int i
         ! Statement: f_in_native_scalar
         subroutine YYY_TES_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
@@ -194,7 +194,7 @@ module top_module
         ! Function:  void function3a
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  long i +value
+        ! Argument:  long i
         ! Statement: f_in_native_scalar
         subroutine YYY_TES_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
@@ -283,10 +283,10 @@ module top_module
         ! Function:  void FunctionTU
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int arg1 +value
+        ! Argument:  int arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  long arg2 +value
+        ! Argument:  long arg2
         ! Statement: f_in_native_scalar
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
@@ -301,10 +301,10 @@ module top_module
         ! Function:  void FunctionTU
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  float arg1 +value
+        ! Argument:  float arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  double arg2 +value
+        ! Argument:  double arg2
         ! Statement: f_in_native_scalar
         subroutine c_function_tu_instantiation2(arg1, arg2) &
                 bind(C, name="TES_FunctionTU_instantiation2")
@@ -355,13 +355,13 @@ module top_module
         ! Argument:  const char * name
         ! Statement: f_in_char_*
         ! ----------------------------------------
-        ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
+        ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
         ! Statement: f_in_void_scalar
         ! ----------------------------------------
-        ! Argument:  void ( * afree)(double * arr +intent(inout)) +value
+        ! Argument:  void ( * afree)(double * arr +intent(inout))
         ! Statement: f_in_void_scalar
         ! ----------------------------------------
-        ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
+        ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
         ! Statement: f_in_void_scalar
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
@@ -382,7 +382,7 @@ module top_module
         ! Function:  void bindtest
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int arg1 +value
+        ! Argument:  int arg1
         ! Statement: f_in_native_scalar
         subroutine c_bindtest(arg1) &
                 bind(C, name="TES_bindtest")
@@ -575,7 +575,7 @@ contains
     ! Function:  void function3a
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     subroutine F_name_function3a_int(i)
         use iso_c_binding, only : C_INT
@@ -589,7 +589,7 @@ contains
     ! Function:  void function3a
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  long i +value
+    ! Argument:  long i
     ! Statement: f_in_native_scalar
     subroutine F_name_function3a_long(i)
         use iso_c_binding, only : C_LONG
@@ -653,10 +653,10 @@ contains
     ! Function:  void FunctionTU
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg2 +value
+    ! Argument:  long arg2
     ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.
@@ -676,10 +676,10 @@ contains
     ! Function:  void FunctionTU
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float arg1 +value
+    ! Argument:  float arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: f_in_native_scalar
     !>
     !! \brief Function template with two template parameters.
@@ -749,7 +749,7 @@ contains
     ! Function:  void bindtest
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
     subroutine bindtest(arg1)
         use iso_c_binding, only : C_INT

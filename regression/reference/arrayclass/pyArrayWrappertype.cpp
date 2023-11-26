@@ -65,7 +65,7 @@ PY_ArrayWrapper_tp_init(
 // Function:  void setSize
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int size +value
+// Argument:  int size
 // Statement: py_in_native_scalar
 static char PY_setSize__doc__[] =
 "documentation"
@@ -523,7 +523,7 @@ PY_fetchVoidRef(
 // Function:  bool checkPtr
 // Statement: py_function_bool_scalar
 // ----------------------------------------
-// Argument:  void * array +value
+// Argument:  void * array
 // Statement: py_in_void_*
 static char PY_checkPtr__doc__[] =
 "documentation"

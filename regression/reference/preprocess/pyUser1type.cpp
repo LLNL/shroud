@@ -81,7 +81,7 @@ PY_method2(
 // Function:  void method3def
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int i=0 +value
+// Argument:  int i=0
 // Statement: py_in_native_scalar
 #if defined(USE_THREE)
 static char PY_method3def_1__doc__[] =

@@ -146,7 +146,7 @@ module cxxlibrary_mod
         ! Function:  int check_length
         ! Statement: c_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int length=1 +value
+        ! Argument:  int length=1
         ! Statement: c_in_native_scalar
         function c_class1_check_length_1(self, length) &
                 result(SHT_rv) &
@@ -164,7 +164,7 @@ module cxxlibrary_mod
         ! Function:  Class1 * declare
         ! Statement: f_function_shadow_*_this
         ! ----------------------------------------
-        ! Argument:  int flag +value
+        ! Argument:  int flag
         ! Statement: f_in_native_scalar
         subroutine c_class1_declare_0(self, flag) &
                 bind(C, name="CXX_Class1_declare_0")
@@ -179,10 +179,10 @@ module cxxlibrary_mod
         ! Function:  Class1 * declare
         ! Statement: c_function_shadow_*_this
         ! ----------------------------------------
-        ! Argument:  int flag +value
+        ! Argument:  int flag
         ! Statement: c_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int length=1 +value
+        ! Argument:  int length=1
         ! Statement: c_in_native_scalar
         subroutine c_class1_declare_1(self, flag, length) &
                 bind(C, name="CXX_Class1_declare_1")
@@ -240,7 +240,7 @@ module cxxlibrary_mod
         ! Function:  void defaultArgsInOut
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int in1 +value
+        ! Argument:  int in1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
@@ -261,7 +261,7 @@ module cxxlibrary_mod
         ! Function:  void defaultArgsInOut
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int in1 +value
+        ! Argument:  int in1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
@@ -270,7 +270,7 @@ module cxxlibrary_mod
         ! Argument:  int * out2 +intent(out)
         ! Statement: f_out_native_*
         ! ----------------------------------------
-        ! Argument:  bool flag=false +value
+        ! Argument:  bool flag=false
         ! Statement: f_in_bool_scalar
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
                 bind(C, name="CXX_defaultArgsInOut_1")
@@ -286,7 +286,7 @@ module cxxlibrary_mod
         ! Function:  const std::string & getGroupName +len(30)
         ! Statement: c_function_string_&
         ! ----------------------------------------
-        ! Argument:  long idx +value
+        ! Argument:  long idx
         ! Statement: c_in_native_scalar
         function c_get_group_name(idx) &
                 result(SHT_rv) &
@@ -302,7 +302,7 @@ module cxxlibrary_mod
         ! Function:  const std::string & getGroupName +len(30)
         ! Statement: f_function_string_&_buf_copy
         ! ----------------------------------------
-        ! Argument:  int32_t idx +value
+        ! Argument:  int32_t idx
         ! Statement: f_in_native_scalar
         subroutine c_get_group_name_int32_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
@@ -319,7 +319,7 @@ module cxxlibrary_mod
         ! Function:  const std::string & getGroupName +len(30)
         ! Statement: f_function_string_&_buf_copy
         ! ----------------------------------------
-        ! Argument:  int64_t idx +value
+        ! Argument:  int64_t idx
         ! Statement: f_in_native_scalar
         subroutine c_get_group_name_int64_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
@@ -470,7 +470,7 @@ contains
     ! Function:  int check_length
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int length=1 +value
+    ! Argument:  int length=1
     ! Statement: f_in_native_scalar
     !>
     !! \brief Test fortran_generic with default arguments.
@@ -492,9 +492,9 @@ contains
     ! Function:  int check_length
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long length=1 +value
+    ! Argument:  long length=1
     ! Statement: f_in_native_scalar
-    ! Argument:  int length=1 +value
+    ! Argument:  int length=1
     !>
     !! \brief Test fortran_generic with default arguments.
     !!
@@ -515,7 +515,7 @@ contains
     ! Function:  Class1 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     subroutine class1_declare_0(obj, flag)
         use iso_c_binding, only : C_INT
@@ -531,10 +531,10 @@ contains
     ! Function:  Class1 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int length=1 +value
+    ! Argument:  int length=1
     ! Statement: f_in_native_scalar
     subroutine class1_declare_1_int(obj, flag, length)
         use iso_c_binding, only : C_INT
@@ -551,12 +551,12 @@ contains
     ! Function:  Class1 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long length=1 +value
+    ! Argument:  long length=1
     ! Statement: f_in_native_scalar
-    ! Argument:  int length=1 +value
+    ! Argument:  int length=1
     subroutine class1_declare_1_long(obj, flag, length)
         use iso_c_binding, only : C_INT, C_LONG
         class(class1) :: obj
@@ -641,7 +641,7 @@ contains
     ! Function:  void defaultArgsInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int in1 +value
+    ! Argument:  int in1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
@@ -663,7 +663,7 @@ contains
     ! Function:  void defaultArgsInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int in1 +value
+    ! Argument:  int in1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
@@ -672,7 +672,7 @@ contains
     ! Argument:  int * out2 +intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
-    ! Argument:  bool flag=false +value
+    ! Argument:  bool flag=false
     ! Statement: f_in_bool_scalar
     subroutine default_args_in_out_1(in1, out1, out2, flag)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -692,7 +692,7 @@ contains
     ! Function:  const std::string & getGroupName +len(30)
     ! Statement: f_function_string_&_buf_copy
     ! ----------------------------------------
-    ! Argument:  int32_t idx +value
+    ! Argument:  int32_t idx
     ! Statement: f_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args
@@ -715,7 +715,7 @@ contains
     ! Function:  const std::string & getGroupName +len(30)
     ! Statement: f_function_string_&_buf_copy
     ! ----------------------------------------
-    ! Argument:  int64_t idx +value
+    ! Argument:  int64_t idx
     ! Statement: f_in_native_scalar
     !>
     !! \brief String reference function with scalar generic args

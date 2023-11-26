@@ -192,9 +192,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -205,9 +202,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -225,7 +219,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
+                "declgen": "double PassByValue(double arg1, int arg2)",
                 "name": "PassByValue",
                 "options": {},
                 "wrap": {
@@ -1183,9 +1177,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 3.1415,
                                     "name": "arg1",
                                     "typemap_name": "double"
@@ -1204,7 +1195,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -1394,9 +1385,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 3.1415,
                                     "name": "arg1",
                                     "typemap_name": "double"
@@ -1408,9 +1396,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": "true",
                                     "name": "arg2",
                                     "typemap_name": "bool"
@@ -1429,7 +1414,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415, bool arg2=true)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -2050,9 +2035,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "indx",
                                     "typemap_name": "int"
                                 },
@@ -2070,7 +2052,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(int indx)",
-                "declgen": "void OverloadedFunction(int indx +value)",
+                "declgen": "void OverloadedFunction(int indx)",
                 "name": "OverloadedFunction",
                 "options": {},
                 "user_fmt": {
@@ -2273,9 +2255,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2298,7 +2277,7 @@
                     ]
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(ArgType arg +value)",
+                "declgen": "void TemplateArgument(ArgType arg)",
                 "have_template_args": true,
                 "name": "TemplateArgument",
                 "options": {},
@@ -2364,9 +2343,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2384,7 +2360,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(int arg +value)",
+                "declgen": "void TemplateArgument(int arg)",
                 "have_template_args": true,
                 "name": "TemplateArgument",
                 "options": {},
@@ -2621,9 +2597,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2641,7 +2614,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(double arg +value)",
+                "declgen": "void TemplateArgument(double arg)",
                 "gen_headers_typedef": [
                     "int",
                     "double"
@@ -3379,9 +3352,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3399,7 +3369,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3421,9 +3391,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "float"
                                 },
@@ -3456,9 +3423,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3730,9 +3694,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "float"
                                 },
@@ -3750,7 +3711,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -3921,9 +3882,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3941,7 +3899,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -4094,9 +4052,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4114,7 +4069,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value)",
+                "declgen": "int UseDefaultOverload(int num)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -4298,9 +4253,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4311,9 +4263,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "int"
@@ -4332,7 +4281,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value)",
+                "declgen": "int UseDefaultOverload(int num, int offset=0)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -4580,9 +4529,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4593,9 +4539,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "int"
@@ -4607,9 +4550,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "int"
@@ -4628,7 +4568,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value, int stride=1 +value)",
+                "declgen": "int UseDefaultOverload(int num, int offset=0, int stride=1)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -5101,9 +5041,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -5114,9 +5051,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -5134,7 +5068,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value)",
+                "declgen": "int UseDefaultOverload(double type, int num)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -5373,9 +5307,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -5386,9 +5317,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -5399,9 +5327,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "int"
@@ -5420,7 +5345,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value)",
+                "declgen": "int UseDefaultOverload(double type, int num, int offset=0)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -5723,9 +5648,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -5736,9 +5658,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -5749,9 +5668,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "int"
@@ -5763,9 +5679,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "int"
@@ -5784,7 +5697,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)",
+                "declgen": "int UseDefaultOverload(double type, int num, int offset=0, int stride=1)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -6344,9 +6257,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::TypeID"
                                 },
@@ -6364,7 +6274,7 @@
                     "typemap_name": "tutorial::TypeID"
                 },
                 "decl": "TypeID typefunc(TypeID arg)",
-                "declgen": "TypeID typefunc(TypeID arg +value)",
+                "declgen": "TypeID typefunc(TypeID arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -6622,9 +6532,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::EnumTypeID"
                                 },
@@ -6642,7 +6549,7 @@
                     "typemap_name": "tutorial::EnumTypeID"
                 },
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
-                "declgen": "EnumTypeID enumfunc(EnumTypeID arg +value)",
+                "declgen": "EnumTypeID enumfunc(EnumTypeID arg)",
                 "name": "enumfunc",
                 "options": {},
                 "wrap": {
@@ -6910,9 +6817,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::Color"
                                 },
@@ -6930,7 +6834,7 @@
                     "typemap_name": "tutorial::Color"
                 },
                 "decl": "Color colorfunc(Color arg);",
-                "declgen": "Color colorfunc(Color arg +value)",
+                "declgen": "Color colorfunc(Color arg)",
                 "name": "colorfunc",
                 "options": {},
                 "wrap": {
@@ -7518,9 +7422,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "in",
                                     "typemap_name": "int"
                                 },
@@ -7531,9 +7432,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "incr",
                                         "pointer": [
@@ -7574,7 +7472,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
-                "declgen": "int callback1(int in +value, int ( * incr)(int) +value)",
+                "declgen": "int callback1(int in, int ( * incr)(int))",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },

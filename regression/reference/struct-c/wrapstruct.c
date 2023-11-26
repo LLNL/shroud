@@ -50,10 +50,10 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 // Function:  Cstruct1 returnStructByValue
 // Statement: c_function_struct_scalar
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: c_in_native_scalar
 void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 {
@@ -71,10 +71,10 @@ void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv)
 // Function:  Cstruct1 * returnStructPtr1
 // Statement: c_function_struct_*
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: c_in_native_scalar
 Cstruct1 * STR_returnStructPtr1(int i, double d)
 {
@@ -93,10 +93,10 @@ Cstruct1 * STR_returnStructPtr1(int i, double d)
 // Function:  Cstruct1 * returnStructPtr2
 // Statement: c_function_struct_*
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -118,10 +118,10 @@ Cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
 // Function:  Cstruct1 * returnStructPtr2
 // Statement: f_function_struct_*_pointer
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: f_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -167,10 +167,10 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
 // Statement: c_function_shadow_*_capptr
 // ----------------------------------------
-// Argument:  int x +value
+// Argument:  int x
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int y +value
+// Argument:  int y
 // Statement: c_in_native_scalar
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
@@ -203,13 +203,13 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
 // Statement: c_function_shadow_*_capptr
 // ----------------------------------------
-// Argument:  int x +value
+// Argument:  int x
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int y +value
+// Argument:  int y
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int z +value
+// Argument:  int z
 // Statement: c_in_native_scalar
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)

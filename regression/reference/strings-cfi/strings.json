@@ -105,9 +105,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -125,7 +122,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passChar(char status)",
-                "declgen": "void passChar(char status +value)",
+                "declgen": "void passChar(char status)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar."
                 },
@@ -265,9 +262,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -285,7 +279,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharForce(char status)",
-                "declgen": "void passCharForce(char status +value)",
+                "declgen": "void passCharForce(char status)",
                 "doxygen": {
                     "description": "By default no Fortran wrapper is created.\nForce one so it can be tested.\n"
                 },
@@ -5406,9 +5400,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "std::string"
                                 },
@@ -5426,7 +5417,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +value)",
+                "declgen": "int acceptStringInstance(std::string arg1)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -7042,9 +7033,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -7062,7 +7050,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassChar(char status)",
-                "declgen": "void CpassChar(char status +value)",
+                "declgen": "void CpassChar(char status)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
@@ -8391,9 +8379,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -8435,7 +8420,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
-                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI(void * addr, const char * src +api(capi))",
                 "doxygen": {
                     "brief": "Do not NULL terminate input string",
                     "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"

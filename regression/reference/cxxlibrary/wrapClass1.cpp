@@ -58,7 +58,7 @@ int CXX_Class1_check_length_0(CXX_Class1 * self)
 // Function:  int check_length
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int length=1 +value
+// Argument:  int length=1
 // Statement: c_in_native_scalar
 int CXX_Class1_check_length_1(CXX_Class1 * self, int length)
 {
@@ -74,7 +74,7 @@ int CXX_Class1_check_length_1(CXX_Class1 * self, int length)
 // Function:  Class1 * declare
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 {
@@ -88,10 +88,10 @@ void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 // Function:  Class1 * declare
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int length=1 +value
+// Argument:  int length=1
 // Statement: c_in_native_scalar
 void CXX_Class1_declare_1(CXX_Class1 * self, int flag, int length)
 {

@@ -136,7 +136,7 @@ void c_name_special(void)
 // Function:  void function3a
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: c_in_native_scalar
 void YYY_TES_function3a_0(int i)
 {
@@ -149,7 +149,7 @@ void YYY_TES_function3a_0(int i)
 // Function:  void function3a
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  long i +value
+// Argument:  long i
 // Statement: c_in_native_scalar
 void YYY_TES_function3a_1(long i)
 {
@@ -248,10 +248,10 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // Function:  void FunctionTU
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  long arg2 +value
+// Argument:  long arg2
 // Statement: c_in_native_scalar
 void c_name_instantiation1(int arg1, long arg2)
 {
@@ -269,10 +269,10 @@ void c_name_instantiation1(int arg1, long arg2)
 // Function:  void FunctionTU
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  float arg1 +value
+// Argument:  float arg1
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: c_in_native_scalar
 void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
@@ -326,13 +326,13 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // Argument:  const char * name
 // Statement: c_in_char_*
 // ----------------------------------------
-// Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
+// Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
 // Statement: c_in_void_scalar
 // ----------------------------------------
-// Argument:  void ( * afree)(double * arr +intent(inout)) +value
+// Argument:  void ( * afree)(double * arr +intent(inout))
 // Statement: c_in_void_scalar
 // ----------------------------------------
-// Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
+// Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
 // Statement: c_in_void_scalar
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),
@@ -348,7 +348,7 @@ void TES_external_funcs(const char * rdbase, const char * pkg,
 // Function:  void bindtest
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: c_in_native_scalar
 void TES_bindtest(int arg1)
 {

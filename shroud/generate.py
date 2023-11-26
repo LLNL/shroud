@@ -305,19 +305,6 @@ class VerifyAttrs(object):
                     "because it has the assumedtype attribute.".format(argname)
                 )
 
-        # value
-        elif attrs["value"] is None:
-            if is_ptr:
-                if arg_typemap.name == "void":
-                    # This causes Fortran to dereference the C_PTR
-                    # Otherwise a void * argument becomes void **
-                    if len(arg.declarator.pointer) == 1:
-                        attrs["value"] = True  # void *
-#                    else:
-#                        attrs["value"] = None # void **  XXX intent(out)?
-            else:
-                attrs["value"] = True
-
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
@@ -604,7 +591,6 @@ class GenFunctions(object):
 
         api = None
         deref = None
-        value = None
         if sgroup in ["char", "string"]:
             deref = "allocatable"
         elif sgroup == "vector":
@@ -617,7 +603,6 @@ class GenFunctions(object):
 #            if meta["dimension"] is None:
 #                api = "fapi" 
         else:
-            value = True
             deref = None
 
         ##########
@@ -655,7 +640,6 @@ class GenFunctions(object):
         attrs = dict(
             val=dict(
                 intent="in",
-                value=value,
             )
         )
         dim = declarator.metaattrs["dimension"]

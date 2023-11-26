@@ -15,15 +15,15 @@ Close pyCstruct_numpytype.c
 class Arrays1
 Python method Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)
 Close pyArrays1type.c
-Python function int passStructByValue(Cstruct1 arg +value)
+Python function int passStructByValue(Cstruct1 arg)
 Python function int passStruct1(const Cstruct1 * arg)
 Python function int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))
 Python function int acceptStructInPtr(Cstruct1 * arg +intent(in))
-Python function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)
+Python function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)
 Python function void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
-Python function Cstruct1 returnStructByValue(int i +value, double d +value)
-Python function Cstruct1 * returnStructPtr1(int i +value, double d +value)
-Python function Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))
+Python function Cstruct1 returnStructByValue(int i, double d)
+Python function Cstruct1 * returnStructPtr1(int i, double d)
+Python function Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))
 Python function Cstruct_list * get_global_struct_list(void)
 Close pystructmodule.c
 Close pystructutil.c

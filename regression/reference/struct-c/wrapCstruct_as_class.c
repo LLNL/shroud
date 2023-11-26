@@ -35,7 +35,7 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 // Function:  void set_x1
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 // start STR_Cstruct_as_class_set_x1
 void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
@@ -68,7 +68,7 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 // Function:  void set_y1
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 // start STR_Cstruct_as_class_set_y1
 void STR_Cstruct_as_class_set_y1(STR_Cstruct_as_class * self, int val)

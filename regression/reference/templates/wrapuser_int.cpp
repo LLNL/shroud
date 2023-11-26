@@ -25,10 +25,10 @@ extern "C" {
 // Function:  void nested
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: c_in_native_scalar
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,
     double arg2)

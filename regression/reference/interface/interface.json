@@ -101,9 +101,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -114,9 +111,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -134,7 +128,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double Function2(double arg1, int arg2)",
-                "declgen": "double Function2(double arg1 +value, int arg2 +value)",
+                "declgen": "double Function2(double arg1, int arg2)",
                 "name": "Function2",
                 "options": {},
                 "wrap": {

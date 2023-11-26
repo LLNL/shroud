@@ -63,9 +63,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -83,7 +80,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void UpdateAsFloat(float arg)",
-                "declgen": "void UpdateAsFloat(float arg +value)",
+                "declgen": "void UpdateAsFloat(float arg)",
                 "name": "UpdateAsFloat",
                 "options": {
                     "F_force_wrapper": true
@@ -225,9 +222,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -245,7 +239,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void UpdateAsDouble(double arg)",
-                "declgen": "void UpdateAsDouble(double arg +value)",
+                "declgen": "void UpdateAsDouble(double arg)",
                 "name": "UpdateAsDouble",
                 "options": {
                     "F_force_wrapper": true
@@ -503,9 +497,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -523,7 +514,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(double arg +value)",
+                "declgen": "void GenericReal(double arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -532,9 +523,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -551,9 +539,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -663,9 +648,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -683,7 +665,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(float arg +value)",
+                "declgen": "void GenericReal(float arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -789,9 +771,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -809,7 +788,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(double arg +value)",
+                "declgen": "void GenericReal(double arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -909,9 +888,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -922,9 +898,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -942,7 +915,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(long arg1 +value, long arg2 +value)",
+                "declgen": "long GenericReal2(long arg1, long arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -952,9 +925,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -965,9 +935,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -984,9 +951,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -997,9 +961,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -1163,9 +1124,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -1176,9 +1134,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -1196,7 +1151,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(int arg1 +value, int arg2 +value)",
+                "declgen": "long GenericReal2(int arg1, int arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -1357,9 +1312,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -1370,9 +1322,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -1390,7 +1339,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(long arg1 +value, long arg2 +value)",
+                "declgen": "long GenericReal2(long arg1, long arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -1562,9 +1511,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1582,7 +1528,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values, int nvalues +value)",
+                "declgen": "int SumValues(const int * values, int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -1610,9 +1556,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1648,9 +1591,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1686,9 +1626,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1882,9 +1819,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1902,7 +1836,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(0), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(0), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -2100,9 +2034,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -2120,7 +2051,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(1), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(1), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -2320,9 +2251,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -2340,7 +2268,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(2), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(2), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -2529,9 +2457,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2557,9 +2482,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2577,7 +2499,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2602,9 +2524,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2630,9 +2549,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2665,9 +2581,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2696,9 +2609,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2734,9 +2644,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2765,9 +2672,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3000,9 +2904,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -3028,9 +2929,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3048,7 +2946,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3284,9 +3182,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -3315,9 +3210,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3335,7 +3227,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to +rank(1), int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3578,9 +3470,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -3609,9 +3498,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3629,7 +3515,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from +rank(1), int nfrom +value, int * to +rank(1), int nto +value)",
+                "declgen": "void AssignValues(const int * from +rank(1), int nfrom, int * to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3850,9 +3736,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -3868,9 +3751,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "int"
                                 },
@@ -3882,8 +3762,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -3902,7 +3781,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr +value, int type +value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(void * addr, int type, size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3928,8 +3807,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -3942,8 +3820,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -3981,8 +3858,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -3995,8 +3871,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4197,8 +4072,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4211,8 +4085,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4231,7 +4104,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -4437,8 +4310,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4451,8 +4323,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4471,7 +4342,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -4650,9 +4521,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -4669,8 +4537,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4683,8 +4550,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4703,7 +4569,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(void * addr +value, int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(void * addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -4729,8 +4595,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4743,8 +4608,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4782,8 +4646,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4796,8 +4659,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -5026,8 +4888,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -5040,8 +4901,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -5060,7 +4920,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -5294,8 +5154,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -5308,8 +5167,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -5328,7 +5186,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -6904,9 +6762,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -6924,7 +6779,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -6945,9 +6800,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "inew",
                                     "typemap_name": "int"
                                 },
@@ -6979,9 +6831,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -7162,9 +7011,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "inew",
                                     "typemap_name": "int"
                                 },
@@ -7182,7 +7028,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -7363,9 +7209,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -7383,7 +7226,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {

@@ -95,10 +95,10 @@ module clibrary_mod
     ! Function:  double PassByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1 +value
+    ! Argument:  double arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     ! start pass_by_value
     interface
@@ -139,7 +139,7 @@ module clibrary_mod
     ! Function:  double PassByValueMacro
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     interface
         function pass_by_value_macro(arg2) &
@@ -156,7 +156,7 @@ module clibrary_mod
     ! Function:  void checkBool
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const bool arg1 +value
+    ! Argument:  const bool arg1
     ! Statement: f_in_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool * arg2 +intent(out)
@@ -351,7 +351,7 @@ module clibrary_mod
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Statement: c_out_char_*
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+value
+    ! Argument:  int ltext +implied(len(text))
     ! Statement: c_in_native_scalar
     ! start c_implied_text_len
     interface
@@ -372,7 +372,7 @@ module clibrary_mod
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char_*_buf
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+value
+    ! Argument:  int ltext +implied(len(text))
     ! Statement: f_in_native_scalar
     ! start c_implied_text_len_bufferify
     interface
@@ -395,10 +395,10 @@ module clibrary_mod
     ! Argument:  const char * text
     ! Statement: f_in_char_*
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+value
+    ! Argument:  int ltext +implied(len(text))
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(false)+value
+    ! Argument:  bool flag +implied(false)
     ! Statement: f_in_bool_scalar
     interface
         function c_implied_len(text, ltext, flag) &
@@ -420,10 +420,10 @@ module clibrary_mod
     ! Argument:  const char * text
     ! Statement: f_in_char_*
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len_trim(text))+value
+    ! Argument:  int ltext +implied(len_trim(text))
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(true)+value
+    ! Argument:  bool flag +implied(true)
     ! Statement: f_in_bool_scalar
     interface
         function c_implied_len_trim(text, ltext, flag) &
@@ -442,7 +442,7 @@ module clibrary_mod
     ! Function:  bool ImpliedBoolTrue
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(true)+value
+    ! Argument:  bool flag +implied(true)
     ! Statement: f_in_bool_scalar
     interface
         function c_implied_bool_true(flag) &
@@ -459,7 +459,7 @@ module clibrary_mod
     ! Function:  bool ImpliedBoolFalse
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(false)+value
+    ! Argument:  bool flag +implied(false)
     ! Statement: f_in_bool_scalar
     interface
         function c_implied_bool_false(flag) &
@@ -517,7 +517,7 @@ module clibrary_mod
     ! Function:  void passVoidStarStar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * in +intent(in)+value
+    ! Argument:  void * in +intent(in)
     ! Statement: f_in_void_*
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
@@ -617,10 +617,10 @@ module clibrary_mod
     ! Function:  void callback1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(void) +external+value
+    ! Argument:  void ( * incr)(void) +external
     ! Statement: f_in_void_scalar
     ! start c_callback1
     interface
@@ -639,10 +639,10 @@ module clibrary_mod
     ! Function:  void callback1a
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(void) +external+value
+    ! Argument:  void ( * incr)(void) +external
     ! Statement: f_in_void_scalar
     ! start c_callback1a
     interface
@@ -661,13 +661,13 @@ module clibrary_mod
     ! Function:  void callback2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Statement: f_in_void_*
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+value
+    ! Argument:  void ( * incr)(int *) +external
     ! Statement: f_in_void_scalar
     interface
         subroutine c_callback2(type, in, incr) &
@@ -691,7 +691,7 @@ module clibrary_mod
     ! Argument:  void * in +assumedtype
     ! Statement: c_in_void_*
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+value
+    ! Argument:  void ( * incr)(int *) +external
     ! Statement: c_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -719,7 +719,7 @@ module clibrary_mod
     ! Argument:  void * in +assumedtype
     ! Statement: f_in_void_*
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+value
+    ! Argument:  void ( * incr)(int *) +external
     ! Statement: f_in_void_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -743,13 +743,13 @@ module clibrary_mod
     ! Function:  void callback_set_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int tc +value
+    ! Argument:  int tc
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Statement: f_inout_struct_*
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value
+    ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout))
     ! Statement: f_in_void_scalar
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &
@@ -788,10 +788,10 @@ contains
     ! Function:  double PassByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1 +value
+    ! Argument:  double arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     ! start pass_by_value
     function pass_by_value(arg1, arg2) &
@@ -836,7 +836,7 @@ contains
     ! Function:  double PassByValueMacro
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     !>
     !! PassByValueMacro is a #define macro. Force a C wrapper
@@ -857,7 +857,7 @@ contains
     ! Function:  void checkBool
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const bool arg1 +value
+    ! Argument:  const bool arg1
     ! Statement: f_in_bool_scalar
     ! ----------------------------------------
     ! Argument:  bool * arg2 +intent(out)
@@ -1147,7 +1147,7 @@ contains
     ! Function:  void passVoidStarStar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * in +intent(in)+value
+    ! Argument:  void * in +intent(in)
     ! Statement: f_in_void_*
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
@@ -1244,7 +1244,7 @@ contains
     ! Function:  void callback1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     !>
     !! \brief Test function pointer
@@ -1265,7 +1265,7 @@ contains
     ! Function:  void callback1a
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     !>
     !! \brief Test function pointer
@@ -1287,7 +1287,7 @@ contains
     ! Function:  void callback2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: f_in_native_scalar
     !>
     !! \brief Test function pointer
@@ -1334,7 +1334,7 @@ contains
     ! Function:  void callback_set_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int tc +value
+    ! Argument:  int tc
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)

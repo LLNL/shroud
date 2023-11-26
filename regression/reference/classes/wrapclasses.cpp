@@ -43,7 +43,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // Function:  Class1::DIRECTION directionFunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  Class1::DIRECTION arg +value
+// Argument:  Class1::DIRECTION arg
 // Statement: c_in_native_scalar
 int CLA_directionFunc(int arg)
 {
@@ -65,7 +65,7 @@ int CLA_directionFunc(int arg)
 // Function:  void passClassByValue
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  Class1 arg +value
+// Argument:  Class1 arg
 // Statement: c_in_shadow_scalar
 void CLA_passClassByValue(CLA_Class1 arg)
 {
@@ -193,7 +193,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // Function:  Class1 getClassCopy
 // Statement: c_function_shadow_scalar_capptr
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
@@ -210,7 +210,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // Function:  void set_global_flag
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int arg +value
+// Argument:  int arg
 // Statement: c_in_native_scalar
 void CLA_set_global_flag(int arg)
 {

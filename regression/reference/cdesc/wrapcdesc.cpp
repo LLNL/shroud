@@ -85,7 +85,7 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // Argument:  std::string & name +intent(in)
 // Statement: c_in_string_&
 // ----------------------------------------
-// Argument:  void * value +api(cdesc)+intent(in)+rank(0)+value
+// Argument:  void * value +api(cdesc)+intent(in)+rank(0)
 // Statement: c_in_void_*
 void CDE_GetScalar1(char * name, void * value)
 {

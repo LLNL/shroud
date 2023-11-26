@@ -30,12 +30,12 @@ argument 'arg1' must not have value=True because it has the assumedtype attribut
 --------------------
 Node: func3
 line 35
-void func3(int arg1 +charlen+value)
+void func3(int arg1 +charlen)
 charlen attribute can only be used on 'char *'
 --------------------
 Node: func3b
 line 36
-void func3b(char arg1 +charlen+value)
+void func3b(char arg1 +charlen)
 charlen attribute can only be used on 'char *'
 --------------------
 Node: func3c
@@ -125,37 +125,37 @@ Illegal value 'none' for owner attribute. Must be 'caller' or 'library'.
 --------------------
 Node: func13
 line 67
-void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3))+value)
+void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
 Too many arguments to 'size': size(in,2,3)
 --------------------
 Node: func13b
 line 69
-void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none))+value)
+void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))
 Unknown argument 'none': size(none)
 --------------------
 Node: func13c
 line 71
-void func13c(const char * text, int ntext +implied(len(text,2))+value, int mtext +implied(len_trim(text,3))+value)
+void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len': len(text,2)
 --------------------
 Node: func13c
 line 71
-void func13c(const char * text, int ntext +implied(len(text,2))+value, int mtext +implied(len_trim(text,3))+value)
+void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len_trim': len_trim(text,3)
 --------------------
 Node: func13d
 line 74
-void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)
+void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text2': len(text2)
 --------------------
 Node: func13d
 line 74
-void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)
+void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text3': len_trim(text3)
 --------------------
 Node: AssignValues
 line 106
-void AssignValues(const int * from, int nfrom +value, int * to +intent(out), int nto +value)
+void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)
 'rank' attribute must be 0-7, not '8'
 
 ----------------------------------------
@@ -187,17 +187,17 @@ dimension attribute can only be used on pointer and references
 --------------------
 Node: func8
 line 47
-void func8(int arg1 +intent(none)+value)
+void func8(int arg1 +intent(none))
 Bad value for intent: none
 --------------------
 Node: func8a
 line 48
-void func8a(int arg1 +intent(out)+value)
+void func8a(int arg1 +intent(out))
 Only pointer arguments may have intent of 'out' or 'inout'
 --------------------
 Node: callback_set_alloc
 line 78
-void callback_set_alloc(void ( * alloc)(int tc +intent(none)) +value)
+void callback_set_alloc(void ( * alloc)(int tc +intent(none)))
 Bad value for intent: none
 --------------------
 Node: func0b
@@ -236,7 +236,7 @@ Cannot have attribute 'deref' on intent(in) argument 'arg1'
 --------------------
 Node: func10
 line 55
-void func10(int arg1 +api(none)+value)
+void func10(int arg1 +api(none))
 'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
 Wrote wraperror.h
 Wrote wraperror.cpp

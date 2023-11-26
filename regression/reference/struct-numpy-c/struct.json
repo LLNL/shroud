@@ -915,9 +915,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "Cstruct1"
                                 },
@@ -935,7 +932,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
-                "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "declgen": "int passStructByValue(Cstruct1 arg)",
                 "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
@@ -1453,9 +1450,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1466,9 +1460,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1486,7 +1477,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1723,9 +1714,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1736,9 +1724,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1756,7 +1741,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
-                "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "declgen": "Cstruct1 returnStructByValue(int i, double d)",
                 "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
@@ -1880,9 +1865,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1893,9 +1875,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1918,7 +1897,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i, double d)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -2044,9 +2023,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -2057,9 +2033,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -2101,7 +2074,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -2374,9 +2347,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -2387,9 +2357,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -2412,7 +2379,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x, int y)",
                 "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -2517,9 +2484,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -2530,9 +2494,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -2543,9 +2504,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "z",
                                     "typemap_name": "int"
                                 },
@@ -2568,7 +2526,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",

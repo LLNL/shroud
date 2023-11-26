@@ -63,7 +63,7 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // Function:  void method3def
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int i=0 +value
+// Argument:  int i=0
 // Statement: c_in_native_scalar
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {

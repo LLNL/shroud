@@ -2,11 +2,11 @@ Read yaml error.yaml
 Close error_types.yaml
 class Cstruct_as_subclass
 C f int get_x1(void)
-C f void set_x1(int val +intent(in)+value)
+C f void set_x1(int val +intent(in))
 C f int get_y1(void)
-C f void set_y1(int val +intent(in)+value)
+C f void set_y1(int val +intent(in))
 C f int get_z1(void)
-C f void set_z1(int val +intent(in)+value)
+C f void set_z1(int val +intent(in))
 Close wrapCstruct_as_subclass.h
 Close wrapCstruct_as_subclass.cpp
 C c void BadFstatements(void)
@@ -19,17 +19,17 @@ Close wraperror.h
 Close wraperror.cpp
 class Cstruct_as_subclass
 Fortran int get_x1(void)
-Fortran void set_x1(int val +intent(in)+value)
+Fortran void set_x1(int val +intent(in))
 Fortran int get_y1(void)
-Fortran void set_y1(int val +intent(in)+value)
+Fortran void set_y1(int val +intent(in))
 Fortran int get_z1(void)
-Fortran void set_z1(int val +intent(in)+value)
+Fortran void set_z1(int val +intent(in))
 C-interface f int get_x1(void)
-C-interface f void set_x1(int val +intent(in)+value)
+C-interface f void set_x1(int val +intent(in))
 C-interface f int get_y1(void)
-C-interface f void set_y1(int val +intent(in)+value)
+C-interface f void set_y1(int val +intent(in))
 C-interface f int get_z1(void)
-C-interface f void set_z1(int val +intent(in)+value)
+C-interface f void set_z1(int val +intent(in))
 Fortran void BadFstatements(void)
 Fortran void AssumedRank(int * data +rank(0))
 Fortran void AssumedRank(int * data +rank(1))

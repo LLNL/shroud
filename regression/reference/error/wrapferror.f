@@ -73,7 +73,7 @@ module error_mod
         ! Function:  void set_x1
         ! Statement: f_setter
         ! ----------------------------------------
-        ! Argument:  int val +intent(in)+value
+        ! Argument:  int val +intent(in)
         ! Statement: f_setter_native_scalar
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_x1")
@@ -103,7 +103,7 @@ module error_mod
         ! Function:  void set_y1
         ! Statement: f_setter
         ! ----------------------------------------
-        ! Argument:  int val +intent(in)+value
+        ! Argument:  int val +intent(in)
         ! Statement: f_setter_native_scalar
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_y1")
@@ -133,7 +133,7 @@ module error_mod
         ! Function:  void set_z1
         ! Statement: f_setter
         ! ----------------------------------------
-        ! Argument:  int val +intent(in)+value
+        ! Argument:  int val +intent(in)
         ! Statement: f_setter_native_scalar
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_z1")
@@ -247,7 +247,7 @@ contains
     ! Function:  void set_x1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
@@ -277,7 +277,7 @@ contains
     ! Function:  void set_y1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
@@ -307,7 +307,7 @@ contains
     ! Function:  void set_z1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT

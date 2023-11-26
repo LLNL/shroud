@@ -120,9 +120,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "TypeID"
                                 },
@@ -140,7 +137,7 @@
                     "typemap_name": "TypeID"
                 },
                 "decl": "TypeID typefunc(TypeID arg);",
-                "declgen": "TypeID typefunc(TypeID arg +value)",
+                "declgen": "TypeID typefunc(TypeID arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -556,9 +553,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "IndexType"
                                 },
@@ -576,7 +570,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int returnBytesForIndexType(IndexType arg);",
-                "declgen": "int returnBytesForIndexType(IndexType arg +value)",
+                "declgen": "int returnBytesForIndexType(IndexType arg)",
                 "name": "returnBytesForIndexType",
                 "options": {
                     "wrap_python": false

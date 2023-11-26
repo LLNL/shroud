@@ -24,7 +24,7 @@ extern "C" {
 // Function:  TypeID typefunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg +value
+// Argument:  TypeID arg
 // Statement: c_in_native_scalar
 // start TYP_typefunc
 TYP_TypeID TYP_typefunc(TYP_TypeID arg)
@@ -55,7 +55,7 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 // Function:  int returnBytesForIndexType
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  IndexType arg +value
+// Argument:  IndexType arg
 // Statement: c_in_native_scalar
 // start TYP_returnBytesForIndexType
 int TYP_returnBytesForIndexType(TYP_IndexType arg)

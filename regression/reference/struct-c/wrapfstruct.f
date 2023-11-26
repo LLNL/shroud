@@ -185,7 +185,7 @@ module struct_mod
     ! Function:  void set_x1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_cstruct_as_class_set_x1
     interface
@@ -223,7 +223,7 @@ module struct_mod
     ! Function:  void set_y1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_cstruct_as_class_set_y1
     interface
@@ -261,7 +261,7 @@ module struct_mod
     ! Function:  void set_x1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_cstruct_as_subclass_set_x1
     interface
@@ -299,7 +299,7 @@ module struct_mod
     ! Function:  void set_y1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_cstruct_as_subclass_set_y1
     interface
@@ -337,7 +337,7 @@ module struct_mod
     ! Function:  void set_z1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_cstruct_as_subclass_set_z1
     interface
@@ -356,7 +356,7 @@ module struct_mod
     ! Function:  int passStructByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Cstruct1 arg +value
+    ! Argument:  Cstruct1 arg
     ! Statement: f_in_struct_scalar
     ! start pass_struct_by_value
     interface
@@ -462,10 +462,10 @@ module struct_mod
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Statement: f_out_struct_*
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     interface
         subroutine accept_struct_out_ptr(arg, i, d) &
@@ -498,10 +498,10 @@ module struct_mod
     ! Function:  Cstruct1 returnStructByValue
     ! Statement: f_function_struct_scalar
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     interface
         subroutine c_return_struct_by_value(i, d, SHT_rv) &
@@ -519,10 +519,10 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr1
     ! Statement: f_function_struct_*_pointer
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     interface
         function c_return_struct_ptr1(i, d) &
@@ -540,10 +540,10 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr2
     ! Statement: c_function_struct_*
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -565,10 +565,10 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr2
     ! Statement: f_function_struct_*_pointer
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -622,10 +622,10 @@ module struct_mod
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
-    ! Argument:  int x +value
+    ! Argument:  int x
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int y +value
+    ! Argument:  int y
     ! Statement: f_in_native_scalar
     interface
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
@@ -663,13 +663,13 @@ module struct_mod
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
-    ! Argument:  int x +value
+    ! Argument:  int x
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int y +value
+    ! Argument:  int y
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int z +value
+    ! Argument:  int z
     ! Statement: f_in_native_scalar
     interface
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
@@ -839,7 +839,7 @@ contains
     ! Function:  void set_x1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start cstruct_as_class_set_x1
     subroutine cstruct_as_class_set_x1(obj, val)
@@ -873,7 +873,7 @@ contains
     ! Function:  void set_y1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start cstruct_as_class_set_y1
     subroutine cstruct_as_class_set_y1(obj, val)
@@ -910,7 +910,7 @@ contains
     ! Function:  void set_x1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start cstruct_as_subclass_set_x1
     subroutine cstruct_as_subclass_set_x1(obj, val)
@@ -944,7 +944,7 @@ contains
     ! Function:  void set_y1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start cstruct_as_subclass_set_y1
     subroutine cstruct_as_subclass_set_y1(obj, val)
@@ -978,7 +978,7 @@ contains
     ! Function:  void set_z1
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start cstruct_as_subclass_set_z1
     subroutine cstruct_as_subclass_set_z1(obj, val)
@@ -1000,7 +1000,7 @@ contains
     ! Function:  int passStructByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Cstruct1 arg +value
+    ! Argument:  Cstruct1 arg
     ! Statement: f_in_struct_scalar
     ! start pass_struct_by_value
     function pass_struct_by_value(arg) &
@@ -1089,10 +1089,10 @@ contains
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Statement: f_out_struct_*
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     !>
     !! Pass name argument which will build a bufferify function.
@@ -1128,10 +1128,10 @@ contains
     ! Function:  Cstruct1 returnStructByValue
     ! Statement: f_function_struct_scalar
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     function return_struct_by_value(i, d) &
             result(SHT_rv)
@@ -1148,10 +1148,10 @@ contains
     ! Function:  Cstruct1 * returnStructPtr1
     ! Statement: f_function_struct_*_pointer
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     !>
     !! \brief Return a pointer to a struct
@@ -1175,10 +1175,10 @@ contains
     ! Function:  Cstruct1 * returnStructPtr2
     ! Statement: f_function_struct_*_pointer
     ! ----------------------------------------
-    ! Argument:  int i +value
+    ! Argument:  int i
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  double d +value
+    ! Argument:  double d
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -1238,10 +1238,10 @@ contains
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
-    ! Argument:  int x +value
+    ! Argument:  int x
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int y +value
+    ! Argument:  int y
     ! Statement: f_in_native_scalar
     function create_cstruct_as_class_args(x, y) &
             result(SHT_rv)
@@ -1275,13 +1275,13 @@ contains
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
-    ! Argument:  int x +value
+    ! Argument:  int x
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int y +value
+    ! Argument:  int y
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int z +value
+    ! Argument:  int z
     ! Statement: f_in_native_scalar
     function create_cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)

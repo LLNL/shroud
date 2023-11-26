@@ -104,7 +104,7 @@ module cdesc_mod
         ! Argument:  std::string & name +intent(in)
         ! Statement: c_in_string_&
         ! ----------------------------------------
-        ! Argument:  void * value +api(cdesc)+intent(in)+rank(0)+value
+        ! Argument:  void * value +api(cdesc)+intent(in)+rank(0)
         ! Statement: c_in_void_*
         subroutine c_get_scalar1(name, value) &
                 bind(C, name="CDE_GetScalar1")

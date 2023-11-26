@@ -265,7 +265,7 @@ fail:
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Statement: py_function_vector_list_targ_native_scalar
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: py_in_native_scalar
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
@@ -314,7 +314,7 @@ fail:
 // Argument:  int * arg +intent(in)+rank(2)
 // Statement: py_in_native_*_list
 // ----------------------------------------
-// Argument:  int len +implied(size(arg,2))+value
+// Argument:  int len +implied(size(arg,2))
 // Exact:     py_default
 static char PY_returnDim2__doc__[] =
 "documentation"

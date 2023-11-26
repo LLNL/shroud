@@ -48,7 +48,7 @@ module library_mod
         ! Function:  void method1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  MPI_Comm comm +value
+        ! Argument:  MPI_Comm comm
         ! Statement: f_in_unknown_scalar
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
@@ -82,7 +82,7 @@ contains
     ! Function:  void method1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  MPI_Comm comm +value
+    ! Argument:  MPI_Comm comm
     ! Statement: f_in_unknown_scalar
     subroutine class2_method1(obj, comm)
         class(class2) :: obj

@@ -206,7 +206,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 self.set_f_module(fileinfo.module_use,
                                   "iso_c_binding", "C_PTR")
             else:
-                output.append(ast.gen_arg_as_fortran())
+                output.append(ast.gen_arg_as_fortran(local=True))
                 self.update_f_module(
                     fileinfo.module_use,
                     ntypemap.i_module or ntypemap.f_module,
@@ -995,7 +995,7 @@ rv = .false.
                     )
 
                 if subprogram == "function":
-                    arg_c_decl.append(ast.bind_c(name=key, params=None))
+                    arg_c_decl.append(ast.bind_c(name=key, is_result=True, params=None))
                 arguments = ",\t ".join(arg_f_names)
                 if options.literalinclude:
                     iface.append("! start abstract " + key)
@@ -1263,7 +1263,7 @@ rv = .false.
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(name=fmt_result.F_result))
+                arg_c_decl.append(ast.bind_c(is_result=True, name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,

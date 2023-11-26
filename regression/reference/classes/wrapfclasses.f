@@ -215,7 +215,7 @@ module classes_mod
     ! Function:  Class1
     ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start c_class1_ctor_flag
     interface
@@ -305,7 +305,7 @@ module classes_mod
     ! Argument:  std::string & name +intent(in)
     ! Statement: c_in_string_&
     ! ----------------------------------------
-    ! Argument:  bool flag +value
+    ! Argument:  bool flag
     ! Statement: c_in_bool_scalar
     ! start c_class1_return_this_buffer
     interface
@@ -331,7 +331,7 @@ module classes_mod
     ! Argument:  std::string & name +intent(in)
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  bool flag +value
+    ! Argument:  bool flag
     ! Statement: f_in_bool_scalar
     ! start c_class1_return_this_buffer_bufferify
     interface
@@ -408,7 +408,7 @@ module classes_mod
     ! Function:  DIRECTION directionFunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  DIRECTION arg +value
+    ! Argument:  DIRECTION arg
     ! Statement: f_in_native_scalar
     ! start c_class1_direction_func
     interface
@@ -466,7 +466,7 @@ module classes_mod
     ! Function:  void set_test
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_class1_set_test
     interface
@@ -614,7 +614,7 @@ module classes_mod
     ! Function:  void allocate
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     ! start c_data_allocate
     interface
@@ -697,7 +697,7 @@ module classes_mod
     ! Function:  void set_nitems
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start c_data_set_nitems
     interface
@@ -752,7 +752,7 @@ module classes_mod
     ! Function:  Class1::DIRECTION directionFunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Class1::DIRECTION arg +value
+    ! Argument:  Class1::DIRECTION arg
     ! Statement: f_in_native_scalar
     interface
         function direction_func(arg) &
@@ -769,7 +769,7 @@ module classes_mod
     ! Function:  void passClassByValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Class1 arg +value
+    ! Argument:  Class1 arg
     ! Statement: f_in_shadow_scalar
     interface
         subroutine c_pass_class_by_value(arg) &
@@ -886,7 +886,7 @@ module classes_mod
     ! Function:  Class1 getClassCopy
     ! Statement: f_function_shadow_scalar_capptr
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     interface
         function c_get_class_copy(flag, SHT_rv) &
@@ -905,7 +905,7 @@ module classes_mod
     ! Function:  void set_global_flag
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg +value
+    ! Argument:  int arg
     ! Statement: f_in_native_scalar
     interface
         subroutine set_global_flag(arg) &
@@ -1024,7 +1024,7 @@ contains
     ! Function:  Class1
     ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
@@ -1116,7 +1116,7 @@ contains
     ! Argument:  std::string & name +intent(in)
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  bool flag +value
+    ! Argument:  bool flag
     ! Statement: f_in_bool_scalar
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
@@ -1191,7 +1191,7 @@ contains
     ! Function:  DIRECTION directionFunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  DIRECTION arg +value
+    ! Argument:  DIRECTION arg
     ! Statement: f_in_native_scalar
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
@@ -1243,7 +1243,7 @@ contains
     ! Function:  void set_test
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
@@ -1460,7 +1460,7 @@ contains
     ! Function:  void allocate
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     ! start data_allocate
     subroutine data_allocate(obj, n)
@@ -1533,7 +1533,7 @@ contains
     ! Function:  void set_nitems
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  int val +intent(in)+value
+    ! Argument:  int val +intent(in)
     ! Statement: f_setter_native_scalar
     ! start data_set_nitems
     subroutine data_set_nitems(obj, val)
@@ -1592,7 +1592,7 @@ contains
     ! Function:  Class1::DIRECTION directionFunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Class1::DIRECTION arg +value
+    ! Argument:  Class1::DIRECTION arg
     ! Statement: f_in_native_scalar
     function direction_func(arg) &
             result(SHT_rv)
@@ -1609,7 +1609,7 @@ contains
     ! Function:  void passClassByValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Class1 arg +value
+    ! Argument:  Class1 arg
     ! Statement: f_in_shadow_scalar
     !>
     !! \brief Pass arguments to a function.
@@ -1732,7 +1732,7 @@ contains
     ! Function:  Class1 getClassCopy
     ! Statement: f_function_shadow_scalar_capptr
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
@@ -1755,7 +1755,7 @@ contains
     ! Function:  void set_global_flag
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg +value
+    ! Argument:  int arg
     ! Statement: f_in_native_scalar
     subroutine set_global_flag(arg)
         use iso_c_binding, only : C_INT

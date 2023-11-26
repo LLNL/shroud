@@ -45,10 +45,10 @@ PY_user_int_tp_del (PY_user_int *self)
 // Function:  void nested
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: py_in_native_scalar
 static char PY_nested_double__doc__[] =
 "documentation"

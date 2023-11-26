@@ -240,8 +240,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "in",
-                                        "rank": 0,
-                                        "value": true
+                                        "rank": 0
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -265,7 +264,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+api(cdesc))",
-                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +api(cdesc)+intent(in)+rank(0)+value)",
+                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +api(cdesc)+intent(in)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
@@ -1398,8 +1397,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -1423,7 +1421,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in), void * value +intent(out)+value)",
+                "declgen": "void GetScalar2(std::string & name +intent(in), void * value +intent(out))",
                 "doxygen": {
                     "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
                 },

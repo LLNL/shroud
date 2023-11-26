@@ -11140,6 +11140,8 @@ f_setter_string_scalar_buf:
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
+  f_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_module:

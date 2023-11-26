@@ -42,7 +42,7 @@ module enum_mod
         ! Function:  int convert_to_int
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  enum Color in +value
+        ! Argument:  enum Color in
         ! Statement: f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
@@ -65,7 +65,7 @@ contains
     ! Function:  int convert_to_int
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  enum Color in +value
+    ! Argument:  enum Color in
     ! Statement: f_in_native_scalar
     function convert_to_int(in) &
             result(SHT_rv)

@@ -179,9 +179,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -192,9 +189,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -212,7 +206,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
+                "declgen": "double PassByValue(double arg1, int arg2)",
                 "name": "PassByValue",
                 "options": {
                     "literalinclude": true
@@ -816,9 +810,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -836,7 +827,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValueMacro(int arg2)",
-                "declgen": "double PassByValueMacro(int arg2 +value)",
+                "declgen": "double PassByValueMacro(int arg2)",
                 "doxygen": {
                     "description": "PassByValueMacro is a #define macro. Force a C wrapper\nto allow Fortran to have an actual function to call.\n"
                 },
@@ -1062,9 +1053,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "bool"
                                 },
@@ -1118,7 +1106,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
-                "declgen": "void checkBool(const bool arg1 +value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
+                "declgen": "void checkBool(const bool arg1, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
                 "doxygen": {
                     "brief": "Check intent with bool"
                 },
@@ -2856,8 +2844,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text)",
-                                        "value": true
+                                        "implied": "len(text)"
                                     },
                                     "name": "ltext",
                                     "typemap_name": "int"
@@ -2876,7 +2863,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text)))",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -3178,8 +3165,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text)",
-                                        "value": true
+                                        "implied": "len(text)"
                                     },
                                     "name": "ltext",
                                     "typemap_name": "int"
@@ -3192,8 +3178,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "false",
-                                        "value": true
+                                        "implied": "false"
                                     },
                                     "name": "flag",
                                     "typemap_name": "bool"
@@ -3212,7 +3197,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text))+value, bool flag +implied(false)+value)",
+                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text)), bool flag +implied(false))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
@@ -3627,8 +3612,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len_trim(text)",
-                                        "value": true
+                                        "implied": "len_trim(text)"
                                     },
                                     "name": "ltext",
                                     "typemap_name": "int"
@@ -3641,8 +3625,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "true",
-                                        "value": true
+                                        "implied": "true"
                                     },
                                     "name": "flag",
                                     "typemap_name": "bool"
@@ -3661,7 +3644,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text))+value, bool flag +implied(true)+value)",
+                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text)), bool flag +implied(true))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
@@ -4060,8 +4043,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "true",
-                                        "value": true
+                                        "implied": "true"
                                     },
                                     "name": "flag",
                                     "typemap_name": "bool"
@@ -4080,7 +4062,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
-                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+value)",
+                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true))",
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
@@ -4308,8 +4290,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "false",
-                                        "value": true
+                                        "implied": "false"
                                     },
                                     "name": "flag",
                                     "typemap_name": "bool"
@@ -4328,7 +4309,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
-                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+value)",
+                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false))",
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
@@ -4837,8 +4818,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "value": true
+                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -4883,7 +4863,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
-                "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
+                "declgen": "void passVoidStarStar(void * in +intent(in), void * * out +intent(out))",
                 "doxygen": {
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
@@ -5771,9 +5751,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "int"
                                 },
@@ -5785,8 +5762,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "external": true,
-                                        "value": true
+                                        "external": true
                                     },
                                     "func": {
                                         "name": "incr",
@@ -5815,7 +5791,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1(int type, void (*incr)(void)+external)",
-                "declgen": "void callback1(int type +value, void ( * incr)(void) +external+value)",
+                "declgen": "void callback1(int type, void ( * incr)(void) +external)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -6018,9 +5994,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "int"
                                 },
@@ -6032,8 +6005,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "external": true,
-                                        "value": true
+                                        "external": true
                                     },
                                     "func": {
                                         "name": "incr",
@@ -6062,7 +6034,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1a(int type, void (*incr)(void)+external)",
-                "declgen": "void callback1a(int type +value, void ( * incr)(void) +external+value)",
+                "declgen": "void callback1a(int type, void ( * incr)(void) +external)",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "Add C_force_wrapper to test generating function pointer prototype.\n"
@@ -6267,9 +6239,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "int"
                                 },
@@ -6299,8 +6268,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "external": true,
-                                        "value": true
+                                        "external": true
                                     },
                                     "func": {
                                         "name": "incr",
@@ -6344,7 +6312,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *)+external)",
-                "declgen": "void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *) +external+value)",
+                "declgen": "void callback2(int type, void * in +assumedtype, void ( * incr)(int *) +external)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -6640,8 +6608,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "external": true,
-                                        "value": true
+                                        "external": true
                                     },
                                     "func": {
                                         "name": "incr",
@@ -6703,7 +6670,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))",
+                "declgen": "void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external, char * outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
@@ -7061,9 +7028,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "tc",
                                     "typemap_name": "int"
                                 },
@@ -7092,9 +7056,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "alloc",
                                         "pointer": [
@@ -7155,7 +7116,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)) +value)",
+                "declgen": "void callback_set_alloc(int tc, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)))",
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },

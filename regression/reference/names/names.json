@@ -813,9 +813,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -833,7 +830,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(int i)",
-                "declgen": "void function3a(int i +value)",
+                "declgen": "void function3a(int i)",
                 "name": "function3a",
                 "options": {},
                 "user_fmt": {
@@ -1008,9 +1005,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i",
                                     "typemap_name": "long"
                                 },
@@ -1028,7 +1022,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(long i)",
-                "declgen": "void function3a(long i +value)",
+                "declgen": "void function3a(long i)",
                 "name": "function3a",
                 "options": {},
                 "user_fmt": {
@@ -1907,9 +1901,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -1919,9 +1910,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -1944,7 +1932,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
+                "declgen": "void FunctionTU(T arg1, U arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2040,9 +2028,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2053,9 +2038,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2073,7 +2055,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
+                "declgen": "void FunctionTU(int arg1, long arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2394,9 +2376,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2407,9 +2386,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2427,7 +2403,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
+                "declgen": "void FunctionTU(float arg1, double arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -3273,9 +3249,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "alloc",
                                         "pointer": [
@@ -3333,9 +3306,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "afree",
                                         "pointer": [
@@ -3375,9 +3345,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "assoc",
                                         "pointer": [
@@ -3442,7 +3409,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr+intent(inout), int *err+intent(out)), void (*afree)(double *arr+intent(inout)), void (*assoc)(double *arr+intent(in), int *err+intent(out)))",
-                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)",
+                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)), void ( * afree)(double * arr +intent(inout)), void ( * assoc)(double * arr +intent(in), int * err +intent(out)))",
                 "name": "external_funcs",
                 "options": {
                     "wrap_python": false
@@ -3881,9 +3848,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -3901,7 +3865,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindtest(int arg1)",
-                "declgen": "void bindtest(int arg1 +value)",
+                "declgen": "void bindtest(int arg1)",
                 "name": "bindtest",
                 "options": {
                     "wrap_python": false

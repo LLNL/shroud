@@ -176,9 +176,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "size",
                                             "typemap_name": "int"
                                         },
@@ -196,7 +193,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void setSize(int size)",
-                        "declgen": "void setSize(int size +value)",
+                        "declgen": "void setSize(int size)",
                         "name": "setSize",
                         "options": {},
                         "wrap": {
@@ -3583,9 +3580,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "array",
                                             "pointer": [
                                                 {
@@ -3608,7 +3602,7 @@
                             "typemap_name": "bool"
                         },
                         "decl": "bool checkPtr(void *array)",
-                        "declgen": "bool checkPtr(void * array +value)",
+                        "declgen": "bool checkPtr(void * array)",
                         "name": "checkPtr",
                         "options": {},
                         "wrap": {

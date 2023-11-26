@@ -78,7 +78,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // Function:  Class1
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
@@ -179,7 +179,7 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // Argument:  std::string & name +intent(in)
 // Statement: c_in_string_&
 // ----------------------------------------
-// Argument:  bool flag +value
+// Argument:  bool flag
 // Statement: c_in_bool_scalar
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
@@ -209,7 +209,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
 // Argument:  std::string & name +intent(in)
 // Statement: f_in_string_&_buf
 // ----------------------------------------
-// Argument:  bool flag +value
+// Argument:  bool flag
 // Statement: f_in_bool_scalar
 // start CLA_Class1_returnThisBuffer_bufferify
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
@@ -297,7 +297,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // Function:  DIRECTION directionFunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  DIRECTION arg +value
+// Argument:  DIRECTION arg
 // Statement: c_in_native_scalar
 // start CLA_Class1_directionFunc
 int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
@@ -352,7 +352,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // Function:  void set_test
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)

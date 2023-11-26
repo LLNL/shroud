@@ -90,7 +90,7 @@ module generic_mod
     ! Function:  void UpdateAsFloat
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float arg +value
+    ! Argument:  float arg
     ! Statement: f_in_native_scalar
     interface
         subroutine c_update_as_float(arg) &
@@ -105,7 +105,7 @@ module generic_mod
     ! Function:  void UpdateAsDouble
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: f_in_native_scalar
     interface
         subroutine c_update_as_double(arg) &
@@ -133,7 +133,7 @@ module generic_mod
     ! Function:  void GenericReal
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: c_in_native_scalar
     ! start c_generic_real
     interface
@@ -150,10 +150,10 @@ module generic_mod
     ! Function:  long GenericReal2
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg1 +value
+    ! Argument:  long arg1
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg2 +value
+    ! Argument:  long arg2
     ! Statement: c_in_native_scalar
     interface
         function c_generic_real2(arg1, arg2) &
@@ -175,7 +175,7 @@ module generic_mod
     ! Attrs:     +assumed-rank
     ! Statement: c_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nvalues +value
+    ! Argument:  int nvalues
     ! Statement: c_in_native_scalar
     interface
         function c_sum_values(values, nvalues) &
@@ -197,7 +197,7 @@ module generic_mod
     ! Attrs:     +assumed-rank
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nvalues +value
+    ! Argument:  int nvalues
     ! Statement: f_in_native_scalar
     interface
         function sum_values(values, nvalues) &
@@ -218,13 +218,13 @@ module generic_mod
     ! Argument:  const int * from
     ! Statement: c_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Statement: c_inout_native_*
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: c_in_native_scalar
     interface
         subroutine c_assign_values(from, nfrom, to, nto) &
@@ -246,13 +246,13 @@ module generic_mod
     ! Argument:  const int * from
     ! Statement: f_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Statement: f_inout_native_*
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     interface
         subroutine c_assign_values_scalar_bufferify(from, nfrom, to, &
@@ -275,13 +275,13 @@ module generic_mod
     ! Argument:  const int * from
     ! Statement: f_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     interface
         subroutine c_assign_values_broadcast_CFI(from, nfrom, to, nto) &
@@ -303,13 +303,13 @@ module generic_mod
     ! Argument:  const int * from +rank(1)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     interface
         subroutine c_assign_values_copy_CFI(from, nfrom, to, nto) &
@@ -328,13 +328,13 @@ module generic_mod
     ! Function:  void SavePointer
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  void * addr +value
+    ! Argument:  void * addr
     ! Statement: c_in_void_*
     ! ----------------------------------------
-    ! Argument:  int type +value
+    ! Argument:  int type
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: c_in_native_scalar
     interface
         subroutine c_save_pointer(addr, type, size) &
@@ -357,10 +357,10 @@ module generic_mod
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int type +implied(T_FLOAT)+value
+    ! Argument:  int type +implied(T_FLOAT)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: f_in_native_scalar
     interface
         subroutine c_save_pointer_float1d_CFI(addr, type, size) &
@@ -383,10 +383,10 @@ module generic_mod
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int type +implied(T_FLOAT)+value
+    ! Argument:  int type +implied(T_FLOAT)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: f_in_native_scalar
     interface
         subroutine c_save_pointer_float2d_CFI(addr, type, size) &
@@ -404,13 +404,13 @@ module generic_mod
     ! Function:  void SavePointer2
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  void * addr +value
+    ! Argument:  void * addr
     ! Statement: c_in_void_*
     ! ----------------------------------------
-    ! Argument:  int type +implied(type(addr))+value
+    ! Argument:  int type +implied(type(addr))
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: c_in_native_scalar
     interface
         subroutine c_save_pointer2(addr, type, size) &
@@ -431,10 +431,10 @@ module generic_mod
     ! Argument:  float * addr +intent(in)+rank(1)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int type +implied(type(addr))+value
+    ! Argument:  int type +implied(type(addr))
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: f_in_native_scalar
     interface
         subroutine c_save_pointer2_float1d_CFI(addr, type, size) &
@@ -455,10 +455,10 @@ module generic_mod
     ! Argument:  float * addr +intent(in)+rank(2)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int type +implied(type(addr))+value
+    ! Argument:  int type +implied(type(addr))
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+value
+    ! Argument:  size_t size +implied(size(addr))
     ! Statement: f_in_native_scalar
     interface
         subroutine c_save_pointer2_float2d_CFI(addr, type, size) &
@@ -577,7 +577,7 @@ module generic_mod
     ! Argument:  StructAsClass * arg
     ! Statement: c_inout_shadow_*
     ! ----------------------------------------
-    ! Argument:  long inew +value
+    ! Argument:  long inew
     ! Statement: c_in_native_scalar
     interface
         function c_update_struct_as_class(arg, inew) &
@@ -600,7 +600,7 @@ module generic_mod
     ! Argument:  StructAsClass * arg
     ! Statement: f_inout_shadow_*
     ! ----------------------------------------
-    ! Argument:  int inew +value
+    ! Argument:  int inew
     ! Statement: f_in_native_scalar
     interface
         function c_update_struct_as_class_int_bufferify(arg, inew) &
@@ -623,7 +623,7 @@ module generic_mod
     ! Argument:  StructAsClass * arg
     ! Statement: f_inout_shadow_*
     ! ----------------------------------------
-    ! Argument:  long inew +value
+    ! Argument:  long inew
     ! Statement: f_in_native_scalar
     interface
         function c_update_struct_as_class_long_bufferify(arg, inew) &
@@ -724,7 +724,7 @@ contains
     ! Function:  void UpdateAsFloat
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float arg +value
+    ! Argument:  float arg
     ! Statement: f_in_native_scalar
     subroutine update_as_float(arg)
         use iso_c_binding, only : C_FLOAT
@@ -738,7 +738,7 @@ contains
     ! Function:  void UpdateAsDouble
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: f_in_native_scalar
     subroutine update_as_double(arg)
         use iso_c_binding, only : C_DOUBLE
@@ -768,9 +768,9 @@ contains
     ! Function:  void GenericReal
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float arg +value
+    ! Argument:  float arg
     ! Statement: f_in_native_scalar
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     !>
     !! \brief Single argument generic
     !!
@@ -790,7 +790,7 @@ contains
     ! Function:  void GenericReal
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: f_in_native_scalar
     !>
     !! \brief Single argument generic
@@ -811,13 +811,13 @@ contains
     ! Function:  long GenericReal2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg1 +value
+    ! Argument:  int arg1
     ! Statement: f_in_native_scalar
-    ! Argument:  long arg1 +value
+    ! Argument:  long arg1
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
-    ! Argument:  long arg2 +value
+    ! Argument:  long arg2
     !>
     !! \brief Two argument generic
     !!
@@ -840,10 +840,10 @@ contains
     ! Function:  long GenericReal2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg1 +value
+    ! Argument:  long arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long arg2 +value
+    ! Argument:  long arg2
     ! Statement: f_in_native_scalar
     !>
     !! \brief Two argument generic
@@ -872,7 +872,7 @@ contains
     ! Attrs:     +assumed-rank
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nvalues +value
+    ! Argument:  int nvalues
     ! Statement: f_in_native_scalar
     !>
     !! \brief scalar or array argument using assumed rank
@@ -898,13 +898,13 @@ contains
     ! Argument:  const int * from
     ! Statement: f_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to
     ! Statement: f_inout_native_*
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     !>
     !! Broadcast if nfrom == 1
@@ -929,13 +929,13 @@ contains
     ! Argument:  const int * from
     ! Statement: f_in_native_*
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     !>
     !! Broadcast if nfrom == 1
@@ -960,13 +960,13 @@ contains
     ! Argument:  const int * from +rank(1)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nfrom +value
+    ! Argument:  int nfrom
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int nto +value
+    ! Argument:  int nto
     ! Statement: f_in_native_scalar
     !>
     !! Broadcast if nfrom == 1
@@ -1143,7 +1143,7 @@ contains
     ! Argument:  StructAsClass * arg
     ! Statement: f_inout_shadow_*
     ! ----------------------------------------
-    ! Argument:  int inew +value
+    ! Argument:  int inew
     ! Statement: f_in_native_scalar
     function update_struct_as_class_int(arg, inew) &
             result(SHT_rv)
@@ -1165,7 +1165,7 @@ contains
     ! Argument:  StructAsClass * arg
     ! Statement: f_inout_shadow_*
     ! ----------------------------------------
-    ! Argument:  long inew +value
+    ! Argument:  long inew
     ! Statement: f_in_native_scalar
     function update_struct_as_class_long(arg, inew) &
             result(SHT_rv)

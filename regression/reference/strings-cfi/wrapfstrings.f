@@ -35,7 +35,7 @@ module strings_mod
     ! Function:  void passChar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     interface
         subroutine pass_char(status) &
@@ -50,7 +50,7 @@ module strings_mod
     ! Function:  void passCharForce
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     interface
         subroutine c_pass_char_force(status) &
@@ -882,7 +882,7 @@ module strings_mod
     ! Function:  int acceptStringInstance
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +value
+    ! Argument:  std::string arg1
     ! Statement: c_in_string_scalar
     interface
         function c_accept_string_instance(arg1) &
@@ -899,7 +899,7 @@ module strings_mod
     ! Function:  int acceptStringInstance
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +value
+    ! Argument:  std::string arg1
     ! Statement: f_in_string_scalar_cfi
     interface
         function accept_string_instance(arg1) &
@@ -1082,7 +1082,7 @@ module strings_mod
     ! Function:  void CpassChar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     interface
         subroutine cpass_char(status) &
@@ -1255,7 +1255,7 @@ module strings_mod
     ! Function:  int CpassCharPtrCAPI
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  void * addr +value
+    ! Argument:  void * addr
     ! Statement: f_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
@@ -1337,7 +1337,7 @@ contains
     ! Function:  void passChar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     !>
     !! \brief pass a single char argument as a scalar.
@@ -1355,7 +1355,7 @@ contains
     ! Function:  void passCharForce
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     !>
     !! By default no Fortran wrapper is created.
@@ -1919,7 +1919,7 @@ contains
     ! Function:  int acceptStringInstance
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +value
+    ! Argument:  std::string arg1
     ! Statement: f_in_string_scalar_cfi
     !>
     !! \brief Accept a string instance
@@ -1928,7 +1928,7 @@ contains
     function accept_string_instance(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(len=*), value, intent(IN) :: arg1
+        character(len=*), intent(IN) :: arg1
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accept_string_instance
         SHT_rv = c_accept_string_instance_CFI(arg1)
@@ -2045,7 +2045,7 @@ contains
     ! Function:  void CpassChar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char status +value
+    ! Argument:  char status
     ! Statement: f_in_char_scalar
     !>
     !! \brief pass a single char argument as a scalar, extern "C"
@@ -2182,7 +2182,7 @@ contains
     ! Function:  int CpassCharPtrCAPI
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  void * addr +value
+    ! Argument:  void * addr
     ! Statement: f_in_void_*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)

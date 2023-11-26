@@ -22,9 +22,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "IndexType"
                                 },
@@ -60,15 +57,12 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(IndexType i1, IndexType * i2 +intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -103,9 +97,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -287,9 +278,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -325,7 +313,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int32_t i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int32_t i1, IndexType * i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -489,9 +477,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -527,7 +512,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int64_t i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int64_t i1, IndexType * i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -685,9 +670,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "IndexType"
                                 },
@@ -705,15 +687,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(IndexType i1 +value)",
+                "declgen": "void passIndex2(IndexType i1)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -730,9 +709,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -840,9 +816,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -860,7 +833,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(int32_t i1 +value)",
+                "declgen": "void passIndex2(int32_t i1)",
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
@@ -961,9 +934,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -981,7 +951,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(int64_t i1 +value)",
+                "declgen": "void passIndex2(int64_t i1)",
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
@@ -1076,9 +1046,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "f1",
                                     "typemap_name": "FloatType"
                                 },
@@ -1096,15 +1063,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(FloatType f1 +value)",
+                "declgen": "void passFloat(FloatType f1)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "f1",
                                     "typemap_name": "float"
                                 },
@@ -1121,9 +1085,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "f1",
                                     "typemap_name": "double"
                                 },
@@ -1231,9 +1192,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "f1",
                                     "typemap_name": "float"
                                 },
@@ -1251,7 +1209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(float f1 +value)",
+                "declgen": "void passFloat(float f1)",
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
@@ -1352,9 +1310,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "f1",
                                     "typemap_name": "double"
                                 },
@@ -1372,7 +1327,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(double f1 +value)",
+                "declgen": "void passFloat(double f1)",
                 "name": "passFloat",
                 "options": {},
                 "wrap": {

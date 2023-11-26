@@ -307,9 +307,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 0,
                                             "name": "i",
                                             "typemap_name": "int"
@@ -328,7 +325,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method3def(int i=0)",
-                        "declgen": "void method3def(int i=0 +value)",
+                        "declgen": "void method3def(int i=0)",
                         "name": "method3def",
                         "options": {},
                         "wrap": {
@@ -643,9 +640,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -663,7 +657,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void exfunc(int flag)",
-                        "declgen": "void exfunc(int flag +value)",
+                        "declgen": "void exfunc(int flag)",
                         "name": "exfunc",
                         "options": {},
                         "wrap": {

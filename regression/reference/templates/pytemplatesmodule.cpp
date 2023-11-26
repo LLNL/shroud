@@ -40,10 +40,10 @@ PyObject *PY_init_templates_internal(void);
 // Function:  void FunctionTU
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  long arg2 +value
+// Argument:  long arg2
 // Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
@@ -76,10 +76,10 @@ PY_FunctionTU_0(
 // Function:  void FunctionTU
 // Statement: py_default
 // ----------------------------------------
-// Argument:  float arg1 +value
+// Argument:  float arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.

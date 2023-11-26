@@ -28,7 +28,7 @@
 // Attrs:     +assumed-rank
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int nvalues +value
+// Argument:  int nvalues
 // Statement: f_in_native_scalar
 int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 {
@@ -51,13 +51,13 @@ int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 // Argument:  const int * from
 // Statement: f_in_native_*
 // ----------------------------------------
-// Argument:  int nfrom +value
+// Argument:  int nfrom
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to
 // Statement: f_inout_native_*
 // ----------------------------------------
-// Argument:  int nto +value
+// Argument:  int nto
 // Statement: f_in_native_scalar
 void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
     int * to, int nto)
@@ -79,13 +79,13 @@ void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
 // Argument:  const int * from
 // Statement: f_in_native_*
 // ----------------------------------------
-// Argument:  int nfrom +value
+// Argument:  int nfrom
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to +rank(1)
 // Statement: f_inout_native_*_cfi
 // ----------------------------------------
-// Argument:  int nto +value
+// Argument:  int nto
 // Statement: f_in_native_scalar
 void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
@@ -108,13 +108,13 @@ void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
 // Argument:  const int * from +rank(1)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int nfrom +value
+// Argument:  int nfrom
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  int * to +rank(1)
 // Statement: f_inout_native_*_cfi
 // ----------------------------------------
-// Argument:  int nto +value
+// Argument:  int nto
 // Statement: f_in_native_scalar
 void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
@@ -135,10 +135,10 @@ void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
 // Argument:  float * addr +intent(in)+rank(1)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int type +implied(T_FLOAT)+value
+// Argument:  int type +implied(T_FLOAT)
 // Statement: f_in_native_scalar
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+value
+// Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native_scalar
 void GEN_SavePointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
@@ -159,10 +159,10 @@ void GEN_SavePointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Argument:  float * addr +intent(in)+rank(2)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int type +implied(T_FLOAT)+value
+// Argument:  int type +implied(T_FLOAT)
 // Statement: f_in_native_scalar
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+value
+// Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native_scalar
 void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
@@ -178,13 +178,13 @@ void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Function:  void SavePointer2
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void * addr +value
+// Argument:  void * addr
 // Statement: c_in_void_*
 // ----------------------------------------
-// Argument:  int type +implied(type(addr))+value
+// Argument:  int type +implied(type(addr))
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+value
+// Argument:  size_t size +implied(size(addr))
 // Statement: c_in_native_scalar
 void GEN_SavePointer2(void * addr, int type, size_t size)
 {
@@ -204,10 +204,10 @@ void GEN_SavePointer2(void * addr, int type, size_t size)
 // Argument:  float * addr +intent(in)+rank(1)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int type +implied(type(addr))+value
+// Argument:  int type +implied(type(addr))
 // Statement: f_in_native_scalar
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+value
+// Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native_scalar
 void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
@@ -229,10 +229,10 @@ void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Argument:  float * addr +intent(in)+rank(2)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int type +implied(type(addr))+value
+// Argument:  int type +implied(type(addr))
 // Statement: f_in_native_scalar
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+value
+// Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native_scalar
 void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
@@ -338,7 +338,7 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // Argument:  StructAsClass * arg
 // Statement: c_inout_shadow_*
 // ----------------------------------------
-// Argument:  long inew +value
+// Argument:  long inew
 // Statement: c_in_native_scalar
 long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
@@ -357,7 +357,7 @@ long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 // Argument:  StructAsClass * arg
 // Statement: f_inout_shadow_*
 // ----------------------------------------
-// Argument:  int inew +value
+// Argument:  int inew
 // Statement: f_in_native_scalar
 long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
     int inew)
@@ -377,7 +377,7 @@ long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
 // Argument:  StructAsClass * arg
 // Statement: f_inout_shadow_*
 // ----------------------------------------
-// Argument:  long inew +value
+// Argument:  long inew
 // Statement: f_in_native_scalar
 long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
     long inew)

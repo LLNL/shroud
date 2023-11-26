@@ -38,7 +38,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // Function:  void set_npts
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: c_in_native_scalar
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 {
@@ -67,7 +67,7 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 // Function:  void set_value
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int v +value
+// Argument:  int v
 // Statement: c_in_native_scalar
 void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
     int v)

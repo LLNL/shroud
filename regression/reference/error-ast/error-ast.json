@@ -58,9 +58,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -78,15 +75,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded3(double arg2)",
-                "declgen": "void FortranGenericOverloaded3(double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded3(double arg2)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -103,9 +97,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },

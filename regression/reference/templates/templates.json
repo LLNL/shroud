@@ -65,9 +65,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1"
                                         },
                                         "specifier": [
@@ -77,9 +74,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg2"
                                         },
                                         "specifier": [
@@ -101,7 +95,7 @@
                             ]
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(T arg1 +value, U arg2 +value)",
+                        "declgen": "void nested(T arg1, U arg2)",
                         "have_template_args": true,
                         "name": "nested",
                         "options": {},
@@ -161,9 +155,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1"
                                         },
                                         "specifier": [
@@ -174,9 +165,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg2"
                                         },
                                         "specifier": [
@@ -194,7 +182,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(int arg1 +value, double arg2 +value)",
+                        "declgen": "void nested(int arg1, double arg2)",
                         "gen_headers_typedef": [
                             "double"
                         ],
@@ -660,9 +648,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -680,7 +665,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_npts(int n)",
-                        "declgen": "void set_npts(int n +value)",
+                        "declgen": "void set_npts(int n)",
                         "name": "set_npts",
                         "options": {},
                         "wrap": {
@@ -943,9 +928,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -962,7 +944,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_value(T v)",
-                        "declgen": "void set_value(T v +value)",
+                        "declgen": "void set_value(T v)",
                         "have_template_args": true,
                         "name": "set_value",
                         "options": {},
@@ -1000,9 +982,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -1020,7 +999,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_value(T v)",
-                        "declgen": "void set_value(int v +value)",
+                        "declgen": "void set_value(int v)",
                         "have_template_args": true,
                         "name": "set_value",
                         "options": {},
@@ -1521,9 +1500,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -1541,7 +1517,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_npts(int n)",
-                        "declgen": "void set_npts(int n +value)",
+                        "declgen": "void set_npts(int n)",
                         "name": "set_npts",
                         "options": {},
                         "wrap": {
@@ -1804,9 +1780,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -1823,7 +1796,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_value(T v)",
-                        "declgen": "void set_value(T v +value)",
+                        "declgen": "void set_value(T v)",
                         "have_template_args": true,
                         "name": "set_value",
                         "options": {},
@@ -1861,9 +1834,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "v"
                                         },
                                         "specifier": [
@@ -1881,7 +1851,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_value(T v)",
-                        "declgen": "void set_value(double v +value)",
+                        "declgen": "void set_value(double v)",
                         "have_template_args": true,
                         "name": "set_value",
                         "options": {},
@@ -2398,9 +2368,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2410,9 +2377,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2435,7 +2399,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
+                "declgen": "void FunctionTU(T arg1, U arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2522,9 +2486,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2535,9 +2496,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2555,7 +2513,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
+                "declgen": "void FunctionTU(int arg1, long arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2859,9 +2817,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2872,9 +2827,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2892,7 +2844,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
+                "declgen": "void FunctionTU(float arg1, double arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -4172,9 +4124,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -4196,7 +4145,7 @@
                                     "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value)",
+                                "declgen": "T & at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {},
@@ -4234,9 +4183,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -4259,7 +4205,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +value)",
+                                "declgen": "int & at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {
@@ -5122,9 +5068,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -5146,7 +5089,7 @@
                                     "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value)",
+                                "declgen": "T & at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {},
@@ -5184,9 +5127,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "n",
                                                     "typemap_name": "std::vector::size_type"
                                                 },
@@ -5209,7 +5149,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +value)",
+                                "declgen": "double & at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {

@@ -288,9 +288,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -309,7 +306,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1(int flag)",
-                        "declgen": "Class1(int flag +value)",
+                        "declgen": "Class1(int flag)",
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -1280,9 +1277,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "flag",
                                             "typemap_name": "bool"
                                         },
@@ -1305,7 +1299,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)",
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1968,9 +1962,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg",
                                             "typemap_name": "classes::Class1::DIRECTION"
                                         },
@@ -1988,7 +1979,7 @@
                             "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
-                        "declgen": "DIRECTION directionFunc(DIRECTION arg +value)",
+                        "declgen": "DIRECTION directionFunc(DIRECTION arg)",
                         "name": "directionFunc",
                         "options": {},
                         "wrap": {
@@ -2468,8 +2459,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "in"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -2488,7 +2478,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_test(int val)",
-                        "declgen": "void set_test(int val +intent(in)+value)",
+                        "declgen": "void set_test(int val +intent(in))",
                         "name": "set_test",
                         "options": {},
                         "user_fmt": {
@@ -4121,9 +4111,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -4141,7 +4128,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void allocate(int n);",
-                        "declgen": "void allocate(int n +value)",
+                        "declgen": "void allocate(int n)",
                         "name": "allocate",
                         "options": {},
                         "wrap": {
@@ -4692,8 +4679,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "in"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -4712,7 +4698,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_nitems(int val)",
-                        "declgen": "void set_nitems(int val +intent(in)+value)",
+                        "declgen": "void set_nitems(int val +intent(in))",
                         "name": "set_nitems",
                         "options": {},
                         "user_fmt": {
@@ -5242,9 +5228,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "classes::Class1::DIRECTION"
                                 },
@@ -5262,7 +5245,7 @@
                     "typemap_name": "classes::Class1::DIRECTION"
                 },
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
-                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)",
+                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg)",
                 "name": "directionFunc",
                 "options": {},
                 "wrap": {
@@ -5530,9 +5513,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "classes::Class1"
                                 },
@@ -5550,7 +5530,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passClassByValue(Class1 arg)",
-                "declgen": "void passClassByValue(Class1 arg +value)",
+                "declgen": "void passClassByValue(Class1 arg)",
                 "doxygen": {
                     "brief": "Pass arguments to a function."
                 },
@@ -6853,9 +6833,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -6873,7 +6850,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 getClassCopy(int flag)",
-                "declgen": "Class1 getClassCopy(int flag +value)",
+                "declgen": "Class1 getClassCopy(int flag)",
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
@@ -7055,9 +7032,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "arg",
                                     "typemap_name": "int"
                                 },
@@ -7075,7 +7049,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void set_global_flag(int arg)",
-                "declgen": "void set_global_flag(int arg +value)",
+                "declgen": "void set_global_flag(int arg)",
                 "name": "set_global_flag",
                 "options": {},
                 "wrap": {

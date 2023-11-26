@@ -39,7 +39,7 @@ int ERR_Cstruct_as_subclass_get_x1(ERR_Cstruct_as_subclass * self)
 // Function:  void set_x1
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 void ERR_Cstruct_as_subclass_set_x1(ERR_Cstruct_as_subclass * self,
     int val)
@@ -71,7 +71,7 @@ int ERR_Cstruct_as_subclass_get_y1(ERR_Cstruct_as_subclass * self)
 // Function:  void set_y1
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 void ERR_Cstruct_as_subclass_set_y1(ERR_Cstruct_as_subclass * self,
     int val)
@@ -103,7 +103,7 @@ int ERR_Cstruct_as_subclass_get_z1(ERR_Cstruct_as_subclass * self)
 // Function:  void set_z1
 // Statement: f_setter
 // ----------------------------------------
-// Argument:  int val +intent(in)+value
+// Argument:  int val +intent(in)
 // Statement: f_setter_native_scalar
 void ERR_Cstruct_as_subclass_set_z1(ERR_Cstruct_as_subclass * self,
     int val)

@@ -3794,9 +3794,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -3814,7 +3811,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void createClassStatic(int flag)",
-                "declgen": "void createClassStatic(int flag +value)",
+                "declgen": "void createClassStatic(int flag)",
                 "name": "createClassStatic",
                 "options": {
                     "wrap_lua": false
@@ -4166,9 +4163,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -4191,7 +4185,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
+                "declgen": "Class1 * getClassNew(int flag) +owner(caller)",
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },

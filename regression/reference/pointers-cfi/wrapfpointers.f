@@ -75,7 +75,7 @@ module pointers_mod
     ! Function:  void intargs
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int argin +intent(in)+value
+    ! Argument:  const int argin +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
@@ -106,7 +106,7 @@ module pointers_mod
     ! Argument:  double * out +dimension(size(in))+intent(out)
     ! Statement: c_out_native_*
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+value
+    ! Argument:  int sizein +implied(size(in))
     ! Statement: c_in_native_scalar
     ! start c_cos_doubles
     interface
@@ -131,7 +131,7 @@ module pointers_mod
     ! Argument:  double * out +dimension(size(in))+intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+value
+    ! Argument:  int sizein +implied(size(in))
     ! Statement: f_in_native_scalar
     ! start c_cos_doubles_CFI
     interface
@@ -156,7 +156,7 @@ module pointers_mod
     ! Argument:  int * out +dimension(size(in))+intent(out)
     ! Statement: c_out_native_*
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+value
+    ! Argument:  int sizein +implied(size(in))
     ! Statement: c_in_native_scalar
     ! start c_truncate_to_int
     interface
@@ -181,7 +181,7 @@ module pointers_mod
     ! Argument:  int * out +dimension(size(in))+intent(out)
     ! Statement: f_out_native_*
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+value
+    ! Argument:  int sizein +implied(size(in))
     ! Statement: f_in_native_scalar
     ! start c_truncate_to_int_CFI
     interface
@@ -242,7 +242,7 @@ module pointers_mod
     ! Function:  void iota_dimension
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int nvar +value
+    ! Argument:  int nvar
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
@@ -263,7 +263,7 @@ module pointers_mod
     ! Function:  void Sum
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  int len +implied(size(values))+value
+    ! Argument:  int len +implied(size(values))
     ! Statement: c_in_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
@@ -288,7 +288,7 @@ module pointers_mod
     ! Function:  void Sum
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int len +implied(size(values))+value
+    ! Argument:  int len +implied(size(values))
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
@@ -333,7 +333,7 @@ module pointers_mod
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Statement: c_inout_native_*
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(array))+value
+    ! Argument:  int sizein +implied(size(array))
     ! Statement: c_in_native_scalar
     ! start c_increment_int_array
     interface
@@ -354,7 +354,7 @@ module pointers_mod
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(array))+value
+    ! Argument:  int sizein +implied(size(array))
     ! Statement: f_in_native_scalar
     ! start c_increment_int_array_CFI
     interface
@@ -375,7 +375,7 @@ module pointers_mod
     ! Argument:  double * x +rank(1)
     ! Statement: c_inout_native_*
     ! ----------------------------------------
-    ! Argument:  int x_length +implied(size(x))+value
+    ! Argument:  int x_length +implied(size(x))
     ! Statement: c_in_native_scalar
     ! start c_fill_with_zeros
     interface
@@ -396,7 +396,7 @@ module pointers_mod
     ! Argument:  double * x +rank(1)
     ! Statement: f_inout_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int x_length +implied(size(x))+value
+    ! Argument:  int x_length +implied(size(x))
     ! Statement: f_in_native_scalar
     ! start c_fill_with_zeros_CFI
     interface
@@ -417,7 +417,7 @@ module pointers_mod
     ! Argument:  const int * arr +rank(1)
     ! Statement: c_in_native_*
     ! ----------------------------------------
-    ! Argument:  size_t len +implied(size(arr))+value
+    ! Argument:  size_t len +implied(size(arr))
     ! Statement: c_in_native_scalar
     ! start c_accumulate
     interface
@@ -440,7 +440,7 @@ module pointers_mod
     ! Argument:  const int * arr +rank(1)
     ! Statement: f_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  size_t len +implied(size(arr))+value
+    ! Argument:  size_t len +implied(size(arr))
     ! Statement: f_in_native_scalar
     ! start c_accumulate_CFI
     interface
@@ -498,7 +498,7 @@ module pointers_mod
     ! Function:  void setGlobalInt
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int value +value
+    ! Argument:  int value
     ! Statement: f_in_native_scalar
     ! start set_global_int
     interface
@@ -931,7 +931,7 @@ module pointers_mod
     ! Function:  void * returnAddress1
     ! Statement: f_function_void_*
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start return_address1
     interface
@@ -950,7 +950,7 @@ module pointers_mod
     ! Function:  void * returnAddress2
     ! Statement: f_function_void_*
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start c_return_address2
     interface
@@ -1332,7 +1332,7 @@ contains
     ! Function:  void intargs
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int argin +intent(in)+value
+    ! Argument:  const int argin +intent(in)
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
@@ -1474,7 +1474,7 @@ contains
     ! Function:  void iota_dimension
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int nvar +value
+    ! Argument:  int nvar
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
@@ -1624,7 +1624,7 @@ contains
     ! Function:  void setGlobalInt
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int value +value
+    ! Argument:  int value
     ! Statement: f_in_native_scalar
     ! start set_global_int
     subroutine set_global_int(value)
@@ -1981,7 +1981,7 @@ contains
     ! Function:  void * returnAddress1
     ! Statement: f_function_void_*
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start return_address1
     function return_address1(flag) &
@@ -2000,7 +2000,7 @@ contains
     ! Function:  void * returnAddress2
     ! Statement: f_function_void_*
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     ! start return_address2
     function return_address2(flag) &

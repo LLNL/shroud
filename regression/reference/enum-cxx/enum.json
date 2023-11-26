@@ -220,9 +220,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "in",
                                     "typemap_name": "Color"
                                 },
@@ -240,7 +237,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int convert_to_int(enum Color in)",
-                "declgen": "int convert_to_int(enum Color in +value)",
+                "declgen": "int convert_to_int(enum Color in)",
                 "name": "convert_to_int",
                 "options": {},
                 "wrap": {

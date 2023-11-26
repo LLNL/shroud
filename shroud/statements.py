@@ -3619,6 +3619,10 @@ fc_statements = [
         alias=[
             "c_setter_string_scalar_buf",
         ],
+        f_arg_decl=[
+            # Remove VALUE added by f_default
+            "character(len=*), intent({f_intent}) :: {f_var}",
+        ],
         c_post_call=[
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",
         ],

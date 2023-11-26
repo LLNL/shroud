@@ -27,9 +27,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -48,7 +45,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value) +name(new)",
+                        "declgen": "Class1(int arg1) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -240,9 +237,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -253,9 +247,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "arg2",
                                             "typemap_name": "int"
@@ -275,7 +266,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value, int arg2=1 +value) +name(new)",
+                        "declgen": "Class1(int arg1, int arg2=1) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -531,9 +522,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -544,9 +532,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "arg2",
                                             "typemap_name": "int"
@@ -558,9 +543,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 2,
                                             "name": "arg3",
                                             "typemap_name": "int"
@@ -580,7 +562,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value, int arg2=1 +value, int arg3=2 +value) +name(new)",
+                        "declgen": "Class1(int arg1, int arg2=1, int arg3=2) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -979,9 +961,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -999,7 +978,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value)",
+                        "declgen": "void DefaultArguments(int arg1)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -1150,9 +1129,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1163,9 +1139,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "arg2",
                                             "typemap_name": "int"
@@ -1184,7 +1157,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value, int arg2=1 +value)",
+                        "declgen": "void DefaultArguments(int arg1, int arg2=1)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -1399,9 +1372,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1412,9 +1382,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
                                             "name": "arg2",
                                             "typemap_name": "int"
@@ -1426,9 +1393,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 2,
                                             "name": "arg3",
                                             "typemap_name": "int"
@@ -1447,7 +1411,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value, int arg2=1 +value, int arg3=2 +value)",
+                        "declgen": "void DefaultArguments(int arg1, int arg2=1, int arg3=2)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -2154,9 +2118,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2174,7 +2135,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value)",
+                "declgen": "void apply_generic(IndexType num_elems)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2325,9 +2286,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2338,9 +2296,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -2359,7 +2314,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value, IndexType offset=0 +value)",
+                "declgen": "void apply_generic(IndexType num_elems, IndexType offset=0)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2574,9 +2529,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2587,9 +2539,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -2601,9 +2550,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -2622,7 +2568,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_generic(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2893,9 +2839,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -2906,9 +2849,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2926,7 +2866,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -3141,9 +3081,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3154,9 +3091,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3167,9 +3101,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -3188,7 +3119,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset=0)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -3467,9 +3398,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3480,9 +3408,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3493,9 +3418,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -3507,9 +3429,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -3528,7 +3447,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -3859,9 +3778,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3872,9 +3788,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -3886,9 +3799,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -3907,7 +3817,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_require(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_require(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_require(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
@@ -4172,9 +4082,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -4185,9 +4092,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4198,9 +4102,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -4212,9 +4113,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -4233,7 +4131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_require(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_require(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],
@@ -4562,9 +4460,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4575,9 +4470,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -4589,9 +4481,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -4610,7 +4499,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_optional(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_optional(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
@@ -4877,9 +4766,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -4890,9 +4776,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4903,9 +4786,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
                                     "name": "offset",
                                     "typemap_name": "IndexType"
@@ -4917,9 +4797,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
                                     "name": "stride",
                                     "typemap_name": "IndexType"
@@ -4938,7 +4815,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_optional(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_optional(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],

@@ -663,9 +663,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "incr",
                                                             "typemap_name": "int"
                                                         },
@@ -683,7 +680,7 @@
                                             "typemap_name": "int"
                                         },
                                         "decl": "int incrementCount(int incr)",
-                                        "declgen": "int incrementCount(int incr +value)",
+                                        "declgen": "int incrementCount(int incr)",
                                         "name": "incrementCount",
                                         "options": {},
                                         "wrap": {
@@ -1353,9 +1350,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value",
                                                             "typemap_name": "int"
                                                         },
@@ -1373,7 +1367,7 @@
                                             "typemap_name": "int"
                                         },
                                         "decl": "int  getValue(int value)",
-                                        "declgen": "int getValue(int value +value)",
+                                        "declgen": "int getValue(int value)",
                                         "name": "getValue",
                                         "options": {},
                                         "user_fmt": {
@@ -1640,9 +1634,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value",
                                                             "typemap_name": "long"
                                                         },
@@ -1660,7 +1651,7 @@
                                             "typemap_name": "long"
                                         },
                                         "decl": "long getValue(long value)",
-                                        "declgen": "long getValue(long value +value)",
+                                        "declgen": "long getValue(long value)",
                                         "name": "getValue",
                                         "options": {},
                                         "wrap": {
@@ -1920,9 +1911,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "in",
                                                             "typemap_name": "bool"
                                                         },
@@ -1940,7 +1928,7 @@
                                             "typemap_name": "bool"
                                         },
                                         "decl": "bool hasAddr(bool in)",
-                                        "declgen": "bool hasAddr(bool in +value)",
+                                        "declgen": "bool hasAddr(bool in)",
                                         "name": "hasAddr",
                                         "options": {},
                                         "wrap": {
@@ -4168,9 +4156,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4193,7 +4178,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type +value)",
+                                        "declgen": "ExClass2 * declare(TypeID type)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -4381,9 +4366,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4394,9 +4376,6 @@
                                                     },
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "init": 1,
                                                             "name": "len",
                                                             "typemap_name": "SidreLength"
@@ -4420,15 +4399,12 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type +value, SidreLength len=1 +value)",
+                                        "declgen": "ExClass2 * declare(TypeID type, SidreLength len=1)",
                                         "fortran_generic": [
                                             {
                                                 "decls": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4439,9 +4415,6 @@
                                                     },
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "init": 1,
                                                             "name": "len",
                                                             "typemap_name": "int"
@@ -4459,9 +4432,6 @@
                                                 "decls": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4472,9 +4442,6 @@
                                                     },
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "init": 1,
                                                             "name": "len",
                                                             "typemap_name": "long"
@@ -4789,9 +4756,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -4802,9 +4766,6 @@
                                                     },
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "init": 1,
                                                             "name": "len",
                                                             "typemap_name": "int"
@@ -4828,7 +4789,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type +value, int len=1 +value)",
+                                        "declgen": "ExClass2 * declare(TypeID type, int len=1)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -4992,9 +4953,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "type",
                                                             "typemap_name": "TypeID"
                                                         },
@@ -5005,9 +4963,6 @@
                                                     },
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "init": 1,
                                                             "name": "len",
                                                             "typemap_name": "long"
@@ -5031,7 +4986,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type +value, long len=1 +value)",
+                                        "declgen": "ExClass2 * declare(TypeID type, long len=1)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -5460,9 +5415,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -5487,7 +5439,7 @@
                                             ]
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(ValueType value +value)",
+                                        "declgen": "void setValue(ValueType value)",
                                         "have_template_args": true,
                                         "name": "setValue",
                                         "options": {},
@@ -5575,9 +5527,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -5595,7 +5544,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(int value +value)",
+                                        "declgen": "void setValue(int value)",
                                         "have_template_args": true,
                                         "name": "setValue",
                                         "options": {},
@@ -5858,9 +5807,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -5878,7 +5824,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(long value +value)",
+                                        "declgen": "void setValue(long value)",
                                         "have_template_args": true,
                                         "name": "setValue",
                                         "options": {},
@@ -6138,9 +6084,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -6158,7 +6101,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(float value +value)",
+                                        "declgen": "void setValue(float value)",
                                         "have_template_args": true,
                                         "name": "setValue",
                                         "options": {},
@@ -6418,9 +6361,6 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "attrs": {
-                                                                "value": true
-                                                            },
                                                             "name": "value"
                                                         },
                                                         "specifier": [
@@ -6438,7 +6378,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(double value +value)",
+                                        "declgen": "void setValue(double value)",
                                         "gen_headers_typedef": [
                                             "int",
                                             "long",
@@ -8090,9 +8030,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "flag",
                                                     "typemap_name": "int"
                                                 },
@@ -8110,7 +8047,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name, int flag +value)",
+                                "declgen": "void test_names(const std::string & name, int flag)",
                                 "helpers": {
                                     "c": [
                                         "char_len_trim"
@@ -8532,9 +8469,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "init": 1,
                                                     "name": "i",
                                                     "typemap_name": "int"
@@ -8553,7 +8487,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
-                                "declgen": "void testoptional(int i=1 +value)",
+                                "declgen": "void testoptional(int i=1)",
                                 "name": "testoptional",
                                 "options": {},
                                 "wrap": {
@@ -8701,9 +8635,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "init": 1,
                                                     "name": "i",
                                                     "typemap_name": "int"
@@ -8715,9 +8646,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "init": 2,
                                                     "name": "j",
                                                     "typemap_name": "long"
@@ -8736,7 +8664,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
-                                "declgen": "void testoptional(int i=1 +value, long j=2 +value)",
+                                "declgen": "void testoptional(int i=1, long j=2)",
                                 "name": "testoptional",
                                 "options": {},
                                 "wrap": {
@@ -9201,9 +9129,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "comm",
                                                     "typemap_name": "MPI_Comm"
                                                 },
@@ -9221,7 +9146,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testmpi(MPI_Comm comm)",
-                                "declgen": "void testmpi(MPI_Comm comm +value)",
+                                "declgen": "void testmpi(MPI_Comm comm)",
                                 "name": "testmpi",
                                 "options": {},
                                 "user_fmt": {
@@ -9537,9 +9462,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "func": {
                                                         "name": "get",
                                                         "pointer": [
@@ -9567,7 +9489,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr1(void (*get)());",
-                                "declgen": "void FuncPtr1(void ( * get)(void) +value)",
+                                "declgen": "void FuncPtr1(void ( * get)(void))",
                                 "doxygen": {
                                     "brief": "subroutine"
                                 },
@@ -10005,9 +9927,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "func": {
                                                         "name": "get",
                                                         "pointer": [
@@ -10061,7 +9980,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr3(double (*get)(int i, int));",
-                                "declgen": "void FuncPtr3(double ( * get)(int i, int) +value)",
+                                "declgen": "void FuncPtr3(double ( * get)(int i, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -10266,9 +10185,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "func": {
                                                         "name": "get",
                                                         "pointer": [
@@ -10321,7 +10237,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr4(double (*get)(double, int));",
-                                "declgen": "void FuncPtr4(double ( * get)(double, int) +value)",
+                                "declgen": "void FuncPtr4(double ( * get)(double, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -10467,9 +10383,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "func": {
                                                         "name": "get",
                                                         "pointer": [
@@ -10628,7 +10541,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
-                                "declgen": "void FuncPtr5(void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10) +value)",
+                                "declgen": "void FuncPtr5(void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
                                 "name": "FuncPtr5",
                                 "options": {},
                                 "wrap": {
@@ -12136,9 +12049,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname1",
                                                     "typemap_name": "int"
                                                 },
@@ -12149,9 +12059,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname2",
                                                     "typemap_name": "int"
                                                 },
@@ -12162,9 +12069,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname3",
                                                     "typemap_name": "int"
                                                 },
@@ -12175,9 +12079,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname4",
                                                     "typemap_name": "int"
                                                 },
@@ -12188,9 +12089,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname5",
                                                     "typemap_name": "int"
                                                 },
@@ -12201,9 +12099,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname6",
                                                     "typemap_name": "int"
                                                 },
@@ -12214,9 +12109,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname7",
                                                     "typemap_name": "int"
                                                 },
@@ -12227,9 +12119,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname8",
                                                     "typemap_name": "int"
                                                 },
@@ -12240,9 +12129,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname9",
                                                     "typemap_name": "int"
                                                 },
@@ -12253,9 +12139,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "verylongname10",
                                                     "typemap_name": "int"
                                                 },
@@ -12273,7 +12156,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
-                                "declgen": "int verylongfunctionname2(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)",
+                                "declgen": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                 "name": "verylongfunctionname2",
                                 "options": {
                                     "C_line_length": 0,
@@ -13483,8 +13366,7 @@
                                             {
                                                 "declarator": {
                                                     "attrs": {
-                                                        "implied": "size(in)",
-                                                        "value": true
+                                                        "implied": "size(in)"
                                                     },
                                                     "name": "sizein",
                                                     "typemap_name": "int"
@@ -13503,7 +13385,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +dimension(shape(in)), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)",
+                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },

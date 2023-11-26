@@ -359,7 +359,7 @@ module vectors_mod
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Statement: f_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     interface
         function c_vector_of_pointers(arg1, SHT_arg1_len, SHT_arg1_size, &
@@ -502,7 +502,7 @@ module vectors_mod
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Statement: c_function_vector_scalar_malloc_targ_native_scalar
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: c_in_native_scalar
     interface
         function c_return_vector_alloc(n, SHT_rv_size) &
@@ -520,7 +520,7 @@ module vectors_mod
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     interface
         subroutine c_return_vector_alloc_bufferify(n, SHT_rv_cdesc) &
@@ -540,7 +540,7 @@ module vectors_mod
     ! Argument:  int * arg +intent(in)+rank(2)
     ! Statement: f_in_native_*
     ! ----------------------------------------
-    ! Argument:  int len +implied(size(arg,2))+value
+    ! Argument:  int len +implied(size(arg,2))
     ! Statement: f_in_native_scalar
     interface
         function c_return_dim2(arg, len) &
@@ -788,7 +788,7 @@ contains
     ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Statement: f_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     !>
     !! \brief Fortran 2-d array to vector<const double *>
@@ -902,7 +902,7 @@ contains
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
     ! ----------------------------------------
-    ! Argument:  int n +value
+    ! Argument:  int n
     ! Statement: f_in_native_scalar
     !>
     !! Implement iota function.

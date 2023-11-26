@@ -68,7 +68,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Function:  int & at
 // Statement: c_function_native_&
 // ----------------------------------------
-// Argument:  size_type n +value
+// Argument:  size_type n
 // Statement: c_in_native_scalar
 int * TEM_vector_int_at(TEM_vector_int * self,
     TEM_vector_int_size_type n)
@@ -86,7 +86,7 @@ int * TEM_vector_int_at(TEM_vector_int * self,
 // Function:  int & at
 // Statement: f_function_native_&_pointer
 // ----------------------------------------
-// Argument:  size_type n +value
+// Argument:  size_type n
 // Statement: f_in_native_scalar
 int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
     TEM_vector_int_size_type n)

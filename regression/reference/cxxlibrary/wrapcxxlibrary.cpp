@@ -70,7 +70,7 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // Function:  void defaultArgsInOut
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int in1 +value
+// Argument:  int in1
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
@@ -89,7 +89,7 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // Function:  void defaultArgsInOut
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int in1 +value
+// Argument:  int in1
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
@@ -98,7 +98,7 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // Argument:  int * out2 +intent(out)
 // Statement: c_out_native_*
 // ----------------------------------------
-// Argument:  bool flag=false +value
+// Argument:  bool flag=false
 // Statement: c_in_bool_scalar
 void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
@@ -115,7 +115,7 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // Function:  const std::string & getGroupName +len(30)
 // Statement: c_function_string_&
 // ----------------------------------------
-// Argument:  long idx +value
+// Argument:  long idx
 // Statement: c_in_native_scalar
 const char * CXX_getGroupName(long idx)
 {
@@ -135,7 +135,7 @@ const char * CXX_getGroupName(long idx)
 // Function:  const std::string & getGroupName +len(30)
 // Statement: f_function_string_&_buf_copy
 // ----------------------------------------
-// Argument:  int32_t idx +value
+// Argument:  int32_t idx
 // Statement: f_in_native_scalar
 void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
@@ -160,7 +160,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 // Function:  const std::string & getGroupName +len(30)
 // Statement: f_function_string_&_buf_copy
 // ----------------------------------------
-// Argument:  int64_t idx +value
+// Argument:  int64_t idx
 // Statement: f_in_native_scalar
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)

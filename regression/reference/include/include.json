@@ -20,9 +20,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "name": "comm",
                                             "typemap_name": "MPI_Comm"
                                         },
@@ -40,7 +37,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method1(MPI_Comm comm)",
-                        "declgen": "void method1(MPI_Comm comm +value)",
+                        "declgen": "void method1(MPI_Comm comm)",
                         "name": "method1",
                         "options": {},
                         "wrap": {
@@ -548,9 +545,6 @@
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
                                                     "name": "arg1",
                                                     "typemap_name": "CustomType"
                                                 },
@@ -568,7 +562,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method1(CustomType arg1)",
-                                "declgen": "void method1(CustomType arg1 +value)",
+                                "declgen": "void method1(CustomType arg1)",
                                 "name": "method1",
                                 "options": {},
                                 "wrap": {
