@@ -13,25 +13,10 @@ line 85
 int arg1 +badvar+dimension(10)
 dimension attribute can only be used on pointer and references
 --------------------
-Node: func0
-line 23
-void func0(void) +badfunc
-Illegal attribute 'badfunc' for function 'func0'
---------------------
 Node: func0a
 line 24
 void func0a(int)
 Argument must have name in void func0a(int)
---------------------
-Node: func0e
-line 28
-int * func0e(void) +dimension
-dimension attribute must have a value.
---------------------
-Node: func0f
-line 29
-int func0f(void) +dimension(10)
-dimension attribute can only be used on pointer and references
 --------------------
 Node: func1
 line 31
@@ -185,6 +170,21 @@ Wrote error_types.yaml
 ----------------------------------------
 Phase: FillMeta function
 ----------------------------------------
+Node: func0
+line 23
+void func0(void) +badfunc
+Illegal attribute 'badfunc' for function 'func0'
+--------------------
+Node: func0e
+line 28
+int * func0e(void) +dimension
+dimension attribute must have a value.
+--------------------
+Node: func0f
+line 29
+int func0f(void) +dimension(10)
+dimension attribute can only be used on pointer and references
+--------------------
 Node: func8
 line 47
 void func8(int arg1 +intent(none)+value)

@@ -29,6 +29,7 @@ Fortran:
 
 """
 
+from . import declast
 from . import error
 from . import statements
 
@@ -317,7 +318,6 @@ class FillMeta(object):
         ntypemap = ast.typemap
         attrs = ast.declarator.attrs
         api = ast.declarator.attrs["api"]
-        shared = ast.declarator.metaattrs
 
         if api:
             # XXX - from check_common_attrs
@@ -395,7 +395,6 @@ class FillMeta(object):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
-        shared = declarator.metaattrs
         api = attrs["api"]
 
         if meta["api"]:
@@ -495,6 +494,7 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         meta["dimension"] = share_meta["dimension"]
+        meta["assumed-rank"] = share_meta["assumed-rank"]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -503,6 +503,7 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         meta["dimension"] = share_meta["dimension"]
+        meta["assumed-rank"] = share_meta["assumed-rank"]
             
 ######################################################################
 #
@@ -519,10 +520,7 @@ class FillMetaShare(FillMeta):
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
 
-        x_meta = declarator.metaattrs
-        r_meta["dimension"] = x_meta["dimension"]
-        x_meta["dimension"] = None
-        
+        self.check_func_attrs(node, r_meta)
         self.set_func_intent(node, r_meta)
 
         # --- Loop over function parameters
@@ -537,6 +535,8 @@ class FillMetaShare(FillMeta):
             x_meta = declarator.metaattrs
             meta["dimension"] = x_meta["dimension"]
             x_meta["dimension"] = None
+            meta["assumed-rank"] = x_meta["assumed-rank"]
+#            x_meta["assumed-rank"] = None
 
             self.set_arg_intent(node, arg, meta)
 
@@ -549,6 +549,157 @@ class FillMetaShare(FillMeta):
         # --- End loop over function parameters
         func_cursor.arg = None
         cursor.pop_node(node)
+
+    def check_func_attrs(self, node, meta):
+        cursor = self.cursor
+
+        ast = node.ast
+        declarator = ast.declarator
+        attrs = declarator.attrs
+#        node._has_found_default = False
+
+        for attr in attrs:
+            if attr[0] == "_":  # internal attribute
+                continue
+            if attr not in [
+                "api",          # arguments to pass to C wrapper.
+                "allocatable",  # return a Fortran ALLOCATABLE
+                "deref",  # How to dereference pointer
+                "dimension",
+                "free_pattern",
+                "len",
+                "name",
+                "owner",
+                "pure",
+                "rank",
+            ]:
+                cursor.generate(
+                    "Illegal attribute '{}' for function '{}'".format(
+                        attr, node.name
+                    )
+                )
+
+        self.check_common_attrs(node.ast, meta)
+
+    def check_common_attrs(self, ast, meta):
+        """Check attributes which are common to function and argument AST
+        This includes: dimension, free_pattern, owner, rank
+
+        Parameters
+        ----------
+        ast : declast.Declaration
+        """
+        declarator = ast.declarator
+        attrs = declarator.attrs
+        ntypemap = ast.typemap
+        is_ptr = declarator.is_indirect()
+
+        # dimension
+        dimension = attrs["dimension"]
+        rank = attrs["rank"]
+        if rank:
+            if rank is True:
+                self.cursor.generate(
+                    "'rank' attribute must have an integer value"
+                )
+            else:
+                try:
+                    attrs["rank"] = int(attrs["rank"])
+                except ValueError:
+                    self.cursor.generate(
+                        "rank attribute must have an integer value, not '{}'"
+                        .format(attrs["rank"])
+                    )
+                else:
+                    if attrs["rank"] > 7:
+                        self.cursor.generate(
+                            "'rank' attribute must be 0-7, not '{}'"
+                            .format(attrs["rank"])
+                        )
+            if not is_ptr:
+                self.cursor.generate(
+                    "rank attribute can only be "
+                    "used on pointer and references"
+                )
+        if dimension:
+            if dimension is True:
+                self.cursor.generate(
+                    "dimension attribute must have a value."
+                )
+                dimension = None
+            if attrs["value"]:
+                self.cursor.generate(
+                    "argument may not have 'value' and 'dimension' attribute."
+                )
+            if rank:
+                self.cursor.generate(
+                    "argument may not have 'rank' and 'dimension' attribute."
+                )
+            if not is_ptr:
+                self.cursor.generate(
+                    "dimension attribute can only be "
+                    "used on pointer and references"
+                )
+            self.parse_dim_attrs(dimension, meta)
+        elif ntypemap:
+            if ntypemap.base == "vector":
+                # default to 1-d assumed shape
+                attrs["rank"] = 1
+            elif ntypemap.name == 'char' and is_ptr == 2:
+                # 'char **' -> CHARACTER(*) s(:)
+                attrs["rank"] = 1
+
+        owner = attrs["owner"]
+        if owner is not None:
+            if owner not in ["caller", "library"]:
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+
+        free_pattern = attrs["free_pattern"]
+        if free_pattern is not None:
+            if free_pattern not in self.newlibrary.patterns:
+                raise RuntimeError(
+                    "Illegal value '{}' for free_pattern attribute. "
+                    "Must be defined in patterns section.".format(free_pattern)
+                )
+        
+    def parse_dim_attrs(self, dim, meta):
+        """Parse dimension attributes and save the AST.
+        This tree will be traversed by the wrapping classes
+        to convert to language specific code.
+
+        Parameters
+        ----------
+        dim : dimension string
+        meta: Scope
+        """
+        if not dim:
+            return
+        try:
+            check_dimension(dim, meta)
+        except error.ShroudParseError:
+            self.cursor.generate("Unable to parse dimension: {}"
+                                     .format(dim))
+
+def check_dimension(dim, meta, trace=False):
+    """Assign AST of dim and assumed_rank flag to meta.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    meta : dict
+    trace : boolean
+    """
+    if dim == "..":
+        meta["dimension"] = declast.AssumedRank()
+        meta["assumed-rank"] = True
+    else:
+        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 ######################################################################
 #

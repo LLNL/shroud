@@ -506,7 +506,7 @@ class FillFormat(object):
         meta = bind.meta
         dim = meta["dimension"]
         rank = f_attrs["rank"]
-        if f_meta["assumed-rank"]:
+        if meta["assumed-rank"]:
             fmt.i_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:

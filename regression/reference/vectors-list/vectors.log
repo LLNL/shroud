@@ -2,7 +2,7 @@ Read yaml vectors.yaml
 Python function int vector_sum(const std::vector<int> & arg +rank(1))
 Python function void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))
 Python function void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))
-Python function std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)
+Python function std::vector<int> ReturnVectorAlloc(int n +value)
 Python function int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)
 Close pyvectorsmodule.cpp
 Close pyvectorsmodule.hpp

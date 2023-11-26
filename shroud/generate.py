@@ -127,33 +127,7 @@ class VerifyAttrs(object):
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         node._has_found_default = False
-
-        for attr in attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr not in [
-                "api",          # arguments to pass to C wrapper.
-                "allocatable",  # return a Fortran ALLOCATABLE
-                "deref",  # How to dereference pointer
-                "dimension",
-                "free_pattern",
-                "len",
-                "name",
-                "owner",
-                "pure",
-                "rank",
-            ]:
-                cursor.generate(
-                    "Illegal attribute '{}' for function '{}'".format(
-                        attr, node.name
-                    )
-                )
-
-        if ast.typemap is None:
-            print("XXXXXX typemap is None")
-        self.check_common_attrs(node.ast)
 
         for arg in declarator.params:
             if arg.declarator.name is None:
@@ -657,8 +631,6 @@ class GenFunctions(object):
         )
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
-        meta = fcn.ast.declarator.metaattrs
-        meta.update(declarator.metaattrs)
         meta = statements.fetch_func_metaattrs(fcn, "f")
         meta["intent"] = "getter"
         meta["deref"] = deref

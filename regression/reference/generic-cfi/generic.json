@@ -1615,6 +1615,7 @@
                         },
                         "values": {
                             "meta": {
+                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
@@ -1639,6 +1640,7 @@
                         "values": {
                             "meta": {
                                 "api": "cfi",
+                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
@@ -1660,6 +1662,7 @@
                         },
                         "values": {
                             "meta": {
+                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
