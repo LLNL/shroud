@@ -506,7 +506,7 @@ class FillFormat(object):
         meta = bind.meta
         dim = meta["dimension"]
         rank = f_attrs["rank"]
-        if meta["assumed-rank"]:
+        if f_attrs["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
@@ -666,7 +666,7 @@ class ToDimensionC(todict.PrintNode):
     def visit_AssumedRank(self, node):
         self.rank = "assumed"
         return "--assumed-rank--"
-        raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
+        raise RuntimeError("fcfmt.py: Detected assumed-rank dimension")
 
 ######################################################################
 

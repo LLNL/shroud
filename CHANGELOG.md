@@ -53,6 +53,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Do not added *value* attribute explicitly. Instead use
   ``append_fortran_value`` to decided when to add ``VALUE``
   attribute. The user can still set it explictly.
+- Remove meta attribute *assumed-rank*. Instead check *dimension*
+  set to ``..``.
 
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.

@@ -427,7 +427,7 @@ class FillMeta(object):
 
         if node.options.F_CFI:
             cfi_arg = False
-            if shared["assumed-rank"]:
+            if attrs["dimension"] == "..":   # assumed-rank
                 cfi_arg = True
             elif attrs["rank"]:
                 cfi_arg = True
@@ -494,7 +494,6 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         meta["dimension"] = share_meta["dimension"]
-        meta["assumed-rank"] = share_meta["assumed-rank"]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -503,7 +502,6 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         meta["dimension"] = share_meta["dimension"]
-        meta["assumed-rank"] = share_meta["assumed-rank"]
             
 ######################################################################
 #
@@ -535,8 +533,6 @@ class FillMetaShare(FillMeta):
             x_meta = declarator.metaattrs
             meta["dimension"] = x_meta["dimension"]
             x_meta["dimension"] = None
-            meta["assumed-rank"] = x_meta["assumed-rank"]
-#            x_meta["assumed-rank"] = None
 
             self.set_arg_intent(node, arg, meta)
 
@@ -697,7 +693,6 @@ def check_dimension(dim, meta, trace=False):
     """
     if dim == "..":
         meta["dimension"] = declast.AssumedRank()
-        meta["assumed-rank"] = True
     else:
         meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 

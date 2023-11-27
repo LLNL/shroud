@@ -25,7 +25,6 @@
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)
-// Attrs:     +assumed-rank
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int nvalues

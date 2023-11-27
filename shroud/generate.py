@@ -354,7 +354,7 @@ class VerifyAttrs(object):
             )
 
         # Flag node if any argument is assumed-rank.
-        if meta["assumed-rank"]:
+        if attrs["dimension"] == "..":   # assumed-rank
             node._gen_fortran_generic = True
 
     def parse_dim_attrs(self, dim, meta):
@@ -390,7 +390,6 @@ def check_dimension(dim, meta, trace=False):
     """
     if dim == "..":
         meta["dimension"] = declast.AssumedRank()
-        meta["assumed-rank"] = True
     else:
         meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
@@ -1094,12 +1093,10 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 attrs = decl.declarator.attrs
-                meta = decl.declarator.metaattrs
-                if meta["assumed-rank"]:
+                if attrs["dimension"] == "..":   # assumed-rank
                     # Replace dimension(..) with rank(n).
                     attrs["dimension"] = None
                     attrs["rank"] = rank
-                    meta["assumed-rank"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1108,10 +1105,8 @@ class GenFunctions(object):
         # Remove assumed-rank from C function.
         for decl in params:
             attrs = decl.declarator.attrs
-            meta = decl.declarator.metaattrs
-            if meta["assumed-rank"]:
+            if attrs["dimension"] == "..":   # assumed-rank
                 attrs["dimension"] = None
-                meta["assumed-rank"] = None
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
