@@ -5033,11 +5033,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "sublevels"
-                                    }
-                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_struct_**"
@@ -5056,11 +5051,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "sublevels"
-                                    }
-                                ],
                                 "intent": "in"
                             }
                         }
@@ -5114,7 +5104,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "sublevels",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

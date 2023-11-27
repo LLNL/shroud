@@ -6107,17 +6107,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "+",
-                                        "right": {
-                                            "name": "nitems"
-                                        }
-                                    }
-                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -6136,17 +6125,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "+",
-                                        "right": {
-                                            "name": "nitems"
-                                        }
-                                    }
-                                ],
                                 "intent": "in"
                             }
                         }
@@ -6200,7 +6178,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems+nitems",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6530,17 +6507,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "*",
-                                        "right": {
-                                            "name": "TWO"
-                                        }
-                                    }
-                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -6559,17 +6525,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "*",
-                                        "right": {
-                                            "name": "TWO"
-                                        }
-                                    }
-                                ],
                                 "intent": "in"
                             }
                         }
@@ -6623,7 +6578,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems*TWO",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

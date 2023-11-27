@@ -2749,11 +2749,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "narg2"
-                                    }
-                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -2772,11 +2767,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "narg2"
-                                    }
-                                ],
                                 "intent": "in"
                             }
                         }
@@ -2830,7 +2820,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "narg2",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

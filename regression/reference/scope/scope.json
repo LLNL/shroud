@@ -777,11 +777,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ],
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
@@ -800,11 +795,6 @@
                         },
                         "val": {
                             "meta": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ],
                                 "intent": "in"
                             }
                         }
@@ -858,7 +848,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1348,11 +1337,6 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ],
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
@@ -1371,11 +1355,6 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ],
                                         "intent": "in"
                                     }
                                 }
@@ -1429,7 +1408,6 @@
                             "val": {
                                 "fmtf": {
                                     "c_addr": "",
-                                    "c_array_size2": "nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -1946,11 +1924,6 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ],
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
@@ -1969,11 +1942,6 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ],
                                         "intent": "in"
                                     }
                                 }
@@ -2027,7 +1995,6 @@
                             "val": {
                                 "fmtf": {
                                     "c_addr": "",
-                                    "c_array_size2": "nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
