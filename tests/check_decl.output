@@ -191,9 +191,8 @@ stmts:
     members:
     - _ast: Declaration
       declarator:
-        attrs:
-          _constructor: true
-          _name: ctor
+        default_name: ctor
+        is_ctor: true
         params: []
         typemap_name: Class2
       is_ctor: true
@@ -202,9 +201,8 @@ stmts:
       typemap_name: Class2
     - _ast: Declaration
       declarator:
-        attrs:
-          _destructor: Class2
-          _name: dtor
+        default_name: dtor
+        is_dtor: true
         params: []
         typemap_name: void
       is_dtor: Class2

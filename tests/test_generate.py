@@ -51,7 +51,8 @@ class CheckImplied(unittest.TestCase):
         )
         self.func1 = node
 
-    def test_dimension_1(self):
+    def XXXtest_dimension_1(self):
+        # XXX - moved to FillMeta - checked with error-generate.yaml
         # Check missing dimension value
         # (:) used to be accepted as assumed shape -- now rank(1).
         library = ast.LibraryNode()
@@ -64,7 +65,8 @@ class CheckImplied(unittest.TestCase):
         vfy.check_fcn_attrs(node)
         self.assertTrue("dimension attribute must have a value" in str(error.cursor.message))
 
-    def test_dimension_2(self):
+    def XXXtest_dimension_2(self):
+        # XXX - moved to FillMeta - checked with error-generate.yaml
         # Check bad dimension
         # (:) used to be accepted as assumed shape -- now rank(1).
         library = ast.LibraryNode()

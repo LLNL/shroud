@@ -1807,7 +1807,7 @@ class Declaration(Node):
                     if len(declarator.pointer) == 1:
                         t.append("value")     # void *
             else:
-                if self.typemap.sgroup == "string":
+                if self.typemap.sgroup in["char", "string"]:
                     pass
                 else:
                     t.append("value")

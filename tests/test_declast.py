@@ -49,10 +49,10 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int var1", s)
         s = r.bind_c()
-        self.assertEqual("integer(C_INT) :: var1", s)
-        s = r.bind_c(intent="out")
+        self.assertEqual("integer(C_INT), value :: var1", s)
+        s = r.bind_c(intent="out", is_result=True)
         self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
-        s = r.gen_arg_as_fortran()
+        s = r.gen_arg_as_fortran(local=True)
         self.assertEqual("integer(C_INT) :: var1", s)
 
         r = declast.check_decl("const int var1", symtab)
@@ -242,7 +242,7 @@ class CheckParse(unittest.TestCase):
             "int var1[20]",
             r.gen_arg_as_c())
         self.assertEqual(
-            "integer(C_INT) :: var1(20)",
+            "integer(C_INT), value :: var1(20)",
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("int var2[20][10]", symtab)
@@ -268,7 +268,7 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_c())
         self.assertEqual(
             "integer(C_INT) :: var2(10,20)",
-            r.gen_arg_as_fortran())
+            r.gen_arg_as_fortran(local=True))
         
         r = declast.check_decl("int var3[DEFINE + 3]", symtab)
         self.assertEqual("int var3[DEFINE+3]", str(r))
@@ -294,7 +294,7 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_c())
         self.assertEqual(
             "integer(C_INT) :: var3(DEFINE+3)",
-            r.gen_arg_as_fortran())
+            r.gen_arg_as_fortran(local=True))
        
     def test_type_string(self):
         """Test string declarations
@@ -1087,7 +1087,8 @@ class CheckParse(unittest.TestCase):
                 "typemap_name": "Class1",
                 "is_ctor": True,
                 'declarator': {
-                    "attrs": {"_constructor": True, "_name": "ctor"},
+                    "is_ctor": True,
+                    "default_name": "ctor",
                     "params": [],
                     "typemap_name": "Class1",
                 },
@@ -1120,7 +1121,9 @@ class CheckParse(unittest.TestCase):
                 "typemap_name": "Class1",
                 "is_ctor": True,
                 'declarator': {
-                    "attrs": {"_constructor": True, "_name": "ctor", "name": "new"},
+                    "attrs": {"name": "new"},
+                    "is_ctor": True,
+                    "default_name": "ctor",
                     "params": [],
                     "typemap_name": "Class1",
                 },
@@ -1152,7 +1155,8 @@ class CheckParse(unittest.TestCase):
                 "typemap_name": "void",
                 "is_dtor": "Class1",
                 'declarator': {
-                    "attrs": {"_destructor": "Class1", "_name": "dtor"},
+                    "is_dtor": True,
+                    "default_name": "dtor",
                     "params": [],
                     "typemap_name": "void",
                 },
