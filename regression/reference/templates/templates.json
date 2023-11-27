@@ -517,9 +517,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "structAsClass"
@@ -1369,9 +1367,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "structAsClass"
@@ -3597,9 +3593,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "attrs": {
-                                            "_name": "ctor"
-                                        },
+                                        "default_name": "ctor",
                                         "is_ctor": true,
                                         "params": [],
                                         "typemap_name": "std::vector"
@@ -3756,9 +3750,7 @@
                                 "_orig_node_index": 23,
                                 "ast": {
                                     "declarator": {
-                                        "attrs": {
-                                            "_name": "dtor"
-                                        },
+                                        "default_name": "dtor",
                                         "is_dtor": true,
                                         "params": [],
                                         "typemap_name": "void"
@@ -4541,9 +4533,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "attrs": {
-                                            "_name": "ctor"
-                                        },
+                                        "default_name": "ctor",
                                         "is_ctor": true,
                                         "params": [],
                                         "typemap_name": "std::vector"
@@ -4700,9 +4690,7 @@
                                 "_orig_node_index": 23,
                                 "ast": {
                                     "declarator": {
-                                        "attrs": {
-                                            "_name": "dtor"
-                                        },
+                                        "default_name": "dtor",
                                         "is_dtor": true,
                                         "params": [],
                                         "typemap_name": "void"

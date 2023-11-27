@@ -67,9 +67,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "forward::Class2"
@@ -243,9 +241,7 @@
                         "<FUNCTION>": "dtor  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "dtor"
-                                },
+                                "default_name": "dtor",
                                 "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"

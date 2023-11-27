@@ -552,8 +552,6 @@ class FillMetaShare(FillMeta):
 #        node._has_found_default = False
 
         for attr in attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
             if attr not in [
                 "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
@@ -565,6 +563,7 @@ class FillMetaShare(FillMeta):
                 "owner",
                 "pure",
                 "rank",
+                "__line__",
             ]:
                 cursor.generate(
                     "Illegal attribute '{}' for function '{}'".format(
@@ -581,8 +580,6 @@ class FillMetaShare(FillMeta):
         attrs = declarator.attrs
 
         for attr in attrs:
-            if attr[0] == "_":  # Shroud internal attribute.
-                continue
             if attr not in [
                 "api",
                 "allocatable",
@@ -603,6 +600,7 @@ class FillMetaShare(FillMeta):
                 "rank",
                 "size",
                 "value",
+                "__line__",
             ]:
                 cursor.generate(
                     "Illegal attribute '{}' for argument '{}'".format(

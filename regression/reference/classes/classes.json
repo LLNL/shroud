@@ -100,9 +100,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Class1"
@@ -281,9 +279,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [
                                     {
@@ -573,9 +569,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_name": "dtor",
                                     "name": "delete"
                                 },
+                                "default_name": "dtor",
                                 "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
@@ -3478,9 +3474,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Shape"
@@ -3879,9 +3873,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Circle"
@@ -4351,9 +4343,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Data"
@@ -4477,9 +4467,7 @@
                         "<FUNCTION>": "dtor  23 ****************************************",
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "dtor"
-                                },
+                                "default_name": "dtor",
                                 "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"

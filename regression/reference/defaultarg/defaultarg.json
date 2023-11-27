@@ -20,9 +20,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [
                                     {
@@ -230,9 +230,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [
                                     {
@@ -515,9 +515,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [
                                     {
@@ -861,9 +861,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_name": "dtor",
                                     "name": "delete"
                                 },
+                                "default_name": "dtor",
                                 "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"

@@ -463,9 +463,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_name": "ctor"
-                                },
+                                "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "Class1"

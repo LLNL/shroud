@@ -634,12 +634,12 @@ class Parser(ExprParser):
             declarator = Declarator()
             declarator.is_dtor = True
             declarator.ctor_dtor_name = True
-            declarator.attrs["_name"] = "dtor"
+            declarator.default_name = "dtor"
         elif node.is_ctor:
             declarator = Declarator()
             declarator.is_ctor = True
             declarator.ctor_dtor_name = True
-            declarator.attrs["_name"] = "ctor"
+            declarator.default_name = "ctor"
         else:
             declarator = self.declarator()
         node.declarator = declarator
@@ -682,7 +682,7 @@ class Parser(ExprParser):
             declarator.init = self.initializer()
 
         if declarator.ctor_dtor_name:
-            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.attrs["_name"]
+            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.default_name
             
         self.exit("declarator_item", str(node))
         return node
@@ -1290,6 +1290,7 @@ class Declarator(Node):
         self.func = None  # (*name)     Declarator
         
         self.ctor_dtor_name = False
+        self.default_name = None
 
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
@@ -1304,10 +1305,10 @@ class Declarator(Node):
     def get_user_name(self, use_attr=True):
         """Get name from declarator
         use_attr - True, check attr for name
-        ctor and dtor should have _name set
+        ctor and dtor should have default_name set
         """
         if use_attr:
-            name = self.attrs["name"] or self.attrs["_name"]
+            name = self.attrs["name"] or self.default_name
             if name is not None:
                 return name
         return self.name
