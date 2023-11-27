@@ -18,16 +18,6 @@ line 24
 void func0a(int)
 Argument must have name in void func0a(int)
 --------------------
-Node: func1
-line 31
-void func1(int arg1 +bad)
-Illegal attribute 'bad' for argument 'arg1'
---------------------
-Node: func2
-line 33
-void func2(int arg1 +assumedtype+value)
-argument 'arg1' must not have value=True because it has the assumedtype attribute.
---------------------
 Node: func3
 line 35
 void func3(int arg1 +charlen)
@@ -45,13 +35,90 @@ charlen attribute must have a value
 --------------------
 Node: func6
 line 43
-void func6(vector * arg1 +rank(1))
-std::vector must have template argument: vector * arg1 +rank(1)
+void func6(vector * arg1)
+std::vector must have template argument: vector * arg1
+--------------------
+Node: func13
+line 67
+void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
+Too many arguments to 'size': size(in,2,3)
+--------------------
+Node: func13b
+line 69
+void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))
+Unknown argument 'none': size(none)
+--------------------
+Node: func13c
+line 71
+void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
+Too many arguments to 'len': len(text,2)
+--------------------
+Node: func13c
+line 71
+void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
+Too many arguments to 'len_trim': len_trim(text,3)
+--------------------
+Node: func13d
+line 74
+void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
+Unknown argument 'text2': len(text2)
+--------------------
+Node: func13d
+line 74
+void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
+Unknown argument 'text3': len_trim(text3)
+
+----------------------------------------
+Phase: generate functions
+----------------------------------------
+Node: nested
+line 101
+struct nested
+process_class: class nested already exists in class_map
+Wrote error_types.yaml
+
+----------------------------------------
+Phase: FillMeta function
+----------------------------------------
+Node: func0
+line 23
+void func0(void) +badfunc
+Illegal attribute 'badfunc' for function 'func0'
+--------------------
+Node: func0e
+line 28
+int * func0e(void) +dimension
+dimension attribute must have a value.
+--------------------
+Node: func0f
+line 29
+int func0f(void) +dimension(10)
+dimension attribute can only be used on pointer and references
+--------------------
+Node: func1
+line 31
+void func1(int arg1 +bad)
+Illegal attribute 'bad' for argument 'arg1'
+--------------------
+Node: func2
+line 33
+void func2(int arg1 +assumedtype+value)
+argument 'arg1' must not have value=True because it has the assumedtype attribute.
 --------------------
 Node: func7
 line 45
 void func7(int * arg1 +dimension(n+=2))
 Unable to parse dimension: n+=2
+--------------------
+Node: func8
+line 47
+void func8(int arg1 +intent(none))
+Bad value for intent: none
+--------------------
+Node: func8a
+line 48
+void func8a(int arg1 +intent(out))
+Only pointer arguments may have intent of 'out' or 'inout'
 --------------------
 Node: func10b
 line 56
@@ -123,82 +190,15 @@ line 64
 void func12(int * * arg1 +intent(out)+owner(none))
 Illegal value 'none' for owner attribute. Must be 'caller' or 'library'.
 --------------------
-Node: func13
-line 67
-void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
-Too many arguments to 'size': size(in,2,3)
---------------------
-Node: func13b
-line 69
-void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))
-Unknown argument 'none': size(none)
---------------------
-Node: func13c
-line 71
-void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
-Too many arguments to 'len': len(text,2)
---------------------
-Node: func13c
-line 71
-void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
-Too many arguments to 'len_trim': len_trim(text,3)
---------------------
-Node: func13d
-line 74
-void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
-Unknown argument 'text2': len(text2)
---------------------
-Node: func13d
-line 74
-void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
-Unknown argument 'text3': len_trim(text3)
---------------------
-Node: AssignValues
-line 106
-void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)
-'rank' attribute must be 0-7, not '8'
-
-----------------------------------------
-Phase: generate functions
-----------------------------------------
-Node: nested
-line 101
-struct nested
-process_class: class nested already exists in class_map
-Wrote error_types.yaml
-
-----------------------------------------
-Phase: FillMeta function
-----------------------------------------
-Node: func0
-line 23
-void func0(void) +badfunc
-Illegal attribute 'badfunc' for function 'func0'
---------------------
-Node: func0e
-line 28
-int * func0e(void) +dimension
-dimension attribute must have a value.
---------------------
-Node: func0f
-line 29
-int func0f(void) +dimension(10)
-dimension attribute can only be used on pointer and references
---------------------
-Node: func8
-line 47
-void func8(int arg1 +intent(none))
-Bad value for intent: none
---------------------
-Node: func8a
-line 48
-void func8a(int arg1 +intent(out))
-Only pointer arguments may have intent of 'out' or 'inout'
---------------------
 Node: callback_set_alloc
 line 78
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)))
 Bad value for intent: none
+--------------------
+Node: AssignValues
+line 106
+void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)
+'rank' attribute must be 0-7, not '8'
 --------------------
 Node: func0b
 line 25
@@ -238,6 +238,11 @@ Node: func10
 line 55
 void func10(int arg1 +api(none))
 'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
+--------------------
+Node: AssignValues
+line 106
+void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)
+Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 Wrote wraperror.h
 Wrote wraperror.cpp
 Wrote wrapferror.f

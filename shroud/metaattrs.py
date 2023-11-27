@@ -530,10 +530,7 @@ class FillMetaShare(FillMeta):
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
-            x_meta = declarator.metaattrs
-            meta["dimension"] = x_meta["dimension"]
-            x_meta["dimension"] = None
-
+            self.check_arg_attrs(node, arg, meta)
             self.set_arg_intent(node, arg, meta)
 
             if declarator.is_function_pointer():
@@ -576,6 +573,61 @@ class FillMetaShare(FillMeta):
                 )
 
         self.check_common_attrs(node.ast, meta)
+
+    def check_arg_attrs(self, node, arg, meta):
+        cursor = self.cursor
+        declarator = arg.declarator
+        argname = declarator.user_name
+        attrs = declarator.attrs
+
+        for attr in attrs:
+            if attr[0] == "_":  # Shroud internal attribute.
+                continue
+            if attr not in [
+                "api",
+                "allocatable",
+                "assumedtype",
+                "blanknull",   # Treat blank string as NULL pointer.
+                "charlen",   # Assumed length of intent(out) char *.
+                "external",
+                "deref",
+                "dimension",
+                "hidden",  # omitted in Fortran API, returned from C++
+                "implied",  # omitted in Fortran API, value passed to C++
+                "intent",
+                "len",
+                "len_trim",
+                "name",
+                "owner",
+                "pass",
+                "rank",
+                "size",
+                "value",
+            ]:
+                cursor.generate(
+                    "Illegal attribute '{}' for argument '{}'".format(
+                        attr, argname))
+                continue
+
+        arg_typemap = arg.typemap
+        if arg_typemap is None:
+            # Sanity check to make sure arg_typemap exists
+            raise RuntimeError(
+                "check_arg_attrs: Missing arg.typemap on line {}: {}".format(
+                    node.linenumber, node.decl
+                )
+            )
+
+        self.check_common_attrs(arg, meta)
+
+        # assumedtype
+        assumedtype = attrs["assumedtype"]
+        if assumedtype is not None:
+            if attrs["value"]:
+                cursor.generate(
+                    "argument '{}' must not have value=True "
+                    "because it has the assumedtype attribute.".format(argname)
+                )
 
     def check_common_attrs(self, ast, meta):
         """Check attributes which are common to function and argument AST

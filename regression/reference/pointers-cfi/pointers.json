@@ -3805,7 +3805,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },

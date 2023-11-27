@@ -253,63 +253,14 @@ class VerifyAttrs(object):
         argname = declarator.user_name
         attrs = declarator.attrs
         meta = declarator.metaattrs
-
-        for attr in attrs:
-            if attr[0] == "_":  # Shroud internal attribute.
-                continue
-            if attr not in [
-                "api",
-                "allocatable",
-                "assumedtype",
-                "blanknull",   # Treat blank string as NULL pointer.
-                "charlen",   # Assumed length of intent(out) char *.
-                "external",
-                "deref",
-                "dimension",
-                "hidden",  # omitted in Fortran API, returned from C++
-                "implied",  # omitted in Fortran API, value passed to C++
-                "intent",
-                "len",
-                "len_trim",
-                "name",
-                "owner",
-                "pass",
-                "rank",
-                "size",
-                "value",
-            ]:
-                cursor.generate(
-                    "Illegal attribute '{}' for argument '{}'".format(
-                        attr, argname))
-                continue
-
         arg_typemap = arg.typemap
-        if arg_typemap is None:
-            # Sanity check to make sure arg_typemap exists
-            raise RuntimeError(
-                "check_arg_attrs: Missing arg.typemap on line {}: {}".format(
-                    node.linenumber, node.decl
-                )
-            )
-
-        self.check_common_attrs(arg)
-
-        is_ptr = declarator.is_indirect()
-
-        # assumedtype
-        assumedtype = attrs["assumedtype"]
-        if assumedtype is not None:
-            if attrs["value"]:
-                cursor.generate(
-                    "argument '{}' must not have value=True "
-                    "because it has the assumedtype attribute.".format(argname)
-                )
 
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
         charlen = attrs["charlen"]
         if charlen:
+            is_ptr = declarator.is_indirect()
             if arg_typemap.base != "string":
                 cursor.generate(
                     "charlen attribute can only be "
@@ -804,6 +755,7 @@ class GenFunctions(object):
             a = copy.deepcopy(var.ast)
             a.declarator.metaattrs["intent"] = "in"
             a.declarator.metaattrs["struct_member"] = var
+            a.declarator.metaattrs["dimension"] = None
             ast.declarator.params.append(a)
         # Python only
         opt = dict(
@@ -1093,12 +1045,10 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 attrs = decl.declarator.attrs
-                meta = decl.declarator.metaattrs
                 if attrs["dimension"] == "..":   # assumed-rank
                     # Replace dimension(..) with rank(n).
                     attrs["dimension"] = None
                     attrs["rank"] = rank
-                    meta["dimension"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1107,10 +1057,8 @@ class GenFunctions(object):
         # Remove assumed-rank from C function.
         for decl in params:
             attrs = decl.declarator.attrs
-            meta = decl.declarator.metaattrs
             if attrs["dimension"] == "..":   # assumed-rank
                 attrs["dimension"] = None
-                meta["dimension"] = None
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
