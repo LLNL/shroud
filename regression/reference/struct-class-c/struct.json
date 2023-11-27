@@ -72,11 +72,7 @@
                         "decl": "Cstruct1_ctor",
                         "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
                         "name": "Cstruct1_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },
@@ -363,11 +359,7 @@
                         "decl": "Cstruct_ptr_ctor",
                         "declgen": "Cstruct_ptr(char * cfield, const double * const_dvalue) +name(Cstruct_ptr_ctor)",
                         "name": "Cstruct_ptr_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },
@@ -719,11 +711,7 @@
                         "decl": "Cstruct_list_ctor",
                         "declgen": "Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems), double * dvalue +dimension(nitems*TWO), char * * svalue +dimension(nitems)) +name(Cstruct_list_ctor)",
                         "name": "Cstruct_list_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },
@@ -1298,11 +1286,7 @@
                         "decl": "Cstruct_numpy_ctor",
                         "declgen": "Cstruct_numpy(int nitems, int * ivalue +dimension(nitems), double * dvalue +dimension(nitems)) +name(Cstruct_numpy_ctor)",
                         "name": "Cstruct_numpy_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },
@@ -1722,11 +1706,7 @@
                         "decl": "Arrays1_ctor",
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
                         "name": "Arrays1_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },

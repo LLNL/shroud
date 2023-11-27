@@ -68,11 +68,7 @@
                         "decl": "Cstruct1_cls_ctor",
                         "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
                         "name": "Cstruct1_cls_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },

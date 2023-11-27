@@ -757,14 +757,9 @@ class GenFunctions(object):
             a.declarator.metaattrs["struct_member"] = var
             a.declarator.metaattrs["dimension"] = None
             ast.declarator.params.append(a)
-        # Python only
-        opt = dict(
-            wrap_fortran=False,
-            wrap_c=False,
-            wrap_lua=False,
-        )
-        node = cls.add_function(name, ast, options=opt)
+        node = cls.add_function(name, ast)
         node.declgen = node.ast.gen_decl()
+        node.wrap.assign(python=True)
         node._generated = "struct_as_class_ctor"
         node._generated_path.append("struct_as_class_ctor")
 

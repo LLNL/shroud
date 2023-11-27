@@ -66,11 +66,7 @@
                         "decl": "Cstruct_as_class_ctor",
                         "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
                         "name": "Cstruct_as_class_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
                         "wrap": {
                             "python": true
                         },
