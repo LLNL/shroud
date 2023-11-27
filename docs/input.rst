@@ -553,6 +553,9 @@ the rank from the ``CFI_cdesc_t`` argument. Otherwise, a generic
 function will be created for each rank requested by options
 *F_assumed_rank_min* and "*F_assumed_rank_max*.
 
+.. Only the Fortran wrapper uses the assumed-rank.
+   The dimension attribute will be removed from the C and Python wrappers.
+
 .. XXX - See Fortran.rst
 
 .. info is passed to statements via fmt fields.

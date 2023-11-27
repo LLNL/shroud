@@ -1093,10 +1093,12 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 attrs = decl.declarator.attrs
+                meta = decl.declarator.metaattrs
                 if attrs["dimension"] == "..":   # assumed-rank
                     # Replace dimension(..) with rank(n).
                     attrs["dimension"] = None
                     attrs["rank"] = rank
+                    meta["dimension"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1105,8 +1107,10 @@ class GenFunctions(object):
         # Remove assumed-rank from C function.
         for decl in params:
             attrs = decl.declarator.attrs
+            meta = decl.declarator.metaattrs
             if attrs["dimension"] == "..":   # assumed-rank
                 attrs["dimension"] = None
+                meta["dimension"] = None
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):

@@ -1662,9 +1662,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*"
@@ -1683,9 +1680,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             }
                         }
@@ -1771,7 +1765,6 @@
                             "f_var": "values",
                             "i_var": "values",
                             "idtor": "0",
-                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_*"
                         }
@@ -1863,9 +1856,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -1884,9 +1874,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             }
                         }
@@ -2078,9 +2065,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -2099,9 +2083,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             }
                         }
@@ -2295,9 +2276,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -2316,9 +2294,6 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
-                                    "assumedrank": true
-                                },
                                 "intent": "in"
                             }
                         }

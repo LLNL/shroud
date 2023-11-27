@@ -93,13 +93,6 @@ Unknown type in c_return_type: no-such-type
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
-
-----------------------------------------
-Phase: Wrapp.wrap_functions
-----------------------------------------
-Node: AssumedRank
-line 51
-Detected assumed-rank dimension
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp
 Wrote setup.py
