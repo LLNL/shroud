@@ -101,9 +101,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Class1"
                             },
@@ -282,9 +282,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -573,10 +573,10 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Class1",
                                     "_name": "dtor",
                                     "name": "delete"
                                 },
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -3479,9 +3479,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Shape"
                             },
@@ -3880,9 +3880,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Circle"
                             },
@@ -4352,9 +4352,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Data"
                             },
@@ -4478,9 +4478,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Data",
                                     "_name": "dtor"
                                 },
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },

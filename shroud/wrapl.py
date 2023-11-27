@@ -234,8 +234,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         if is_dtor:
             CXX_subprogram = "subroutine"
             fmt.LUA_name = "__gc"
@@ -440,8 +440,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         declarator = ast.declarator
         CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         stmts_comments = self.stmts_comments
         stmts_comments_args = []  # Used to reorder comments
 

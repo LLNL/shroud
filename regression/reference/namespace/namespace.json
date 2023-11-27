@@ -392,12 +392,9 @@
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
-                                            "_constructor": true,
                                             "name": "Cstruct1_ctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
+                                        "is_ctor": true,
                                         "params": [
                                             {
                                                 "declarator": {

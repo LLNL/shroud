@@ -131,7 +131,7 @@ class ToDict(visitor.Visitor):
             d["array"] = self.visit(node.array)
         if node.init is not None:
             d["init"] = node.init
-        add_true_fields(node, d, ["func_const"])
+        add_true_fields(node, d, ["func_const", "is_ctor", "is_dtor"])
 
         if node.typemap.base != "template":
             # Only print name to avoid too much nesting.

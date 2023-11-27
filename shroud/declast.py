@@ -626,18 +626,20 @@ class Parser(ExprParser):
                              '['  <constant-expression>?  ']'  |
                              '('  <parameter-list>            ')' [ const ]
                             ) [ = <initializer> ]
+
+        node - declast.Declaration
         """
         self.enter("declarator_item")
         if node.is_dtor:
             declarator = Declarator()
+            declarator.is_dtor = True
             declarator.ctor_dtor_name = True
             declarator.attrs["_name"] = "dtor"
-            declarator.attrs["_destructor"] = node.is_dtor
         elif node.is_ctor:
             declarator = Declarator()
+            declarator.is_ctor = True
             declarator.ctor_dtor_name = True
             declarator.attrs["_name"] = "ctor"
-            declarator.attrs["_constructor"] = True
         else:
             declarator = self.declarator()
         node.declarator = declarator
@@ -1296,6 +1298,8 @@ class Declarator(Node):
         self.metaattrs = collections.defaultdict(lambda: None)
         self.func_const = False
         self.typemap = None
+        self.is_ctor = False
+        self.is_dtor = False
 
     def get_user_name(self, use_attr=True):
         """Get name from declarator
@@ -1308,16 +1312,6 @@ class Declarator(Node):
                 return name
         return self.name
     user_name = property(get_user_name, None, None, "Declaration user_name")
-
-    def is_ctor(self):
-        """Return True if self is a constructor."""
-        return self.attrs["_constructor"]
-
-    def is_dtor(self):
-        """Return destructor attribute.
-        Will be False for non-destructors, else class name.
-        """
-        return self.attrs["_destructor"]
 
     def is_pointer(self):
         """Return number of levels of pointers.
@@ -2501,10 +2495,9 @@ def create_struct_ctor(cls):
     ast.declarator = declarator
     declarator.params = []
     declarator.typemap = cls.typemap
-    declarator.attrs["_constructor"] = True
+    declarator.is_ctor = True
     declarator.attrs["name"] = name
 ##        _name="ctor",
-    declarator.metaattrs["intent"] = "ctor"
     return ast
 
 

@@ -25,12 +25,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct1_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -301,12 +298,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct_ptr_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -609,12 +603,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct_list_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -1209,12 +1200,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct_numpy_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -1649,12 +1637,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Arrays1_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {

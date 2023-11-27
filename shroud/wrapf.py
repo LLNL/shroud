@@ -1166,7 +1166,7 @@ rv = .false.
         imports = {}  # indexed as [name]
 
         if cls:
-            is_ctor = declarator.is_ctor()
+            is_ctor = declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor or is_static:
                 pass
@@ -1494,7 +1494,7 @@ rv = .false.
 
         if cls:
             need_wrapper = True
-            is_ctor = declarator.is_ctor()
+            is_ctor = declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor or is_static:
                 pass

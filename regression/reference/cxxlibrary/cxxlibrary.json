@@ -21,12 +21,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct1_cls_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -467,9 +464,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "Class1"
                             },

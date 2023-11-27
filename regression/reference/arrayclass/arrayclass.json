@@ -15,9 +15,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "ArrayWrapper"
                             },

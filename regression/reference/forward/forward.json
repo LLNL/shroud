@@ -68,9 +68,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "_name": "ctor"
                                 },
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "forward::Class2"
                             },
@@ -244,9 +244,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Class2",
                                     "_name": "dtor"
                                 },
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },

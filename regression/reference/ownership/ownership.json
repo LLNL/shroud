@@ -14,9 +14,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Class1",
                                     "_name": "dtor"
                                 },
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },

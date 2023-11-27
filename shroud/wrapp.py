@@ -1183,8 +1183,8 @@ return 1;""",
         declarator = ast.declarator
         CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         #        is_const = ast.const
         ml_flags = []
 
@@ -2003,7 +2003,7 @@ return 1;""",
         declarator = ast.declarator
         attrs = declarator.attrs
         meta = declarator.metaattrs
-        is_ctor = declarator.is_ctor()
+        is_ctor = declarator.is_ctor
         result_typemap = ast.typemap
         bind = statements.get_func_bind(node, "py")
         meta2 = bind.meta
@@ -2499,7 +2499,7 @@ return 1;""",
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.declarator.is_ctor()
+            is_ctor = node.ast.declarator.is_ctor
 
             body = []
             body.append(1)

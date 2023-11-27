@@ -363,8 +363,8 @@ class GenFunctions(object):
         found_dtor = False
         for node in cls.functions:
             declarator = node.ast.declarator
-            found_ctor = found_ctor or declarator.is_ctor()
-            found_dtor = found_dtor or declarator.is_dtor()
+            found_ctor = found_ctor or declarator.is_ctor
+            found_dtor = found_dtor or declarator.is_dtor
 
         if found_ctor and found_dtor:
             return cls.functions
@@ -762,7 +762,7 @@ class GenFunctions(object):
                 # Stuff like push_back which is in a templated class, is not an overload.
                 # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
-            if function.ast.declarator.is_ctor():
+            if function.ast.declarator.is_ctor:
                 if not function.wrap.fortran:
                     continue
                 # Always create generic interface for class derived type.
@@ -1245,7 +1245,7 @@ class TemplateTypemap(visitor.Visitor):
         for cls in node.classes:
             self.visit(cls)
         for fcn in node.functions:
-            if fcn.ast.declarator.is_ctor():
+            if fcn.ast.declarator.is_ctor:
                 fcn.ast.typemap = node.typemap
             self.visit(fcn)
         for var in node.variables:

@@ -35,9 +35,9 @@
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
-                                                    "_constructor": true,
                                                     "_name": "ctor"
                                                 },
+                                                "is_ctor": true,
                                                 "params": [],
                                                 "typemap_name": "example::nested::ExClass1"
                                             },
@@ -213,9 +213,9 @@
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
-                                                    "_constructor": true,
                                                     "_name": "ctor"
                                                 },
+                                                "is_ctor": true,
                                                 "params": [
                                                     {
                                                         "const": true,
@@ -541,9 +541,9 @@
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
-                                                    "_destructor": "ExClass1",
                                                     "_name": "dtor"
                                                 },
+                                                "is_dtor": true,
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },
@@ -2393,9 +2393,9 @@
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
-                                                    "_constructor": true,
                                                     "_name": "ctor"
                                                 },
+                                                "is_ctor": true,
                                                 "params": [
                                                     {
                                                         "const": true,
@@ -2724,9 +2724,9 @@
                                         "ast": {
                                             "declarator": {
                                                 "attrs": {
-                                                    "_destructor": "ExClass2",
                                                     "_name": "dtor"
                                                 },
+                                                "is_dtor": true,
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },

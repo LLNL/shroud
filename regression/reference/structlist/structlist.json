@@ -18,12 +18,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Arrays1_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {

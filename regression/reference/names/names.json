@@ -4022,10 +4022,10 @@
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
-                                            "_constructor": true,
                                             "_name": "ctor",
                                             "name": "defaultctor"
                                         },
+                                        "is_ctor": true,
                                         "params": [],
                                         "typemap_name": "ns0::Names"
                                     },

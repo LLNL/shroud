@@ -1004,7 +1004,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if cls:
             # Add 'this' argument
             need_wrapper = True
-            is_ctor = CXX_ast.declarator.is_ctor()
+            is_ctor = CXX_ast.declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor:
                 pass

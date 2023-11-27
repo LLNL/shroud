@@ -68,9 +68,9 @@ class FillMeta(object):
         if meta["intent"]:
             # getter/setter
             pass
-        elif declarator.is_ctor():
+        elif declarator.is_ctor:
             meta["intent"] = "ctor"
-        elif declarator.is_dtor():
+        elif declarator.is_dtor:
             meta["intent"] = "dtor"
         else:
             meta["intent"] = declarator.get_subprogram()
