@@ -347,7 +347,7 @@ class FillFormat(object):
         attrs = declarator.attrs
         meta = declarator.metaattrs
         
-        if meta2["dimension"]:
+        if meta2["dim_ast"]:
             if cls is not None:
                 parent = cls
                 class_context = wformat("{CXX_this}->", fmt)
@@ -359,7 +359,7 @@ class FillFormat(object):
                 parent = None
                 class_context = ""
             visitor = ToDimensionC(parent, fcn, fmt, class_context)
-            visitor.visit(meta2["dimension"])
+            visitor.visit(meta2["dim_ast"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 fmtdim = []
@@ -504,7 +504,7 @@ class FillFormat(object):
         f_attrs = f_ast.declarator.attrs
         f_meta = f_ast.declarator.metaattrs
         meta = bind.meta
-        dim = meta["dimension"]
+        dim = meta["dim_ast"]
         rank = f_attrs["rank"]
         if f_attrs["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"

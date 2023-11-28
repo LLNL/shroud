@@ -482,7 +482,7 @@ class WrapperMixin(object):
     def get_metaattrs(self, ast):
         decl = []
         ast.declarator.gen_attrs(ast.declarator.metaattrs, decl, dict(
-            dimension=True,
+            dim_ast=True,
             struct_member=True,
             # XXX - moved to _bind
             api=True,

@@ -955,7 +955,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -976,7 +976,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -996,7 +996,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1013,7 +1013,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1030,7 +1030,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1302,7 +1302,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1323,7 +1323,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1343,7 +1343,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1360,7 +1360,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1377,7 +1377,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1651,7 +1651,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1672,7 +1672,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1692,7 +1692,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1709,7 +1709,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1726,7 +1726,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -1986,7 +1986,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2005,7 +2005,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2157,7 +2157,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2178,7 +2178,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2198,7 +2198,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2215,7 +2215,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2232,7 +2232,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2496,7 +2496,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2515,7 +2515,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2532,7 +2532,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2549,7 +2549,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2742,7 +2742,7 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2763,7 +2763,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2783,7 +2783,7 @@
                     "lua": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2800,7 +2800,7 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -2817,7 +2817,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3189,7 +3189,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3286,7 +3286,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3382,7 +3382,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3570,7 +3570,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3667,7 +3667,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }
@@ -3763,7 +3763,7 @@
                         },
                         "array": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "len"
                                     }

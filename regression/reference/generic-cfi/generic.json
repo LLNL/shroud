@@ -1558,7 +1558,7 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
+                                "dim_ast": {
                                     "assumedrank": true
                                 },
                                 "intent": "in"
@@ -1582,7 +1582,7 @@
                         "values": {
                             "meta": {
                                 "api": "cfi",
-                                "dimension": {
+                                "dim_ast": {
                                     "assumedrank": true
                                 },
                                 "intent": "in"
@@ -1603,7 +1603,7 @@
                         },
                         "values": {
                             "meta": {
-                                "dimension": {
+                                "dim_ast": {
                                     "assumedrank": true
                                 },
                                 "intent": "in"

@@ -4838,7 +4838,7 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -4851,7 +4851,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -5124,7 +5124,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }

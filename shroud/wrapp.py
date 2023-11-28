@@ -937,7 +937,7 @@ return 1;""",
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = bind.meta["dimension"]
+        dimension = bind.meta["dim_ast"]
         rank = declarator.attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
@@ -3372,7 +3372,7 @@ def py_struct_dimension(parent, var, fmt):
     if declarator.array: # Fixed size array.
         metadim = declarator.array
     elif declarator.attrs["dimension"] is not None:
-        metadim = declarator.metaattrs["dimension"]
+        metadim = declarator.metaattrs["dim_ast"]
     else:
         metadim = None
     if metadim:

@@ -155,8 +155,8 @@ class ToDict(visitor.Visitor):
                 # struct_member is a ast.VariableNode, add name instead
                 # to avoid huge dump.
                 metaattrs["struct_member"] = metaattrs["struct_member"].name
-            if "dimension" in metaattrs:
-                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
+            if "dim_ast" in metaattrs:
+                metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
             d["metaattrs"] = metaattrs
         
         return d
@@ -564,8 +564,8 @@ class ToDict(visitor.Visitor):
                     # struct_member is a ast.VariableNode, add name instead
                     # to avoid huge dump.
                     metaattrs["struct_member"] = metaattrs["struct_member"].name
-                if "dimension" in metaattrs:
-                    metaattrs["dimension"] = self.visit(metaattrs["dimension"])
+                if "dim_ast" in metaattrs:
+                    metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
                 d["meta"] = metaattrs
         return d
     

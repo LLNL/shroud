@@ -5781,7 +5781,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -5809,7 +5809,7 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -5832,7 +5832,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6076,7 +6076,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6104,7 +6104,7 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6127,7 +6127,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6372,7 +6372,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6400,7 +6400,7 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }
@@ -6423,7 +6423,7 @@
                         },
                         "strs": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "nstrs"
                                     }

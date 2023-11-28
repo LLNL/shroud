@@ -24,7 +24,7 @@
                                     "dimension": "10"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "constant": "10"
                                         }
@@ -87,7 +87,7 @@
                                     "dimension": "narg2"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "narg2"
                                         }
@@ -517,7 +517,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "constant": "10"
                                     }
@@ -2809,7 +2809,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "narg2"
                                     }
@@ -2828,7 +2828,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "narg2"
                                     }

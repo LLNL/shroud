@@ -387,7 +387,7 @@
                                     "dimension": "sublevels"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "sublevels"
                                         }
@@ -4812,7 +4812,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "sublevels"
                                     }
@@ -4831,7 +4831,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "name": "sublevels"
                                     }

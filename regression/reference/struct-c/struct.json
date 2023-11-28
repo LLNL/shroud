@@ -243,7 +243,7 @@
                                     "dimension": "nitems+nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "left": {
                                                 "name": "nitems"
@@ -291,7 +291,7 @@
                                     "dimension": "nitems*TWO"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "left": {
                                                 "name": "nitems"
@@ -339,7 +339,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }
@@ -446,7 +446,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }
@@ -488,7 +488,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }
@@ -5887,7 +5887,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "left": {
                                             "name": "nitems"
@@ -5912,7 +5912,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "left": {
                                             "name": "nitems"
@@ -6287,7 +6287,7 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "left": {
                                             "name": "nitems"
@@ -6312,7 +6312,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "dimension": [
+                                "dim_ast": [
                                     {
                                         "left": {
                                             "name": "nitems"

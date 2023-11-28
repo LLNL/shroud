@@ -715,7 +715,7 @@
                                 },
                                 "dvalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "left": {
                                                     "name": "nitems"
@@ -731,7 +731,7 @@
                                 },
                                 "ivalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "left": {
                                                     "name": "nitems"
@@ -752,7 +752,7 @@
                                 },
                                 "svalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -769,7 +769,7 @@
                                 },
                                 "dvalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "left": {
                                                     "name": "nitems"
@@ -785,7 +785,7 @@
                                 },
                                 "ivalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "left": {
                                                     "name": "nitems"
@@ -806,7 +806,7 @@
                                 },
                                 "svalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -1009,7 +1009,7 @@
                                     "dimension": "nitems+nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "left": {
                                                 "name": "nitems"
@@ -1062,7 +1062,7 @@
                                     "dimension": "nitems*TWO"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "left": {
                                                 "name": "nitems"
@@ -1115,7 +1115,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }
@@ -1287,7 +1287,7 @@
                                 },
                                 "dvalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -1297,7 +1297,7 @@
                                 },
                                 "ivalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -1319,7 +1319,7 @@
                                 },
                                 "dvalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -1329,7 +1329,7 @@
                                 },
                                 "ivalue": {
                                     "meta": {
-                                        "dimension": [
+                                        "dim_ast": [
                                             {
                                                 "name": "nitems"
                                             }
@@ -1508,7 +1508,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }
@@ -1555,7 +1555,7 @@
                                     "dimension": "nitems"
                                 },
                                 "metaattrs": {
-                                    "dimension": [
+                                    "dim_ast": [
                                         {
                                             "name": "nitems"
                                         }

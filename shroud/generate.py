@@ -255,9 +255,9 @@ def check_dimension(dim, meta, trace=False):
     trace : boolean
     """
     if dim == "..":
-        meta["dimension"] = declast.AssumedRank()
+        meta["dim_ast"] = declast.AssumedRank()
     else:
-        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
+        meta["dim_ast"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 
 class GenFunctions(object):
@@ -465,8 +465,6 @@ class GenFunctions(object):
             api = "cdesc"
         elif declarator.is_pointer():
             deref = "pointer"
-#            if meta["dimension"] is None:
-#                api = "fapi" 
         else:
             deref = None
 
@@ -507,7 +505,7 @@ class GenFunctions(object):
                 intent="in",
             )
         )
-        dim = declarator.metaattrs["dimension"]
+        dim = declarator.metaattrs["dim_ast"]
         if dim:
             attrs["val"]["rank"] = len(dim)
 
@@ -670,7 +668,7 @@ class GenFunctions(object):
             a = copy.deepcopy(var.ast)
             a.declarator.metaattrs["intent"] = "in"
             a.declarator.metaattrs["struct_member"] = var
-            a.declarator.metaattrs["dimension"] = None
+            a.declarator.metaattrs["dim_ast"] = None
             ast.declarator.params.append(a)
         node = cls.add_function(name, ast)
         node.declgen = node.ast.gen_decl()

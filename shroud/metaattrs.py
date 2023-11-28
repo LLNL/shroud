@@ -493,7 +493,7 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
-        meta["dimension"] = share_meta["dimension"]
+        meta["dim_ast"] = share_meta["dim_ast"]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -501,7 +501,7 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
-        meta["dimension"] = share_meta["dimension"]
+        meta["dim_ast"] = share_meta["dim_ast"]
             
 ######################################################################
 #
@@ -742,9 +742,9 @@ def check_dimension(dim, meta, trace=False):
     trace : boolean
     """
     if dim == "..":
-        meta["dimension"] = declast.AssumedRank()
+        meta["dim_ast"] = declast.AssumedRank()
     else:
-        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
+        meta["dim_ast"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 ######################################################################
 #
