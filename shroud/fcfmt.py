@@ -308,7 +308,7 @@ class FillFormat(object):
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
-    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta2, is_func):
+    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -319,6 +319,7 @@ class FillFormat(object):
             ast      - declast.Declaration
             ntypemap - typemap.Typemap
             fmt      - scope.Util
+            meta     -
             is_func  - True if function.
         """
         declarator = ast.declarator
@@ -340,14 +341,13 @@ class FillFormat(object):
             if ntypemap.base != "shadow" and ast.template_arguments:
                 fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
             
-            if meta2["blanknull"]:
+            if meta["blanknull"]:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         
-        if meta2["dim_ast"]:
+        if meta["dim_ast"]:
             if cls is not None:
                 parent = cls
                 class_context = wformat("{CXX_this}->", fmt)
@@ -359,7 +359,7 @@ class FillFormat(object):
                 parent = None
                 class_context = ""
             visitor = ToDimensionC(parent, fcn, fmt, class_context)
-            visitor.visit(meta2["dim_ast"])
+            visitor.visit(meta["dim_ast"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 fmtdim = []
@@ -502,7 +502,6 @@ class FillFormat(object):
         fmt: util.Scope
         """
         f_attrs = f_ast.declarator.attrs
-        f_meta = f_ast.declarator.metaattrs
         meta = bind.meta
         dim = meta["dim_ast"]
         rank = f_attrs["rank"]

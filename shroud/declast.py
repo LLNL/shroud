@@ -2498,7 +2498,6 @@ def create_struct_ctor(cls):
     declarator.typemap = cls.typemap
     declarator.is_ctor = True
     declarator.attrs["name"] = name
-##        _name="ctor",
     return ast
 
 
