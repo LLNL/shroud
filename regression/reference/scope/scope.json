@@ -515,6 +515,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -541,8 +544,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this) +dimension(nitems)",
+                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +dimension(nitems)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -598,7 +601,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }
@@ -1075,6 +1078,9 @@
                                 "params": [
                                     {
                                         "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1101,8 +1107,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this) +dimension(nitems)",
+                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +dimension(nitems)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1158,7 +1164,7 @@
                                 },
                                 "SH_this": {
                                     "meta": {
-                                        "intent": "inout"
+                                        "intent": "in"
                                     }
                                 }
                             }
@@ -1662,6 +1668,9 @@
                                 "params": [
                                     {
                                         "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1688,8 +1697,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this) +dimension(nitems)",
+                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +dimension(nitems)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1745,7 +1754,7 @@
                                 },
                                 "SH_this": {
                                     "meta": {
-                                        "intent": "inout"
+                                        "intent": "in"
                                     }
                                 }
                             }

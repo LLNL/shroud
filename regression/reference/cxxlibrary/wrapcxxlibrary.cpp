@@ -181,7 +181,7 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
 // Function:  nested * nested_get_parent
 // Statement: f_getter_struct_*_cdesc_pointer
 // ----------------------------------------
-// Argument:  nested * SH_this
+// Argument:  nested * SH_this +intent(in)
 // Statement: f_in_struct_*
 void CXX_nested_get_parent(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
@@ -218,7 +218,7 @@ void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val)
 // Function:  nested * * nested_get_child +dimension(sublevels)
 // Statement: f_getter_struct_**_cdesc_pointer
 // ----------------------------------------
-// Argument:  nested * SH_this
+// Argument:  nested * SH_this +intent(in)
 // Statement: f_in_struct_*
 void CXX_nested_get_child(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)

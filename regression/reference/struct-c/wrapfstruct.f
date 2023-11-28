@@ -691,7 +691,7 @@ module struct_mod
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Statement: f_getter_native_*_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this
+    ! Argument:  Cstruct_ptr * SH_this +intent(in)
     ! Statement: f_in_struct_*
     interface
         function cstruct_ptr_get_const_dvalue(SH_this) &
@@ -731,7 +731,7 @@ module struct_mod
     ! Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list * SH_this +intent(in)
     ! Statement: f_in_struct_*
     interface
         subroutine c_cstruct_list_get_ivalue(SH_this, SHT_rv_cdesc) &
@@ -769,7 +769,7 @@ module struct_mod
     ! Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list * SH_this +intent(in)
     ! Statement: f_in_struct_*
     interface
         subroutine c_cstruct_list_get_dvalue(SH_this, SHT_rv_cdesc) &
@@ -1304,7 +1304,7 @@ contains
     ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Statement: f_getter_native_*_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this
+    ! Argument:  Cstruct_ptr * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function cstruct_ptr_get_const_dvalue(SH_this) &
             result(SHT_rv)
@@ -1344,7 +1344,7 @@ contains
     ! Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function cstruct_list_get_ivalue(SH_this) &
             result(SHT_rv)
@@ -1386,7 +1386,7 @@ contains
     ! Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function cstruct_list_get_dvalue(SH_this) &
             result(SHT_rv)

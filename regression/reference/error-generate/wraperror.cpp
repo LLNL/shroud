@@ -25,7 +25,7 @@ extern "C" {
 // Function:  int * struct1_get_arg2 +deref(pointerxx)+dimension(narg2)
 // Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
-// Argument:  struct1 * SH_this
+// Argument:  struct1 * SH_this +intent(in)
 // Statement: f_in_struct_*
 void ERR_struct1_get_arg2(ERR_struct1 * SH_this,
     ERR_SHROUD_array *SHT_rv_cdesc)

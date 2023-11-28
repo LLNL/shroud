@@ -88,7 +88,7 @@ module error_mod
         ! Function:  int * struct1_get_arg2 +deref(pointerxx)+dimension(narg2)
         ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
-        ! Argument:  struct1 * SH_this
+        ! Argument:  struct1 * SH_this +intent(in)
         ! Statement: f_in_struct_*
         subroutine c_struct1_get_arg2(SH_this, SHT_rv_cdesc) &
                 bind(C, name="ERR_struct1_get_arg2")
@@ -128,7 +128,7 @@ contains
     ! Function:  int * struct1_get_arg2 +deref(pointerxx)+dimension(narg2)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  struct1 * SH_this
+    ! Argument:  struct1 * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function struct1_get_arg2(SH_this) &
             result(SHT_rv)

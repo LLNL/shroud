@@ -4388,6 +4388,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4414,8 +4417,8 @@
                     ],
                     "typemap_name": "nested"
                 },
-                "decl": "nested * nested_get_parent(nested *SH_this)",
-                "declgen": "nested * nested_get_parent(nested * SH_this)",
+                "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
+                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in))",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4461,7 +4464,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }
@@ -4755,6 +4758,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4784,8 +4790,8 @@
                     ],
                     "typemap_name": "nested"
                 },
-                "decl": "nested * * nested_get_child(nested *SH_this)",
-                "declgen": "nested * * nested_get_child(nested * SH_this) +dimension(sublevels)",
+                "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
+                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +dimension(sublevels)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4841,7 +4847,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }

@@ -5482,6 +5482,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5508,8 +5511,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
-                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
+                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this+intent(in))",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in))",
                 "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "struct_parent": "Cstruct_ptr",
@@ -5545,7 +5548,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }
@@ -5833,6 +5836,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5859,8 +5865,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
-                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this) +dimension(nitems+nitems)",
+                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this+intent(in))",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems+nitems)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -5928,7 +5934,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }
@@ -6233,6 +6239,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -6259,8 +6268,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
-                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this) +dimension(nitems*TWO)",
+                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this+intent(in))",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems*TWO)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -6328,7 +6337,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }

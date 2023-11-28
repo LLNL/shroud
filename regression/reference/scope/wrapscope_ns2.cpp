@@ -23,7 +23,7 @@ extern "C" {
 // Function:  int * DataPointer_get_items +dimension(nitems)
 // Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
-// Argument:  ns2::DataPointer * SH_this
+// Argument:  ns2::DataPointer * SH_this +intent(in)
 // Statement: f_in_struct_*
 void SCO_ns2_DataPointer_get_items(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)

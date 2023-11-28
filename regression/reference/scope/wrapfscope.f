@@ -147,7 +147,7 @@ module scope_mod
         ! Function:  int * DataPointer_get_items +dimension(nitems)
         ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
-        ! Argument:  ns3::DataPointer * SH_this
+        ! Argument:  ns3::DataPointer * SH_this +intent(in)
         ! Statement: f_in_struct_*
         subroutine c_data_pointer_get_items(SH_this, SHT_rv_cdesc) &
                 bind(C, name="SCO_DataPointer_get_items")
@@ -240,7 +240,7 @@ contains
     ! Function:  int * DataPointer_get_items +dimension(nitems)
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  ns3::DataPointer * SH_this
+    ! Argument:  ns3::DataPointer * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)

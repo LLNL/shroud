@@ -2755,6 +2755,9 @@
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -2781,8 +2784,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * struct1_get_arg2(struct1 *SH_this)",
-                "declgen": "int * struct1_get_arg2(struct1 * SH_this) +deref(pointerxx)+dimension(narg2)",
+                "decl": "int * struct1_get_arg2(struct1 *SH_this+intent(in))",
+                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -2838,7 +2841,7 @@
                         },
                         "SH_this": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "in"
                             }
                         }
                     }

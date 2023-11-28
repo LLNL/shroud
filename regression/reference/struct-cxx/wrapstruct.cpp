@@ -334,7 +334,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 // Function:  const double * Cstruct_ptr_get_const_dvalue
 // Statement: f_getter_native_*_pointer
 // ----------------------------------------
-// Argument:  Cstruct_ptr * SH_this
+// Argument:  Cstruct_ptr * SH_this +intent(in)
 // Statement: f_in_struct_*
 const double * STR_Cstruct_ptr_get_const_dvalue(
     STR_cstruct_ptr * SH_this)
@@ -369,7 +369,7 @@ void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
 // Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)
 // Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
-// Argument:  Cstruct_list * SH_this
+// Argument:  Cstruct_list * SH_this +intent(in)
 // Statement: f_in_struct_*
 void STR_Cstruct_list_get_ivalue(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
@@ -407,7 +407,7 @@ void STR_Cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val)
 // Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)
 // Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
-// Argument:  Cstruct_list * SH_this
+// Argument:  Cstruct_list * SH_this +intent(in)
 // Statement: f_in_struct_*
 void STR_Cstruct_list_get_dvalue(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)

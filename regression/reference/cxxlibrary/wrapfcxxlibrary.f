@@ -336,7 +336,7 @@ module cxxlibrary_mod
         ! Function:  nested * nested_get_parent
         ! Statement: f_getter_struct_*_cdesc_pointer
         ! ----------------------------------------
-        ! Argument:  nested * SH_this
+        ! Argument:  nested * SH_this +intent(in)
         ! Statement: f_in_struct_*
         subroutine c_nested_get_parent(SH_this, SHT_rv_cdesc) &
                 bind(C, name="CXX_nested_get_parent")
@@ -369,7 +369,7 @@ module cxxlibrary_mod
         ! Function:  nested * * nested_get_child +dimension(sublevels)
         ! Statement: f_getter_struct_**_cdesc_pointer
         ! ----------------------------------------
-        ! Argument:  nested * SH_this
+        ! Argument:  nested * SH_this +intent(in)
         ! Statement: f_in_struct_*
         subroutine c_nested_get_child(SH_this, SHT_rv_cdesc) &
                 bind(C, name="CXX_nested_get_child")
@@ -738,7 +738,7 @@ contains
     ! Function:  nested * nested_get_parent
     ! Statement: f_getter_struct_*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  nested * SH_this
+    ! Argument:  nested * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function nested_get_parent(SH_this) &
             result(SHT_rv)
@@ -778,7 +778,7 @@ contains
     ! Function:  nested * * nested_get_child +dimension(sublevels)
     ! Statement: f_getter_struct_**_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  nested * SH_this
+    ! Argument:  nested * SH_this +intent(in)
     ! Statement: f_in_struct_*
     function nested_get_child(SH_this) &
             result(SHT_rv)

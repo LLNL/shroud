@@ -440,7 +440,8 @@ class GenFunctions(object):
             # Explicity add the 'this' argument. Added automatically for classes.
             typename = cls.typemap.name
             this_get = "{} *{}".format(typename, cls.fmtdict.CXX_this)
-            this_set = this_get + ","
+            this_set = this_get + ","   # defaults to intent(inout)
+            this_get += "+intent(in)"
             funcname_get = wformat(options.SH_struct_getter_template, fmt_func)
             funcname_set = wformat(options.SH_struct_setter_template, fmt_func)
         else:
@@ -484,9 +485,6 @@ class GenFunctions(object):
         meta["deref"] = deref
         meta["api"] = api
         if is_struct:
-            params = fcn.ast.declarator.params
-            meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
-            meta["intent"] = "in"
             fcn.struct_parent = cls
         fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
@@ -517,8 +515,6 @@ class GenFunctions(object):
         iarg = 0
         params = fcn.ast.declarator.params
         if is_struct:
-            meta = statements.fetch_arg_metaattrs(fcn, params[0], "f")
-            meta["intent"] = "inout"
             iarg = 1
         meta = statements.fetch_arg_metaattrs(fcn, params[iarg], "f")
         meta["intent"] = "setter"
