@@ -376,7 +376,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_mixin_unknown"
+                            "stmt": "c_mixin_unknown"
                         }
                     },
                     "f": {

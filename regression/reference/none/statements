@@ -251,6 +251,7 @@ root
               native
                 scalar -- c_mixin_out_vector_cdesc_targ_native_scalar
       shadow -- c_mixin_shadow
+      unknown -- c_mixin_unknown
       vector
         cdesc
           fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
@@ -2989,6 +2990,14 @@ c_mixin_shadow:
     - '{f_capsule_data_type}'
   intent: mixin
   name: c_mixin_shadow
+  owner: library
+c_mixin_unknown:
+  c_arg_decl:
+  - ===>{c_var}<===
+  comments:
+  - Default returned by lookup_fc_stmts when group is not found.
+  intent: mixin
+  name: c_mixin_unknown
   owner: library
 c_mixin_vector_cdesc_fill-cdesc:
   c_helper:

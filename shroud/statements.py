@@ -145,7 +145,7 @@ def lookup_fc_stmts(path):
     if stmt is None:
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
-        stmt = fc_dict.get("f_mixin_unknown")
+        stmt = fc_dict.get("{}_mixin_unknown".format(path[0]))
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
@@ -1316,6 +1316,14 @@ fc_statements = [
     
     dict(
         name="f_mixin_unknown",
+        comments=[
+            "Default returned by lookup_fc_stmts when group is not found.",
+        ],
+        # Point out where there are problems in the wrapper...
+        c_arg_decl=["===>{c_var}<==="],
+    ),
+    dict(
+        name="c_mixin_unknown",
         comments=[
             "Default returned by lookup_fc_stmts when group is not found.",
         ],
