@@ -4,13 +4,13 @@ class Cstruct1
 Python method Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)
 Close pyCstruct1type.c
 class Cstruct_ptr
-Python method Cstruct_ptr(char * cfield, const double * const_dvalue) +name(Cstruct_ptr_ctor)
+Python method Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)
 Close pyCstruct_ptrtype.c
 class Cstruct_list
-Python method Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems), double * dvalue +dimension(nitems*TWO), char * * svalue +dimension(nitems)) +name(Cstruct_list_ctor)
+Python method Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)
 Close pyCstruct_listtype.c
 class Cstruct_numpy
-Python method Cstruct_numpy(int nitems, int * ivalue +dimension(nitems), double * dvalue +dimension(nitems)) +name(Cstruct_numpy_ctor)
+Python method Cstruct_numpy(int nitems, int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)
 Close pyCstruct_numpytype.c
 class Arrays1
 Python method Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)

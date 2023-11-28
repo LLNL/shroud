@@ -30,7 +30,6 @@
                                                 }
                                             ],
                                             "metaattrs": {
-                                                "intent": "in",
                                                 "struct_member": "name"
                                             },
                                             "name": "name",
@@ -49,7 +48,6 @@
                                                 }
                                             ],
                                             "metaattrs": {
-                                                "intent": "in",
                                                 "struct_member": "count"
                                             },
                                             "name": "count",

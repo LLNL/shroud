@@ -653,7 +653,8 @@ class GenFunctions(object):
         #  Add variables as function parameters by coping AST.
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
-            a.declarator.metaattrs["intent"] = "in"
+            if a.declarator.is_pointer():
+                a.declarator.attrs["intent"] = "in"
             a.declarator.metaattrs["struct_member"] = var
             a.declarator.metaattrs["dim_ast"] = None
             ast.declarator.params.append(a)

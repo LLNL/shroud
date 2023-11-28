@@ -28,7 +28,6 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
                                                 "struct_member": "ifield"
                                             },
                                             "name": "ifield",
@@ -42,7 +41,6 @@
                                     {
                                         "declarator": {
                                             "metaattrs": {
-                                                "intent": "in",
                                                 "struct_member": "dfield"
                                             },
                                             "name": "dfield",
