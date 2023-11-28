@@ -2002,11 +2002,10 @@ return 1;""",
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         is_ctor = declarator.is_ctor
         result_typemap = ast.typemap
         bind = statements.get_func_bind(node, "py")
-        meta2 = bind.meta
+        meta = bind.meta
 
         result_blk = default_scope
 
@@ -2060,7 +2059,7 @@ return 1;""",
             spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
-                deref = meta2["deref"]
+                deref = meta["deref"]
                 if deref == "scalar":
                     stmts.append(deref)
                 else:
