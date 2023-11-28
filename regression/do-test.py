@@ -602,12 +602,13 @@ if __name__ == "__main__":
                 status = tester.do_compare()
 
         name = test.name
+        dots = ".............................."[:25 - len(name)]
         if status:
             pass_names.append(name)
-            print("{} pass".format(name))
+            print("{} {} pass".format(name, dots))
         else:
             fail_names.append(name)
-            print("{} ***FAILED".format(name))
+            print("{} {} ***FAILED".format(name, dots))
 
     # summarize results
     if fail_names:
