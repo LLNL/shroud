@@ -509,7 +509,9 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "dimension": "nitems"
+                            "deref": "pointer",
+                            "dimension": "nitems",
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
@@ -545,7 +547,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +dimension(nitems)",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -596,7 +598,7 @@
                                         "name": "nitems"
                                     }
                                 ],
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -705,7 +707,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "DataPointer_set_items",
@@ -728,7 +730,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
                                     },
                                     "name": "val",
@@ -753,7 +755,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
-                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "DataPointer_set_items",
                 "options": {},
                 "user_fmt": {
@@ -788,7 +790,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -798,7 +800,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }
@@ -1072,7 +1074,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "dimension": "nitems"
+                                    "deref": "pointer",
+                                    "dimension": "nitems",
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
@@ -1108,7 +1112,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +dimension(nitems)",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1159,7 +1163,7 @@
                                                 "name": "nitems"
                                             }
                                         ],
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 },
                                 "SH_this": {
@@ -1268,7 +1272,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "DataPointer_set_items",
@@ -1291,7 +1295,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
+                                                "intent": "setter",
                                                 "rank": 1
                                             },
                                             "name": "val",
@@ -1316,7 +1320,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1351,7 +1355,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "SH_this": {
@@ -1361,7 +1365,7 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -1662,7 +1666,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "dimension": "nitems"
+                                    "deref": "pointer",
+                                    "dimension": "nitems",
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
@@ -1698,7 +1704,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +dimension(nitems)",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1749,7 +1755,7 @@
                                                 "name": "nitems"
                                             }
                                         ],
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 },
                                 "SH_this": {
@@ -1858,7 +1864,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "DataPointer_set_items",
@@ -1881,7 +1887,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
+                                                "intent": "setter",
                                                 "rank": 1
                                             },
                                             "name": "val",
@@ -1906,7 +1912,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1941,7 +1947,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "SH_this": {
@@ -1951,7 +1957,7 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }

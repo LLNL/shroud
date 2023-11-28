@@ -655,6 +655,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -665,7 +668,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_x1()",
-                        "declgen": "int get_x1(void)",
+                        "declgen": "int get_x1(void) +intent(getter)",
                         "name": "get_x1",
                         "options": {},
                         "user_fmt": {
@@ -688,7 +691,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -755,7 +758,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_x1",
@@ -763,7 +766,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -782,7 +785,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in))",
+                        "declgen": "void set_x1(int val +intent(setter)) +intent(setter)",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -811,12 +814,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -890,6 +893,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -900,7 +906,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_y1()",
-                        "declgen": "int get_y1(void)",
+                        "declgen": "int get_y1(void) +intent(getter)",
                         "name": "get_y1",
                         "options": {},
                         "user_fmt": {
@@ -923,7 +929,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -990,7 +996,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_y1",
@@ -998,7 +1004,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1017,7 +1023,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in))",
+                        "declgen": "void set_y1(int val +intent(setter)) +intent(setter)",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -1046,12 +1052,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -1221,6 +1227,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1231,7 +1240,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_x1()",
-                        "declgen": "int get_x1(void)",
+                        "declgen": "int get_x1(void) +intent(getter)",
                         "name": "get_x1",
                         "options": {},
                         "user_fmt": {
@@ -1254,7 +1263,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -1321,7 +1330,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_x1",
@@ -1329,7 +1338,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1348,7 +1357,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in))",
+                        "declgen": "void set_x1(int val +intent(setter)) +intent(setter)",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -1377,12 +1386,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -1456,6 +1465,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1466,7 +1478,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_y1()",
-                        "declgen": "int get_y1(void)",
+                        "declgen": "int get_y1(void) +intent(getter)",
                         "name": "get_y1",
                         "options": {},
                         "user_fmt": {
@@ -1489,7 +1501,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -1556,7 +1568,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_y1",
@@ -1564,7 +1576,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1583,7 +1595,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in))",
+                        "declgen": "void set_y1(int val +intent(setter)) +intent(setter)",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -1612,12 +1624,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -1691,6 +1703,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_z1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1701,7 +1716,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_z1()",
-                        "declgen": "int get_z1(void)",
+                        "declgen": "int get_z1(void) +intent(getter)",
                         "name": "get_z1",
                         "options": {},
                         "user_fmt": {
@@ -1724,7 +1739,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -1791,7 +1806,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_z1",
@@ -1799,7 +1814,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1818,7 +1833,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_z1(int val)",
-                        "declgen": "void set_z1(int val +intent(in))",
+                        "declgen": "void set_z1(int val +intent(setter)) +intent(setter)",
                         "name": "set_z1",
                         "options": {},
                         "user_fmt": {
@@ -1847,12 +1862,12 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "subroutine"
+                                        "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     }
                                 }
                             }
@@ -5478,6 +5493,10 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "intent": "getter"
+                        },
                         "name": "Cstruct_ptr_get_const_dvalue",
                         "params": [
                             {
@@ -5512,7 +5531,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this+intent(in))",
-                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in))",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in)) +deref(pointer)+intent(getter)",
                 "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "struct_parent": "Cstruct_ptr",
@@ -5543,7 +5562,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -5639,7 +5658,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_ptr_set_const_dvalue",
@@ -5663,7 +5682,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -5687,7 +5706,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,const double * val)",
-                "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
+                "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(setter)) +intent(setter)",
                 "name": "Cstruct_ptr_set_const_dvalue",
                 "options": {},
                 "user_fmt": {
@@ -5722,7 +5741,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -5732,7 +5751,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }
@@ -5830,7 +5849,9 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "dimension": "nitems+nitems"
+                            "deref": "pointer",
+                            "dimension": "nitems+nitems",
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
@@ -5866,7 +5887,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this+intent(in))",
-                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems+nitems)",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems+nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -5929,7 +5950,7 @@
                                         }
                                     }
                                 ],
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -6038,7 +6059,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_list_set_ivalue",
@@ -6061,7 +6082,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
                                     },
                                     "name": "val",
@@ -6086,7 +6107,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_list_set_ivalue(Cstruct_list *SH_this,int * val)",
-                "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
+                "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "Cstruct_list_set_ivalue",
                 "options": {},
                 "user_fmt": {
@@ -6121,7 +6142,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -6131,7 +6152,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }
@@ -6233,7 +6254,9 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "dimension": "nitems*TWO"
+                            "deref": "pointer",
+                            "dimension": "nitems*TWO",
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
@@ -6269,7 +6292,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this+intent(in))",
-                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems*TWO)",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems*TWO)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -6332,7 +6355,7 @@
                                         }
                                     }
                                 ],
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -6441,7 +6464,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_list_set_dvalue",
@@ -6464,7 +6487,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
                                     },
                                     "name": "val",
@@ -6489,7 +6512,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_list_set_dvalue(Cstruct_list *SH_this,double * val)",
-                "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
+                "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "Cstruct_list_set_dvalue",
                 "options": {},
                 "user_fmt": {
@@ -6524,7 +6547,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -6534,7 +6557,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }

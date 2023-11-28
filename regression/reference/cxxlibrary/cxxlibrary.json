@@ -2049,6 +2049,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_length",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2059,7 +2062,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_length()",
-                        "declgen": "int get_length(void)",
+                        "declgen": "int get_length(void) +intent(getter)",
                         "name": "get_length",
                         "options": {},
                         "user_fmt": {
@@ -2082,7 +2085,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -4384,6 +4387,11 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "intent": "getter"
+                        },
                         "name": "nested_get_parent",
                         "params": [
                             {
@@ -4418,7 +4426,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in))",
+                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4459,7 +4467,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -4561,7 +4569,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "nested_set_parent",
@@ -4584,7 +4592,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -4608,7 +4616,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_parent(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(in))",
+                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(setter)) +intent(setter)",
                 "name": "nested_set_parent",
                 "options": {},
                 "user_fmt": {
@@ -4643,7 +4651,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -4653,7 +4661,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }
@@ -4752,7 +4760,10 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "dimension": "sublevels"
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": "sublevels",
+                            "intent": "getter"
                         },
                         "name": "nested_get_child",
                         "params": [
@@ -4791,7 +4802,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
-                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +dimension(sublevels)",
+                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4842,7 +4853,7 @@
                                         "name": "sublevels"
                                     }
                                 ],
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -4952,7 +4963,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "nested_set_child",
@@ -4975,7 +4986,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
                                     },
                                     "name": "val",
@@ -5003,7 +5014,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_child(nested *SH_this,nested * * val)",
-                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))",
+                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_child",
                 "options": {},
                 "user_fmt": {
@@ -5038,7 +5049,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -5048,7 +5059,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }

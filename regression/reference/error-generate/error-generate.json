@@ -2749,7 +2749,8 @@
                     "declarator": {
                         "attrs": {
                             "deref": "pointerxx",
-                            "dimension": "narg2"
+                            "dimension": "narg2",
+                            "intent": "getter"
                         },
                         "name": "struct1_get_arg2",
                         "params": [
@@ -2785,16 +2786,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * struct1_get_arg2(struct1 *SH_this+intent(in))",
-                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)",
-                "helpers": {
-                    "c": [
-                        "type_defines",
-                        "array_context"
-                    ],
-                    "f": [
-                        "array_context"
-                    ]
-                },
+                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
                 "name": "struct1_get_arg2",
                 "options": {},
                 "struct_parent": "struct1",
@@ -2810,8 +2802,7 @@
                     "f": {
                         "+result": {
                             "meta": {
-                                "api": "cdesc",
-                                "deref": "pointer",
+                                "deref": "pointerxx",
                                 "dim_ast": [
                                     {
                                         "name": "narg2"
@@ -2819,7 +2810,7 @@
                                 ],
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_native_*_cdesc_pointer"
+                            "stmt": "f_mixin_unknown"
                         },
                         "SH_this": {
                             "meta": {
@@ -2836,7 +2827,7 @@
                                         "name": "narg2"
                                     }
                                 ],
-                                "intent": "function"
+                                "intent": "getter"
                             }
                         },
                         "SH_this": {
@@ -2852,49 +2843,42 @@
                             "C_call_function": "struct1_get_arg2(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_name": "ERR_struct1_get_arg2",
-                            "C_prototype": "ERR_struct1 * SH_this,\t ERR_SHROUD_array *SHT_rv_cdesc",
-                            "C_return_type": "void",
-                            "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
+                            "C_prototype": "ERR_struct1 * SH_this,\t ===>SHC_rv<===",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "SH_this,\t struct1_get_arg2",
                             "F_C_call": "c_struct1_get_arg2",
-                            "F_C_name": "c_struct1_get_arg2",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                            "F_C_name": "struct1_get_arg2",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "SH_this,\t SHT_rv",
                             "F_arguments": "SH_this",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
-                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->narg2;",
-                            "c_array_size": "SHT_rv_cdesc->shape[0]",
                             "c_array_size2": "SH_this->narg2",
                             "c_const": "",
-                            "c_helper_array_context": "ERR_SHROUD_array",
+                            "c_get_value": "",
                             "c_type": "int",
                             "c_var": "SHC_rv",
-                            "c_var_cdesc": "SHT_rv_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
                             "cxx_rv_decl": "int * SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
-                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_array_allocate": "(narg2)",
                             "f_assumed_shape": "(:)",
-                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                            "f_helper_array_context": "ERR_SHROUD_array",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
-                            "f_var_cdesc": "SHT_rv_cdesc",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
-                            "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_getter_native_*_cdesc_pointer"
+                            "stmt_name": "f_mixin_unknown"
                         }
                     },
                     "SH_this": {
@@ -2945,7 +2929,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "struct1_set_arg2",
@@ -2968,7 +2952,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
                                     },
                                     "name": "val",
@@ -2993,7 +2977,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void struct1_set_arg2(struct1 *SH_this,int * val)",
-                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(in)+rank(1))",
+                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "struct1_set_arg2",
                 "options": {},
                 "user_fmt": {
@@ -3028,7 +3012,7 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             }
                         },
                         "SH_this": {
@@ -3038,7 +3022,7 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "setter"
                             }
                         }
                     }

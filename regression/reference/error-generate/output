@@ -113,7 +113,7 @@ Unable to parse dimension: n+=2
 Node: func8
 line 47
 void func8(int arg1 +intent(none))
-Bad value for intent: none
+Bad value for argument arg1 intent: none
 --------------------
 Node: func8a
 line 48
@@ -193,7 +193,7 @@ Illegal value 'none' for owner attribute. Must be 'caller' or 'library'.
 Node: callback_set_alloc
 line 78
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)))
-Bad value for intent: none
+Bad value for argument tc intent: none
 --------------------
 Node: AssignValues
 line 106
@@ -243,6 +243,9 @@ Node: AssignValues
 line 106
 void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
+--------------------
+Node: struct1_get_arg2
+Unknown statement: f_getter_native_*_pointerxx
 Wrote wraperror.h
 Wrote wraperror.cpp
 Wrote wrapferror.f

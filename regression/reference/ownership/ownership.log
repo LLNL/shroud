@@ -3,7 +3,7 @@ Close ownership_types.yaml
 class Class1
 C c ~Class1(void)
 C f ~Class1(void)
-C f int get_flag(void)
+C f int get_flag(void) +intent(getter)
 Close wrapClass1.h
 Close wrapClass1.cpp
 C c int * ReturnIntPtrRaw(void) +deref(raw)
@@ -34,9 +34,9 @@ Close wrapownership.h
 Close wrapownership.cpp
 class Class1
 Fortran ~Class1(void)
-Fortran int get_flag(void)
+Fortran int get_flag(void) +intent(getter)
 C-interface f ~Class1(void)
-C-interface f int get_flag(void)
+C-interface f int get_flag(void) +intent(getter)
 Fortran int * ReturnIntPtrScalar(void) +deref(scalar)
 Fortran int * ReturnIntPtrPointer(void) +deref(pointer)
 Fortran int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)

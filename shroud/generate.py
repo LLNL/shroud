@@ -475,15 +475,13 @@ class GenFunctions(object):
         decl = "{}({})".format(argdecl, this_get)
 
         fattrs = dict(
+            intent="getter",
+            api=api,
             dimension=declarator.attrs["dimension"],
-            deref=declarator.attrs["deref"],
+            deref=declarator.attrs["deref"] or deref,
         )
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
-        meta = statements.fetch_func_metaattrs(fcn, "f")
-        meta["intent"] = "getter"
-        meta["deref"] = deref
-        meta["api"] = api
         if is_struct:
             fcn.struct_parent = cls
         fcn.wrap.assign(fortran=True)
@@ -498,26 +496,19 @@ class GenFunctions(object):
                                           continuation=True)
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
+        fattrs = dict(
+            intent="setter",
+        )
         attrs = dict(
             val=dict(
-                intent="in",
+                intent="setter",
             )
         )
         dim = declarator.metaattrs["dim_ast"]
         if dim:
             attrs["val"]["rank"] = len(dim)
 
-        fcn = parent.add_function(decl, attrs=attrs, format=fmt_func)
-        # XXX - The function is not processed like other, so set intent directly.
-        fcn.ast.declarator.metaattrs["intent"] = "setter"
-        meta = statements.fetch_func_metaattrs(fcn, "f")
-        meta["intent"] = "setter"
-        iarg = 0
-        params = fcn.ast.declarator.params
-        if is_struct:
-            iarg = 1
-        meta = statements.fetch_arg_metaattrs(fcn, params[iarg], "f")
-        meta["intent"] = "setter"
+        fcn = parent.add_function(decl, fattrs=fattrs, attrs=attrs, format=fmt_func)
         fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
         fcn._generated_path.append("getter/setter")

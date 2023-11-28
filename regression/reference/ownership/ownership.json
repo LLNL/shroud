@@ -127,6 +127,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_flag",
                                 "params": [],
                                 "typemap_name": "int"
@@ -137,7 +140,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_flag()",
-                        "declgen": "int get_flag(void)",
+                        "declgen": "int get_flag(void) +intent(getter)",
                         "name": "get_flag",
                         "options": {},
                         "user_fmt": {
@@ -160,7 +163,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }

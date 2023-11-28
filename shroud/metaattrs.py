@@ -65,9 +65,13 @@ class FillMeta(object):
 
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
-        if meta["intent"]:
-            # getter/setter
-            pass
+        intent = declarator.attrs["intent"]
+        if intent:
+            intent = intent.lower()
+            if intent not in ["getter", "setter"]:
+                self.cursor.generate("Bad value for function intent: {}"
+                                     .format(intent))
+            meta["intent"] = intent
         elif declarator.is_ctor:
             meta["intent"] = "ctor"
         elif declarator.is_dtor:
@@ -79,9 +83,12 @@ class FillMeta(object):
         intent = arg.declarator.attrs["intent"]
         if intent:
             intent = intent.lower()
-            if intent not in ["in", "out", "inout"]:
+            if intent in ["getter", "setter"]:
+                pass
+            elif intent not in ["in", "out", "inout"]:
                 intent = arg.declarator.attrs["intent"]
-                self.cursor.generate("Bad value for intent: " + intent)
+                self.cursor.generate("Bad value for argument {} intent: {}"
+                                     .format(arg.declarator.user_name, intent))
                 intent = "inout"
             elif intent != "in" and not arg.declarator.is_indirect():
                 # Nonpointers can only be intent(in).
@@ -178,10 +185,19 @@ class FillMeta(object):
                 mderef = deref
             else:
                 mderef = "allocatable"
-        elif nindirect > 1:
+        elif nindirect > 2:
             if deref:
                 self.cursor.generate(
                     "Cannot have attribute 'deref' on function which returns multiple indirections")
+        elif nindirect > 1:
+            if deref:
+                if deref == "pointer":
+                    # XXX - this is a kludge to get cxxlibrary.yaml to pass
+                    #       get_nested_child getter
+                    mderef = deref
+                else:
+                    self.cursor.generate(
+                        "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref:
@@ -558,6 +574,7 @@ class FillMetaShare(FillMeta):
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
+                "intent",    # getter/setter
                 "len",
                 "name",
                 "owner",

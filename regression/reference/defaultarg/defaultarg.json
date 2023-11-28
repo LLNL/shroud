@@ -1676,6 +1676,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1686,7 +1689,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field1()",
-                        "declgen": "int get_field1(void)",
+                        "declgen": "int get_field1(void) +intent(getter)",
                         "name": "get_field1",
                         "options": {},
                         "user_fmt": {
@@ -1709,7 +1712,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -1776,6 +1779,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field2",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1786,7 +1792,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field2()",
-                        "declgen": "int get_field2(void)",
+                        "declgen": "int get_field2(void) +intent(getter)",
                         "name": "get_field2",
                         "options": {},
                         "user_fmt": {
@@ -1809,7 +1815,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }
@@ -1876,6 +1882,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field3",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1886,7 +1895,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field3()",
-                        "declgen": "int get_field3(void)",
+                        "declgen": "int get_field3(void) +intent(getter)",
                         "name": "get_field3",
                         "options": {},
                         "user_fmt": {
@@ -1909,7 +1918,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "function"
+                                        "intent": "getter"
                                     }
                                 }
                             }

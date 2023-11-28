@@ -53,8 +53,7 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void ERR_struct1_get_arg2(ERR_struct1 * SH_this,
-    ERR_SHROUD_array *SHT_rv_cdesc);
+int * ERR_struct1_get_arg2(ERR_struct1 * SH_this, ===>SHC_rv<===);
 
 void ERR_struct1_set_arg2(ERR_struct1 * SH_this, int * val);
 
