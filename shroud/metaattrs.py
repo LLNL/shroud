@@ -49,19 +49,25 @@ class FillMeta(object):
         
         for cls in node.classes:
             cursor.push_phase("FillMeta class function")
-            self.meta_functions(cls, cls.functions)
+            for var in cls.variables:
+                cursor.push_node(var)
+#                self.meta_variable(cls, var)
+                cursor.pop_node(var)
+            for func in cls.functions:
+                cursor.push_node(func)
+                self.meta_function(cls, func)
+                cursor.pop_node(func)
             cursor.pop_phase("FillMeta class function")
 
         cursor.push_phase("FillMeta function")
-        self.meta_functions(None, node.functions)
+        for func in node.functions:
+            cursor.push_node(func)
+            self.meta_function(None, func)
+            cursor.pop_node(func)
         cursor.pop_phase("FillMeta function")
 
         for ns in node.namespaces:
             self.meta_namespace(ns)
-
-    def meta_functions(self, cls, functions):
-        for node in functions:
-            self.meta_function(cls, node)
 
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
@@ -525,8 +531,7 @@ class FillMeta(object):
 class FillMetaShare(FillMeta):
     def meta_function(self, cls, node):
         wlang = "share"
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
+        func_cursor = self.cursor.current
         #####
         ast = node.ast
         declarator = ast.declarator
@@ -557,7 +562,6 @@ class FillMetaShare(FillMeta):
             
         # --- End loop over function parameters
         func_cursor.arg = None
-        cursor.pop_node(node)
 
     def check_func_attrs(self, node, meta):
         cursor = self.cursor
@@ -771,8 +775,7 @@ class FillMetaC(FillMeta):
         if not node.wrap.c:
             return
         wlang = "c"
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
+        func_cursor = self.cursor.current
         #####
         ast = node.ast
         declarator = ast.declarator
@@ -810,8 +813,6 @@ class FillMetaC(FillMeta):
                 arg_stmt = statements.lookup_c_arg_stmt(node, arg)
                 a_bind = statements.get_arg_bind(node, arg, wlang)
                 a_bind.stmt = arg_stmt
-        
-        cursor.pop_node(node)
             
 ######################################################################
 #
@@ -821,8 +822,7 @@ class FillMetaFortran(FillMeta):
         if not node.wrap.fortran:
             return
         wlang = "f"
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
+        func_cursor = self.cursor.current
         #####
         ast = node.ast
         declarator = ast.declarator
@@ -862,8 +862,6 @@ class FillMetaFortran(FillMeta):
                 arg_stmt = statements.lookup_f_arg_stmt(node, arg)
                 a_bind = statements.get_arg_bind(node, arg, wlang)
                 a_bind.stmt = arg_stmt
-        
-        cursor.pop_node(node)
 
     def set_arg_fortran(self, node, arg, meta):
         """
@@ -912,8 +910,7 @@ class FillMetaPython(FillMeta):
         if not node.wrap.python:
             return
         wlang = "py"
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
+        func_cursor = self.cursor.current
         #####
         ast = node.ast
         declarator = ast.declarator
@@ -947,7 +944,6 @@ class FillMetaPython(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
-        cursor.pop_node(node)
 
     def filter_deref(self, deref):
         """
@@ -985,8 +981,7 @@ class FillMetaLua(FillMeta):
         if not node.wrap.python:
             return
         wlang = "lua"
-        cursor = self.cursor
-        func_cursor = cursor.push_node(node)
+        func_cursor = self.cursor.current
         #####
         ast = node.ast
         declarator = ast.declarator
@@ -1018,7 +1013,6 @@ class FillMetaLua(FillMeta):
 
         # --- End loop over function parameters
         func_cursor.arg = None
-        cursor.pop_node(node)
 
 ######################################################################
 #
@@ -1032,5 +1026,7 @@ process_map=dict(
 )
 
 def process_metaattrs(newlibrary, wlang):
+    """Process attributes for a language.
+    """
     process_map[wlang](newlibrary).meta_library()
         
