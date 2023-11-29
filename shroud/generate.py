@@ -573,15 +573,16 @@ class GenFunctions(object):
         ast = declast.create_struct_ctor(cls)
         name = ast.declarator.attrs["name"]  #cls.name + "_ctor"
         #  Add variables as function parameters by coping AST.
+        struct_members = {}
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
             if a.declarator.is_pointer():
                 a.declarator.attrs["intent"] = "in"
-            a.declarator.metaattrs["struct_member"] = var
-            a.declarator.metaattrs["dim_ast"] = None
+            struct_members[a.declarator.user_name] = var
             ast.declarator.params.append(a)
         node = cls.add_function(name, ast)
         node.declgen = node.ast.gen_decl()
+        node.struct_members = struct_members
         node.wrap.assign(python=True)
         node._generated = "struct_as_class_ctor"
         node._generated_path.append("struct_as_class_ctor")

@@ -31,9 +31,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "ifield"
-                                            },
                                             "name": "ifield",
                                             "typemap_name": "int"
                                         },
@@ -44,9 +41,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "dfield"
-                                            },
                                             "name": "dfield",
                                             "typemap_name": "double"
                                         },
@@ -68,6 +62,10 @@
                         "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
                         "name": "Cstruct1_ctor",
                         "options": {},
+                        "struct_members": [
+                            "ifield",
+                            "dfield"
+                        ],
                         "wrap": {
                             "python": true
                         },
@@ -311,9 +309,6 @@
                                             "attrs": {
                                                 "intent": "in"
                                             },
-                                            "metaattrs": {
-                                                "struct_member": "cfield"
-                                            },
                                             "name": "cfield",
                                             "pointer": [
                                                 {
@@ -332,9 +327,6 @@
                                         "declarator": {
                                             "attrs": {
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "struct_member": "const_dvalue"
                                             },
                                             "name": "const_dvalue",
                                             "pointer": [
@@ -362,6 +354,10 @@
                         "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)",
                         "name": "Cstruct_ptr_ctor",
                         "options": {},
+                        "struct_members": [
+                            "cfield",
+                            "const_dvalue"
+                        ],
                         "wrap": {
                             "python": true
                         },
@@ -623,9 +619,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "nitems"
-                                            },
                                             "name": "nitems",
                                             "typemap_name": "int"
                                         },
@@ -639,9 +632,6 @@
                                             "attrs": {
                                                 "dimension": "nitems+nitems",
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "struct_member": "ivalue"
                                             },
                                             "name": "ivalue",
                                             "pointer": [
@@ -662,9 +652,6 @@
                                                 "dimension": "nitems*TWO",
                                                 "intent": "in"
                                             },
-                                            "metaattrs": {
-                                                "struct_member": "dvalue"
-                                            },
                                             "name": "dvalue",
                                             "pointer": [
                                                 {
@@ -683,9 +670,6 @@
                                             "attrs": {
                                                 "dimension": "nitems",
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "struct_member": "svalue"
                                             },
                                             "name": "svalue",
                                             "pointer": [
@@ -716,6 +700,12 @@
                         "declgen": "Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)",
                         "name": "Cstruct_list_ctor",
                         "options": {},
+                        "struct_members": [
+                            "nitems",
+                            "ivalue",
+                            "dvalue",
+                            "svalue"
+                        ],
                         "wrap": {
                             "python": true
                         },
@@ -1234,9 +1224,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "nitems"
-                                            },
                                             "name": "nitems",
                                             "typemap_name": "int"
                                         },
@@ -1250,9 +1237,6 @@
                                             "attrs": {
                                                 "dimension": "nitems",
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "struct_member": "ivalue"
                                             },
                                             "name": "ivalue",
                                             "pointer": [
@@ -1272,9 +1256,6 @@
                                             "attrs": {
                                                 "dimension": "nitems",
                                                 "intent": "in"
-                                            },
-                                            "metaattrs": {
-                                                "struct_member": "dvalue"
                                             },
                                             "name": "dvalue",
                                             "pointer": [
@@ -1302,6 +1283,11 @@
                         "declgen": "Cstruct_numpy(int nitems, int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)",
                         "name": "Cstruct_numpy_ctor",
                         "options": {},
+                        "struct_members": [
+                            "nitems",
+                            "ivalue",
+                            "dvalue"
+                        ],
                         "wrap": {
                             "python": true
                         },
@@ -1686,9 +1672,6 @@
                                                     "constant": "20"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "struct_member": "name"
-                                            },
                                             "name": "name",
                                             "typemap_name": "char"
                                         },
@@ -1704,9 +1687,6 @@
                                                     "constant": "10"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "struct_member": "count"
-                                            },
                                             "name": "count",
                                             "typemap_name": "int"
                                         },
@@ -1728,6 +1708,10 @@
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
                         "name": "Arrays1_ctor",
                         "options": {},
+                        "struct_members": [
+                            "name",
+                            "count"
+                        ],
                         "wrap": {
                             "python": true
                         },

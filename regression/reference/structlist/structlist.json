@@ -29,9 +29,6 @@
                                                     "constant": "20"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "struct_member": "name"
-                                            },
                                             "name": "name",
                                             "typemap_name": "char"
                                         },
@@ -47,9 +44,6 @@
                                                     "constant": "10"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "struct_member": "count"
-                                            },
                                             "name": "count",
                                             "typemap_name": "int"
                                         },
@@ -71,6 +65,10 @@
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
                         "name": "Arrays1_ctor",
                         "options": {},
+                        "struct_members": [
+                            "name",
+                            "count"
+                        ],
                         "wrap": {
                             "python": true
                         },

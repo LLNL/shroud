@@ -1546,7 +1546,6 @@ class Declaration(Node):
 
     attrs     - Attributes set by the user.
     metaattrs - Attributes set by Shroud.
-        struct_member - map ctor argument to struct member.
     """
 
     fortran_ranks = [

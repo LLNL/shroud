@@ -25,9 +25,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "x1"
-                                            },
                                             "name": "x1",
                                             "typemap_name": "int"
                                         },
@@ -38,9 +35,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "y1"
-                                            },
                                             "name": "y1",
                                             "typemap_name": "int"
                                         },
@@ -62,6 +56,10 @@
                         "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
                         "name": "Cstruct_as_class_ctor",
                         "options": {},
+                        "struct_members": [
+                            "x1",
+                            "y1"
+                        ],
                         "wrap": {
                             "python": true
                         },

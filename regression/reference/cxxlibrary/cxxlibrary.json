@@ -27,9 +27,6 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "ifield"
-                                            },
                                             "name": "ifield",
                                             "typemap_name": "int"
                                         },
@@ -40,9 +37,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "struct_member": "dfield"
-                                            },
                                             "name": "dfield",
                                             "typemap_name": "double"
                                         },
@@ -64,6 +58,10 @@
                         "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
                         "name": "Cstruct1_cls_ctor",
                         "options": {},
+                        "struct_members": [
+                            "ifield",
+                            "dfield"
+                        ],
                         "wrap": {
                             "python": true
                         },

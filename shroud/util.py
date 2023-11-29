@@ -483,7 +483,6 @@ class WrapperMixin(object):
         decl = []
         ast.declarator.gen_attrs(ast.declarator.metaattrs, decl, dict(
             dim_ast=True,
-            struct_member=True,
             # XXX - moved to _bind
             api=True,
             deref=True,

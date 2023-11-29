@@ -1315,9 +1315,8 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
-            meta = declarator.metaattrs
-            bind =  statements.get_arg_bind(node, arg, "py")
-            meta2 = bind.meta
+            bind = statements.get_arg_bind(node, arg, "py")
+            meta = bind.meta
 
             self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
@@ -1327,7 +1326,7 @@ return 1;""",
             dimension = attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
-            intent = meta2["intent"]
+            intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = declarator.get_indirect_stmt()
             stmts = None
@@ -1338,7 +1337,7 @@ return 1;""",
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_member = meta["struct_member"]
+                struct_member = node.struct_members[arg_name]
                 struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
@@ -1348,7 +1347,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = meta2["deref"]
+            deref = meta["deref"]
             if deref not in ["scalar", "raw"]:
                 deref = None
             if intent_blk is not None:

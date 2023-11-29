@@ -151,10 +151,6 @@ class ToDict(visitor.Visitor):
                  for (key, value) in node.metaattrs.items()
                  if value is not None}
         if metaattrs:
-            if "struct_member" in metaattrs:
-                # struct_member is a ast.VariableNode, add name instead
-                # to avoid huge dump.
-                metaattrs["struct_member"] = metaattrs["struct_member"].name
             if "dim_ast" in metaattrs:
                 metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
             d["metaattrs"] = metaattrs
@@ -462,6 +458,8 @@ class ToDict(visitor.Visitor):
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
+        if node.struct_members:
+            d["struct_members"] = list(node.struct_members.keys())
 
         if node.helpers:
             helpers = {}
@@ -561,10 +559,6 @@ class ToDict(visitor.Visitor):
                          for (key, value) in node.meta.items()
                          if value is not None}
             if metaattrs:
-                if "struct_member" in metaattrs:
-                    # struct_member is a ast.VariableNode, add name instead
-                    # to avoid huge dump.
-                    metaattrs["struct_member"] = metaattrs["struct_member"].name
                 if "dim_ast" in metaattrs:
                     metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
                 d["meta"] = metaattrs
