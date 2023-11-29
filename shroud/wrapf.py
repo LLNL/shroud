@@ -206,7 +206,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 self.set_f_module(fileinfo.module_use,
                                   "iso_c_binding", "C_PTR")
             else:
-                output.append(ast.gen_arg_as_fortran())
+                output.append(ast.gen_arg_as_fortran(local=True))
                 self.update_f_module(
                     fileinfo.module_use,
                     ntypemap.i_module or ntypemap.f_module,
@@ -975,9 +975,7 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 for i, param in enumerate(arg.declarator.params):
                     name = param.declarator.user_name
-#                    bind = get_arg_bind(node, param, "f")
-#                    intent = bind.meta["intent"]
-                    intent = param.declarator.metaattrs["intent"]
+                    intent = param.declarator.attrs["intent"]
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
@@ -997,7 +995,7 @@ rv = .false.
                     )
 
                 if subprogram == "function":
-                    arg_c_decl.append(ast.bind_c(name=key, params=None))
+                    arg_c_decl.append(ast.bind_c(name=key, is_result=True, params=None))
                 arguments = ",\t ".join(arg_f_names)
                 if options.literalinclude:
                     iface.append("! start abstract " + key)
@@ -1168,7 +1166,7 @@ rv = .false.
         imports = {}  # indexed as [name]
 
         if cls:
-            is_ctor = declarator.is_ctor()
+            is_ctor = declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor or is_static:
                 pass
@@ -1265,7 +1263,7 @@ rv = .false.
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(name=fmt_result.F_result))
+                arg_c_decl.append(ast.bind_c(is_result=True, name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,
@@ -1496,7 +1494,7 @@ rv = .false.
 
         if cls:
             need_wrapper = True
-            is_ctor = declarator.is_ctor()
+            is_ctor = declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor or is_static:
                 pass
@@ -1539,6 +1537,7 @@ rv = .false.
             
             arg_bind = get_arg_bind(node, f_arg, "f")
             arg_stmt = arg_bind.stmt
+            arg_meta = arg_bind.meta
             func_cursor.stmt = arg_stmt
             arg_typemap = self.fill_fortran_arg(
                 cls, node, C_node, f_arg, c_arg, arg_bind, fmt_arg)
@@ -1548,7 +1547,7 @@ rv = .false.
             implied = f_attrs["implied"]
             pass_obj = f_attrs["pass"]
 
-            if f_arg.ftrim_char_in:
+            if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
                     "character(len=*), intent(IN) :: {}".format(fmt_arg.f_var)

@@ -83,9 +83,6 @@
                 "<FUNCTION>": "NoReturnNoArguments  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "NoReturnNoArguments",
                         "params": [],
                         "typemap_name": "void"
@@ -122,6 +119,27 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -170,19 +188,10 @@
                 "<FUNCTION>": "PassByValue  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "PassByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -193,12 +202,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -216,7 +219,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
+                "declgen": "double PassByValue(double arg1, int arg2)",
                 "name": "PassByValue",
                 "options": {},
                 "wrap": {
@@ -264,6 +267,57 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -521,18 +575,11 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "ConcatenateStrings",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -549,9 +596,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "pointer": [
                                         {
@@ -642,6 +686,57 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -949,9 +1044,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultArguments",
                         "params": [],
                         "typemap_name": "double"
@@ -991,6 +1083,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1074,20 +1173,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultArguments",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 3.1415,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -1105,7 +1195,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -1146,6 +1236,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1279,20 +1381,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultArguments",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 3.1415,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -1303,13 +1396,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": "true",
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "bool"
                                 },
@@ -1327,7 +1414,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415, bool arg2=true)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -1382,6 +1469,57 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_bool_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1644,17 +1782,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "OverloadedFunction",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1722,6 +1854,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1863,19 +2031,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "OverloadedFunction",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "indx",
                                     "typemap_name": "int"
                                 },
@@ -1893,7 +2052,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(int indx)",
-                "declgen": "void OverloadedFunction(int indx +value)",
+                "declgen": "void OverloadedFunction(int indx)",
                 "name": "OverloadedFunction",
                 "options": {},
                 "user_fmt": {
@@ -1932,6 +2091,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "indx": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "indx": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "indx": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2056,19 +2251,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2091,7 +2277,7 @@
                     ]
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(ArgType arg +value)",
+                "declgen": "void TemplateArgument(ArgType arg)",
                 "have_template_args": true,
                 "name": "TemplateArgument",
                 "options": {},
@@ -2123,6 +2309,20 @@
                     "ArgType"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TemplateArgument",
                     "F_name_api": "template_argument",
@@ -2139,19 +2339,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2169,7 +2360,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(int arg +value)",
+                "declgen": "void TemplateArgument(int arg)",
                 "have_template_args": true,
                 "name": "TemplateArgument",
                 "options": {},
@@ -2233,6 +2424,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2366,19 +2593,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TemplateArgument",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg"
                                 },
                                 "specifier": [
@@ -2396,7 +2614,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(double arg +value)",
+                "declgen": "void TemplateArgument(double arg)",
                 "gen_headers_typedef": [
                     "int",
                     "double"
@@ -2464,6 +2682,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2589,9 +2843,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -2642,6 +2893,15 @@
                     "RetType"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
@@ -2658,9 +2918,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -2725,6 +2982,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2809,9 +3073,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "TemplateReturn",
                         "params": []
                     },
@@ -2880,6 +3141,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2959,9 +3227,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [],
                         "typemap_name": "void"
@@ -2996,6 +3261,27 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -3046,17 +3332,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3072,12 +3352,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3095,16 +3369,13 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3120,12 +3391,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "float"
                                 },
@@ -3143,9 +3408,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3161,12 +3423,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3213,6 +3469,57 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_string_&"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3367,17 +3674,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3393,12 +3694,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "float"
                                 },
@@ -3416,7 +3711,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -3449,6 +3744,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3550,17 +3862,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3576,12 +3882,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -3599,7 +3899,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -3632,6 +3932,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3731,19 +4048,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -3761,7 +4069,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value)",
+                "declgen": "int UseDefaultOverload(int num)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -3800,6 +4108,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3929,19 +4249,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -3952,13 +4263,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "int"
                                 },
@@ -3976,7 +4281,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value)",
+                "declgen": "int UseDefaultOverload(int num, int offset=0)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -4027,6 +4332,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4203,19 +4525,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4226,13 +4539,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "int"
                                 },
@@ -4243,13 +4550,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "int"
                                 },
@@ -4267,7 +4568,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value, int stride=1 +value)",
+                "declgen": "int UseDefaultOverload(int num, int offset=0, int stride=1)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -4332,6 +4633,72 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4670,19 +5037,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -4693,12 +5051,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4716,7 +5068,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value)",
+                "declgen": "int UseDefaultOverload(double type, int num)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -4762,6 +5114,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4934,19 +5303,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -4957,12 +5317,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -4973,13 +5327,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "int"
                                 },
@@ -4997,7 +5345,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value)",
+                "declgen": "int UseDefaultOverload(double type, int num, int offset=0)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -5055,6 +5403,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5274,19 +5644,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseDefaultOverload",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "double"
                                 },
@@ -5297,12 +5658,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -5313,13 +5668,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "int"
                                 },
@@ -5330,13 +5679,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "int"
                                 },
@@ -5354,7 +5697,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)",
+                "declgen": "int UseDefaultOverload(double type, int num, int offset=0, int stride=1)",
                 "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
@@ -5426,6 +5769,87 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5829,19 +6253,10 @@
                 "<FUNCTION>": "typefunc  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "typefunc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::TypeID"
                                 },
@@ -5859,7 +6274,7 @@
                     "typemap_name": "tutorial::TypeID"
                 },
                 "decl": "TypeID typefunc(TypeID arg)",
-                "declgen": "TypeID typefunc(TypeID arg +value)",
+                "declgen": "TypeID typefunc(TypeID arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -5895,6 +6310,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6077,19 +6528,10 @@
                 "<FUNCTION>": "enumfunc  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "enumfunc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::EnumTypeID"
                                 },
@@ -6107,7 +6549,7 @@
                     "typemap_name": "tutorial::EnumTypeID"
                 },
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
-                "declgen": "EnumTypeID enumfunc(EnumTypeID arg +value)",
+                "declgen": "EnumTypeID enumfunc(EnumTypeID arg)",
                 "name": "enumfunc",
                 "options": {},
                 "wrap": {
@@ -6143,6 +6585,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6335,19 +6813,10 @@
                 "<FUNCTION>": "colorfunc  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "colorfunc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "tutorial::Color"
                                 },
@@ -6365,7 +6834,7 @@
                     "typemap_name": "tutorial::Color"
                 },
                 "decl": "Color colorfunc(Color arg);",
-                "declgen": "Color colorfunc(Color arg +value)",
+                "declgen": "Color colorfunc(Color arg)",
                 "name": "colorfunc",
                 "options": {},
                 "wrap": {
@@ -6401,6 +6870,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6593,17 +7098,11 @@
                 "<FUNCTION>": "getMinMax  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getMinMax",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "min",
@@ -6622,9 +7121,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "max",
@@ -6702,6 +7198,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_&"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "max": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "min": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "max": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "min": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "max": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "min": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6871,19 +7418,10 @@
                 "<FUNCTION>": "callback1  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "callback1",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in",
                                     "typemap_name": "int"
                                 },
@@ -6894,9 +7432,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "incr",
                                         "pointer": [
@@ -6905,9 +7440,6 @@
                                             }
                                         ],
                                         "typemap_name": "int"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "incr",
                                     "params": [
@@ -6940,7 +7472,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
-                "declgen": "int callback1(int in +value, int ( * incr)(int +value) +value)",
+                "declgen": "int callback1(int in, int ( * incr)(int))",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -6993,6 +7525,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "incr": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7162,10 +7711,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "LastFunctionCalled",
                         "params": [],
                         "pointer": [
@@ -7212,6 +7757,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },

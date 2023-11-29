@@ -24,7 +24,7 @@ extern "C" {
 // Function:  int convert_to_int
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  enum Color in +value
+// Argument:  enum Color in
 // Statement: c_in_native_scalar
 int ENU_convert_to_int(int in)
 {

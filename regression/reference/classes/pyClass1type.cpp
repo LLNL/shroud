@@ -61,7 +61,7 @@ PY_Class1_tp_init_default(
 // Function:  Class1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static int
 PY_Class1_tp_init_flag(
@@ -228,7 +228,7 @@ PY_getName(
 // Function:  DIRECTION directionFunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  DIRECTION arg +value
+// Argument:  DIRECTION arg
 // Statement: py_in_native_scalar
 static char PY_directionFunc__doc__[] =
 "documentation"

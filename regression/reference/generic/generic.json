@@ -59,19 +59,10 @@
                 "<FUNCTION>": "UpdateAsFloat  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "UpdateAsFloat",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -89,7 +80,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void UpdateAsFloat(float arg)",
-                "declgen": "void UpdateAsFloat(float arg +value)",
+                "declgen": "void UpdateAsFloat(float arg)",
                 "name": "UpdateAsFloat",
                 "options": {
                     "F_force_wrapper": true
@@ -128,6 +119,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -215,19 +218,10 @@
                 "<FUNCTION>": "UpdateAsDouble  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "UpdateAsDouble",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -245,7 +239,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void UpdateAsDouble(double arg)",
-                "declgen": "void UpdateAsDouble(double arg +value)",
+                "declgen": "void UpdateAsDouble(double arg)",
                 "name": "UpdateAsDouble",
                 "options": {
                     "F_force_wrapper": true
@@ -284,6 +278,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -371,9 +377,6 @@
                 "<FUNCTION>": "GetGlobalDouble  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GetGlobalDouble",
                         "params": [],
                         "typemap_name": "double"
@@ -406,6 +409,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -483,19 +493,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -513,7 +514,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(double arg +value)",
+                "declgen": "void GenericReal(double arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -522,12 +523,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -544,12 +539,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -583,6 +572,18 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -643,19 +644,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "float"
                                 },
@@ -673,7 +665,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(float arg +value)",
+                "declgen": "void GenericReal(float arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -697,6 +689,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -763,19 +767,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GenericReal",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "double"
                                 },
@@ -793,7 +788,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GenericReal(double arg)",
-                "declgen": "void GenericReal(double arg +value)",
+                "declgen": "void GenericReal(double arg)",
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
@@ -817,6 +812,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -877,19 +884,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -900,12 +898,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -923,7 +915,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(long arg1 +value, long arg2 +value)",
+                "declgen": "long GenericReal2(long arg1, long arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -933,12 +925,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -949,12 +935,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -971,12 +951,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -987,12 +961,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -1030,6 +998,23 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1135,19 +1120,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -1158,12 +1134,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -1181,7 +1151,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(int arg1 +value, int arg2 +value)",
+                "declgen": "long GenericReal2(int arg1, int arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -1210,6 +1180,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1321,19 +1308,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GenericReal2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "long"
                                 },
@@ -1344,12 +1322,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "long"
                                 },
@@ -1367,7 +1339,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long GenericReal2(long arg1, long arg2)",
-                "declgen": "long GenericReal2(long arg1 +value, long arg2 +value)",
+                "declgen": "long GenericReal2(long arg1, long arg2)",
                 "doxygen": {
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
@@ -1396,6 +1368,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1502,20 +1491,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "SumValues",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1531,12 +1511,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1554,7 +1528,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values, int nvalues +value)",
+                "declgen": "int SumValues(const int * values, int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -1566,12 +1540,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1588,12 +1556,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1614,12 +1576,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1635,12 +1591,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1661,12 +1611,6 @@
                                     "attrs": {
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
-                                    },
                                     "name": "values",
                                     "pointer": [
                                         {
@@ -1682,12 +1626,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1727,6 +1665,23 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1810,7 +1765,6 @@
                             "f_var": "values",
                             "i_var": "values",
                             "idtor": "0",
-                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_*"
                         }
@@ -1835,9 +1789,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "SumValues",
                         "params": [
                             {
@@ -1845,12 +1796,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1867,12 +1812,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -1890,7 +1829,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(0), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(0), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -1920,6 +1859,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2042,9 +1998,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "SumValues",
                         "params": [
                             {
@@ -2052,12 +2005,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -2074,12 +2021,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -2097,7 +2038,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(1), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(1), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -2127,6 +2068,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2251,9 +2209,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "SumValues",
                         "params": [
                             {
@@ -2261,12 +2216,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -2283,12 +2232,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvalues",
                                     "typemap_name": "int"
                                 },
@@ -2306,7 +2249,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(2), int nvalues +value)",
+                "declgen": "int SumValues(const int * values +rank(2), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -2336,6 +2279,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2452,17 +2412,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -2478,12 +2432,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2494,9 +2442,6 @@
                             },
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "to",
                                     "pointer": [
                                         {
@@ -2512,12 +2457,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2535,7 +2474,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2545,9 +2484,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -2563,12 +2499,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2579,9 +2509,6 @@
                             },
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "to",
                                     "pointer": [
                                         {
@@ -2597,12 +2524,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2620,9 +2541,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -2638,12 +2556,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2656,9 +2568,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2675,12 +2584,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2701,9 +2604,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -2719,12 +2619,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2737,9 +2631,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2756,12 +2647,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -2811,6 +2696,33 @@
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -2947,17 +2859,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -2973,12 +2879,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -2989,9 +2889,6 @@
                             },
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "to",
                                     "pointer": [
                                         {
@@ -3007,12 +2904,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3030,7 +2921,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3070,6 +2961,33 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -3219,17 +3137,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "from",
                                     "pointer": [
                                         {
@@ -3245,12 +3157,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -3263,9 +3169,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -3282,12 +3185,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3305,7 +3202,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to +rank(1), int nto +value)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3345,6 +3242,33 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -3498,9 +3422,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssignValues",
                         "params": [
                             {
@@ -3508,9 +3429,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "from",
                                     "pointer": [
@@ -3527,12 +3445,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nfrom",
                                     "typemap_name": "int"
                                 },
@@ -3545,9 +3457,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -3564,12 +3473,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nto",
                                     "typemap_name": "int"
                                 },
@@ -3587,7 +3490,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from +rank(1), int nfrom +value, int * to +rank(1), int nto +value)",
+                "declgen": "void AssignValues(const int * from +rank(1), int nfrom, int * to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -3627,6 +3530,33 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -3777,19 +3707,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -3805,12 +3726,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "int"
                                 },
@@ -3822,11 +3737,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -3845,7 +3756,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr +value, int type +value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(void * addr, int type, size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3854,9 +3765,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3874,11 +3782,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -3891,11 +3795,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -3917,9 +3817,6 @@
                                         "intent": "in",
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -3936,11 +3833,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -3953,11 +3846,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4002,6 +3891,28 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4112,9 +4023,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
@@ -4122,9 +4030,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4142,11 +4047,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4159,11 +4060,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4182,7 +4079,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -4213,6 +4110,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4342,9 +4261,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer",
                         "params": [
                             {
@@ -4352,9 +4268,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4372,11 +4285,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "T_FLOAT",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "T_FLOAT"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4389,11 +4298,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4412,7 +4317,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -4443,6 +4348,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4565,19 +4492,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -4594,11 +4512,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4611,11 +4525,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4634,7 +4544,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(void * addr +value, int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(void * addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -4643,9 +4553,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4663,11 +4570,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4680,11 +4583,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4706,9 +4605,6 @@
                                         "intent": "in",
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -4725,11 +4621,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4742,11 +4634,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4819,6 +4707,28 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4929,9 +4839,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
@@ -4939,9 +4846,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4959,11 +4863,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -4976,11 +4876,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -4999,7 +4895,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -5058,6 +4954,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5187,9 +5105,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "SavePointer2",
                         "params": [
                             {
@@ -5197,9 +5112,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5217,11 +5129,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "type(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "type(addr)"
                                     },
                                     "name": "type",
                                     "typemap_name": "int"
@@ -5234,11 +5142,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(addr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(addr)"
                                     },
                                     "name": "size",
                                     "typemap_name": "size_t"
@@ -5257,7 +5161,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -5316,6 +5220,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5437,17 +5363,11 @@
                 "<FUNCTION>": "GetPointer  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointer",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -5471,9 +5391,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -5490,9 +5407,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -5575,6 +5489,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5748,17 +5684,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -5783,9 +5713,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -5803,9 +5730,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -5841,10 +5765,6 @@
                                         "intent": "out",
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -5867,9 +5787,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -5887,9 +5804,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -5918,10 +5832,6 @@
                                         "intent": "out",
                                         "rank": 2
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -5944,9 +5854,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -5964,9 +5871,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -6025,6 +5929,28 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6135,9 +6061,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
@@ -6146,10 +6069,6 @@
                                         "deref": "pointer",
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -6173,9 +6092,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -6193,9 +6109,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -6263,6 +6176,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6394,9 +6329,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetPointerAsPointer",
                         "params": [
                             {
@@ -6405,10 +6337,6 @@
                                         "deref": "pointer",
                                         "intent": "out",
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -6432,9 +6360,6 @@
                                         "hidden": true,
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "type",
                                     "pointer": [
                                         {
@@ -6452,9 +6377,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "size",
@@ -6522,6 +6444,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "size": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6645,9 +6589,6 @@
                 "<FUNCTION>": "CreateStructAsClass  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CreateStructAsClass",
                         "params": [],
                         "pointer": [
@@ -6689,6 +6630,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6770,16 +6718,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -6795,12 +6737,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -6818,15 +6754,12 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -6842,12 +6775,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "inew",
                                     "typemap_name": "int"
                                 },
@@ -6864,9 +6791,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -6882,12 +6806,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -6925,6 +6843,23 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "inew": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7032,16 +6967,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -7057,12 +6986,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "inew",
                                     "typemap_name": "int"
                                 },
@@ -7080,7 +7003,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -7105,6 +7028,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "inew": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7225,16 +7165,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UpdateStructAsClass",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -7250,12 +7184,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "inew",
                                     "typemap_name": "long"
                                 },
@@ -7273,7 +7201,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew +value)",
+                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -7298,6 +7226,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "inew": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

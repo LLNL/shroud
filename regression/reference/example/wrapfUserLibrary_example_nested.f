@@ -253,7 +253,7 @@ module userlibrary_example_nested_mod
         ! Function:  int incrementCount
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int incr +value
+        ! Argument:  int incr
         ! Statement: f_in_native_scalar
         function c_ex_class1_increment_count(self, incr) &
                 result(SHT_rv) &
@@ -322,7 +322,7 @@ module userlibrary_example_nested_mod
         ! Function:  int getValue
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int value +value
+        ! Argument:  int value
         ! Statement: f_in_native_scalar
         function c_ex_class1_get_value_from_int(self, value) &
                 result(SHT_rv) &
@@ -339,7 +339,7 @@ module userlibrary_example_nested_mod
         ! Function:  long getValue
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  long value +value
+        ! Argument:  long value
         ! Statement: f_in_native_scalar
         function c_ex_class1_get_value_1(self, value) &
                 result(SHT_rv) &
@@ -356,7 +356,7 @@ module userlibrary_example_nested_mod
         ! Function:  bool hasAddr
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
-        ! Argument:  bool in +value
+        ! Argument:  bool in
         ! Statement: f_in_bool_scalar
         function c_ex_class1_has_addr(self, in) &
                 result(SHT_rv) &
@@ -565,7 +565,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass2 * declare
         ! Statement: f_function_shadow_*_this
         ! ----------------------------------------
-        ! Argument:  TypeID type +value
+        ! Argument:  TypeID type
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
@@ -580,10 +580,10 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass2 * declare
         ! Statement: c_function_shadow_*_this
         ! ----------------------------------------
-        ! Argument:  TypeID type +value
+        ! Argument:  TypeID type
         ! Statement: c_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  SidreLength len=1 +value
+        ! Argument:  SidreLength len=1
         ! Statement: c_in_native_scalar
         subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
@@ -623,7 +623,7 @@ module userlibrary_example_nested_mod
         ! Function:  void setValue
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int value +value
+        ! Argument:  int value
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_set_value_int(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_int")
@@ -639,7 +639,7 @@ module userlibrary_example_nested_mod
         ! Function:  void setValue
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  long value +value
+        ! Argument:  long value
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_set_value_long(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_long")
@@ -655,7 +655,7 @@ module userlibrary_example_nested_mod
         ! Function:  void setValue
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  float value +value
+        ! Argument:  float value
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_set_value_float(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_float")
@@ -671,7 +671,7 @@ module userlibrary_example_nested_mod
         ! Function:  void setValue
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double value +value
+        ! Argument:  double value
         ! Statement: f_in_native_scalar
         subroutine c_ex_class2_set_value_double(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_double")
@@ -794,7 +794,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const std::string & name
         ! Statement: c_in_string_&
         ! ----------------------------------------
-        ! Argument:  int flag +value
+        ! Argument:  int flag
         ! Statement: c_in_native_scalar
         subroutine c_test_names_flag(name, flag) &
                 bind(C, name="AA_example_nested_test_names_flag")
@@ -811,7 +811,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const std::string & name
         ! Statement: f_in_string_&_buf
         ! ----------------------------------------
-        ! Argument:  int flag +value
+        ! Argument:  int flag
         ! Statement: f_in_native_scalar
         subroutine c_test_names_flag_bufferify(name, SHT_name_len, flag) &
                 bind(C, name="AA_example_nested_test_names_flag_bufferify")
@@ -836,7 +836,7 @@ module userlibrary_example_nested_mod
         ! Function:  void testoptional
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int i=1 +value
+        ! Argument:  int i=1
         ! Statement: f_in_native_scalar
         subroutine c_testoptional_1(i) &
                 bind(C, name="AA_example_nested_testoptional_1")
@@ -849,10 +849,10 @@ module userlibrary_example_nested_mod
         ! Function:  void testoptional
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int i=1 +value
+        ! Argument:  int i=1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  long j=2 +value
+        ! Argument:  long j=2
         ! Statement: f_in_native_scalar
         subroutine c_testoptional_2(i, j) &
                 bind(C, name="AA_example_nested_testoptional_2")
@@ -878,7 +878,7 @@ module userlibrary_example_nested_mod
         ! Function:  void testmpi
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  MPI_Comm comm +value
+        ! Argument:  MPI_Comm comm
         ! Statement: f_in_unknown_scalar
         subroutine c_testmpi_mpi(comm) &
                 bind(C, name="AA_example_nested_testmpi_mpi")
@@ -902,7 +902,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * get)(void) +value
+        ! Argument:  void ( * get)(void)
         ! Statement: f_in_void_scalar
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_FuncPtr1")
@@ -928,7 +928,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr3
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(int i +value, int +value) +value
+        ! Argument:  double ( * get)(int i +value, int +value)
         ! Statement: f_in_native_scalar
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_FuncPtr3")
@@ -941,7 +941,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr4
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(double +value, int +value) +value
+        ! Argument:  double ( * get)(double +value, int +value)
         ! Statement: f_in_native_scalar
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_FuncPtr4")
@@ -954,7 +954,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr5
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
+        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
         ! Statement: f_in_void_scalar
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_FuncPtr5")
@@ -1019,34 +1019,34 @@ module userlibrary_example_nested_mod
         ! Function:  int verylongfunctionname2
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname1 +value
+        ! Argument:  int verylongname1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname2 +value
+        ! Argument:  int verylongname2
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname3 +value
+        ! Argument:  int verylongname3
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname4 +value
+        ! Argument:  int verylongname4
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname5 +value
+        ! Argument:  int verylongname5
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname6 +value
+        ! Argument:  int verylongname6
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname7 +value
+        ! Argument:  int verylongname7
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname8 +value
+        ! Argument:  int verylongname8
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname9 +value
+        ! Argument:  int verylongname9
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int verylongname10 +value
+        ! Argument:  int verylongname10
         ! Statement: f_in_native_scalar
         function c_verylongfunctionname2(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
@@ -1079,7 +1079,7 @@ module userlibrary_example_nested_mod
         ! Argument:  double * out +dimension(shape(in))+intent(out)
         ! Statement: f_out_native_*
         ! ----------------------------------------
-        ! Argument:  int sizein +implied(size(in))+value
+        ! Argument:  int sizein +implied(size(in))
         ! Statement: f_in_native_scalar
         subroutine c_cos_doubles(in, out, sizein) &
                 bind(C, name="AA_example_nested_cos_doubles")
@@ -1227,7 +1227,7 @@ contains
     ! Function:  int incrementCount
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int incr +value
+    ! Argument:  int incr
     ! Statement: f_in_native_scalar
     function ex_class1_increment_count(obj, incr) &
             result(SHT_rv)
@@ -1277,7 +1277,7 @@ contains
     ! Function:  int getValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int value +value
+    ! Argument:  int value
     ! Statement: f_in_native_scalar
     function ex_class1_get_value_from_int(obj, value) &
             result(SHT_rv)
@@ -1294,7 +1294,7 @@ contains
     ! Function:  long getValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  long value +value
+    ! Argument:  long value
     ! Statement: f_in_native_scalar
     function ex_class1_get_value_1(obj, value) &
             result(SHT_rv)
@@ -1311,7 +1311,7 @@ contains
     ! Function:  bool hasAddr
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
-    ! Argument:  bool in +value
+    ! Argument:  bool in
     ! Statement: f_in_bool_scalar
     function ex_class1_has_addr(obj, in) &
             result(SHT_rv)
@@ -1507,7 +1507,7 @@ contains
     ! Function:  ExClass2 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  TypeID type +value
+    ! Argument:  TypeID type
     ! Statement: f_in_native_scalar
     subroutine ex_class2_declare_0(obj, type)
         use userlibrary_mod, only : type_id
@@ -1523,12 +1523,12 @@ contains
     ! Function:  ExClass2 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  TypeID type +value
+    ! Argument:  TypeID type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int len=1 +value
+    ! Argument:  int len=1
     ! Statement: f_in_native_scalar
-    ! Argument:  SidreLength len=1 +value
+    ! Argument:  SidreLength len=1
     subroutine ex_class2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT
         use userlibrary_mod, only : sidre_length, type_id
@@ -1545,12 +1545,12 @@ contains
     ! Function:  ExClass2 * declare
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
-    ! Argument:  TypeID type +value
+    ! Argument:  TypeID type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long len=1 +value
+    ! Argument:  long len=1
     ! Statement: f_in_native_scalar
-    ! Argument:  SidreLength len=1 +value
+    ! Argument:  SidreLength len=1
     subroutine ex_class2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_LONG
         use userlibrary_mod, only : sidre_length, type_id
@@ -1590,7 +1590,7 @@ contains
     ! Function:  void setValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int value +value
+    ! Argument:  int value
     ! Statement: f_in_native_scalar
     subroutine ex_class2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
@@ -1606,7 +1606,7 @@ contains
     ! Function:  void setValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  long value +value
+    ! Argument:  long value
     ! Statement: f_in_native_scalar
     subroutine ex_class2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
@@ -1622,7 +1622,7 @@ contains
     ! Function:  void setValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float value +value
+    ! Argument:  float value
     ! Statement: f_in_native_scalar
     subroutine ex_class2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
@@ -1638,7 +1638,7 @@ contains
     ! Function:  void setValue
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double value +value
+    ! Argument:  double value
     ! Statement: f_in_native_scalar
     subroutine ex_class2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
@@ -1758,7 +1758,7 @@ contains
     ! Argument:  const std::string & name
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  int flag +value
+    ! Argument:  int flag
     ! Statement: f_in_native_scalar
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
@@ -1786,7 +1786,7 @@ contains
     ! Function:  void testoptional
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int i=1 +value
+    ! Argument:  int i=1
     ! Statement: f_in_native_scalar
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
@@ -1800,10 +1800,10 @@ contains
     ! Function:  void testoptional
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int i=1 +value
+    ! Argument:  int i=1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  long j=2 +value
+    ! Argument:  long j=2
     ! Statement: f_in_native_scalar
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
@@ -1834,7 +1834,7 @@ contains
     ! Function:  void testmpi
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  MPI_Comm comm +value
+    ! Argument:  MPI_Comm comm
     ! Statement: f_in_unknown_scalar
     subroutine testmpi_mpi(comm)
         integer, value, intent(IN) :: comm
@@ -1988,34 +1988,34 @@ contains
     ! Function:  int verylongfunctionname2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname1 +value
+    ! Argument:  int verylongname1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname2 +value
+    ! Argument:  int verylongname2
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname3 +value
+    ! Argument:  int verylongname3
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname4 +value
+    ! Argument:  int verylongname4
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname5 +value
+    ! Argument:  int verylongname5
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname6 +value
+    ! Argument:  int verylongname6
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname7 +value
+    ! Argument:  int verylongname7
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname8 +value
+    ! Argument:  int verylongname8
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname9 +value
+    ! Argument:  int verylongname9
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int verylongname10 +value
+    ! Argument:  int verylongname10
     ! Statement: f_in_native_scalar
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &

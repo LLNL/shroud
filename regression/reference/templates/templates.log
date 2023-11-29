@@ -7,8 +7,8 @@ C c ~vector(void)
 C f ~vector(void)
 C c void push_back(const int & value +intent(in))
 C f void push_back(const int & value +intent(in))
-C c int & at(size_type n +value)
-C f int & at(size_type n +value)
+C c int & at(size_type n)
+C f int & at(size_type n)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector<double>
@@ -18,27 +18,27 @@ C c ~vector(void)
 C f ~vector(void)
 C c void push_back(const double & value +intent(in))
 C f void push_back(const double & value +intent(in))
-C c double & at(size_type n +value)
-C f double & at(size_type n +value)
+C c double & at(size_type n)
+C f double & at(size_type n)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
 class ImplWorker1
 class ImplWorker2
 class Worker
 class user<int>
-C c void nested(int arg1 +value, double arg2 +value)
-C f void nested(int arg1 +value, double arg2 +value)
+C c void nested(int arg1, double arg2)
+C f void nested(int arg1, double arg2)
 Close wrapuser_int.h
 Close wrapuser_int.cpp
 class structAsClass<int>
 C c structAsClass(void)
 C f structAsClass(void)
-C c void set_npts(int n +value)
-C f void set_npts(int n +value)
+C c void set_npts(int n)
+C f void set_npts(int n)
 C c int get_npts(void)
 C f int get_npts(void)
-C c void set_value(int v +value)
-C f void set_value(int v +value)
+C c void set_value(int v)
+C f void set_value(int v)
 C c int get_value(void)
 C f int get_value(void)
 Close wrapstructAsClass_int.h
@@ -46,22 +46,22 @@ Close wrapstructAsClass_int.cpp
 class structAsClass<double>
 C c structAsClass(void)
 C f structAsClass(void)
-C c void set_npts(int n +value)
-C f void set_npts(int n +value)
+C c void set_npts(int n)
+C f void set_npts(int n)
 C c int get_npts(void)
 C f int get_npts(void)
-C c void set_value(double v +value)
-C f void set_value(double v +value)
+C c void set_value(double v)
+C f void set_value(double v)
 C c double get_value(void)
 C f double get_value(void)
 Close wrapstructAsClass_double.h
 Close wrapstructAsClass_double.cpp
 C c user<int> returnUserType(void)
 C f user<int> returnUserType(void)
-C c void FunctionTU(int arg1 +value, long arg2 +value)
-C f void FunctionTU(int arg1 +value, long arg2 +value)
-C c void FunctionTU(float arg1 +value, double arg2 +value)
-C f void FunctionTU(float arg1 +value, double arg2 +value)
+C c void FunctionTU(int arg1, long arg2)
+C f void FunctionTU(int arg1, long arg2)
+C c void FunctionTU(float arg1, double arg2)
+C f void FunctionTU(float arg1, double arg2)
 C c int UseImplWorker(void)
 C f int UseImplWorker(void)
 C c int UseImplWorker(void)
@@ -70,38 +70,38 @@ Close wraptemplates.h
 Close wraptemplates.cpp
 class Worker
 class user<int>
-Fortran void nested(int arg1 +value, double arg2 +value)
-C-interface f void nested(int arg1 +value, double arg2 +value)
+Fortran void nested(int arg1, double arg2)
+C-interface f void nested(int arg1, double arg2)
 class structAsClass<int>
 Fortran structAsClass(void)
-Fortran void set_npts(int n +value)
+Fortran void set_npts(int n)
 Fortran int get_npts(void)
-Fortran void set_value(int v +value)
+Fortran void set_value(int v)
 Fortran int get_value(void)
 C-interface f structAsClass(void)
-C-interface f void set_npts(int n +value)
+C-interface f void set_npts(int n)
 C-interface f int get_npts(void)
-C-interface f void set_value(int v +value)
+C-interface f void set_value(int v)
 C-interface f int get_value(void)
 class structAsClass<double>
 Fortran structAsClass(void)
-Fortran void set_npts(int n +value)
+Fortran void set_npts(int n)
 Fortran int get_npts(void)
-Fortran void set_value(double v +value)
+Fortran void set_value(double v)
 Fortran double get_value(void)
 C-interface f structAsClass(void)
-C-interface f void set_npts(int n +value)
+C-interface f void set_npts(int n)
 C-interface f int get_npts(void)
-C-interface f void set_value(double v +value)
+C-interface f void set_value(double v)
 C-interface f double get_value(void)
 Fortran user<int> returnUserType(void)
-Fortran void FunctionTU(int arg1 +value, long arg2 +value)
-Fortran void FunctionTU(float arg1 +value, double arg2 +value)
+Fortran void FunctionTU(int arg1, long arg2)
+Fortran void FunctionTU(float arg1, double arg2)
 Fortran int UseImplWorker(void)
 Fortran int UseImplWorker(void)
 C-interface f user<int> returnUserType(void)
-C-interface f void FunctionTU(int arg1 +value, long arg2 +value)
-C-interface f void FunctionTU(float arg1 +value, double arg2 +value)
+C-interface f void FunctionTU(int arg1, long arg2)
+C-interface f void FunctionTU(float arg1, double arg2)
 C-interface f int UseImplWorker(void)
 C-interface f int UseImplWorker(void)
 class vector<int>
@@ -109,23 +109,23 @@ typedef size_type
 Fortran vector(void)
 Fortran ~vector(void)
 Fortran void push_back(const int & value +intent(in))
-Fortran int & at(size_type n +value)
+Fortran int & at(size_type n)
 C-interface f vector(void)
 C-interface f ~vector(void)
 C-interface f void push_back(const int & value +intent(in))
-C-interface c int & at(size_type n +value)
-C-interface f int & at(size_type n +value)
+C-interface c int & at(size_type n)
+C-interface f int & at(size_type n)
 class vector<double>
 typedef size_type
 Fortran vector(void)
 Fortran ~vector(void)
 Fortran void push_back(const double & value +intent(in))
-Fortran double & at(size_type n +value)
+Fortran double & at(size_type n)
 C-interface f vector(void)
 C-interface f ~vector(void)
 C-interface f void push_back(const double & value +intent(in))
-C-interface c double & at(size_type n +value)
-C-interface f double & at(size_type n +value)
+C-interface c double & at(size_type n)
+C-interface f double & at(size_type n)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
@@ -135,13 +135,13 @@ class vector
 Python method vector(void)
 Python method ~vector(void)
 Python method void push_back(const int & value +intent(in))
-Python method int & at(size_type n +value)
+Python method int & at(size_type n)
 Close pystd_vector_inttype.cpp
 class vector
 Python method vector(void)
 Python method ~vector(void)
 Python method void push_back(const double & value +intent(in))
-Python method double & at(size_type n +value)
+Python method double & at(size_type n)
 Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1
@@ -152,10 +152,10 @@ Close pytemplates_internalmodule.cpp
 class Worker
 Close pyWorkertype.cpp
 class user
-Python method void nested(int arg1 +value, double arg2 +value)
+Python method void nested(int arg1, double arg2)
 Close pyuser_inttype.cpp
-Python function void FunctionTU(int arg1 +value, long arg2 +value)
-Python function void FunctionTU(float arg1 +value, double arg2 +value)
+Python function void FunctionTU(int arg1, long arg2)
+Python function void FunctionTU(float arg1, double arg2)
 Python function int UseImplWorker(void)
 Python function int UseImplWorker(void)
 Close pytemplatesmodule.cpp

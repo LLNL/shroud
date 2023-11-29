@@ -50,6 +50,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed warnings in ``arg_to_buffer`` and ``arg_to_CFI``.
   Replaced with *notimplemented* statement groups.
 - Removed options F_create_bufferify_function and F_string_len_trim.
+- Do not added *value* attribute explicitly. Instead use
+  ``append_fortran_value`` to decided when to add ``VALUE``
+  attribute. The user can still set it explictly.
+- Remove meta attribute *assumed-rank*. Instead check *dimension*
+  set to ``..``.
 
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.

@@ -1508,15 +1508,15 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
-   :start-after: start VEC_vector_sum_bufferify
-   :end-before: end VEC_vector_sum_bufferify
+   :start-after: start VEC_vector_sum
+   :end-before: end VEC_vector_sum
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: start c_vector_sum_bufferify
-   :end-before: end c_vector_sum_bufferify
+   :start-after: start c_vector_sum
+   :end-before: end c_vector_sum
    :dedent: 4
 
 The Fortran wrapper:

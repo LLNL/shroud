@@ -17,9 +17,6 @@
                 "<FUNCTION>": "vector_sum  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_sum",
                         "params": [
                             {
@@ -27,9 +24,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -64,7 +58,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
+                "declgen": "int vector_sum(const std::vector<int> & arg)",
                 "name": "vector_sum",
                 "options": {
                     "literalinclude": true,
@@ -72,6 +66,32 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -132,9 +152,6 @@
                 "<FUNCTION>": "vector_iota_out  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out",
                         "params": [
                             {
@@ -142,9 +159,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -179,7 +193,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -190,6 +204,32 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -231,9 +271,6 @@
                 "<FUNCTION>": "vector_iota_out_with_num  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_with_num",
                         "params": [
                             {
@@ -241,9 +278,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -278,7 +312,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -316,6 +350,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num",
                     "F_name_api": "vector_iota_out_with_num",
@@ -326,9 +374,6 @@
                 "<FUNCTION>": "vector_iota_out_with_num2  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_with_num2",
                         "params": [
                             {
@@ -336,9 +381,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -373,7 +415,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -401,6 +443,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_iota_out_with_num2",
                     "F_name_api": "vector_iota_out_with_num2",
@@ -411,9 +467,6 @@
                 "<FUNCTION>": "vector_iota_out_alloc  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_alloc",
                         "params": [
                             {
@@ -422,10 +475,6 @@
                                         "deref": "allocatable",
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -460,7 +509,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -478,6 +527,18 @@
                                 "deref": "malloc"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
                     }
                 },
                 "zz_fmtdict": {
@@ -490,9 +551,6 @@
                 "<FUNCTION>": "vector_iota_inout_alloc  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_inout_alloc",
                         "params": [
                             {
@@ -501,10 +559,6 @@
                                         "deref": "allocatable",
                                         "intent": "inout",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -539,7 +593,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -557,6 +611,18 @@
                                 "deref": "malloc"
                             }
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtdict": {
@@ -569,18 +635,12 @@
                 "<FUNCTION>": "vector_increment  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_increment",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -615,13 +675,27 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
+                "declgen": "void vector_increment(std::vector<int> & arg)",
                 "name": "vector_increment",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_increment",
                     "F_name_api": "vector_increment",
@@ -632,9 +706,6 @@
                 "<FUNCTION>": "vector_iota_out_d  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_iota_out_d",
                         "params": [
                             {
@@ -642,9 +713,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -679,7 +747,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -689,6 +757,32 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -730,9 +824,6 @@
                 "<FUNCTION>": "vector_of_pointers  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_of_pointers",
                         "params": [
                             {
@@ -740,9 +831,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -776,12 +864,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num",
                                     "typemap_name": "int"
                                 },
@@ -799,7 +881,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
-                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
+                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in), int num)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
@@ -809,6 +891,25 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "num": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_of_pointers",
                     "F_name_api": "vector_of_pointers",
@@ -819,9 +920,6 @@
                 "<FUNCTION>": "vector_string_count  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "vector_string_count",
                         "params": [
                             {
@@ -829,9 +927,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -866,7 +961,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +rank(1))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg)",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -876,6 +971,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_count",
                     "F_name_api": "vector_string_count",
@@ -886,9 +995,6 @@
                 "<FUNCTION>": "vector_string_fill  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill",
                         "params": [
                             {
@@ -896,9 +1002,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -933,7 +1036,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out)+rank(1))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))",
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -944,6 +1047,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
                     "F_name_api": "vector_string_fill",
@@ -954,9 +1071,6 @@
                 "<FUNCTION>": "vector_string_fill_allocatable  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill_allocatable",
                         "params": [
                             {
@@ -965,10 +1079,6 @@
                                         "deref": "allocatable",
                                         "intent": "out",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1003,13 +1113,27 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1))",
+                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out))",
                 "name": "vector_string_fill_allocatable",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable",
                     "F_name_api": "vector_string_fill_allocatable",
@@ -1020,9 +1144,6 @@
                 "<FUNCTION>": "vector_string_fill_allocatable_len  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_fill_allocatable_len",
                         "params": [
                             {
@@ -1032,10 +1153,6 @@
                                         "intent": "out",
                                         "len": "20",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1070,13 +1187,27 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1))",
+                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20))",
                 "name": "vector_string_fill_allocatable_len",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill_allocatable_len",
                     "F_name_api": "vector_string_fill_allocatable_len",
@@ -1087,9 +1218,6 @@
                 "<FUNCTION>": "vector_string_append  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "vector_string_append",
                         "params": [
                             {
@@ -1097,9 +1225,6 @@
                                     "attrs": {
                                         "intent": "inout",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1134,7 +1259,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout)+rank(1))",
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))",
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
@@ -1146,6 +1271,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_append",
                     "F_name_api": "vector_string_append",
@@ -1159,20 +1298,10 @@
                         "attrs": {
                             "rank": 1
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "ReturnVectorAlloc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "n",
                                     "typemap_name": "int"
                                 },
@@ -1201,7 +1330,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
@@ -1215,6 +1344,30 @@
                         "+result": {
                             "meta": {
                                 "deref": "malloc"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "n": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "n": {
+                            "meta": {
+                                "intent": "in"
                             }
                         }
                     }
@@ -1276,9 +1429,6 @@
                 "<FUNCTION>": "returnDim2  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnDim2",
                         "params": [
                             {
@@ -1286,9 +1436,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1306,11 +1453,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(arg,2)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(arg,2)"
                                     },
                                     "name": "len",
                                     "typemap_name": "int"
@@ -1329,11 +1472,47 @@
                     "typemap_name": "int"
                 },
                 "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
-                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)",
+                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2)))",
                 "name": "returnDim2",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

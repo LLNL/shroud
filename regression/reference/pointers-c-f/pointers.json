@@ -17,17 +17,11 @@
                 "<FUNCTION>": "intargs_in  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_in",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -69,6 +63,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -130,16 +136,10 @@
                 "<FUNCTION>": "intargs_inout  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_inout",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -184,6 +184,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -245,17 +257,11 @@
                 "<FUNCTION>": "intargs_out  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_out",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -299,6 +305,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -360,19 +378,12 @@
                 "<FUNCTION>": "intargs  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "argin",
@@ -386,9 +397,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arginout",
@@ -407,9 +415,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "argout",
@@ -434,7 +439,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
-                "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
+                "declgen": "void intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))",
                 "name": "intargs",
                 "options": {},
                 "wrap": {
@@ -465,6 +470,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "argin": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arginout": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "argout": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -578,9 +605,6 @@
                 "<FUNCTION>": "cos_doubles  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "cos_doubles",
                         "params": [
                             {
@@ -588,9 +612,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -611,19 +632,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -640,11 +648,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -663,7 +667,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -689,6 +693,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -698,6 +712,38 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -820,9 +866,6 @@
                 "<FUNCTION>": "truncate_to_int  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "truncate_to_int",
                         "params": [
                             {
@@ -830,9 +873,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -853,19 +893,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -882,11 +909,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -905,7 +928,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -931,6 +954,16 @@
                         },
                         "out": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -940,6 +973,38 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1062,18 +1127,12 @@
                 "<FUNCTION>": "get_values  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "get_values",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "intent": "OUT"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "nvalues",
                                     "pointer": [
@@ -1092,14 +1151,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "values",
@@ -1150,9 +1201,36 @@
                         },
                         "values": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1244,23 +1322,12 @@
                 "<FUNCTION>": "get_values2  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "get_values2",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -1280,14 +1347,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "arg2",
@@ -1332,15 +1391,52 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
                         },
                         "arg2": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1436,19 +1532,10 @@
                 "<FUNCTION>": "iota_dimension  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "iota_dimension",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvar",
                                     "typemap_name": "int"
                                 },
@@ -1461,14 +1548,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "nvar",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nvar"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "values",
@@ -1493,7 +1572,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar, int * values +dimension(nvar)+intent(out))",
                 "name": "iota_dimension",
                 "options": {},
                 "wrap": {
@@ -1515,9 +1594,36 @@
                         },
                         "values": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvar": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1609,19 +1715,12 @@
                 "<FUNCTION>": "Sum  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Sum",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(values)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(values)"
                                     },
                                     "name": "len",
                                     "typemap_name": "int"
@@ -1636,9 +1735,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1656,9 +1752,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "result",
@@ -1683,7 +1776,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values)), const int * values +rank(1), int * result +intent(out))",
                 "name": "Sum",
                 "options": {
                     "wrap_lua": false
@@ -1716,6 +1809,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "result": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1834,23 +1949,12 @@
                 "<FUNCTION>": "fillIntArray  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fillIntArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "out",
@@ -1894,9 +1998,31 @@
                         },
                         "out": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1962,9 +2088,6 @@
                 "<FUNCTION>": "incrementIntArray  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "incrementIntArray",
                         "params": [
                             {
@@ -1972,9 +2095,6 @@
                                     "attrs": {
                                         "intent": "inout",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -1992,11 +2112,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(array)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(array)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -2015,7 +2131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array)))",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -2043,6 +2159,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2135,18 +2268,12 @@
                 "<FUNCTION>": "fill_with_zeros  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fill_with_zeros",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "x",
                                     "pointer": [
@@ -2164,11 +2291,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(x)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(x)"
                                     },
                                     "name": "x_length",
                                     "typemap_name": "int"
@@ -2187,7 +2310,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x)))",
                 "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
@@ -2212,6 +2335,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "x_length": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2304,9 +2444,6 @@
                 "<FUNCTION>": "accumulate  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "accumulate",
                         "params": [
                             {
@@ -2314,9 +2451,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arr",
                                     "pointer": [
@@ -2334,11 +2468,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(arr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(arr)"
                                     },
                                     "name": "len",
                                     "typemap_name": "size_t"
@@ -2357,7 +2487,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr)))",
                 "name": "accumulate",
                 "options": {},
                 "wrap": {
@@ -2382,6 +2512,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2496,9 +2643,6 @@
                 "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptCharArrayIn",
                         "params": [
                             {
@@ -2506,9 +2650,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "names",
                                     "pointer": [
@@ -2535,7 +2676,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
@@ -2564,6 +2705,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_**_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "names": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2658,19 +2811,10 @@
                 "<FUNCTION>": "setGlobalInt  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "setGlobalInt",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "value",
                                     "typemap_name": "int"
                                 },
@@ -2688,7 +2832,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void setGlobalInt(int value)",
-                "declgen": "void setGlobalInt(int value +value)",
+                "declgen": "void setGlobalInt(int value)",
                 "name": "setGlobalInt",
                 "options": {},
                 "wrap": {
@@ -2707,6 +2851,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2768,9 +2924,6 @@
                 "<FUNCTION>": "sumFixedArray  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "sumFixedArray",
                         "params": [],
                         "typemap_name": "int"
@@ -2797,6 +2950,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2852,18 +3012,11 @@
                 "<FUNCTION>": "getPtrToScalar  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToScalar",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -2922,6 +3075,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2989,24 +3154,12 @@
                 "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFixedArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3063,9 +3216,31 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3141,24 +3316,12 @@
                 "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToDynamicArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3181,9 +3344,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -3237,6 +3397,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3247,6 +3412,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3347,25 +3534,12 @@
                 "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFuncArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "getLen()",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3422,9 +3596,33 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3500,19 +3698,12 @@
                 "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToConstScalar",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -3571,6 +3762,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3638,9 +3841,6 @@
                 "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFixedConstArray",
                         "params": [
                             {
@@ -3648,15 +3848,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3710,9 +3901,31 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3788,9 +4001,6 @@
                 "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToDynamicConstArray",
                         "params": [
                             {
@@ -3798,15 +4008,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3829,9 +4030,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -3882,6 +4080,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3892,6 +4095,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3992,18 +4217,11 @@
                 "<FUNCTION>": "getRawPtrToScalar  24 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToScalar",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -4055,6 +4273,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4116,18 +4346,11 @@
                 "<FUNCTION>": "getRawPtrToScalarForce  25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToScalarForce",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -4182,6 +4405,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4243,18 +4478,11 @@
                 "<FUNCTION>": "getRawPtrToFixedArray  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToFixedArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -4306,6 +4534,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4367,18 +4607,11 @@
                 "<FUNCTION>": "getRawPtrToFixedArrayForce  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToFixedArrayForce",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -4433,6 +4666,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4494,17 +4739,11 @@
                 "<FUNCTION>": "getRawPtrToInt2d  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToInt2d",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -4559,6 +4798,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_***"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4620,17 +4871,11 @@
                 "<FUNCTION>": "checkInt2d  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "checkInt2d",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -4682,6 +4927,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4765,9 +5022,6 @@
                 "<FUNCTION>": "DimensionIn  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "DimensionIn",
                         "params": [
                             {
@@ -4775,17 +5029,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10,20"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            },
-                                            {
-                                                "constant": "20"
-                                            }
-                                        ],
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -4831,9 +5074,37 @@
                         },
                         "arg": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4899,9 +5170,6 @@
                 "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getAllocToFixedArray",
                         "params": [
                             {
@@ -4909,15 +5177,6 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -4979,9 +5238,31 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5064,19 +5345,10 @@
                 "<FUNCTION>": "returnAddress1  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnAddress1",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -5099,7 +5371,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag +value)",
+                "declgen": "void * returnAddress1(int flag)",
                 "name": "returnAddress1",
                 "options": {},
                 "wrap": {
@@ -5118,6 +5390,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5200,19 +5484,10 @@
                 "<FUNCTION>": "returnAddress2  33 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnAddress2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -5235,7 +5510,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag +value)",
+                "declgen": "void * returnAddress2(int flag)",
                 "name": "returnAddress2",
                 "options": {
                     "F_force_wrapper": true
@@ -5256,6 +5531,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5338,17 +5625,11 @@
                 "<FUNCTION>": "fetchVoidPtr  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchVoidPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -5395,6 +5676,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_void_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5455,17 +5748,11 @@
                 "<FUNCTION>": "updateVoidPtr  35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "updateVoidPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "addr",
@@ -5515,6 +5802,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_void_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -5575,18 +5874,12 @@
                 "<FUNCTION>": "VoidPtrArray  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "VoidPtrArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5635,6 +5928,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5721,10 +6026,6 @@
                 "<FUNCTION>": "returnIntPtrToScalar  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToScalar",
                         "params": [],
                         "pointer": [
@@ -5754,6 +6055,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -5814,15 +6122,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToFixedArray",
                         "params": [],
                         "pointer": [
@@ -5858,9 +6157,26 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -5931,10 +6247,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToConstScalar",
                         "params": [],
                         "pointer": [
@@ -5964,6 +6276,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6025,15 +6344,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToFixedConstArray",
                         "params": [],
                         "pointer": [
@@ -6069,9 +6379,26 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6144,10 +6471,6 @@
                         "attrs": {
                             "deref": "scalar"
                         },
-                        "metaattrs": {
-                            "deref": "scalar",
-                            "intent": "function"
-                        },
                         "name": "returnIntScalar",
                         "params": [],
                         "pointer": [
@@ -6177,6 +6500,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6235,10 +6565,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "returnIntRaw",
                         "params": [],
                         "pointer": [
@@ -6273,6 +6599,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6331,18 +6664,11 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "returnIntRawWithArgs",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -6351,7 +6677,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -6393,9 +6718,22 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6479,9 +6817,6 @@
                 "<FUNCTION>": "returnRawPtrToInt2d  44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnRawPtrToInt2d",
                         "params": [],
                         "pointer": [
@@ -6519,6 +6854,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6578,15 +6920,6 @@
                             "deref": "allocatable",
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "returnIntAllocToFixedArray",
                         "params": [],
                         "pointer": [
@@ -6627,9 +6960,26 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
                         }
                     }
                 },

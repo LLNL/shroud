@@ -276,7 +276,7 @@ fail:
 // Function:  void defaultArgsInOut
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int in1 +value
+// Argument:  int in1
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
@@ -285,7 +285,7 @@ fail:
 // Argument:  int * out2 +intent(out)
 // Statement: py_out_native_*
 // ----------------------------------------
-// Argument:  bool flag=false +value
+// Argument:  bool flag=false
 // Statement: py_in_bool_scalar
 static char PY_defaultArgsInOut_1__doc__[] =
 "documentation"

@@ -901,7 +901,7 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, fcn, ast, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, bind, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -937,7 +937,7 @@ return 1;""",
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = declarator.metaattrs["dimension"]
+        dimension = bind.meta["dim_ast"]
         rank = declarator.attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
@@ -1183,8 +1183,8 @@ return 1;""",
         declarator = ast.declarator
         CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         #        is_const = ast.const
         ml_flags = []
 
@@ -1315,9 +1315,10 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
-            meta = declarator.metaattrs
+            bind = statements.get_arg_bind(node, arg, "py")
+            meta = bind.meta
 
-            self.set_fmt_fields(cls, node, arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
@@ -1336,7 +1337,7 @@ return 1;""",
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_member = meta["struct_member"]
+                struct_member = node.struct_members[arg_name]
                 struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
@@ -2000,9 +2001,10 @@ return 1;""",
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
-        meta = declarator.metaattrs
-        is_ctor = declarator.is_ctor()
+        is_ctor = declarator.is_ctor
         result_typemap = ast.typemap
+        bind = statements.get_func_bind(node, "py")
+        meta = bind.meta
 
         result_blk = default_scope
 
@@ -2039,7 +2041,7 @@ return 1;""",
         fmt_result.numpy_type = result_typemap.PYN_typenum
         update_fmt_from_typemap(fmt_result, result_typemap)
 
-        self.set_fmt_fields(cls, node, ast, fmt_result, True)
+        self.set_fmt_fields(cls, node, ast, bind, fmt_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
         stmts = None
@@ -2495,7 +2497,7 @@ return 1;""",
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.declarator.is_ctor()
+            is_ctor = node.ast.declarator.is_ctor
 
             body = []
             body.append(1)
@@ -3368,7 +3370,7 @@ def py_struct_dimension(parent, var, fmt):
     if declarator.array: # Fixed size array.
         metadim = declarator.array
     elif declarator.attrs["dimension"] is not None:
-        metadim = declarator.metaattrs["dimension"]
+        metadim = statements.get_var_bind(var, "share").meta["dim_ast"]
     else:
         metadim = None
     if metadim:
@@ -3522,8 +3524,9 @@ class ToImplied(todict.PrintNode):
             fmt = self.func._fmtargs[argname]["fmtpy"]
 
             # find argname in function parameters
-            arg = self.func.ast.declarator.find_arg_by_name(argname)
-            if arg.declarator.metaattrs["intent"] == "out":
+            bind = statements.fetch_name_bind(self.func._bind, "py", argname)
+            if bind.meta["intent"] == "out":
+                arg = self.func.ast.declarator.find_arg_by_name(argname)
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
                 # len(text) in this case is the value of "charlen"

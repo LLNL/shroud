@@ -51,19 +51,33 @@ class BindArg(object):
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
 
-def fetch_func_metaattrs(node, wlang):
+def fetch_var_bind(node, wlang):
+    bindarg = node._bind.setdefault(wlang, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg
+
+def fetch_func_bind(node, wlang):
     bind = node._bind.setdefault(wlang, {})
     bindarg = bind.setdefault("+result", BindArg())
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
+    return bindarg
 
-def fetch_arg_metaattrs(node, arg, wlang):
+def fetch_arg_bind(node, arg, wlang):
     bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault(arg.declarator.user_name, BindArg())
+    # XXX - better to turn off wrapping when 'Argument must have name'
+    name = arg.declarator.user_name or "no-name"
+    bindarg = bind.setdefault(name, BindArg())
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
-    return bindarg.meta
+    return bindarg
+
+def fetch_func_metaattrs(node, wlang):
+    return fetch_func_bind(node, wlang).meta
+
+def fetch_arg_metaattrs(node, arg, wlang):
+    return fetch_arg_bind(node, arg, wlang).meta
 
 def fetch_name_bind(bind, wlang, name):
     bind = bind.setdefault(wlang, {})
@@ -77,6 +91,9 @@ def get_func_metaattrs(node, wlang):
 
 def get_arg_metaattrs(node, arg, wlang):
     return node._bind[wlang][arg.declarator.user_name].meta
+
+def get_var_bind(node, wlang):
+    return node._bind[wlang]
 
 def get_func_bind(node, wlang):
     return node._bind[wlang]["+result"]
@@ -137,7 +154,7 @@ def lookup_fc_stmts(path):
     if stmt is None:
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
-        stmt = fc_dict.get("f_mixin_unknown")
+        stmt = fc_dict.get("{}_mixin_unknown".format(path[0]))
         error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
@@ -749,6 +766,8 @@ def print_tree_statements(fp, statements, defaults):
         for key in base.__dict__.keys():
             if key[0] == "_":
                 continue
+            if key == "index":
+                continue
             if key not in value:
                 print("XXX key not in value", key, value.name)
             if value[key]:
@@ -1312,6 +1331,14 @@ fc_statements = [
         # Point out where there are problems in the wrapper...
         c_arg_decl=["===>{c_var}<==="],
     ),
+    dict(
+        name="c_mixin_unknown",
+        comments=[
+            "Default returned by lookup_fc_stmts when group is not found.",
+        ],
+        # Point out where there are problems in the wrapper...
+        c_arg_decl=["===>{c_var}<==="],
+    ),
 
     ##########
     # array
@@ -1603,8 +1630,6 @@ fc_statements = [
             "c_out_void_*&",
 
             "f_in_char_*_capi",
-            "c_in_char_*_capi",
-
 
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",
@@ -3610,6 +3635,10 @@ fc_statements = [
         ],
         alias=[
             "c_setter_string_scalar_buf",
+        ],
+        f_arg_decl=[
+            # Remove VALUE added by f_default
+            "character(len=*), intent({f_intent}) :: {f_var}",
         ],
         c_post_call=[
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",

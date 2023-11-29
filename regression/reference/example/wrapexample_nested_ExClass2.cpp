@@ -316,7 +316,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 // Function:  ExClass2 * declare
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
-// Argument:  TypeID type +value
+// Argument:  TypeID type
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_declare_0(
     AA_example_nested_ExClass2 * self, AA_TypeID type)
@@ -333,10 +333,10 @@ void AA_example_nested_ExClass2_declare_0(
 // Function:  ExClass2 * declare
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
-// Argument:  TypeID type +value
+// Argument:  TypeID type
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  SidreLength len=1 +value
+// Argument:  SidreLength len=1
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_declare_1(
     AA_example_nested_ExClass2 * self, AA_TypeID type,
@@ -383,7 +383,7 @@ AA_TypeID AA_example_nested_ExClass2_getTypeID(
 // Function:  void setValue
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_setValue_int(
     AA_example_nested_ExClass2 * self, int value)
@@ -400,7 +400,7 @@ void AA_example_nested_ExClass2_setValue_int(
 // Function:  void setValue
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  long value +value
+// Argument:  long value
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_setValue_long(
     AA_example_nested_ExClass2 * self, long value)
@@ -417,7 +417,7 @@ void AA_example_nested_ExClass2_setValue_long(
 // Function:  void setValue
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  float value +value
+// Argument:  float value
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_setValue_float(
     AA_example_nested_ExClass2 * self, float value)
@@ -434,7 +434,7 @@ void AA_example_nested_ExClass2_setValue_float(
 // Function:  void setValue
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double value +value
+// Argument:  double value
 // Statement: c_in_native_scalar
 void AA_example_nested_ExClass2_setValue_double(
     AA_example_nested_ExClass2 * self, double value)

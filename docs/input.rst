@@ -360,6 +360,8 @@ Used with ``const char *`` arguments to convert a blank string to a
 ``NULL`` pointer instead of an empty C string (``'\0'``).
 Can be applied to all arguments with the option **F_blanknull**.
 
+.. intent(in)
+
 charlen
 ^^^^^^^
 
@@ -491,6 +493,9 @@ scalar
      scalar, raw, numpy, list.
    See option PY_array_arg.
 
+.. With the `decl` field, deref only applies to the Fortran wrapper.
+   Must be added to a `bind.X.decl` to apply to other languages.
+
 dimension
 ^^^^^^^^^
 
@@ -547,6 +552,9 @@ will be added to the function interface and the C wrapper will extract
 the rank from the ``CFI_cdesc_t`` argument. Otherwise, a generic
 function will be created for each rank requested by options
 *F_assumed_rank_min* and "*F_assumed_rank_max*.
+
+.. Only the Fortran wrapper uses the assumed-rank.
+   The dimension attribute will be removed from the C and Python wrappers.
 
 .. XXX - See Fortran.rst
 

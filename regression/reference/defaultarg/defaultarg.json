@@ -20,22 +20,13 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -54,7 +45,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value) +name(new)",
+                        "declgen": "Class1(int arg1) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -95,6 +86,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -227,22 +230,13 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -253,13 +247,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -278,7 +266,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value, int arg2=1 +value) +name(new)",
+                        "declgen": "Class1(int arg1, int arg2=1) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -331,6 +319,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -510,22 +515,13 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor",
                                     "name": "new"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -536,13 +532,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -553,13 +543,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 2,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg3",
                                             "typemap_name": "int"
                                         },
@@ -578,7 +562,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1(int arg1, int arg2 = 1, int arg3 = 2) +name(new)",
-                        "declgen": "Class1(int arg1 +value, int arg2=1 +value, int arg3=2 +value) +name(new)",
+                        "declgen": "Class1(int arg1, int arg2=1, int arg3=2) +name(new)",
                         "doxygen": {
                             "description": "Test default parameter methods with Class constructor.\nCreates a generic interface.\n"
                         },
@@ -643,6 +627,28 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg3": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -855,13 +861,10 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Class1",
-                                    "_name": "dtor",
                                     "name": "delete"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
+                                "default_name": "dtor",
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -894,6 +897,13 @@
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
                                 }
                             }
                         },
@@ -947,19 +957,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -977,7 +978,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value)",
+                        "declgen": "void DefaultArguments(int arg1)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -1014,6 +1015,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1112,19 +1125,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1135,13 +1139,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -1159,7 +1157,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value, int arg2=1 +value)",
+                        "declgen": "void DefaultArguments(int arg1, int arg2=1)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -1208,6 +1206,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1353,19 +1368,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "DefaultArguments",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg1",
                                             "typemap_name": "int"
                                         },
@@ -1376,13 +1382,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg2",
                                             "typemap_name": "int"
                                         },
@@ -1393,13 +1393,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 2,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg3",
                                             "typemap_name": "int"
                                         },
@@ -1417,7 +1411,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DefaultArguments(int arg1, int arg2 = 1, int arg3 = 2)",
-                        "declgen": "void DefaultArguments(int arg1 +value, int arg2=1 +value, int arg3=2 +value)",
+                        "declgen": "void DefaultArguments(int arg1, int arg2=1, int arg3=2)",
                         "doxygen": {
                             "description": "Test default parameter methods within a Class.\nCreates a generic interface and generic type-bound methods.\n"
                         },
@@ -1478,6 +1472,28 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "arg3": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1660,6 +1676,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1670,7 +1689,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field1()",
-                        "declgen": "int get_field1(void)",
+                        "declgen": "int get_field1(void) +intent(getter)",
                         "name": "get_field1",
                         "options": {},
                         "user_fmt": {
@@ -1688,6 +1707,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1753,6 +1779,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field2",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1763,7 +1792,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field2()",
-                        "declgen": "int get_field2(void)",
+                        "declgen": "int get_field2(void) +intent(getter)",
                         "name": "get_field2",
                         "options": {},
                         "user_fmt": {
@@ -1781,6 +1810,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1846,6 +1882,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_field3",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1856,7 +1895,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_field3()",
-                        "declgen": "int get_field3(void)",
+                        "declgen": "int get_field3(void) +intent(getter)",
                         "name": "get_field3",
                         "options": {},
                         "user_fmt": {
@@ -1874,6 +1913,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1960,6 +2006,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -1991,6 +2040,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2021,6 +2073,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -2077,19 +2132,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2107,7 +2153,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value)",
+                "declgen": "void apply_generic(IndexType num_elems)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2148,6 +2194,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2242,19 +2300,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2265,13 +2314,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -2289,7 +2332,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value, IndexType offset=0 +value)",
+                "declgen": "void apply_generic(IndexType num_elems, IndexType offset=0)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2342,6 +2385,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2483,19 +2543,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2506,13 +2557,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -2523,13 +2568,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -2547,7 +2586,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_generic(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems",
                     "_nelems_offset",
@@ -2612,6 +2651,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2792,19 +2853,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -2815,12 +2867,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -2838,7 +2884,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -2891,6 +2937,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3032,19 +3095,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3055,12 +3109,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3071,13 +3119,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3095,7 +3137,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset=0)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -3160,6 +3202,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3348,19 +3412,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_generic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -3371,12 +3426,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3387,13 +3436,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3404,13 +3447,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -3428,7 +3465,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_generic(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_generic(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems",
                     "_type_nelems_offset",
@@ -3505,6 +3542,33 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3728,19 +3792,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_require",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -3751,13 +3806,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -3768,13 +3817,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -3792,7 +3835,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_require(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_require(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_require(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
@@ -3855,6 +3898,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4031,19 +4096,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_require",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -4054,12 +4110,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4070,13 +4120,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -4087,13 +4131,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4111,7 +4149,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_require(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_require(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],
@@ -4186,6 +4224,33 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4409,19 +4474,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_optional",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4432,13 +4488,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -4449,13 +4499,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4473,7 +4517,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_optional(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_optional(IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
@@ -4536,6 +4580,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4714,19 +4780,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "apply_optional",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "type",
                                     "typemap_name": "TypeID"
                                 },
@@ -4737,12 +4794,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "num_elems",
                                     "typemap_name": "IndexType"
                                 },
@@ -4753,13 +4804,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "offset",
                                     "typemap_name": "IndexType"
                                 },
@@ -4770,13 +4815,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": 1,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "stride",
                                     "typemap_name": "IndexType"
                                 },
@@ -4794,7 +4833,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);",
-                "declgen": "void apply_optional(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)",
+                "declgen": "void apply_optional(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)",
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],
@@ -4869,6 +4908,33 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "offset": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "stride": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

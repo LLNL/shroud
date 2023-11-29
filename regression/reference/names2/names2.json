@@ -14,9 +14,6 @@
                 "<FUNCTION>": "AFunction  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AFunction",
                         "params": [],
                         "typemap_name": "void"
@@ -49,6 +46,13 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },

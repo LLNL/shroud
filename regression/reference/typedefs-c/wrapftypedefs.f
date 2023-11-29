@@ -51,7 +51,7 @@ module typedefs_mod
     ! Function:  TypeID typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg +value
+    ! Argument:  TypeID arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     interface
@@ -87,7 +87,7 @@ module typedefs_mod
     ! Function:  int returnBytesForIndexType
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  IndexType arg +value
+    ! Argument:  IndexType arg
     ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     interface
@@ -114,7 +114,7 @@ contains
     ! Function:  TypeID typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg +value
+    ! Argument:  TypeID arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
@@ -152,7 +152,7 @@ contains
     ! Function:  int returnBytesForIndexType
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  IndexType arg +value
+    ! Argument:  IndexType arg
     ! Statement: f_in_native_scalar
     ! start return_bytes_for_index_type
     function return_bytes_for_index_type(arg) &

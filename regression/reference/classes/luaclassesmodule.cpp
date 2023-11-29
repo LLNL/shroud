@@ -25,7 +25,7 @@ extern "C" {
 // splicer end C_definition
 
 // Class1(void)
-// Class1(int flag +value)
+// Class1(int flag)
 // ----------------------------------------
 // Function:  Class1
 // Statement: lua_ctor_scalar
@@ -33,7 +33,7 @@ extern "C" {
 // Function:  Class1
 // Statement: lua_ctor_scalar
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: lua_in_native_scalar
 static int l_Class1_ctor(lua_State *L)
 {
@@ -131,12 +131,12 @@ static int l_Class1_getName(lua_State *L)
     // splicer end class.Class1.method.getName
 }
 
-// DIRECTION directionFunc(DIRECTION arg +value)
+// DIRECTION directionFunc(DIRECTION arg)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  DIRECTION arg +value
+// Argument:  DIRECTION arg
 // Statement: lua_in_native_scalar
 static int l_Class1_directionFunc(lua_State *L)
 {
@@ -264,12 +264,12 @@ static const struct luaL_Reg l_Circle_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+// Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  Class1::DIRECTION arg +value
+// Argument:  Class1::DIRECTION arg
 // Statement: lua_in_native_scalar
 static int l_directionFunc(lua_State *L)
 {
@@ -282,12 +282,12 @@ static int l_directionFunc(lua_State *L)
     // splicer end function.directionFunc
 }
 
-// void set_global_flag(int arg +value)
+// void set_global_flag(int arg)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  int arg +value
+// Argument:  int arg
 // Statement: lua_in_native_scalar
 static int l_set_global_flag(lua_State *L)
 {

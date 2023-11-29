@@ -17,9 +17,6 @@
                 "<FUNCTION>": "Rank2In  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Rank2In",
                         "params": [
                             {
@@ -28,10 +25,6 @@
                                         "api": "cdesc",
                                         "intent": "in",
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -81,10 +74,9 @@
                         },
                         "arg": {
                             "meta": {
-                                "api": "cdesc",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_native_*_cdesc"
+                            "stmt": "c_in_native_*"
                         }
                     },
                     "f": {
@@ -101,6 +93,18 @@
                             },
                             "stmt": "f_in_native_*_cdesc"
                         }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -109,24 +113,27 @@
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
                             "C_name": "CDE_Rank2In",
-                            "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
+                            "C_prototype": "int * arg",
                             "C_return_type": "void",
+                            "F_C_arguments": "arg",
                             "F_C_name": "c_rank2_in",
+                            "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
                         },
                         "fmtf": {
                             "C_call_function": "Rank2In(\targ)",
                             "C_call_list": "arg",
-                            "C_name": "CDE_Rank2In",
+                            "C_name": "CDE_Rank2In_bufferify",
                             "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_arg_cdesc",
-                            "F_C_call": "c_rank2_in",
-                            "F_C_name": "c_rank2_in",
+                            "F_C_call": "c_rank2_in_bufferify",
+                            "F_C_name": "c_rank2_in_bufferify",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_arg_cdesc",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
+                            "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine"
                         }
                     },
@@ -135,20 +142,28 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
-                            "c_helper_array_context": "CDE_SHROUD_array",
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
-                            "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
                             "cxx_type": "int",
                             "cxx_var": "arg",
+                            "f_assumed_shape": "(:,:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_dimension": "(*)",
+                            "i_var": "arg",
                             "idtor": "0",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*_cdesc"
+                            "size": "size(arg)",
+                            "stmt_name": "c_in_native_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -200,17 +215,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -231,12 +240,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "in",
-                                        "rank": 0,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "in"
+                                        "rank": 0
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -260,7 +264,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+api(cdesc))",
-                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +api(cdesc)+intent(in)+rank(0)+value)",
+                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +api(cdesc)+intent(in)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
@@ -270,9 +274,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -294,10 +295,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -323,9 +320,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -345,10 +339,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -370,8 +360,8 @@
                 ],
                 "helpers": {
                     "c": [
-                        "array_context",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "array_context"
                     ],
                     "f": [
                         "type_defines",
@@ -422,10 +412,26 @@
                         },
                         "value": {
                             "meta": {
-                                "api": "cdesc",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_void_*_cdesc"
+                            "stmt": "c_in_void_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -435,9 +441,9 @@
                             "C_call_function": "GetScalar1(\tSHCXX_name,\t value)",
                             "C_call_list": "SHCXX_name,\t value",
                             "C_name": "CDE_GetScalar1",
-                            "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
+                            "C_prototype": "char * name,\t void * value",
                             "C_return_type": "void",
-                            "F_C_arguments": "name,\t SHT_value_cdesc",
+                            "F_C_arguments": "name,\t value",
                             "F_C_name": "c_get_scalar1",
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine"
@@ -473,11 +479,9 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
-                            "c_helper_array_context": "CDE_SHROUD_array",
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "value",
-                            "c_var_cdesc": "SHT_value_cdesc",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -489,12 +493,11 @@
                             "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
-                            "i_var_cdesc": "SHT_value_cdesc",
                             "idtor": "0",
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "1",
-                            "stmt_name": "c_in_void_*_cdesc"
+                            "stmt_name": "c_in_void_*"
                         }
                     }
                 },
@@ -516,17 +519,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -548,10 +545,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -581,8 +574,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "array_context",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "array_context"
                     ],
                     "f": [
                         "type_defines",
@@ -638,6 +631,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_cdesc"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -747,17 +757,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar1",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -779,10 +783,6 @@
                                         "api": "cdesc",
                                         "intent": "out",
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -812,8 +812,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "array_context",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "array_context"
                     ],
                     "f": [
                         "type_defines",
@@ -869,6 +869,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_cdesc"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -971,9 +988,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1024,6 +1038,15 @@
                     "DataType"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getData",
                     "F_name_api": "get_data",
@@ -1040,9 +1063,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1108,6 +1128,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1192,9 +1219,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getData",
                         "params": []
                     },
@@ -1264,6 +1288,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1343,17 +1374,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1372,10 +1397,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1400,7 +1421,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in), void * value +intent(out)+value)",
+                "declgen": "void GetScalar2(std::string & name +intent(in), void * value +intent(out))",
                 "doxygen": {
                     "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
                 },
@@ -1410,9 +1431,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1431,9 +1449,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1463,9 +1478,6 @@
                                     "attrs": {
                                         "intent": "in"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1482,9 +1494,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1530,6 +1539,25 @@
                     ]
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "GetScalar2",
                     "F_name_api": "get_scalar2",
@@ -1548,17 +1576,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1577,9 +1599,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1653,6 +1672,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1755,17 +1791,11 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "GetScalar2",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1784,9 +1814,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1860,6 +1887,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },

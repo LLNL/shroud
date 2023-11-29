@@ -121,10 +121,10 @@ module tutorial_mod
     ! Function:  double PassByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1 +value
+    ! Argument:  double arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     interface
         function pass_by_value(arg1, arg2) &
@@ -208,7 +208,7 @@ module tutorial_mod
     ! Function:  double UseDefaultArguments
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +value
+    ! Argument:  double arg1=3.1415
     ! Statement: f_in_native_scalar
     ! start c_use_default_arguments_arg1
     interface
@@ -227,10 +227,10 @@ module tutorial_mod
     ! Function:  double UseDefaultArguments
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +value
+    ! Argument:  double arg1=3.1415
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  bool arg2=true +value
+    ! Argument:  bool arg2=true
     ! Statement: f_in_bool_scalar
     ! start c_use_default_arguments_arg1_arg2
     interface
@@ -282,7 +282,7 @@ module tutorial_mod
     ! Function:  void OverloadedFunction
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int indx +value
+    ! Argument:  int indx
     ! Statement: f_in_native_scalar
     interface
         subroutine c_overloaded_function_from_index(indx) &
@@ -298,7 +298,7 @@ module tutorial_mod
     ! Function:  void TemplateArgument
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg +value
+    ! Argument:  int arg
     ! Statement: f_in_native_scalar
     interface
         subroutine c_template_argument_int(arg) &
@@ -314,7 +314,7 @@ module tutorial_mod
     ! Function:  void TemplateArgument
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: f_in_native_scalar
     interface
         subroutine c_template_argument_double(arg) &
@@ -370,7 +370,7 @@ module tutorial_mod
     ! Argument:  const std::string & name
     ! Statement: c_in_string_&
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: c_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
@@ -390,7 +390,7 @@ module tutorial_mod
     ! Argument:  const std::string & name
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  float arg2 +value
+    ! Argument:  float arg2
     ! Statement: f_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
@@ -412,7 +412,7 @@ module tutorial_mod
     ! Argument:  const std::string & name
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: f_in_native_scalar
     interface
         subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
@@ -431,7 +431,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_num(num) &
@@ -449,10 +449,10 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_num_offset(num, offset) &
@@ -470,13 +470,13 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int stride=1 +value
+    ! Argument:  int stride=1
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_num_offset_stride(num, offset, &
@@ -497,10 +497,10 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_3(type, num) &
@@ -519,13 +519,13 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_4(type, num, offset) &
@@ -544,16 +544,16 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int stride=1 +value
+    ! Argument:  int stride=1
     ! Statement: f_in_native_scalar
     interface
         function c_use_default_overload_5(type, num, offset, stride) &
@@ -573,7 +573,7 @@ module tutorial_mod
     ! Function:  TypeID typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg +value
+    ! Argument:  TypeID arg
     ! Statement: f_in_native_scalar
     interface
         function typefunc(arg) &
@@ -590,7 +590,7 @@ module tutorial_mod
     ! Function:  EnumTypeID enumfunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  EnumTypeID arg +value
+    ! Argument:  EnumTypeID arg
     ! Statement: f_in_native_scalar
     interface
         function enumfunc(arg) &
@@ -607,7 +607,7 @@ module tutorial_mod
     ! Function:  Color colorfunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Color arg +value
+    ! Argument:  Color arg
     ! Statement: f_in_native_scalar
     interface
         function colorfunc(arg) &
@@ -645,10 +645,10 @@ module tutorial_mod
     ! Function:  int callback1
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int in +value
+    ! Argument:  int in
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int ( * incr)(int +value) +value
+    ! Argument:  int ( * incr)(int +value)
     ! Statement: f_in_native_scalar
     ! start callback1
     interface
@@ -779,10 +779,10 @@ contains
     ! Function:  double PassByValue
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1 +value
+    ! Argument:  double arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     function pass_by_value(arg1, arg2) &
             result(SHT_rv)
@@ -851,7 +851,7 @@ contains
     ! Function:  double UseDefaultArguments
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +value
+    ! Argument:  double arg1=3.1415
     ! Statement: f_in_native_scalar
     ! start use_default_arguments_arg1
     function use_default_arguments_arg1(arg1) &
@@ -869,10 +869,10 @@ contains
     ! Function:  double UseDefaultArguments
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +value
+    ! Argument:  double arg1=3.1415
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  bool arg2=true +value
+    ! Argument:  bool arg2=true
     ! Statement: f_in_bool_scalar
     ! start use_default_arguments_arg1_arg2
     function use_default_arguments_arg1_arg2(arg1, arg2) &
@@ -910,7 +910,7 @@ contains
     ! Function:  void OverloadedFunction
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int indx +value
+    ! Argument:  int indx
     ! Statement: f_in_native_scalar
     subroutine overloaded_function_from_index(indx)
         use iso_c_binding, only : C_INT
@@ -925,7 +925,7 @@ contains
     ! Function:  void TemplateArgument
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int arg +value
+    ! Argument:  int arg
     ! Statement: f_in_native_scalar
     subroutine template_argument_int(arg)
         use iso_c_binding, only : C_INT
@@ -940,7 +940,7 @@ contains
     ! Function:  void TemplateArgument
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double arg +value
+    ! Argument:  double arg
     ! Statement: f_in_native_scalar
     subroutine template_argument_double(arg)
         use iso_c_binding, only : C_DOUBLE
@@ -993,7 +993,7 @@ contains
     ! Argument:  const std::string & name
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  float arg2 +value
+    ! Argument:  float arg2
     ! Statement: f_in_native_scalar
     subroutine fortran_generic_overloaded_1_float(name, arg2)
         use iso_c_binding, only : C_FLOAT, C_INT
@@ -1015,7 +1015,7 @@ contains
     ! Argument:  const std::string & name
     ! Statement: f_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  double arg2 +value
+    ! Argument:  double arg2
     ! Statement: f_in_native_scalar
     subroutine fortran_generic_overloaded_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1034,7 +1034,7 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     function use_default_overload_num(num) &
             result(SHT_rv)
@@ -1051,10 +1051,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     function use_default_overload_num_offset(num, offset) &
             result(SHT_rv)
@@ -1071,13 +1071,13 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int stride=1 +value
+    ! Argument:  int stride=1
     ! Statement: f_in_native_scalar
     function use_default_overload_num_offset_stride(num, offset, stride) &
             result(SHT_rv)
@@ -1097,10 +1097,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     function use_default_overload_3(type, num) &
             result(SHT_rv)
@@ -1118,13 +1118,13 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     function use_default_overload_4(type, num, offset) &
             result(SHT_rv)
@@ -1142,16 +1142,16 @@ contains
     ! Function:  int UseDefaultOverload
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double type +value
+    ! Argument:  double type
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int num +value
+    ! Argument:  int num
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int offset=0 +value
+    ! Argument:  int offset=0
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int stride=1 +value
+    ! Argument:  int stride=1
     ! Statement: f_in_native_scalar
     function use_default_overload_5(type, num, offset, stride) &
             result(SHT_rv)
@@ -1172,7 +1172,7 @@ contains
     ! Function:  TypeID typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg +value
+    ! Argument:  TypeID arg
     ! Statement: f_in_native_scalar
     function typefunc(arg) &
             result(SHT_rv)
@@ -1190,7 +1190,7 @@ contains
     ! Function:  EnumTypeID enumfunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  EnumTypeID arg +value
+    ! Argument:  EnumTypeID arg
     ! Statement: f_in_native_scalar
     function enumfunc(arg) &
             result(SHT_rv)
@@ -1208,7 +1208,7 @@ contains
     ! Function:  Color colorfunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  Color arg +value
+    ! Argument:  Color arg
     ! Statement: f_in_native_scalar
     function colorfunc(arg) &
             result(SHT_rv)
@@ -1254,7 +1254,7 @@ contains
     ! Function:  int callback1
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  int in +value
+    ! Argument:  int in
     ! Statement: f_in_native_scalar
     !>
     !! \brief Test function pointer

@@ -18,12 +18,9 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Arrays1_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
@@ -32,10 +29,6 @@
                                                     "constant": "20"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "name"
-                                            },
                                             "name": "name",
                                             "typemap_name": "char"
                                         },
@@ -51,10 +44,6 @@
                                                     "constant": "10"
                                                 }
                                             ],
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "count"
-                                            },
                                             "name": "count",
                                             "typemap_name": "int"
                                         },
@@ -75,13 +64,49 @@
                         "decl": "Arrays1_ctor",
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
                         "name": "Arrays1_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
+                        "struct_members": [
+                            "name",
+                            "count"
+                        ],
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "count": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "count": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -200,6 +225,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_name_getter",
                             "PY_member_data": "name_dataobj",
@@ -236,6 +264,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_count_getter",

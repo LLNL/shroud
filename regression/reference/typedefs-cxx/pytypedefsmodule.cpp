@@ -39,7 +39,7 @@ PyArray_Descr *PY_Struct1Rename_array_descr;
 // Function:  TypeID typefunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg +value
+// Argument:  TypeID arg
 // Statement: py_in_native_scalar
 static char PY_typefunc__doc__[] =
 "documentation"

@@ -21,19 +21,12 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct1_cls_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "ifield"
-                                            },
                                             "name": "ifield",
                                             "typemap_name": "int"
                                         },
@@ -44,10 +37,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "dfield"
-                                            },
                                             "name": "dfield",
                                             "typemap_name": "double"
                                         },
@@ -68,13 +57,49 @@
                         "decl": "Cstruct1_cls_ctor",
                         "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
                         "name": "Cstruct1_cls_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
+                        "struct_members": [
+                            "ifield",
+                            "dfield"
+                        ],
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "dfield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "ifield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "dfield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "ifield": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -181,6 +206,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_cls_ifield_getter",
                             "PY_setter": "PY_Cstruct1_cls_ifield_setter",
@@ -209,6 +237,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_cls_dfield_getter",
@@ -280,6 +311,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -307,6 +341,9 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -341,6 +378,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
@@ -356,13 +396,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "sublevels"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "sublevels"
-                                        }
-                                    ]
                                 },
                                 "name": "child",
                                 "pointer": [
@@ -386,6 +419,17 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "sublevels"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "CXX_nested",
@@ -434,13 +478,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "Class1"
                             },
@@ -477,6 +516,13 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -562,9 +608,6 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [],
                                 "typemap_name": "int"
@@ -600,6 +643,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -691,20 +741,11 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -722,7 +763,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(int length=1 +value)",
+                        "declgen": "int check_length(int length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -731,13 +772,7 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -754,13 +789,7 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "long"
                                         },
@@ -792,6 +821,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -885,20 +926,11 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -916,7 +948,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(int length=1 +value)",
+                        "declgen": "int check_length(int length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -938,6 +970,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1036,20 +1080,11 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "check_length",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "long"
                                         },
@@ -1067,7 +1102,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int check_length(int length = 1)",
-                        "declgen": "int check_length(long length=1 +value)",
+                        "declgen": "int check_length(long length=1)",
                         "doxygen": {
                             "brief": "Test fortran_generic with default arguments."
                         },
@@ -1089,6 +1124,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1178,19 +1225,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1213,7 +1251,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value)",
+                        "declgen": "Class1 * declare(int flag)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1250,6 +1288,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1381,19 +1431,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1404,13 +1445,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -1433,18 +1468,12 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, int length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, int length=1)",
                         "fortran_generic": [
                             {
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1455,13 +1484,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -1478,12 +1501,6 @@
                                 "decls": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1494,13 +1511,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "long"
                                         },
@@ -1540,6 +1551,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "c_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1657,19 +1685,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1680,13 +1699,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "int"
                                         },
@@ -1709,7 +1722,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, int length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, int length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1736,6 +1749,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1850,19 +1880,10 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "declare",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -1873,13 +1894,7 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
                                             "init": 1,
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "length",
                                             "typemap_name": "long"
                                         },
@@ -1902,7 +1917,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag +value, long length=1 +value)",
+                        "declgen": "Class1 * declare(int flag, long length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1929,6 +1944,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "length": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -2032,6 +2064,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_length",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2042,7 +2077,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_length()",
-                        "declgen": "int get_length(void)",
+                        "declgen": "int get_length(void) +intent(getter)",
                         "name": "get_length",
                         "options": {},
                         "user_fmt": {
@@ -2060,6 +2095,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -2148,6 +2190,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2197,16 +2242,10 @@
                 "<FUNCTION>": "passStructByReferenceCls  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByReferenceCls",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2234,6 +2273,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2292,17 +2357,11 @@
                 "<FUNCTION>": "passStructByReferenceInCls  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByReferenceInCls",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2333,6 +2392,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2391,17 +2476,11 @@
                 "<FUNCTION>": "passStructByReferenceInoutCls  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passStructByReferenceInoutCls",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arg",
@@ -2431,6 +2510,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2471,17 +2576,11 @@
                 "<FUNCTION>": "passStructByReferenceOutCls  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passStructByReferenceOutCls",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -2511,6 +2610,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -2556,9 +2681,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "defaultPtrIsNULL",
                         "params": [],
                         "typemap_name": "bool"
@@ -2591,6 +2713,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_bool_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2677,9 +2806,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "defaultPtrIsNULL",
                         "params": [
                             {
@@ -2689,9 +2815,6 @@
                                         "rank": 1
                                     },
                                     "init": "nullptr",
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "data",
                                     "pointer": [
                                         {
@@ -2749,6 +2872,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2921,19 +3068,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "defaultArgsInOut",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in1",
                                     "typemap_name": "int"
                                 },
@@ -2945,9 +3083,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "out1",
@@ -2966,9 +3101,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "out2",
@@ -2993,7 +3125,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))",
+                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out))",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3051,6 +3183,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "out2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3234,19 +3388,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "defaultArgsInOut",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in1",
                                     "typemap_name": "int"
                                 },
@@ -3258,9 +3403,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "out1",
@@ -3281,9 +3423,6 @@
                                     "attrs": {
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
                                     "name": "out2",
                                     "pointer": [
                                         {
@@ -3299,13 +3438,7 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "init": "false",
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "bool"
                                 },
@@ -3323,7 +3456,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)",
+                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out), bool flag=false)",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3394,6 +3527,60 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "in1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "out2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "in1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "out2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -3695,20 +3882,10 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getGroupName",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "idx",
                                     "typemap_name": "long"
                                 },
@@ -3731,7 +3908,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(long idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(long idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -3740,12 +3917,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int32_t"
                                 },
@@ -3762,12 +3933,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int64_t"
                                 },
@@ -3806,6 +3971,18 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "idx": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3894,20 +4071,10 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getGroupName",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int32_t"
                                 },
@@ -3930,7 +4097,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(int32_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -3961,6 +4128,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "idx": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4063,20 +4242,10 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getGroupName",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "idx",
                                     "typemap_name": "int64_t"
                                 },
@@ -4099,7 +4268,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
+                "declgen": "const std::string & getGroupName(int64_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4130,6 +4299,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "idx": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4224,10 +4405,18 @@
                 ],
                 "ast": {
                     "declarator": {
+                        "attrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "intent": "getter"
+                        },
                         "name": "nested_get_parent",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4254,8 +4443,8 @@
                     ],
                     "typemap_name": "nested"
                 },
-                "decl": "nested * nested_get_parent(nested *SH_this)",
-                "declgen": "nested * nested_get_parent(nested * SH_this)",
+                "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
+                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4291,6 +4480,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4386,7 +4587,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "nested_set_parent",
@@ -4409,7 +4610,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -4433,7 +4634,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_parent(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(in))",
+                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(setter)) +intent(setter)",
                 "name": "nested_set_parent",
                 "options": {},
                 "user_fmt": {
@@ -4463,6 +4664,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -4559,17 +4777,19 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "sublevels"
-                                }
-                            ]
+                        "attrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": "sublevels",
+                            "intent": "getter"
                         },
                         "name": "nested_get_child",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -4599,8 +4819,8 @@
                     ],
                     "typemap_name": "nested"
                 },
-                "decl": "nested * * nested_get_child(nested *SH_this)",
-                "declgen": "nested * * nested_get_child(nested * SH_this)",
+                "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
+                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -4627,6 +4847,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_struct_**_cdesc_pointer"
@@ -4636,6 +4861,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "sublevels"
+                                    }
+                                ],
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4739,7 +4981,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "nested_set_child",
@@ -4762,15 +5004,8 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "sublevels"
-                                            }
-                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -4797,7 +5032,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_child(nested *SH_this,nested * * val)",
-                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(in)+rank(1))",
+                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_child",
                 "options": {},
                 "user_fmt": {
@@ -4827,6 +5062,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_struct_**"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -4878,7 +5130,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "sublevels",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4956,6 +5207,9 @@
                                     "fortran": true,
                                     "python": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -4983,6 +5237,9 @@
                                     "c": true,
                                     "fortran": true,
                                     "python": true
+                                },
+                                "zz_bind": {
+                                    "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "double",
@@ -5028,16 +5285,10 @@
                         "<FUNCTION>": "passStructByReference  26 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "passStructByReference",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "arg",
                                             "pointer": [
                                                 {
@@ -5098,6 +5349,30 @@
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_struct_&"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
                                 }
                             }
                         },
@@ -5262,17 +5537,11 @@
                         "<FUNCTION>": "passStructByReferenceIn  27 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "passStructByReferenceIn",
                                 "params": [
                                     {
                                         "const": true,
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg",
                                             "pointer": [
                                                 {
@@ -5333,6 +5602,30 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_struct_&"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -5497,17 +5790,11 @@
                         "<FUNCTION>": "passStructByReferenceInout  28 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "passStructByReferenceInout",
                                 "params": [
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "inout"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "inout"
                                             },
                                             "name": "arg",
@@ -5567,6 +5854,30 @@
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_struct_&"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
                                 }
                             }
                         },
@@ -5680,17 +5991,11 @@
                         "<FUNCTION>": "passStructByReferenceOut  29 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "passStructByReferenceOut",
                                 "params": [
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "out"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "out"
                                             },
                                             "name": "arg",
@@ -5750,6 +6055,30 @@
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_struct_&"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "out"
+                                    }
                                 }
                             }
                         },

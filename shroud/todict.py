@@ -131,7 +131,11 @@ class ToDict(visitor.Visitor):
             d["array"] = self.visit(node.array)
         if node.init is not None:
             d["init"] = node.init
-        add_true_fields(node, d, ["func_const"])
+        add_true_fields(node, d,
+                        ["func_const",
+                         "is_ctor", "is_dtor",
+                         "default_name",
+                        ])
 
         if node.typemap.base != "template":
             # Only print name to avoid too much nesting.
@@ -143,18 +147,6 @@ class ToDict(visitor.Visitor):
         if attrs:
             d["attrs"] = attrs
 
-        metaattrs = {key: value
-                 for (key, value) in node.metaattrs.items()
-                 if value is not None}
-        if metaattrs:
-            if "struct_member" in metaattrs:
-                # struct_member is a ast.VariableNode, add name instead
-                # to avoid huge dump.
-                metaattrs["struct_member"] = metaattrs["struct_member"].name
-            if "dimension" in metaattrs:
-                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
-            d["metaattrs"] = metaattrs
-        
         return d
 
     def visit_Declaration(self, node):
@@ -173,7 +165,6 @@ class ToDict(visitor.Visitor):
         
         add_true_fields(node, d, [
             "const", "volatile",
-            "ftrim_char_in", "blanknull",
             "is_ctor", "is_dtor",
         ])
         if node.declarator:
@@ -459,6 +450,10 @@ class ToDict(visitor.Visitor):
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
+        if node.struct_members:
+            # struct_members are ast.VariableNode, add name instead
+            # to avoid a huge dump.
+            d["struct_members"] = list(node.struct_members.keys())
 
         if node.helpers:
             helpers = {}
@@ -523,6 +518,7 @@ class ToDict(visitor.Visitor):
             "fmtdict",
             "options",
             "wrap",
+            "_bind",
         ])
         add_non_none_fields(node, d, ["linenumber"])
         return d
@@ -557,12 +553,8 @@ class ToDict(visitor.Visitor):
                          for (key, value) in node.meta.items()
                          if value is not None}
             if metaattrs:
-                if "struct_member" in metaattrs:
-                    # struct_member is a ast.VariableNode, add name instead
-                    # to avoid huge dump.
-                    metaattrs["struct_member"] = metaattrs["struct_member"].name
-                if "dimension" in metaattrs:
-                    metaattrs["dimension"] = self.visit(metaattrs["dimension"])
+                if "dim_ast" in metaattrs:
+                    metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
                 d["meta"] = metaattrs
         return d
     

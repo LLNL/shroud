@@ -18,19 +18,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passIndex",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "IndexType"
                                 },
@@ -42,9 +33,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "i2",
@@ -69,18 +57,12 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(IndexType i1, IndexType * i2 +intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -92,9 +74,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "i2",
@@ -118,12 +97,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -135,9 +108,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "i2",
@@ -182,6 +152,23 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -287,19 +274,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passIndex",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -311,9 +289,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "i2",
@@ -338,7 +313,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int32_t i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int32_t i1, IndexType * i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -363,6 +338,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -481,19 +473,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passIndex",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -505,9 +488,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "i2",
@@ -532,7 +512,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int64_t i1 +value, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int64_t i1, IndexType * i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -557,6 +537,23 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i2": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -669,19 +666,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passIndex2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "IndexType"
                                 },
@@ -699,18 +687,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(IndexType i1 +value)",
+                "declgen": "void passIndex2(IndexType i1)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -727,12 +709,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -764,6 +740,18 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -824,19 +812,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passIndex2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int32_t"
                                 },
@@ -854,7 +833,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(int32_t i1 +value)",
+                "declgen": "void passIndex2(int32_t i1)",
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
@@ -873,6 +852,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -939,19 +930,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passIndex2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i1",
                                     "typemap_name": "int64_t"
                                 },
@@ -969,7 +951,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passIndex2(IndexType i1)",
-                "declgen": "void passIndex2(int64_t i1 +value)",
+                "declgen": "void passIndex2(int64_t i1)",
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
@@ -988,6 +970,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1048,19 +1042,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passFloat",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "f1",
                                     "typemap_name": "FloatType"
                                 },
@@ -1078,18 +1063,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(FloatType f1 +value)",
+                "declgen": "void passFloat(FloatType f1)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "f1",
                                     "typemap_name": "float"
                                 },
@@ -1106,12 +1085,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "f1",
                                     "typemap_name": "double"
                                 },
@@ -1143,6 +1116,18 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "f1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1203,19 +1188,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passFloat",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "f1",
                                     "typemap_name": "float"
                                 },
@@ -1233,7 +1209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(float f1 +value)",
+                "declgen": "void passFloat(float f1)",
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
@@ -1252,6 +1228,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "f1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1318,19 +1306,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passFloat",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "f1",
                                     "typemap_name": "double"
                                 },
@@ -1348,7 +1327,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passFloat(FloatType f1);",
-                "declgen": "void passFloat(double f1 +value)",
+                "declgen": "void passFloat(double f1)",
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
@@ -1367,6 +1346,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "f1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

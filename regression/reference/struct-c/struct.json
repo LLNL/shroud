@@ -41,6 +41,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -67,6 +70,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -132,6 +138,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
@@ -164,6 +173,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -226,6 +238,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -241,19 +256,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems+nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "+",
-                                            "right": {
-                                                "name": "nitems"
-                                            }
-                                        }
-                                    ]
                                 },
                                 "name": "ivalue",
                                 "pointer": [
@@ -274,6 +276,23 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                                "name": "nitems"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -289,19 +308,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems*TWO"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "*",
-                                            "right": {
-                                                "name": "TWO"
-                                            }
-                                        }
-                                    ]
                                 },
                                 "name": "dvalue",
                                 "pointer": [
@@ -322,6 +328,23 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "*",
+                                            "right": {
+                                                "name": "TWO"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "double",
                             "cxx_type": "double",
@@ -337,13 +360,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "svalue",
                                 "pointer": [
@@ -366,6 +382,17 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "char",
@@ -429,6 +456,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -444,13 +474,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "ivalue",
                                 "pointer": [
@@ -471,6 +494,17 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -486,13 +520,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "dvalue",
                                 "pointer": [
@@ -512,6 +539,17 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -579,6 +617,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
@@ -610,6 +651,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -655,6 +699,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -665,7 +712,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_x1()",
-                        "declgen": "int get_x1(void)",
+                        "declgen": "int get_x1(void) +intent(getter)",
                         "name": "get_x1",
                         "options": {},
                         "user_fmt": {
@@ -683,6 +730,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -748,7 +802,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_x1",
@@ -756,8 +810,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -776,7 +829,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in)+value)",
+                        "declgen": "void set_x1(int val +intent(setter)) +intent(setter)",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -800,6 +853,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -872,6 +937,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -882,7 +950,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_y1()",
-                        "declgen": "int get_y1(void)",
+                        "declgen": "int get_y1(void) +intent(getter)",
                         "name": "get_y1",
                         "options": {},
                         "user_fmt": {
@@ -900,6 +968,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -965,7 +1040,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_y1",
@@ -973,8 +1048,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -993,7 +1067,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in)+value)",
+                        "declgen": "void set_y1(int val +intent(setter)) +intent(setter)",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -1017,6 +1091,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1110,6 +1196,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -1136,6 +1225,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -1185,6 +1277,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1195,7 +1290,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_x1()",
-                        "declgen": "int get_x1(void)",
+                        "declgen": "int get_x1(void) +intent(getter)",
                         "name": "get_x1",
                         "options": {},
                         "user_fmt": {
@@ -1213,6 +1308,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1278,7 +1380,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_x1",
@@ -1286,8 +1388,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1306,7 +1407,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in)+value)",
+                        "declgen": "void set_x1(int val +intent(setter)) +intent(setter)",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -1330,6 +1431,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1402,6 +1515,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1412,7 +1528,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_y1()",
-                        "declgen": "int get_y1(void)",
+                        "declgen": "int get_y1(void) +intent(getter)",
                         "name": "get_y1",
                         "options": {},
                         "user_fmt": {
@@ -1430,6 +1546,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1495,7 +1618,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_y1",
@@ -1503,8 +1626,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1523,7 +1645,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in)+value)",
+                        "declgen": "void set_y1(int val +intent(setter)) +intent(setter)",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -1547,6 +1669,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1619,6 +1753,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_z1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -1629,7 +1766,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_z1()",
-                        "declgen": "int get_z1(void)",
+                        "declgen": "int get_z1(void) +intent(getter)",
                         "name": "get_z1",
                         "options": {},
                         "user_fmt": {
@@ -1647,6 +1784,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -1712,7 +1856,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_z1",
@@ -1720,8 +1864,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -1740,7 +1883,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_z1(int val)",
-                        "declgen": "void set_z1(int val +intent(in)+value)",
+                        "declgen": "void set_z1(int val +intent(setter)) +intent(setter)",
                         "name": "set_z1",
                         "options": {},
                         "user_fmt": {
@@ -1764,6 +1907,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1858,6 +2013,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -1885,6 +2043,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -1911,6 +2072,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -1978,6 +2142,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2027,19 +2194,10 @@
                 "<FUNCTION>": "passStructByValue  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "Cstruct1"
                                 },
@@ -2057,7 +2215,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
-                "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "declgen": "int passStructByValue(Cstruct1 arg)",
                 "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
@@ -2093,6 +2251,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2216,17 +2386,11 @@
                 "<FUNCTION>": "passStruct1  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct1",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2285,6 +2449,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2408,17 +2584,11 @@
                 "<FUNCTION>": "passStruct2  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct2",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "s1",
                                     "pointer": [
                                         {
@@ -2436,9 +2606,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "charlen": "LENOUTBUF",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "outbuf",
@@ -2518,6 +2685,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2711,17 +2895,11 @@
                 "<FUNCTION>": "acceptStructInPtr  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptStructInPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -2780,6 +2958,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2903,17 +3093,11 @@
                 "<FUNCTION>": "acceptStructOutPtr  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructOutPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -2931,12 +3115,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -2947,12 +3125,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -2970,7 +3142,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -3031,6 +3203,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3205,17 +3399,11 @@
                 "<FUNCTION>": "acceptStructInOutPtr  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructInOutPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arg",
@@ -3274,6 +3462,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -3362,19 +3562,10 @@
                 "<FUNCTION>": "returnStructByValue  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnStructByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -3385,12 +3576,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -3408,7 +3593,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
-                "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "declgen": "Cstruct1 returnStructByValue(int i, double d)",
                 "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
@@ -3454,6 +3639,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3616,20 +3818,10 @@
                 "<FUNCTION>": "returnStructPtr1  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnStructPtr1",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -3640,12 +3832,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -3668,7 +3854,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i, double d)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3719,6 +3905,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3886,20 +4089,10 @@
                 "<FUNCTION>": "returnStructPtr2  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnStructPtr2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -3910,12 +4103,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -3928,9 +4115,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "charlen": "LENOUTBUF",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "outbuf",
@@ -3960,7 +4144,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -4029,6 +4213,28 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4272,10 +4478,6 @@
                 "<FUNCTION>": "get_global_struct_list  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "get_global_struct_list",
                         "params": [],
                         "pointer": [
@@ -4314,6 +4516,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct_*_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -4392,9 +4601,6 @@
                 "<FUNCTION>": "Create_Cstruct_as_class  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class",
                         "params": [],
                         "pointer": [
@@ -4438,6 +4644,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -4518,19 +4731,10 @@
                 "<FUNCTION>": "Create_Cstruct_as_class_args  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class_args",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -4541,12 +4745,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -4569,7 +4767,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x, int y)",
                 "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -4620,6 +4818,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4788,9 +5003,6 @@
                 "<FUNCTION>": "Cstruct_as_class_sum  22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Cstruct_as_class_sum",
                         "params": [
                             {
@@ -4798,9 +5010,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "pass": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "point",
                                     "pointer": [
@@ -4864,6 +5073,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4987,19 +5208,10 @@
                 "<FUNCTION>": "Create_Cstruct_as_subclass_args  23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_subclass_args",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -5010,12 +5222,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -5026,12 +5232,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "z",
                                     "typemap_name": "int"
                                 },
@@ -5054,7 +5254,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
@@ -5117,6 +5317,28 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5333,10 +5555,17 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "intent": "getter"
+                        },
                         "name": "Cstruct_ptr_get_const_dvalue",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5363,8 +5592,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
-                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
+                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this+intent(in))",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in)) +deref(pointer)+intent(getter)",
                 "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "struct_parent": "Cstruct_ptr",
@@ -5390,6 +5619,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5479,7 +5720,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_ptr_set_const_dvalue",
@@ -5503,7 +5744,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -5527,7 +5768,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,const double * val)",
-                "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
+                "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(setter)) +intent(setter)",
                 "name": "Cstruct_ptr_set_const_dvalue",
                 "options": {},
                 "user_fmt": {
@@ -5557,6 +5798,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -5652,23 +5910,18 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "left": {
-                                        "name": "nitems"
-                                    },
-                                    "op": "+",
-                                    "right": {
-                                        "name": "nitems"
-                                    }
-                                }
-                            ]
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "nitems+nitems",
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_ivalue",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -5695,8 +5948,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
-                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this+intent(in))",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems+nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -5723,6 +5976,17 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -5732,6 +5996,29 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5834,7 +6121,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_list_set_ivalue",
@@ -5857,21 +6144,8 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "+",
-                                                "right": {
-                                                    "name": "nitems"
-                                                }
-                                            }
-                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -5895,7 +6169,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_list_set_ivalue(Cstruct_list *SH_this,int * val)",
-                "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
+                "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "Cstruct_list_set_ivalue",
                 "options": {},
                 "user_fmt": {
@@ -5925,6 +6199,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -5976,7 +6267,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems+nitems",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -6025,23 +6315,18 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "left": {
-                                        "name": "nitems"
-                                    },
-                                    "op": "*",
-                                    "right": {
-                                        "name": "TWO"
-                                    }
-                                }
-                            ]
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "nitems*TWO",
+                            "intent": "getter"
                         },
                         "name": "Cstruct_list_get_dvalue",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -6068,8 +6353,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
-                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this+intent(in))",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems*TWO)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -6096,6 +6381,17 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -6105,6 +6401,29 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6207,7 +6526,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "Cstruct_list_set_dvalue",
@@ -6230,21 +6549,8 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "*",
-                                                "right": {
-                                                    "name": "TWO"
-                                                }
-                                            }
-                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -6268,7 +6574,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Cstruct_list_set_dvalue(Cstruct_list *SH_this,double * val)",
-                "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
+                "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "Cstruct_list_set_dvalue",
                 "options": {},
                 "user_fmt": {
@@ -6298,6 +6604,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -6349,7 +6672,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems*TWO",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",

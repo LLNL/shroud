@@ -13,9 +13,6 @@
                         "<FUNCTION>": "FuncInClass  0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "FuncInClass",
                                 "params": [],
                                 "typemap_name": "int"
@@ -41,6 +38,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },

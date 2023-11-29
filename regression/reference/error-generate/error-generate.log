@@ -2,9 +2,16 @@ Read yaml error-generate.yaml
 Close error_types.yaml
 struct struct1
 struct nested
+C f int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)
+C f void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)
 Close wraperror.h
+Close wraperror.cpp
 class struct1
 class nested
+Fortran int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)
+Fortran void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)
+C-interface f int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)
+C-interface f void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h

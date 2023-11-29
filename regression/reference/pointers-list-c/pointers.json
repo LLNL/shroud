@@ -17,17 +17,11 @@
                 "<FUNCTION>": "intargs_in  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_in",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -55,6 +49,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -90,16 +110,10 @@
                 "<FUNCTION>": "intargs_inout  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_inout",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -130,6 +144,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -165,17 +205,11 @@
                 "<FUNCTION>": "intargs_out  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs_out",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -205,6 +239,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -240,19 +300,12 @@
                 "<FUNCTION>": "intargs  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "intargs",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "argin",
@@ -266,9 +319,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arginout",
@@ -287,9 +337,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "argout",
@@ -314,11 +361,57 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
-                "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
+                "declgen": "void intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))",
                 "name": "intargs",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "argin": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arginout": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "argout": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "argin": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arginout": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "argout": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "argin": {
@@ -395,9 +488,6 @@
                 "<FUNCTION>": "cos_doubles  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "cos_doubles",
                         "params": [
                             {
@@ -405,9 +495,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -428,19 +515,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -457,11 +531,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -480,7 +550,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -489,6 +559,72 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -573,9 +709,6 @@
                 "<FUNCTION>": "truncate_to_int  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "truncate_to_int",
                         "params": [
                             {
@@ -583,9 +716,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -606,19 +736,6 @@
                                         "dimension": "size(in)",
                                         "intent": "out"
                                     },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "args": [
-                                                    {
-                                                        "name": "in"
-                                                    }
-                                                ],
-                                                "name": "size"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
                                     "name": "out",
                                     "pointer": [
                                         {
@@ -635,11 +752,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(in)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -658,7 +771,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -667,6 +780,72 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "in": {
@@ -751,18 +930,12 @@
                 "<FUNCTION>": "get_values  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "get_values",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "intent": "OUT"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "nvalues",
                                     "pointer": [
@@ -781,14 +954,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "values",
@@ -822,6 +987,52 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvalues": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -884,23 +1095,12 @@
                 "<FUNCTION>": "get_values2  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "get_values2",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -920,14 +1120,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "arg2",
@@ -961,6 +1153,62 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -1029,19 +1277,10 @@
                 "<FUNCTION>": "iota_dimension  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "iota_dimension",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "nvar",
                                     "typemap_name": "int"
                                 },
@@ -1054,14 +1293,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "nvar",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nvar"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "values",
@@ -1086,11 +1317,57 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar, int * values +dimension(nvar)+intent(out))",
                 "name": "iota_dimension",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvar": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nvar": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nvar"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "nvar": {
@@ -1152,19 +1429,12 @@
                 "<FUNCTION>": "Sum  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Sum",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(values)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(values)"
                                     },
                                     "name": "len",
                                     "typemap_name": "int"
@@ -1179,9 +1449,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1199,9 +1466,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "result",
@@ -1226,13 +1490,59 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values)), const int * values +rank(1), int * result +intent(out))",
                 "name": "Sum",
                 "options": {
                     "wrap_lua": false
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "result": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "result": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "values": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -1311,23 +1621,12 @@
                 "<FUNCTION>": "fillIntArray  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fillIntArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "3",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "3"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "out",
@@ -1360,6 +1659,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "out": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "3"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "out": {
@@ -1401,9 +1736,6 @@
                 "<FUNCTION>": "incrementIntArray  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "incrementIntArray",
                         "params": [
                             {
@@ -1411,9 +1743,6 @@
                                     "attrs": {
                                         "intent": "inout",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -1431,11 +1760,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(array)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(array)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1454,7 +1779,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array)))",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1462,6 +1787,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "array": {
@@ -1520,18 +1881,12 @@
                 "<FUNCTION>": "fill_with_zeros  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fill_with_zeros",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "x",
                                     "pointer": [
@@ -1549,11 +1904,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(x)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(x)"
                                     },
                                     "name": "x_length",
                                     "typemap_name": "int"
@@ -1572,11 +1923,47 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x)))",
                 "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "x_length": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "x_length": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "x": {
@@ -1635,9 +2022,6 @@
                 "<FUNCTION>": "accumulate  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "accumulate",
                         "params": [
                             {
@@ -1645,9 +2029,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arr",
                                     "pointer": [
@@ -1665,11 +2046,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(arr)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(arr)"
                                     },
                                     "name": "len",
                                     "typemap_name": "size_t"
@@ -1688,11 +2065,47 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr)))",
                 "name": "accumulate",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1768,9 +2181,6 @@
                 "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptCharArrayIn",
                         "params": [
                             {
@@ -1778,9 +2188,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "names",
                                     "pointer": [
@@ -1807,7 +2214,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
@@ -1815,6 +2222,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "names": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "names": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1870,19 +2303,10 @@
                 "<FUNCTION>": "setGlobalInt  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "setGlobalInt",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "value",
                                     "typemap_name": "int"
                                 },
@@ -1900,11 +2324,37 @@
                     "typemap_name": "void"
                 },
                 "decl": "void setGlobalInt(int value)",
-                "declgen": "void setGlobalInt(int value +value)",
+                "declgen": "void setGlobalInt(int value)",
                 "name": "setGlobalInt",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "value": {
@@ -1939,9 +2389,6 @@
                 "<FUNCTION>": "sumFixedArray  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "sumFixedArray",
                         "params": [],
                         "typemap_name": "int"
@@ -1960,6 +2407,22 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1992,18 +2455,11 @@
                 "<FUNCTION>": "getPtrToScalar  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToScalar",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -2037,6 +2493,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToScalar",
                     "F_name_api": "get_ptr_to_scalar",
@@ -2047,24 +2517,12 @@
                 "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFixedArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -2100,6 +2558,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -2141,24 +2635,12 @@
                 "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToDynamicArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -2181,9 +2663,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -2216,6 +2695,52 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -2278,25 +2803,12 @@
                 "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFuncArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "getLen()",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "args": [],
-                                                "name": "getLen"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -2332,6 +2844,44 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "args": [],
+                                        "name": "getLen"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -2373,19 +2923,12 @@
                 "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToConstScalar",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "nitems",
@@ -2419,6 +2962,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToConstScalar",
                     "F_name_api": "get_ptr_to_const_scalar",
@@ -2429,9 +2986,6 @@
                 "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToFixedConstArray",
                         "params": [
                             {
@@ -2439,15 +2993,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -2480,6 +3025,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -2521,9 +3102,6 @@
                 "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getPtrToDynamicConstArray",
                         "params": [
                             {
@@ -2531,15 +3109,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "ncount",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "ncount"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -2562,9 +3131,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "ncount",
@@ -2594,6 +3160,52 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "ncount"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "ncount": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -2656,18 +3268,11 @@
                 "<FUNCTION>": "getRawPtrToScalar  24 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToScalar",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -2705,6 +3310,33 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "nitems": {
                         "fmtpy": {
@@ -2739,18 +3371,11 @@
                 "<FUNCTION>": "getRawPtrToScalarForce  25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToScalarForce",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -2789,6 +3414,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nitems": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToScalarForce",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
@@ -2799,18 +3438,11 @@
                 "<FUNCTION>": "getRawPtrToFixedArray  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToFixedArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -2848,6 +3480,33 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "deref": "raw",
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtargs": {
                     "count": {
                         "fmtpy": {
@@ -2882,18 +3541,11 @@
                 "<FUNCTION>": "getRawPtrToFixedArrayForce  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToFixedArrayForce",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "deref": "raw",
                                         "intent": "out"
                                     },
@@ -2932,6 +3584,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToFixedArrayForce",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
@@ -2942,17 +3608,11 @@
                 "<FUNCTION>": "getRawPtrToInt2d  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getRawPtrToInt2d",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -2992,6 +3652,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToInt2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
@@ -3002,17 +3676,11 @@
                 "<FUNCTION>": "checkInt2d  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "checkInt2d",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -3049,6 +3717,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "checkInt2d",
                     "F_name_api": "check_int2d",
@@ -3059,9 +3741,6 @@
                 "<FUNCTION>": "DimensionIn  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "DimensionIn",
                         "params": [
                             {
@@ -3069,17 +3748,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "10,20"
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            },
-                                            {
-                                                "constant": "20"
-                                            }
-                                        ],
-                                        "intent": "in"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -3113,6 +3781,28 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "DimensionIn",
                     "F_name_api": "dimension_in",
@@ -3123,9 +3813,6 @@
                 "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getAllocToFixedArray",
                         "params": [
                             {
@@ -3133,15 +3820,6 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "dimension": "10",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "constant": "10"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "count",
@@ -3178,6 +3856,25 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "getAllocToFixedArray",
                     "F_name_api": "get_alloc_to_fixed_array",
@@ -3188,19 +3885,10 @@
                 "<FUNCTION>": "returnAddress1  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnAddress1",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -3223,11 +3911,37 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag +value)",
+                "declgen": "void * returnAddress1(int flag)",
                 "name": "returnAddress1",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3281,19 +3995,10 @@
                 "<FUNCTION>": "returnAddress2  33 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnAddress2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -3316,13 +4021,39 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag +value)",
+                "declgen": "void * returnAddress2(int flag)",
                 "name": "returnAddress2",
                 "options": {
                     "F_force_wrapper": true
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3376,17 +4107,11 @@
                 "<FUNCTION>": "fetchVoidPtr  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchVoidPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "addr",
@@ -3419,6 +4144,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3454,17 +4205,11 @@
                 "<FUNCTION>": "updateVoidPtr  35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "updateVoidPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "addr",
@@ -3499,6 +4244,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "updateVoidPtr",
                     "F_name_api": "update_void_ptr",
@@ -3509,18 +4268,12 @@
                 "<FUNCTION>": "VoidPtrArray  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "VoidPtrArray",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3554,6 +4307,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "VoidPtrArray",
                     "F_name_api": "void_ptr_array",
@@ -3564,10 +4331,6 @@
                 "<FUNCTION>": "returnIntPtrToScalar  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToScalar",
                         "params": [],
                         "pointer": [
@@ -3588,6 +4351,22 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3625,15 +4404,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToFixedArray",
                         "params": [],
                         "pointer": [
@@ -3654,6 +4424,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3694,10 +4490,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToConstScalar",
                         "params": [],
                         "pointer": [
@@ -3718,6 +4510,22 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3756,15 +4564,6 @@
                         "attrs": {
                             "dimension": "10"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "returnIntPtrToFixedConstArray",
                         "params": [],
                         "pointer": [
@@ -3785,6 +4584,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3827,10 +4652,6 @@
                         "attrs": {
                             "deref": "scalar"
                         },
-                        "metaattrs": {
-                            "deref": "scalar",
-                            "intent": "function"
-                        },
                         "name": "returnIntScalar",
                         "params": [],
                         "pointer": [
@@ -3851,6 +4672,23 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "deref": "scalar",
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -3887,10 +4725,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "returnIntRaw",
                         "params": [],
                         "pointer": [
@@ -3915,6 +4749,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRaw",
                     "F_name_api": "return_int_raw",
@@ -3928,18 +4771,11 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "returnIntRawWithArgs",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3948,7 +4784,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3977,6 +4812,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRawWithArgs",
                     "F_name_api": "return_int_raw_with_args",
@@ -3987,9 +4836,6 @@
                 "<FUNCTION>": "returnRawPtrToInt2d  44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnRawPtrToInt2d",
                         "params": [],
                         "pointer": [
@@ -4018,6 +4864,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnRawPtrToInt2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
@@ -4031,15 +4886,6 @@
                         "attrs": {
                             "deref": "allocatable",
                             "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
                         },
                         "name": "returnIntAllocToFixedArray",
                         "params": [],
@@ -4062,6 +4908,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnIntAllocToFixedArray",
                     "F_name_api": "return_int_alloc_to_fixed_array",

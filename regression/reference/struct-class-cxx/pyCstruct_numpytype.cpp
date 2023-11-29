@@ -54,10 +54,10 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // Argument:  int nitems
 // Statement: py_ctor_native_scalar_numpy
 // ----------------------------------------
-// Argument:  int * ivalue +dimension(nitems)
+// Argument:  int * ivalue +dimension(nitems)+intent(in)
 // Statement: py_ctor_native_*_numpy
 // ----------------------------------------
-// Argument:  double * dvalue +dimension(nitems)
+// Argument:  double * dvalue +dimension(nitems)+intent(in)
 // Statement: py_ctor_native_*_numpy
 static int
 PY_Cstruct_numpy_tp_init(

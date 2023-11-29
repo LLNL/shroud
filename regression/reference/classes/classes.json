@@ -100,13 +100,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Class1"
                             },
@@ -148,6 +143,27 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -263,22 +279,11 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "int"
                                         },
@@ -297,7 +302,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1(int flag)",
-                        "declgen": "Class1(int flag +value)",
+                        "declgen": "Class1(int flag)",
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -340,6 +345,42 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -528,13 +569,10 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_destructor": "Class1",
-                                    "_name": "dtor",
                                     "name": "delete"
                                 },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
+                                "default_name": "dtor",
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -569,6 +607,27 @@
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
                                 }
                             }
                         },
@@ -622,9 +681,6 @@
                         "<FUNCTION>": "Method1  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "Method1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -662,6 +718,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -773,17 +850,11 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "equivalent",
                                 "params": [
                                     {
                                         "const": true,
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "obj2",
                                             "pointer": [
                                                 {
@@ -846,6 +917,42 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_&"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "obj2": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1015,9 +1122,6 @@
                         "<FUNCTION>": "returnThis  5 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "returnThis",
                                 "params": [],
                                 "pointer": [
@@ -1064,6 +1168,13 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_*_this"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -1140,17 +1251,11 @@
                         "<FUNCTION>": "returnThisBuffer  6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "returnThisBuffer",
                                 "params": [
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "in"
                                             },
                                             "name": "name",
@@ -1168,12 +1273,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "flag",
                                             "typemap_name": "bool"
                                         },
@@ -1196,7 +1295,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)",
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1256,6 +1355,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_string_&_buf"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "flag": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "name": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1457,9 +1573,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "getclass3",
                                 "params": [],
                                 "pointer": [
@@ -1505,6 +1618,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_*_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -1610,10 +1744,6 @@
                         "ast": {
                             "const": true,
                             "declarator": {
-                                "metaattrs": {
-                                    "deref": "allocatable",
-                                    "intent": "function"
-                                },
                                 "name": "getName",
                                 "params": [],
                                 "pointer": [
@@ -1670,6 +1800,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -1803,19 +1954,10 @@
                         "<FUNCTION>": "directionFunc  9 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "directionFunc",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "arg",
                                             "typemap_name": "classes::Class1::DIRECTION"
                                         },
@@ -1833,7 +1975,7 @@
                             "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
-                        "declgen": "DIRECTION directionFunc(DIRECTION arg +value)",
+                        "declgen": "DIRECTION directionFunc(DIRECTION arg)",
                         "name": "directionFunc",
                         "options": {},
                         "wrap": {
@@ -1869,6 +2011,42 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -2069,6 +2247,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_m_flag",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2079,7 +2260,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_m_flag()",
-                        "declgen": "int get_m_flag(void)",
+                        "declgen": "int get_m_flag(void) +intent(getter)",
                         "name": "get_m_flag",
                         "options": {},
                         "user_fmt": {
@@ -2097,6 +2278,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -2162,6 +2350,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_test",
                                 "params": [],
                                 "typemap_name": "int"
@@ -2172,7 +2363,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_test()",
-                        "declgen": "int get_test(void)",
+                        "declgen": "int get_test(void) +intent(getter)",
                         "name": "get_test",
                         "options": {},
                         "user_fmt": {
@@ -2190,6 +2381,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -2255,7 +2453,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_test",
@@ -2263,8 +2461,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -2283,7 +2480,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_test(int val)",
-                        "declgen": "void set_test(int val +intent(in)+value)",
+                        "declgen": "void set_test(int val +intent(setter)) +intent(setter)",
                         "name": "set_test",
                         "options": {},
                         "user_fmt": {
@@ -2307,6 +2504,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -2379,6 +2588,10 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "deref": "allocatable",
+                                    "intent": "getter"
+                                },
                                 "name": "get_m_name",
                                 "params": [],
                                 "typemap_name": "std::string"
@@ -2389,7 +2602,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "std::string get_m_name()",
-                        "declgen": "std::string get_m_name(void)",
+                        "declgen": "std::string get_m_name(void) +deref(allocatable)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -2419,6 +2632,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_string_scalar_cdesc_allocatable"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -2450,6 +2670,7 @@
                                     "cxx_rv_decl": "std::string SHCXX_rv",
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
+                                    "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                     "f_intent": "OUT",
@@ -2491,7 +2712,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_m_name",
@@ -2499,7 +2720,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "std::string"
@@ -2518,7 +2739,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_m_name(std::string val)",
-                        "declgen": "void set_m_name(std::string val +intent(in))",
+                        "declgen": "void set_m_name(std::string val +intent(setter)) +intent(setter)",
                         "name": "set_m_name",
                         "options": {},
                         "user_fmt": {
@@ -2543,6 +2764,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_string_scalar_buf"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -2642,6 +2875,9 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Class1_m_flag_getter",
                             "PY_setter": "nullptr",
@@ -2677,6 +2913,9 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Class1_test_getter",
                             "PY_setter": "PY_Class1_test_setter",
@@ -2709,6 +2948,9 @@
                             "c": true,
                             "fortran": true,
                             "lua": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "char",
@@ -2769,10 +3011,6 @@
                         "ast": {
                             "const": true,
                             "declarator": {
-                                "metaattrs": {
-                                    "deref": "allocatable",
-                                    "intent": "function"
-                                },
                                 "name": "getName",
                                 "params": [],
                                 "pointer": [
@@ -2829,6 +3067,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_string_&_cdesc_allocatable"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -3012,9 +3271,6 @@
                         "<FUNCTION>": "getReference  16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "getReference",
                                 "params": [],
                                 "pointer": [
@@ -3058,6 +3314,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_shadow_&_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -3217,13 +3494,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Shape"
                             },
@@ -3262,6 +3534,27 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -3376,9 +3669,6 @@
                         "ast": {
                             "declarator": {
                                 "func_const": true,
-                                "metaattrs": {
-                                    "intent": "function"
-                                },
                                 "name": "get_ivar",
                                 "params": [],
                                 "typemap_name": "int"
@@ -3413,6 +3703,27 @@
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_scalar"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "function"
+                                    }
                                 }
                             }
                         },
@@ -3582,13 +3893,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Circle"
                             },
@@ -3627,6 +3933,27 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -3792,19 +4119,10 @@
                         "<FUNCTION>": "allocate  20 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "allocate",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "n",
                                             "typemap_name": "int"
                                         },
@@ -3822,7 +4140,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void allocate(int n);",
-                        "declgen": "void allocate(int n +value)",
+                        "declgen": "void allocate(int n)",
                         "name": "allocate",
                         "options": {},
                         "wrap": {
@@ -3856,6 +4174,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "n": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -3947,9 +4277,6 @@
                         "<FUNCTION>": "free  21 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "free",
                                 "params": [],
                                 "typemap_name": "void"
@@ -3982,6 +4309,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -4029,13 +4363,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "classes::Data"
                             },
@@ -4072,6 +4401,13 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -4151,13 +4487,8 @@
                         "<FUNCTION>": "dtor  23 ****************************************",
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_destructor": "Data",
-                                    "_name": "dtor"
-                                },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
+                                "default_name": "dtor",
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -4190,6 +4521,13 @@
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
                                 }
                             }
                         },
@@ -4241,6 +4579,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_nitems",
                                 "params": [],
                                 "typemap_name": "int"
@@ -4251,7 +4592,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_nitems()",
-                        "declgen": "int get_nitems(void)",
+                        "declgen": "int get_nitems(void) +intent(getter)",
                         "name": "get_nitems",
                         "options": {},
                         "user_fmt": {
@@ -4269,6 +4610,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -4334,7 +4682,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_nitems",
@@ -4342,8 +4690,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -4362,7 +4709,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_nitems(int val)",
-                        "declgen": "void set_nitems(int val +intent(in)+value)",
+                        "declgen": "void set_nitems(int val +intent(setter)) +intent(setter)",
                         "name": "set_nitems",
                         "options": {},
                         "user_fmt": {
@@ -4386,6 +4733,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -4458,12 +4817,10 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "dimension": "nitems",
+                                    "intent": "getter"
                                 },
                                 "name": "get_items",
                                 "params": [],
@@ -4480,7 +4837,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * get_items()",
-                        "declgen": "int * get_items(void)",
+                        "declgen": "int * get_items(void) +deref(pointer)+dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -4506,9 +4863,26 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -4587,7 +4961,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_items",
@@ -4595,15 +4969,8 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
+                                                "intent": "setter",
                                                 "rank": 1
-                                            },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -4627,7 +4994,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_items(int * val)",
-                        "declgen": "void set_items(int * val +intent(in)+rank(1))",
+                        "declgen": "void set_items(int * val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "set_items",
                         "options": {},
                         "user_fmt": {
@@ -4652,6 +5019,18 @@
                                     },
                                     "stmt": "f_setter_native_*"
                                 }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                }
                             }
                         },
                         "zz_fmtargs": {
@@ -4675,7 +5054,6 @@
                             "val": {
                                 "fmtf": {
                                     "c_addr": "",
-                                    "c_array_size2": "SH_this->nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -4754,6 +5132,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -4769,13 +5150,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "items",
                                 "pointer": [
@@ -4795,6 +5169,17 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -4848,19 +5233,10 @@
                 "<FUNCTION>": "directionFunc  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "directionFunc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "classes::Class1::DIRECTION"
                                 },
@@ -4878,7 +5254,7 @@
                     "typemap_name": "classes::Class1::DIRECTION"
                 },
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
-                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)",
+                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg)",
                 "name": "directionFunc",
                 "options": {},
                 "wrap": {
@@ -4914,6 +5290,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5106,19 +5518,10 @@
                 "<FUNCTION>": "passClassByValue  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passClassByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "classes::Class1"
                                 },
@@ -5136,7 +5539,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passClassByValue(Class1 arg)",
-                "declgen": "void passClassByValue(Class1 arg +value)",
+                "declgen": "void passClassByValue(Class1 arg)",
                 "doxygen": {
                     "brief": "Pass arguments to a function."
                 },
@@ -5176,6 +5579,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5287,17 +5726,11 @@
                 "<FUNCTION>": "useclass  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "useclass",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -5357,6 +5790,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_*"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5521,9 +5990,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass2",
                         "params": [],
                         "pointer": [
@@ -5569,6 +6035,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -5648,9 +6121,6 @@
                 "<FUNCTION>": "getclass3  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass3",
                         "params": [],
                         "pointer": [
@@ -5696,6 +6166,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -5797,9 +6288,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass2_void",
                         "params": [],
                         "pointer": [
@@ -5846,6 +6334,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capsule"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -5922,9 +6417,6 @@
                 "<FUNCTION>": "getclass3_void  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getclass3_void",
                         "params": [],
                         "pointer": [
@@ -5971,6 +6463,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capsule"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6048,9 +6547,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getConstClassReference",
                         "params": [],
                         "pointer": [
@@ -6093,6 +6589,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_&_capptr"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6172,9 +6675,6 @@
                 "<FUNCTION>": "getClassReference  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassReference",
                         "params": [],
                         "pointer": [
@@ -6217,6 +6717,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_&_capptr"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6317,19 +6838,10 @@
                 "<FUNCTION>": "getClassCopy  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassCopy",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -6347,7 +6859,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 getClassCopy(int flag)",
-                "declgen": "Class1 getClassCopy(int flag +value)",
+                "declgen": "Class1 getClassCopy(int flag)",
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
@@ -6389,6 +6901,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6513,19 +7037,10 @@
                 "<FUNCTION>": "set_global_flag  38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "set_global_flag",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "int"
                                 },
@@ -6543,7 +7058,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void set_global_flag(int arg)",
-                "declgen": "void set_global_flag(int arg +value)",
+                "declgen": "void set_global_flag(int arg)",
                 "name": "set_global_flag",
                 "options": {},
                 "wrap": {
@@ -6579,6 +7094,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6704,9 +7255,6 @@
                 "<FUNCTION>": "get_global_flag  39 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "get_global_flag",
                         "params": [],
                         "typemap_name": "int"
@@ -6741,6 +7289,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -6850,10 +7419,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "LastFunctionCalled",
                         "params": [],
                         "pointer": [
@@ -6900,6 +7465,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },

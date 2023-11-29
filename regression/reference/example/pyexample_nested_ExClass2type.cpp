@@ -366,10 +366,10 @@ PP_get_class1(
 // Function:  ExClass2 * declare
 // Statement: py_function_shadow_*
 // ----------------------------------------
-// Argument:  TypeID type +value
+// Argument:  TypeID type
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  SidreLength len=1 +value
+// Argument:  SidreLength len=1
 // Statement: py_in_native_scalar
 static char PP_declare_1__doc__[] =
 "documentation"
@@ -475,7 +475,7 @@ PP_getTypeID(
 // Function:  void setValue
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_int(
@@ -502,7 +502,7 @@ PP_setValue_int(
 // Function:  void setValue
 // Statement: py_default
 // ----------------------------------------
-// Argument:  long value +value
+// Argument:  long value
 // Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_long(
@@ -529,7 +529,7 @@ PP_setValue_long(
 // Function:  void setValue
 // Statement: py_default
 // ----------------------------------------
-// Argument:  float value +value
+// Argument:  float value
 // Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_float(
@@ -556,7 +556,7 @@ PP_setValue_float(
 // Function:  void setValue
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double value +value
+// Argument:  double value
 // Statement: py_in_native_scalar
 static PyObject *
 PP_setValue_double(

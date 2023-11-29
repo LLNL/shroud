@@ -118,7 +118,7 @@ PY_function2(
 // Function:  void function3a
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 static PyObject *
 PY_function3a_0(
@@ -145,7 +145,7 @@ PY_function3a_0(
 // Function:  void function3a
 // Statement: py_default
 // ----------------------------------------
-// Argument:  long i +value
+// Argument:  long i
 // Statement: py_in_native_scalar
 static PyObject *
 PY_function3a_1(
@@ -258,10 +258,10 @@ PY_TestMultilineSplicer(
 // Function:  void FunctionTU
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int arg1 +value
+// Argument:  int arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  long arg2 +value
+// Argument:  long arg2
 // Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.
@@ -294,10 +294,10 @@ PY_name_instantiation1(
 // Function:  void FunctionTU
 // Statement: py_default
 // ----------------------------------------
-// Argument:  float arg1 +value
+// Argument:  float arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: py_in_native_scalar
 /**
  * \brief Function template with two template parameters.

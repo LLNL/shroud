@@ -626,18 +626,20 @@ class Parser(ExprParser):
                              '['  <constant-expression>?  ']'  |
                              '('  <parameter-list>            ')' [ const ]
                             ) [ = <initializer> ]
+
+        node - declast.Declaration
         """
         self.enter("declarator_item")
         if node.is_dtor:
             declarator = Declarator()
+            declarator.is_dtor = True
             declarator.ctor_dtor_name = True
-            declarator.attrs["_name"] = "dtor"
-            declarator.attrs["_destructor"] = node.is_dtor
+            declarator.default_name = "dtor"
         elif node.is_ctor:
             declarator = Declarator()
+            declarator.is_ctor = True
             declarator.ctor_dtor_name = True
-            declarator.attrs["_name"] = "ctor"
-            declarator.attrs["_constructor"] = True
+            declarator.default_name = "ctor"
         else:
             declarator = self.declarator()
         node.declarator = declarator
@@ -680,7 +682,7 @@ class Parser(ExprParser):
             declarator.init = self.initializer()
 
         if declarator.ctor_dtor_name:
-            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.attrs["_name"]
+            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.default_name
             
         self.exit("declarator_item", str(node))
         return node
@@ -1288,36 +1290,28 @@ class Declarator(Node):
         self.func = None  # (*name)     Declarator
         
         self.ctor_dtor_name = False
+        self.default_name = None
 
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
         self.attrs = collections.defaultdict(lambda: None)
-        self.metaattrs = collections.defaultdict(lambda: None)
         self.func_const = False
         self.typemap = None
+        self.is_ctor = False
+        self.is_dtor = False
 
     def get_user_name(self, use_attr=True):
         """Get name from declarator
         use_attr - True, check attr for name
-        ctor and dtor should have _name set
+        ctor and dtor should have default_name set
         """
         if use_attr:
-            name = self.attrs["name"] or self.attrs["_name"]
+            name = self.attrs["name"] or self.default_name
             if name is not None:
                 return name
         return self.name
     user_name = property(get_user_name, None, None, "Declaration user_name")
-
-    def is_ctor(self):
-        """Return True if self is a constructor."""
-        return self.attrs["_constructor"]
-
-    def is_dtor(self):
-        """Return destructor attribute.
-        Will be False for non-destructors, else class name.
-        """
-        return self.attrs["_destructor"]
 
     def is_pointer(self):
         """Return number of levels of pointers.
@@ -1550,8 +1544,6 @@ class Declaration(Node):
     init =         a  *a   a=1
 
     attrs     - Attributes set by the user.
-    metaattrs - Attributes set by Shroud.
-        struct_member - map ctor argument to struct member.
     """
 
     fortran_ranks = [
@@ -1581,9 +1573,6 @@ class Declaration(Node):
         self.is_dtor = False
 
         self.typemap = None
-
-        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
-        self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
 
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""
@@ -1799,7 +1788,28 @@ class Declaration(Node):
         
     ##############
 
-    def bind_c(self, intent=None, **kwargs):
+    def append_fortran_value(self, t, is_result=False):
+        declarator = self.declarator
+        attrs = declarator.attrs
+        if is_result:
+            pass
+        elif attrs["value"]:
+            t.append("value")
+        elif attrs["value"] is None:
+            is_ptr = declarator.is_indirect()
+            if is_ptr:
+                if self.typemap.name == "void":
+                    # This causes Fortran to dereference the C_PTR
+                    # Otherwise a void * argument becomes void **
+                    if len(declarator.pointer) == 1:
+                        t.append("value")     # void *
+            else:
+                if self.typemap.sgroup in["char", "string"]:
+                    pass
+                else:
+                    t.append("value")
+    
+    def bind_c(self, intent=None, is_result=False, **kwargs):
         """Generate an argument used with the bind(C) interface from Fortran.
 
         Args:
@@ -1822,8 +1832,7 @@ class Declaration(Node):
                 "Type {} has no value for i_type".format(self.typename)
             )
         t.append(typ)
-        if attrs["value"]:
-            t.append("value")
+        self.append_fortran_value(t, is_result)
         if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
         elif intent == "setter":
@@ -1909,8 +1918,7 @@ class Declaration(Node):
             t.append(ntypemap.f_type)
 
         if not local:  # must be dummy argument
-            if attrs["value"]:
-                t.append("value")
+            self.append_fortran_value(t)
             if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
             elif intent == "setter":
@@ -2485,10 +2493,8 @@ def create_struct_ctor(cls):
     ast.declarator = declarator
     declarator.params = []
     declarator.typemap = cls.typemap
-    declarator.attrs["_constructor"] = True
+    declarator.is_ctor = True
     declarator.attrs["name"] = name
-##        _name="ctor",
-    declarator.metaattrs["intent"] = "ctor"
     return ast
 
 
@@ -2522,3 +2528,28 @@ def find_arg_index_by_name(decls, name):
         if decl.declarator.name == name:
             return i
     return -1
+
+def check_dimension(dim, trace=False):
+    """Return AST of dim.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    trace : boolean
+    """
+    if dim == "..":
+        return AssumedRank()
+    else:
+        return ExprParser(dim, trace=trace).dimension_shape()
+
+def find_rank_of_dimension(dim):
+    """Return the rank of a dimension string."""
+    if dim is None:
+        return None
+    elif dim == "..":
+        return None
+    dim_ast = ExprParser(dim).dimension_shape()
+    return len(dim_ast)

@@ -18,10 +18,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrAlloc",
                         "params": [],
                         "pointer": [
@@ -73,6 +69,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },

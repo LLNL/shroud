@@ -81,16 +81,9 @@ class FillFormat(object):
 
         ast = node.ast
 
-        if wlang == "c":
-            stmt0 = statements.lookup_c_function_stmt(node)
-        else:
-            stmt0 = statements.lookup_f_function_stmt(node)
-        result_stmt = statements.lookup_local_stmts([wlang], stmt0, node)
-        bind_result.stmt = result_stmt
+        result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
         fmt_result.stmt_name = result_stmt.name
-        if stmt0 is not result_stmt:
-            bind_result.fstmts = wlang
         func_cursor.stmt = None
 
         # --- Loop over function parameters
@@ -101,14 +94,10 @@ class FillFormat(object):
 
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
-            bind_arg = bind.setdefault(arg_name, statements.BindArg())
-            if wlang == "c":
-                arg_stmt = statements.lookup_c_arg_stmt(node, arg)
-            else:
-                arg_stmt = statements.lookup_f_arg_stmt(node, arg)
+            bind_arg = statements.fetch_arg_bind(node, arg, wlang)
+            arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
             fmt_arg.stmt_name = arg_stmt.name
-            bind_arg.stmt = arg_stmt
 
         # --- End loop over function parameters
         func_cursor.arg = None
@@ -116,7 +105,7 @@ class FillFormat(object):
             
         cursor.pop_node(node)
 
-    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast):
+    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast, meta):
         ast = node.ast
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
@@ -167,9 +156,9 @@ class FillFormat(object):
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
-        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, True)
+        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
 
-    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg):
+    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg, meta):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap  # XXX - look up vector
@@ -179,7 +168,7 @@ class FillFormat(object):
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, False)
+        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, meta, False)
         self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
@@ -225,7 +214,7 @@ class FillFormat(object):
             self.set_fmt_fields_iface(node, ast, bind, fmt_result,
                                       fmt_result.F_result, result_typemap,
                                       "function")
-            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result, bind)
 
         if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
@@ -252,10 +241,10 @@ class FillFormat(object):
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)
-        self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
+        self.set_fmt_fields_dimension(cls, node, arg, fmt_arg, bind)
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
-        
+
     def fill_fortran_result(self, cls, node, bind, fmt_result):
         ast = node.ast
         declarator = ast.declarator
@@ -278,7 +267,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind, fmt_result,
                               subprogram, result_typemap)
-        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result)
+        self.set_fmt_fields_dimension(cls, C_node, ast, fmt_result, bind)
         self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
 
@@ -290,7 +279,7 @@ class FillFormat(object):
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
-        self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg)
+        self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg, bind)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
         return arg_typemap
@@ -319,7 +308,7 @@ class FillFormat(object):
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
-    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, is_func):
+    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -330,9 +319,9 @@ class FillFormat(object):
             ast      - declast.Declaration
             ntypemap - typemap.Typemap
             fmt      - scope.Util
+            meta     -
             is_func  - True if function.
         """
-
         declarator = ast.declarator
         if is_func:
             rootname = fmt.C_result
@@ -352,14 +341,13 @@ class FillFormat(object):
             if ntypemap.base != "shadow" and ast.template_arguments:
                 fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
             
-            if ast.blanknull:
+            if meta["blanknull"]:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         
-        if meta["dimension"]:
+        if meta["dim_ast"]:
             if cls is not None:
                 parent = cls
                 class_context = wformat("{CXX_this}->", fmt)
@@ -371,7 +359,7 @@ class FillFormat(object):
                 parent = None
                 class_context = ""
             visitor = ToDimensionC(parent, fcn, fmt, class_context)
-            visitor.visit(meta["dimension"])
+            visitor.visit(meta["dim_ast"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 fmtdim = []
@@ -501,7 +489,7 @@ class FillFormat(object):
                 fmt.f_type = ntypemap.f_class
         return ntypemap
 
-    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
+    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt, bind):
         """Set fmt fields based on dimension attribute.
 
         f_assumed_shape is used in both implementation and interface.
@@ -514,10 +502,10 @@ class FillFormat(object):
         fmt: util.Scope
         """
         f_attrs = f_ast.declarator.attrs
-        f_meta = f_ast.declarator.metaattrs
-        dim = f_meta["dimension"]
+        meta = bind.meta
+        dim = meta["dim_ast"]
         rank = f_attrs["rank"]
-        if f_meta["assumed-rank"]:
+        if f_attrs["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
@@ -677,7 +665,7 @@ class ToDimensionC(todict.PrintNode):
     def visit_AssumedRank(self, node):
         self.rank = "assumed"
         return "--assumed-rank--"
-        raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
+        raise RuntimeError("fcfmt.py: Detected assumed-rank dimension")
 
 ######################################################################
 

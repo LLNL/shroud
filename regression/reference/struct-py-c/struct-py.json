@@ -19,19 +19,12 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "_constructor": true,
                                     "name": "Cstruct_as_class_ctor"
                                 },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "is_ctor": true,
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "x1"
-                                            },
                                             "name": "x1",
                                             "typemap_name": "int"
                                         },
@@ -42,10 +35,6 @@
                                     },
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "y1"
-                                            },
                                             "name": "y1",
                                             "typemap_name": "int"
                                         },
@@ -66,13 +55,49 @@
                         "decl": "Cstruct_as_class_ctor",
                         "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
                         "name": "Cstruct_as_class_ctor",
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
+                        "options": {},
+                        "struct_members": [
+                            "x1",
+                            "y1"
+                        ],
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "x1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "y1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                },
+                                "x1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                },
+                                "y1": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            }
                         },
                         "zz_fmtargs": {
                             "+result": {
@@ -179,6 +204,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_x1_getter",
                             "PY_setter": "PY_Cstruct_as_class_x1_setter",
@@ -207,6 +235,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_y1_getter",
@@ -278,6 +309,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -303,6 +337,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -357,17 +394,11 @@
                 "<FUNCTION>": "acceptBothStructs  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptBothStructs",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "s1",
@@ -386,9 +417,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "s2",
@@ -418,6 +446,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "s2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "s2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {

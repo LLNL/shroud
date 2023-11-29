@@ -973,7 +973,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
-        self.fill_c_result(cls, node, result_stmt, fmt_result, CXX_ast)
+        self.fill_c_result(cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
 
         self.c_helper.update(node.helpers.get("c", {}))
         
@@ -1004,7 +1004,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if cls:
             # Add 'this' argument
             need_wrapper = True
-            is_ctor = CXX_ast.declarator.is_ctor()
+            is_ctor = CXX_ast.declarator.is_ctor
             is_static = "static" in ast.storage
             if is_ctor:
                 pass
@@ -1072,7 +1072,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
-            self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg)
+            self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg, c_meta)
             if fmt_arg.inlocal("cxx_val"):
                 append_format(
                     pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg

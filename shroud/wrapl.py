@@ -10,6 +10,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import error
 from . import statements
 from . import typemap
 from . import util
@@ -233,8 +234,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         if is_dtor:
             CXX_subprogram = "subroutine"
             fmt.LUA_name = "__gc"
@@ -439,8 +440,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         declarator = ast.declarator
         CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = declarator.is_ctor()
-        is_dtor = declarator.is_dtor()
+        is_ctor = declarator.is_ctor
+        is_dtor = declarator.is_dtor
         stmts_comments = self.stmts_comments
         stmts_comments_args = []  # Used to reorder comments
 
@@ -536,7 +537,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = a_declarator.attrs
-            meta = a_declarator.metaattrs
+            meta = statements.fetch_arg_metaattrs(node, arg, "lua")
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -593,7 +594,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         sgroup = None
         spointer = ast.declarator.get_indirect_stmt()
 #        print("DDDDDDDDDDDDDD", ast.name)
-        sintent = declarator.metaattrs["intent"]
+        meta = statements.fetch_func_metaattrs(node, "lua")
+        sintent = meta["intent"]
         if is_ctor:
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
@@ -939,7 +941,8 @@ def lookup_stmts(path):
     name = statements.compute_name(path)
     stmt = lua_dict.get(name, None)
     if stmt is None:
-        raise RuntimeError("Unknown lua statement: %s" % name)
+        stmt = lua_dict["lua_mixin_unknown"]
+        error.cursor.warning("Unknown statement: {}".format(name))
     return stmt
 
 LuaStmts = util.Scope(
@@ -956,6 +959,13 @@ default_stmts = dict(
 )
         
 lua_statements = [
+    dict(
+        name="lua_mixin_unknown",
+        comments=[
+            "Default for lua when the group is not found.",
+        ],
+    ),
+    
     dict(
         name="lua_defaulttmp",
         alias=[

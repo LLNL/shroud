@@ -104,12 +104,12 @@ static int l_example_nested_ExClass1_dtor(lua_State *L)
     // splicer end class.ExClass1.method.__gc
 }
 
-// int incrementCount(int incr +value)
+// int incrementCount(int incr)
 // ----------------------------------------
 // Function:  int incrementCount
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  int incr +value
+// Argument:  int incr
 // Statement: lua_in_native_scalar
 static int l_example_nested_ExClass1_incrementCount(lua_State *L)
 {
@@ -153,19 +153,19 @@ static int l_example_nested_ExClass1_getNameArg(lua_State *L)
     // splicer end class.ExClass1.method.getNameArg
 }
 
-// int getValue(int value +value)
-// long getValue(long value +value)
+// int getValue(int value)
+// long getValue(long value)
 // ----------------------------------------
 // Function:  int getValue
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  long getValue
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  long value +value
+// Argument:  long value
 // Statement: lua_in_native_scalar
 static int l_example_nested_ExClass1_getValue(lua_State *L)
 {
@@ -203,12 +203,12 @@ static int l_example_nested_ExClass1_getValue(lua_State *L)
     // splicer end class.ExClass1.method.getValue
 }
 
-// bool hasAddr(bool in +value)
+// bool hasAddr(bool in)
 // ----------------------------------------
 // Function:  bool hasAddr
 // Statement: lua_function_bool_scalar
 // ----------------------------------------
-// Argument:  bool in +value
+// Argument:  bool in
 // Statement: lua_in_bool_scalar
 static int l_example_nested_ExClass1_hasAddr(lua_State *L)
 {
@@ -398,21 +398,21 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
     // splicer end class.ExClass2.method.get_class1
 }
 
-// ExClass2 * declare(TypeID type +value, SidreLength len=1 +value)
+// ExClass2 * declare(TypeID type, SidreLength len=1)
 // ----------------------------------------
 // Function:  ExClass2 * declare
 // Statement: lua_function_shadow_*
 // ----------------------------------------
-// Argument:  TypeID type +value
+// Argument:  TypeID type
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  ExClass2 * declare
 // Statement: lua_function_shadow_*
 // ----------------------------------------
-// Argument:  TypeID type +value
+// Argument:  TypeID type
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  SidreLength len=1 +value
+// Argument:  SidreLength len=1
 // Statement: lua_in_native_scalar
 static int l_example_nested_ExClass2_declare(lua_State *L)
 {
@@ -489,33 +489,33 @@ static int l_example_nested_ExClass2_getTypeID(lua_State *L)
     // splicer end class.ExClass2.method.getTypeID
 }
 
-// void setValue(int value +value)
-// void setValue(long value +value)
-// void setValue(float value +value)
-// void setValue(double value +value)
+// void setValue(int value)
+// void setValue(long value)
+// void setValue(float value)
+// void setValue(double value)
 // ----------------------------------------
 // Function:  void setValue
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  long value +value
+// Argument:  long value
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  float value +value
+// Argument:  float value
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double value +value
+// Argument:  double value
 // Statement: lua_in_native_scalar
 static int l_example_nested_ExClass2_setValue(lua_State *L)
 {
@@ -667,7 +667,7 @@ static int l_example_nested_isInitialized(lua_State *L)
 }
 
 // void test_names(const std::string & name)
-// void test_names(const std::string & name, int flag +value)
+// void test_names(const std::string & name, int flag)
 // ----------------------------------------
 // Function:  void test_names
 // Statement: lua_subroutine
@@ -681,7 +681,7 @@ static int l_example_nested_isInitialized(lua_State *L)
 // Argument:  const std::string & name
 // Statement: lua_in_string_&
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: lua_in_native_scalar
 static int l_example_nested_test_names(lua_State *L)
 {
@@ -721,7 +721,7 @@ static int l_example_nested_test_names(lua_State *L)
     // splicer end function.test_names
 }
 
-// void testoptional(int i=1 +value, long j=2 +value)
+// void testoptional(int i=1, long j=2)
 // ----------------------------------------
 // Function:  void testoptional
 // Statement: lua_subroutine
@@ -729,16 +729,16 @@ static int l_example_nested_test_names(lua_State *L)
 // Function:  void testoptional
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  int i=1 +value
+// Argument:  int i=1
 // Statement: lua_in_native_scalar
 // ----------------------------------------
 // Function:  void testoptional
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  int i=1 +value
+// Argument:  int i=1
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  long j=2 +value
+// Argument:  long j=2
 // Statement: lua_in_native_scalar
 static int l_example_nested_testoptional(lua_State *L)
 {
@@ -797,7 +797,7 @@ static int l_example_nested_test_size_t(lua_State *L)
     // splicer end function.test_size_t
 }
 
-// void testmpi(MPI_Comm comm +value)
+// void testmpi(MPI_Comm comm)
 // void testmpi(void)
 // ----------------------------------------
 // Function:  void testmpi
@@ -806,7 +806,7 @@ static int l_example_nested_test_size_t(lua_State *L)
 // Function:  void testmpi
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  MPI_Comm comm +value
+// Argument:  MPI_Comm comm
 // Statement: lua_in_unknown_scalar
 static int l_example_nested_testmpi(lua_State *L)
 {
@@ -838,12 +838,12 @@ static int l_example_nested_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void FuncPtr1(void ( * get)(void) +value)
+// void FuncPtr1(void ( * get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr1
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(void) +value
+// Argument:  void ( * get)(void)
 // Statement: lua_in_void_scalar
 /**
  * \brief subroutine
@@ -876,12 +876,12 @@ static int l_example_nested_FuncPtr2(lua_State *)
     // splicer end function.FuncPtr2
 }
 
-// void FuncPtr3(double ( * get)(int i +value, int +value) +value)
+// void FuncPtr3(double ( * get)(int i, int))
 // ----------------------------------------
 // Function:  void FuncPtr3
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double ( * get)(int i +value, int +value) +value
+// Argument:  double ( * get)(int i +value, int +value)
 // Statement: lua_in_native_scalar
 /**
  * \brief abstract argument
@@ -896,12 +896,12 @@ static int l_example_nested_FuncPtr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-// void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value)
+// void FuncPtr5(void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
 // ----------------------------------------
 // Function:  void FuncPtr5
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
+// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
 // Statement: lua_in_void_scalar
 static int l_example_nested_FuncPtr5(lua_State *)
 {
@@ -975,39 +975,39 @@ static int l_example_nested_verylongfunctionname1(lua_State *L)
     // splicer end function.verylongfunctionname1
 }
 
-// int verylongfunctionname2(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
+// int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // ----------------------------------------
 // Function:  int verylongfunctionname2
 // Statement: lua_function_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname1 +value
+// Argument:  int verylongname1
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname2 +value
+// Argument:  int verylongname2
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname3 +value
+// Argument:  int verylongname3
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname4 +value
+// Argument:  int verylongname4
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname5 +value
+// Argument:  int verylongname5
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname6 +value
+// Argument:  int verylongname6
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname7 +value
+// Argument:  int verylongname7
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname8 +value
+// Argument:  int verylongname8
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname9 +value
+// Argument:  int verylongname9
 // Statement: lua_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname10 +value
+// Argument:  int verylongname10
 // Statement: lua_in_native_scalar
 static int l_example_nested_verylongfunctionname2(lua_State *L)
 {
@@ -1031,7 +1031,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
     // splicer end function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)
+// void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
 // ----------------------------------------
 // Function:  void cos_doubles
 // Statement: lua_subroutine
@@ -1042,7 +1042,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // Argument:  double * out +dimension(shape(in))+intent(out)
 // Statement: lua_out_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Statement: lua_in_native_scalar
 /**
  * \brief Test multidimensional arrays with allocatable

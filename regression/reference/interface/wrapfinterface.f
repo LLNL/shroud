@@ -34,10 +34,10 @@ module interface_mod
         ! Function:  double Function2
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
-        ! Argument:  double arg1 +value
+        ! Argument:  double arg1
         ! Statement: f_in_native_scalar
         ! ----------------------------------------
-        ! Argument:  int arg2 +value
+        ! Argument:  int arg2
         ! Statement: f_in_native_scalar
         function function2(arg1, arg2) &
                 result(SHT_rv) &
@@ -73,10 +73,10 @@ contains
     ! Function:  double Function2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  double arg1 +value
+    ! Argument:  double arg1
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int arg2 +value
+    ! Argument:  int arg2
     ! Statement: f_in_native_scalar
     function function2(arg1, arg2) &
             result(SHT_rv)

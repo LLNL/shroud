@@ -23,13 +23,6 @@
                                     "badvar": true,
                                     "dimension": "10"
                                 },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "constant": "10"
-                                        }
-                                    ]
-                                },
                                 "name": "arg1",
                                 "typemap_name": "int"
                             },
@@ -41,6 +34,17 @@
                         "name": "arg1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "constant": "10"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -48,6 +52,85 @@
                             "variable_lower": "arg1",
                             "variable_name": "arg1",
                             "variable_upper": "ARG1"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "narg2 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "narg2",
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "narg2",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "narg2",
+                            "variable_lower": "narg2",
+                            "variable_name": "narg2",
+                            "variable_upper": "NARG2"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "arg2 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointerxx",
+                                    "dimension": "narg2"
+                                },
+                                "name": "arg2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "arg2",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "narg2"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "arg2",
+                            "variable_lower": "arg2",
+                            "variable_name": "arg2",
+                            "variable_upper": "ARG2"
                         }
                     }
                 ],
@@ -137,6 +220,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -189,9 +275,6 @@
                         "attrs": {
                             "badfunc": true
                         },
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func0",
                         "params": [],
                         "typemap_name": "void"
@@ -206,6 +289,15 @@
                 "name": "func0",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0",
                     "F_name_api": "func0",
@@ -216,19 +308,10 @@
                 "<FUNCTION>": "func0a  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func0a",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "typemap_name": "int"
                                 },
                                 "specifier": [
@@ -245,10 +328,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func0a(int)",
-                "declgen": "void func0a(int +value)",
+                "declgen": "void func0a(int)",
                 "name": "func0a",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "no-name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0a",
                     "F_name_api": "func0a",
@@ -261,9 +358,6 @@
                     "declarator": {
                         "attrs": {
                             "deref": "pointer"
-                        },
-                        "metaattrs": {
-                            "intent": "function"
                         },
                         "name": "func0b",
                         "params": [],
@@ -290,6 +384,30 @@
                 "name": "func0b",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_mixin_unknown"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0b",
                     "F_name_api": "func0b",
@@ -302,9 +420,6 @@
                     "declarator": {
                         "attrs": {
                             "deref": "pointer"
-                        },
-                        "metaattrs": {
-                            "intent": "function"
                         },
                         "name": "func0c",
                         "params": [],
@@ -320,6 +435,30 @@
                 "name": "func0c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0c",
                     "F_name_api": "func0c",
@@ -332,10 +471,6 @@
                     "declarator": {
                         "attrs": {
                             "dimension": true
-                        },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
                         },
                         "name": "func0e",
                         "params": [],
@@ -356,6 +491,15 @@
                 "name": "func0e",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0e",
                     "F_name_api": "func0e",
@@ -368,14 +512,6 @@
                     "declarator": {
                         "attrs": {
                             "dimension": "10"
-                        },
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
-                            "intent": "function"
                         },
                         "name": "func0f",
                         "params": [],
@@ -391,6 +527,20 @@
                 "name": "func0f",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func0f",
                     "F_name_api": "func0f",
@@ -401,19 +551,12 @@
                 "<FUNCTION>": "func1  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func1",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "bad": true,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "bad": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -432,10 +575,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func1(int arg1 +bad)",
-                "declgen": "void func1(int arg1 +bad+value)",
+                "declgen": "void func1(int arg1 +bad)",
                 "name": "func1",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func1",
                     "F_name_api": "func1",
@@ -446,9 +603,6 @@
                 "<FUNCTION>": "func2  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func2",
                         "params": [
                             {
@@ -456,9 +610,6 @@
                                     "attrs": {
                                         "assumedtype": true,
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -481,6 +632,20 @@
                 "name": "func2",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func2",
                     "F_name_api": "func2",
@@ -491,19 +656,12 @@
                 "<FUNCTION>": "func3  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "charlen": true,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "charlen": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -522,10 +680,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3(int arg1 +charlen)",
-                "declgen": "void func3(int arg1 +charlen+value)",
+                "declgen": "void func3(int arg1 +charlen)",
                 "name": "func3",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func3",
                     "F_name_api": "func3",
@@ -536,19 +708,12 @@
                 "<FUNCTION>": "func3b  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3b",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "charlen": true,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "charlen": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "char"
@@ -567,10 +732,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3b(char arg1 +charlen)",
-                "declgen": "void func3b(char arg1 +charlen+value)",
+                "declgen": "void func3b(char arg1 +charlen)",
                 "name": "func3b",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func3b",
                     "F_name_api": "func3b",
@@ -581,18 +760,12 @@
                 "<FUNCTION>": "func3c  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func3c",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "charlen": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -620,6 +793,20 @@
                 "name": "func3c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func3c",
                     "F_name_api": "func3c",
@@ -630,18 +817,12 @@
                 "<FUNCTION>": "func4  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func4",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "blanknull": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -669,6 +850,48 @@
                 "name": "func4",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_char_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "api": "buf",
+                                "blanknull": true,
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func4",
                     "F_name_api": "func4",
@@ -679,18 +902,12 @@
                 "<FUNCTION>": "func6  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func6",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -714,10 +931,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6(vector *arg1)",
-                "declgen": "void func6(vector * arg1 +rank(1))",
+                "declgen": "void func6(vector * arg1)",
                 "name": "func6",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func6",
                     "F_name_api": "func6",
@@ -728,18 +959,12 @@
                 "<FUNCTION>": "func7  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func7",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "n+=2"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -767,6 +992,20 @@
                 "name": "func7",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func7",
                     "F_name_api": "func7",
@@ -777,19 +1016,12 @@
                 "<FUNCTION>": "func8  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func8",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "none",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
+                                        "intent": "none"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -808,10 +1040,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func8(int arg1+intent(none))",
-                "declgen": "void func8(int arg1 +intent(none)+value)",
+                "declgen": "void func8(int arg1 +intent(none))",
                 "name": "func8",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func8",
                     "F_name_api": "func8",
@@ -822,18 +1068,11 @@
                 "<FUNCTION>": "func8a  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func8a",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -853,10 +1092,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func8a(int arg1+intent(out))",
-                "declgen": "void func8a(int arg1 +intent(out)+value)",
+                "declgen": "void func8a(int arg1 +intent(out))",
                 "name": "func8a",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func8a",
                     "F_name_api": "func8a",
@@ -867,18 +1120,12 @@
                 "<FUNCTION>": "func9  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "deref": "none"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -906,6 +1153,46 @@
                 "name": "func9",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func9",
                     "F_name_api": "func9",
@@ -916,19 +1203,12 @@
                 "<FUNCTION>": "func9b  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9b",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "deref": "pointer"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -956,6 +1236,47 @@
                 "name": "func9b",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "c_inout_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func9b",
                     "F_name_api": "func9b",
@@ -966,18 +1287,11 @@
                 "<FUNCTION>": "func9c  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func9c",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "deref": "pointer",
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "deref": "pointer",
                                         "intent": "in"
                                     },
@@ -1010,6 +1324,47 @@
                 "name": "func9c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "deref": "pointer",
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func9c",
                     "F_name_api": "func9c",
@@ -1020,19 +1375,12 @@
                 "<FUNCTION>": "func10  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "api": "none",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "api": "none"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1051,10 +1399,50 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10(int arg1 +api(none))",
-                "declgen": "void func10(int arg1 +api(none)+value)",
+                "declgen": "void func10(int arg1 +api(none))",
                 "name": "func10",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func10",
                     "F_name_api": "func10",
@@ -1065,19 +1453,12 @@
                 "<FUNCTION>": "func10b  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10b",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": true,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "rank": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1096,10 +1477,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10b(int arg1+rank)",
-                "declgen": "void func10b(int arg1 +rank+value)",
+                "declgen": "void func10b(int arg1 +rank)",
                 "name": "func10b",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func10b",
                     "F_name_api": "func10b",
@@ -1111,18 +1506,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10c",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": "nrank"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1150,6 +1539,20 @@
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func10c",
                     "F_name_api": "func10c",
@@ -1162,18 +1565,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func10c",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 30
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1201,6 +1598,20 @@
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func10c",
                     "F_name_api": "func10c",
@@ -1213,19 +1624,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "dimension": true,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "dimension": true
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1244,10 +1648,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func11(int arg1 +dimension)",
-                "declgen": "void func11(int arg1 +dimension+value)",
+                "declgen": "void func11(int arg1 +dimension)",
                 "name": "func11",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func11",
                     "F_name_api": "func11",
@@ -1260,9 +1678,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
@@ -1270,9 +1685,6 @@
                                     "attrs": {
                                         "dimension": true,
                                         "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1295,6 +1707,20 @@
                 "name": "func11",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func11",
                     "F_name_api": "func11",
@@ -1307,20 +1733,13 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func11",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": true,
-                                        "rank": 2,
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "rank": 2
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1339,10 +1758,24 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func11(int arg1 +dimension+rank(2))",
-                "declgen": "void func11(int arg1 +dimension+rank(2)+value)",
+                "declgen": "void func11(int arg1 +dimension+rank(2))",
                 "name": "func11",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func11",
                     "F_name_api": "func11",
@@ -1354,9 +1787,6 @@
                 "<FUNCTION>": "func12  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func12",
                         "params": [
                             {
@@ -1364,10 +1794,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "owner": "none"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "out"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1398,6 +1824,20 @@
                 "name": "func12",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func12",
                     "F_name_api": "func12",
@@ -1408,9 +1848,6 @@
                 "<FUNCTION>": "func13  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13",
                         "params": [
                             {
@@ -1418,9 +1855,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -1438,11 +1872,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(in,2,3)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(in,2,3)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1461,10 +1891,29 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13(double *in     +intent(in)  +rank(1), int     sizein +implied(size(in,2,3)))",
-                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3))+value)",
+                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
                 "name": "func13",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func13",
                     "F_name_api": "func13",
@@ -1475,9 +1924,6 @@
                 "<FUNCTION>": "func13b  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13b",
                         "params": [
                             {
@@ -1485,9 +1931,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -1505,11 +1948,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "size(none)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "size(none)"
                                     },
                                     "name": "sizein",
                                     "typemap_name": "int"
@@ -1528,10 +1967,29 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13b(double *in     +intent(in)  +rank(1), int     sizein +implied(size(none)))",
-                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none))+value)",
+                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))",
                 "name": "func13b",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "sizein": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func13b",
                     "F_name_api": "func13b",
@@ -1542,17 +2000,11 @@
                 "<FUNCTION>": "func13c  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13c",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "text",
                                     "pointer": [
                                         {
@@ -1561,7 +2013,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1570,11 +2021,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text,2)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "len(text,2)"
                                     },
                                     "name": "ntext",
                                     "typemap_name": "int"
@@ -1587,11 +2034,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len_trim(text,3)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "len_trim(text,3)"
                                     },
                                     "name": "mtext",
                                     "typemap_name": "int"
@@ -1610,10 +2053,34 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13c(const char *text, int ntext+implied(len(text,2)), int mtext+implied(len_trim(text,3)))",
-                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2))+value, int mtext +implied(len_trim(text,3))+value)",
+                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
                 "name": "func13c",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "mtext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "ntext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "text": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func13c",
                     "F_name_api": "func13c",
@@ -1624,17 +2091,11 @@
                 "<FUNCTION>": "func13d  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "func13d",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "text",
                                     "pointer": [
                                         {
@@ -1643,7 +2104,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -1652,11 +2112,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len(text2)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "len(text2)"
                                     },
                                     "name": "ntext",
                                     "typemap_name": "int"
@@ -1669,11 +2125,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "implied": "len_trim(text3)",
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
+                                        "implied": "len_trim(text3)"
                                     },
                                     "name": "mtext",
                                     "typemap_name": "int"
@@ -1692,14 +2144,989 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13d(const char *text, int ntext+implied(len(text2)), int mtext+implied(len_trim(text3)))",
-                "declgen": "void func13d(const char * text, int ntext +implied(len(text2))+value, int mtext +implied(len_trim(text3))+value)",
+                "declgen": "void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
                 "name": "func13d",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "mtext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "ntext": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "text": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "func13d",
                     "F_name_api": "func13d",
                     "function_name": "func13d"
+                }
+            },
+            {
+                "<FUNCTION>": "callback_set_alloc  31 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_set_alloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "alloc",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "alloc",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "inout",
+                                                    "value": true
+                                                },
+                                                "name": "tc",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
+                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)))",
+                "name": "callback_set_alloc",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "alloc": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_set_alloc",
+                    "F_name_api": "callback_set_alloc",
+                    "function_name": "callback_set_alloc"
+                }
+            },
+            {
+                "<FUNCTION>": "AssignValues  32 ****************************************",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nto",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)",
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 8
+                                    },
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nto",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_broadcast",
+                        "generic": "(const int *from, int *to+rank(8))"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable2"
+                                    },
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nto",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_broadcast2",
+                        "generic": "(const int *from, int *to+deref(allocatable2))"
+                    }
+                ],
+                "name": "AssignValues",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "AssignValues",
+                    "F_name_api": "assign_values",
+                    "function_name": "AssignValues"
+                }
+            },
+            {
+                "<FUNCTION>": "AssignValues  35 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "32",
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 32,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 8
+                                    },
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nto",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)",
+                "name": "AssignValues",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "AssignValues",
+                    "F_name_api": "assign_values",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_broadcast"
+                }
+            },
+            {
+                "<FUNCTION>": "AssignValues  36 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "32",
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 32,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable2"
+                                    },
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "nto",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
+                "declgen": "void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)",
+                "name": "AssignValues",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "from": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nfrom": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "nto": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "to": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "AssignValues",
+                    "F_name_api": "assign_values",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_broadcast2"
+                }
+            },
+            {
+                "<FUNCTION>": "struct1_get_arg2  33 ****************************************",
+                "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
+                "ast": {
+                    "declarator": {
+                        "attrs": {
+                            "deref": "pointerxx",
+                            "dimension": "narg2",
+                            "intent": "getter"
+                        },
+                        "name": "struct1_get_arg2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "struct1"
+                                },
+                                "specifier": [
+                                    "struct1"
+                                ],
+                                "typemap_name": "struct1"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * struct1_get_arg2(struct1 *SH_this+intent(in))",
+                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
+                "name": "struct1_get_arg2",
+                "options": {},
+                "struct_parent": "struct1",
+                "user_fmt": {
+                    "field_name": "arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "deref": "pointerxx",
+                                "dim_ast": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
+                                "intent": "getter"
+                            },
+                            "stmt": "f_mixin_unknown"
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "narg2"
+                                    }
+                                ],
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "struct1_get_arg2(\tSH_this)",
+                            "C_call_list": "SH_this",
+                            "C_name": "ERR_struct1_get_arg2",
+                            "C_prototype": "ERR_struct1 * SH_this,\t ===>SHC_rv<===",
+                            "C_return_type": "int *",
+                            "F_C_arguments": "SH_this,\t struct1_get_arg2",
+                            "F_C_call": "c_struct1_get_arg2",
+                            "F_C_name": "struct1_get_arg2",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "SH_this,\t SHT_rv",
+                            "F_arguments": "SH_this",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_size2": "SH_this->narg2",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(narg2)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_mixin_unknown"
+                        }
+                    },
+                    "SH_this": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "ERR_struct1",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "struct1",
+                            "cxx_var": "SH_this",
+                            "f_derived_type": "struct1",
+                            "f_intent": "IN",
+                            "f_kind": "struct1",
+                            "f_type": "type(struct1)",
+                            "f_type_module": "error_mod",
+                            "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_in_struct_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "struct1_get_arg2",
+                    "F_name_api": "struct1_get_arg2",
+                    "F_name_function": "struct1_get_arg2",
+                    "F_name_generic": "struct1_get_arg2",
+                    "F_name_impl": "struct1_get_arg2",
+                    "field_name": "arg2",
+                    "function_name": "struct1_get_arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                }
+            },
+            {
+                "<FUNCTION>": "struct1_set_arg2  34 ****************************************",
+                "_generated": "getter/setter",
+                "_generated_path": [
+                    "getter/setter"
+                ],
+                "ast": {
+                    "declarator": {
+                        "attrs": {
+                            "intent": "setter"
+                        },
+                        "name": "struct1_set_arg2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "struct1"
+                                },
+                                "specifier": [
+                                    "struct1"
+                                ],
+                                "typemap_name": "struct1"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "setter",
+                                        "rank": 1
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void struct1_set_arg2(struct1 *SH_this,int * val)",
+                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                "name": "struct1_set_arg2",
+                "options": {},
+                "user_fmt": {
+                    "field_name": "arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            },
+                            "stmt": "f_setter"
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_struct_*"
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            },
+                            "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "struct1_set_arg2(\tSH_this,\t val)",
+                            "C_call_list": "SH_this,\t val",
+                            "C_name": "ERR_struct1_set_arg2",
+                            "C_prototype": "ERR_struct1 * SH_this,\t int * val",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SH_this,\t val",
+                            "F_C_call": "c_struct1_set_arg2",
+                            "F_C_name": "struct1_set_arg2",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SH_this,\t val",
+                            "F_arguments": "SH_this,\t val",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_setter"
+                        }
+                    },
+                    "SH_this": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "ERR_struct1",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "struct1",
+                            "cxx_var": "SH_this",
+                            "f_derived_type": "struct1",
+                            "f_intent": "INOUT",
+                            "f_kind": "struct1",
+                            "f_type": "type(struct1)",
+                            "f_type_module": "error_mod",
+                            "f_var": "SH_this",
+                            "fc_var": "SH_this",
+                            "i_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_inout_struct_*"
+                        }
+                    },
+                    "val": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "int",
+                            "cxx_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "val",
+                            "fc_var": "val",
+                            "i_dimension": "(*)",
+                            "i_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(val)",
+                            "stmt_name": "f_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "struct1_set_arg2",
+                    "F_name_api": "struct1_set_arg2",
+                    "F_name_function": "struct1_set_arg2",
+                    "F_name_generic": "struct1_set_arg2",
+                    "F_name_impl": "struct1_set_arg2",
+                    "field_name": "arg2",
+                    "function_name": "struct1_set_arg2",
+                    "struct_name": "struct1",
+                    "wrapped_name": "arg2"
                 }
             }
         ],

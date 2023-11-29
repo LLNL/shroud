@@ -5,8 +5,8 @@ C f void function1(void)
 Close wraplibrary_one_two.h
 Close wraplibrary_one_two.cpp
 class Class1
-C c void method1(CustomType arg1 +value)
-C f void method1(CustomType arg1 +value)
+C c void method1(CustomType arg1)
+C f void method1(CustomType arg1)
 Close wrapthree_Class1.h
 Close wrapthree_Class1.cpp
 class class0
@@ -28,17 +28,17 @@ C f void outer_func(void)
 Close wraplibrary_outer2.h
 Close wraplibrary_outer2.cpp
 class Class2
-C c void method1(MPI_Comm comm +value)
-C f void method1(MPI_Comm comm +value)
+C c void method1(MPI_Comm comm)
+C f void method1(MPI_Comm comm)
 C c void method2(three::Class1 * c2)
 C f void method2(three::Class1 * c2)
 Close wrapClass2.h
 Close wrapClass2.cpp
 Close wraplibrary.h
 class Class2
-Fortran void method1(MPI_Comm comm +value)
+Fortran void method1(MPI_Comm comm)
 Fortran void method2(three::Class1 * c2)
-C-interface f void method1(MPI_Comm comm +value)
+C-interface f void method1(MPI_Comm comm)
 C-interface f void method2(three::Class1 * c2)
 typedef CustomType
 Fortran void function1(void)
@@ -46,8 +46,8 @@ C-interface f void function1(void)
 Close wrapflibrary_one_two.f
 Close wrapflibrary_one.f
 class Class1
-Fortran void method1(CustomType arg1 +value)
-C-interface f void method1(CustomType arg1 +value)
+Fortran void method1(CustomType arg1)
+C-interface f void method1(CustomType arg1)
 Close wrapflibrary_three.f
 class class0
 Fortran void method(void)

@@ -13,13 +13,8 @@
                         "<FUNCTION>": "dtor  0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_destructor": "Class1",
-                                    "_name": "dtor"
-                                },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
+                                "default_name": "dtor",
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -54,6 +49,27 @@
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
                                 }
                             }
                         },
@@ -111,6 +127,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_flag",
                                 "params": [],
                                 "typemap_name": "int"
@@ -121,7 +140,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_flag()",
-                        "declgen": "int get_flag(void)",
+                        "declgen": "int get_flag(void) +intent(getter)",
                         "name": "get_flag",
                         "options": {},
                         "user_fmt": {
@@ -139,6 +158,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -227,6 +253,9 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Class1_flag_getter",
                             "PY_setter": "nullptr",
@@ -300,10 +329,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrRaw",
                         "params": [],
                         "pointer": [
@@ -336,6 +361,13 @@
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -386,10 +418,6 @@
                         "attrs": {
                             "deref": "scalar"
                         },
-                        "metaattrs": {
-                            "deref": "scalar",
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrScalar",
                         "params": [],
                         "pointer": [
@@ -431,6 +459,28 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "deref": "scalar",
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -537,10 +587,6 @@
                         "attrs": {
                             "deref": "pointer"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrPointer",
                         "params": [],
                         "pointer": [
@@ -582,6 +628,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_pointer"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -690,18 +757,11 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimRaw",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -754,6 +814,18 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -831,24 +903,12 @@
                             "deref": "pointer",
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimPointer",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -901,6 +961,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -917,6 +982,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -927,6 +997,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1126,24 +1247,12 @@
                             "deref": "allocatable",
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimAlloc",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1199,6 +1308,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1215,6 +1329,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -1225,6 +1344,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1430,24 +1600,12 @@
                         "attrs": {
                             "dimension": "len"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimDefault",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1499,6 +1657,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1515,6 +1678,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1525,6 +1693,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1724,24 +1943,12 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimRawNew",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1785,6 +1992,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -1794,6 +2006,23 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1876,24 +2105,12 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimPointerNew",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -1946,6 +2163,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -1962,6 +2184,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -1972,6 +2199,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2175,24 +2453,12 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimAllocNew",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2236,6 +2502,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2245,6 +2516,57 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native_*"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2368,24 +2690,12 @@
                             "dimension": "len",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "dimension": [
-                                {
-                                    "name": "len"
-                                }
-                            ],
-                            "intent": "function"
-                        },
                         "name": "ReturnIntPtrDimDefaultNew",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2438,6 +2748,11 @@
                     "c": {
                         "+result": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2454,6 +2769,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2464,6 +2784,57 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*_hidden"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -2662,9 +3033,6 @@
                 "<FUNCTION>": "IntPtrDimRaw  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimRaw",
                         "params": [
                             {
@@ -2673,10 +3041,6 @@
                                         "deref": "raw",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2697,9 +3061,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2733,6 +3094,25 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimRaw",
                     "F_name_api": "int_ptr_dim_raw",
@@ -2743,9 +3123,6 @@
                 "<FUNCTION>": "IntPtrDimPointer  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimPointer",
                         "params": [
                             {
@@ -2755,15 +3132,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2785,9 +3153,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2821,6 +3186,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimPointer",
                     "F_name_api": "int_ptr_dim_pointer",
@@ -2831,9 +3220,6 @@
                 "<FUNCTION>": "IntPtrDimAlloc  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimAlloc",
                         "params": [
                             {
@@ -2843,15 +3229,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2873,9 +3250,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2909,6 +3283,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimAlloc",
                     "F_name_api": "int_ptr_dim_alloc",
@@ -2919,9 +3317,6 @@
                 "<FUNCTION>": "IntPtrDimDefault  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimDefault",
                         "params": [
                             {
@@ -2930,15 +3325,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "library"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2960,9 +3346,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -2996,6 +3379,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimDefault",
                     "F_name_api": "int_ptr_dim_default",
@@ -3006,9 +3413,6 @@
                 "<FUNCTION>": "IntPtrDimRawNew  17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimRawNew",
                         "params": [
                             {
@@ -3017,10 +3421,6 @@
                                         "deref": "raw",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "raw",
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3042,9 +3442,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3078,6 +3475,25 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimRawNew",
                     "F_name_api": "int_ptr_dim_raw_new",
@@ -3088,9 +3504,6 @@
                 "<FUNCTION>": "IntPtrDimPointerNew  18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimPointerNew",
                         "params": [
                             {
@@ -3100,15 +3513,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3130,9 +3534,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3166,6 +3567,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimPointerNew",
                     "F_name_api": "int_ptr_dim_pointer_new",
@@ -3176,9 +3601,6 @@
                 "<FUNCTION>": "IntPtrDimAllocNew  19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimAllocNew",
                         "params": [
                             {
@@ -3188,15 +3610,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3218,9 +3631,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3254,6 +3664,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimAllocNew",
                     "F_name_api": "int_ptr_dim_alloc_new",
@@ -3264,9 +3698,6 @@
                 "<FUNCTION>": "IntPtrDimDefaultNew  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "IntPtrDimDefaultNew",
                         "params": [
                             {
@@ -3275,15 +3706,6 @@
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "len"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -3305,9 +3727,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "len",
@@ -3341,6 +3760,30 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "array": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "len"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
+                        },
+                        "len": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "IntPtrDimDefaultNew",
                     "F_name_api": "int_ptr_dim_default_new",
@@ -3351,19 +3794,10 @@
                 "<FUNCTION>": "createClassStatic  21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "createClassStatic",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -3381,7 +3815,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void createClassStatic(int flag)",
-                "declgen": "void createClassStatic(int flag +value)",
+                "declgen": "void createClassStatic(int flag)",
                 "name": "createClassStatic",
                 "options": {
                     "wrap_lua": false
@@ -3418,6 +3852,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3527,9 +3997,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassStatic",
                         "params": [],
                         "pointer": [
@@ -3572,6 +4039,27 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_shadow_*_capptr_library"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3675,19 +4163,10 @@
                         "attrs": {
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "getClassNew",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "flag",
                                     "typemap_name": "int"
                                 },
@@ -3710,7 +4189,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
+                "declgen": "Class1 * getClassNew(int flag) +owner(caller)",
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },
@@ -3752,6 +4231,42 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "lua": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "flag": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

@@ -130,7 +130,7 @@ module arrayclass_mod
         ! Function:  void setSize
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int size +value
+        ! Argument:  int size
         ! Statement: f_in_native_scalar
         subroutine c_ArrayWrapper_setSize(self, size) &
                 bind(C, name="ARR_ArrayWrapper_setSize")
@@ -448,7 +448,7 @@ module arrayclass_mod
         ! Function:  bool checkPtr
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
-        ! Argument:  void * array +value
+        ! Argument:  void * array
         ! Statement: f_in_void_*
         function c_ArrayWrapper_checkPtr(self, array) &
                 result(SHT_rv) &
@@ -501,7 +501,7 @@ contains
     ! Function:  void setSize
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int size +value
+    ! Argument:  int size
     ! Statement: f_in_native_scalar
     subroutine ArrayWrapper_setSize(obj, size)
         use iso_c_binding, only : C_INT
@@ -726,7 +726,7 @@ contains
     ! Function:  bool checkPtr
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
-    ! Argument:  void * array +value
+    ! Argument:  void * array
     ! Statement: f_in_void_*
     function ArrayWrapper_checkPtr(obj, array) &
             result(SHT_rv)

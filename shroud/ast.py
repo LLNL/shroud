@@ -1379,12 +1379,13 @@ class FunctionNode(AstNode):
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
-#     lang:
-#        f:
-#          decl:   (arg1 +attr, arg2+attr)  +attr
-#          attrs:
-#             +result:
-#             arg1:
+     bind:
+        f:
+          decl:   (arg1 +attr, arg2+attr)  +attr
+          attrs:
+             +result:
+               attr2: true
+             arg1:
       splicer:
          c: [ ]
          f: [ ]
@@ -1497,6 +1498,7 @@ class FunctionNode(AstNode):
         self.splicer = {}
         self.fstatements = {}
         self.struct_parent = None         # Function is a getter/setter for a struct
+        self.struct_members = {}          # VariableNode for class ctor
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
@@ -1960,6 +1962,14 @@ class VariableNode(AstNode):
           format:
              baz: 4
 
+    _bind = {
+       'f': {   statements.BindArg
+          stmt: Scope
+          meta: collections.defaultdict(lambda: None)
+          fmtdict:  Scope(_fmtfunc)
+        }
+    }
+
     Args:
         ast - If None, compute from decl.
     """
@@ -1981,6 +1991,7 @@ class VariableNode(AstNode):
         #        self.default_format(parent, format, kwargs)
         self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
+        self._bind = {}
 
         if not decl:
             raise RuntimeError("VariableNode missing decl")

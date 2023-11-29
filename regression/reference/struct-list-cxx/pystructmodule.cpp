@@ -43,7 +43,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // Function:  int passStructByValue
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  Cstruct1 arg +value
+// Argument:  Cstruct1 arg
 // Statement: py_in_struct_scalar_list
 static char PY_passStructByValue__doc__[] =
 "documentation"
@@ -197,10 +197,10 @@ PY_acceptStructInPtr(
 // Argument:  Cstruct1 * arg +intent(out)
 // Statement: py_out_struct_*_list
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
@@ -282,10 +282,10 @@ PY_acceptStructInOutPtr(
 // Function:  Cstruct1 returnStructByValue
 // Statement: py_function_struct_list
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_returnStructByValue__doc__[] =
 "documentation"
@@ -324,10 +324,10 @@ PY_returnStructByValue(
 // Function:  Cstruct1 * returnStructPtr1
 // Statement: py_function_struct_list
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
@@ -370,10 +370,10 @@ PY_returnStructPtr1(
 // Function:  Cstruct1 * returnStructPtr2
 // Statement: py_function_struct_list
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)

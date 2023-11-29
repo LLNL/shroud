@@ -43,7 +43,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // Function:  int passStructByValue
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  Cstruct1 arg +value
+// Argument:  Cstruct1 arg
 // Statement: py_in_struct_scalar_numpy
 static char PY_passStructByValue__doc__[] =
 "documentation"
@@ -289,10 +289,10 @@ fail:
 // Argument:  Cstruct1 * arg +intent(out)
 // Statement: py_out_struct_*_numpy
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
@@ -397,10 +397,10 @@ fail:
 // Function:  Cstruct1 returnStructByValue
 // Statement: py_function_struct_numpy
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_returnStructByValue__doc__[] =
 "documentation"
@@ -464,10 +464,10 @@ fail:
 // Function:  Cstruct1 * returnStructPtr1
 // Statement: py_function_struct_numpy
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
@@ -517,10 +517,10 @@ fail:
 // Function:  Cstruct1 * returnStructPtr2
 // Statement: py_function_struct_numpy
 // ----------------------------------------
-// Argument:  int i +value
+// Argument:  int i
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  double d +value
+// Argument:  double d
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)

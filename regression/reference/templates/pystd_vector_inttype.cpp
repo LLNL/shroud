@@ -96,7 +96,7 @@ PY_push_back(
 // Function:  int & at
 // Statement: py_function_native_&_numpy
 // ----------------------------------------
-// Argument:  size_type n +value
+// Argument:  size_type n
 // Statement: py_in_native_scalar
 static char PY_at__doc__[] =
 "documentation"

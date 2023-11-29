@@ -17,6 +17,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_x1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -27,7 +30,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_x1()",
-                        "declgen": "int get_x1(void)",
+                        "declgen": "int get_x1(void) +intent(getter)",
                         "name": "get_x1",
                         "options": {},
                         "user_fmt": {
@@ -45,6 +48,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -110,7 +120,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_x1",
@@ -118,8 +128,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -138,7 +147,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_x1(int val)",
-                        "declgen": "void set_x1(int val +intent(in)+value)",
+                        "declgen": "void set_x1(int val +intent(setter)) +intent(setter)",
                         "name": "set_x1",
                         "options": {},
                         "user_fmt": {
@@ -162,6 +171,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -234,6 +255,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_y1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -244,7 +268,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_y1()",
-                        "declgen": "int get_y1(void)",
+                        "declgen": "int get_y1(void) +intent(getter)",
                         "name": "get_y1",
                         "options": {},
                         "user_fmt": {
@@ -262,6 +286,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -327,7 +358,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_y1",
@@ -335,8 +366,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -355,7 +385,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_y1(int val)",
-                        "declgen": "void set_y1(int val +intent(in)+value)",
+                        "declgen": "void set_y1(int val +intent(setter)) +intent(setter)",
                         "name": "set_y1",
                         "options": {},
                         "user_fmt": {
@@ -379,6 +409,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -451,6 +493,9 @@
                         ],
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
                                 "name": "get_z1",
                                 "params": [],
                                 "typemap_name": "int"
@@ -461,7 +506,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_z1()",
-                        "declgen": "int get_z1(void)",
+                        "declgen": "int get_z1(void) +intent(getter)",
                         "name": "get_z1",
                         "options": {},
                         "user_fmt": {
@@ -479,6 +524,13 @@
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
                                 }
                             }
                         },
@@ -544,7 +596,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "set_z1",
@@ -552,8 +604,7 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
-                                                "value": true
+                                                "intent": "setter"
                                             },
                                             "name": "val",
                                             "typemap_name": "int"
@@ -572,7 +623,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_z1(int val)",
-                        "declgen": "void set_z1(int val +intent(in)+value)",
+                        "declgen": "void set_z1(int val +intent(setter)) +intent(setter)",
                         "name": "set_z1",
                         "options": {},
                         "user_fmt": {
@@ -596,6 +647,18 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -689,6 +752,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -717,6 +783,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -744,6 +813,9 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -805,9 +877,6 @@
                 "<FUNCTION>": "BadFstatements  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "BadFstatements",
                         "params": [],
                         "typemap_name": "void"
@@ -867,6 +936,20 @@
                             },
                             "stmt": "f_subroutine"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -914,19 +997,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
-                                    },
                                     "name": "data",
                                     "pointer": [
                                         {
@@ -958,12 +1032,6 @@
                                     "attrs": {
                                         "rank": 0
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
-                                    },
                                     "name": "data",
                                     "pointer": [
                                         {
@@ -988,12 +1056,6 @@
                                     "attrs": {
                                         "rank": 1
                                     },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
-                                    },
                                     "name": "data",
                                     "pointer": [
                                         {
@@ -1017,12 +1079,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1062,6 +1118,30 @@
                             },
                             "stmt": "c_inout_native_*"
                         }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
                     }
                 },
                 "zz_fmtargs": {
@@ -1099,12 +1179,11 @@
                             "f_var": "data",
                             "i_var": "data",
                             "idtor": "0",
-                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_inout_native_*"
                         },
                         "fmtpy": {
-                            "array_size": "===assumed-rank===",
+                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1116,13 +1195,8 @@
                             "cxx_type": "int",
                             "cxx_var": "data",
                             "data_var": "SHData_data",
-                            "npy_dims_var": "SHD_data",
-                            "npy_intp_asgn": "SHD_data[0] = ===assumed-rank===;\n",
-                            "npy_intp_decl": "npy_intp SHD_data[0];\n",
-                            "npy_rank": "0",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_data",
-                            "rank": "0",
                             "size_var": "SHSize_data",
                             "stmt": "py_inout_native_*",
                             "value_var": "SHValue_data"
@@ -1149,21 +1223,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 0
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1206,6 +1271,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -1280,21 +1357,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1337,6 +1405,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -1413,21 +1493,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "AssumedRank",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "rank": 2
-                                    },
-                                    "metaattrs": {
-                                        "dimension": {
-                                            "assumedrank": true
-                                        },
-                                        "intent": "inout"
                                     },
                                     "name": "data",
                                     "pointer": [
@@ -1470,6 +1541,18 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "data": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },

@@ -23,7 +23,7 @@ extern "C" {
 // Function:  void method1
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  MPI_Comm comm +value
+// Argument:  MPI_Comm comm
 // Statement: c_in_unknown_scalar
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {

@@ -21,9 +21,6 @@
                 "<FUNCTION>": "init_test  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "init_test",
                         "params": [],
                         "typemap_name": "void"
@@ -57,6 +54,20 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -99,19 +110,10 @@
                 "<FUNCTION>": "passChar  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passChar",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -129,7 +131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passChar(char status)",
-                "declgen": "void passChar(char status +value)",
+                "declgen": "void passChar(char status)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar."
                 },
@@ -167,6 +169,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -274,19 +300,10 @@
                 "<FUNCTION>": "passCharForce  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharForce",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -304,7 +321,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharForce(char status)",
-                "declgen": "void passCharForce(char status +value)",
+                "declgen": "void passCharForce(char status)",
                 "doxygen": {
                     "description": "By default no Fortran wrapper is created.\nForce one so it can be tested.\n"
                 },
@@ -344,6 +361,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -431,9 +460,6 @@
                 "<FUNCTION>": "returnChar  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnChar",
                         "params": [],
                         "typemap_name": "char"
@@ -470,6 +496,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -560,18 +600,12 @@
                 "<FUNCTION>": "passCharPtr  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "charlen": "40",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "dest",
@@ -590,9 +624,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "src",
                                     "pointer": [
                                         {
@@ -601,7 +632,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -673,9 +703,44 @@
                         },
                         "src": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -865,17 +930,11 @@
                 "<FUNCTION>": "passCharPtrInOut  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "passCharPtrInOut",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "s",
@@ -947,6 +1006,30 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "s": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "s": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -1072,10 +1155,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getCharPtr1",
                         "params": [],
                         "pointer": [
@@ -1132,6 +1211,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1247,10 +1340,6 @@
                         "attrs": {
                             "len": "30"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getCharPtr2",
                         "params": [],
                         "pointer": [
@@ -1301,6 +1390,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_buf_copy"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1414,10 +1517,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getCharPtr3",
                         "params": [],
                         "pointer": [
@@ -1471,6 +1570,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_buf_arg"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1582,10 +1695,6 @@
                         "attrs": {
                             "deref": "raw"
                         },
-                        "metaattrs": {
-                            "deref": "raw",
-                            "intent": "function"
-                        },
                         "name": "getCharPtr4",
                         "params": [],
                         "pointer": [
@@ -1629,6 +1738,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_raw"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1709,10 +1825,6 @@
                         "attrs": {
                             "deref": "pointer"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "getCharPtr5",
                         "params": [],
                         "pointer": [
@@ -1767,6 +1879,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_*_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -1861,10 +1980,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringResult",
                         "params": [],
                         "typemap_name": "std::string"
@@ -1915,6 +2030,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2037,10 +2166,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getConstStringLen",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2084,6 +2209,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_buf_copy"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2199,10 +2338,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringAsArg",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2249,6 +2384,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_buf_arg"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2358,10 +2507,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringAlloc",
                         "params": [],
                         "typemap_name": "std::string"
@@ -2409,6 +2554,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_scalar_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2527,10 +2686,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringRefPure",
                         "params": [],
                         "pointer": [
@@ -2588,6 +2743,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2710,10 +2879,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getConstStringRefLen",
                         "params": [],
                         "pointer": [
@@ -2763,6 +2928,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2878,10 +3057,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringRefAsArg",
                         "params": [],
                         "pointer": [
@@ -2934,6 +3109,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_arg"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3047,10 +3236,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getConstStringRefLenEmpty",
                         "params": [],
                         "pointer": [
@@ -3099,6 +3284,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3213,10 +3412,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringRefAlloc",
                         "params": [],
                         "pointer": [
@@ -3269,6 +3464,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3390,10 +3599,6 @@
                         "attrs": {
                             "len": 30
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrLen",
                         "params": [],
                         "pointer": [
@@ -3451,6 +3656,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_buf_copy"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3568,10 +3787,6 @@
                         "attrs": {
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrAlloc",
                         "params": [],
                         "pointer": [
@@ -3624,6 +3839,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3745,10 +3974,6 @@
                         "attrs": {
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrOwnsAlloc",
                         "params": [],
                         "pointer": [
@@ -3804,6 +4029,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -3926,10 +4165,6 @@
                             "free_pattern": "C_string_free",
                             "owner": "caller"
                         },
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrOwnsAllocPattern",
                         "params": [],
                         "pointer": [
@@ -3985,6 +4220,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -4107,10 +4356,6 @@
                             "deref": "pointer",
                             "owner": "library"
                         },
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "getConstStringPtrPointer",
                         "params": [],
                         "pointer": [
@@ -4162,6 +4407,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_*_cdesc_pointer_library"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -4256,17 +4508,11 @@
                 "<FUNCTION>": "acceptStringConstReference  25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringConstReference",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -4334,6 +4580,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -4454,17 +4724,11 @@
                 "<FUNCTION>": "acceptStringReferenceOut  26 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringReferenceOut",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -4534,6 +4798,30 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -4654,16 +4942,10 @@
                 "<FUNCTION>": "acceptStringReference  27 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringReference",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -4734,6 +5016,30 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -4855,17 +5161,11 @@
                 "<FUNCTION>": "acceptStringPointerConst  28 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointerConst",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -4932,6 +5232,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -5052,16 +5376,10 @@
                 "<FUNCTION>": "acceptStringPointer  29 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointer",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -5129,6 +5447,30 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -5250,17 +5592,11 @@
                 "<FUNCTION>": "fetchStringPointer  30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchStringPointer",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -5330,6 +5666,30 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5450,16 +5810,10 @@
                 "<FUNCTION>": "acceptStringPointerLen  31 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStringPointerLen",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -5476,9 +5830,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "nlen",
@@ -5561,6 +5912,40 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -5750,17 +6135,11 @@
                 "<FUNCTION>": "fetchStringPointerLen  32 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchStringPointerLen",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -5779,9 +6158,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "nlen",
@@ -5863,6 +6239,40 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "nlen": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6051,19 +6461,10 @@
                 "<FUNCTION>": "acceptStringInstance  33 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptStringInstance",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "std::string"
                                 },
@@ -6081,7 +6482,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +value)",
+                "declgen": "int acceptStringInstance(std::string arg1)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -6125,6 +6526,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_scalar_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -6304,17 +6729,11 @@
                 "<FUNCTION>": "returnStrings  34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "returnStrings",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -6333,9 +6752,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg2",
@@ -6371,6 +6787,42 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6427,24 +6879,12 @@
                 "<FUNCTION>": "fetchArrayStringArg  35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringArg",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
                                         "dimension": "nstrs",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "copy",
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "strs",
@@ -6467,9 +6907,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "nstrs",
@@ -6531,6 +6968,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -6554,9 +6996,36 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "copy",
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -6718,9 +7187,6 @@
                 "<FUNCTION>": "fetchArrayStringAlloc  36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringAlloc",
                         "params": [
                             {
@@ -6728,15 +7194,6 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "dimension": "nstrs",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ],
                                         "intent": "out"
                                     },
                                     "name": "strs",
@@ -6759,9 +7216,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "nstrs",
@@ -6826,6 +7280,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -6849,9 +7308,36 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -7021,9 +7507,6 @@
                 "<FUNCTION>": "fetchArrayStringAllocLen  37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "fetchArrayStringAllocLen",
                         "params": [
                             {
@@ -7033,15 +7516,6 @@
                                         "dimension": "nstrs",
                                         "intent": "out",
                                         "len": "20"
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "dimension": [
-                                            {
-                                                "name": "nstrs"
-                                            }
-                                        ],
-                                        "intent": "out"
                                     },
                                     "name": "strs",
                                     "pointer": [
@@ -7063,9 +7537,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "nstrs",
@@ -7130,6 +7601,11 @@
                         },
                         "strs": {
                             "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7153,9 +7629,36 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "nstrs": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "strs": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nstrs"
+                                    }
+                                ],
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -7328,17 +7831,11 @@
                 "<FUNCTION>": "returnMany  38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnMany",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg1",
@@ -7374,6 +7871,20 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "returnMany",
                     "F_name_api": "return_many",
@@ -7384,9 +7895,6 @@
                 "<FUNCTION>": "explicit1  39 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "explicit1",
                         "params": [
                             {
@@ -7394,9 +7902,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "len_trim": "AAlen"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "name",
                                     "pointer": [
@@ -7406,7 +7911,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -7456,9 +7960,34 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7567,9 +8096,6 @@
                 "<FUNCTION>": "explicit2  40 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "explicit2",
                         "params": [
                             {
@@ -7577,9 +8103,6 @@
                                     "attrs": {
                                         "intent": "out",
                                         "len": "AAtrim"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
                                     },
                                     "name": "name",
                                     "pointer": [
@@ -7646,6 +8169,18 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_char_*_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -7750,19 +8285,10 @@
                 "<FUNCTION>": "CpassChar  41 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassChar",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "status",
                                     "typemap_name": "char"
                                 },
@@ -7780,7 +8306,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassChar(char status)",
-                "declgen": "void CpassChar(char status +value)",
+                "declgen": "void CpassChar(char status)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
@@ -7820,6 +8346,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "status": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -7927,9 +8477,6 @@
                 "<FUNCTION>": "CreturnChar  42 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CreturnChar",
                         "params": [],
                         "typemap_name": "char"
@@ -7968,6 +8515,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_char_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -8058,17 +8619,11 @@
                 "<FUNCTION>": "CpassCharPtr  43 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassCharPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "dest",
@@ -8085,14 +8640,10 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
                                         "blanknull": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "src",
                                     "pointer": [
@@ -8176,9 +8727,27 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -8268,7 +8837,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -8337,17 +8905,11 @@
                 "<FUNCTION>": "CpassCharPtrBlank  44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "CpassCharPtrBlank",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "dest",
@@ -8364,12 +8926,8 @@
                                 "typemap_name": "char"
                             },
                             {
-                                "blanknull": true,
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "src",
                                     "pointer": [
                                         {
@@ -8451,9 +9009,27 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "blanknull": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "dest": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -8543,7 +9119,6 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -8612,9 +9187,6 @@
                 "<FUNCTION>": "PostDeclare  45 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "PostDeclare",
                         "params": [
                             {
@@ -8622,9 +9194,6 @@
                                     "attrs": {
                                         "intent": "in",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -8641,9 +9210,6 @@
                             },
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -8725,6 +9291,40 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "count": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -8924,17 +9524,11 @@
                 "<FUNCTION>": "CpassCharPtrNotrim  46 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrNotrim",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "src",
                                     "pointer": [
                                         {
@@ -9001,9 +9595,22 @@
                         "src": {
                             "meta": {
                                 "api": "buf",
+                                "ftrim_char_in": false,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -9149,19 +9756,10 @@
                 "<FUNCTION>": "CpassCharPtrCAPI  47 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrCAPI",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "addr",
                                     "pointer": [
                                         {
@@ -9180,10 +9778,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "api": "capi"
-                                    },
-                                    "metaattrs": {
-                                        "api": "capi",
-                                        "intent": "in"
                                     },
                                     "name": "src",
                                     "pointer": [
@@ -9207,7 +9801,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
-                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI(void * addr, const char * src +api(capi))",
                 "doxygen": {
                     "brief": "Do not NULL terminate input string",
                     "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"
@@ -9236,10 +9830,9 @@
                         },
                         "src": {
                             "meta": {
-                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*_capi"
+                            "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
@@ -9261,6 +9854,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "addr": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -9384,7 +9994,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9425,17 +10035,11 @@
                 "<FUNCTION>": "CpassCharPtrCAPI2  48 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "CpassCharPtrCAPI2",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "in",
                                     "pointer": [
                                         {
@@ -9444,7 +10048,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -9455,10 +10058,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "api": "capi"
-                                    },
-                                    "metaattrs": {
-                                        "api": "capi",
-                                        "intent": "in"
                                     },
                                     "name": "src",
                                     "pointer": [
@@ -9510,10 +10109,9 @@
                         },
                         "src": {
                             "meta": {
-                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*_capi"
+                            "stmt": "c_in_char_*"
                         }
                     },
                     "f": {
@@ -9525,6 +10123,7 @@
                         },
                         "in": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
@@ -9535,6 +10134,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*_capi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "src": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -9659,7 +10275,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*_capi"
+                            "stmt_name": "c_in_char_*"
                         },
                         "fmtf": {
                             "c_addr": "",

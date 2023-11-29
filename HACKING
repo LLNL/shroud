@@ -202,3 +202,7 @@ import pdb; pdb.set_trace()
 
 % yes c | python ... >&! out
 Answer 'c' to all pdb prompts.
+
+
+To start pdb on an exception, uncomment line in main.py
+#sys.excepthook = info

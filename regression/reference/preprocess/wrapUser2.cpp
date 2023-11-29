@@ -39,7 +39,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // Function:  void exfunc
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {

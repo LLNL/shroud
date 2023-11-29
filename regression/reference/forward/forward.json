@@ -67,13 +67,8 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_constructor": true,
-                                    "_name": "ctor"
-                                },
-                                "metaattrs": {
-                                    "intent": "ctor"
-                                },
+                                "default_name": "ctor",
+                                "is_ctor": true,
                                 "params": [],
                                 "typemap_name": "forward::Class2"
                             },
@@ -112,6 +107,27 @@
                                         "intent": "ctor"
                                     },
                                     "stmt": "f_ctor_shadow_scalar_capptr"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "ctor"
+                                    }
                                 }
                             }
                         },
@@ -225,13 +241,8 @@
                         "<FUNCTION>": "dtor  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "attrs": {
-                                    "_destructor": "Class2",
-                                    "_name": "dtor"
-                                },
-                                "metaattrs": {
-                                    "intent": "dtor"
-                                },
+                                "default_name": "dtor",
+                                "is_dtor": true,
                                 "params": [],
                                 "typemap_name": "void"
                             },
@@ -266,6 +277,27 @@
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "dtor"
+                                    }
                                 }
                             }
                         },
@@ -319,17 +351,11 @@
                         "<FUNCTION>": "func1  2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "func1",
                                 "params": [
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "in"
                                             },
                                             "name": "arg",
@@ -390,6 +416,42 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -523,17 +585,11 @@
                         "<FUNCTION>": "acceptClass3  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "acceptClass3",
                                 "params": [
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "metaattrs": {
                                                 "intent": "in"
                                             },
                                             "name": "arg",
@@ -594,6 +650,42 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow_*"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -788,17 +880,11 @@
                 "<FUNCTION>": "passStruct1  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct1",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -858,6 +944,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

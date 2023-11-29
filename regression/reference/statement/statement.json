@@ -20,9 +20,6 @@
                         "attrs": {
                             "pure": true
                         },
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "GetNameLength",
                         "params": [],
                         "typemap_name": "int"
@@ -63,6 +60,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -146,10 +150,6 @@
                         "attrs": {
                             "len": "get_name_length()"
                         },
-                        "metaattrs": {
-                            "deref": "copy",
-                            "intent": "function"
-                        },
                         "name": "getNameErrorPattern",
                         "params": [],
                         "pointer": [
@@ -194,6 +194,13 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_buf_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },

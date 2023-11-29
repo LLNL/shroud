@@ -7,7 +7,8 @@
 from __future__ import print_function
 
 from shroud import ast
-from shroud import generate
+from shroud import declast
+from shroud import statements
 from shroud import util
 from shroud import wrapp
 
@@ -71,10 +72,11 @@ struct Cstruct_list {
 
         #####
         var = map['ivalue']
-        # done in generate.VerifyAttrs.parse_attrs
+        # done in metaattrs.FillMeta.parse_dim_attrs
         declarator = var.ast.declarator
-        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
-        
+        a_bind = statements.fetch_var_bind(var, "share")
+        meta = a_bind.meta
+        meta["dim_ast"] = declast.check_dimension(declarator.attrs["dimension"])
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."
         have_array = wrapp.py_struct_dimension(self.struct, var, fmt)
@@ -84,9 +86,11 @@ struct Cstruct_list {
 
         #####
         var = map['dvalue']
-        # done in generate.VerifyAttrs.parse_attrs
+        # done in metaattrs.FillMeta.parse_dim_attrs
         declarator = var.ast.declarator
-        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
+        a_bind = statements.fetch_var_bind(var, "share")
+        meta = a_bind.meta
+        meta["dim_ast"] = declast.check_dimension(declarator.attrs["dimension"])
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."

@@ -427,7 +427,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
 // Statement: c_in_vector_&_buf_targ_native_*
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: c_in_native_scalar
 int VEC_vector_of_pointers(double *arg1, size_t SHT_arg1_len,
     size_t SHT_arg1_size, int num)
@@ -605,7 +605,7 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Statement: c_function_vector_scalar_malloc_targ_native_scalar
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: c_in_native_scalar
 int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
 {
@@ -629,7 +629,7 @@ int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
 // ----------------------------------------
-// Argument:  int n +value
+// Argument:  int n
 // Statement: f_in_native_scalar
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
@@ -653,7 +653,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 // Argument:  int * arg +intent(in)+rank(2)
 // Statement: c_in_native_*
 // ----------------------------------------
-// Argument:  int len +implied(size(arg,2))+value
+// Argument:  int len +implied(size(arg,2))
 // Statement: c_in_native_scalar
 int VEC_returnDim2(int * arg, int len)
 {

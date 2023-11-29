@@ -54,10 +54,10 @@ PY_NoReturnNoArguments(
 // Function:  double PassByValue
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1 +value
+// Argument:  double arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int arg2 +value
+// Argument:  int arg2
 // Statement: py_in_native_scalar
 static char PY_PassByValue__doc__[] =
 "documentation"
@@ -135,7 +135,7 @@ PY_PassByReference(
 // Function:  double PassByValueMacro
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  int arg2 +value
+// Argument:  int arg2
 // Statement: py_in_native_scalar
 static char PY_PassByValueMacro__doc__[] =
 "documentation"
@@ -175,7 +175,7 @@ PY_PassByValueMacro(
 // Function:  void checkBool
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const bool arg1 +value
+// Argument:  const bool arg1
 // Statement: py_in_bool_scalar
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
@@ -433,7 +433,7 @@ PY_returnTwoNames(
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char_*_charlen
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+value
+// Argument:  int ltext +implied(len(text))
 // Exact:     py_default
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
@@ -473,10 +473,10 @@ PY_ImpliedTextLen(
 // Argument:  const char * text
 // Statement: py_in_char_*
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+value
+// Argument:  int ltext +implied(len(text))
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  bool flag +implied(false)+value
+// Argument:  bool flag +implied(false)
 // Exact:     py_default
 static char PY_ImpliedLen__doc__[] =
 "documentation"
@@ -527,10 +527,10 @@ PY_ImpliedLen(
 // Argument:  const char * text
 // Statement: py_in_char_*
 // ----------------------------------------
-// Argument:  int ltext +implied(len_trim(text))+value
+// Argument:  int ltext +implied(len_trim(text))
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  bool flag +implied(true)+value
+// Argument:  bool flag +implied(true)
 // Exact:     py_default
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
@@ -578,7 +578,7 @@ PY_ImpliedLenTrim(
 // Function:  bool ImpliedBoolTrue
 // Statement: py_function_bool_scalar
 // ----------------------------------------
-// Argument:  bool flag +implied(true)+value
+// Argument:  bool flag +implied(true)
 // Exact:     py_default
 static char PY_ImpliedBoolTrue__doc__[] =
 "documentation"
@@ -619,7 +619,7 @@ fail:
 // Function:  bool ImpliedBoolFalse
 // Statement: py_function_bool_scalar
 // ----------------------------------------
-// Argument:  bool flag +implied(false)+value
+// Argument:  bool flag +implied(false)
 // Exact:     py_default
 static char PY_ImpliedBoolFalse__doc__[] =
 "documentation"

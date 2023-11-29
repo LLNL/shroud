@@ -33,6 +33,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -60,6 +63,9 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -116,19 +122,10 @@
                 "<FUNCTION>": "typefunc  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "typefunc",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "TypeID"
                                 },
@@ -146,7 +143,7 @@
                     "typemap_name": "TypeID"
                 },
                 "decl": "TypeID typefunc(TypeID arg);",
-                "declgen": "TypeID typefunc(TypeID arg +value)",
+                "declgen": "TypeID typefunc(TypeID arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -181,6 +178,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -338,16 +359,10 @@
                 "<FUNCTION>": "typestruct  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "typestruct",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -405,6 +420,30 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -516,19 +555,10 @@
                 "<FUNCTION>": "returnBytesForIndexType  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnBytesForIndexType",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "IndexType"
                                 },
@@ -546,7 +576,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int returnBytesForIndexType(IndexType arg);",
-                "declgen": "int returnBytesForIndexType(IndexType arg +value)",
+                "declgen": "int returnBytesForIndexType(IndexType arg)",
                 "name": "returnBytesForIndexType",
                 "options": {
                     "wrap_python": false
@@ -582,6 +612,18 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

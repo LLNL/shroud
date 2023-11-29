@@ -3,8 +3,8 @@ Close arrayclass_types.yaml
 class ArrayWrapper
 C c ArrayWrapper(void)
 C f ArrayWrapper(void)
-C c void setSize(int size +value)
-C f void setSize(int size +value)
+C c void setSize(int size)
+C f void setSize(int size)
 C c int getSize(void) const
 C f int getSize(void) const
 C c void fillSize(int & size +intent(out))
@@ -31,15 +31,15 @@ C c void fetchVoidPtr(void * * array +intent(out))
 C f void fetchVoidPtr(void * * array +intent(out))
 C c void fetchVoidRef(void * & array +intent(out))
 C f void fetchVoidRef(void * & array +intent(out))
-C c bool checkPtr(void * array +value)
-C f bool checkPtr(void * array +value)
+C c bool checkPtr(void * array)
+C f bool checkPtr(void * array)
 C c double sumArray(void)
 C f double sumArray(void)
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 class ArrayWrapper
 Fortran ArrayWrapper(void)
-Fortran void setSize(int size +value)
+Fortran void setSize(int size)
 Fortran int getSize(void) const
 Fortran void fillSize(int & size +intent(out))
 Fortran void allocate(void)
@@ -53,10 +53,10 @@ Fortran void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(
 Fortran void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)
 Fortran void fetchVoidPtr(void * * array +intent(out))
 Fortran void fetchVoidRef(void * & array +intent(out))
-Fortran bool checkPtr(void * array +value)
+Fortran bool checkPtr(void * array)
 Fortran double sumArray(void)
 C-interface f ArrayWrapper(void)
-C-interface f void setSize(int size +value)
+C-interface f void setSize(int size)
 C-interface f int getSize(void) const
 C-interface f void fillSize(int & size +intent(out))
 C-interface f void allocate(void)
@@ -78,14 +78,14 @@ C-interface c void fetchArrayRefConst(const double * & array +dimension(isize)+i
 C-interface f void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)
 C-interface f void fetchVoidPtr(void * * array +intent(out))
 C-interface f void fetchVoidRef(void * & array +intent(out))
-C-interface f bool checkPtr(void * array +value)
+C-interface f bool checkPtr(void * array)
 C-interface f double sumArray(void)
 Close wrapfarrayclass.f
 Close utilarrayclass.cpp
 Close typesarrayclass.h
 class ArrayWrapper
 Python method ArrayWrapper(void)
-Python method void setSize(int size +value)
+Python method void setSize(int size)
 Python method int getSize(void) const
 Python method void fillSize(int & size +intent(out))
 Python method void allocate(void)
@@ -99,7 +99,7 @@ Python method void fetchArrayPtrConst(const double * * array +dimension(isize)+i
 Python method void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)
 Python method void fetchVoidPtr(void * * array +intent(out))
 Python method void fetchVoidRef(void * & array +intent(out))
-Python method bool checkPtr(void * array +value)
+Python method bool checkPtr(void * array)
 Python method double sumArray(void)
 Close pyArrayWrappertype.cpp
 Close pyarrayclassmodule.cpp

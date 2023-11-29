@@ -16,19 +16,10 @@
                         "<FUNCTION>": "method1  0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method1",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
                                             "name": "comm",
                                             "typemap_name": "MPI_Comm"
                                         },
@@ -46,7 +37,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method1(MPI_Comm comm)",
-                        "declgen": "void method1(MPI_Comm comm +value)",
+                        "declgen": "void method1(MPI_Comm comm)",
                         "name": "method1",
                         "options": {},
                         "wrap": {
@@ -80,6 +71,18 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_unknown_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "comm": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -175,16 +178,10 @@
                         "<FUNCTION>": "method2  1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "method2",
                                 "params": [
                                     {
                                         "declarator": {
-                                            "metaattrs": {
-                                                "intent": "inout"
-                                            },
                                             "name": "c2",
                                             "pointer": [
                                                 {
@@ -241,6 +238,18 @@
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_shadow_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "c2": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
                                 }
                             }
                         },
@@ -383,9 +392,6 @@
                                 "<FUNCTION>": "function1  5 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "function1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -418,6 +424,13 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -528,19 +541,10 @@
                                 "<FUNCTION>": "method1  2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method1",
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "attrs": {
-                                                        "value": true
-                                                    },
-                                                    "metaattrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "name": "arg1",
                                                     "typemap_name": "CustomType"
                                                 },
@@ -558,7 +562,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method1(CustomType arg1)",
-                                "declgen": "void method1(CustomType arg1 +value)",
+                                "declgen": "void method1(CustomType arg1)",
                                 "name": "method1",
                                 "options": {},
                                 "wrap": {
@@ -592,6 +596,18 @@
                                                 "intent": "in"
                                             },
                                             "stmt": "f_in_native_scalar"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "arg1": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
                                         }
                                     }
                                 },
@@ -748,9 +764,6 @@
                                 "<FUNCTION>": "method  3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method",
                                         "params": [],
                                         "typemap_name": "void"
@@ -783,6 +796,13 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -859,9 +879,6 @@
                         "<FUNCTION>": "outer_func  6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "outer_func",
                                 "params": [],
                                 "typemap_name": "void"
@@ -894,6 +911,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -975,9 +999,6 @@
                                 "<FUNCTION>": "method  4 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method",
                                         "params": [],
                                         "typemap_name": "void"
@@ -1010,6 +1031,13 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -1086,9 +1114,6 @@
                         "<FUNCTION>": "outer_func  7 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "outer_func",
                                 "params": [],
                                 "typemap_name": "void"
@@ -1121,6 +1146,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

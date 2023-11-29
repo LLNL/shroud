@@ -93,7 +93,7 @@ static void ShroudCharFree(char *src)
 // Function:  double PassByValueMacro
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int arg2 +value
+// Argument:  int arg2
 // Statement: c_in_native_scalar
 double CLI_PassByValueMacro(int arg2)
 {
@@ -203,7 +203,7 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Statement: f_out_char_*_buf
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+value
+// Argument:  int ltext +implied(len(text))
 // Statement: f_in_native_scalar
 // start CLI_ImpliedTextLen_bufferify
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
@@ -270,10 +270,10 @@ int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
 // Function:  void callback1a
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int type +value
+// Argument:  int type
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  void ( * incr)(void) +external+value
+// Argument:  void ( * incr)(void) +external
 // Statement: c_in_void_scalar
 // start CLI_callback1a
 void CLI_callback1a(int type, void ( * incr)(void))
@@ -299,7 +299,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // Argument:  void * in +assumedtype
 // Statement: f_in_void_*
 // ----------------------------------------
-// Argument:  void ( * incr)(int *) +external+value
+// Argument:  void ( * incr)(int *) +external
 // Statement: f_in_void_scalar
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)

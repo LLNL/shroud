@@ -264,7 +264,7 @@ PY_intargs_out(
 // Function:  void intargs
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const int argin +intent(in)+value
+// Argument:  const int argin +intent(in)
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
@@ -315,7 +315,7 @@ PY_intargs(
 // Argument:  double * out +dimension(size(in))+intent(out)
 // Statement: py_out_native_*_numpy
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Exact:     py_default
 static char PY_cos_doubles__doc__[] =
 "documentation"
@@ -393,7 +393,7 @@ fail:
 // Argument:  int * out +dimension(size(in))+intent(out)
 // Statement: py_out_native_*_numpy
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Exact:     py_default
 static char PY_truncate_to_int__doc__[] =
 "documentation"
@@ -593,7 +593,7 @@ fail:
 // Function:  void iota_dimension
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int nvar +value
+// Argument:  int nvar
 // Statement: py_in_native_scalar
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
@@ -646,7 +646,7 @@ fail:
 // Function:  void Sum
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int len +implied(size(values))+value
+// Argument:  int len +implied(size(values))
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
@@ -760,7 +760,7 @@ fail:
 // Argument:  int * array +intent(inout)+rank(1)
 // Statement: py_inout_native_*_numpy
 // ----------------------------------------
-// Argument:  int sizein +implied(size(array))+value
+// Argument:  int sizein +implied(size(array))
 // Exact:     py_default
 static char PY_incrementIntArray__doc__[] =
 "documentation"
@@ -817,7 +817,7 @@ fail:
 // Argument:  double * x +rank(1)
 // Statement: py_inout_native_*_numpy
 // ----------------------------------------
-// Argument:  int x_length +implied(size(x))+value
+// Argument:  int x_length +implied(size(x))
 // Exact:     py_default
 static char PY_fill_with_zeros__doc__[] =
 "documentation"
@@ -871,7 +871,7 @@ fail:
 // Argument:  const int * arr +rank(1)
 // Statement: py_in_native_*_numpy
 // ----------------------------------------
-// Argument:  size_t len +implied(size(arr))+value
+// Argument:  size_t len +implied(size(arr))
 // Exact:     py_default
 static char PY_accumulate__doc__[] =
 "documentation"
@@ -986,7 +986,7 @@ fail:
 // Function:  void setGlobalInt
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: py_in_native_scalar
 static char PY_setGlobalInt__doc__[] =
 "documentation"
@@ -1316,7 +1316,7 @@ PY_getRawPtrToFixedArray(
 // Function:  void * returnAddress1
 // Statement: py_function_void_*
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static char PY_returnAddress1__doc__[] =
 "documentation"
@@ -1352,7 +1352,7 @@ PY_returnAddress1(
 // Function:  void * returnAddress2
 // Statement: py_function_void_*
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static char PY_returnAddress2__doc__[] =
 "documentation"

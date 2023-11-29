@@ -371,6 +371,9 @@ directly from Fortran.
     In C this is accomplished by using a cast.
     See example :ref:`callback1c <example_callback1c>`.
 
+The *intent* and *value* attributes may be used on arguments of the
+function pointer.
+
 The ``abstract interface`` is named from option
 **F_abstract_interface_subprogram_template** which defaults to
 ``{underscore_name}_{argname}`` where *argname* is the name of the

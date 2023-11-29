@@ -40,6 +40,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -65,6 +68,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -133,6 +139,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
@@ -164,6 +173,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -229,6 +241,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -244,19 +259,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems+nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "+",
-                                            "right": {
-                                                "name": "nitems"
-                                            }
-                                        }
-                                    ]
                                 },
                                 "name": "ivalue",
                                 "pointer": [
@@ -276,6 +278,23 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                                "name": "nitems"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -291,19 +310,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems*TWO"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "*",
-                                            "right": {
-                                                "name": "TWO"
-                                            }
-                                        }
-                                    ]
                                 },
                                 "name": "dvalue",
                                 "pointer": [
@@ -323,6 +329,23 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "*",
+                                            "right": {
+                                                "name": "TWO"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "double",
                             "cxx_type": "double",
@@ -338,13 +361,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "svalue",
                                 "pointer": [
@@ -366,6 +382,17 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "char",
@@ -432,6 +459,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -447,13 +477,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "ivalue",
                                 "pointer": [
@@ -473,6 +496,17 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -488,13 +522,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "dvalue",
                                 "pointer": [
@@ -513,6 +540,17 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
@@ -583,6 +621,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
@@ -613,6 +654,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -678,6 +722,9 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -702,6 +749,9 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -761,6 +811,9 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -785,6 +838,9 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -809,6 +865,9 @@
                         "name": "z1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -865,6 +924,9 @@
                         "name": "sublevels",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -911,19 +973,10 @@
                 "<FUNCTION>": "passStructByValue  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStructByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "typemap_name": "Cstruct1"
                                 },
@@ -941,13 +994,39 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
-                "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "declgen": "int passStructByValue(Cstruct1 arg)",
                 "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1005,17 +1084,11 @@
                 "<FUNCTION>": "passStruct1  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct1",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1045,6 +1118,32 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1103,17 +1202,11 @@
                 "<FUNCTION>": "passStruct2  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "passStruct2",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "s1",
                                     "pointer": [
                                         {
@@ -1131,9 +1224,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "charlen": "LENOUTBUF",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "outbuf",
@@ -1166,6 +1256,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "s1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1246,17 +1372,11 @@
                 "<FUNCTION>": "acceptStructInPtr  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "acceptStructInPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "metaattrs": {
                                         "intent": "in"
                                     },
                                     "name": "arg",
@@ -1286,6 +1406,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1344,17 +1490,11 @@
                 "<FUNCTION>": "acceptStructOutPtr  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructOutPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "arg",
@@ -1372,12 +1512,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1388,12 +1522,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1411,7 +1539,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1419,6 +1547,52 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1498,17 +1672,11 @@
                 "<FUNCTION>": "acceptStructInOutPtr  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "acceptStructInOutPtr",
                         "params": [
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "metaattrs": {
                                         "intent": "inout"
                                     },
                                     "name": "arg",
@@ -1538,6 +1706,32 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -1578,19 +1772,10 @@
                 "<FUNCTION>": "returnStructByValue  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "returnStructByValue",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1601,12 +1786,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1624,11 +1803,47 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
-                "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "declgen": "Cstruct1 returnStructByValue(int i, double d)",
                 "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1708,20 +1923,10 @@
                 "<FUNCTION>": "returnStructPtr1  7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnStructPtr1",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1732,12 +1937,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1760,7 +1959,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i, double d)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -1769,6 +1968,42 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -1846,20 +2081,10 @@
                 "<FUNCTION>": "returnStructPtr2  8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "returnStructPtr2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -1870,12 +2095,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "d",
                                     "typemap_name": "double"
                                 },
@@ -1888,9 +2107,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "charlen": "LENOUTBUF",
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "outbuf",
@@ -1920,7 +2136,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -1929,6 +2145,52 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "d": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "outbuf": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2028,10 +2290,6 @@
                 "<FUNCTION>": "get_global_struct_list  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "pointer",
-                            "intent": "function"
-                        },
                         "name": "get_global_struct_list",
                         "params": [],
                         "pointer": [
@@ -2052,6 +2310,22 @@
                 "options": {},
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtargs": {
                     "+result": {
@@ -2089,9 +2363,6 @@
                 "<FUNCTION>": "Create_Cstruct_as_class  10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class",
                         "params": [],
                         "pointer": [
@@ -2115,6 +2386,15 @@
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class",
                     "F_name_api": "create_cstruct_as_class",
@@ -2125,19 +2405,10 @@
                 "<FUNCTION>": "Create_Cstruct_as_class_args  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_class_args",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -2148,12 +2419,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -2176,13 +2441,32 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x, int y)",
                 "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_class_args",
                     "F_name_api": "create_cstruct_as_class_args",
@@ -2193,9 +2477,6 @@
                 "<FUNCTION>": "Cstruct_as_class_sum  12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Cstruct_as_class_sum",
                         "params": [
                             {
@@ -2203,9 +2484,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "pass": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "point",
                                     "pointer": [
@@ -2239,6 +2517,20 @@
                     "F_name_function": "sum"
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Cstruct_as_class_sum",
                     "F_name_api": "cstruct_as_class_sum",
@@ -2250,19 +2542,10 @@
                 "<FUNCTION>": "Create_Cstruct_as_subclass_args  13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Create_Cstruct_as_subclass_args",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "x",
                                     "typemap_name": "int"
                                 },
@@ -2273,12 +2556,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "y",
                                     "typemap_name": "int"
                                 },
@@ -2289,12 +2566,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "z",
                                     "typemap_name": "int"
                                 },
@@ -2317,13 +2588,37 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false
                 },
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "Create_Cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",

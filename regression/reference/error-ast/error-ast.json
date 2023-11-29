@@ -54,19 +54,10 @@
                 "<FUNCTION>": "FortranGenericOverloaded3  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FortranGenericOverloaded3",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -84,18 +75,12 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded3(double arg2)",
-                "declgen": "void FortranGenericOverloaded3(double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded3(double arg2)",
                 "fortran_generic": [
                     {
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -112,12 +97,6 @@
                         "decls": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "double"
                                 },
@@ -134,6 +113,20 @@
                 "name": "FortranGenericOverloaded3",
                 "options": {},
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded3",
                     "F_name_api": "fortran_generic_overloaded3",
@@ -144,9 +137,6 @@
                 "<FUNCTION>": "PYGoodFunction  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "PYGoodFunction",
                         "params": [],
                         "typemap_name": "void"
@@ -167,6 +157,22 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "PYGoodFunction",

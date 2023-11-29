@@ -312,7 +312,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 // Function:  void createClassStatic
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 void OWN_createClassStatic(int flag)
 {
@@ -342,7 +342,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // Function:  Class1 * getClassNew +owner(caller)
 // Statement: c_function_shadow_*_capptr_caller
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
 {

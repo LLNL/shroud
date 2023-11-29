@@ -146,7 +146,7 @@ void POI_intargs_out(int * arg)
 // Function:  void intargs
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int argin +intent(in)+value
+// Argument:  const int argin +intent(in)
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
@@ -178,7 +178,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Argument:  double * out +dimension(size(in))+intent(out)
 // Statement: c_out_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Statement: c_in_native_scalar
 // start POI_cos_doubles
 void POI_cos_doubles(double * in, double * out, int sizein)
@@ -204,7 +204,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Argument:  double * out +dimension(size(in))+intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Statement: f_in_native_scalar
 // start POI_cos_doubles_CFI
 void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
@@ -233,7 +233,7 @@ void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
 // Argument:  int * out +dimension(size(in))+intent(out)
 // Statement: c_out_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Statement: c_in_native_scalar
 // start POI_truncate_to_int
 void POI_truncate_to_int(double * in, int * out, int sizein)
@@ -260,7 +260,7 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Argument:  int * out +dimension(size(in))+intent(out)
 // Statement: f_out_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Statement: f_in_native_scalar
 // start POI_truncate_to_int_CFI
 void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int * out,
@@ -327,7 +327,7 @@ void POI_get_values2(int * arg1, int * arg2)
 // Function:  void iota_dimension
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int nvar +value
+// Argument:  int nvar
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
@@ -345,7 +345,7 @@ void POI_iota_dimension(int nvar, int * values)
 // Function:  void Sum
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int len +implied(size(values))+value
+// Argument:  int len +implied(size(values))
 // Statement: c_in_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
@@ -366,7 +366,7 @@ void POI_Sum(int len, const int * values, int * result)
 // Function:  void Sum
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int len +implied(size(values))+value
+// Argument:  int len +implied(size(values))
 // Statement: f_in_native_scalar
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
@@ -412,7 +412,7 @@ void POI_fillIntArray(int * out)
 // Argument:  int * array +intent(inout)+rank(1)
 // Statement: c_inout_native_*
 // ----------------------------------------
-// Argument:  int sizein +implied(size(array))+value
+// Argument:  int sizein +implied(size(array))
 // Statement: c_in_native_scalar
 // start POI_incrementIntArray
 void POI_incrementIntArray(int * array, int sizein)
@@ -433,7 +433,7 @@ void POI_incrementIntArray(int * array, int sizein)
 // Argument:  int * array +intent(inout)+rank(1)
 // Statement: f_inout_native_*_cfi
 // ----------------------------------------
-// Argument:  int sizein +implied(size(array))+value
+// Argument:  int sizein +implied(size(array))
 // Statement: f_in_native_scalar
 // start POI_incrementIntArray_CFI
 void POI_incrementIntArray_CFI(CFI_cdesc_t *SHT_array_cfi, int sizein)
@@ -452,7 +452,7 @@ void POI_incrementIntArray_CFI(CFI_cdesc_t *SHT_array_cfi, int sizein)
 // Argument:  double * x +rank(1)
 // Statement: c_inout_native_*
 // ----------------------------------------
-// Argument:  int x_length +implied(size(x))+value
+// Argument:  int x_length +implied(size(x))
 // Statement: c_in_native_scalar
 // start POI_fill_with_zeros
 void POI_fill_with_zeros(double * x, int x_length)
@@ -470,7 +470,7 @@ void POI_fill_with_zeros(double * x, int x_length)
 // Argument:  double * x +rank(1)
 // Statement: f_inout_native_*_cfi
 // ----------------------------------------
-// Argument:  int x_length +implied(size(x))+value
+// Argument:  int x_length +implied(size(x))
 // Statement: f_in_native_scalar
 // start POI_fill_with_zeros_CFI
 void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length)
@@ -489,7 +489,7 @@ void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length)
 // Argument:  const int * arr +rank(1)
 // Statement: c_in_native_*
 // ----------------------------------------
-// Argument:  size_t len +implied(size(arr))+value
+// Argument:  size_t len +implied(size(arr))
 // Statement: c_in_native_scalar
 // start POI_accumulate
 int POI_accumulate(const int * arr, size_t len)
@@ -508,7 +508,7 @@ int POI_accumulate(const int * arr, size_t len)
 // Argument:  const int * arr +rank(1)
 // Statement: f_in_native_*_cfi
 // ----------------------------------------
-// Argument:  size_t len +implied(size(arr))+value
+// Argument:  size_t len +implied(size(arr))
 // Statement: f_in_native_scalar
 // start POI_accumulate_CFI
 int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
@@ -569,7 +569,7 @@ int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
 // Function:  void setGlobalInt
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: c_in_native_scalar
 // start POI_setGlobalInt
 void POI_setGlobalInt(int value)
@@ -1140,7 +1140,7 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void * returnAddress1
 // Statement: c_function_void_*
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 // start POI_returnAddress1
 void * POI_returnAddress1(int flag)
@@ -1156,7 +1156,7 @@ void * POI_returnAddress1(int flag)
 // Function:  void * returnAddress2
 // Statement: c_function_void_*
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: c_in_native_scalar
 // start POI_returnAddress2
 void * POI_returnAddress2(int flag)

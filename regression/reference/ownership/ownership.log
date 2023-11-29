@@ -3,7 +3,7 @@ Close ownership_types.yaml
 class Class1
 C c ~Class1(void)
 C f ~Class1(void)
-C f int get_flag(void)
+C f int get_flag(void) +intent(getter)
 Close wrapClass1.h
 Close wrapClass1.cpp
 C c int * ReturnIntPtrRaw(void) +deref(raw)
@@ -24,19 +24,19 @@ C f int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointe
 C c int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C c int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C f int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-C c void createClassStatic(int flag +value)
-C f void createClassStatic(int flag +value)
+C c void createClassStatic(int flag)
+C f void createClassStatic(int flag)
 C c Class1 * getClassStatic(void) +owner(library)
 C f Class1 * getClassStatic(void) +owner(library)
-C c Class1 * getClassNew(int flag +value) +owner(caller)
-C f Class1 * getClassNew(int flag +value) +owner(caller)
+C c Class1 * getClassNew(int flag) +owner(caller)
+C f Class1 * getClassNew(int flag) +owner(caller)
 Close wrapownership.h
 Close wrapownership.cpp
 class Class1
 Fortran ~Class1(void)
-Fortran int get_flag(void)
+Fortran int get_flag(void) +intent(getter)
 C-interface f ~Class1(void)
-C-interface f int get_flag(void)
+C-interface f int get_flag(void) +intent(getter)
 Fortran int * ReturnIntPtrScalar(void) +deref(scalar)
 Fortran int * ReturnIntPtrPointer(void) +deref(pointer)
 Fortran int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
@@ -44,9 +44,9 @@ Fortran int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocat
 Fortran int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 Fortran int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 Fortran int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-Fortran void createClassStatic(int flag +value)
+Fortran void createClassStatic(int flag)
 Fortran Class1 * getClassStatic(void) +owner(library)
-Fortran Class1 * getClassNew(int flag +value) +owner(caller)
+Fortran Class1 * getClassNew(int flag) +owner(caller)
 C-interface c int * ReturnIntPtrRaw(void) +deref(raw)
 C-interface c int * ReturnIntPtrScalar(void) +deref(scalar)
 C-interface f int * ReturnIntPtrScalar(void) +deref(scalar)
@@ -65,9 +65,9 @@ C-interface f int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +de
 C-interface c int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C-interface c int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C-interface f int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-C-interface f void createClassStatic(int flag +value)
+C-interface f void createClassStatic(int flag)
 C-interface f Class1 * getClassStatic(void) +owner(library)
-C-interface f Class1 * getClassNew(int flag +value) +owner(caller)
+C-interface f Class1 * getClassNew(int flag) +owner(caller)
 Close wrapfownership.f
 Close utilownership.cpp
 Close typesownership.h
@@ -82,9 +82,9 @@ Python function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dim
 Python function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 Python function int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 Python function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-Python function void createClassStatic(int flag +value)
+Python function void createClassStatic(int flag)
 Python function Class1 * getClassStatic(void) +owner(library)
-Python function Class1 * getClassNew(int flag +value) +owner(caller)
+Python function Class1 * getClassNew(int flag) +owner(caller)
 Close pyownershipmodule.cpp
 Close pyownershiputil.cpp
 Close pyownershipmodule.hpp

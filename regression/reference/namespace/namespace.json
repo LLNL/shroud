@@ -22,10 +22,6 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "LastFunctionCalled",
                         "params": [],
                         "pointer": [
@@ -78,6 +74,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_string_&_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -195,9 +205,6 @@
                 "<FUNCTION>": "One  2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "One",
                         "params": [],
                         "typemap_name": "void"
@@ -231,6 +238,20 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -371,19 +392,12 @@
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
-                                            "_constructor": true,
                                             "name": "Cstruct1_ctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
+                                        "is_ctor": true,
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in",
-                                                        "struct_member": "ifield"
-                                                    },
                                                     "name": "ifield",
                                                     "typemap_name": "int"
                                                 },
@@ -394,10 +408,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in",
-                                                        "struct_member": "dfield"
-                                                    },
                                                     "name": "dfield",
                                                     "typemap_name": "double"
                                                 },
@@ -418,13 +428,49 @@
                                 "decl": "Cstruct1_ctor",
                                 "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
                                 "name": "Cstruct1_ctor",
-                                "options": {
-                                    "wrap_c": false,
-                                    "wrap_fortran": false,
-                                    "wrap_lua": false
-                                },
+                                "options": {},
+                                "struct_members": [
+                                    "ifield",
+                                    "dfield"
+                                ],
                                 "wrap": {
                                     "python": true
+                                },
+                                "zz_bind": {
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        },
+                                        "dfield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "ifield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        },
+                                        "dfield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        },
+                                        "ifield": {
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    }
                                 },
                                 "zz_fmtargs": {
                                     "+result": {
@@ -531,6 +577,9 @@
                                     "fortran": true,
                                     "python": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_ifield_getter",
                                     "PY_setter": "PY_Cstruct1_ifield_setter",
@@ -561,6 +610,9 @@
                                     "c": true,
                                     "fortran": true,
                                     "python": true
+                                },
+                                "zz_bind": {
+                                    "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_dfield_getter",
@@ -612,9 +664,6 @@
                         "<FUNCTION>": "One  3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "One",
                                 "params": [],
                                 "typemap_name": "void"
@@ -648,6 +697,20 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

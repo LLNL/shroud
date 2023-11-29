@@ -166,7 +166,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // Function:  int incrementCount
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int incr +value
+// Argument:  int incr
 // Statement: c_in_native_scalar
 int AA_example_nested_ExClass1_incrementCount(
     AA_example_nested_ExClass1 * self, int incr)
@@ -249,7 +249,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 // Function:  int getValue
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  int value +value
+// Argument:  int value
 // Statement: c_in_native_scalar
 int AA_example_nested_ExClass1_getValue_from_int(
     AA_example_nested_ExClass1 * self, int value)
@@ -266,7 +266,7 @@ int AA_example_nested_ExClass1_getValue_from_int(
 // Function:  long getValue
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  long value +value
+// Argument:  long value
 // Statement: c_in_native_scalar
 long AA_example_nested_ExClass1_getValue_1(
     AA_example_nested_ExClass1 * self, long value)
@@ -283,7 +283,7 @@ long AA_example_nested_ExClass1_getValue_1(
 // Function:  bool hasAddr
 // Statement: c_function_bool_scalar
 // ----------------------------------------
-// Argument:  bool in +value
+// Argument:  bool in
 // Statement: c_in_bool_scalar
 bool AA_example_nested_ExClass1_hasAddr(
     AA_example_nested_ExClass1 * self, bool in)

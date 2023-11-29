@@ -164,7 +164,7 @@ PP_test_names(
 // Argument:  const std::string & name
 // Statement: py_in_string_&
 // ----------------------------------------
-// Argument:  int flag +value
+// Argument:  int flag
 // Statement: py_in_native_scalar
 static PyObject *
 PP_test_names_flag(
@@ -196,10 +196,10 @@ PP_test_names_flag(
 // Function:  void testoptional
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int i=1 +value
+// Argument:  int i=1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  long j=2 +value
+// Argument:  long j=2
 // Statement: py_in_native_scalar
 static char PP_testoptional_2__doc__[] =
 "documentation"
@@ -272,7 +272,7 @@ PP_test_size_t(
 // Function:  void testmpi
 // Statement: py_default
 // ----------------------------------------
-// Argument:  MPI_Comm comm +value
+// Argument:  MPI_Comm comm
 // Statement: py_in_unknown_scalar
 #ifdef HAVE_MPI
 static PyObject *
@@ -321,7 +321,7 @@ PP_testmpi_serial(
 // Function:  void FuncPtr1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void ( * get)(void) +value
+// Argument:  void ( * get)(void)
 // Exact:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
@@ -391,7 +391,7 @@ PP_FuncPtr2(
 // Function:  void FuncPtr3
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double ( * get)(int i +value, int +value) +value
+// Argument:  double ( * get)(int i +value, int +value)
 // Exact:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
@@ -426,7 +426,7 @@ PP_FuncPtr3(
 // Function:  void FuncPtr5
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
+// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
 // Exact:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"
@@ -550,34 +550,34 @@ PP_verylongfunctionname1(
 // Function:  int verylongfunctionname2
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname1 +value
+// Argument:  int verylongname1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname2 +value
+// Argument:  int verylongname2
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname3 +value
+// Argument:  int verylongname3
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname4 +value
+// Argument:  int verylongname4
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname5 +value
+// Argument:  int verylongname5
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname6 +value
+// Argument:  int verylongname6
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname7 +value
+// Argument:  int verylongname7
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname8 +value
+// Argument:  int verylongname8
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname9 +value
+// Argument:  int verylongname9
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int verylongname10 +value
+// Argument:  int verylongname10
 // Statement: py_in_native_scalar
 static char PP_verylongfunctionname2__doc__[] =
 "documentation"
@@ -644,7 +644,7 @@ PP_verylongfunctionname2(
 // Argument:  double * out +dimension(shape(in))+intent(out)
 // Statement: py_out_native_*_numpy
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+value
+// Argument:  int sizein +implied(size(in))
 // Exact:     py_default
 static char PP_cos_doubles__doc__[] =
 "documentation"

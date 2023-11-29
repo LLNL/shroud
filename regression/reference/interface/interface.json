@@ -17,9 +17,6 @@
                 "<FUNCTION>": "Function1  0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "Function1",
                         "params": [],
                         "typemap_name": "void"
@@ -52,6 +49,13 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -93,19 +97,10 @@
                 "<FUNCTION>": "Function2  1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Function2",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "double"
                                 },
@@ -116,12 +111,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2",
                                     "typemap_name": "int"
                                 },
@@ -139,7 +128,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double Function2(double arg1, int arg2)",
-                "declgen": "double Function2(double arg1 +value, int arg2 +value)",
+                "declgen": "double Function2(double arg1, int arg2)",
                 "name": "Function2",
                 "options": {},
                 "wrap": {
@@ -185,6 +174,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },

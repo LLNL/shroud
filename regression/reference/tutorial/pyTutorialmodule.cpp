@@ -54,10 +54,10 @@ PY_NoReturnNoArguments(
 // Function:  double PassByValue
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1 +value
+// Argument:  double arg1
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int arg2 +value
+// Argument:  int arg2
 // Statement: py_in_native_scalar
 static char PY_PassByValue__doc__[] =
 "documentation"
@@ -147,10 +147,10 @@ PY_ConcatenateStrings(
 // Function:  double UseDefaultArguments
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +value
+// Argument:  double arg1=3.1415
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  bool arg2=true +value
+// Argument:  bool arg2=true
 // Statement: py_in_bool_scalar
 static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
 "documentation"
@@ -241,7 +241,7 @@ PY_OverloadedFunction_from_name(
 // Function:  void OverloadedFunction
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int indx +value
+// Argument:  int indx
 // Statement: py_in_native_scalar
 static PyObject *
 PY_OverloadedFunction_from_index(
@@ -268,7 +268,7 @@ PY_OverloadedFunction_from_index(
 // Function:  void TemplateArgument
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int arg +value
+// Argument:  int arg
 // Statement: py_in_native_scalar
 static PyObject *
 PY_TemplateArgument_int(
@@ -295,7 +295,7 @@ PY_TemplateArgument_int(
 // Function:  void TemplateArgument
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double arg +value
+// Argument:  double arg
 // Statement: py_in_native_scalar
 static PyObject *
 PY_TemplateArgument_double(
@@ -340,7 +340,7 @@ PY_FortranGenericOverloaded_0(
 // Argument:  const std::string & name
 // Statement: py_in_string_&
 // ----------------------------------------
-// Argument:  double arg2 +value
+// Argument:  double arg2
 // Statement: py_in_native_scalar
 static PyObject *
 PY_FortranGenericOverloaded_1(
@@ -373,13 +373,13 @@ PY_FortranGenericOverloaded_1(
 // Function:  int UseDefaultOverload
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int stride=1 +value
+// Argument:  int stride=1
 // Statement: py_in_native_scalar
 static PyObject *
 PY_UseDefaultOverload_num_offset_stride(
@@ -432,16 +432,16 @@ PY_UseDefaultOverload_num_offset_stride(
 // Function:  int UseDefaultOverload
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  double type +value
+// Argument:  double type
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int num +value
+// Argument:  int num
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int offset=0 +value
+// Argument:  int offset=0
 // Statement: py_in_native_scalar
 // ----------------------------------------
-// Argument:  int stride=1 +value
+// Argument:  int stride=1
 // Statement: py_in_native_scalar
 static PyObject *
 PY_UseDefaultOverload_5(
@@ -497,7 +497,7 @@ PY_UseDefaultOverload_5(
 // Function:  TypeID typefunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg +value
+// Argument:  TypeID arg
 // Statement: py_in_native_scalar
 static char PY_typefunc__doc__[] =
 "documentation"
@@ -533,7 +533,7 @@ PY_typefunc(
 // Function:  EnumTypeID enumfunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  EnumTypeID arg +value
+// Argument:  EnumTypeID arg
 // Statement: py_in_native_scalar
 static char PY_enumfunc__doc__[] =
 "documentation"
@@ -573,7 +573,7 @@ PY_enumfunc(
 // Function:  Color colorfunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  Color arg +value
+// Argument:  Color arg
 // Statement: py_in_native_scalar
 static char PY_colorfunc__doc__[] =
 "documentation"

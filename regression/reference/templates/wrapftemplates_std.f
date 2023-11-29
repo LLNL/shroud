@@ -123,7 +123,7 @@ module templates_std_mod
         ! Function:  int & at
         ! Statement: c_function_native_&
         ! ----------------------------------------
-        ! Argument:  size_type n +value
+        ! Argument:  size_type n
         ! Statement: c_in_native_scalar
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
@@ -141,7 +141,7 @@ module templates_std_mod
         ! Function:  int & at
         ! Statement: f_function_native_&_pointer
         ! ----------------------------------------
-        ! Argument:  size_type n +value
+        ! Argument:  size_type n
         ! Statement: f_in_native_scalar
         function c_vector_int_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -198,7 +198,7 @@ module templates_std_mod
         ! Function:  double & at
         ! Statement: c_function_native_&
         ! ----------------------------------------
-        ! Argument:  size_type n +value
+        ! Argument:  size_type n
         ! Statement: c_in_native_scalar
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
@@ -216,7 +216,7 @@ module templates_std_mod
         ! Function:  double & at
         ! Statement: f_function_native_&_pointer
         ! ----------------------------------------
-        ! Argument:  size_type n +value
+        ! Argument:  size_type n
         ! Statement: f_in_native_scalar
         function c_vector_double_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -287,7 +287,7 @@ contains
     ! Function:  int & at
     ! Statement: f_function_native_&_pointer
     ! ----------------------------------------
-    ! Argument:  size_type n +value
+    ! Argument:  size_type n
     ! Statement: f_in_native_scalar
     function vector_int_at(obj, n) &
             result(SHT_rv)
@@ -372,7 +372,7 @@ contains
     ! Function:  double & at
     ! Statement: f_function_native_&_pointer
     ! ----------------------------------------
-    ! Argument:  size_type n +value
+    ! Argument:  size_type n
     ! Statement: f_in_native_scalar
     function vector_double_at(obj, n) &
             result(SHT_rv)

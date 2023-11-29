@@ -398,9 +398,6 @@
                 "<FUNCTION>": "getName  4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "getName",
                         "params": [
                             {
@@ -408,9 +405,6 @@
                                     "attrs": {
                                         "len": "worklen",
                                         "len_trim": "worktrim"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
                                     },
                                     "name": "name",
                                     "pointer": [
@@ -477,6 +471,30 @@
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_char_*_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
                         }
                     }
                 },
@@ -605,9 +623,6 @@
                 "<FUNCTION>": "function1  5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function1",
                         "params": [],
                         "typemap_name": "void"
@@ -641,6 +656,20 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -683,9 +712,6 @@
                 "<FUNCTION>": "function2  6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function2",
                         "params": [],
                         "typemap_name": "void"
@@ -724,6 +750,20 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -769,19 +809,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function3a",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "int"
                                 },
@@ -799,7 +830,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(int i)",
-                "declgen": "void function3a(int i +value)",
+                "declgen": "void function3a(int i)",
                 "name": "function3a",
                 "options": {},
                 "user_fmt": {
@@ -838,6 +869,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -946,19 +1001,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function3a",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "i",
                                     "typemap_name": "long"
                                 },
@@ -976,7 +1022,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(long i)",
-                "declgen": "void function3a(long i +value)",
+                "declgen": "void function3a(long i)",
                 "name": "function3a",
                 "options": {},
                 "user_fmt": {
@@ -1015,6 +1061,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "i": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1122,17 +1192,11 @@
                 "<FUNCTION>": "function4  9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "function4",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "rv",
                                     "pointer": [
                                         {
@@ -1196,6 +1260,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "rv": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "rv": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -1377,9 +1465,6 @@
                         "attrs": {
                             "name": "fiveplus"
                         },
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "function5",
                         "params": [],
                         "typemap_name": "void"
@@ -1413,6 +1498,20 @@
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
                         }
                     }
                 },
@@ -1455,16 +1554,10 @@
                 "<FUNCTION>": "TestMultilineSplicer  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "TestMultilineSplicer",
                         "params": [
                             {
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -1481,9 +1574,6 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "metaattrs": {
                                         "intent": "out"
                                     },
                                     "name": "value",
@@ -1583,6 +1673,40 @@
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "intent": "out"
+                            }
                         }
                     }
                 },
@@ -1773,19 +1897,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -1795,12 +1910,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -1823,7 +1932,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
+                "declgen": "void FunctionTU(T arg1, U arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -1880,6 +1989,25 @@
                     "U"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
@@ -1896,19 +2024,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -1919,12 +2038,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -1942,7 +2055,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
+                "declgen": "void FunctionTU(int arg1, long arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2048,6 +2161,40 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2225,19 +2372,10 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "FunctionTU",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1"
                                 },
                                 "specifier": [
@@ -2248,12 +2386,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg2"
                                 },
                                 "specifier": [
@@ -2271,7 +2403,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
+                "declgen": "void FunctionTU(float arg1, double arg2)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2380,6 +2512,40 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "arg2": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2550,9 +2716,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -2591,6 +2754,15 @@
                     "T"
                 ],
                 "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
@@ -2607,9 +2779,6 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "UseImplWorker",
                         "params": [],
                         "typemap_name": "int"
@@ -2665,6 +2834,20 @@
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
                         }
                     }
                 },
@@ -2760,9 +2943,6 @@
                 "<FUNCTION>": "Cstruct_as_class_sum  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "function"
-                        },
                         "name": "Cstruct_as_class_sum",
                         "params": [
                             {
@@ -2770,9 +2950,6 @@
                                 "declarator": {
                                     "attrs": {
                                         "pass": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
                                     },
                                     "name": "point",
                                     "pointer": [
@@ -2833,6 +3010,30 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow_*"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "point": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -2996,17 +3197,11 @@
                 "<FUNCTION>": "external_funcs  15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "external_funcs",
                         "params": [
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "rdbase",
                                     "pointer": [
                                         {
@@ -3015,7 +3210,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3024,9 +3218,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "pkg",
                                     "pointer": [
                                         {
@@ -3035,7 +3226,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3044,9 +3234,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
@@ -3055,7 +3242,6 @@
                                     ],
                                     "typemap_name": "char"
                                 },
-                                "ftrim_char_in": true,
                                 "specifier": [
                                     "char"
                                 ],
@@ -3063,9 +3249,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "alloc",
                                         "pointer": [
@@ -3075,17 +3258,11 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "alloc",
                                     "params": [
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "inout"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "inout"
                                                 },
                                                 "name": "arr",
@@ -3104,9 +3281,6 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "out"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "out"
                                                 },
                                                 "name": "err",
@@ -3132,9 +3306,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "afree",
                                         "pointer": [
@@ -3144,17 +3315,11 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "afree",
                                     "params": [
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "inout"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "inout"
                                                 },
                                                 "name": "arr",
@@ -3180,9 +3345,6 @@
                             },
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
                                     "func": {
                                         "name": "assoc",
                                         "pointer": [
@@ -3192,17 +3354,11 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "assoc",
                                     "params": [
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "in"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "in"
                                                 },
                                                 "name": "arr",
@@ -3221,9 +3377,6 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "out"
-                                                },
-                                                "metaattrs": {
                                                     "intent": "out"
                                                 },
                                                 "name": "err",
@@ -3256,7 +3409,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr+intent(inout), int *err+intent(out)), void (*afree)(double *arr+intent(inout)), void (*assoc)(double *arr+intent(in), int *err+intent(out)))",
-                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)",
+                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)), void ( * afree)(double * arr +intent(inout)), void ( * assoc)(double * arr +intent(in), int * err +intent(out)))",
                 "name": "external_funcs",
                 "options": {
                     "wrap_python": false
@@ -3337,21 +3490,61 @@
                         },
                         "name": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
                         },
                         "pkg": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
                         },
                         "rdbase": {
                             "meta": {
+                                "ftrim_char_in": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_char_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "afree": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "alloc": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "assoc": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "pkg": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        },
+                        "rdbase": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -3651,19 +3844,10 @@
                 "<FUNCTION>": "bindtest  16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "bindtest",
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
                                     "name": "arg1",
                                     "typemap_name": "int"
                                 },
@@ -3681,7 +3865,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindtest(int arg1)",
-                "declgen": "void bindtest(int arg1 +value)",
+                "declgen": "void bindtest(int arg1)",
                 "name": "bindtest",
                 "options": {
                     "wrap_python": false
@@ -3726,6 +3910,18 @@
                             "meta": {
                                 "attr": true,
                                 "attr2": "34+43"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "in"
                             }
                         }
                     }
@@ -3826,13 +4022,10 @@
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
-                                            "_constructor": true,
-                                            "_name": "ctor",
                                             "name": "defaultctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
+                                        "default_name": "ctor",
+                                        "is_ctor": true,
                                         "params": [],
                                         "typemap_name": "ns0::Names"
                                     },
@@ -3870,6 +4063,20 @@
                                                 "intent": "ctor"
                                             },
                                             "stmt": "f_ctor_shadow_scalar_capptr"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "ctor"
+                                            }
                                         }
                                     }
                                 },
@@ -3973,9 +4180,6 @@
                                 "<FUNCTION>": "method1  1 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -4012,6 +4216,20 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -4059,9 +4277,6 @@
                                 "<FUNCTION>": "method2  2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "method2",
                                         "params": [],
                                         "typemap_name": "void"
@@ -4100,6 +4315,20 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -4275,9 +4504,6 @@
                         "<FUNCTION>": "init_ns1  20 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "init_ns1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -4311,6 +4537,20 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -4905,9 +5145,6 @@
                                 "<FUNCTION>": "Member1  3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "metaattrs": {
-                                            "intent": "subroutine"
-                                        },
                                         "name": "Member1",
                                         "params": [],
                                         "typemap_name": "void"
@@ -4940,6 +5177,13 @@
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
                                         }
                                     }
                                 },
@@ -5016,9 +5260,6 @@
                         "<FUNCTION>": "Worker1  21 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "Worker1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -5051,6 +5292,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },
@@ -5128,9 +5376,6 @@
                         "<FUNCTION>": "Worker1  22 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "Worker1",
                                 "params": [],
                                 "typemap_name": "void"
@@ -5163,6 +5408,13 @@
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
                                 }
                             }
                         },

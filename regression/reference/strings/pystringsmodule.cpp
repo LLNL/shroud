@@ -105,7 +105,7 @@ PY_init_test(
 // Function:  void passChar
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char status +value
+// Argument:  char status
 // Statement: py_in_char_scalar
 static char PY_passChar__doc__[] =
 "documentation"
@@ -1078,7 +1078,7 @@ PY_fetchStringPointerLen(
 // Function:  int acceptStringInstance
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  std::string arg1 +value
+// Argument:  std::string arg1
 // Statement: py_in_string_scalar
 static char PY_acceptStringInstance__doc__[] =
 "documentation"
@@ -1193,7 +1193,7 @@ PY_explicit1(
 // Function:  void CpassChar
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char status +value
+// Argument:  char status
 // Statement: py_in_char_scalar
 static char PY_CpassChar__doc__[] =
 "documentation"

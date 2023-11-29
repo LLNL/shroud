@@ -110,7 +110,7 @@ void STR_init_test(void)
 // Function:  void passChar
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  char status +value
+// Argument:  char status
 // Statement: c_in_char_scalar
 void STR_passChar(char status)
 {
@@ -127,7 +127,7 @@ void STR_passChar(char status)
 // Function:  void passCharForce
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  char status +value
+// Argument:  char status
 // Statement: c_in_char_scalar
 void STR_passCharForce(char status)
 {
@@ -1384,7 +1384,7 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // Function:  int acceptStringInstance
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  std::string arg1 +value
+// Argument:  std::string arg1
 // Statement: c_in_string_scalar
 int STR_acceptStringInstance(char *arg1)
 {
@@ -1402,7 +1402,7 @@ int STR_acceptStringInstance(char *arg1)
 // Function:  int acceptStringInstance
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  std::string arg1 +value
+// Argument:  std::string arg1
 // Statement: f_in_string_scalar_cfi
 int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
@@ -1830,11 +1830,11 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 // Function:  int CpassCharPtrCAPI
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  void * addr +value
+// Argument:  void * addr
 // Statement: c_in_void_*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*_capi
+// Statement: c_in_char_*
 int STR_CpassCharPtrCAPI(void * addr, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI
@@ -1855,7 +1855,7 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
 // Statement: c_in_char_*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*_capi
+// Statement: c_in_char_*
 int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI2

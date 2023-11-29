@@ -480,16 +480,10 @@ class WrapperMixin(object):
         output.append(self.doxygen_end)
 
     def get_metaattrs(self, ast):
-        decl = []
-        ast.declarator.gen_attrs(ast.declarator.metaattrs, decl, dict(
-            dimension=True,
-            struct_member=True,
-            # XXX - moved to _bind
-            api=True,
-            deref=True,
-            intent=True,
-        ))
-        return "".join(decl)
+        """This is the older metaattrs.
+        Maybe update for _bind.meta.
+        """
+        return ""
         
     def document_stmts(self, output, ast, stmt0):
         """A comments to show which statements were used.

@@ -36,6 +36,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -51,13 +54,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "items",
                                 "pointer": [
@@ -77,6 +73,17 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -508,17 +515,18 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "dimension": [
-                                {
-                                    "name": "nitems"
-                                }
-                            ]
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "nitems",
+                            "intent": "getter"
                         },
                         "name": "DataPointer_get_items",
                         "params": [
                             {
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "SH_this",
                                     "pointer": [
                                         {
@@ -545,8 +553,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
+                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "type_defines",
@@ -573,6 +581,11 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ],
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -582,6 +595,23 @@
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ],
+                                "intent": "getter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "in"
+                            }
                         }
                     }
                 },
@@ -684,7 +714,7 @@
                 ],
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
+                        "attrs": {
                             "intent": "setter"
                         },
                         "name": "DataPointer_set_items",
@@ -707,15 +737,8 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
+                                        "intent": "setter",
                                         "rank": 1
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ]
                                     },
                                     "name": "val",
                                     "pointer": [
@@ -739,7 +762,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
-                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "DataPointer_set_items",
                 "options": {},
                 "user_fmt": {
@@ -769,6 +792,23 @@
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "setter"
+                            }
+                        },
+                        "SH_this": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        },
+                        "val": {
+                            "meta": {
+                                "intent": "setter"
+                            }
                         }
                     }
                 },
@@ -820,7 +860,6 @@
                     "val": {
                         "fmtf": {
                             "c_addr": "",
-                            "c_array_size2": "nitems",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -894,6 +933,9 @@
                                     "c": true,
                                     "fortran": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -909,13 +951,6 @@
                                     "declarator": {
                                         "attrs": {
                                             "dimension": "nitems"
-                                        },
-                                        "metaattrs": {
-                                            "dimension": [
-                                                {
-                                                    "name": "nitems"
-                                                }
-                                            ]
                                         },
                                         "name": "items",
                                         "pointer": [
@@ -935,6 +970,17 @@
                                 "wrap": {
                                     "c": true,
                                     "fortran": true
+                                },
+                                "zz_bind": {
+                                    "share": {
+                                        "meta": {
+                                            "dim_ast": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        }
+                                    }
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
@@ -1041,17 +1087,18 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "dimension": "nitems",
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1078,8 +1125,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1106,6 +1153,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
@@ -1115,6 +1167,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_struct_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
+                                        "intent": "getter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1217,7 +1286,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "DataPointer_set_items",
@@ -1240,15 +1309,8 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
+                                                "intent": "setter",
                                                 "rank": 1
-                                            },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -1272,7 +1334,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1302,6 +1364,23 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1353,7 +1432,6 @@
                             "val": {
                                 "fmtf": {
                                     "c_addr": "",
-                                    "c_array_size2": "nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -1454,6 +1532,9 @@
                                     "c": true,
                                     "fortran": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -1469,13 +1550,6 @@
                                     "declarator": {
                                         "attrs": {
                                             "dimension": "nitems"
-                                        },
-                                        "metaattrs": {
-                                            "dimension": [
-                                                {
-                                                    "name": "nitems"
-                                                }
-                                            ]
                                         },
                                         "name": "items",
                                         "pointer": [
@@ -1495,6 +1569,17 @@
                                 "wrap": {
                                     "c": true,
                                     "fortran": true
+                                },
+                                "zz_bind": {
+                                    "share": {
+                                        "meta": {
+                                            "dim_ast": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        }
+                                    }
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
@@ -1601,17 +1686,18 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "dimension": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "dimension": "nitems",
+                                    "intent": "getter"
                                 },
                                 "name": "DataPointer_get_items",
                                 "params": [
                                     {
                                         "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
                                             "name": "SH_this",
                                             "pointer": [
                                                 {
@@ -1638,8 +1724,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "type_defines",
@@ -1666,6 +1752,11 @@
                                     "meta": {
                                         "api": "cdesc",
                                         "deref": "pointer",
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
@@ -1675,6 +1766,23 @@
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_struct_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "dim_ast": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
+                                        "intent": "getter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "in"
+                                    }
                                 }
                             }
                         },
@@ -1777,7 +1885,7 @@
                         ],
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
+                                "attrs": {
                                     "intent": "setter"
                                 },
                                 "name": "DataPointer_set_items",
@@ -1800,15 +1908,8 @@
                                     {
                                         "declarator": {
                                             "attrs": {
-                                                "intent": "in",
+                                                "intent": "setter",
                                                 "rank": 1
-                                            },
-                                            "metaattrs": {
-                                                "dimension": [
-                                                    {
-                                                        "name": "nitems"
-                                                    }
-                                                ]
                                             },
                                             "name": "val",
                                             "pointer": [
@@ -1832,7 +1933,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1862,6 +1963,23 @@
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter_native_*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "SH_this": {
+                                    "meta": {
+                                        "intent": "inout"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
                                 }
                             }
                         },
@@ -1913,7 +2031,6 @@
                             "val": {
                                 "fmtf": {
                                     "c_addr": "",
-                                    "c_array_size2": "nitems",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
