@@ -260,19 +260,6 @@
                                 "attrs": {
                                     "dimension": "nitems+nitems"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "+",
-                                            "right": {
-                                                "name": "nitems"
-                                            }
-                                        }
-                                    ]
-                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
@@ -324,19 +311,6 @@
                                 "attrs": {
                                     "dimension": "nitems*TWO"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "left": {
-                                                "name": "nitems"
-                                            },
-                                            "op": "*",
-                                            "right": {
-                                                "name": "TWO"
-                                            }
-                                        }
-                                    ]
-                                },
                                 "name": "dvalue",
                                 "pointer": [
                                     {
@@ -387,13 +361,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "svalue",
                                 "pointer": [
@@ -511,13 +478,6 @@
                                 "attrs": {
                                     "dimension": "nitems"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
-                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
@@ -562,13 +522,6 @@
                             "declarator": {
                                 "attrs": {
                                     "dimension": "nitems"
-                                },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
                                 },
                                 "name": "dvalue",
                                 "pointer": [

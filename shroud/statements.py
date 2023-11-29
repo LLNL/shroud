@@ -92,6 +92,9 @@ def get_func_metaattrs(node, wlang):
 def get_arg_metaattrs(node, arg, wlang):
     return node._bind[wlang][arg.declarator.user_name].meta
 
+def get_var_bind(node, wlang):
+    return node._bind[wlang]
+
 def get_func_bind(node, wlang):
     return node._bind[wlang]["+result"]
 

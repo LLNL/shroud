@@ -5151,13 +5151,6 @@
                                 "attrs": {
                                     "dimension": "nitems"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
-                                },
                                 "name": "items",
                                 "pointer": [
                                     {

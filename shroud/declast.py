@@ -2531,3 +2531,28 @@ def find_arg_index_by_name(decls, name):
         if decl.declarator.name == name:
             return i
     return -1
+
+def check_dimension(dim, trace=False):
+    """Return AST of dim.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    trace : boolean
+    """
+    if dim == "..":
+        return AssumedRank()
+    else:
+        return ExprParser(dim, trace=trace).dimension_shape()
+
+def find_rank_of_dimension(dim):
+    """Return the rank of a dimension string."""
+    if dim is None:
+        return None
+    elif dim == "..":
+        return None
+    dim_ast = ExprParser(dim).dimension_shape()
+    return len(dim_ast)

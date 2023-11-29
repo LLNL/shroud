@@ -62,10 +62,6 @@ class VerifyAttrs(object):
         cursor = self.cursor
         for cls in node.classes:
             cursor.push_node(cls)
-            for var in cls.variables:
-                cursor.push_node(var)
-                self.check_var_attrs(cls, var)
-                cursor.pop_node(var)
             for func in cls.functions:
                 cursor.push_node(func)
                 self.check_fcn_attrs(func)
@@ -81,39 +77,6 @@ class VerifyAttrs(object):
             cursor.push_node(ns)
             self.verify_namespace_attrs(ns)
             cursor.pop_node(ns)
-
-    def check_var_attrs(self, cls, node):
-        """Check attributes for variables.
-        This includes struct and class members.
-
-        Args:
-            cls -
-            node -
-        """
-        ast = node.ast
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        for attr in attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
-            # XXX - deref on class/struct members
-            if attr not in ["name", "readonly", "dimension", "deref"]:
-                self.cursor.generate(
-                    "Illegal attribute '{}' for variable '{}'".format(
-                        attr, node.name
-                    ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
-                )
-
-        dim = attrs["dimension"]
-        if dim:
-            is_ptr = declarator.is_indirect()
-            if not is_ptr:
-                self.cursor.generate(
-                    "dimension attribute can only be "
-                    "used on pointer and references"
-                )
-            meta = declarator.metaattrs
-            self.parse_dim_attrs(dim, meta)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
@@ -167,7 +130,6 @@ class VerifyAttrs(object):
         declarator = arg.declarator
         argname = declarator.user_name
         attrs = declarator.attrs
-        meta = declarator.metaattrs
         arg_typemap = arg.typemap
 
         # charlen
@@ -222,42 +184,6 @@ class VerifyAttrs(object):
         # Flag node if any argument is assumed-rank.
         if attrs["dimension"] == "..":   # assumed-rank
             node._gen_fortran_generic = True
-
-    def parse_dim_attrs(self, dim, meta):
-        """Parse dimension attributes and save the AST.
-        This tree will be traversed by the wrapping classes
-        to convert to language specific code.
-
-        Parameters
-        ----------
-        dim : dimension string
-        meta: Scope
-        """
-        if not dim:
-            return
-        try:
-            check_dimension(dim, meta)
-        except error.ShroudParseError:
-            self.cursor.generate("Unable to parse dimension: {}"
-                                     .format(dim))
-
-
-def check_dimension(dim, meta, trace=False):
-    """Assign AST of dim and assumed_rank flag to meta.
-
-    Look for assumed-rank, "..", first.
-    Else a comma delimited list of expressions.
-
-    Parameters
-    ----------
-    dim : str
-    meta : dict
-    trace : boolean
-    """
-    if dim == "..":
-        meta["dim_ast"] = declast.AssumedRank()
-    else:
-        meta["dim_ast"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 
 class GenFunctions(object):
@@ -394,9 +320,6 @@ class GenFunctions(object):
         For a class, they're added to the class.
         For a struct, they're added to the struct container (Library, Namespace)
 
-        Must explicitly set metaattrs for arguments since that was
-        done earlier when validating attributes.
-
         Parameters
         ----------
         parent : ast.LibraryNode, ast.ClassNode
@@ -503,9 +426,9 @@ class GenFunctions(object):
                 intent="setter",
             )
         )
-        dim = declarator.metaattrs["dim_ast"]
+        dim = declarator.attrs["dimension"]
         if dim:
-            attrs["val"]["rank"] = len(dim)
+            attrs["val"]["rank"] = declast.find_rank_of_dimension(dim)
 
         fcn = parent.add_function(decl, fattrs=fattrs, attrs=attrs, format=fmt_func)
         fcn.wrap.assign(fortran=True)
@@ -1117,33 +1040,6 @@ class GenFunctions(object):
             node.fmtdict.function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
-
-    def move_arg_attributes(self, arg, old_node, new_node):
-        """After new_node has been created from old_node,
-        the result is being converted into an argument.
-        Move some attributes that are associated with the function
-        to the new argument.
-
-        Note: Used with 'char *' and std::string arguments.
-
-        Parameters
-        ----------
-        arg : ast.Declaration
-            New argument, result of old_node.
-        old_node : FunctionNode
-            Original function (wrap fortran).
-        new_node : FunctionNode
-            New function (wrap c) that passes arg.
-        """
-        arg.metaattrs["deref"] = new_node.ast.metaattrs["deref"]
-        new_node.ast.metaattrs["deref"] = None
-            
-        c_attrs = new_node.ast.attrs
-        attrs = arg.attrs
-        for name in ["owner", "free_pattern"]:
-            if c_attrs[name]:
-                attrs[name] = c_attrs[name]
-                del c_attrs[name]
 
     def XXXcheck_class_dependencies(self, node):
         """

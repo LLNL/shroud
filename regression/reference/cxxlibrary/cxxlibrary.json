@@ -399,13 +399,6 @@
                                 "attrs": {
                                     "dimension": "sublevels"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "sublevels"
-                                        }
-                                    ]
-                                },
                                 "name": "child",
                                 "pointer": [
                                     {

@@ -55,13 +55,6 @@
                                 "attrs": {
                                     "dimension": "nitems"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "nitems"
-                                        }
-                                    ]
-                                },
                                 "name": "items",
                                 "pointer": [
                                     {
@@ -959,13 +952,6 @@
                                         "attrs": {
                                             "dimension": "nitems"
                                         },
-                                        "metaattrs": {
-                                            "dim_ast": [
-                                                {
-                                                    "name": "nitems"
-                                                }
-                                            ]
-                                        },
                                         "name": "items",
                                         "pointer": [
                                             {
@@ -1564,13 +1550,6 @@
                                     "declarator": {
                                         "attrs": {
                                             "dimension": "nitems"
-                                        },
-                                        "metaattrs": {
-                                            "dim_ast": [
-                                                {
-                                                    "name": "nitems"
-                                                }
-                                            ]
                                         },
                                         "name": "items",
                                         "pointer": [

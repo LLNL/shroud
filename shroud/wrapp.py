@@ -3371,7 +3371,7 @@ def py_struct_dimension(parent, var, fmt):
     if declarator.array: # Fixed size array.
         metadim = declarator.array
     elif declarator.attrs["dimension"] is not None:
-        metadim = declarator.metaattrs["dim_ast"]
+        metadim = statements.get_var_bind(var, "share").meta["dim_ast"]
     else:
         metadim = None
     if metadim:

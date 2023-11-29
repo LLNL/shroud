@@ -82,8 +82,6 @@ class FillMeta(object):
         declarator = ast.declarator
         attrs = declarator.attrs
         for attr in attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
             # XXX - deref on class/struct members
             if attr not in ["name", "readonly", "dimension", "deref"]:
                 self.cursor.generate(
@@ -785,27 +783,10 @@ class FillMetaShare(FillMeta):
         if not dim:
             return
         try:
-            check_dimension(dim, meta)
+            meta["dim_ast"] = declast.check_dimension(dim)
         except error.ShroudParseError:
             self.cursor.generate("Unable to parse dimension: {}"
                                      .format(dim))
-
-def check_dimension(dim, meta, trace=False):
-    """Assign AST of dim and assumed_rank flag to meta.
-
-    Look for assumed-rank, "..", first.
-    Else a comma delimited list of expressions.
-
-    Parameters
-    ----------
-    dim : str
-    meta : dict
-    trace : boolean
-    """
-    if dim == "..":
-        meta["dim_ast"] = declast.AssumedRank()
-    else:
-        meta["dim_ast"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 ######################################################################
 #

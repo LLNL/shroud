@@ -23,13 +23,6 @@
                                     "badvar": true,
                                     "dimension": "10"
                                 },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "constant": "10"
-                                        }
-                                    ]
-                                },
                                 "name": "arg1",
                                 "typemap_name": "int"
                             },
@@ -99,13 +92,6 @@
                                 "attrs": {
                                     "deref": "pointerxx",
                                     "dimension": "narg2"
-                                },
-                                "metaattrs": {
-                                    "dim_ast": [
-                                        {
-                                            "name": "narg2"
-                                        }
-                                    ]
                                 },
                                 "name": "arg2",
                                 "pointer": [
