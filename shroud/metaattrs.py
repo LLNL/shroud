@@ -464,7 +464,6 @@ class FillMeta(object):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
-        shared = declarator.metaattrs
         api = attrs["api"]
 
         if api is None:

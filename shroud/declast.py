@@ -1296,7 +1296,6 @@ class Declarator(Node):
         self.array = []
         self.init = None  # initial value
         self.attrs = collections.defaultdict(lambda: None)
-        self.metaattrs = collections.defaultdict(lambda: None)
         self.func_const = False
         self.typemap = None
         self.is_ctor = False
@@ -1545,7 +1544,6 @@ class Declaration(Node):
     init =         a  *a   a=1
 
     attrs     - Attributes set by the user.
-    metaattrs - Attributes set by Shroud.
     """
 
     fortran_ranks = [

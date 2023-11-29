@@ -147,14 +147,6 @@ class ToDict(visitor.Visitor):
         if attrs:
             d["attrs"] = attrs
 
-        metaattrs = {key: value
-                 for (key, value) in node.metaattrs.items()
-                 if value is not None}
-        if metaattrs:
-            if "dim_ast" in metaattrs:
-                metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
-            d["metaattrs"] = metaattrs
-        
         return d
 
     def visit_Declaration(self, node):
