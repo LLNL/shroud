@@ -51,6 +51,12 @@ class BindArg(object):
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
 
+def fetch_var_bind(node, wlang):
+    bindarg = node._bind.setdefault(wlang, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg
+
 def fetch_func_bind(node, wlang):
     bind = node._bind.setdefault(wlang, {})
     bindarg = bind.setdefault("+result", BindArg())

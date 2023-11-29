@@ -253,6 +253,9 @@
                             "lua": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Class1_flag_getter",
                             "PY_setter": "nullptr",

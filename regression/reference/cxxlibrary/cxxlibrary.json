@@ -208,6 +208,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_cls_ifield_getter",
                             "PY_setter": "PY_Cstruct1_cls_ifield_setter",
@@ -236,6 +239,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_cls_dfield_getter",
@@ -307,6 +313,9 @@
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -334,6 +343,9 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -367,6 +379,9 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "CXX_nested",
@@ -413,6 +428,17 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "sublevels"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "CXX_nested",
@@ -2172,6 +2198,9 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -5187,6 +5216,9 @@
                                     "fortran": true,
                                     "python": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -5214,6 +5246,9 @@
                                     "c": true,
                                     "fortran": true,
                                     "python": true
+                                },
+                                "zz_bind": {
+                                    "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "double",

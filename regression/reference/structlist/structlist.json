@@ -227,6 +227,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_name_getter",
                             "PY_member_data": "name_dataobj",
@@ -263,6 +266,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_count_getter",

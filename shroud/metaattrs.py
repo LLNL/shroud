@@ -36,9 +36,10 @@ from . import statements
 class FillMeta(object):
     """Loop over Nodes and fill meta attributes.
     """
-    def __init__(self, newlibrary):
+    def __init__(self, newlibrary, wlang):
         self.newlibrary = newlibrary
         self.language = newlibrary.language
+        self.wlang = wlang
         self.cursor = error.get_cursor()
 
     def meta_library(self):
@@ -51,7 +52,7 @@ class FillMeta(object):
             cursor.push_phase("FillMeta class function")
             for var in cls.variables:
                 cursor.push_node(var)
-#                self.meta_variable(cls, var)
+                self.meta_variable(cls, var)
                 cursor.pop_node(var)
             for func in cls.functions:
                 cursor.push_node(func)
@@ -69,6 +70,38 @@ class FillMeta(object):
         for ns in node.namespaces:
             self.meta_namespace(ns)
 
+    def check_var_attrs(self, node, meta):
+        """Check attributes for variables.
+        This includes struct and class members.
+
+        Args:
+            node -
+            meta - 
+        """
+        ast = node.ast
+        declarator = ast.declarator
+        attrs = declarator.attrs
+        for attr in attrs:
+            if attr[0] == "_":  # internal attribute
+                continue
+            # XXX - deref on class/struct members
+            if attr not in ["name", "readonly", "dimension", "deref"]:
+                self.cursor.generate(
+                    "Illegal attribute '{}' for variable '{}'".format(
+                        attr, node.name
+                    ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
+                )
+
+        dim = attrs["dimension"]
+        if dim:
+            is_ptr = declarator.is_indirect()
+            if not is_ptr:
+                self.cursor.generate(
+                    "dimension attribute can only be "
+                    "used on pointer and references"
+                )
+            self.parse_dim_attrs(dim, meta)
+        
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
         intent = declarator.attrs["intent"]
@@ -529,8 +562,15 @@ class FillMeta(object):
 #
 
 class FillMetaShare(FillMeta):
+    def meta_variable(self, cls, node):
+        wlang = self.wlang
+        node_cursor = self.cursor.current
+        bind = statements.fetch_var_bind(node, wlang)
+
+        self.check_var_attrs(node, bind.meta)
+        
     def meta_function(self, cls, node):
-        wlang = "share"
+        wlang = self.wlang
         func_cursor = self.cursor.current
         #####
         ast = node.ast
@@ -771,10 +811,14 @@ def check_dimension(dim, meta, trace=False):
 #
 
 class FillMetaC(FillMeta):
+    def meta_variable(self, cls, node):
+        wlang = self.wlang
+        node_cursor = self.cursor.current
+        
     def meta_function(self, cls, node):
         if not node.wrap.c:
             return
-        wlang = "c"
+        wlang = self.wlang
         func_cursor = self.cursor.current
         #####
         ast = node.ast
@@ -818,10 +862,14 @@ class FillMetaC(FillMeta):
 #
 
 class FillMetaFortran(FillMeta):
+    def meta_variable(self, cls, node):
+        wlang = self.wlang
+        node_cursor = self.cursor.current
+        
     def meta_function(self, cls, node):
         if not node.wrap.fortran:
             return
-        wlang = "f"
+        wlang = self.wlang
         func_cursor = self.cursor.current
         #####
         ast = node.ast
@@ -906,10 +954,14 @@ class FillMetaFortran(FillMeta):
 #
 
 class FillMetaPython(FillMeta):
+    def meta_variable(self, cls, node):
+        wlang = self.wlang
+        node_cursor = self.cursor.current
+        
     def meta_function(self, cls, node):
         if not node.wrap.python:
             return
-        wlang = "py"
+        wlang = self.wlang
         func_cursor = self.cursor.current
         #####
         ast = node.ast
@@ -977,10 +1029,14 @@ class FillMetaPython(FillMeta):
 #
 
 class FillMetaLua(FillMeta):
+    def meta_variable(self, cls, node):
+        wlang = self.wlang
+        node_cursor = self.cursor.current
+        
     def meta_function(self, cls, node):
         if not node.wrap.python:
             return
-        wlang = "lua"
+        wlang = self.wlang
         func_cursor = self.cursor.current
         #####
         ast = node.ast
@@ -1028,5 +1084,5 @@ process_map=dict(
 def process_metaattrs(newlibrary, wlang):
     """Process attributes for a language.
     """
-    process_map[wlang](newlibrary).meta_library()
+    process_map[wlang](newlibrary, wlang).meta_library()
         

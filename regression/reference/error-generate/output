@@ -78,6 +78,20 @@ process_class: class nested already exists in class_map
 Wrote error_types.yaml
 
 ----------------------------------------
+Phase: FillMeta class function
+----------------------------------------
+Node: arg1
+line 85
+int arg1 +badvar+dimension(10)
+Illegal attribute 'badvar' for variable 'arg1'
+only 'name', 'readonly', 'dimension' and 'deref' are allowed on variables
+--------------------
+Node: arg1
+line 85
+int arg1 +badvar+dimension(10)
+dimension attribute can only be used on pointer and references
+
+----------------------------------------
 Phase: FillMeta function
 ----------------------------------------
 Node: func0

@@ -36,6 +36,9 @@
                             "c": true,
                             "fortran": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -77,6 +80,17 @@
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
@@ -926,6 +940,9 @@
                                     "c": true,
                                     "fortran": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -967,6 +984,17 @@
                                 "wrap": {
                                     "c": true,
                                     "fortran": true
+                                },
+                                "zz_bind": {
+                                    "share": {
+                                        "meta": {
+                                            "dim_ast": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        }
+                                    }
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
@@ -1518,6 +1546,9 @@
                                     "c": true,
                                     "fortran": true
                                 },
+                                "zz_bind": {
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
@@ -1559,6 +1590,17 @@
                                 "wrap": {
                                     "c": true,
                                     "fortran": true
+                                },
+                                "zz_bind": {
+                                    "share": {
+                                        "meta": {
+                                            "dim_ast": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        }
+                                    }
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",

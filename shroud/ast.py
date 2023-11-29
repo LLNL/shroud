@@ -1960,6 +1960,14 @@ class VariableNode(AstNode):
           format:
              baz: 4
 
+    _bind = {
+       'f': {   statements.BindArg
+          stmt: Scope
+          meta: collections.defaultdict(lambda: None)
+          fmtdict:  Scope(_fmtfunc)
+        }
+    }
+
     Args:
         ast - If None, compute from decl.
     """
@@ -1981,6 +1989,7 @@ class VariableNode(AstNode):
         #        self.default_format(parent, format, kwargs)
         self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
+        self._bind = {}
 
         if not decl:
             raise RuntimeError("VariableNode missing decl")

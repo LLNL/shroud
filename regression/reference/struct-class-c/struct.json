@@ -212,6 +212,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_ifield_getter",
                             "PY_setter": "PY_Cstruct1_ifield_setter",
@@ -240,6 +243,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct1_dfield_getter",
@@ -509,6 +515,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_cfield_getter",
                             "PY_member_data": "cfield_dataobj",
@@ -546,6 +555,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_const_dvalue_getter",
@@ -990,6 +1002,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_list_nitems_getter",
                             "PY_setter": "PY_Cstruct_list_nitems_setter",
@@ -1039,6 +1054,23 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                                "name": "nitems"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_list_ivalue_getter",
@@ -1093,6 +1125,23 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "*",
+                                            "right": {
+                                                "name": "TWO"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_list_dvalue_getter",
                             "PY_member_data": "dvalue_dataobj",
@@ -1142,6 +1191,17 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_list_svalue_getter",
@@ -1488,6 +1548,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_numpy_nitems_getter",
                             "PY_setter": "PY_Cstruct_numpy_nitems_setter",
@@ -1531,6 +1594,17 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_numpy_ivalue_getter",
@@ -1578,6 +1652,17 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {
+                                "meta": {
+                                    "dim_ast": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                }
+                            }
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_numpy_dvalue_getter",
@@ -1845,6 +1930,9 @@
                         "wrap": {
                             "python": true
                         },
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_name_getter",
                             "PY_member_data": "name_dataobj",
@@ -1881,6 +1969,9 @@
                         "options": {},
                         "wrap": {
                             "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
                         },
                         "zz_fmtdict": {
                             "PY_getter": "PY_Arrays1_count_getter",
@@ -1955,6 +2046,9 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -1979,6 +2073,9 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2038,6 +2135,9 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2062,6 +2162,9 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2086,6 +2189,9 @@
                         "name": "z1",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
@@ -2142,6 +2248,9 @@
                         "name": "sublevels",
                         "options": {},
                         "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",

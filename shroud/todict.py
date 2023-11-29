@@ -526,6 +526,7 @@ class ToDict(visitor.Visitor):
             "fmtdict",
             "options",
             "wrap",
+            "_bind",
         ])
         add_non_none_fields(node, d, ["linenumber"])
         return d

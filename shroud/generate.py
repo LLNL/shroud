@@ -411,7 +411,6 @@ class GenFunctions(object):
         ast = var.ast
         declarator = ast.declarator
         sgroup = ast.typemap.sgroup
-        meta = declarator.metaattrs
 
         fmt = util.Scope(var.fmtdict)
         fmt_func = dict(
