@@ -451,6 +451,8 @@ class ToDict(visitor.Visitor):
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
         if node.struct_members:
+            # struct_members are ast.VariableNode, add name instead
+            # to avoid a huge dump.
             d["struct_members"] = list(node.struct_members.keys())
 
         if node.helpers:
