@@ -32,6 +32,7 @@ void acceptStructInOutPtr(Cstruct1 *arg);
 Cstruct1 returnStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
+Cstruct1 *returnStructPtrArray(void);
 
 int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg));
 

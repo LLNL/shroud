@@ -86,6 +86,7 @@ contains
     character(lenoutbuf)  :: outbuf
     type(cstruct1) :: str1
     type(cstruct1), pointer :: str2
+    type(cstruct1), pointer :: strarr(:)
 
     call set_case_name("test_struct2")
 
@@ -95,14 +96,22 @@ contains
 
     nullify(str2)
     str2 => return_struct_ptr1(33, 33.5d0)
-    call assert_true(associated(str2), "returnStructPtr1")
+    call assert_true(associated(str2), "returnStructPtr1 associated")
     call assert_equals(33, str2%ifield, "returnStructPtr2")
 
     nullify(str2)
     str2 => return_struct_ptr2(35, 35.5d0, outbuf)
-    call assert_true(associated(str2), "returnStructPtr2")
+    call assert_true(associated(str2), "returnStructPtr2 associated")
     call assert_equals(35, str2%ifield, "returnStructPtr2")
 
+#if 0
+    nullify(strarr)
+    strarr => return_struct_ptr_array()
+    call assert_true(associated(strarr), "returnStructPtrArray associated")
+    call assert_equals(2, len(strarr), "returnStructPtrArray size")
+    call assert_equals(35, strarr%ifield, "returnStructPtrArray (1)")
+    call assert_equals(35, strarr%ifield, "returnStructPtrArray (2)")
+#endif
   end subroutine test_struct2
 
   subroutine test_struct_array
