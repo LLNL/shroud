@@ -362,18 +362,16 @@ class FillMeta(object):
             else:
                 meta["deref"] = "pointer"
 
-    def set_func_api(self, wlang, node, meta):
+    def set_func_api_c(self, node, meta):
         """
         Based on other meta attrs: 
         """
-        # from check_fcn_attrs  (C and Fortran)
         ast = node.ast
         ntypemap = ast.typemap
         attrs = ast.declarator.attrs
-        api = ast.declarator.attrs["api"]
+        api = attrs["api"]
 
         if api:
-            # XXX - from check_common_attrs
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
@@ -383,8 +381,25 @@ class FillMeta(object):
             else:
                 meta["api"] = "capsule"
 
-        if wlang == "c":
-            return
+    def set_func_api_fortran(self, node, meta):
+        """
+        Based on other meta attrs: 
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+        attrs = ast.declarator.attrs
+        api = attrs["api"]
+
+        if api:
+            meta["api"] = api
+        elif ntypemap.sgroup == "shadow":
+            if node.return_this:
+                meta["api"] = "this"
+            elif node.options.C_shadow_result:
+                meta["api"] = "capptr"
+            else:
+                meta["api"] = "capsule"
+
         if meta["api"]:
             return
         if meta["deref"] == "raw":
@@ -809,7 +824,7 @@ class FillMetaC(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
-        self.set_func_api(wlang, node, r_meta)
+        self.set_func_api_c(node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -860,7 +875,7 @@ class FillMetaFortran(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
-        self.set_func_api(wlang, node, r_meta)
+        self.set_func_api_fortran(node, r_meta)
         
         # --- Loop over function parameters
         for arg in ast.declarator.params:
