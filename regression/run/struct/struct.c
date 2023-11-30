@@ -95,13 +95,13 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf)
     return &global_Cstruct1;
 }
 
-// Copy value from last call to returnStructPtr[12]
 Cstruct1 *returnStructPtrArray(void)
 {
     strncpy(last_function_called, "returnStructPtrArray", MAXLAST);
-    global_Cstruct1_array[0] = global_Cstruct1;
-    global_Cstruct1_array[1].ifield = global_Cstruct1.ifield + 2;
-    global_Cstruct1_array[1].dfield = global_Cstruct1.dfield + 2.0;
+    global_Cstruct1_array[0].ifield = 100;
+    global_Cstruct1_array[0].dfield = 101.0;
+    global_Cstruct1_array[1].ifield = 102;
+    global_Cstruct1_array[1].dfield = 103.0;
     return global_Cstruct1_array;
 }
 

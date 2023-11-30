@@ -3548,7 +3548,101 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_struct_list  14 ****************************************",
+                "<FUNCTION>": "returnStructPtrArray  14 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "attrs": {
+                            "dimension": "2"
+                        },
+                        "name": "returnStructPtrArray",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct1"
+                    },
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtrArray() +dimension(2)",
+                "declgen": "Cstruct1 * returnStructPtrArray(void) +dimension(2)",
+                "doxygen": {
+                    "brief": "Return a pointer to an array of structs"
+                },
+                "name": "returnStructPtrArray",
+                "options": {},
+                "wrap": {
+                    "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "2"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "2"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "2",
+                            "c_deref": "*",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "*SHCXX_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "npy_dims_var": "SHD_rv",
+                            "npy_intp_asgn": "SHD_rv[0] = 2;\n",
+                            "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                            "npy_rank": "1",
+                            "numpy_type": null,
+                            "py_var": "SHTPy_rv",
+                            "rank": "1",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_struct_class",
+                            "value_var": "SHValue_rv"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnStructPtrArray",
+                    "F_name_api": "return_struct_ptr_array",
+                    "PY_name_impl": "PY_returnStructPtrArray",
+                    "function_name": "returnStructPtrArray"
+                }
+            },
+            {
+                "<FUNCTION>": "get_global_struct_list  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -3621,7 +3715,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class  15 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class",
@@ -3663,7 +3757,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class_args  16 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class_args  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class_args",
@@ -3735,7 +3829,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  17 ****************************************",
+                "<FUNCTION>": "Cstruct_as_class_sum  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -3800,7 +3894,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  18 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",

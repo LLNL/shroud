@@ -242,6 +242,41 @@ STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
     // splicer end function.returnStructPtr2_bufferify
 }
 
+/**
+ * \brief Return a pointer to an array of structs
+ *
+ */
+// ----------------------------------------
+// Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+// Statement: c_function_struct_*
+STR_cstruct1 * STR_returnStructPtrArray(void)
+{
+    // splicer begin function.returnStructPtrArray
+    Cstruct1 * SHC_rv = returnStructPtrArray();
+    return SHC_rv;
+    // splicer end function.returnStructPtrArray
+}
+
+/**
+ * \brief Return a pointer to an array of structs
+ *
+ */
+// ----------------------------------------
+// Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+// Statement: f_function_struct_*_cdesc_pointer
+void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.returnStructPtrArray_bufferify
+    Cstruct1 * SHC_rv = returnStructPtrArray();
+    SHT_rv_cdesc->base_addr = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_STRUCT;
+    SHT_rv_cdesc->elem_len = sizeof(Cstruct1);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = 2;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    // splicer end function.returnStructPtrArray_bufferify
+}
+
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
 // Statement: c_function_struct_*

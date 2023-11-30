@@ -1972,6 +1972,9 @@ fc_statements = [
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_native_cdesc_pointer",
         ],
+        alias=[
+            "f_function_struct_*_cdesc_pointer",
+        ],
     ),
     dict(
         # +deref(pointer) +owner(caller)
@@ -3597,9 +3600,6 @@ fc_statements = [
         
         c_helper=["type_defines", "array_context"],
         c_call=[
-            # XXX - capsule
-#            "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
-#            "{c_var_cdesc}->cxx.idtor = {idtor};",
             "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",

@@ -35,6 +35,10 @@ Cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf);
 Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
     int SHT_outbuf_len);
 
+Cstruct1 * STR_returnStructPtrArray(void);
+
+void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
+
 Cstruct_list * STR_get_global_struct_list(void);
 
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(

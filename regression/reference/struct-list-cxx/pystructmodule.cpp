@@ -417,6 +417,35 @@ PY_returnStructPtr2(
 }
 
 // ----------------------------------------
+// Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+// Statement: py_function_struct_list
+static char PY_returnStructPtrArray__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Return a pointer to an array of structs
+ *
+ */
+static PyObject *
+PY_returnStructPtrArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.returnStructPtrArray
+    PY_Cstruct1 * SHTPy_rv = nullptr;
+
+    Cstruct1 * SHCXX_rv = returnStructPtrArray();
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("O", SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.returnStructPtrArray
+}
+
+// ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
 // Statement: py_function_struct_list
 static char PY_get_global_struct_list__doc__[] =
@@ -459,6 +488,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr2__doc__},
+{"returnStructPtrArray", (PyCFunction)PY_returnStructPtrArray,
+    METH_NOARGS, PY_returnStructPtrArray__doc__},
 {"get_global_struct_list", (PyCFunction)PY_get_global_struct_list,
     METH_NOARGS, PY_get_global_struct_list__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

@@ -4475,7 +4475,187 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_struct_list  19 ****************************************",
+                "<FUNCTION>": "returnStructPtrArray  19 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "attrs": {
+                            "dimension": "2"
+                        },
+                        "name": "returnStructPtrArray",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct1"
+                    },
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtrArray() +dimension(2)",
+                "declgen": "Cstruct1 * returnStructPtrArray(void) +dimension(2)",
+                "doxygen": {
+                    "brief": "Return a pointer to an array of structs"
+                },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
+                "name": "returnStructPtrArray",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "2"
+                                    }
+                                ],
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_struct_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "dim_ast": [
+                                    {
+                                        "constant": "2"
+                                    }
+                                ],
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_struct_*_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "dim_ast": [
+                                    {
+                                        "constant": "2"
+                                    }
+                                ],
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "returnStructPtrArray(\t)",
+                            "C_name": "STR_returnStructPtrArray",
+                            "C_prototype": "void",
+                            "C_return_type": "STR_cstruct1 *",
+                            "F_C_arguments": "",
+                            "F_C_name": "c_return_struct_ptr_array",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_array_size2": "2",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "STR_cstruct1",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(2)",
+                            "f_assumed_shape": "(:)",
+                            "f_derived_type": "cstruct1",
+                            "f_intent": "OUT",
+                            "f_kind": "cstruct1",
+                            "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "c_function_struct_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnStructPtrArray(\t)",
+                            "C_name": "STR_returnStructPtrArray_bufferify",
+                            "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc",
+                            "F_C_call": "c_return_struct_ptr_array_bufferify",
+                            "F_C_name": "c_return_struct_ptr_array_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 2;",
+                            "c_array_size": "SHT_rv_cdesc->shape[0]",
+                            "c_array_size2": "2",
+                            "c_const": "",
+                            "c_helper_array_context": "STR_SHROUD_array",
+                            "c_type": "STR_cstruct1",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHC_rv",
+                            "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_c_suffix": "_bufferify",
+                            "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_derived_type": "cstruct1",
+                            "f_helper_array_context": "STR_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "cstruct1",
+                            "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_function_struct_*_cdesc_pointer"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnStructPtrArray",
+                    "F_name_api": "return_struct_ptr_array",
+                    "F_name_function": "return_struct_ptr_array",
+                    "F_name_generic": "return_struct_ptr_array",
+                    "F_name_impl": "return_struct_ptr_array",
+                    "function_name": "returnStructPtrArray"
+                }
+            },
+            {
+                "<FUNCTION>": "get_global_struct_list  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -4598,7 +4778,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class  20 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class",
@@ -4728,7 +4908,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class_args  21 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class_args  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class_args",
@@ -5000,7 +5180,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  22 ****************************************",
+                "<FUNCTION>": "Cstruct_as_class_sum  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -5205,7 +5385,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  23 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",
@@ -5547,7 +5727,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  24 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  25 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -5713,7 +5893,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  25 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  26 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -5903,7 +6083,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_ivalue  26 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_ivalue  27 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6114,7 +6294,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_ivalue  27 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_ivalue  28 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6308,7 +6488,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_dvalue  28 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_dvalue  29 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6519,7 +6699,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_dvalue  29 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_dvalue  30 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

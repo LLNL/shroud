@@ -589,6 +589,31 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+    ! Statement: c_function_struct_*
+    interface
+        function c_return_struct_ptr_array() &
+                result(SHT_rv) &
+                bind(C, name="STR_returnStructPtrArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_struct_ptr_array
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+    ! Statement: f_function_struct_*_cdesc_pointer
+    interface
+        subroutine c_return_struct_ptr_array_bufferify(SHT_rv_cdesc) &
+                bind(C, name="STR_returnStructPtrArray_bufferify")
+            import :: STR_SHROUD_array
+            implicit none
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_return_struct_ptr_array_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list
     ! Statement: f_function_struct_*_pointer
     interface
@@ -1204,6 +1229,25 @@ contains
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2
+
+    ! ----------------------------------------
+    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+    ! Statement: f_function_struct_*_cdesc_pointer
+    !>
+    !! \brief Return a pointer to an array of structs
+    !!
+    !<
+    function return_struct_ptr_array() &
+            result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
+        type(cstruct1), pointer :: SHT_rv(:)
+        ! splicer begin function.return_struct_ptr_array
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_struct_ptr_array_bufferify(SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        ! splicer end function.return_struct_ptr_array
+    end function return_struct_ptr_array
 
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list

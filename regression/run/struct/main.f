@@ -104,14 +104,13 @@ contains
     call assert_true(associated(str2), "returnStructPtr2 associated")
     call assert_equals(35, str2%ifield, "returnStructPtr2")
 
-#if 0
     nullify(strarr)
     strarr => return_struct_ptr_array()
     call assert_true(associated(strarr), "returnStructPtrArray associated")
-    call assert_equals(2, len(strarr), "returnStructPtrArray size")
-    call assert_equals(35, strarr%ifield, "returnStructPtrArray (1)")
-    call assert_equals(35, strarr%ifield, "returnStructPtrArray (2)")
-#endif
+    call assert_equals(2, size(strarr), "returnStructPtrArray size")
+    call assert_equals(100, strarr(1)%ifield, "returnStructPtrArray (1)")
+    call assert_equals(102, strarr(2)%ifield, "returnStructPtrArray (2)")
+
   end subroutine test_struct2
 
   subroutine test_struct_array
