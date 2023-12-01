@@ -45,6 +45,7 @@ struct s_CXX_nested {
     int sublevels;
     CXX_nested * parent;
     CXX_nested * * child;
+    CXX_nested * array;
 };
 #endif  // __cplusplus
 
@@ -80,6 +81,11 @@ void CXX_nested_get_child(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 
 void CXX_nested_set_child(CXX_nested * SH_this, CXX_nested * * val);
+
+void CXX_nested_get_array(CXX_nested * SH_this,
+    CXX_SHROUD_array *SHT_rv_cdesc);
+
+void CXX_nested_set_array(CXX_nested * SH_this, CXX_nested * val);
 
 #ifdef __cplusplus
 }

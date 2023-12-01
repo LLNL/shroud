@@ -63,7 +63,8 @@ struct nested {
     int index;
     int sublevels;
     nested *parent;
-    nested **child;
+    nested **child;   // An array of pointers to children
+    nested *array;    // An array of sublevels nested children
 };
 
 //----------------------------------------------------------------------

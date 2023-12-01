@@ -516,7 +516,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer",
                             "dimension": "nitems",
                             "intent": "getter"
                         },
@@ -554,11 +553,11 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ],
                     "f": [
                         "array_context"
@@ -1088,7 +1087,6 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "deref": "pointer",
                                     "dimension": "nitems",
                                     "intent": "getter"
                                 },
@@ -1126,11 +1124,11 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
-                                "type_defines",
-                                "array_context"
+                                "array_context",
+                                "type_defines"
                             ],
                             "f": [
                                 "array_context"
@@ -1687,7 +1685,6 @@
                         "ast": {
                             "declarator": {
                                 "attrs": {
-                                    "deref": "pointer",
                                     "dimension": "nitems",
                                     "intent": "getter"
                                 },
@@ -1725,11 +1722,11 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +deref(pointer)+dimension(nitems)+intent(getter)",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
-                                "type_defines",
-                                "array_context"
+                                "array_context",
+                                "type_defines"
                             ],
                             "f": [
                                 "array_context"

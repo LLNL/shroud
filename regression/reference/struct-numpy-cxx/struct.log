@@ -9,6 +9,7 @@ Python function void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 Python function Cstruct1 returnStructByValue(int i, double d)
 Python function Cstruct1 * returnStructPtr1(int i, double d)
 Python function Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))
+Python function Cstruct1 * returnStructPtrArray(void) +dimension(2)
 Python function Cstruct_list * get_global_struct_list(void)
 Close pystructmodule.cpp
 Close pystructutil.cpp

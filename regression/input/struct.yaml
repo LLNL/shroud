@@ -83,6 +83,11 @@ declarations:
     description: |
       Generates a bufferify C wrapper function.
 
+- decl: Cstruct1 *returnStructPtrArray() +dimension(2)
+  doxygen:
+    brief: Return a pointer to an array of structs
+    # XXX - struct-class is not creating an array
+
 ######################################################################
 #- decl: int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
 #  doxygen:

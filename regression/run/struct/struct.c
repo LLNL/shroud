@@ -18,6 +18,8 @@ static char last_function_called[MAXLAST];
 
 static Cstruct1 global_Cstruct1;
 
+static Cstruct1 global_Cstruct1_array[2];
+
 //----------------------------------------------------------------------
 
 // return sum of fields as a check
@@ -91,6 +93,16 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf)
     global_Cstruct1.ifield = i;
     global_Cstruct1.dfield = d;
     return &global_Cstruct1;
+}
+
+Cstruct1 *returnStructPtrArray(void)
+{
+    strncpy(last_function_called, "returnStructPtrArray", MAXLAST);
+    global_Cstruct1_array[0].ifield = 100;
+    global_Cstruct1_array[0].dfield = 101.0;
+    global_Cstruct1_array[1].ifield = 102;
+    global_Cstruct1_array[1].dfield = 103.0;
+    return global_Cstruct1_array;
 }
 
 int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))

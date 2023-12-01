@@ -309,7 +309,11 @@ will be copied and null-terminated.  This uses *api(buf)*.
 *cdesc* will pass down a pointer to a struct which contains metadata
 for the argument instead of passing additional fields. The advantage
 is the struct can also be used to return metadata from the C wrapper
-to the Fortran wrapper.  The struct is named by the format fields
+to the Fortran wrapper.
+The metadata includes shape information from a *dimension* attribute
+and is used on *intent(OUT)* arguments and function results to set
+Fortran ``POINTER`` shapes.
+The struct is named by the format fields
 *C_array_type* and *F_array_type*.
 
 The option *F_CFI*, will use the *Further interoperability with C*

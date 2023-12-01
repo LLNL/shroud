@@ -109,6 +109,23 @@ class Struct(unittest.TestCase):
         self.assertEqual(35.5, out.dfield)
         self.assertEqual("returnStructPtr2", name)
 
+    def test_returnStructPtrArray(self):
+        # XXX - shroud is not creating an array
+        out = cstruct.returnStructPtrArray()
+        self.assertEqual(1, sys.getrefcount(out) - 1)
+        self.assertIsInstance(out, cstruct.Cstruct1)
+        self.assertEqual(100,   out.ifield)
+        self.assertEqual(101.,  out.dfield)
+
+#        self.assertIsInstance(out, np.ndarray)
+#        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+#        self.assertEqual(1, out.ndim)
+#        self.assertEqual(2, out.size)
+#        self.assertEqual(100,   out[0].ifield)
+#        self.assertEqual(101.,  out[0].dfield)
+#        self.assertEqual(102,   out[1].ifield)
+#        self.assertEqual(103.,  out[1].dfield)
+
     def test_cstruct_ptr_create(self):
         # struct with a char * cfield
         ptr = cstruct.Cstruct_ptr()

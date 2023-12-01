@@ -458,6 +458,40 @@ fail:
 }
 
 // ----------------------------------------
+// Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+// Statement: py_function_struct_class
+static char PY_returnStructPtrArray__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Return a pointer to an array of structs
+ *
+ */
+static PyObject *
+PY_returnStructPtrArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.returnStructPtrArray
+    PyObject *SHTPy_rv = NULL;  // struct_class
+
+    Cstruct1 * SHCXX_rv = returnStructPtrArray();
+
+    // post_call
+    SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
+    if (SHTPy_rv == NULL) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end function.returnStructPtrArray
+}
+
+// ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
 // Statement: py_function_struct_class
 static char PY_get_global_struct_list__doc__[] =
@@ -505,6 +539,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr2__doc__},
+{"returnStructPtrArray", (PyCFunction)PY_returnStructPtrArray,
+    METH_NOARGS, PY_returnStructPtrArray__doc__},
 {"get_global_struct_list", (PyCFunction)PY_get_global_struct_list,
     METH_NOARGS, PY_get_global_struct_list__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

@@ -377,20 +377,6 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
-        api = None
-        deref = None
-        if sgroup in ["char", "string"]:
-            deref = "allocatable"
-        elif sgroup == "vector":
-            deref = "pointer"
-        elif sgroup == "struct":
-            deref = "pointer"
-            api = "cdesc"
-        elif declarator.is_pointer():
-            deref = "pointer"
-        else:
-            deref = None
-
         ##########
         # getter
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
@@ -398,9 +384,8 @@ class GenFunctions(object):
 
         fattrs = dict(
             intent="getter",
-            api=api,
             dimension=declarator.attrs["dimension"],
-            deref=declarator.attrs["deref"] or deref,
+            deref=declarator.attrs["deref"],
         )
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)

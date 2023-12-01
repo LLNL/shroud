@@ -186,6 +186,7 @@ class FillMeta(object):
         """
         Function which return pointers or objects (std::string)
         set the deref meta attribute.
+        Also applies to getter.
         """
         if meta["deref"]:
             return
@@ -210,6 +211,13 @@ class FillMeta(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             # Array of shadow?
             pass
+        elif ntypemap.sgroup == "struct":
+            if deref:
+                mderef = deref
+            elif nindirect == 1:
+                mderef = "pointer"
+            elif nindirect > 1:
+                mderef = "raw"
         elif ntypemap.sgroup == "string":
             if deref:
                 mderef = deref
@@ -362,18 +370,16 @@ class FillMeta(object):
             else:
                 meta["deref"] = "pointer"
 
-    def set_func_api(self, wlang, node, meta):
+    def set_func_api_c(self, node, meta):
         """
         Based on other meta attrs: 
         """
-        # from check_fcn_attrs  (C and Fortran)
         ast = node.ast
         ntypemap = ast.typemap
         attrs = ast.declarator.attrs
-        api = ast.declarator.attrs["api"]
+        api = attrs["api"]
 
         if api:
-            # XXX - from check_common_attrs
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
@@ -383,18 +389,36 @@ class FillMeta(object):
             else:
                 meta["api"] = "capsule"
 
-        if wlang == "c":
-            return
+    def set_func_api_fortran(self, node, meta):
+        """
+        Based on other meta attrs: 
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+        attrs = ast.declarator.attrs
+        api = attrs["api"]
+
+        if api:
+            meta["api"] = api
+        elif ntypemap.sgroup == "shadow":
+            if node.return_this:
+                meta["api"] = "this"
+            elif node.options.C_shadow_result:
+                meta["api"] = "capptr"
+            else:
+                meta["api"] = "capsule"
+
         if meta["api"]:
             return
-        if meta["deref"] == "raw":
+        if meta["deref"] == "raw" and not attrs["dimension"]:
             # No bufferify required for raw pointer result.
+            # Return a type(C_PTR).
             return
 
         # arg_to_buffer
         fmt_func = node.fmtdict
 
-        result_is_ptr = ast.declarator.is_indirect()
+        is_ptr = ast.declarator.is_indirect()
         # when the result is added as an argument to the Fortran api.
 
         # Check if result needs to be an argument.
@@ -405,7 +429,7 @@ class FillMeta(object):
             if ntypemap.sgroup == "string":
                 cfi_result   = "cfi"
                 result_as_arg = fmt_func.F_string_result_as_arg
-            elif ntypemap.sgroup == "char" and result_is_ptr:
+            elif ntypemap.sgroup == "char" and is_ptr:
                 cfi_result   = "cfi"
                 result_as_arg = fmt_func.F_string_result_as_arg
             elif meta["deref"] in ["allocatable", "pointer"]:
@@ -424,16 +448,19 @@ class FillMeta(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-        elif ntypemap.sgroup == "char" and result_is_ptr:
+        elif ntypemap.sgroup == "char" and is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 # Result default to "allocatable".
                 need_buf_result = "cdesc"
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.base == "struct":
+            if is_ptr:
+                need_buf_result = "cdesc"
         elif ntypemap.base == "vector":
             need_buf_result = "cdesc"
-        elif result_is_ptr:
+        elif is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 if attrs["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)
@@ -809,7 +836,7 @@ class FillMetaC(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
-        self.set_func_api(wlang, node, r_meta)
+        self.set_func_api_c(node, r_meta)
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
@@ -860,7 +887,7 @@ class FillMetaFortran(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
-        self.set_func_api(wlang, node, r_meta)
+        self.set_func_api_fortran(node, r_meta)
         
         # --- Loop over function parameters
         for arg in ast.declarator.params:
