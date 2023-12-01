@@ -391,10 +391,11 @@ module cxxlibrary_mod
         ! Statement: f_setter_struct_**
         subroutine nested_set_child(SH_this, val) &
                 bind(C, name="CXX_nested_set_child")
+            use iso_c_binding, only : C_PTR
             import :: nested
             implicit none
             type(nested), intent(INOUT) :: SH_this
-            type(nested), intent(IN) :: val(*)
+            type(C_PTR), intent(IN) :: val(*)
         end subroutine nested_set_child
     end interface
 

@@ -797,7 +797,7 @@ root
       struct
         * -- f_setter_struct_*_pointer
           pointer -- f_setter_struct_*_pointer
-        ** -- f_setter_struct_*_pointer
+        ** -- f_setter_struct_**
     shared
       function
         string
@@ -11281,9 +11281,12 @@ f_setter_struct_**:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
+  - 'type(C_PTR), intent(IN) :: {i_var}{i_dimension}'
   i_arg_names:
   - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   intent: setter
   name: f_setter_struct_**
   owner: library

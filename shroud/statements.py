@@ -3535,12 +3535,22 @@ fc_statements = [
         name="f_setter_struct_*_pointer",
         alias=[
             "f_setter_struct_*",
-            "f_setter_struct_**",
         ],
         i_arg_names=["{i_var}"],
         i_arg_decl=[
             "{f_type}, intent(IN) :: {i_var}{i_dimension}",
         ],
+        c_post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
+    ),
+    dict(
+        name="f_setter_struct_**",
+        i_arg_names=["{i_var}"],
+        i_arg_decl=[
+            "type(C_PTR), intent(IN) :: {i_var}{i_dimension}",
+        ],
+        i_module=dict(iso_c_binding=["C_PTR"]),
         c_post_call=[
             "{CXX_this}->{field_name} = val;",
         ],
