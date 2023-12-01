@@ -186,6 +186,7 @@ class FillMeta(object):
         """
         Function which return pointers or objects (std::string)
         set the deref meta attribute.
+        Also applies to getter.
         """
         if meta["deref"]:
             return
@@ -210,6 +211,13 @@ class FillMeta(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             # Array of shadow?
             pass
+        elif ntypemap.sgroup == "struct":
+            if deref:
+                mderef = deref
+            elif nindirect == 1:
+                mderef = "pointer"
+            elif nindirect > 1:
+                mderef = "raw"
         elif ntypemap.sgroup == "string":
             if deref:
                 mderef = deref
@@ -402,14 +410,15 @@ class FillMeta(object):
 
         if meta["api"]:
             return
-        if meta["deref"] == "raw":
+        if meta["deref"] == "raw" and not attrs["dimension"]:
             # No bufferify required for raw pointer result.
+            # Return a type(C_PTR).
             return
 
         # arg_to_buffer
         fmt_func = node.fmtdict
 
-        result_is_ptr = ast.declarator.is_indirect()
+        is_ptr = ast.declarator.is_indirect()
         # when the result is added as an argument to the Fortran api.
 
         # Check if result needs to be an argument.
@@ -420,7 +429,7 @@ class FillMeta(object):
             if ntypemap.sgroup == "string":
                 cfi_result   = "cfi"
                 result_as_arg = fmt_func.F_string_result_as_arg
-            elif ntypemap.sgroup == "char" and result_is_ptr:
+            elif ntypemap.sgroup == "char" and is_ptr:
                 cfi_result   = "cfi"
                 result_as_arg = fmt_func.F_string_result_as_arg
             elif meta["deref"] in ["allocatable", "pointer"]:
@@ -439,16 +448,19 @@ class FillMeta(object):
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
-        elif ntypemap.sgroup == "char" and result_is_ptr:
+        elif ntypemap.sgroup == "char" and is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 # Result default to "allocatable".
                 need_buf_result = "cdesc"
             else:
                 need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
+        elif ntypemap.base == "struct":
+            if is_ptr:
+                need_buf_result = "cdesc"
         elif ntypemap.base == "vector":
             need_buf_result = "cdesc"
-        elif result_is_ptr:
+        elif is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 if attrs["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)

@@ -30,16 +30,22 @@ void STR_returnStructByValue(int i, double d, Cstruct1 *SHC_rv);
 
 Cstruct1 * STR_returnStructPtr1(int i, double d);
 
+void STR_returnStructPtr1_bufferify(int i, double d,
+    STR_SHROUD_array *SHT_rv_cdesc);
+
 Cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf);
 
-Cstruct1 * STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
-    int SHT_outbuf_len);
+void STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
+    int SHT_outbuf_len, STR_SHROUD_array *SHT_rv_cdesc);
 
 Cstruct1 * STR_returnStructPtrArray(void);
 
 void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
 
 Cstruct_list * STR_get_global_struct_list(void);
+
+void STR_get_global_struct_list_bufferify(
+    STR_SHROUD_array *SHT_rv_cdesc);
 
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv);

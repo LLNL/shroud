@@ -3859,6 +3859,14 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "returnStructPtr1",
                 "options": {},
                 "wrap": {
@@ -3889,10 +3897,11 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_struct_*_pointer"
+                            "stmt": "f_function_struct_*_cdesc_pointer"
                         },
                         "d": {
                             "meta": {
@@ -3933,37 +3942,10 @@
                             "C_name": "STR_returnStructPtr1",
                             "C_prototype": "int i,\t double d",
                             "C_return_type": "STR_cstruct1 *",
-                            "F_C_name": "c_return_struct_ptr1",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "STR_cstruct1",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
-                        "fmtf": {
-                            "C_call_function": "returnStructPtr1(\ti,\t d)",
-                            "C_call_list": "i,\t d",
-                            "C_name": "STR_returnStructPtr1",
-                            "C_prototype": "int i,\t double d",
-                            "C_return_type": "STR_cstruct1 *",
                             "F_C_arguments": "i,\t d",
-                            "F_C_call": "c_return_struct_ptr1",
                             "F_C_name": "c_return_struct_ptr1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "i,\t d",
-                            "F_arguments": "i,\t d",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "STR_cstruct1",
@@ -3978,15 +3960,56 @@
                             "f_derived_type": "cstruct1",
                             "f_intent": "OUT",
                             "f_kind": "cstruct1",
-                            "f_local_ptr": "SHC_rv_ptr",
                             "f_type": "type(cstruct1)",
                             "f_type_module": "struct_mod",
                             "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_function_struct_*_pointer"
+                            "stmt_name": "c_function_struct_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnStructPtr1(\ti,\t d)",
+                            "C_call_list": "i,\t d",
+                            "C_name": "STR_returnStructPtr1_bufferify",
+                            "C_prototype": "int i,\t double d,\t STR_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "i,\t d,\t SHT_rv_cdesc",
+                            "F_C_call": "c_return_struct_ptr1_bufferify",
+                            "F_C_name": "c_return_struct_ptr1_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "i,\t d,\t SHT_rv_cdesc",
+                            "F_arguments": "i,\t d",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_helper_array_context": "STR_SHROUD_array",
+                            "c_type": "STR_cstruct1",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_derived_type": "cstruct1",
+                            "f_helper_array_context": "STR_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "cstruct1",
+                            "f_type": "type(cstruct1)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_function_struct_*_cdesc_pointer"
                         }
                     },
                     "d": {
@@ -4003,6 +4026,12 @@
                             "cxx_nonconst_ptr": "&d",
                             "cxx_type": "double",
                             "cxx_var": "d",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "d",
+                            "i_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "c_in_native_scalar"
@@ -4046,6 +4075,12 @@
                             "cxx_nonconst_ptr": "&i",
                             "cxx_type": "int",
                             "cxx_var": "i",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "i",
+                            "i_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_scalar"
@@ -4151,7 +4186,11 @@
                 },
                 "helpers": {
                     "c": [
+                        "array_context",
                         "char_blank_fill"
+                    ],
+                    "f": [
+                        "array_context"
                     ]
                 },
                 "name": "returnStructPtr2",
@@ -4190,10 +4229,11 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_struct_*_pointer"
+                            "stmt": "f_function_struct_*_cdesc_pointer"
                         },
                         "d": {
                             "meta": {
@@ -4276,21 +4316,22 @@
                             "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
                             "C_name": "STR_returnStructPtr2_bufferify",
-                            "C_prototype": "int i,\t double d,\t char *outbuf,\t int SHT_outbuf_len",
-                            "C_return_type": "STR_cstruct1 *",
-                            "F_C_arguments": "i,\t d,\t outbuf,\t SHT_outbuf_len",
+                            "C_prototype": "int i,\t double d,\t char *outbuf,\t int SHT_outbuf_len,\t STR_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "i,\t d,\t outbuf,\t SHT_outbuf_len,\t SHT_rv_cdesc",
                             "F_C_call": "c_return_struct_ptr2_bufferify",
                             "F_C_name": "c_return_struct_ptr2_bufferify",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "i,\t d,\t outbuf,\t SHT_outbuf_len",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "i,\t d,\t outbuf,\t SHT_outbuf_len,\t SHT_rv_cdesc",
                             "F_arguments": "i,\t d,\t outbuf",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "c_const": "",
-                            "c_get_value": "",
+                            "c_helper_array_context": "STR_SHROUD_array",
                             "c_type": "STR_cstruct1",
                             "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -4300,17 +4341,19 @@
                             "cxx_var": "SHC_rv",
                             "f_c_suffix": "_bufferify",
                             "f_derived_type": "cstruct1",
+                            "f_helper_array_context": "STR_SHROUD_array",
                             "f_intent": "OUT",
                             "f_kind": "cstruct1",
-                            "f_local_ptr": "SHC_rv_ptr",
                             "f_type": "type(cstruct1)",
                             "f_type_module": "struct_mod",
                             "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_function_struct_*_pointer"
+                            "stmt_name": "f_function_struct_*_cdesc_pointer"
                         }
                     },
                     "d": {
@@ -4674,6 +4717,14 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "helpers": {
+                    "c": [
+                        "array_context"
+                    ],
+                    "f": [
+                        "array_context"
+                    ]
+                },
                 "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
@@ -4692,10 +4743,11 @@
                     "f": {
                         "+result": {
                             "meta": {
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_struct_*_pointer"
+                            "stmt": "f_function_struct_*_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -4713,35 +4765,10 @@
                             "C_name": "STR_get_global_struct_list",
                             "C_prototype": "void",
                             "C_return_type": "STR_cstruct_list *",
-                            "F_C_name": "c_get_global_struct_list",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "STR_cstruct_list",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct_list * SHC_rv",
-                            "cxx_type": "Cstruct_list",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
-                        "fmtf": {
-                            "C_call_function": "get_global_struct_list(\t)",
-                            "C_name": "STR_get_global_struct_list",
-                            "C_prototype": "void",
-                            "C_return_type": "STR_cstruct_list *",
                             "F_C_arguments": "",
-                            "F_C_call": "c_get_global_struct_list",
                             "F_C_name": "c_get_global_struct_list",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arguments": "",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
                             "c_type": "STR_cstruct_list",
@@ -4756,15 +4783,55 @@
                             "f_derived_type": "cstruct_list",
                             "f_intent": "OUT",
                             "f_kind": "cstruct_list",
-                            "f_local_ptr": "SHC_rv_ptr",
                             "f_type": "type(cstruct_list)",
                             "f_type_module": "struct_mod",
                             "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_function_struct_*_pointer"
+                            "stmt_name": "c_function_struct_*"
+                        },
+                        "fmtf": {
+                            "C_call_function": "get_global_struct_list(\t)",
+                            "C_name": "STR_get_global_struct_list_bufferify",
+                            "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv_cdesc",
+                            "F_C_call": "c_get_global_struct_list_bufferify",
+                            "F_C_name": "c_get_global_struct_list_bufferify",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv_cdesc",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_helper_array_context": "STR_SHROUD_array",
+                            "c_type": "STR_cstruct_list",
+                            "c_var": "SHC_rv",
+                            "c_var_cdesc": "SHT_rv_cdesc",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHC_rv",
+                            "cxx_rv_decl": "Cstruct_list * SHC_rv",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_derived_type": "cstruct_list",
+                            "f_helper_array_context": "STR_SHROUD_array",
+                            "f_intent": "OUT",
+                            "f_kind": "cstruct_list",
+                            "f_type": "type(cstruct_list)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "f_var_cdesc": "SHT_rv_cdesc",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "i_var_cdesc": "SHT_rv_cdesc",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt_name": "f_function_struct_*_cdesc_pointer"
                         }
                     }
                 },
@@ -5736,7 +5803,6 @@
                     "const": true,
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer",
                             "intent": "getter"
                         },
                         "name": "Cstruct_ptr_get_const_dvalue",
@@ -5773,7 +5839,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this+intent(in))",
-                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in)) +deref(pointer)+intent(getter)",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this +intent(in)) +intent(getter)",
                 "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "struct_parent": "Cstruct_ptr",
@@ -6091,7 +6157,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer",
                             "dimension": "nitems+nitems",
                             "intent": "getter"
                         },
@@ -6129,11 +6194,11 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this+intent(in))",
-                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems+nitems)+intent(getter)",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems+nitems)+intent(getter)",
                 "helpers": {
                     "c": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ],
                     "f": [
                         "array_context"
@@ -6496,7 +6561,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "deref": "pointer",
                             "dimension": "nitems*TWO",
                             "intent": "getter"
                         },
@@ -6534,11 +6598,11 @@
                     "typemap_name": "double"
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this+intent(in))",
-                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +deref(pointer)+dimension(nitems*TWO)+intent(getter)",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this +intent(in)) +dimension(nitems*TWO)+intent(getter)",
                 "helpers": {
                     "c": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ],
                     "f": [
                         "array_context"

@@ -1122,6 +1122,22 @@ fc_statements = [
         ],
     ),
     dict(
+        # Make result a Fortran pointer
+        # used with function results of 'native **'
+        name="f_mixin_native_cdesc_raw",
+        comments=[
+            "Set Fortran pointer to pointers to arrays.",
+            "'double **' function returns 'type(C_PTR), pointer :: array(:)'",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        f_arg_decl=[
+            "type(C_PTR), pointer :: {f_var}{f_assumed_shape}",
+        ],
+        f_post_call=[
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
+        ],
+    ),
+    dict(
         # Make argument a Fortran pointer
         name="f_mixin_out_native_cdesc_pointer",
         comments=[
@@ -3585,16 +3601,10 @@ fc_statements = [
         ],
     ),
     dict(
-        # Similar to calling a function, but save field pointer instead.
-        name="f_getter_native_*_cdesc_pointer",
-        mixin=[
-            "f_mixin_function-to-subroutine",
-            "f_mixin_pass_cdesc",
-            "f_mixin_native_cdesc_pointer",
-        ],
-        alias=[
-            "f_getter_struct_*_cdesc_pointer",
-            "f_getter_struct_**_cdesc_pointer",
+        name="f_mixin_getter_cdesc",
+        comments=[
+            "Save pointer struct members in a cdesc",
+            "along with shape information."
         ],
         # See f_function_native_*_cdesc_pointer  f_mixin_native_cdesc_pointer
         
@@ -3606,6 +3616,28 @@ fc_statements = [
             "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};",
+        ],
+    ),
+    dict(
+        # Similar to calling a function, but save field pointer instead.
+        name="f_getter_native_*_cdesc_pointer",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_native_cdesc_pointer",
+            "f_mixin_getter_cdesc",
+        ],
+        alias=[
+            "f_getter_struct_*_cdesc_pointer",
+        ],
+    ),
+    dict(
+        name = "f_getter_struct_**_cdesc_raw",
+        mixin=[
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_native_cdesc_raw",
+            "f_mixin_getter_cdesc",
         ],
     ),
     #####

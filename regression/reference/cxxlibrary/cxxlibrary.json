@@ -4406,8 +4406,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
                             "intent": "getter"
                         },
                         "name": "nested_get_parent",
@@ -4444,11 +4442,11 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+intent(getter)",
+                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +intent(getter)",
                 "helpers": {
                     "c": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ],
                     "f": [
                         "array_context"
@@ -4778,8 +4776,6 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "api": "cdesc",
-                            "deref": "pointer",
                             "dimension": "sublevels",
                             "intent": "getter"
                         },
@@ -4820,11 +4816,11 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
-                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +api(cdesc)+deref(pointer)+dimension(sublevels)+intent(getter)",
+                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ],
                     "f": [
                         "array_context"
@@ -4846,7 +4842,7 @@
                         "+result": {
                             "meta": {
                                 "api": "cdesc",
-                                "deref": "pointer",
+                                "deref": "raw",
                                 "dim_ast": [
                                     {
                                         "name": "sublevels"
@@ -4854,7 +4850,7 @@
                                 ],
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_struct_**_cdesc_pointer"
+                            "stmt": "f_getter_struct_**_cdesc_raw"
                         },
                         "SH_this": {
                             "meta": {
@@ -4930,7 +4926,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct_**_cdesc_pointer"
+                            "stmt_name": "f_getter_struct_**_cdesc_raw"
                         }
                     },
                     "SH_this": {
