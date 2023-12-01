@@ -99,6 +99,7 @@ declarations:
   - decl: int sublevels
   - decl: nested *parent
   - decl: nested **child +dimension(sublevels)
+  - decl: nested *array +dimension(sublevels)
 
 ######################################################################
 # by returning this,the C++ function allows chaining.

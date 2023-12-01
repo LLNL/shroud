@@ -106,7 +106,7 @@ contains
     type(nested) pnode
     type(nested) :: n1
     type(nested), target :: kids(3)
-    type(nested), pointer :: parent, single
+    type(nested), pointer :: parent, single, array(:)
     type(C_PTR) :: kidsaddr(3)
     type(C_PTR), pointer :: child(:)
 
@@ -118,27 +118,36 @@ contains
     kids(2)%index = 32
     kids(3)%index = 33
 
-    ! Setting  nested **child fields
-    kidsaddr(1) = c_loc(kids(1))
-    kidsaddr(2) = c_loc(kids(2))
-    kidsaddr(3) = c_loc(kids(3))
-   
     call nested_set_parent(n1, pnode)
     
     parent => nested_get_parent(n1)
     call assert_equals(pnode%index, parent%index, "nested_get_parent 1");
 
     n1%sublevels = size(kids)
+
+    ! Setting  nested **child field
+    kidsaddr(1) = c_loc(kids(1))
+    kidsaddr(2) = c_loc(kids(2))
+    kidsaddr(3) = c_loc(kids(3))
     call nested_set_child(n1, kidsaddr)
     child => nested_get_child(n1)
     call assert_true(associated(child), "nested_get_child associated")
     call assert_equals(n1%sublevels, size(child), "nested_get_child size")
     call c_f_pointer(child(1), single)
-    call assert_equals(single%index, kids(1)%index, "nested_get_child 1 1");
+    call assert_equals(single%index, kids(1)%index, "nested_get_child 1");
     call c_f_pointer(child(2), single)
-    call assert_equals(single%index, kids(2)%index, "nested_get_child 1 2");
+    call assert_equals(single%index, kids(2)%index, "nested_get_child 2");
     call c_f_pointer(child(3), single)
-    call assert_equals(single%index, kids(3)%index, "nested_get_child 1 3");
+    call assert_equals(single%index, kids(3)%index, "nested_get_child 3");
+
+    ! Setting nested *array field
+    call nested_set_array(n1, kids)
+    array => nested_get_array(n1)
+    call assert_true(associated(array), "nested_get_array associated")
+    call assert_equals(n1%sublevels, size(array), "nested_get_array size")
+    call assert_equals(array(1)%index, kids(1)%index, "nested_get_array 1");
+    call assert_equals(array(2)%index, kids(2)%index, "nested_get_array 2");
+    call assert_equals(array(3)%index, kids(3)%index, "nested_get_array 3");
     
   end subroutine test_nested
 
