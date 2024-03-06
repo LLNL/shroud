@@ -292,6 +292,7 @@
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
+            "PY_get": "PyObject_IsTrue({py_var})",
             "base": "bool",
             "c_header": [
                 "<stdbool.h>"

@@ -5019,6 +5019,19 @@ py_statements = [
     ########################################
     # descriptors
     dict(
+        name="py_descr_bool_scalar",
+        setter=[
+            "int rv = {PY_get};",
+            "if (PyErr_Occurred()) {{+",
+            "return -1;",
+            "-}}",
+            "{c_var} = rv;",
+        ],
+        getter=[
+            "return PyBool_FromLong({c_var});",
+        ],
+    ),
+    dict(
         name="py_descr_native_scalar",
         setter=[
             "{cxx_decl} = {PY_get};",

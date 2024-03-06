@@ -75,6 +75,10 @@ int CLA_Class1_get_test(CLA_Class1 * self);
 
 void CLA_Class1_set_test(CLA_Class1 * self, int val);
 
+bool CLA_Class1_get_m_bool(CLA_Class1 * self);
+
+void CLA_Class1_set_m_bool(CLA_Class1 * self, bool val);
+
 void CLA_Class1_get_m_name(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc);
 

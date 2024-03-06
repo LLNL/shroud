@@ -501,6 +501,8 @@ root
       void
         * -- f_function_void_*
     getter
+      bool
+        scalar -- f_getter_bool_scalar
       native
         *
           cdesc
@@ -788,6 +790,8 @@ root
         *& -- f_shared_native_scalar
         ** -- f_in/out/inout_void_**
     setter -- f_setter
+      bool
+        scalar -- f_setter_bool_scalar
       native
         * -- f_setter_native_scalar/*
         scalar -- f_setter_native_scalar/*
@@ -7554,6 +7558,14 @@ f_function_void_*:
   intent: function
   name: f_function_void_*
   owner: library
+f_getter_bool_scalar:
+  c_call:
+  - // skip call c_getter
+  c_return:
+  - return {CXX_this}->{field_name};
+  intent: getter
+  name: f_getter_bool_scalar
+  owner: library
 f_getter_native_*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -11215,6 +11227,20 @@ f_setter:
   intent: setter
   name: f_setter
   owner: library
+f_setter_bool_scalar:
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  f_arg_call:
+  - '{f_var_cxx}'
+  f_declare:
+  - 'logical(C_BOOL) :: {f_var_cxx}'
+  f_pre_call:
+  - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_temps:
+  - cxx
+  intent: setter
+  name: f_setter_bool_scalar
+  owner: library
 f_setter_native_*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
@@ -11403,6 +11429,8 @@ root
           numpy -- py_ctor_native
     defaulttmp -- py_defaulttmp
     descr
+      bool
+        scalar -- py_descr_bool_scalar
       char
         * -- py_descr_char_*
           numpy -- py_descr_char_*
@@ -11815,6 +11843,17 @@ py_ctor_native_scalar_numpy:
 py_defaulttmp:
   intent: defaulttmp
   name: py_defaulttmp
+py_descr_bool_scalar:
+  getter:
+  - return PyBool_FromLong({c_var});
+  intent: descr
+  name: py_descr_bool_scalar
+  setter:
+  - int rv = {PY_get};
+  - if (PyErr_Occurred()) {{+
+  - return -1;
+  - -}}
+  - '{c_var} = rv;'
 py_descr_char_*:
   getter:
   - if ({c_var} == {nullptr}) {{+
