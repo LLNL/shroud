@@ -329,11 +329,32 @@ static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     return 0;
 }
 
+// Statement: py_descr_bool_scalar
+static PyObject *PY_Class1_m_bool_getter(PY_Class1 *self,
+    void *SHROUD_UNUSED(closure))
+{
+    return PyBool_FromLong(self->obj->m_bool);
+}
+
+// Statement: py_descr_bool_scalar
+static int PY_Class1_m_bool_setter(PY_Class1 *self, PyObject *value,
+    void *SHROUD_UNUSED(closure))
+{
+    int rv = PyObject_IsTrue(value);
+    if (PyErr_Occurred()) {
+        return -1;
+    }
+    self->obj->m_bool = rv;
+    return 0;
+}
+
 static PyGetSetDef PY_Class1_getset[] = {
     {(char *)"m_flag", (getter)PY_Class1_m_flag_getter, (setter)nullptr,
         nullptr, nullptr},
     {(char *)"test", (getter)PY_Class1_test_getter,
         (setter)PY_Class1_test_setter, nullptr, nullptr},
+    {(char *)"m_bool", (getter)PY_Class1_m_bool_getter,
+        (setter)PY_Class1_m_bool_setter, nullptr, nullptr},
     // splicer begin class.Class1.PyGetSetDef
     // splicer end class.Class1.PyGetSetDef
     {nullptr}            /* sentinel */

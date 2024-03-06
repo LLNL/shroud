@@ -2581,7 +2581,246 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_name  13 ****************************************",
+                        "<FUNCTION>": "get_m_bool  13 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_bool",
+                                "params": [],
+                                "typemap_name": "bool"
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        },
+                        "decl": "bool get_m_bool()",
+                        "declgen": "bool get_m_bool(void) +intent(getter)",
+                        "name": "get_m_bool",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "m_bool",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_bool"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    },
+                                    "stmt": "f_getter_bool_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "getter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->get_m_bool(\t)",
+                                    "C_name": "CLA_Class1_get_m_bool",
+                                    "C_prototype": "CLA_Class1 * self",
+                                    "C_return_type": "bool",
+                                    "F_C_arguments": "self",
+                                    "F_C_call": "c_class1_get_m_bool",
+                                    "F_C_name": "c_class1_get_m_bool",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem",
+                                    "F_arguments": "obj",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_const": "",
+                                    "c_type": "bool",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_Bool",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_rv_decl": "bool SHC_rv",
+                                    "cxx_type": "bool",
+                                    "cxx_var": "SHC_rv",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_BOOL",
+                                    "f_type": "logical",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
+                                    "fc_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
+                                    "stmt_name": "f_getter_bool_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_m_bool",
+                            "F_name_api": "get_m_bool",
+                            "F_name_function": "get_m_bool",
+                            "F_name_generic": "get_m_bool",
+                            "F_name_impl": "class1_get_m_bool",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "field_name": "m_bool",
+                            "function_name": "get_m_bool",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_bool"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "set_m_bool  14 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_m_bool",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "bool"
+                                        },
+                                        "specifier": [
+                                            "bool"
+                                        ],
+                                        "typemap_name": "bool"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_m_bool(bool val)",
+                        "declgen": "void set_m_bool(bool val +intent(setter)) +intent(setter)",
+                        "name": "set_m_bool",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "m_bool",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_bool"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    },
+                                    "stmt": "f_setter_bool_scalar"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "intent": "setter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtargs": {
+                            "+result": {
+                                "fmtf": {
+                                    "C_call_function": "SH_this->set_m_bool(\tval)",
+                                    "C_call_list": "val",
+                                    "C_name": "CLA_Class1_set_m_bool",
+                                    "C_prototype": "CLA_Class1 * self,\t bool val",
+                                    "C_return_type": "void",
+                                    "F_C_arguments": "self,\t val",
+                                    "F_C_call": "c_class1_set_m_bool",
+                                    "F_C_name": "c_class1_set_m_bool",
+                                    "F_C_subprogram": "subroutine",
+                                    "F_arg_c_call": "obj%cxxmem,\t SHT_val_cxx",
+                                    "F_arguments": "obj,\t val",
+                                    "F_subprogram": "subroutine",
+                                    "stmt_name": "f_setter"
+                                }
+                            },
+                            "val": {
+                                "fmtf": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_type": "bool",
+                                    "c_var": "val",
+                                    "cfi_type": "CFI_type_Bool",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "bool",
+                                    "cxx_var": "val",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_BOOL",
+                                    "f_type": "logical",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "val",
+                                    "f_var_cxx": "SHT_val_cxx",
+                                    "fc_var": "val",
+                                    "i_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_BOOL",
+                                    "stmt_name": "f_setter_bool_scalar"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "set_m_bool",
+                            "F_name_api": "set_m_bool",
+                            "F_name_function": "set_m_bool",
+                            "F_name_generic": "set_m_bool",
+                            "F_name_impl": "class1_set_m_bool",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "field_name": "m_bool",
+                            "function_name": "set_m_bool",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_bool"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "get_m_name  15 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -2703,7 +2942,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_m_name  14 ****************************************",
+                        "<FUNCTION>": "set_m_name  16 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -2927,6 +3166,41 @@
                         }
                     },
                     {
+                        "<VARIABLE>": "m_bool ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "m_bool",
+                                "typemap_name": "bool"
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        },
+                        "name": "m_bool",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "PY_getter": "PY_Class1_m_bool_getter",
+                            "PY_setter": "PY_Class1_m_bool_setter",
+                            "PY_struct_context": "self->obj->",
+                            "c_type": "bool",
+                            "cxx_type": "bool",
+                            "field_name": "m_bool",
+                            "variable_lower": "m_bool",
+                            "variable_name": "m_bool",
+                            "variable_upper": "M_BOOL"
+                        }
+                    },
+                    {
                         "<VARIABLE>": "m_name ****************************************",
                         "ast": {
                             "declarator": {
@@ -3005,7 +3279,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getName  15 ****************************************",
+                        "<FUNCTION>": "getName  17 ****************************************",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -3266,7 +3540,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getReference  16 ****************************************",
+                        "<FUNCTION>": "getReference  18 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "getReference",
@@ -3488,7 +3762,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  17 ****************************************",
+                        "<FUNCTION>": "ctor  19 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -3663,7 +3937,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_ivar  18 ****************************************",
+                        "<FUNCTION>": "get_ivar  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -3887,7 +4161,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  19 ****************************************",
+                        "<FUNCTION>": "ctor  21 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -4114,7 +4388,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "allocate  20 ****************************************",
+                        "<FUNCTION>": "allocate  22 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "allocate",
@@ -4272,7 +4546,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "free  21 ****************************************",
+                        "<FUNCTION>": "free  23 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "free",
@@ -4357,7 +4631,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  22 ****************************************",
+                        "<FUNCTION>": "ctor  24 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -4482,7 +4756,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  23 ****************************************",
+                        "<FUNCTION>": "dtor  25 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -4570,7 +4844,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_nitems  24 ****************************************",
+                        "<FUNCTION>": "get_nitems  26 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -4673,7 +4947,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_nitems  25 ****************************************",
+                        "<FUNCTION>": "set_nitems  27 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -4808,7 +5082,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  26 ****************************************",
+                        "<FUNCTION>": "get_items  28 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -4951,7 +5225,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_items  27 ****************************************",
+                        "<FUNCTION>": "set_items  29 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -5227,7 +5501,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "directionFunc  28 ****************************************",
+                "<FUNCTION>": "directionFunc  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "directionFunc",
@@ -5512,7 +5786,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passClassByValue  29 ****************************************",
+                "<FUNCTION>": "passClassByValue  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passClassByValue",
@@ -5720,7 +5994,7 @@
                 }
             },
             {
-                "<FUNCTION>": "useclass  30 ****************************************",
+                "<FUNCTION>": "useclass  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "useclass",
@@ -5983,7 +6257,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2  31 ****************************************",
+                "<FUNCTION>": "getclass2  33 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6115,7 +6389,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3  32 ****************************************",
+                "<FUNCTION>": "getclass3  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3",
@@ -6281,7 +6555,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2_void  33 ****************************************",
+                "<FUNCTION>": "getclass2_void  35 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6411,7 +6685,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3_void  34 ****************************************",
+                "<FUNCTION>": "getclass3_void  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3_void",
@@ -6540,7 +6814,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstClassReference  35 ****************************************",
+                "<FUNCTION>": "getConstClassReference  37 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6669,7 +6943,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassReference  36 ****************************************",
+                "<FUNCTION>": "getClassReference  38 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -6832,7 +7106,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassCopy  37 ****************************************",
+                "<FUNCTION>": "getClassCopy  39 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassCopy",
@@ -7031,7 +7305,7 @@
                 }
             },
             {
-                "<FUNCTION>": "set_global_flag  38 ****************************************",
+                "<FUNCTION>": "set_global_flag  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -7249,7 +7523,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_flag  39 ****************************************",
+                "<FUNCTION>": "get_global_flag  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -7409,7 +7683,7 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  40 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  42 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {

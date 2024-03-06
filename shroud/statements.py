@@ -3564,6 +3564,30 @@ fc_statements = [
     # Replace c_call with getter code.
 
     dict(
+        name="f_getter_bool_scalar",
+        mixin=[
+            "c_mixin_noargs",
+        ],
+        f_arg_call=[],
+        c_call=[
+            "// skip call c_getter",
+        ],
+        c_return=[
+            "return {CXX_this}->{field_name};",
+        ],
+    ),
+    dict(
+        name="f_setter_bool_scalar",
+        mixin=[
+            "f_mixin_local-logical-var",
+        ],
+        f_pre_call=["{f_var_cxx} = {f_var}  ! coerce to C_BOOL"],
+        c_post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
+    ),
+    
+    dict(
         name="f_getter_native_scalar",
         mixin=[
             "c_mixin_noargs",
@@ -3596,6 +3620,8 @@ fc_statements = [
         ],
     ),
 
+    # f_setter_native_scalar
+    # f_setter_native_*
     dict(
         name="f_setter_native_scalar/*",
         alias=[

@@ -23,6 +23,7 @@ declarations:
   declarations:
   - decl: int m_flag +readonly;
   - decl: int m_test +name(test);
+  - decl: bool m_bool;
   - decl: std::string m_name
     options:
       wrap_python: False

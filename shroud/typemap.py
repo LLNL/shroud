@@ -803,6 +803,7 @@ def default_typemap():
             # from Py_BuildValue.
             # #- PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject="PyBool_Type",
+            PY_get="PyObject_IsTrue({py_var})",
             PYN_typenum="NPY_BOOL",
             LUA_type="LUA_TBOOLEAN",
             LUA_pop="lua_toboolean({LUA_state_var}, {LUA_index})",

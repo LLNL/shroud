@@ -70,6 +70,7 @@ contains
 
   subroutine test_class1_new_by_value
     integer mflag
+    logical mlogical
     type(class1) obj0
 
     call set_case_name("test_class1_new_by_value")
@@ -80,7 +81,10 @@ contains
     obj0 = get_class_copy(5)
 
     mflag = obj0%get_m_flag()
-    call assert_equals(5, mflag)
+    call assert_equals(5, mflag, "m_flag")
+
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.false., mlogical, "m_bool")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
@@ -91,6 +95,7 @@ contains
   subroutine test_class1
     integer iflag, mtest
     integer direction
+    logical mlogical
     type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
@@ -103,6 +108,7 @@ contains
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
+    !----------
     mtest = obj0%get_test()
     call assert_equals(0, mtest, "get_test 1")
 
@@ -110,6 +116,15 @@ contains
     mtest = obj0%get_test()
     call assert_equals(4, mtest, "get_test 2")
 
+    !----------
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.true., mlogical, "get_m_bool 1")
+    
+    call obj0%set_m_bool(.false.)
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.false., mlogical, "get_m_bool 2")
+
+    !----------
     ! Get default name from constructor
     name = obj0%get_m_name()
     call assert_true(allocated(name), "get_m_name")
