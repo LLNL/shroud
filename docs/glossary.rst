@@ -38,6 +38,10 @@ Fortran wrapper
 
    Fortran functions which call the C wrapper functions.
 
+helper function
+
+   A function used by Shroud to factor out common functionality from wrappers.
+   
 library
 
    A collection of C++ declarations wrapped at the same time.
@@ -45,13 +49,15 @@ library
 
 native type
 
+   numeric type, intrinsic
    Integer or real of any size.
 
 shadow class
 
    A Fortran derived type which contains a capsule and type-bound
-   functions to provide a Fortran object-oriented interface similar to
+   procedures to provide a Fortran object-oriented interface similar to
    a C++ class.
+   Also known as a proxy class.
    Similar to a `PyObject` struct in Python.
 
 splicer
@@ -61,4 +67,8 @@ splicer
    splicer also provides a place to insert code into a generated file
    a well defined places.  This allows user provided code to be
    preserved when regenerating wrappers.
+
+statements
+   
+typemap
 

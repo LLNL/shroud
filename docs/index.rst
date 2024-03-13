@@ -42,6 +42,7 @@ Contents
    defaultargs
    templates
    declarations
+   preprocessing
    output
    cwrapper
    fortran
