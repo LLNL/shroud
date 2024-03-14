@@ -1066,12 +1066,12 @@ rv = .false.
             attrs = declarator.attrs
             arg_c_names.append(name)
             # argument declarations
-            if attrs["assumedtype"]:
-                if attrs["rank"]:
+            if meta["assumedtype"]:
+                if meta["rank"]:
                     arg_c_decl.append(
                         "type(*) :: {}(*)".format(name)
                     )
-                elif attrs["dimension"]:
+                elif meta["dimension"]:
                     arg_c_decl.append(
                         "type(*) :: {}({})".format(
                             name, attrs["dimension"])
@@ -1131,7 +1131,7 @@ rv = .false.
         declarator = ast.declarator
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_pure = declarator.attrs["pure"]
+        is_pure = declarator.attrs.get("pure", None)
         func_is_const = declarator.func_const
 
         r_bind = get_func_bind(node, wlang)
@@ -1529,23 +1529,24 @@ rv = .false.
             c_index += 1
             c_arg = c_args[c_index]
 
-            if f_attrs["hidden"]:
-                # Argument is not passed into Fortran.
-                # hidden value is only in the C wrapper.
-                continue
             optattr = False
             
             arg_bind = get_arg_bind(node, f_arg, "f")
             arg_stmt = arg_bind.stmt
             arg_meta = arg_bind.meta
+            if arg_meta["hidden"]:
+                # Argument is not passed into Fortran.
+                # hidden value is only in the C wrapper.
+                continue
+            
             func_cursor.stmt = arg_stmt
             arg_typemap = self.fill_fortran_arg(
                 cls, node, C_node, f_arg, c_arg, arg_bind, fmt_arg)
 
             fileinfo.apply_helpers_from_stmts(node)
             
-            implied = f_attrs["implied"]
-            pass_obj = f_attrs["pass"]
+            implied = f_attrs.get("implied", None)
+            pass_obj = f_attrs.get("pass", None)
 
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
@@ -1557,7 +1558,7 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
                 continue
-            elif f_attrs["assumedtype"]:
+            elif arg_meta["assumedtype"]:
                 # Passed directly to C as a 'void *'
                 arg_f_decl.append(
                     "type(*) :: {}".format(fmt_arg.f_var)
@@ -1567,7 +1568,7 @@ rv = .false.
                 continue
             elif f_declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                if f_attrs["external"]:
+                if "external" in f_attrs:
                     # external is similar to assumed type, in that it will
                     # accept any function.  But external is not allowed
                     # in bind(C), so make sure a wrapper is generated.
