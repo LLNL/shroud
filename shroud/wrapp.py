@@ -938,7 +938,7 @@ return 1;""",
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
         dimension = bind.meta["dim_ast"]
-        rank = declarator.attrs["rank"]
+        rank = bind.meta["rank"]
         if rank is not None:
             fmt.rank = str(rank)
         elif dimension:
@@ -1322,10 +1322,10 @@ return 1;""",
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
-            rank = attrs["rank"]
-            dimension = attrs["dimension"]
-            hidden = attrs["hidden"]
-            implied = attrs["implied"]
+            rank = meta["rank"]
+            dimension = meta["dimension"]
+            hidden = meta["hidden"]
+            implied = attrs.get("implied", None)
             intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = declarator.get_indirect_stmt()
