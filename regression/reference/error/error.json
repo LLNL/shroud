@@ -1402,7 +1402,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*"
                         }
@@ -1415,7 +1416,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -1538,7 +1540,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 2
                             },
                             "stmt": "f_inout_native_*"
                         }
@@ -1551,7 +1554,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 2
                             }
                         }
                     }

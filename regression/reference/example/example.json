@@ -13399,7 +13399,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             },
                                             "stmt": "c_in_native_*"
                                         },
@@ -13415,6 +13416,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
                                             "stmt": "c_out_native_*"
@@ -13435,7 +13437,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             },
                                             "stmt": "f_in_native_*"
                                         },
@@ -13451,6 +13454,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
                                             "stmt": "f_out_native_*"
@@ -13470,7 +13474,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13485,6 +13490,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },
@@ -13502,7 +13508,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13517,6 +13524,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },
@@ -13534,7 +13542,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13549,6 +13558,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },

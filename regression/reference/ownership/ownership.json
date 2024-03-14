@@ -966,6 +966,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -987,6 +988,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1007,6 +1009,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1024,6 +1027,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1041,6 +1045,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1313,6 +1318,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1334,6 +1340,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -1354,6 +1361,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1371,6 +1379,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1388,6 +1397,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1662,6 +1672,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*"
@@ -1683,6 +1694,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -1703,6 +1715,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1720,6 +1733,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1737,6 +1751,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -1997,6 +2012,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2016,7 +2032,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "function"
+                                "dimension": "len",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -2168,6 +2186,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2189,6 +2208,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2209,6 +2229,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2226,6 +2247,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2243,7 +2265,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "function"
+                                "dimension": "len",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -2507,6 +2531,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2526,6 +2551,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2543,6 +2569,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2560,7 +2587,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "function"
+                                "dimension": "len",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -2753,6 +2782,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native_*_caller"
@@ -2774,6 +2804,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer_caller"
@@ -2794,6 +2825,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2811,6 +2843,7 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dimension": "len",
                                 "intent": "function"
                             }
                         },
@@ -2828,7 +2861,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "function"
+                                "dimension": "len",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -3103,7 +3138,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             }
                         },
                         "len": {
@@ -3200,7 +3236,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "library"
                             }
                         },
                         "len": {
@@ -3297,7 +3335,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "library"
                             }
                         },
                         "len": {
@@ -3393,7 +3433,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "library"
                             }
                         },
                         "len": {
@@ -3484,7 +3526,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -3581,7 +3624,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -3678,7 +3723,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -3774,7 +3821,9 @@
                                         "name": "len"
                                     }
                                 ],
-                                "intent": "out"
+                                "dimension": "len",
+                                "intent": "out",
+                                "owner": "caller"
                             }
                         },
                         "len": {
@@ -4058,7 +4107,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -4260,7 +4310,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         },
                         "flag": {

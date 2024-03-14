@@ -2065,7 +2065,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         }
@@ -2083,7 +2084,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -2276,7 +2278,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*"
                         }
@@ -2294,7 +2297,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         }
                     }
@@ -3239,7 +3243,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*"
                         }
@@ -3267,7 +3272,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -3509,7 +3515,8 @@
                         },
                         "from": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -3527,7 +3534,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*"
                         }
@@ -3540,7 +3548,8 @@
                         },
                         "from": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "nfrom": {
@@ -3555,7 +3564,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -4095,7 +4105,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -4120,7 +4131,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -4333,7 +4345,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -4358,7 +4371,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "size": {
@@ -4939,7 +4953,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -4964,7 +4979,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -5205,7 +5221,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -5230,7 +5247,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "size": {
@@ -6159,7 +6177,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         },
@@ -6186,7 +6205,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -6427,7 +6447,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
                         },
@@ -6454,7 +6475,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             }
                         },
                         "size": {

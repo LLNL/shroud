@@ -41,7 +41,8 @@
                                         {
                                             "constant": "10"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "10"
                                 }
                             }
                         },
@@ -120,7 +121,8 @@
                                         {
                                             "name": "narg2"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "narg2"
                                 }
                             }
                         },
@@ -536,6 +538,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -641,6 +644,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         }
@@ -944,7 +948,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -1001,6 +1006,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "dimension": "n+=2",
                                 "intent": "inout"
                             }
                         }
@@ -1607,7 +1613,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 30
                             }
                         }
                     }
@@ -1771,7 +1778,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         }
                     }
@@ -1833,7 +1841,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "none"
                             }
                         }
                     }
@@ -1904,7 +1913,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -1980,7 +1990,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -2594,7 +2605,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 8
                             }
                         }
                     }
@@ -2822,6 +2834,7 @@
                                         "name": "narg2"
                                     }
                                 ],
+                                "dimension": "narg2",
                                 "intent": "getter"
                             },
                             "stmt": "f_mixin_unknown"
@@ -2841,6 +2854,7 @@
                                         "name": "narg2"
                                     }
                                 ],
+                                "dimension": "narg2",
                                 "intent": "getter"
                             }
                         },
@@ -3018,7 +3032,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             },
                             "stmt": "f_setter_native_*"
                         }
@@ -3036,7 +3051,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             }
                         }
                     }

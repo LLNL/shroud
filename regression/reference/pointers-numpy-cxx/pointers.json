@@ -569,7 +569,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -584,6 +585,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -601,7 +603,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -616,6 +619,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -788,7 +792,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -803,6 +808,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -820,7 +826,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -835,6 +842,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -1003,6 +1011,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1025,6 +1034,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1163,6 +1173,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         },
@@ -1173,6 +1184,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1190,6 +1202,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         },
@@ -1200,6 +1213,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1335,6 +1349,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             }
                         }
@@ -1357,6 +1372,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             }
                         }
@@ -1509,7 +1525,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -1531,7 +1548,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -1665,6 +1683,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1682,6 +1701,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1787,7 +1807,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -1804,7 +1825,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -1926,7 +1948,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "x_length": {
@@ -1943,7 +1966,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "x_length": {
@@ -2066,7 +2090,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "len": {
@@ -2083,7 +2108,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "len": {
@@ -2217,7 +2243,8 @@
                         },
                         "names": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -2229,7 +2256,8 @@
                         },
                         "names": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -2558,6 +2586,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -2575,6 +2604,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -2694,6 +2724,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -2716,6 +2747,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -2843,6 +2875,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             }
                         }
@@ -2861,6 +2894,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             }
                         }
@@ -3022,6 +3056,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -3039,6 +3074,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -3156,6 +3192,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -3178,6 +3215,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -3778,6 +3816,7 @@
                                         "constant": "20"
                                     }
                                 ],
+                                "dimension": "10,20",
                                 "intent": "in"
                             }
                         }
@@ -3850,6 +3889,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -4296,7 +4336,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -4413,6 +4454,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4425,6 +4467,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4571,6 +4614,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4583,6 +4627,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4893,6 +4938,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }

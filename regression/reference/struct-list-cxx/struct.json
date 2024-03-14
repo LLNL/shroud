@@ -291,7 +291,8 @@
                                                 "name": "nitems"
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems+nitems"
                                 }
                             }
                         },
@@ -342,7 +343,8 @@
                                                 "name": "TWO"
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems*TWO"
                                 }
                             }
                         },
@@ -390,7 +392,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -503,7 +506,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -548,7 +552,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -2333,6 +2338,7 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dimension": "2",
                                 "intent": "function"
                             }
                         }
@@ -2345,6 +2351,7 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dimension": "2",
                                 "intent": "function"
                             }
                         }

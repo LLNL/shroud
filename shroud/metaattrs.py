@@ -572,7 +572,9 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
+        meta["dimension"] = share_meta["dimension"]
         meta["dim_ast"] = share_meta["dim_ast"]
+        meta["rank"] = share_meta["rank"]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -580,7 +582,9 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
+        meta["dimension"] = share_meta["dimension"]
         meta["dim_ast"] = share_meta["dim_ast"]
+        meta["rank"] = share_meta["rank"]
             
 ######################################################################
 #
@@ -711,6 +715,7 @@ class FillMetaShare(FillMeta):
                     "argument '{}' must not have value=True "
                     "because it has the assumedtype attribute.".format(argname)
                 )
+            meta["assumedtype"] = assumedtype
 
     def check_common_attrs(self, ast, meta):
         """Check attributes which are common to function and argument AST
@@ -736,16 +741,17 @@ class FillMetaShare(FillMeta):
             else:
                 try:
                     attrs["rank"] = int(attrs["rank"])
+                    meta["rank"] = int(rank)
                 except ValueError:
                     self.cursor.generate(
                         "rank attribute must have an integer value, not '{}'"
-                        .format(attrs["rank"])
+                        .format(rank)
                     )
                 else:
                     if attrs["rank"] > 7:
                         self.cursor.generate(
                             "'rank' attribute must be 0-7, not '{}'"
-                            .format(attrs["rank"])
+                            .format(rank)
                         )
             if not is_ptr:
                 self.cursor.generate(
@@ -776,9 +782,11 @@ class FillMetaShare(FillMeta):
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
                 attrs["rank"] = 1
+                meta["rank"] = 1
             elif ntypemap.name == 'char' and is_ptr == 2:
                 # 'char **' -> CHARACTER(*) s(:)
                 attrs["rank"] = 1
+                meta["rank"] = 1
 
         owner = attrs["owner"]
         if owner is not None:
@@ -787,6 +795,7 @@ class FillMetaShare(FillMeta):
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)
                 )
+            meta["owner"] = owner
 
         free_pattern = attrs["free_pattern"]
         if free_pattern is not None:
@@ -795,6 +804,7 @@ class FillMetaShare(FillMeta):
                     "Illegal value '{}' for free_pattern attribute. "
                     "Must be defined in patterns section.".format(free_pattern)
                 )
+            meta["free_pattern"] = free_pattern
         
     def parse_dim_attrs(self, dim, meta):
         """Parse dimension attributes and save the AST.
@@ -809,6 +819,7 @@ class FillMetaShare(FillMeta):
         if not dim:
             return
         try:
+            meta["dimension"] = dim
             meta["dim_ast"] = declast.check_dimension(dim)
         except error.ShroudParseError:
             self.cursor.generate("Unable to parse dimension: {}"

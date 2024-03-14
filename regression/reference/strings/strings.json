@@ -3851,7 +3851,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -4041,7 +4042,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -4232,7 +4234,9 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -4412,7 +4416,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -6973,6 +6978,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7001,6 +7007,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_copy"
@@ -7024,6 +7031,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -7285,6 +7293,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7313,6 +7322,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7336,6 +7346,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -7606,6 +7617,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7634,6 +7646,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7657,6 +7670,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -9261,7 +9275,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_native_*"
                         },
@@ -9281,7 +9296,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -9301,7 +9317,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "name": {
@@ -9318,7 +9335,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "name": {

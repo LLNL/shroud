@@ -74,7 +74,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "c_in_native_*"
                         }
@@ -89,7 +90,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*_cdesc"
                         }
@@ -102,7 +104,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         }
                     }
@@ -412,7 +415,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 0
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -430,7 +434,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 0
                             }
                         }
                     }
@@ -628,7 +633,8 @@
                         "value": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 0
                             },
                             "stmt": "f_out_native_*_cdesc"
                         }
@@ -646,7 +652,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 0
                             }
                         }
                     }
@@ -866,7 +873,8 @@
                         "value": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 0
                             },
                             "stmt": "f_out_native_*_cdesc"
                         }
@@ -884,7 +892,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 0
                             }
                         }
                     }

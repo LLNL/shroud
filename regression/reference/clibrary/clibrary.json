@@ -5144,6 +5144,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         }
@@ -5320,7 +5321,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -5334,7 +5336,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_void_*"
                         }
@@ -5347,7 +5350,9 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "assumedtype": true,
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -5554,6 +5559,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },
@@ -6389,6 +6395,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },
@@ -6767,6 +6774,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },

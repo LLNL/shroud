@@ -427,7 +427,8 @@
                                         {
                                             "name": "sublevels"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "sublevels"
                                 }
                             }
                         },
@@ -474,7 +475,8 @@
                                         {
                                             "name": "sublevels"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "sublevels"
                                 }
                             }
                         },
@@ -2902,7 +2904,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_native_*"
                         }
@@ -2916,7 +2919,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         }
@@ -2929,7 +2933,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -2941,7 +2946,8 @@
                         },
                         "data": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -4895,6 +4901,7 @@
                                         "name": "sublevels"
                                     }
                                 ],
+                                "dimension": "sublevels",
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_struct_**_cdesc_raw"
@@ -4914,6 +4921,7 @@
                                         "name": "sublevels"
                                     }
                                 ],
+                                "dimension": "sublevels",
                                 "intent": "getter"
                             }
                         },
@@ -5102,7 +5110,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             },
                             "stmt": "f_setter_struct_**"
                         }
@@ -5120,7 +5129,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             }
                         }
                     }
@@ -5292,6 +5302,7 @@
                                         "name": "sublevels"
                                     }
                                 ],
+                                "dimension": "sublevels",
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_struct_*_cdesc_pointer"
@@ -5311,6 +5322,7 @@
                                         "name": "sublevels"
                                     }
                                 ],
+                                "dimension": "sublevels",
                                 "intent": "getter"
                             }
                         },
@@ -5496,7 +5508,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             },
                             "stmt": "f_setter_struct_*"
                         }
@@ -5514,7 +5527,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             }
                         }
                     }

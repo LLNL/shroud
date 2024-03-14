@@ -5139,6 +5139,7 @@
                                                 "name": "nitems"
                                             }
                                         ],
+                                        "dimension": "nitems",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native_*_cdesc_pointer"
@@ -5152,6 +5153,7 @@
                                                 "name": "nitems"
                                             }
                                         ],
+                                        "dimension": "nitems",
                                         "intent": "getter"
                                     }
                                 }
@@ -5286,7 +5288,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "rank": 1
                                     },
                                     "stmt": "f_setter_native_*"
                                 }
@@ -5299,7 +5302,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "rank": 1
                                     }
                                 }
                             }
@@ -5448,7 +5452,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
