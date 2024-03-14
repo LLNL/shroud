@@ -3207,7 +3207,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3217,7 +3218,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_library"
                         }
@@ -3350,7 +3352,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -3360,7 +3363,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
                         }
@@ -3494,7 +3498,9 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -3504,7 +3510,9 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
                         }
@@ -3638,7 +3646,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3648,7 +3657,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cfi_pointer_library"
                         }

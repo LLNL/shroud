@@ -3826,7 +3826,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3836,7 +3837,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
@@ -3844,7 +3846,8 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     },
@@ -4017,7 +4020,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -4027,7 +4031,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
@@ -4035,7 +4040,8 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     },
@@ -4209,7 +4215,9 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -4219,7 +4227,9 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
@@ -4227,7 +4237,9 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     },
@@ -4398,7 +4410,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -4408,7 +4421,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cdesc_pointer_library"
                         }

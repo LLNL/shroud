@@ -572,9 +572,11 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
-        meta["dimension"] = share_meta["dimension"]
-        meta["dim_ast"] = share_meta["dim_ast"]
-        meta["rank"] = share_meta["rank"]
+        for attr in [
+                "assumedtype",
+                "dimension", "dim_ast",
+                "free_pattern", "owner", "rank"]:
+            meta[attr] = share_meta[attr]
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
@@ -582,10 +584,12 @@ class FillMeta(object):
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
-        meta["dimension"] = share_meta["dimension"]
-        meta["dim_ast"] = share_meta["dim_ast"]
-        meta["rank"] = share_meta["rank"]
-            
+        for attr in [
+                "assumedtype",
+                "dimension", "dim_ast",
+                "free_pattern", "owner", "rank"]:
+            meta[attr] = share_meta[attr]
+        
 ######################################################################
 #
 
@@ -795,6 +799,7 @@ class FillMetaShare(FillMeta):
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)
                 )
+#            import pdb;pdb.set_trace()
             meta["owner"] = owner
 
         free_pattern = attrs["free_pattern"]

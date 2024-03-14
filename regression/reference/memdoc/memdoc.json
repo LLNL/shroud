@@ -56,7 +56,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -66,7 +67,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
