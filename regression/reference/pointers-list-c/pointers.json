@@ -2746,6 +2746,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             }
                         }
@@ -3217,6 +3218,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             }
                         }

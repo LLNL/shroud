@@ -1840,6 +1840,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2216,6 +2217,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2593,6 +2595,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2970,6 +2973,7 @@
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }

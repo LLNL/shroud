@@ -592,7 +592,7 @@ See :ref:`MemoryManagementAnchor` for details.
 hidden
 ^^^^^^
 
-The argument will not appear in the Fortran API.
+The argument will not appear in the Fortran or Python API.
 
 For the native C API it will appear as a regular argument.
 For the bufferify C API, it will be a local variable which

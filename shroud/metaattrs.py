@@ -555,7 +555,7 @@ class FillMeta(object):
         
     def set_arg_hidden(self, arg, meta):
         """
-        Fortran only.
+        Fortran/Python only.
         """
         declarator = arg.declarator
         hidden = declarator.attrs["hidden"]
@@ -575,7 +575,7 @@ class FillMeta(object):
         for attr in [
                 "assumedtype",
                 "dimension", "dim_ast",
-                "free_pattern", "owner", "rank"]:
+                "free_pattern", "hidden", "owner", "rank"]:
             meta[attr] = share_meta[attr]
 
     def set_arg_share(self, node, arg, meta):
@@ -587,7 +587,7 @@ class FillMeta(object):
         for attr in [
                 "assumedtype",
                 "dimension", "dim_ast",
-                "free_pattern", "owner", "rank"]:
+                "free_pattern", "hidden", "owner", "rank"]:
             meta[attr] = share_meta[attr]
         
 ######################################################################
@@ -1014,6 +1014,7 @@ class FillMetaPython(FillMeta):
 
             self.set_arg_share(node, arg, meta)
             self.set_arg_deref(arg, meta)
+            self.set_arg_hidden(arg, meta)
             arg_stmt = None
             a_bind.stmt = arg_stmt
 
