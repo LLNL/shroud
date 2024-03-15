@@ -8,6 +8,8 @@
 Set the meta attributes for each wrapper.
 Derived from user supplied attributes as well a
 defaults based on typemap.
+Wrappers should use the meta attributes instead of using
+the parsed attributes directly.
 
 generate.VerifyAttrs will do some initial error checking and
 preprocessing on user supplied attributes that may apply to all
@@ -139,7 +141,7 @@ class FillMeta(object):
 
     def check_value(self, arg):
         attrs = arg.declarator.attrs
-        if attrs["value"] is None:
+        if "value" not in attrs:
             if arg.declarator.is_indirect():
                 if arg.typemap.name == "void":
                     # This causes Fortran to dereference the C_PTR
@@ -226,7 +228,7 @@ class FillMeta(object):
         elif ntypemap.sgroup == "string":
             if deref is not missing:
                 mderef = deref
-            elif attrs["len"]:
+            elif "len" in attrs:
                 mderef = "copy"
             else:
                 mderef = "allocatable"
@@ -253,7 +255,7 @@ class FillMeta(object):
             if deref is not missing:
                 mderef = deref
             elif ntypemap.sgroup == "char":  # char *
-                if attrs["len"]:
+                if "len" in attrs:
                     mderef = "copy"
                 else:
                     mderef = "allocatable"
@@ -415,7 +417,7 @@ class FillMeta(object):
 
         if meta["api"]:
             return
-        if meta["deref"] == "raw" and not attrs["dimension"]:
+        if meta["deref"] == "raw" and not meta["dimension"]:
             # No bufferify required for raw pointer result.
             # Return a type(C_PTR).
             return
@@ -467,7 +469,7 @@ class FillMeta(object):
             need_buf_result = "cdesc"
         elif is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
-                if attrs["dimension"]:
+                if meta["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)
                     need_buf_result = "cdesc"
         if need_buf_result:
@@ -511,9 +513,9 @@ class FillMeta(object):
 
         if node.options.F_CFI:
             cfi_arg = False
-            if attrs["dimension"] == "..":   # assumed-rank
+            if meta["dimension"] == "..":   # assumed-rank
                 cfi_arg = True
-            elif attrs["rank"]:
+            elif meta["rank"]:
                 cfi_arg = True
             elif ntypemap.sgroup == "string":
                 cfi_arg = True
@@ -719,7 +721,7 @@ class FillMetaShare(FillMeta):
         # assumedtype
         assumedtype = attrs.get("assumedtype", missing)
         if assumedtype is not missing:
-            if attrs["value"]:
+            if "value" in attrs:
                 cursor.generate(
                     "argument '{}' must not have value=True "
                     "because it has the assumedtype attribute.".format(argname)
@@ -1042,18 +1044,20 @@ class FillMetaPython(FillMeta):
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
-        deref = self.filter_deref(attrs["deref"])
 
-        if deref:
-            meta["deref"] = deref
+        if "deref" in attrs:
+            deref = self.filter_deref(attrs["deref"])
+            if deref:
+                meta["deref"] = deref
 
     def set_arg_deref(self, arg, meta):
         declarator = arg.declarator
         attrs = declarator.attrs
-        deref = self.filter_deref(attrs["deref"])
 
-        if deref:
-            meta["deref"] = deref
+        if "deref" in attrs:
+            deref = self.filter_deref(attrs["deref"])
+            if deref:
+                meta["deref"] = deref
         
 ######################################################################
 #

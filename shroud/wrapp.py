@@ -840,7 +840,7 @@ return 1;""",
 
         ########################################
         # setter
-        if not declarator.attrs["readonly"]:
+        if not declarator.attrs.get("readonly"):
             fmt_var.PY_setter = wformat(
                 options.PY_member_setter_template, fmt_var
             )
@@ -1359,7 +1359,7 @@ return 1;""",
                 intent_blk = default_scope
             elif sgroup == "char":
                 stmts = ["py", intent, sgroup, spointer]
-                charlen = attrs["charlen"]
+                charlen = attrs.get("charlen")
                 if charlen:
                     fmt_arg.charlen = charlen
                     stmts.append("charlen")
@@ -3367,10 +3367,11 @@ def py_struct_dimension(parent, var, fmt):
     #    fmt.npy_intp_values     # comma separated list of values
     ast = var.ast
     declarator = ast.declarator
+    meta = statements.get_var_bind(var, "share").meta
     if declarator.array: # Fixed size array.
         metadim = declarator.array
-    elif declarator.attrs["dimension"] is not None:
-        metadim = statements.get_var_bind(var, "share").meta["dim_ast"]
+    elif meta["dimension"] is not None:
+        metadim = meta["dim_ast"]
     else:
         metadim = None
     if metadim:

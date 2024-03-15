@@ -401,7 +401,7 @@ class FillFormat(object):
                     fmt.c_temp_extents_use = fmt.c_var_extents
                     fmt.c_temp_lower_use = fmt.c_var_lower
 
-        if attrs["len"]:
+        if "len" in attrs:
             fmt.c_char_len = attrs["len"];
                 
     def set_fmt_fields_iface(self, fcn, ast, bind, fmt, rootname,
@@ -540,7 +540,7 @@ class FillFormat(object):
                     fmt.f_array_shape = wformat(
                         ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
 
-        if f_attrs["len"]:
+        if "len" in f_attrs:
             fmt.f_char_len = "len=%s" % f_attrs["len"];
         elif hasattr(fmt, "f_var_cdesc"):
             if meta["deref"] == "allocatable":
@@ -648,7 +648,7 @@ class ToDimensionC(todict.PrintNode):
             arg = self.fcn.ast.declarator.find_arg_by_name(argname)
             if arg:
                 declarator = arg.declarator
-                if declarator.attrs["hidden"]:
+                if "hidden" in declarator.attrs:
                     # (int *arg +intent(out)+hidden)
                     # c_out_native_*_hidden creates a local scalar.
                     deref = ''
