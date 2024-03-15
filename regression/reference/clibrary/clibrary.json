@@ -5276,7 +5276,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "assumedtype": true,
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "arg",
                                     "pointer": [

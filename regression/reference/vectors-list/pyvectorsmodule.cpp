@@ -137,7 +137,7 @@ PyObject *PY_error_obj;
 // Function:  int vector_sum
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  const std::vector<int> & arg +rank(1)
+// Argument:  const std::vector<int> & arg
 // Statement: py_in_vector_list
 static char PY_vector_sum__doc__[] =
 "documentation"
@@ -185,7 +185,7 @@ fail:
 // Function:  void vector_iota_out
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: py_out_vector_list
 static char PY_vector_iota_out__doc__[] =
 "documentation"
@@ -225,7 +225,7 @@ fail:
 // Function:  void vector_iota_out_d
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::vector<double> & arg +intent(out)+rank(1)
+// Argument:  std::vector<double> & arg +intent(out)
 // Statement: py_out_vector_list
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
@@ -262,7 +262,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Function:  std::vector<int> ReturnVectorAlloc
 // Statement: py_function_vector_list_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n

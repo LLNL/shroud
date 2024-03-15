@@ -361,7 +361,7 @@ int POI_accumulate(const int * arr, size_t len)
 // Function:  int acceptCharArrayIn
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: c_in_char_**
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
@@ -380,7 +380,7 @@ int POI_acceptCharArrayIn(char **names)
 // Function:  int acceptCharArrayIn
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: f_in_char_**_buf
 // start POI_acceptCharArrayIn_bufferify
 int POI_acceptCharArrayIn_bufferify(const char *names,

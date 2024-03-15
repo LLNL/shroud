@@ -24,7 +24,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -243,7 +243,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "in",
-                                        "rank": 0
+                                        "rank": "0"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -297,7 +297,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "out",
-                                        "rank": 0
+                                        "rank": "0"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -341,7 +341,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "out",
-                                        "rank": 0
+                                        "rank": "0"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -549,7 +549,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "out",
-                                        "rank": 0
+                                        "rank": "0"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -789,7 +789,7 @@
                                     "attrs": {
                                         "api": "cdesc",
                                         "intent": "out",
-                                        "rank": 0
+                                        "rank": "0"
                                     },
                                     "name": "value",
                                     "pointer": [

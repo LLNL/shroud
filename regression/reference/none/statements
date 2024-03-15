@@ -7878,6 +7878,8 @@ f_in_char_**_cfi:
   - len
   - size
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {f_var}(:)'
   i_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {i_var}(:)'
   i_arg_names:

@@ -910,9 +910,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg1",
                                     "pointer": [
                                         {
@@ -1576,7 +1573,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 30
+                                        "rank": "30"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1746,7 +1743,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "dimension": true,
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "arg1",
                                     "typemap_name": "int"
@@ -1863,7 +1860,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -1940,7 +1937,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -2366,7 +2363,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 8
+                                        "rank": "8"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2540,7 +2537,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 8
+                                        "rank": "8"
                                     },
                                     "name": "to",
                                     "pointer": [

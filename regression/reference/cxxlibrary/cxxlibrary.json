@@ -2861,7 +2861,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "IN",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "init": "nullptr",
                                     "name": "data",

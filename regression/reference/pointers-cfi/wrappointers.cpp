@@ -528,7 +528,7 @@ int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
 // Function:  int acceptCharArrayIn
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: c_in_char_**
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
@@ -547,7 +547,7 @@ int POI_acceptCharArrayIn(char **names)
 // Function:  int acceptCharArrayIn
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: f_in_char_**_cfi
 // start POI_acceptCharArrayIn_CFI
 int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)

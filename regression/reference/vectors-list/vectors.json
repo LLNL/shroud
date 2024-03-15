@@ -22,9 +22,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -159,8 +156,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -280,8 +276,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -384,8 +379,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -479,8 +473,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -564,8 +557,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -647,9 +639,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -720,8 +709,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -840,8 +828,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -937,9 +924,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1013,8 +997,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1091,8 +1074,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1166,8 +1148,7 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "intent": "out",
-                                        "len": "20",
-                                        "rank": 1
+                                        "len": "20"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1239,8 +1220,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1312,9 +1292,6 @@
                 "<FUNCTION>": "ReturnVectorAlloc  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "attrs": {
-                            "rank": 1
-                        },
                         "name": "ReturnVectorAlloc",
                         "params": [
                             {
@@ -1454,7 +1431,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "arg",
                                     "pointer": [

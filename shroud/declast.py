@@ -1855,7 +1855,7 @@ class Declaration(Node):
         elif "dimension" in attrs:
             # Any dimension is changed to assumed-size.
             decl.append("(*)")
-        elif attrs.get("rank",0) > 0:
+        elif int(attrs.get("rank",0)) > 0:
             # Any dimension is changed to assumed-size.
             decl.append("(*)")
         return "".join(decl)
@@ -1938,6 +1938,7 @@ class Declaration(Node):
         dimension = attrs.get("dimension")
         rank = attrs.get("rank")
         if rank is not None:
+            rank = int(rank)
             decl.append(self.fortran_ranks[rank])
         elif dimension:
             if is_allocatable:

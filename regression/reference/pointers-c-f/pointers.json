@@ -611,7 +611,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -876,7 +876,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -1750,7 +1750,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -2114,7 +2114,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "inout",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2295,7 +2295,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "x",
                                     "pointer": [
@@ -2474,7 +2474,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "arr",
                                     "pointer": [
@@ -2674,8 +2674,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "names",
                                     "pointer": [
@@ -5921,7 +5920,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [

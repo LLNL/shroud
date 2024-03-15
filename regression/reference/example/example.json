@@ -13323,7 +13323,7 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "intent": "in",
-                                                        "rank": 2
+                                                        "rank": "2"
                                                     },
                                                     "name": "in",
                                                     "pointer": [

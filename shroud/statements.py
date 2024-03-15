@@ -1363,6 +1363,9 @@ fc_statements = [
         comments=[
             "Pass argument and size by value to C.",
         ],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {f_var}{f_assumed_shape}",
+        ],
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_need_wrapper=True,
@@ -4037,6 +4040,9 @@ fc_statements = [
         name="f_in_char_**_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        f_arg_decl=[
+            "character(len=*), intent({f_intent}) :: {f_var}(:)",
         ],
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {i_var}(:)",

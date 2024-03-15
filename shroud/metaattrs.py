@@ -757,7 +757,6 @@ class FillMetaShare(FillMeta):
                         .format(rank)
                     )
                 else:
-                    attrs["rank"] = int(attrs["rank"])
                     meta["rank"] = int(rank)
                     if rank > 7:
                         self.cursor.generate(
@@ -794,11 +793,9 @@ class FillMetaShare(FillMeta):
         elif ntypemap:
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
-                attrs["rank"] = 1
                 meta["rank"] = 1
             elif ntypemap.name == 'char' and is_ptr == 2:
                 # 'char **' -> CHARACTER(*) s(:)
-                attrs["rank"] = 1
                 meta["rank"] = 1
 
         owner = attrs.get("owner", missing)
