@@ -155,7 +155,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
-        self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt)
+        self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
         self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
 
     def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg, meta):
@@ -192,7 +192,7 @@ class FillFormat(object):
             )
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
-        self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt)
+        self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt, meta)
 
     def fill_interface_result(self, cls, node, bind, fmt_result):
         ast = node.ast
@@ -484,7 +484,7 @@ class FillFormat(object):
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, bind, fmt, rootname,
                                       ntypemap, subprogram)
-            if c_attrs["pass"]:
+            if "pass" in c_attrs:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
         return ntypemap
@@ -504,8 +504,8 @@ class FillFormat(object):
         f_attrs = f_ast.declarator.attrs
         meta = bind.meta
         dim = meta["dim_ast"]
-        rank = f_attrs["rank"]
-        if f_attrs["dimension"] == "..":   # assumed-rank
+        rank = meta["rank"]
+        if meta["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
