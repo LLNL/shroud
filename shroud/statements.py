@@ -1519,6 +1519,9 @@ fc_statements = [
     dict(
         # Pass argument, size and len to C.
         name="f_mixin_in_string_array_buf",
+        f_arg_decl=[
+            "character(len=*), intent(IN) :: {f_var}(:)",
+        ],
         f_arg_call=[
             "{f_var}",
             "size({f_var}, kind=C_SIZE_T)",
