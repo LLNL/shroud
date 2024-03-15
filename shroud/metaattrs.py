@@ -93,8 +93,8 @@ class FillMeta(object):
                     ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
                 )
 
-        dim = attrs["dimension"]
-        if dim:
+        dim = attrs.get("dimension", missing)
+        if dim is not missing:
             is_ptr = declarator.is_indirect()
             if not is_ptr:
                 self.cursor.generate(
@@ -105,8 +105,8 @@ class FillMeta(object):
         
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
-        intent = declarator.attrs["intent"]
-        if intent:
+        intent = declarator.attrs.get("intent", missing)
+        if intent is not missing:
             intent = intent.lower()
             if intent not in ["getter", "setter"]:
                 self.cursor.generate("Bad value for function intent: {}"
@@ -120,8 +120,10 @@ class FillMeta(object):
             meta["intent"] = declarator.get_subprogram()
 
     def check_intent(self, arg):
-        intent = arg.declarator.attrs["intent"]
-        if intent:
+        intent = arg.declarator.attrs.get("intent", missing)
+        if intent is missing:
+            intent = None
+        else:
             intent = intent.lower()
             if intent in ["getter", "setter"]:
                 pass
@@ -197,7 +199,7 @@ class FillMeta(object):
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
-        deref = attrs["deref"]
+        deref = attrs.get("deref", missing)
         mderef = None
         ntypemap = ast.typemap
         nindirect = declarator.is_indirect()
@@ -215,30 +217,30 @@ class FillMeta(object):
             # Array of shadow?
             pass
         elif ntypemap.sgroup == "struct":
-            if deref:
+            if deref is not missing:
                 mderef = deref
             elif nindirect == 1:
                 mderef = "pointer"
             elif nindirect > 1:
                 mderef = "raw"
         elif ntypemap.sgroup == "string":
-            if deref:
+            if deref is not missing:
                 mderef = deref
             elif attrs["len"]:
                 mderef = "copy"
             else:
                 mderef = "allocatable"
         elif ntypemap.sgroup == "vector":
-            if deref:
+            if deref is not missing:
                 mderef = deref
             else:
                 mderef = "allocatable"
         elif nindirect > 2:
-            if deref:
+            if deref is not missing:
                 self.cursor.generate(
                     "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect > 1:
-            if deref:
+            if deref is not missing:
                 if deref == "pointer":
                     # XXX - this is a kludge to get cxxlibrary.yaml to pass
                     #       get_nested_child getter
@@ -248,18 +250,18 @@ class FillMeta(object):
                         "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
-            if deref:
+            if deref is not missing:
                 mderef = deref
             elif ntypemap.sgroup == "char":  # char *
                 if attrs["len"]:
                     mderef = "copy"
                 else:
                     mderef = "allocatable"
-            elif attrs["dimension"]:  # XXX - or rank?
+            elif "dimension" in attrs:  # XXX - or rank?
                 mderef = "pointer"
             else:
                 mderef = node.options.return_scalar_pointer
-        elif deref:
+        elif deref is not missing:
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
 
@@ -332,8 +334,8 @@ class FillMeta(object):
         ntypemap = arg.typemap
         is_ptr = declarator.is_indirect()
 
-        deref = attrs["deref"]
-        if deref is not None:
+        deref = attrs.get("deref", missing)
+        if deref is not missing:
             if deref not in ["allocatable", "pointer", "raw", "scalar"]:
                 self.cursor.generate(
                     "Illegal value '{}' for deref attribute. "
@@ -380,9 +382,9 @@ class FillMeta(object):
         ast = node.ast
         ntypemap = ast.typemap
         attrs = ast.declarator.attrs
-        api = attrs["api"]
+        api = attrs.get("api", missing)
 
-        if api:
+        if api is not missing:
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
@@ -399,9 +401,9 @@ class FillMeta(object):
         ast = node.ast
         ntypemap = ast.typemap
         attrs = ast.declarator.attrs
-        api = attrs["api"]
+        api = attrs.get("api", missing)
 
-        if api:
+        if api is not missing:
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
@@ -478,9 +480,9 @@ class FillMeta(object):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
-        api = attrs["api"]
+        api = attrs.get("api", missing)
 
-        if meta["api"]:
+        if api is not missing:
             # API explicitly set by user.
             return
 
@@ -494,9 +496,9 @@ class FillMeta(object):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
-        api = attrs["api"]
+        api = attrs.get("api", missing)
 
-        if api is None:
+        if api is missing:
             pass
         elif api not in ["capi", "buf", "cdesc", "cfi"]:
                 self.cursor.generate(
@@ -561,9 +563,9 @@ class FillMeta(object):
         Fortran/Python only.
         """
         declarator = arg.declarator
-        hidden = declarator.attrs["hidden"]
+        hidden = declarator.attrs.get("hidden", missing)
 
-        if hidden:
+        if hidden is not missing:
             meta["hidden"] = hidden
 
     def set_func_share(self, node, meta):
@@ -715,8 +717,8 @@ class FillMetaShare(FillMeta):
         self.check_common_attrs(arg, meta)
 
         # assumedtype
-        assumedtype = attrs["assumedtype"]
-        if assumedtype is not None:
+        assumedtype = attrs.get("assumedtype", missing)
+        if assumedtype is not missing:
             if attrs["value"]:
                 cursor.generate(
                     "argument '{}' must not have value=True "
@@ -766,14 +768,14 @@ class FillMetaShare(FillMeta):
                     "used on pointer and references"
                 )
 
-        dimension = attrs["dimension"]
-        if dimension:
+        dimension = attrs.get("dimension", missing)
+        if dimension is not missing:
             if dimension is True:
                 self.cursor.generate(
                     "dimension attribute must have a value."
                 )
                 dimension = None
-            if attrs["value"]:
+            if "value" in attrs:
                 self.cursor.generate(
                     "argument may not have 'value' and 'dimension' attribute."
                 )
@@ -797,8 +799,8 @@ class FillMetaShare(FillMeta):
                 attrs["rank"] = 1
                 meta["rank"] = 1
 
-        owner = attrs["owner"]
-        if owner is not None:
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
             if owner not in ["caller", "library"]:
                 self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "
@@ -806,8 +808,8 @@ class FillMetaShare(FillMeta):
                 )
             meta["owner"] = owner
 
-        free_pattern = attrs["free_pattern"]
-        if free_pattern is not None:
+        free_pattern = attrs.get("free_pattern", missing)
+        if free_pattern is not missing:
             if free_pattern not in self.newlibrary.patterns:
                 raise RuntimeError(
                     "Illegal value '{}' for free_pattern attribute. "
@@ -952,8 +954,8 @@ class FillMetaFortran(FillMeta):
             meta["intent"] == "in" and
             arg.typemap.name == "char")
             
-        blanknull = attrs["blanknull"]
-        if blanknull is not None:
+        blanknull = attrs.get("blanknull", missing)
+        if blanknull is not missing:
             if not char_ptr_in:
                 self.cursor.generate(
                     "blanknull attribute can only be "
@@ -961,10 +963,10 @@ class FillMetaFortran(FillMeta):
                 )
         elif char_ptr_in:
             blanknull = options.F_blanknull
-        if blanknull:
+        if blanknull is True:
             meta["blanknull"] = blanknull
 
-        if attrs["api"]:  # User set
+        if "api" in attrs:  # User set
             pass
         elif (
             options.F_CFI is False and
