@@ -543,7 +543,7 @@ class FillFormat(object):
         if f_attrs["len"]:
             fmt.f_char_len = "len=%s" % f_attrs["len"];
         elif hasattr(fmt, "f_var_cdesc"):
-            if f_attrs["deref"] == "allocatable":
+            if meta["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
