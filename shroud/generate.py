@@ -401,7 +401,7 @@ class GenFunctions(object):
 
         ##########
         # setter
-        if "readonly" in declarator.attrs:
+        if declarator.attrs.get("readonly", False):
             return
         argdecl = ast.gen_arg_as_language(lang=lang, name="val",
                                           continuation=True)

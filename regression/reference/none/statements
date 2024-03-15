@@ -8406,6 +8406,8 @@ f_in_vector_&_buf_targ_native_scalar:
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -8496,6 +8498,8 @@ f_in_vector_*_buf_targ_native_scalar:
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -8582,6 +8586,8 @@ f_in_vector_scalar_buf_targ_native_scalar:
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -9687,6 +9693,8 @@ f_mixin_in_array_buf:
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
