@@ -33,6 +33,9 @@ from . import declast
 from . import error
 from . import statements
 
+# Unique, non-None default.
+missing = object()
+
 class FillMeta(object):
     """Loop over Nodes and fill meta attributes.
     """
@@ -735,24 +738,24 @@ class FillMetaShare(FillMeta):
         is_ptr = declarator.is_indirect()
 
         # dimension
-        dimension = attrs["dimension"]
-        rank = attrs["rank"]
-        if rank:
+        rank = attrs.get("rank", missing)
+        if rank is not missing:
             if rank is True:
                 self.cursor.generate(
                     "'rank' attribute must have an integer value"
                 )
             else:
                 try:
-                    attrs["rank"] = int(attrs["rank"])
-                    meta["rank"] = int(rank)
+                    rank = int(rank)
                 except ValueError:
                     self.cursor.generate(
                         "rank attribute must have an integer value, not '{}'"
                         .format(rank)
                     )
                 else:
-                    if attrs["rank"] > 7:
+                    attrs["rank"] = int(attrs["rank"])
+                    meta["rank"] = int(rank)
+                    if rank > 7:
                         self.cursor.generate(
                             "'rank' attribute must be 0-7, not '{}'"
                             .format(rank)
@@ -762,6 +765,8 @@ class FillMetaShare(FillMeta):
                     "rank attribute can only be "
                     "used on pointer and references"
                 )
+
+        dimension = attrs["dimension"]
         if dimension:
             if dimension is True:
                 self.cursor.generate(
@@ -772,7 +777,7 @@ class FillMetaShare(FillMeta):
                 self.cursor.generate(
                     "argument may not have 'value' and 'dimension' attribute."
                 )
-            if rank:
+            if rank is not missing:
                 self.cursor.generate(
                     "argument may not have 'rank' and 'dimension' attribute."
                 )
@@ -799,7 +804,6 @@ class FillMetaShare(FillMeta):
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)
                 )
-#            import pdb;pdb.set_trace()
             meta["owner"] = owner
 
         free_pattern = attrs["free_pattern"]
