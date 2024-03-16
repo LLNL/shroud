@@ -379,7 +379,7 @@ module pointers_mod
     ! Function:  int acceptCharArrayIn
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  char * * names +intent(in)+rank(1)
+    ! Argument:  char * * names +intent(in)
     ! Statement: c_in_char_**
     ! start c_accept_char_array_in
     interface
@@ -398,7 +398,7 @@ module pointers_mod
     ! Function:  int acceptCharArrayIn
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  char * * names +intent(in)+rank(1)
+    ! Argument:  char * * names +intent(in)
     ! Statement: f_in_char_**_buf
     ! start c_accept_char_array_in_bufferify
     interface
@@ -1535,7 +1535,7 @@ contains
     ! Function:  int acceptCharArrayIn
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  char * * names +intent(in)+rank(1)
+    ! Argument:  char * * names +intent(in)
     ! Statement: f_in_char_**_buf
     !>
     !! Return strlen of the first index as a check.

@@ -362,7 +362,7 @@ int POI_accumulate_bufferify(const int * arr, size_t len)
 // Function:  int acceptCharArrayIn
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: f_in_char_**_buf
 // start POI_acceptCharArrayIn_bufferify
 int POI_acceptCharArrayIn_bufferify(const char *names,

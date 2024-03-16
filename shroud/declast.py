@@ -682,7 +682,7 @@ class Parser(ExprParser):
             declarator.init = self.initializer()
 
         if declarator.ctor_dtor_name:
-            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.default_name
+            declarator.ctor_dtor_name = declarator.attrs.get("name", declarator.default_name)
             
         self.exit("declarator_item", str(node))
         return node
@@ -1295,7 +1295,7 @@ class Declarator(Node):
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
-        self.attrs = collections.defaultdict(lambda: None)
+        self.attrs = {}
         self.func_const = False
         self.typemap = None
         self.is_ctor = False
@@ -1307,7 +1307,7 @@ class Declarator(Node):
         ctor and dtor should have default_name set
         """
         if use_attr:
-            name = self.attrs["name"] or self.default_name
+            name = self.attrs.get("name", self.default_name)
             if name is not None:
                 return name
         return self.name
@@ -1793,9 +1793,9 @@ class Declaration(Node):
         attrs = declarator.attrs
         if is_result:
             pass
-        elif attrs["value"]:
+        elif attrs.get("value", False):
             t.append("value")
-        elif attrs["value"] is None:
+        else:
             is_ptr = declarator.is_indirect()
             if is_ptr:
                 if self.typemap.name == "void":
@@ -1852,14 +1852,11 @@ class Declaration(Node):
             decl.append("(*)")  # is array
         elif ntypemap.base == "string":
             decl.append("(*)")
-        elif attrs["dimension"]:
+        elif "dimension" in attrs:
             # Any dimension is changed to assumed-size.
             decl.append("(*)")
-        elif attrs["rank"] is not None and attrs["rank"] > 0:
+        elif int(attrs.get("rank",0)) > 0:
             # Any dimension is changed to assumed-size.
-            decl.append("(*)")
-        elif attrs["allocatable"]:
-            # allocatable assumes dimension
             decl.append("(*)")
         return "".join(decl)
 
@@ -1888,17 +1885,14 @@ class Declaration(Node):
 
         is_allocatable = False
         is_pointer = False
-        deref = attrs["deref"]
+        deref = attrs.get("deref", None)
         if deref == "allocatable":
             is_allocatable = True
         elif deref == "pointer":
             is_pointer = True
 
-        if not is_allocatable:
-            is_allocatable = attrs["allocatable"]
-
         if ntypemap.base == "string":
-            if attrs["len"] and local:
+            if "len" in attrs and local:
                 # Also used with function result declaration.
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
@@ -1941,9 +1935,10 @@ class Declaration(Node):
         else:
             decl.append(self.declarator.user_name)
 
-        dimension = attrs["dimension"]
-        rank = attrs["rank"]
+        dimension = attrs.get("dimension")
+        rank = attrs.get("rank")
         if rank is not None:
+            rank = int(rank)
             decl.append(self.fortran_ranks[rank])
         elif dimension:
             if is_allocatable:

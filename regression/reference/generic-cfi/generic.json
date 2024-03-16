@@ -1561,6 +1561,7 @@
                                 "dim_ast": {
                                     "assumedrank": true
                                 },
+                                "dimension": "..",
                                 "intent": "in"
                             },
                             "stmt": "c_in_native_*"
@@ -1585,6 +1586,7 @@
                                 "dim_ast": {
                                     "assumedrank": true
                                 },
+                                "dimension": "..",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*_cfi"
@@ -1606,6 +1608,7 @@
                                 "dim_ast": {
                                     "assumedrank": true
                                 },
+                                "dimension": "..",
                                 "intent": "in"
                             }
                         }
@@ -1959,7 +1962,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -1994,7 +1997,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "from",
                                     "pointer": [
@@ -2022,7 +2025,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2560,7 +2563,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2632,7 +2635,8 @@
                         "to": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*_cfi"
                         }
@@ -2660,7 +2664,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -2823,7 +2828,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "from",
                                     "pointer": [
@@ -2851,7 +2856,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "to",
                                     "pointer": [
@@ -2905,7 +2910,8 @@
                         "from": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -2924,7 +2930,8 @@
                         "to": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*_cfi"
                         }
@@ -2937,7 +2944,8 @@
                         },
                         "from": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "nfrom": {
@@ -2952,7 +2960,8 @@
                         },
                         "to": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -3165,7 +3174,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3216,7 +3225,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3430,7 +3439,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3497,7 +3506,8 @@
                         "addr": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -3522,7 +3532,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -3671,7 +3682,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -3738,7 +3749,8 @@
                         "addr": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -3763,7 +3775,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "size": {
@@ -3959,7 +3972,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4010,7 +4023,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4252,7 +4265,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4347,7 +4360,8 @@
                         "addr": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -4372,7 +4386,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -4521,7 +4536,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4616,7 +4631,8 @@
                         "addr": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -4641,7 +4657,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "size": {
@@ -5176,7 +5193,7 @@
                                     "attrs": {
                                         "deref": "pointer",
                                         "intent": "out",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5243,7 +5260,7 @@
                                     "attrs": {
                                         "deref": "pointer",
                                         "intent": "out",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5473,7 +5490,7 @@
                                     "attrs": {
                                         "deref": "pointer",
                                         "intent": "out",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5556,7 +5573,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_native_**_cfi_pointer"
                         },
@@ -5583,7 +5601,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         },
                         "size": {
@@ -5741,7 +5760,7 @@
                                     "attrs": {
                                         "deref": "pointer",
                                         "intent": "out",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5824,7 +5843,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             },
                             "stmt": "f_out_native_**_cfi_pointer"
                         },
@@ -5851,7 +5871,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 2
                             }
                         },
                         "size": {

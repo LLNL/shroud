@@ -44,7 +44,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Function:  int vector_sum
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  const std::vector<int> & arg +rank(1)
+// Argument:  const std::vector<int> & arg
 // Statement: c_in_vector_&_buf_targ_native_scalar
 // start VEC_vector_sum
 int VEC_vector_sum(int *arg, size_t SHT_arg_size)
@@ -65,7 +65,7 @@ int VEC_vector_sum(int *arg, size_t SHT_arg_size)
 // Function:  void vector_iota_out
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out
 void VEC_vector_iota_out(int *arg, size_t *SHT_arg_size)
@@ -90,7 +90,7 @@ void VEC_vector_iota_out(int *arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_out
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
@@ -119,7 +119,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Function:  void vector_iota_out_with_num
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out_with_num
 long VEC_vector_iota_out_with_num(int *arg, size_t *SHT_arg_size)
@@ -148,7 +148,7 @@ long VEC_vector_iota_out_with_num(int *arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_out_with_num
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
@@ -179,7 +179,7 @@ long VEC_vector_iota_out_with_num_bufferify(
 // Function:  void vector_iota_out_with_num2
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_native_scalar
 // start VEC_vector_iota_out_with_num2
 void VEC_vector_iota_out_with_num2(int *arg, size_t *SHT_arg_size)
@@ -207,7 +207,7 @@ void VEC_vector_iota_out_with_num2(int *arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_out_with_num2
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +intent(out)
 // Statement: f_out_vector_&_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
@@ -234,7 +234,7 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // Function:  void vector_iota_out_alloc
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)
 // Statement: c_out_vector_&_buf_malloc_targ_native_scalar
 // start VEC_vector_iota_out_alloc
 void VEC_vector_iota_out_alloc(int **arg, size_t *SHT_arg_size)
@@ -258,7 +258,7 @@ void VEC_vector_iota_out_alloc(int **arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_out_alloc
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
+// Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
@@ -285,7 +285,7 @@ void VEC_vector_iota_out_alloc_bufferify(
 // Function:  void vector_iota_inout_alloc
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
+// Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)
 // Statement: c_inout_vector_&_buf_malloc_targ_native_scalar
 // start VEC_vector_iota_inout_alloc
 void VEC_vector_iota_inout_alloc(int **arg, size_t *SHT_arg_size)
@@ -309,7 +309,7 @@ void VEC_vector_iota_inout_alloc(int **arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_inout_alloc
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
+// Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)
 // Statement: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int *arg,
@@ -335,7 +335,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // Function:  void vector_increment
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +rank(1)
+// Argument:  std::vector<int> & arg
 // Statement: c_inout_vector_&_buf_copy_targ_native_scalar
 void VEC_vector_increment(int *arg, size_t *SHT_arg_size)
 {
@@ -351,7 +351,7 @@ void VEC_vector_increment(int *arg, size_t *SHT_arg_size)
 // Function:  void vector_increment
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +rank(1)
+// Argument:  std::vector<int> & arg
 // Statement: f_inout_vector_&_cdesc_targ_native_scalar
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -377,7 +377,7 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // Function:  void vector_iota_out_d
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<double> & arg +intent(out)+rank(1)
+// Argument:  std::vector<double> & arg +intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_native_scalar
 void VEC_vector_iota_out_d(double *arg, size_t *SHT_arg_size)
 {
@@ -400,7 +400,7 @@ void VEC_vector_iota_out_d(double *arg, size_t *SHT_arg_size)
 // Function:  void vector_iota_out_d
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<double> & arg +intent(out)+rank(1)
+// Argument:  std::vector<double> & arg +intent(out)
 // Statement: f_out_vector_&_cdesc_targ_native_scalar
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -424,7 +424,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Function:  int vector_of_pointers
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
+// Argument:  std::vector<const double * > & arg1 +intent(in)
 // Statement: c_in_vector_&_buf_targ_native_*
 // ----------------------------------------
 // Argument:  int num
@@ -450,7 +450,7 @@ int VEC_vector_of_pointers(double *arg1, size_t SHT_arg1_len,
 // Function:  int vector_string_count
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  const std::vector<std::string> & arg +rank(1)
+// Argument:  const std::vector<std::string> & arg
 // Statement: c_in_vector_&_buf_targ_string_scalar
 int VEC_vector_string_count(const char *arg, size_t SHT_arg_size,
     int SHT_arg_len)
@@ -485,7 +485,7 @@ int VEC_vector_string_count(const char *arg, size_t SHT_arg_size,
 // Function:  void vector_string_fill
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+// Argument:  std::vector<std::string> & arg +intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill(char * arg)
 {
@@ -505,7 +505,7 @@ void VEC_vector_string_fill(char * arg)
 // Function:  void vector_string_fill
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +intent(out)+rank(1)
+// Argument:  std::vector<std::string> & arg +intent(out)
 // Statement: f_out_vector_&_cdesc_targ_string_scalar
 void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -522,7 +522,7 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Function:  void vector_string_fill_allocatable
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)
 // Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill_allocatable(char * arg)
 {
@@ -536,7 +536,7 @@ void VEC_vector_string_fill_allocatable(char * arg)
 // Function:  void vector_string_fill_allocatable
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+rank(1)
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc,
@@ -562,7 +562,7 @@ void VEC_vector_string_fill_allocatable_bufferify(
 // Function:  void vector_string_fill_allocatable_len
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)
 // Statement: c_out_vector_&_buf_copy_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len(char * arg)
 {
@@ -576,7 +576,7 @@ void VEC_vector_string_fill_allocatable_len(char * arg)
 // Function:  void vector_string_fill_allocatable_len
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)+rank(1)
+// Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)
 // Statement: f_out_vector_&_cdesc_allocatable_targ_string_scalar
 void VEC_vector_string_fill_allocatable_len_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc,
@@ -602,7 +602,7 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
  * Copy results into the new array.
  */
 // ----------------------------------------
-// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Function:  std::vector<int> ReturnVectorAlloc
 // Statement: c_function_vector_scalar_malloc_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n
@@ -626,7 +626,7 @@ int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
  * Copy results into the new array.
  */
 // ----------------------------------------
-// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Function:  std::vector<int> ReturnVectorAlloc
 // Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n

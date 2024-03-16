@@ -135,8 +135,8 @@ class VerifyAttrs(object):
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
-        charlen = attrs["charlen"]
-        if charlen:
+        charlen = attrs.get("charlen", None)
+        if charlen is not None:
             is_ptr = declarator.is_indirect()
             if arg_typemap.base != "string":
                 cursor.generate(
@@ -182,7 +182,8 @@ class VerifyAttrs(object):
             )
 
         # Flag node if any argument is assumed-rank.
-        if attrs["dimension"] == "..":   # assumed-rank
+        dim = attrs.get("dimension", None)  # assumed-rank
+        if dim == "..":   # assumed-rank
             node._gen_fortran_generic = True
 
 
@@ -382,11 +383,14 @@ class GenFunctions(object):
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
         decl = "{}({})".format(argdecl, this_get)
 
+        attrs = declarator.attrs
         fattrs = dict(
             intent="getter",
-            dimension=declarator.attrs["dimension"],
-            deref=declarator.attrs["deref"],
         )
+        if "dimension" in attrs:
+            fattrs["dimension"] = attrs["dimension"]
+        if "deref" in attrs:
+            fattrs["deref"] = attrs["deref"]
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
         if is_struct:
@@ -397,7 +401,7 @@ class GenFunctions(object):
 
         ##########
         # setter
-        if declarator.attrs["readonly"]:
+        if declarator.attrs.get("readonly", False):
             return
         argdecl = ast.gen_arg_as_language(lang=lang, name="val",
                                           continuation=True)
@@ -411,9 +415,8 @@ class GenFunctions(object):
                 intent="setter",
             )
         )
-        dim = declarator.attrs["dimension"]
-        if dim:
-            attrs["val"]["rank"] = declast.find_rank_of_dimension(dim)
+        if "dimension" in declarator.attrs:
+            attrs["val"]["rank"] = declast.find_rank_of_dimension(declarator.attrs["dimension"])
 
         fcn = parent.add_function(decl, fattrs=fattrs, attrs=attrs, format=fmt_func)
         fcn.wrap.assign(fortran=True)
@@ -849,9 +852,10 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 attrs = decl.declarator.attrs
-                if attrs["dimension"] == "..":   # assumed-rank
+                dim = attrs.get("dimension", None)
+                if dim == "..":   # assumed-rank
                     # Replace dimension(..) with rank(n).
-                    attrs["dimension"] = None
+                    del attrs["dimension"]
                     attrs["rank"] = rank
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
@@ -861,8 +865,9 @@ class GenFunctions(object):
         # Remove assumed-rank from C function.
         for decl in params:
             attrs = decl.declarator.attrs
-            if attrs["dimension"] == "..":   # assumed-rank
-                attrs["dimension"] = None
+            dim = attrs.get("dimension", None)
+            if dim == "..":   # assumed-rank
+                del attrs["dimension"]
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
@@ -1225,8 +1230,8 @@ def check_implied_attrs(context, decls):
         decls - list of Declarations
     """
     for decl in decls:
-        expr = decl.declarator.attrs["implied"]
-        if expr:
+        expr = decl.declarator.attrs.get("implied")
+        if expr is not None:
             check_implied(context, expr, decls)
 
 

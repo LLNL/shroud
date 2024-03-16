@@ -613,11 +613,13 @@ if __name__ == "__main__":
     # summarize results
     if fail_names:
         exit_status = 1
-        msg = "Not all tests passed"
+        msg = "*** Not all tests passed"
     else:
         exit_status = 0
         msg = "All tests passed"
+    print('')
     print(msg)
+    print('')
     logging.info(msg)
 
     tester.close_log()

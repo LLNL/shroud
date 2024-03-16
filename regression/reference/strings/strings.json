@@ -1288,6 +1288,7 @@
                             "cxx_type": "char",
                             "cxx_var": "SHC_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
                             "f_intent": "OUT",
@@ -2111,6 +2112,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -2635,6 +2637,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -2823,6 +2826,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3544,6 +3548,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -3826,7 +3831,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3836,7 +3842,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_library"
                         }
@@ -3844,14 +3851,16 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -3919,6 +3928,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4016,7 +4026,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -4026,7 +4037,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
@@ -4034,14 +4046,16 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -4109,6 +4123,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4207,7 +4222,9 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -4217,7 +4234,9 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cdesc_allocatable_caller"
                         }
@@ -4225,14 +4244,18 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -4300,6 +4323,7 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_array_context": "STR_SHROUD_array",
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
@@ -4394,7 +4418,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -4404,7 +4429,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cdesc_pointer_library"
                         }
@@ -4412,7 +4438,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -6973,6 +7000,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7001,6 +7029,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_copy"
@@ -7024,6 +7053,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -7285,6 +7315,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7313,6 +7344,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7336,6 +7368,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -7606,6 +7639,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -7634,6 +7668,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cdesc_allocatable"
@@ -7657,6 +7692,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -9193,7 +9229,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -9261,7 +9297,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_native_*"
                         },
@@ -9281,7 +9318,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -9301,7 +9339,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "name": {
@@ -9318,7 +9357,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "name": {

@@ -176,7 +176,7 @@ def lookup_c_function_stmt(node):
         # intent will be "function", "ctor", "getter"
         junk, specialize = lookup_c_statements(ast)
         stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -198,7 +198,7 @@ def lookup_f_function_stmt(node):
         # intent will be "function", "ctor", "getter"
         junk, specialize = lookup_c_statements(ast)
         stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_attrs["owner"]] + specialize
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -213,7 +213,7 @@ def lookup_c_arg_stmt(node, arg):
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
     stmts = ["c", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
+             sapi, c_meta["deref"], c_meta["owner"]] + specialize
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
@@ -230,7 +230,7 @@ def lookup_f_arg_stmt(node, arg):
     if c_meta["hidden"]:
         sapi = "hidden"
     stmts = ["f", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_attrs["owner"]] + specialize
+             sapi, c_meta["deref"], c_meta["owner"]] + specialize
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
@@ -1363,6 +1363,9 @@ fc_statements = [
         comments=[
             "Pass argument and size by value to C.",
         ],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {f_var}{f_assumed_shape}",
+        ],
         f_arg_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         f_need_wrapper=True,
@@ -1519,6 +1522,9 @@ fc_statements = [
     dict(
         # Pass argument, size and len to C.
         name="f_mixin_in_string_array_buf",
+        f_arg_decl=[
+            "character(len=*), intent(IN) :: {f_var}(:)",
+        ],
         f_arg_call=[
             "{f_var}",
             "size({f_var}, kind=C_SIZE_T)",
@@ -4034,6 +4040,9 @@ fc_statements = [
         name="f_in_char_**_cfi",
         mixin=[
             "c_mixin_arg_character_cfi",
+        ],
+        f_arg_decl=[
+            "character(len=*), intent({f_intent}) :: {f_var}(:)",
         ],
         i_arg_decl=[
             "character(len=*), intent({f_intent}) :: {i_var}(:)",

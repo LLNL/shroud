@@ -289,7 +289,8 @@
                                                 "name": "nitems"
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems+nitems"
                                 }
                             }
                         },
@@ -341,7 +342,8 @@
                                                 "name": "TWO"
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems*TWO"
                                 }
                             }
                         },
@@ -390,7 +392,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -501,7 +504,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -547,7 +551,8 @@
                                         {
                                             "name": "nitems"
                                         }
-                                    ]
+                                    ],
+                                    "dimension": "nitems"
                                 }
                             }
                         },
@@ -4566,6 +4571,7 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dimension": "2",
                                 "intent": "function"
                             },
                             "stmt": "c_function_struct_*"
@@ -4581,6 +4587,7 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dimension": "2",
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct_*_cdesc_pointer"
@@ -4594,6 +4601,7 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dimension": "2",
                                 "intent": "function"
                             }
                         }
@@ -6232,6 +6240,7 @@
                                         }
                                     }
                                 ],
+                                "dimension": "nitems+nitems",
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -6257,6 +6266,7 @@
                                         }
                                     }
                                 ],
+                                "dimension": "nitems+nitems",
                                 "intent": "getter"
                             }
                         },
@@ -6441,7 +6451,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             },
                             "stmt": "f_setter_native_*"
                         }
@@ -6459,7 +6470,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             }
                         }
                     }
@@ -6636,6 +6648,7 @@
                                         }
                                     }
                                 ],
+                                "dimension": "nitems*TWO",
                                 "intent": "getter"
                             },
                             "stmt": "f_getter_native_*_cdesc_pointer"
@@ -6661,6 +6674,7 @@
                                         }
                                     }
                                 ],
+                                "dimension": "nitems*TWO",
                                 "intent": "getter"
                             }
                         },
@@ -6845,7 +6859,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             },
                             "stmt": "f_setter_native_*"
                         }
@@ -6863,7 +6878,8 @@
                         },
                         "val": {
                             "meta": {
-                                "intent": "setter"
+                                "intent": "setter",
+                                "rank": 1
                             }
                         }
                     }

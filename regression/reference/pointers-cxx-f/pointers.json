@@ -615,7 +615,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -691,7 +691,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -707,6 +708,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -726,7 +728,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -741,6 +744,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -877,7 +881,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -953,7 +957,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -969,6 +974,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -988,7 +994,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -1003,6 +1010,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -1212,6 +1220,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1235,6 +1244,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1403,6 +1413,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1414,6 +1425,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1432,6 +1444,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         },
@@ -1442,6 +1455,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1607,6 +1621,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -1630,6 +1645,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             }
                         }
@@ -1743,7 +1759,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1815,7 +1831,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         }
@@ -1838,7 +1855,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -2013,6 +2031,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_*"
@@ -2031,6 +2050,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -2105,7 +2125,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "inout",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -2161,7 +2181,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*"
                         },
@@ -2180,7 +2201,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -2285,7 +2307,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "x",
                                     "pointer": [
@@ -2338,7 +2360,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_native_*"
                         },
@@ -2357,7 +2380,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "x_length": {
@@ -2463,7 +2487,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "arr",
                                     "pointer": [
@@ -2516,7 +2540,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -2535,7 +2560,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "len": {
@@ -2662,8 +2688,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "names",
                                     "pointer": [
@@ -2716,7 +2741,8 @@
                         "names": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_char_**_buf"
                         }
@@ -2729,7 +2755,8 @@
                         },
                         "names": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -3237,6 +3264,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3255,6 +3283,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -3418,6 +3447,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3443,6 +3473,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -3618,6 +3649,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3637,6 +3669,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             }
                         }
@@ -3922,6 +3955,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -3940,6 +3974,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -4101,6 +4136,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_pointer"
@@ -4126,6 +4162,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -5104,6 +5141,7 @@
                                         "constant": "20"
                                     }
                                 ],
+                                "dimension": "10,20",
                                 "intent": "in"
                             },
                             "stmt": "f_in_native_*"
@@ -5125,6 +5163,7 @@
                                         "constant": "20"
                                     }
                                 ],
+                                "dimension": "10,20",
                                 "intent": "in"
                             }
                         }
@@ -5266,6 +5305,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native_**_cdesc_allocatable"
@@ -5284,6 +5324,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -5906,7 +5947,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -5952,7 +5993,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_void_**"
                         }
@@ -5965,7 +6007,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -6190,6 +6233,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -6203,6 +6247,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -6412,6 +6457,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_pointer"
@@ -6425,6 +6471,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -6996,6 +7043,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native_*_cdesc_allocatable"
@@ -7009,6 +7057,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }

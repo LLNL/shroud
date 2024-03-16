@@ -844,6 +844,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -860,6 +861,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -874,6 +876,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -887,6 +890,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1064,6 +1068,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1080,6 +1085,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1094,6 +1100,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1107,6 +1114,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1285,6 +1293,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1301,6 +1310,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1315,6 +1325,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1328,6 +1339,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1506,6 +1518,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "c_function_native_*"
@@ -1522,6 +1535,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native_*_cdesc_pointer"
@@ -1536,6 +1550,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1549,6 +1564,7 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dimension": "getSize()",
                                         "intent": "function"
                                     }
                                 }
@@ -1764,6 +1780,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -1791,6 +1808,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_**_cdesc_pointer"
@@ -1816,11 +1834,13 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -1838,6 +1858,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
@@ -2136,6 +2157,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
@@ -2163,6 +2185,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_*&_cdesc_pointer"
@@ -2188,11 +2211,13 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2210,6 +2235,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
@@ -2509,6 +2535,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_**"
@@ -2536,6 +2563,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_**_cdesc_pointer"
@@ -2561,11 +2589,13 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2583,6 +2613,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
@@ -2882,6 +2913,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "c_out_native_*&"
@@ -2909,6 +2941,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     },
                                     "stmt": "f_out_native_*&_cdesc_pointer"
@@ -2934,11 +2967,13 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },
                                 "isize": {
                                     "meta": {
+                                        "hidden": true,
                                         "intent": "inout"
                                     }
                                 }
@@ -2956,6 +2991,7 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dimension": "isize",
                                         "intent": "out"
                                     }
                                 },

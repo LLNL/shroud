@@ -1462,7 +1462,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             idtor = self.capsule_code[name][0]
         return idtor
 
-    def find_idtor(self, ast, ntypemap, fmt, intent_blk):
+    def find_idtor(self, ast, ntypemap, fmt, intent_blk, meta):
         """Find the destructor name.
 
         Set fmt.idtor as index of destructor.
@@ -1504,15 +1504,15 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         declarator = ast.declarator
         from_stmt = False
-        if declarator.attrs["owner"]:
-            owner = declarator.attrs["owner"]
+        if meta["owner"]:
+            owner = meta["owner"]
         elif intent_blk.owner:
             owner = intent_blk.owner
             from_stmt = True
         else:
             owner = default_owner
 
-        free_pattern = declarator.attrs["free_pattern"]
+        free_pattern = meta["free_pattern"]
         if owner == "library":
             # Library owns memory, do not let user release.
             pass

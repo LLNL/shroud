@@ -22,9 +22,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -76,7 +73,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -88,7 +86,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -156,8 +155,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -213,7 +211,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     },
@@ -225,7 +224,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -277,8 +277,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -360,7 +359,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -380,8 +380,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -453,7 +452,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -474,8 +474,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -537,7 +536,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -558,8 +558,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -621,7 +620,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -640,9 +640,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -692,7 +689,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -712,8 +710,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -768,7 +765,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     },
@@ -780,7 +778,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -832,8 +831,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -903,7 +901,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "num": {
@@ -928,9 +927,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -983,7 +979,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -1003,8 +1000,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1059,7 +1055,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -1080,8 +1077,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1132,7 +1128,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -1154,8 +1151,7 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "intent": "out",
-                                        "len": "20",
-                                        "rank": 1
+                                        "len": "20"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1206,7 +1202,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -1226,8 +1223,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1283,7 +1279,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -1298,9 +1295,6 @@
                 "<FUNCTION>": "ReturnVectorAlloc  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "attrs": {
-                            "rank": 1
-                        },
                         "name": "ReturnVectorAlloc",
                         "params": [
                             {
@@ -1353,7 +1347,8 @@
                     "py": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "rank": 1
                             }
                         },
                         "n": {
@@ -1365,7 +1360,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "rank": 1
                             }
                         },
                         "n": {
@@ -1441,7 +1437,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1493,7 +1489,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "len": {
@@ -1510,7 +1507,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "len": {

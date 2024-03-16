@@ -940,7 +940,7 @@ fail:
 // Function:  int acceptCharArrayIn
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+rank(1)
+// Argument:  char * * names +intent(in)
 // Statement: py_in_char_**
 static char PY_acceptCharArrayIn__doc__[] =
 "documentation"

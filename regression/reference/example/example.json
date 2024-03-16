@@ -1075,6 +1075,7 @@
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_rv",
                                                     "f_c_suffix": "_bufferify",
+                                                    "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                     "f_helper_array_context": "AA_SHROUD_array",
                                                     "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                     "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3174,6 +3175,7 @@
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_rv",
                                                     "f_c_suffix": "_bufferify",
+                                                    "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                     "f_helper_array_context": "AA_SHROUD_array",
                                                     "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                     "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3383,6 +3385,7 @@
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_rv",
                                                     "f_c_suffix": "_bufferify",
+                                                    "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                     "f_helper_array_context": "AA_SHROUD_array",
                                                     "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                     "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -3590,6 +3593,7 @@
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "SHCXX_rv",
                                                     "f_c_suffix": "_bufferify",
+                                                    "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                     "f_helper_array_context": "AA_SHROUD_array",
                                                     "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                     "f_helper_copy_string": "AA_SHROUD_copy_string",
@@ -13319,7 +13323,7 @@
                                                 "declarator": {
                                                     "attrs": {
                                                         "intent": "in",
-                                                        "rank": 2
+                                                        "rank": "2"
                                                     },
                                                     "name": "in",
                                                     "pointer": [
@@ -13399,7 +13403,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             },
                                             "stmt": "c_in_native_*"
                                         },
@@ -13415,6 +13420,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
                                             "stmt": "c_out_native_*"
@@ -13435,7 +13441,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             },
                                             "stmt": "f_in_native_*"
                                         },
@@ -13451,6 +13458,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
                                             "stmt": "f_out_native_*"
@@ -13470,7 +13478,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13485,6 +13494,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },
@@ -13502,7 +13512,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13517,6 +13528,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },
@@ -13534,7 +13546,8 @@
                                         },
                                         "in": {
                                             "meta": {
-                                                "intent": "in"
+                                                "intent": "in",
+                                                "rank": 2
                                             }
                                         },
                                         "out": {
@@ -13549,6 +13562,7 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dimension": "shape(in)",
                                                 "intent": "out"
                                             }
                                         },

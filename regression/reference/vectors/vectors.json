@@ -22,9 +22,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -79,7 +76,8 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_vector_&_buf_targ_native_scalar"
                         }
@@ -94,7 +92,8 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_vector_&_buf_targ_native_scalar"
                         }
@@ -107,7 +106,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -245,8 +245,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -315,7 +314,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
@@ -330,7 +330,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
@@ -343,7 +344,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -466,8 +468,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -565,7 +566,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
@@ -581,7 +583,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
@@ -594,7 +597,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -727,8 +731,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -815,7 +818,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
@@ -831,7 +835,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
@@ -844,7 +849,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -976,8 +982,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1046,7 +1051,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "malloc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_malloc_targ_native_scalar"
                         }
@@ -1062,7 +1068,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
                         }
@@ -1075,7 +1082,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -1200,8 +1208,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1273,7 +1280,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "malloc",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "c_inout_vector_&_buf_malloc_targ_native_scalar"
                         }
@@ -1289,7 +1297,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
                         }
@@ -1302,7 +1311,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -1429,9 +1439,6 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -1498,7 +1505,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
                         }
@@ -1513,7 +1521,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             },
                             "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
                         }
@@ -1526,7 +1535,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -1651,8 +1661,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -1720,7 +1729,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
                         }
@@ -1735,7 +1745,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
                         }
@@ -1748,7 +1759,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -1871,8 +1883,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "arg1",
                                     "pointer": [
@@ -1947,7 +1958,8 @@
                         "arg1": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_vector_&_buf_targ_native_*"
                         },
@@ -1968,7 +1980,8 @@
                         "arg1": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_vector_&_buf_targ_native_*"
                         },
@@ -1987,7 +2000,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "num": {
@@ -2176,9 +2190,6 @@
                             {
                                 "const": true,
                                 "declarator": {
-                                    "attrs": {
-                                        "rank": 1
-                                    },
                                     "name": "arg",
                                     "pointer": [
                                         {
@@ -2241,7 +2252,8 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_vector_&_buf_targ_string_scalar"
                         }
@@ -2256,7 +2268,8 @@
                         "arg": {
                             "meta": {
                                 "api": "buf",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_vector_&_buf_targ_string_scalar"
                         }
@@ -2269,7 +2282,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -2421,8 +2435,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -2492,7 +2505,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
@@ -2507,7 +2521,8 @@
                         "arg": {
                             "meta": {
                                 "api": "cdesc",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
                         }
@@ -2520,7 +2535,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -2640,8 +2656,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
-                                        "intent": "out",
-                                        "rank": 1
+                                        "intent": "out"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -2710,7 +2725,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
@@ -2726,7 +2742,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         }
@@ -2739,7 +2756,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -2868,8 +2886,7 @@
                                     "attrs": {
                                         "deref": "allocatable",
                                         "intent": "out",
-                                        "len": "20",
-                                        "rank": 1
+                                        "len": "20"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -2938,7 +2955,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
                         }
@@ -2954,7 +2972,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             },
                             "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
                         }
@@ -2967,7 +2986,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "rank": 1
                             }
                         }
                     }
@@ -3097,8 +3117,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "inout",
-                                        "rank": 1
+                                        "intent": "inout"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -3154,7 +3173,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         }
                     }
@@ -3169,9 +3189,6 @@
                 "<FUNCTION>": "ReturnVectorAlloc  14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "attrs": {
-                            "rank": 1
-                        },
                         "name": "ReturnVectorAlloc",
                         "params": [
                             {
@@ -3228,7 +3245,8 @@
                         "+result": {
                             "meta": {
                                 "deref": "malloc",
-                                "intent": "function"
+                                "intent": "function",
+                                "rank": 1
                             },
                             "stmt": "c_function_vector_scalar_malloc_targ_native_scalar"
                         },
@@ -3244,7 +3262,8 @@
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "rank": 1
                             },
                             "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
                         },
@@ -3258,7 +3277,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "rank": 1
                             }
                         },
                         "n": {
@@ -3338,6 +3358,7 @@
                             "f_assumed_shape": "(:)",
                             "f_c_suffix": "_bufferify",
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -3425,7 +3446,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 2
+                                        "rank": "2"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -3479,7 +3500,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "c_in_native_*"
                         },
@@ -3499,7 +3521,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             },
                             "stmt": "f_in_native_*"
                         },
@@ -3518,7 +3541,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 2
                             }
                         },
                         "len": {

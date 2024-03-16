@@ -5117,6 +5117,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "c_in_void_*"
@@ -5131,6 +5132,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_*"
@@ -5144,6 +5146,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         }
@@ -5273,7 +5276,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "assumedtype": true,
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "arg",
                                     "pointer": [
@@ -5320,7 +5323,9 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "assumedtype": true,
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -5334,7 +5339,9 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "assumedtype": true,
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_void_*"
                         }
@@ -5347,7 +5354,9 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "assumedtype": true,
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -5514,6 +5523,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "c_in_void_*"
@@ -5534,6 +5544,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_*"
@@ -5554,6 +5565,7 @@
                         },
                         "arg": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },
@@ -6338,6 +6350,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "c_in_void_*"
@@ -6364,6 +6377,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_*"
@@ -6389,6 +6403,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },
@@ -6702,6 +6717,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "c_in_void_*"
@@ -6734,6 +6750,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             },
                             "stmt": "f_in_void_*"
@@ -6767,6 +6784,7 @@
                         },
                         "in": {
                             "meta": {
+                                "assumedtype": true,
                                 "intent": "in"
                             }
                         },

@@ -494,7 +494,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -569,7 +569,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -584,6 +585,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -601,7 +603,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -616,6 +619,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -713,7 +717,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "in",
                                     "pointer": [
@@ -788,7 +792,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -803,6 +808,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -820,7 +826,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "out": {
@@ -835,6 +842,7 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dimension": "size(in)",
                                 "intent": "out"
                             }
                         },
@@ -1003,6 +1011,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1025,6 +1034,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1163,6 +1173,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         },
@@ -1173,6 +1184,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1190,6 +1202,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         },
@@ -1200,6 +1213,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1335,6 +1349,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             }
                         }
@@ -1357,6 +1372,7 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dimension": "nvar",
                                 "intent": "out"
                             }
                         }
@@ -1440,7 +1456,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "values",
                                     "pointer": [
@@ -1509,7 +1525,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -1531,7 +1548,8 @@
                         },
                         "values": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -1665,6 +1683,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1682,6 +1701,7 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dimension": "3",
                                 "intent": "out"
                             }
                         }
@@ -1732,7 +1752,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "inout",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "array",
                                     "pointer": [
@@ -1787,7 +1807,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -1804,7 +1825,8 @@
                         },
                         "array": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "sizein": {
@@ -1874,7 +1896,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "x",
                                     "pointer": [
@@ -1926,7 +1948,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "x_length": {
@@ -1943,7 +1966,8 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "rank": 1
                             }
                         },
                         "x_length": {
@@ -2014,7 +2038,7 @@
                                 "const": true,
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "arr",
                                     "pointer": [
@@ -2066,7 +2090,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "len": {
@@ -2083,7 +2108,8 @@
                         },
                         "arr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "len": {
@@ -2171,8 +2197,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
+                                        "intent": "in"
                                     },
                                     "name": "names",
                                     "pointer": [
@@ -2217,7 +2242,8 @@
                         },
                         "names": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     },
@@ -2229,7 +2255,8 @@
                         },
                         "names": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -2558,6 +2585,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -2575,6 +2603,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -2694,11 +2723,13 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             }
                         }
@@ -2716,6 +2747,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -2843,6 +2875,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             }
                         }
@@ -2861,6 +2894,7 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dimension": "getLen()",
                                 "intent": "out"
                             }
                         }
@@ -3022,6 +3056,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -3039,6 +3074,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -3156,11 +3192,13 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
                         "ncount": {
                             "meta": {
+                                "hidden": true,
                                 "intent": "out"
                             }
                         }
@@ -3178,6 +3216,7 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dimension": "ncount",
                                 "intent": "out"
                             }
                         },
@@ -3778,6 +3817,7 @@
                                         "constant": "20"
                                     }
                                 ],
+                                "dimension": "10,20",
                                 "intent": "in"
                             }
                         }
@@ -3850,6 +3890,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "out"
                             }
                         }
@@ -4253,7 +4294,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "addr",
                                     "pointer": [
@@ -4296,7 +4337,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         }
                     }
@@ -4413,6 +4455,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4425,6 +4468,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4571,6 +4615,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4583,6 +4628,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }
@@ -4893,6 +4939,7 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dimension": "10",
                                 "intent": "function"
                             }
                         }

@@ -3207,7 +3207,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3217,7 +3218,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_library"
                         }
@@ -3225,7 +3227,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -3349,7 +3352,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -3359,7 +3363,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
                         }
@@ -3367,7 +3372,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -3492,7 +3498,9 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "c_function_string_*_caller"
                         }
@@ -3502,7 +3510,9 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             },
                             "stmt": "f_function_string_*_cfi_allocatable_caller"
                         }
@@ -3510,7 +3520,9 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "free_pattern": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
                             }
                         }
                     }
@@ -3634,7 +3646,8 @@
                     "c": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "c_function_string_*_library"
                         }
@@ -3644,7 +3657,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
                             "stmt": "f_function_string_*_cfi_pointer_library"
                         }
@@ -3652,7 +3666,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             }
                         }
                     }
@@ -5786,6 +5801,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -5814,6 +5830,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_copy"
@@ -5837,6 +5854,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -6081,6 +6099,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -6109,6 +6128,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"
@@ -6132,6 +6152,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -6377,6 +6398,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "c_out_string_**"
@@ -6405,6 +6427,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             },
                             "stmt": "f_out_string_**_cfi_allocatable"
@@ -6428,6 +6451,7 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dimension": "nstrs",
                                 "intent": "out"
                             }
                         }
@@ -7871,7 +7895,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "intent": "in",
-                                        "rank": 1
+                                        "rank": "1"
                                     },
                                     "name": "count",
                                     "pointer": [
@@ -7938,7 +7962,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "c_in_native_*"
                         },
@@ -7959,7 +7984,8 @@
                         "count": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             },
                             "stmt": "f_in_native_*_cfi"
                         },
@@ -7979,7 +8005,8 @@
                         },
                         "count": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 1
                             }
                         },
                         "name": {
