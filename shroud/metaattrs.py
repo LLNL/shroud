@@ -159,7 +159,7 @@ class FillMeta(object):
         else:
             meta["value"] = value
         
-    def set_arg_intent(self, node, arg, meta, is_fptr=False):
+    def set_arg_intent(self, arg, meta, is_fptr=False):
         """Set default intent meta-attribute.
 
         Intent is only valid on arguments.
@@ -488,7 +488,7 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
-    def set_arg_api_c(self, node, arg, meta):
+    def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator
         ntypemap = arg.typemap
         attrs = declarator.attrs
@@ -645,16 +645,15 @@ class FillMetaShare(FillMeta):
         # --- Loop over function parameters
         for arg in node.ast.declarator.params:
             func_cursor.arg = arg
-            declarator = arg.declarator
 
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
             self.check_arg_attrs(node, arg, meta)
-            self.set_arg_intent(node, arg, meta, is_fptr)
+            self.set_arg_intent(arg, meta, is_fptr)
             self.check_value(arg, meta)
 
-            if declarator.is_function_pointer():
+            if arg.declarator.is_function_pointer():
                 fptr = FunctionNode(arg.gen_decl(), parent=node, ast=arg)
                 meta["fptr"] = fptr
                 self.meta_function_params(fptr, is_fptr=True)
@@ -881,15 +880,12 @@ class FillMetaC(FillMeta):
         # --- Loop over function parameters
         for arg in ast.declarator.params:
             func_cursor.arg = arg
-            declarator = arg.declarator
-            arg_name = declarator.user_name
-
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
 
             self.set_arg_share(node, arg, meta)
             self.set_arg_deref_c(arg, meta)
-            self.set_arg_api_c(node, arg, meta)
+            self.set_arg_api_c(arg, meta)
         # --- End loop over function parameters
         func_cursor.arg = None
 
@@ -948,8 +944,6 @@ class FillMetaFortran(FillMeta):
         func_cursor = self.cursor.current
         for arg in node.ast.declarator.params:
             func_cursor.arg = arg
-            declarator = arg.declarator
-            arg_name = declarator.user_name
 
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
@@ -960,7 +954,7 @@ class FillMetaFortran(FillMeta):
             self.set_arg_api_fortran(node, arg, meta)
             self.set_arg_hidden(arg, meta)
 
-            if declarator.is_function_pointer():
+            if arg.declarator.is_function_pointer():
                 self.meta_function_params(meta["fptr"])
         func_cursor.arg = None
         
@@ -1036,8 +1030,6 @@ class FillMetaPython(FillMeta):
         # --- Loop over function parameters
         for arg in ast.declarator.params:
             func_cursor.arg = arg
-            declarator = arg.declarator
-            arg_name = declarator.user_name
 
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
@@ -1113,8 +1105,6 @@ class FillMetaLua(FillMeta):
         # --- Loop over function parameters
         for arg in ast.declarator.params:
             func_cursor.arg = arg
-            declarator = arg.declarator
-            arg_name = declarator.user_name
 
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
