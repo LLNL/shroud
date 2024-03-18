@@ -168,7 +168,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -181,7 +182,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -406,7 +408,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -419,7 +422,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -644,7 +648,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -657,7 +662,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }

@@ -852,7 +852,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -866,7 +867,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -879,7 +881,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -891,7 +894,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1044,7 +1048,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -1058,7 +1063,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -1071,7 +1077,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -1083,7 +1090,8 @@
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1998,12 +2006,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2132,13 +2142,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -2152,13 +2164,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2171,12 +2185,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -2188,12 +2204,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2483,13 +2501,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -2503,13 +2523,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2522,12 +2544,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -2539,12 +2563,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -3428,19 +3454,288 @@
                         },
                         "afree": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "afree  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "afree",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "afree",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "name": "afree",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "afree",
+                                        "F_name_api": "afree",
+                                        "function_name": "afree"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
                         "assoc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "assoc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "assoc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "assoc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "name": "assoc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "assoc",
+                                        "F_name_api": "assoc",
+                                        "function_name": "assoc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
@@ -3472,19 +3767,288 @@
                         },
                         "afree": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "afree  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "afree",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "afree",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "name": "afree",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "afree",
+                                        "F_name_api": "afree",
+                                        "function_name": "afree"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
                         "assoc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "assoc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "assoc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "assoc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "name": "assoc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "assoc",
+                                        "F_name_api": "assoc",
+                                        "function_name": "assoc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
@@ -3518,17 +4082,286 @@
                         },
                         "afree": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "afree  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "afree",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "afree",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "name": "afree",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "afree",
+                                        "F_name_api": "afree",
+                                        "function_name": "afree"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "assoc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "assoc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "assoc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "assoc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "out"
+                                                        },
+                                                        "name": "err",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "name": "assoc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "in"
+                                                }
+                                            },
+                                            "err": {
+                                                "meta": {
+                                                    "intent": "out"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "assoc",
+                                        "F_name_api": "assoc",
+                                        "function_name": "assoc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "name": {
@@ -3884,7 +4717,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -3902,7 +4736,8 @@
                             "meta": {
                                 "attr": true,
                                 "bar": 2,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -3921,7 +4756,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }

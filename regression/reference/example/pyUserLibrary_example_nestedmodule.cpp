@@ -391,7 +391,7 @@ PP_FuncPtr2(
 // Function:  void FuncPtr3
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double ( * get)(int i +value, int +value)
+// Argument:  double ( * get)(int i, int)
 // Exact:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
@@ -426,7 +426,7 @@ PP_FuncPtr3(
 // Function:  void FuncPtr5
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
+// Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Exact:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"

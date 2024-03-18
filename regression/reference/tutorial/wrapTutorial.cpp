@@ -572,7 +572,7 @@ void TUT_getMinMax(int * min, int * max)
 // Argument:  int in
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int ( * incr)(int +value)
+// Argument:  int ( * incr)(int)
 // Statement: c_in_native_scalar
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))

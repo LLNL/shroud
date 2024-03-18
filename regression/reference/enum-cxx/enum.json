@@ -255,7 +255,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -269,7 +270,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -282,7 +284,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -294,7 +297,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }

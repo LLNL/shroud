@@ -648,7 +648,7 @@ module tutorial_mod
     ! Argument:  int in
     ! Statement: f_in_native_scalar
     ! ----------------------------------------
-    ! Argument:  int ( * incr)(int +value)
+    ! Argument:  int ( * incr)(int)
     ! Statement: f_in_native_scalar
     ! start callback1
     interface

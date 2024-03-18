@@ -928,7 +928,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr3
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(int i +value, int +value)
+        ! Argument:  double ( * get)(int i, int)
         ! Statement: f_in_native_scalar
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_FuncPtr3")
@@ -941,7 +941,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr4
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(double +value, int +value)
+        ! Argument:  double ( * get)(double, int)
         ! Statement: f_in_native_scalar
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_FuncPtr4")
@@ -954,7 +954,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr5
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
+        ! Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
         ! Statement: f_in_void_scalar
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_FuncPtr5")

@@ -341,9 +341,10 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "no-name": {
+                        "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -591,7 +592,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -645,7 +647,8 @@
                         "arg1": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -697,7 +700,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -749,7 +753,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1056,7 +1061,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "value": true
                             }
                         }
                     }
@@ -1108,7 +1114,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "value": true
                             }
                         }
                     }
@@ -1416,7 +1423,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -1429,7 +1437,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -1441,7 +1450,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1493,7 +1503,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1665,7 +1676,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1720,7 +1732,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1776,7 +1789,8 @@
                         "arg1": {
                             "meta": {
                                 "intent": "in",
-                                "rank": 2
+                                "rank": 2,
+                                "value": true
                             }
                         }
                     }
@@ -1916,7 +1930,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1993,7 +2008,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2074,12 +2090,14 @@
                         },
                         "mtext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ntext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -2165,12 +2183,14 @@
                         },
                         "mtext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ntext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -2208,8 +2228,7 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "inout",
-                                                    "value": true
+                                                    "intent": "none"
                                                 },
                                                 "name": "tc",
                                                 "typemap_name": "int"
@@ -2249,7 +2268,68 @@
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "none"
+                                                        },
+                                                        "name": "tc",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(int tc +intent(none))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true,
+                                        "python": true
+                                    },
+                                    "zz_bind": {
+                                        "share": {
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "inout",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2473,12 +2553,14 @@
                         },
                         "nfrom": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "nto": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "to": {
@@ -2592,12 +2674,14 @@
                         },
                         "nfrom": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "nto": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "to": {
@@ -2713,12 +2797,14 @@
                         },
                         "nfrom": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "nto": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "to": {
@@ -2740,12 +2826,14 @@
                         },
                         "nfrom": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "nto": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "to": {

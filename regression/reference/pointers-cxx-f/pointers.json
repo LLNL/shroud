@@ -458,7 +458,8 @@
                         },
                         "argin": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -483,7 +484,8 @@
                         },
                         "argin": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arginout": {
@@ -715,7 +717,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -750,7 +753,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -981,7 +985,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -1016,7 +1021,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1610,7 +1616,8 @@
                         },
                         "nvar": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -1635,7 +1642,8 @@
                         },
                         "nvar": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "values": {
@@ -1819,7 +1827,8 @@
                         },
                         "len": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -1845,7 +1854,8 @@
                         },
                         "len": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "result": {
@@ -2188,7 +2198,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2207,7 +2218,8 @@
                         },
                         "sizein": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2367,7 +2379,8 @@
                         },
                         "x_length": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2386,7 +2399,8 @@
                         },
                         "x_length": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2547,7 +2561,8 @@
                         },
                         "len": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2566,7 +2581,8 @@
                         },
                         "len": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -2889,7 +2905,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -2902,7 +2919,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -5451,7 +5469,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -5464,7 +5483,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -5593,7 +5613,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -5606,7 +5627,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }

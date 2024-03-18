@@ -229,13 +229,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -249,13 +251,15 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -268,12 +272,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -285,12 +291,14 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -853,7 +861,8 @@
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -867,7 +876,8 @@
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -880,7 +890,8 @@
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -892,7 +903,8 @@
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -1132,7 +1144,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_bool_scalar"
                         },
@@ -1158,7 +1171,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_bool_scalar"
                         },
@@ -1183,7 +1197,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
@@ -1205,7 +1220,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arg2": {
@@ -2894,7 +2910,8 @@
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
@@ -2914,7 +2931,8 @@
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -2934,7 +2952,8 @@
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -2951,7 +2970,8 @@
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -3224,13 +3244,15 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_bool_scalar"
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
@@ -3250,13 +3272,15 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_bool_scalar"
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -3276,12 +3300,14 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -3298,12 +3324,14 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -3671,13 +3699,15 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_bool_scalar"
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
@@ -3697,13 +3727,15 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_bool_scalar"
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -3723,12 +3755,14 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -3745,12 +3779,14 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "ltext": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "text": {
@@ -4086,7 +4122,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_bool_scalar"
                         }
@@ -4100,7 +4137,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_bool_scalar"
                         }
@@ -4113,7 +4151,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -4125,7 +4164,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -4333,7 +4373,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_bool_scalar"
                         }
@@ -4347,7 +4388,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_bool_scalar"
                         }
@@ -4360,7 +4402,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     },
@@ -4372,7 +4415,8 @@
                         },
                         "flag": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -4890,7 +4934,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         },
@@ -4910,7 +4955,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         },
@@ -4929,7 +4975,8 @@
                         },
                         "in": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "out": {
@@ -5118,7 +5165,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -5133,7 +5181,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         }
@@ -5147,7 +5196,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -5325,7 +5375,8 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1
+                                "rank": 1,
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -5341,7 +5392,8 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1
+                                "rank": 1,
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         }
@@ -5356,7 +5408,8 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1
+                                "rank": 1,
+                                "value": true
                             }
                         }
                     }
@@ -5524,7 +5577,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         },
@@ -5545,7 +5599,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         },
@@ -5566,7 +5621,8 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "outbuf": {
@@ -5830,13 +5886,53 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -5850,13 +5946,53 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -5869,12 +6005,52 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -6075,13 +6251,53 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -6095,13 +6311,53 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -6114,12 +6370,52 @@
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -6351,19 +6647,83 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -6378,19 +6738,83 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -6404,17 +6828,81 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "type": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -6718,13 +7206,76 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
@@ -6751,13 +7302,76 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
@@ -6785,12 +7399,75 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "incr": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(int *) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {}
+                                        },
+                                        "share": {
+                                            "arg1": {}
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "outbuf": {
@@ -7091,8 +7768,7 @@
                                         {
                                             "declarator": {
                                                 "attrs": {
-                                                    "intent": "in",
-                                                    "value": true
+                                                    "intent": "in"
                                                 },
                                                 "name": "tc",
                                                 "typemap_name": "int"
@@ -7160,7 +7836,103 @@
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "tc",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "array_info"
+                                                    },
+                                                    "specifier": [
+                                                        "array_info"
+                                                    ],
+                                                    "typemap_name": "array_info"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_scalar"
                         },
@@ -7172,7 +7944,8 @@
                         },
                         "tc": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -7186,7 +7959,103 @@
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "tc",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "array_info"
+                                                    },
+                                                    "specifier": [
+                                                        "array_info"
+                                                    ],
+                                                    "typemap_name": "array_info"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_scalar"
                         },
@@ -7198,7 +8067,8 @@
                         },
                         "tc": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -7211,7 +8081,103 @@
                         },
                         "alloc": {
                             "meta": {
-                                "intent": "in"
+                                "fptr": {
+                                    "<FUNCTION>": "alloc  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "alloc",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "alloc",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "tc",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "inout"
+                                                        },
+                                                        "name": "arr",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "array_info"
+                                                    },
+                                                    "specifier": [
+                                                        "array_info"
+                                                    ],
+                                                    "typemap_name": "array_info"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))",
+                                    "name": "alloc",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arr": {
+                                                "meta": {
+                                                    "intent": "inout"
+                                                }
+                                            },
+                                            "tc": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "alloc",
+                                        "F_name_api": "alloc",
+                                        "function_name": "alloc"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "arr": {
@@ -7221,7 +8187,8 @@
                         },
                         "tc": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }

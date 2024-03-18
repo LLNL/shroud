@@ -142,7 +142,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_char_scalar"
                         }
@@ -156,7 +157,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_char_scalar"
                         }
@@ -169,7 +171,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -302,7 +305,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_char_scalar"
                         }
@@ -316,7 +320,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_char_scalar"
                         }
@@ -329,7 +334,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -5457,7 +5463,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_string_scalar"
                         }
@@ -5472,7 +5479,8 @@
                         "arg1": {
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_string_scalar_cfi"
                         }
@@ -5485,7 +5493,8 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -7096,7 +7105,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_char_scalar"
                         }
@@ -7110,7 +7120,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_char_scalar"
                         }
@@ -7123,7 +7134,8 @@
                         },
                         "status": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -8470,7 +8482,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         },
@@ -8490,7 +8503,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_void_*"
                         },
@@ -8510,7 +8524,8 @@
                         },
                         "addr": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "src": {

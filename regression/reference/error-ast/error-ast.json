@@ -122,7 +122,8 @@
                         },
                         "arg2": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
