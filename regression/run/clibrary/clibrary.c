@@ -86,6 +86,18 @@ void passCharPtrInOut(char *s)
     }
 }
 
+// Test +api(capi)
+// 'in' and 'out' are 'n' characters long.
+
+void passCharPtrCAPI(int n, char *in, char *out)
+{
+    for (int i = 0; i < n; i++) {
+        out[i] = in[i];
+        in[i] = toupper(in[i]);
+    }
+}
+
+
 //----------------------------------------------------------------------
 // Test charlen attribute.
 // Each argument is assumed to be MAXNAME long.

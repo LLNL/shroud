@@ -600,6 +600,7 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_inout_char_*_buf
+          capi -- f_shared_native_scalar
           cfi -- f_inout_char_*_cfi
       native
         & -- f_shared_native_scalar
@@ -718,6 +719,7 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_out_char_*_buf
+          capi -- f_shared_native_scalar
           cfi -- f_out_char_*_cfi
       native
         & -- f_shared_native_scalar
@@ -8814,6 +8816,10 @@ f_inout_char_*_buf:
   intent: inout
   name: f_inout_char_*_buf
   owner: library
+f_inout_char_*_capi:
+  intent: inout
+  name: f_inout_char_*_capi
+  owner: library
 f_inout_char_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10110,6 +10116,10 @@ f_out_char_*_buf:
     - C_INT
   intent: out
   name: f_out_char_*_buf
+  owner: library
+f_out_char_*_capi:
+  intent: out
+  name: f_out_char_*_capi
   owner: library
 f_out_char_*_cfi:
   c_arg_decl:

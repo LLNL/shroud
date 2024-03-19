@@ -269,6 +269,29 @@ module clibrary_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void passCharPtrCAPI
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  int n
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  char * in +api(capi)+intent(inout)
+    ! Statement: f_inout_char_*_capi
+    ! ----------------------------------------
+    ! Argument:  char * out +api(capi)+intent(out)
+    ! Statement: f_out_char_*_capi
+    interface
+        subroutine pass_char_ptr_capi(n, in, out) &
+                bind(C, name="passCharPtrCAPI")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: n
+            character(kind=C_CHAR), intent(INOUT) :: in(*)
+            character(kind=C_CHAR), intent(OUT) :: out(*)
+        end subroutine pass_char_ptr_capi
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void returnOneName
     ! Statement: c_subroutine
     ! ----------------------------------------
@@ -939,6 +962,36 @@ contains
         call c_pass_char_ptr_in_out_bufferify(s, SHT_s_len)
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void passCharPtrCAPI
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  int n
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  char * in +api(capi)+intent(inout)
+    ! Statement: f_inout_char_*_capi
+    ! ----------------------------------------
+    ! Argument:  char * out +api(capi)+intent(out)
+    ! Statement: f_out_char_*_capi
+    !>
+    !! \brief api(capi) with intent(out) and intent(inout)
+    !!
+    !! Only the interface is needed.
+    !<
+    subroutine pass_char_ptr_capi(n, in, out)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: n
+        character(len=*), intent(INOUT) :: in
+        character(len=*), intent(OUT) :: out
+        ! splicer begin function.pass_char_ptr_capi
+        call c_pass_char_ptr_capi(n, in, out)
+        ! splicer end function.pass_char_ptr_capi
+    end subroutine pass_char_ptr_capi
+#endif
 
     ! ----------------------------------------
     ! Function:  void returnOneName

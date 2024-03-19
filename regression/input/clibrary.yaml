@@ -88,6 +88,16 @@ declarations:
       Change a string in-place.
       For Python, return a new string since strings are immutable.
 
+- decl: void passCharPtrCAPI(int n,
+                              char *in  +api(capi)+intent(inout),
+                              char *out +api(capi)+intent(out))
+  doxygen:
+    brief: api(capi) with intent(out) and intent(inout)
+    description:
+      Only the interface is needed.
+  options:
+    wrap_python: False
+
 ######################################################################
 # charlen
 # returnOneName will use PyString_FromString.

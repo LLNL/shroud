@@ -374,7 +374,7 @@ int CpassCharPtrCAPI(void *addr, const char *src)
 }
 
 //----------------------------------------
-// Check if strings compare, but only in is null terminated.
+// Check if strings compare, but only 'in' is null terminated.
 
 int CpassCharPtrCAPI2(const char *in, const char *src)
 {
