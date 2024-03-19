@@ -2606,7 +2606,122 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  13 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class  13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_class",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_class"
+                    },
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Return_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Return_Cstruct_as_class(void)",
+                "name": "Return_Cstruct_as_class",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_class",
+                    "F_name_api": "return_cstruct_as_class",
+                    "function_name": "Return_Cstruct_as_class"
+                }
+            },
+            {
+                "<FUNCTION>": "Return_Cstruct_as_class_args  14 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_class_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_class"
+                    },
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Return_Cstruct_as_class_args(int x, int y)",
+                "name": "Return_Cstruct_as_class_args",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_class_args",
+                    "F_name_api": "return_cstruct_as_class_args",
+                    "function_name": "Return_Cstruct_as_class_args"
+                }
+            },
+            {
+                "<FUNCTION>": "Cstruct_as_class_sum  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -2671,7 +2786,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  14 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",
@@ -2758,6 +2873,96 @@
                     "C_name_api": "Create_Cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",
                     "function_name": "Create_Cstruct_as_subclass_args"
+                }
+            },
+            {
+                "<FUNCTION>": "Return_Cstruct_as_subclass_args  17 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_subclass_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "z",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_subclass"
+                    },
+                    "specifier": [
+                        "Cstruct_as_subclass"
+                    ],
+                    "typemap_name": "Cstruct_as_subclass"
+                },
+                "decl": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass * Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "name": "Return_Cstruct_as_subclass_args",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_subclass_args",
+                    "F_name_api": "return_cstruct_as_subclass_args",
+                    "function_name": "Return_Cstruct_as_subclass_args"
                 }
             }
         ],

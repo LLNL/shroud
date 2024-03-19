@@ -5298,7 +5298,406 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  23 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class  23 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_class",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_class"
+                    },
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Return_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Return_Cstruct_as_class(void)",
+                "name": "Return_Cstruct_as_class",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_shadow_*_capsule"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_shadow_*_capsule"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "Return_Cstruct_as_class(\t)",
+                            "C_name": "STR_Return_Cstruct_as_class",
+                            "C_prototype": "STR_Cstruct_as_class * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_name": "c_return_cstruct_as_class",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_class",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_shadow_*_capsule"
+                        },
+                        "fmtf": {
+                            "C_call_function": "Return_Cstruct_as_class(\t)",
+                            "C_name": "STR_Return_Cstruct_as_class",
+                            "C_prototype": "STR_Cstruct_as_class * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
+                            "F_C_call": "c_return_cstruct_as_class",
+                            "F_C_name": "c_return_cstruct_as_class",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_class",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "SHCXX_rv",
+                            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                            "f_derived_type": "cstruct_as_class",
+                            "f_intent": "OUT",
+                            "f_type": "type(cstruct_as_class)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_shadow_*_capsule"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_class",
+                    "F_name_api": "return_cstruct_as_class",
+                    "F_name_function": "return_cstruct_as_class",
+                    "F_name_generic": "return_cstruct_as_class",
+                    "F_name_impl": "return_cstruct_as_class",
+                    "function_name": "Return_Cstruct_as_class"
+                }
+            },
+            {
+                "<FUNCTION>": "Return_Cstruct_as_class_args  24 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_class_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_class"
+                    },
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Return_Cstruct_as_class_args(int x, int y)",
+                "name": "Return_Cstruct_as_class_args",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_shadow_*_capsule"
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_shadow_*_capsule"
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "Return_Cstruct_as_class_args(\tx,\t y)",
+                            "C_call_list": "x,\t y",
+                            "C_name": "STR_Return_Cstruct_as_class_args",
+                            "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_name": "c_return_cstruct_as_class_args",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_class",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_shadow_*_capsule"
+                        },
+                        "fmtf": {
+                            "C_call_function": "Return_Cstruct_as_class_args(\tx,\t y)",
+                            "C_call_list": "x,\t y",
+                            "C_name": "STR_Return_Cstruct_as_class_args",
+                            "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "x,\t y,\t SHT_rv",
+                            "F_C_call": "c_return_cstruct_as_class_args",
+                            "F_C_name": "c_return_cstruct_as_class_args",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
+                            "F_arguments": "x,\t y",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_class",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "SHCXX_rv",
+                            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                            "f_derived_type": "cstruct_as_class",
+                            "f_intent": "OUT",
+                            "f_type": "type(cstruct_as_class)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_shadow_*_capsule"
+                        }
+                    },
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "x",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "x",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "x",
+                            "fc_var": "x",
+                            "i_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "y": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "y",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "y",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "y",
+                            "fc_var": "y",
+                            "i_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_class_args",
+                    "F_name_api": "return_cstruct_as_class_args",
+                    "F_name_function": "return_cstruct_as_class_args",
+                    "F_name_generic": "return_cstruct_as_class_args",
+                    "F_name_impl": "return_cstruct_as_class_args",
+                    "function_name": "Return_Cstruct_as_class_args"
+                }
+            },
+            {
+                "<FUNCTION>": "Cstruct_as_class_sum  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -5503,7 +5902,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  24 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",
@@ -5854,7 +6253,354 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  25 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_subclass_args  27 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "Return_Cstruct_as_subclass_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "z",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Cstruct_as_subclass"
+                    },
+                    "specifier": [
+                        "Cstruct_as_subclass"
+                    ],
+                    "typemap_name": "Cstruct_as_subclass"
+                },
+                "decl": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass * Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "name": "Return_Cstruct_as_subclass_args",
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_shadow_*_capsule"
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "api": "capsule",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_shadow_*_capsule"
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "x": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "y": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "z": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "Return_Cstruct_as_subclass_args(\tx,\t y,\t z)",
+                            "C_call_list": "x,\t y,\t z",
+                            "C_name": "STR_Return_Cstruct_as_subclass_args",
+                            "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_name": "c_return_cstruct_as_subclass_args",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_subclass",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_subclass",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_function_shadow_*_capsule"
+                        },
+                        "fmtf": {
+                            "C_call_function": "Return_Cstruct_as_subclass_args(\tx,\t y,\t z)",
+                            "C_call_list": "x,\t y,\t z",
+                            "C_name": "STR_Return_Cstruct_as_subclass_args",
+                            "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "x,\t y,\t z,\t SHT_rv",
+                            "F_C_call": "c_return_cstruct_as_subclass_args",
+                            "F_C_name": "c_return_cstruct_as_subclass_args",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
+                            "F_arguments": "x,\t y,\t z",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_type": "STR_Cstruct_as_subclass",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_rv",
+                            "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
+                            "cxx_type": "Cstruct_as_subclass",
+                            "cxx_var": "SHCXX_rv",
+                            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+                            "f_derived_type": "cstruct_as_subclass",
+                            "f_intent": "OUT",
+                            "f_type": "type(cstruct_as_subclass)",
+                            "f_type_module": "struct_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_function_shadow_*_capsule"
+                        }
+                    },
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "x",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "x",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "x",
+                            "fc_var": "x",
+                            "i_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "y": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "y",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "y",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "y",
+                            "fc_var": "y",
+                            "i_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "z": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "z",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&z",
+                            "cxx_type": "int",
+                            "cxx_var": "z",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "z",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&z",
+                            "cxx_type": "int",
+                            "cxx_var": "z",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "z",
+                            "fc_var": "z",
+                            "i_var": "z",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Return_Cstruct_as_subclass_args",
+                    "F_name_api": "return_cstruct_as_subclass_args",
+                    "F_name_function": "return_cstruct_as_subclass_args",
+                    "F_name_generic": "return_cstruct_as_subclass_args",
+                    "F_name_impl": "return_cstruct_as_subclass_args",
+                    "function_name": "Return_Cstruct_as_subclass_args"
+                }
+            },
+            {
+                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  28 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6019,7 +6765,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  26 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  29 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6209,7 +6955,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_ivalue  27 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_ivalue  30 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6421,7 +7167,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_ivalue  28 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_ivalue  31 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6617,7 +7363,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_dvalue  29 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_dvalue  32 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6829,7 +7575,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_dvalue  30 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_dvalue  33 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

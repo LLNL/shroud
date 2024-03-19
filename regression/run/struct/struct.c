@@ -171,6 +171,37 @@ int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)
 }
 
 /*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+// Used with C_shadow_result: False
+
+static Cstruct_as_class global_as_class;
+static Cstruct_as_subclass global_as_subclass;
+
+Cstruct_as_class *Return_Cstruct_as_class(void)
+{
+    global_as_class.x1 = 0;
+    global_as_class.y1 = 0;
+    return &global_as_class;
+}
+
+Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)
+{
+    global_as_class.x1 = x;
+    global_as_class.y1 = y;
+    return &global_as_class;
+}
+
+Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)
+{
+    global_as_subclass.x1 = x;
+    global_as_subclass.y1 = y;
+    global_as_subclass.z1 = z;
+    return &global_as_subclass;
+}
+
+/*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
 // Keep a global struct which owns all of its memory.
 //   int *ivalue     +dimension(nitems+nitems);
 //   double *dvalue  +dimension(nitems*TWO);

@@ -53,10 +53,18 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv);
 
+void STR_Return_Cstruct_as_class(STR_Cstruct_as_class * SHC_rv);
+
+void STR_Return_Cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHC_rv);
+
 int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point);
 
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv);
+
+void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
+    STR_Cstruct_as_subclass * SHC_rv);
 
 const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this);
 
