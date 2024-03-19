@@ -1210,6 +1210,7 @@ c_function_shadow_*_capsule:
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
+  cxx_local_var: result
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
@@ -5085,6 +5086,7 @@ f_function_shadow_*_capsule:
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
+  cxx_local_var: result
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:

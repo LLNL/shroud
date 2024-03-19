@@ -24,6 +24,7 @@ program tester
   call test_struct_array
   call test_cstruct_list
   call test_struct_class
+  call test_return_struct_class
 
   call fruit_summary
   call fruit_finalize
@@ -210,5 +211,32 @@ contains
     ! end main.f test_struct_class
 
   end subroutine test_struct_class
+
+  subroutine test_return_struct_class
+    type(cstruct_as_class) point1, point2
+    type(cstruct_as_subclass) subpoint1
+
+    call set_case_name("test_return_struct_class")
+    
+    ! F_name_associated is blank so the associated function is not created.
+    ! Instead look at pointer directly.
+    ! call assert_false(point1%associated())
+    call assert_false(c_associated(point1%cxxmem%addr))
+
+    point1 = return_cstruct_as_class()
+    call assert_equals(0, point1%get_x1())
+    call assert_equals(0, point1%get_y1())
+
+    point2 = return_cstruct_as_class_args(1, 2)
+    call assert_equals(1, point2%get_x1())
+    call assert_equals(2, point2%get_y1())
+
+    subpoint1 = return_cstruct_as_subclass_args(1, 2, 3)
+    call assert_equals(1, subpoint1%get_x1())
+    call assert_equals(2, subpoint1%get_y1())
+    call assert_equals(3, subpoint1%get_z1())
+    call assert_equals(3, subpoint1%sum())
+
+  end subroutine test_return_struct_class
 
 end program tester

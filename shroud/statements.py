@@ -3325,6 +3325,7 @@ fc_statements = [
         alias=[
             "c_function_shadow_*_capsule",
         ],
+        cxx_local_var="result",
         c_post_call=[
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",

@@ -108,6 +108,12 @@ int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 
 Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z);
 
+// C_shadow_result: False
+Cstruct_as_class *Return_Cstruct_as_class(void);
+Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y);
+Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z);
+
+
 Cstruct_list *get_global_struct_list(void);
 
 /*----------------------------------------------------------------------*/
