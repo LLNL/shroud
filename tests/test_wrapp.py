@@ -8,6 +8,7 @@ from __future__ import print_function
 
 from shroud import ast
 from shroud import declast
+from shroud import metaattrs
 from shroud import statements
 from shroud import util
 from shroud import wrapp
@@ -57,6 +58,8 @@ struct Cstruct_list {
     char **svalue   +dimension(nitems);
 };
 """)
+        metaattrs.process_metaattrs(self.library, "share")
+        metaattrs.process_metaattrs(self.library, "py")
 
     def test_dimension(self):
         self.struct.create_node_map()

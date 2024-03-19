@@ -38,14 +38,20 @@ class Statements(unittest.TestCase):
         cf_dict = {}
         stmts = [
             dict(
-                name="c_a",
+                name="c_mixin_a",
                 field1="field1_from_c_a",
                 field2="field2_from_c_a",
             ),
             dict(
+                name="c_a",
+                mixin=[
+                    "c_mixin_a",
+                ],
+            ),
+            dict(
                 name="c_b",
                 mixin=[
-                    "c_a",
+                    "c_mixin_a",
                 ],
                 field2="field2_from_c_b",
             ),

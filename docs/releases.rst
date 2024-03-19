@@ -15,6 +15,9 @@ Unreleased
 Changes to YAML input
 ^^^^^^^^^^^^^^^^^^^^^
 
+* Attribute *+allocatable* is now *+deref(allocatable)*.
+  This avoids setting *+allocatable* inconsistent with *+deref*.
+
 * C wrappers can now be generated independent of Fortran wrappers
   instead of just as a side effect of creating Fortran Wrappers.
 

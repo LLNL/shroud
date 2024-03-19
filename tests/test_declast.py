@@ -321,12 +321,6 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_fortran(local=True)
         self.assertEqual("character(len=30) :: var1", s)
 
-        r = declast.check_decl("char *var1 +allocatable", symtab)
-        s = r.gen_decl()
-        self.assertEqual("char * var1 +allocatable", s)
-        s = r.gen_arg_as_fortran()
-        self.assertEqual("character(len=:), allocatable :: var1", s)
-
         r = declast.check_decl("char *var1 +deref(allocatable)", symtab)
         s = r.gen_decl()
         self.assertEqual("char * var1 +deref(allocatable)", s)
