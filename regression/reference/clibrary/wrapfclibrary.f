@@ -749,7 +749,7 @@ module clibrary_mod
     ! Argument:  array_info * arr +intent(inout)
     ! Statement: f_inout_struct_*
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout))
+    ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
     ! Statement: f_in_void_scalar
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &

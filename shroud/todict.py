@@ -553,6 +553,8 @@ class ToDict(visitor.Visitor):
                          for (key, value) in node.meta.items()
                          if value is not None}
             if metaattrs:
+                if "fptr" in metaattrs:
+                    metaattrs["fptr"] = self.visit(metaattrs["fptr"])
                 if "dim_ast" in metaattrs:
                     metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
                 d["meta"] = metaattrs

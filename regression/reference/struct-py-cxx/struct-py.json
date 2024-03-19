@@ -72,12 +72,14 @@
                                 },
                                 "x1": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 },
                                 "y1": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             },
@@ -89,12 +91,14 @@
                                 },
                                 "x1": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 },
                                 "y1": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             }

@@ -369,6 +369,7 @@ class Parser(ExprParser):
         while self.token.typ != "RPAREN":
             node = self.declaration()
             params.append(node)
+            node.declarator.arg_name = "arg" + str(len(params))
             if self.have("COMMA"):
                 if self.have("VARARG"):
                     raise NotImplementedError("varargs")
@@ -1291,6 +1292,7 @@ class Declarator(Node):
         
         self.ctor_dtor_name = False
         self.default_name = None
+        self.arg_name = None         # default abstract-declarator name - arg%n
 
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []

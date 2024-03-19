@@ -881,7 +881,7 @@ static int l_example_nested_FuncPtr2(lua_State *)
 // Function:  void FuncPtr3
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double ( * get)(int i +value, int +value)
+// Argument:  double ( * get)(int i, int)
 // Statement: lua_in_native_scalar
 /**
  * \brief abstract argument
@@ -901,7 +901,7 @@ static int l_example_nested_FuncPtr3(lua_State *L)
 // Function:  void FuncPtr5
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)
+// Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Statement: lua_in_void_scalar
 static int l_example_nested_FuncPtr5(lua_State *)
 {

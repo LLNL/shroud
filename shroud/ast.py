@@ -1494,7 +1494,7 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
         self._gen_fortran_generic = False # An argument is assumed-rank.
-        self._bind = {}
+        self._bind = {}                   # Access with get_func_bind or get_arg_bind
         self.splicer = {}
         self.fstatements = {}
         self.struct_parent = None         # Function is a getter/setter for a struct

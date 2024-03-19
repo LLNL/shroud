@@ -416,7 +416,8 @@
                         "value": {
                             "meta": {
                                 "intent": "in",
-                                "rank": 0
+                                "rank": 0,
+                                "value": true
                             },
                             "stmt": "c_in_void_*"
                         }
@@ -435,7 +436,8 @@
                         "value": {
                             "meta": {
                                 "intent": "in",
-                                "rank": 0
+                                "rank": 0,
+                                "value": true
                             }
                         }
                     }
@@ -1562,7 +1564,8 @@
                         },
                         "value": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "value": true
                             }
                         }
                     }

@@ -209,7 +209,8 @@
                                 },
                                 "size": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     },
                                     "stmt": "c_in_native_scalar"
                                 }
@@ -223,7 +224,8 @@
                                 },
                                 "size": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     },
                                     "stmt": "f_in_native_scalar"
                                 }
@@ -236,7 +238,8 @@
                                 },
                                 "size": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             },
@@ -248,7 +251,8 @@
                                 },
                                 "size": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             }
@@ -3654,7 +3658,8 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     },
                                     "stmt": "c_in_void_*"
                                 }
@@ -3668,7 +3673,8 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     },
                                     "stmt": "f_in_void_*"
                                 }
@@ -3681,7 +3687,8 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             },
@@ -3693,7 +3700,8 @@
                                 },
                                 "array": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             }

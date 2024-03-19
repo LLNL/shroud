@@ -81,12 +81,14 @@
                                 },
                                 "count": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 },
                                 "name": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             },
@@ -98,12 +100,14 @@
                                 },
                                 "count": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 },
                                 "name": {
                                     "meta": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "value": true
                                     }
                                 }
                             }

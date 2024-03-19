@@ -855,7 +855,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -868,7 +869,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -1093,7 +1095,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -1106,7 +1109,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -1433,7 +1437,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -1446,7 +1451,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -1671,7 +1677,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -1684,7 +1691,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -1909,7 +1917,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     },
                                     "stmt": "f_setter_native_scalar"
                                 }
@@ -1922,7 +1931,8 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter"
+                                        "intent": "setter",
+                                        "value": true
                                     }
                                 }
                             }
@@ -2239,7 +2249,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_struct_scalar"
                         }
@@ -2253,7 +2264,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_struct_scalar"
                         }
@@ -2266,7 +2278,8 @@
                         },
                         "arg": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -3173,13 +3186,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -3199,13 +3214,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -3223,12 +3240,14 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -3615,13 +3634,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -3635,13 +3656,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -3654,12 +3677,14 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -3888,13 +3913,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -3910,13 +3937,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -3929,12 +3958,14 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -4214,13 +4245,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
@@ -4242,13 +4275,15 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
@@ -4268,12 +4303,14 @@
                         },
                         "d": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "i": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "outbuf": {
@@ -5043,13 +5080,15 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -5064,13 +5103,15 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -5083,12 +5124,14 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }
@@ -5530,19 +5573,22 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         },
                         "z": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "c_in_native_scalar"
                         }
@@ -5557,19 +5603,22 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         },
                         "z": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             },
                             "stmt": "f_in_native_scalar"
                         }
@@ -5582,17 +5631,20 @@
                         },
                         "x": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "y": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         },
                         "z": {
                             "meta": {
-                                "intent": "in"
+                                "intent": "in",
+                                "value": true
                             }
                         }
                     }

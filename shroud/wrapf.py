@@ -947,7 +947,8 @@ rv = .false.
         )
         entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
-            fileinfo.f_abstract_interface[name] = (node, fmt, arg)
+            meta = get_arg_bind(node, arg, "f").meta
+            fileinfo.f_abstract_interface[name] = (node, fmt, arg, meta["fptr"])
         return name
 
     def dump_abstract_interfaces(self, fileinfo):
@@ -965,7 +966,7 @@ rv = .false.
                 iface.append(1)
 
             for key in sorted(fileinfo.f_abstract_interface.keys()):
-                node, fmt, arg = fileinfo.f_abstract_interface[key]
+                node, fmt, arg, fptr = fileinfo.f_abstract_interface[key]
                 options = node.options
                 ast = node.ast
                 subprogram = arg.declarator.get_subprogram()
@@ -973,9 +974,10 @@ rv = .false.
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
-                for i, param in enumerate(arg.declarator.params):
+                for i, param in enumerate(fptr.ast.declarator.params):
                     name = param.declarator.user_name
-                    intent = param.declarator.attrs["intent"]
+                    meta = get_arg_bind(fptr, param, "f").meta
+                    intent = meta["intent"]
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(

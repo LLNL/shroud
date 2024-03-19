@@ -14,12 +14,10 @@ import unittest
 
 ShroudParseError = error.ShroudParseError
 
-class Cursor(object):
+class Cursor(error.Cursor):
     """Mock class for error.Cursor
     Record last error message.
     """
-    def __init__(self):
-        self.message = None
     def push_phase(self, name):
         pass
     def pop_phase(self, name):
