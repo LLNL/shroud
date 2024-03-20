@@ -80,6 +80,7 @@ fortran-test-list-std = \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-funptr-c \
+  test-fortran-funptr-cxx \
   test-fortran-vectors \
   test-fortran-cdesc \
   test-fortran-preprocess \

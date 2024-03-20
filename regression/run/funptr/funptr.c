@@ -19,6 +19,7 @@ void callback1(void (*incr)(void))
 }
 // end callback1
 
+#if 0
 void callback1a(int type, void (*incr)(void))
 {
   // Use type to decide how to call incr
@@ -47,8 +48,6 @@ void callback3(const char *type, void * in, void (*incr)(int *),
   }
   //  strncpy(outbuf, "callback3", LENOUTBUF);
 }
-
-#if 0
 
 void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))
 {

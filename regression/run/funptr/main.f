@@ -43,7 +43,9 @@ end subroutine incr3_double
 
 module callback_mod
 contains
-  subroutine incr1_int
+  subroutine incr1_int() bind(C)
+    ! A bind(C) is required for the intel/oneapi/ibm compiler since
+    ! it is passed directly to C via a bind(C) interface.
     use state
     implicit none
     counter = counter + 1
