@@ -120,8 +120,12 @@ contains
     call set_case_name("test_callback1")
 
     counter = 0
+    
     call callback1(incr1_int)
     call assert_equals(1, counter, "callback1")
+
+    call callback1_wrap(incr1_int)
+    call assert_equals(2, counter, "callback1_wrap")
 
   end subroutine test_callback1
 

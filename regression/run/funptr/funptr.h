@@ -12,6 +12,8 @@
 #define FUNPTR_H
 
 void callback1(void (*incr)(void));
+void callback1_wrap(void (*incr)(void));
+
 void callback1a(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);

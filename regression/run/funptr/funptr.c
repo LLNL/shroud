@@ -12,12 +12,19 @@
 
 #include <string.h>
 
+// Uses a Fortran abstract interface
 // start callback1
 void callback1(void (*incr)(void))
 {
     incr();
 }
 // end callback1
+
+// F_force_wrapper=True, abstract interface
+void callback1_wrap(void (*incr)(void))
+{
+    incr();
+}
 
 #if 0
 void callback1a(int type, void (*incr)(void))

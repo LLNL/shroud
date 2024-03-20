@@ -29,4 +29,16 @@ void FUN_callback1(void ( * incr)(void))
     // splicer end function.callback1
 }
 
+/**
+ * \brief Create abstract interface for function
+ *
+ * Create a Fortran wrapper to call the bind(C) interface.
+ */
+void FUN_callback1_wrap(void ( * incr)(void))
+{
+    // splicer begin function.callback1_wrap
+    callback1_wrap(incr);
+    // splicer end function.callback1_wrap
+}
+
 }  // extern "C"

@@ -24,6 +24,14 @@ declarations:
   doxygen:
     brief: Create abstract interface for function
 
+- decl: void callback1_wrap(void (*incr)(void))
+  doxygen:
+    brief: Create abstract interface for function
+    description: |
+       Create a Fortran wrapper to call the bind(C) interface.
+  options:
+    F_force_wrapper: True
+
 #- decl: void callback1(void (*incr)(void)+external)
 #  doxygen:
 #    brief: Test function pointer

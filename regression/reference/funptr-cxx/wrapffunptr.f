@@ -26,6 +26,10 @@ module funptr_mod
             implicit none
         end subroutine callback1_incr
 
+        subroutine callback1_wrap_incr() bind(C)
+            implicit none
+        end subroutine callback1_wrap_incr
+
     end interface
 
     interface
@@ -36,12 +40,31 @@ module funptr_mod
             implicit none
             procedure(callback1_incr) :: incr
         end subroutine callback1
+
+        subroutine c_callback1_wrap(incr) &
+                bind(C, name="FUN_callback1_wrap")
+            import :: callback1_wrap_incr
+            implicit none
+            procedure(callback1_wrap_incr) :: incr
+        end subroutine c_callback1_wrap
     end interface
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
 contains
+
+    !>
+    !! \brief Create abstract interface for function
+    !!
+    !! Create a Fortran wrapper to call the bind(C) interface.
+    !<
+    subroutine callback1_wrap(incr)
+        procedure(callback1_wrap_incr) :: incr
+        ! splicer begin function.callback1_wrap
+        call c_callback1_wrap(incr)
+        ! splicer end function.callback1_wrap
+    end subroutine callback1_wrap
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
