@@ -14,6 +14,7 @@
 void callback1(void (*incr)(void));
 void callback1_wrap(void (*incr)(void));
 void callback1_external(void (*incr)(void));
+void callback1_funptr(void (*incr)(void));
 
 void callback1a(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));

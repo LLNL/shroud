@@ -52,4 +52,16 @@ void FUN_callback1_external(void ( * incr)(void))
     // splicer end function.callback1_external
 }
 
+/**
+ * \brief Declare callback as c_funptr
+ *
+ * The caller is responsible for using c_funloc to pass the function address.
+ */
+void FUN_callback1_funptr(void ( * incr)(void))
+{
+    // splicer begin function.callback1_funptr
+    callback1_funptr(incr);
+    // splicer end function.callback1_funptr
+}
+
 }  // extern "C"

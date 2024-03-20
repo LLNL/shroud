@@ -36,6 +36,11 @@ declarations:
   doxygen:
     brief: Declare callback as external
 
+- decl: void callback1_funptr(void (*incr)(void)+external)
+  doxygen:
+    brief: Declare callback as c_funptr
+    description: |
+      The caller is responsible for using c_funloc to pass the function address.
 
 
 ### from other tests

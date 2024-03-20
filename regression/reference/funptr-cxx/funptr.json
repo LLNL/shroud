@@ -849,6 +849,293 @@
                     "F_name_impl": "callback1_external",
                     "function_name": "callback1_external"
                 }
+            },
+            {
+                "<FUNCTION>": "callback1_funptr  3 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback1_funptr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "incr",
+                                    "params": [],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback1_funptr(void (*incr)(void)+external)",
+                "declgen": "void callback1_funptr(void ( * incr)(void) +external)",
+                "doxygen": {
+                    "brief": "Declare callback as c_funptr",
+                    "description": "The caller is responsible for using c_funloc to pass the function address.\n"
+                },
+                "name": "callback1_funptr",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_void_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_void_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "external": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +external",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "callback1_funptr(\tincr)",
+                            "C_call_list": "incr",
+                            "C_name": "FUN_callback1_funptr",
+                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_name": "c_callback1_funptr",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "callback1_funptr(\tincr)",
+                            "C_call_list": "incr",
+                            "C_name": "FUN_callback1_funptr",
+                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_arguments": "incr",
+                            "F_C_call": "c_callback1_funptr",
+                            "F_C_name": "c_callback1_funptr",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "incr",
+                            "F_arguments": "incr",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "incr": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "void",
+                            "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "void",
+                            "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "incr",
+                            "fc_var": "incr",
+                            "i_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "f_in_void_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback1_funptr",
+                    "F_name_api": "callback1_funptr",
+                    "F_name_function": "callback1_funptr",
+                    "F_name_generic": "callback1_funptr",
+                    "F_name_impl": "callback1_funptr",
+                    "function_name": "callback1_funptr"
+                }
             }
         ],
         "language": "cxx",

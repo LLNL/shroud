@@ -32,6 +32,12 @@ void callback1_external(void (*incr)(void))
     incr();
 }
 
+// incr +funptr
+void callback1_funptr(void (*incr)(void))
+{
+    incr();
+}
+
 #if 0
 void callback1a(int type, void (*incr)(void))
 {
