@@ -707,6 +707,7 @@ class FillMetaShare(FillMeta):
                 "external",
                 "deref",
                 "dimension",
+                "funptr",
                 "hidden",  # omitted in Fortran API, returned from C++
                 "implied",  # omitted in Fortran API, value passed to C++
                 "intent",

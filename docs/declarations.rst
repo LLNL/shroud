@@ -367,7 +367,7 @@ directly from Fortran.
     See example :ref:`callback1 <example_callback1>`.
 
 ``void (*incr)()``
-    Adding the ``external`` attribute will allow any function to be passed.
+    Adding the *external* attribute will allow any function to be passed.
     In C this is accomplished by using a cast.
     See example :ref:`callback1c <example_callback1c>`.
 
@@ -405,6 +405,14 @@ with the ``bind(C)`` attribute.  In the interface, an ``abstract
 interface`` for the function pointer argument is used.  The user's
 library is responsible for calling the argument correctly since the
 interface is not preserved by the ``external`` declaration.
+Not all fortran compilers will allow any subprogram to be passed.
+gcc, for one, makes a distinction between ``FUNCTION`` and ``SUBROUTINE``.
+
+A completely general solution is to add the *funptr* attribute. This
+uses ``type(C_FUNPTR)`` provided by ``iso_c_binding`` module.
+However, it requires the caller to use ``C_FUNLOC`` to pass down the
+correct type.  All interface information is lost and the C library is
+expected to know how to deal with arbitrary function pointers.
 
 Struct
 ------

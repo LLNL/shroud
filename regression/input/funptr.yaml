@@ -36,7 +36,7 @@ declarations:
   doxygen:
     brief: Declare callback as external
 
-- decl: void callback1_funptr(void (*incr)(void)+external)
+- decl: void callback1_funptr(void (*incr)(void)+funptr)
   doxygen:
     brief: Declare callback as c_funptr
     description: |

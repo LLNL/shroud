@@ -1083,11 +1083,17 @@ rv = .false.
                         "type(*) :: {}".format(name)
                     )
             elif declarator.is_function_pointer():
-                absiface = self.add_abstract_interface(node, ast, fileinfo)
-                arg_c_decl.append(
-                    "procedure({}) :: {}".format(absiface, name)
-                )
-                imports[absiface] = True
+                if "funptr" in attrs:
+                    arg_c_decl.append(
+                        "type(C_FUNPTR), value :: {}".format(name)
+                    )
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                else:
+                    absiface = self.add_abstract_interface(node, ast, fileinfo)
+                    arg_c_decl.append(
+                        "procedure({}) :: {}".format(absiface, name)
+                    )
+                    imports[absiface] = True
             elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
@@ -1570,7 +1576,10 @@ rv = .false.
                 continue
             elif f_declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                if "external" in f_attrs:
+                if "funptr" in f_attrs:
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
+                elif "external" in f_attrs:
                     # external is similar to assumed type, in that it will
                     # accept any function.  But external is not allowed
                     # in bind(C), so make sure a wrapper is generated.

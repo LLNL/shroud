@@ -63,12 +63,12 @@ module funptr_mod
             procedure(callback1_external_incr) :: incr
         end subroutine c_callback1_external
 
-        subroutine c_callback1_funptr(incr) &
+        subroutine callback1_funptr(incr) &
                 bind(C, name="callback1_funptr")
-            import :: callback1_funptr_incr
+            use iso_c_binding, only : C_FUNPTR
             implicit none
-            procedure(callback1_funptr_incr) :: incr
-        end subroutine c_callback1_funptr
+            type(C_FUNPTR), value :: incr
+        end subroutine callback1_funptr
     end interface
 
     ! splicer begin additional_declarations
@@ -98,18 +98,6 @@ contains
         call c_callback1_external(incr)
         ! splicer end function.callback1_external
     end subroutine callback1_external
-
-    !>
-    !! \brief Declare callback as c_funptr
-    !!
-    !! The caller is responsible for using c_funloc to pass the function address.
-    !<
-    subroutine callback1_funptr(incr)
-        external :: incr
-        ! splicer begin function.callback1_funptr
-        call c_callback1_funptr(incr)
-        ! splicer end function.callback1_funptr
-    end subroutine callback1_funptr
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -59,6 +59,13 @@ contains
     counter = counter + 1
   end subroutine incr1_external
 
+  subroutine incr1_funptr()
+    ! The user is required to pass C_FUNLOC(incr1_funptr)
+    use state
+    implicit none
+    counter = counter + 1
+  end subroutine incr1_funptr
+
   subroutine incr2b_int(input)
     use iso_c_binding
     implicit none
@@ -137,6 +144,9 @@ contains
 
     call callback1_external(incr1_external)
     call assert_equals(3, counter, "callback1_wrap")
+
+    call callback1_funptr(c_funloc(incr1_funptr))
+    call assert_equals(4, counter, "callback1_funptr")
 
   end subroutine test_callback1
 

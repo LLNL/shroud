@@ -859,7 +859,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "external": true
+                                        "funptr": true
                                     },
                                     "func": {
                                         "name": "incr",
@@ -887,8 +887,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback1_funptr(void (*incr)(void)+external)",
-                "declgen": "void callback1_funptr(void ( * incr)(void) +external)",
+                "decl": "void callback1_funptr(void (*incr)(void)+funptr)",
+                "declgen": "void callback1_funptr(void ( * incr)(void) +funptr)",
                 "doxygen": {
                     "brief": "Declare callback as c_funptr",
                     "description": "The caller is responsible for using c_funloc to pass the function address.\n"
@@ -914,7 +914,7 @@
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
-                                                "external": true
+                                                "funptr": true
                                             },
                                             "func": {
                                                 "name": "incr",
@@ -934,7 +934,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +external",
+                                    "decl": "void ( * incr)(void) +funptr",
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
@@ -967,7 +967,7 @@
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
-                                                "external": true
+                                                "funptr": true
                                             },
                                             "func": {
                                                 "name": "incr",
@@ -987,7 +987,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +external",
+                                    "decl": "void ( * incr)(void) +funptr",
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
@@ -1019,7 +1019,7 @@
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
-                                                "external": true
+                                                "funptr": true
                                             },
                                             "func": {
                                                 "name": "incr",
@@ -1039,7 +1039,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +external",
+                                    "decl": "void ( * incr)(void) +funptr",
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
@@ -1077,7 +1077,7 @@
                             "C_return_type": "void",
                             "F_C_arguments": "incr",
                             "F_C_call": "c_callback1_funptr",
-                            "F_C_name": "c_callback1_funptr",
+                            "F_C_name": "callback1_funptr",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "incr",
                             "F_arguments": "incr",

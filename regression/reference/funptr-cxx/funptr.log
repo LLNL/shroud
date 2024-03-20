@@ -5,18 +5,18 @@ C c void callback1_wrap(void ( * incr)(void))
 C f void callback1_wrap(void ( * incr)(void))
 C c void callback1_external(void ( * incr)(void) +external)
 C f void callback1_external(void ( * incr)(void) +external)
-C c void callback1_funptr(void ( * incr)(void) +external)
-C f void callback1_funptr(void ( * incr)(void) +external)
+C c void callback1_funptr(void ( * incr)(void) +funptr)
+C f void callback1_funptr(void ( * incr)(void) +funptr)
 Close wrapfunptr.h
 Close wrapfunptr.cpp
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))
 Fortran void callback1_external(void ( * incr)(void) +external)
-Fortran void callback1_funptr(void ( * incr)(void) +external)
+Fortran void callback1_funptr(void ( * incr)(void) +funptr)
 C-interface f void callback1(void ( * incr)(void))
 C-interface f void callback1_wrap(void ( * incr)(void))
 C-interface f void callback1_external(void ( * incr)(void) +external)
-C-interface f void callback1_funptr(void ( * incr)(void) +external)
+C-interface f void callback1_funptr(void ( * incr)(void) +funptr)
 Close wrapffunptr.f
 Close utilfunptr.cpp
 Close typesfunptr.h
