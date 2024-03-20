@@ -552,6 +552,16 @@ if __name__ == "__main__":
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
+
+        TestDesc("funptr-c", yaml="funptr",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("funptr-cxx", yaml="funptr",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+
         TestDesc("defaultarg"),
         TestDesc("interface"),
         TestDesc("statement"),

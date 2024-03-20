@@ -1,0 +1,8 @@
+Read yaml funptr.yaml
+C c void callback1(void ( * incr)(void))
+C f void callback1(void ( * incr)(void))
+Fortran void callback1(void ( * incr)(void))
+C-interface f void callback1(void ( * incr)(void))
+Close wrapffunptr.f
+Close utilfunptr.c
+Close typesfunptr.h

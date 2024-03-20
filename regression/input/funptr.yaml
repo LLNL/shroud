@@ -1,0 +1,49 @@
+copyright:
+- Copyright (c) 2017-2024, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test function pointers
+# Wrapped with both C and C++.
+
+library: funptr
+cxx_header: funptr.h
+
+options:
+  wrap_lua: False
+  wrap_python: False
+
+declarations:
+
+# From clibrary.yaml
+
+- decl: void callback1(void (*incr)(void))
+  doxygen:
+    brief: Create abstract interface for function
+
+#- decl: void callback1(void (*incr)(void)+external)
+#  doxygen:
+#    brief: Test function pointer
+  
+
+
+
+
+### from other tests
+#- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
+#                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))
+#- decl: void callback2(int type, void * in+assumedtype,
+#                       void (*incr)(int *)+external)
+#- decl: int callback1(int in, int (*incr)(int));
+#- decl: void func1(int arg1)
+#- decl: void Rtserv(const char *attr,
+#                    typedef void (*actor) (
+#                      const char *name,
+#                      long *ilow))
+#- decl: void Rtserv(const char *attr,
+#                    typedef void (*actor) (
+#                      const char *name,
+#                      long *ilow+rank(1)))

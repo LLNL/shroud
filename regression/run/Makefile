@@ -45,11 +45,14 @@ endif
 sync-cxx : \
   $(relrunpath)/cxx/pointers.cpp \
   $(relrunpath)/cxx/struct.cpp \
+  $(relrunpath)/cxx/funptr.cpp \
   $(relrunpath)/cxx/typedefs.cpp
 
 $(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/funptr.cpp : regression/run/funptr/funptr.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/typedefs.cpp : regression/run/typedefs/typedefs.c | $(relrunpath)/cxx/..
 	cp $< $@
@@ -76,6 +79,7 @@ fortran-test-list-std = \
   test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
+  test-fortran-funptr-c \
   test-fortran-vectors \
   test-fortran-cdesc \
   test-fortran-preprocess \
