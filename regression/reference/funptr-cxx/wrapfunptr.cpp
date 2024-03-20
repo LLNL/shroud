@@ -41,4 +41,15 @@ void FUN_callback1_wrap(void ( * incr)(void))
     // splicer end function.callback1_wrap
 }
 
+/**
+ * \brief Declare callback as external
+ *
+ */
+void FUN_callback1_external(void ( * incr)(void))
+{
+    // splicer begin function.callback1_external
+    callback1_external(incr);
+    // splicer end function.callback1_external
+}
+
 }  // extern "C"

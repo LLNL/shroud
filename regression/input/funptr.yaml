@@ -32,11 +32,9 @@ declarations:
   options:
     F_force_wrapper: True
 
-#- decl: void callback1(void (*incr)(void)+external)
-#  doxygen:
-#    brief: Test function pointer
-  
-
+- decl: void callback1_external(void (*incr)(void)+external)
+  doxygen:
+    brief: Declare callback as external
 
 
 

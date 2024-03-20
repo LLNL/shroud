@@ -31,6 +31,8 @@ void FUN_callback1(void ( * incr)(void));
 
 void FUN_callback1_wrap(void ( * incr)(void));
 
+void FUN_callback1_external(void ( * incr)(void));
+
 #ifdef __cplusplus
 }
 #endif

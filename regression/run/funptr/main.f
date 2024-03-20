@@ -51,6 +51,14 @@ contains
     counter = counter + 1
   end subroutine incr1_int
 
+  subroutine incr1_external()
+    ! Note that bind(C) is not required with an EXTERNAL statement.
+    ! But no interface checking can be done by the compiler.
+    use state
+    implicit none
+    counter = counter + 1
+  end subroutine incr1_external
+
   subroutine incr2b_int(input)
     use iso_c_binding
     implicit none
@@ -126,6 +134,9 @@ contains
 
     call callback1_wrap(incr1_int)
     call assert_equals(2, counter, "callback1_wrap")
+
+    call callback1_external(incr1_external)
+    call assert_equals(3, counter, "callback1_wrap")
 
   end subroutine test_callback1
 
