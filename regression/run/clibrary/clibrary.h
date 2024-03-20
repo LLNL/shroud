@@ -42,6 +42,7 @@ char *Function4a(const char *arg1, const char *arg2);
 void acceptName(const char *name);
 
 void passCharPtrInOut(char *s);
+void passCharPtrCAPI(int n, char *in, char *out);
 
 #define MAXNAME 20
 void returnOneName(char *name1);

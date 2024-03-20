@@ -1654,6 +1654,8 @@ fc_statements = [
             "c_out_void_*&",
 
             "f_in_char_*_capi",
+            "f_out_char_*_capi",
+            "f_inout_char_*_capi",
 
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",

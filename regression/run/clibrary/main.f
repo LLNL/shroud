@@ -114,7 +114,7 @@ contains
     integer(C_INT), target :: int_var
     character(MAXNAME) name1, name2
     character(lenoutbuf)  :: outbuf
-    character(30) str
+    character(30) str, str2
     type(C_PTR) :: cptr1, cptr2
 
     integer(C_INT) int_array(10)
@@ -154,7 +154,13 @@ contains
 
     str = 'dog'
     call pass_char_ptr_in_out(str)
-    call assert_true( str == "DOG")
+    call assert_true( str == "DOG", "passCharPtrInOut")
+
+    str = 'cat'
+    str2 = ''
+    call pass_char_ptr_capi(3, str, str2)
+    call assert_true( str == "CAT", "passCharPtrCAPI  str")
+    call assert_true( str2 == "cat", "passCharPtrCAPI  str2")
     !--------------------------------------------------
 
     name1 = " "
