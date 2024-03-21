@@ -174,11 +174,8 @@ contains
     call callback2("one", 2, incr2)
     call assert_equals(2, counter, "callback2")
 
-!    call callback2_wrap(incr1_int)
-!    call assert_equals(2, counter, "callback2_wrap")
-
-!    call callback2_external(incr1_external)
-!    call assert_equals(3, counter, "callback2_wrap")
+    call callback2_external("two", 3, incr2)
+    call assert_equals(5, counter, "callback2_wrap")
 
 !    call callback2_funptr(c_funloc(incr1_funptr))
 !    call assert_equals(4, counter, "callback2_funptr")

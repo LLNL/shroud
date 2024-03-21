@@ -85,6 +85,16 @@ module funptr_mod
             integer(C_INT), value, intent(IN) :: ival
             procedure(incrtype) :: incr
         end subroutine c_callback2
+
+        subroutine c_callback2_external(name, ival, incr) &
+                bind(C, name="callback2_external")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: incrtype
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: ival
+            procedure(incrtype) :: incr
+        end subroutine c_callback2_external
     end interface
 
     ! splicer begin additional_declarations
@@ -128,6 +138,20 @@ contains
         call c_callback2(trim(name)//C_NULL_CHAR, ival, incr)
         ! splicer end function.callback2
     end subroutine callback2
+
+    !>
+    !! \brief Declare callback as external
+    !!
+    !<
+    subroutine callback2_external(name, ival, incr)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        integer(C_INT), value, intent(IN) :: ival
+        external :: incr
+        ! splicer begin function.callback2_external
+        call c_callback2_external(trim(name)//C_NULL_CHAR, ival, incr)
+        ! splicer end function.callback2_external
+    end subroutine callback2_external
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

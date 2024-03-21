@@ -1586,6 +1586,25 @@ rv = .false.
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)
                 continue
+            elif arg_typemap.base == "procedure":
+                if "funptr" in f_attrs:
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
+                elif "external" in f_attrs:
+                    # external is similar to assumed type, in that it will
+                    # accept any function.  But external is not allowed
+                    # in bind(C), so make sure a wrapper is generated.
+                    arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
+                    need_wrapper = True
+                else:
+                    # abstract interface already created via typedef
+                    arg_f_decl.append(
+                        "procedure({}) :: {}".format(fmt_arg.f_kind, fmt_arg.f_var)
+                    )
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append(fmt_arg.f_var)
+                # function pointers are pass thru without any other action
+                continue
             elif f_declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                 if "funptr" in f_attrs:

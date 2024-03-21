@@ -75,4 +75,16 @@ void FUN_callback2(const char * name, int ival, FUN_incrtype incr)
     // splicer end function.callback2
 }
 
+/**
+ * \brief Declare callback as external
+ *
+ */
+void FUN_callback2_external(const char * name, int ival,
+    FUN_incrtype incr)
+{
+    // splicer begin function.callback2_external
+    callback2_external(name, ival, incr);
+    // splicer end function.callback2_external
+}
+
 }  // extern "C"

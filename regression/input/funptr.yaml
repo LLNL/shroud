@@ -52,10 +52,10 @@ declarations:
   doxygen:
     brief: Create abstract interface for function
 
-##- decl: void callback2_external(const char *name, int ival, void (*incr)(int i)+external)
-##  doxygen:
-##    brief: Declare callback as external
-##
+- decl: void callback2_external(const char *name, int ival, incrtype incr+external)
+  doxygen:
+    brief: Declare callback as external
+
 ##- decl: void callback2_funptr(const char *name, int ival, void (*incr)(int)+funptr)
 ##  doxygen:
 ##    brief: Declare callback as c_funptr
