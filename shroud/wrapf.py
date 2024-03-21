@@ -1088,7 +1088,7 @@ rv = .false.
                 elif meta["dimension"]:
                     arg_c_decl.append(
                         "type(*) :: {}({})".format(
-                            name, attrs["dimension"])
+                            name, meta["dimension"])
                     )
                 else:
                     arg_c_decl.append(
