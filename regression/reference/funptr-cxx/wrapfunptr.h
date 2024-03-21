@@ -46,6 +46,9 @@ void FUN_callback2(const char * name, int ival, FUN_incrtype incr);
 void FUN_callback2_external(const char * name, int ival,
     FUN_incrtype incr);
 
+void FUN_callback2_funptr(const char * name, int ival,
+    FUN_incrtype incr);
+
 #ifdef __cplusplus
 }
 #endif

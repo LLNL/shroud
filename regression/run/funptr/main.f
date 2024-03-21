@@ -177,8 +177,8 @@ contains
     call callback2_external("two", 3, incr2)
     call assert_equals(5, counter, "callback2_wrap")
 
-!    call callback2_funptr(c_funloc(incr1_funptr))
-!    call assert_equals(4, counter, "callback2_funptr")
+    call callback2_funptr("three", 2, c_funloc(incr2))
+    call assert_equals(7, counter, "callback2_funptr")
 
   end subroutine test_callback2
 

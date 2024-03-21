@@ -1078,6 +1078,7 @@ rv = .false.
             declarator = ast.declarator
             name = declarator.user_name
             attrs = declarator.attrs
+            ntypemap = declarator.typemap
             arg_c_names.append(name)
             # argument declarations
             if meta["assumedtype"]:
@@ -1094,6 +1095,18 @@ rv = .false.
                     arg_c_decl.append(
                         "type(*) :: {}".format(name)
                     )
+            elif ntypemap.base == "procedure":
+                if "funptr" in attrs:
+                    arg_c_decl.append(
+                        "type(C_FUNPTR), value :: {}".format(name)
+                    )
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                else:
+                    # abstract interface already created via typedef
+                    arg_c_decl.append(
+                        "procedure({}) :: {}".format(fmt.f_kind, name)
+                    )
+                    imports[fmt.f_kind] = True
             elif declarator.is_function_pointer():
                 if "funptr" in attrs:
                     arg_c_decl.append(

@@ -87,4 +87,17 @@ void FUN_callback2_external(const char * name, int ival,
     // splicer end function.callback2_external
 }
 
+/**
+ * \brief Declare callback as c_funptr
+ *
+ * The caller is responsible for using c_funloc to pass the function address.
+ */
+void FUN_callback2_funptr(const char * name, int ival,
+    FUN_incrtype incr)
+{
+    // splicer begin function.callback2_funptr
+    callback2_funptr(name, ival, incr);
+    // splicer end function.callback2_funptr
+}
+
 }  // extern "C"

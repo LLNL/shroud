@@ -95,6 +95,15 @@ module funptr_mod
             integer(C_INT), value, intent(IN) :: ival
             procedure(incrtype) :: incr
         end subroutine c_callback2_external
+
+        subroutine c_callback2_funptr(name, ival, incr) &
+                bind(C, name="callback2_funptr")
+            use iso_c_binding, only : C_CHAR, C_FUNPTR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: ival
+            type(C_FUNPTR), value :: incr
+        end subroutine c_callback2_funptr
     end interface
 
     ! splicer begin additional_declarations
@@ -152,6 +161,21 @@ contains
         call c_callback2_external(trim(name)//C_NULL_CHAR, ival, incr)
         ! splicer end function.callback2_external
     end subroutine callback2_external
+
+    !>
+    !! \brief Declare callback as c_funptr
+    !!
+    !! The caller is responsible for using c_funloc to pass the function address.
+    !<
+    subroutine callback2_funptr(name, ival, incr)
+        use iso_c_binding, only : C_FUNPTR, C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        integer(C_INT), value, intent(IN) :: ival
+        type(C_FUNPTR) :: incr
+        ! splicer begin function.callback2_funptr
+        call c_callback2_funptr(trim(name)//C_NULL_CHAR, ival, incr)
+        ! splicer end function.callback2_funptr
+    end subroutine callback2_funptr
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

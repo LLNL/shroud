@@ -56,11 +56,11 @@ declarations:
   doxygen:
     brief: Declare callback as external
 
-##- decl: void callback2_funptr(const char *name, int ival, void (*incr)(int)+funptr)
-##  doxygen:
-##    brief: Declare callback as c_funptr
-##    description: |
-##      The caller is responsible for using c_funloc to pass the function address.
+- decl: void callback2_funptr(const char *name, int ival, incrtype incr+funptr)
+  doxygen:
+    brief: Declare callback as c_funptr
+    description: |
+      The caller is responsible for using c_funloc to pass the function address.
 
 ### from other tests
 #- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
