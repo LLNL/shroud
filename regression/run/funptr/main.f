@@ -76,6 +76,14 @@ contains
     counter = counter + i
   end subroutine incr2
 
+  subroutine incr2_d(i) bind(C)
+    use iso_c_binding
+    use state
+    implicit none
+    real(C_DOUBLE), value :: i
+    counter = counter + int(i)
+  end subroutine incr2_d
+
 !----------  
 
   subroutine incr2b_int(input)
@@ -179,6 +187,15 @@ contains
 
     call callback2_funptr("three", 2, c_funloc(incr2))
     call assert_equals(7, counter, "callback2_funptr")
+
+    ! call with different interface for incr
+
+    call callback2_external("double", 4, incr2_d)
+    call assert_equals(11, counter, "callback2_external double")
+
+    call callback2_funptr("double", 3, c_funloc(incr2_d))
+    call assert_equals(14, counter, "callback2_funptr double")
+    
 
   end subroutine test_callback2
 

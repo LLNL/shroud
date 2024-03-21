@@ -51,13 +51,25 @@ void callback2(const char *name, int ival, incrtype incr)
 // incr +external
 void callback2_external(const char *name, int ival, incrtype incr)
 {
-    incr(ival);
+    if (strcmp(name, "double") == 0) {
+        incrtype_d incr_d = (incrtype_d) incr;
+        incr_d( (double) ival);
+    }
+    else {
+        incr(ival);
+    }
 }
 
 // incr +funptr
 void callback2_funptr(const char *name, int ival, incrtype incr)
 {
-    incr(ival);
+    if (strcmp(name, "double") == 0) {
+        incrtype_d incr_d = (incrtype_d) incr;
+        incr_d( (double) ival);
+    }
+    else {
+        incr(ival);
+    }
 }
 
 //----------------------------------------------------------------------

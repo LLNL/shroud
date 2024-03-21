@@ -1095,6 +1095,9 @@ rv = .false.
                     arg_c_decl.append(
                         "type(*) :: {}".format(name)
                     )
+#            elif "external" in attrs:
+#                # EXTERNAL is not compatible with BIND(C)
+#                arg_c_decl.append("external :: {}".format(name))
             elif ntypemap.base == "procedure":
                 if "funptr" in attrs:
                     arg_c_decl.append(
