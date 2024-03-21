@@ -4543,4 +4543,17 @@ fc_statements = [
         cxx_local_var="result",
     ),
 
+    ########################################
+    # function pointers
+    
+    dict(
+        name="f_in_procedure_scalar",
+        alias=[
+            "c_in_procedure_scalar",
+        ],
+        f_arg_decl=[
+            # dummy procedure cannot have intent or value
+            "{f_type} :: {f_var}",
+        ],
+    ),
 ]

@@ -48,6 +48,20 @@ declarations:
 
 - decl: typedef void (*incrtype)(int i);
 
+- decl: void callback2(const char *name, int ival, incrtype incr)
+  doxygen:
+    brief: Create abstract interface for function
+
+##- decl: void callback2_external(const char *name, int ival, void (*incr)(int i)+external)
+##  doxygen:
+##    brief: Declare callback as external
+##
+##- decl: void callback2_funptr(const char *name, int ival, void (*incr)(int)+funptr)
+##  doxygen:
+##    brief: Declare callback as c_funptr
+##    description: |
+##      The caller is responsible for using c_funloc to pass the function address.
+
 ### from other tests
 #- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
 #                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))

@@ -42,20 +42,20 @@ void callback1_funptr(void (*incr)(void))
 //----------------------------------------------------------------------
 // Uses a Fortran abstract interface
 // start callback2
-void callback2(const char *name, int ival, void (*incr)(int i))
+void callback2(const char *name, int ival, incrtype incr)
 {
     incr(ival);
 }
 // end callback2
 
 // incr +external
-void callback2_external(const char *name, int ival, void (*incr)(int i))
+void callback2_external(const char *name, int ival, incrtype incr)
 {
     incr(ival);
 }
 
 // incr +funptr
-void callback2_funptr(const char *name, int ival, void (*incr)(int))
+void callback2_funptr(const char *name, int ival, incrtype incr)
 {
     incr(ival);
 }

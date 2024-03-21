@@ -15,6 +15,7 @@
 #ifndef WRAPFUNPTR_H
 #define WRAPFUNPTR_H
 
+#include "wrapfunptr.h"
 #include "typesfunptr.h"
 
 // splicer begin CXX_declarations
@@ -39,6 +40,8 @@ void FUN_callback1_wrap(void ( * incr)(void));
 void FUN_callback1_external(void ( * incr)(void));
 
 void FUN_callback1_funptr(void ( * incr)(void));
+
+void FUN_callback2(const char * name, int ival, FUN_incrtype incr);
 
 #ifdef __cplusplus
 }

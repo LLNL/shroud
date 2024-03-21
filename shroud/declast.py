@@ -1834,12 +1834,16 @@ class Declaration(Node):
                 "Type {} has no value for i_type".format(self.typename)
             )
         t.append(typ)
-        self.append_fortran_value(t, is_result)
-        if intent in ["in", "out", "inout"]:
-            t.append("intent(%s)" % intent.upper())
-        elif intent == "setter":
-            # Argument to setter function.
-            t.append("intent(IN)")
+        if basedef.base == "procedure":
+            # dummy procedure can not have intent or value.
+            pass
+        else:
+            self.append_fortran_value(t, is_result)
+            if intent in ["in", "out", "inout"]:
+                t.append("intent(%s)" % intent.upper())
+            elif intent == "setter":
+                # Argument to setter function.
+                t.append("intent(IN)")
 
         decl = []
         decl.append(", ".join(t))
@@ -2329,8 +2333,8 @@ class SymbolTable(object):
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,
-                base="fcnptr",
-                sgroup="fcnptr",
+                base="procedure",
+                sgroup="procedure",
             )
             self.register_typemap(ntypemap.name, ntypemap)
             node = Typedef(name, ast, ntypemap)

@@ -1312,8 +1312,8 @@ def create_fcnptr_typemap(symtab, name):
     type_name = symtab.scopename + name
     ntypemap = Typemap(
         type_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
     )
     # Check if all fields are C compatible
 #            ntypemap.compute_flat_name()
@@ -1345,8 +1345,8 @@ def fill_fcnptr_typemap(node, fields={}):
     c_type = fmt.C_prefix + cxx_name
     ntypemap = Typemap(
         cxx_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
         c_type="c_type",
         cxx_type="cxx_type",
         f_type="XXXf_type",

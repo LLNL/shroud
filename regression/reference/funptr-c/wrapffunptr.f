@@ -75,6 +75,16 @@ module funptr_mod
             implicit none
             type(C_FUNPTR), value :: incr
         end subroutine callback1_funptr
+
+        subroutine c_callback2(name, ival, incr) &
+                bind(C, name="callback2")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: incrtype
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: ival
+            procedure(incrtype) :: incr
+        end subroutine c_callback2
     end interface
 
     ! splicer begin additional_declarations
@@ -104,6 +114,20 @@ contains
         call c_callback1_external(incr)
         ! splicer end function.callback1_external
     end subroutine callback1_external
+
+    !>
+    !! \brief Create abstract interface for function
+    !!
+    !<
+    subroutine callback2(name, ival, incr)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        integer(C_INT), value, intent(IN) :: ival
+        procedure(incrtype) :: incr
+        ! splicer begin function.callback2
+        call c_callback2(trim(name)//C_NULL_CHAR, ival, incr)
+        ! splicer end function.callback2
+    end subroutine callback2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

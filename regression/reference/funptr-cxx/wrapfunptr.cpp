@@ -64,4 +64,15 @@ void FUN_callback1_funptr(void ( * incr)(void))
     // splicer end function.callback1_funptr
 }
 
+/**
+ * \brief Create abstract interface for function
+ *
+ */
+void FUN_callback2(const char * name, int ival, FUN_incrtype incr)
+{
+    // splicer begin function.callback2
+    callback2(name, ival, incr);
+    // splicer end function.callback2
+}
+
 }  // extern "C"

@@ -66,6 +66,18 @@ contains
     counter = counter + 1
   end subroutine incr1_funptr
 
+!----------  
+
+  subroutine incr2(i) bind(C)
+    use iso_c_binding
+    use state
+    implicit none
+    integer(C_INT), value :: i
+    counter = counter + i
+  end subroutine incr2
+
+!----------  
+
   subroutine incr2b_int(input)
     use iso_c_binding
     implicit none
@@ -117,6 +129,7 @@ program tester
   call init_fruit
 
   call test_callback1
+  call test_callback2
 
   call fruit_summary
   call fruit_finalize
@@ -149,6 +162,28 @@ contains
     call assert_equals(4, counter, "callback1_funptr")
 
   end subroutine test_callback1
+
+  subroutine test_callback2
+    use callback_mod
+    use state
+
+    call set_case_name("test_callback1")
+
+    counter = 0
+    
+    call callback2("one", 2, incr2)
+    call assert_equals(2, counter, "callback2")
+
+!    call callback2_wrap(incr1_int)
+!    call assert_equals(2, counter, "callback2_wrap")
+
+!    call callback2_external(incr1_external)
+!    call assert_equals(3, counter, "callback2_wrap")
+
+!    call callback2_funptr(c_funloc(incr1_funptr))
+!    call assert_equals(4, counter, "callback2_funptr")
+
+  end subroutine test_callback2
 
 !--  subroutine test_callback
 !--    use callback_mod
