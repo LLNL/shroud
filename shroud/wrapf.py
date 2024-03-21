@@ -414,6 +414,9 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_typedef(self, node, fileinfo):
         """Wrap a typedef declaration.
 
+        Simple typedefs are mapped to a parameter for the
+        corresponding kind.
+
         Args:
             node - ast.TypedefNode.
             fileinfo - ModuleInfo
@@ -422,9 +425,15 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         fmtdict = node.fmtdict
         self.log.write("typedef {0.name}\n".format(node))
 
+        declarator = node.ast.declarator
+
         if "f" in node.splicer:
             F_code = None
             F_force = node.splicer["f"]
+        elif declarator.is_function_pointer():
+            # Create an abstract interface
+            self.add_abstract_interface(node, node.ast, fileinfo, name=node.name)
+            return
         else:
             F_code = ["integer, parameter :: {} = {}".format(
                 node.fmtdict.F_name_typedef, node.f_kind)]
@@ -929,11 +938,13 @@ rv = .false.
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
-    def add_abstract_interface(self, node, arg, fileinfo):
+    def add_abstract_interface(self, node, arg, fileinfo, name=None):
         """Record an abstract interface.
 
         Function pointers are converted to abstract interfaces.
         The interface is named after the function and the argument.
+
+        If from a typedef, then name argument will be set.
 
         Args:
             node -
@@ -942,9 +953,10 @@ rv = .false.
         """
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.declarator.user_name
-        name = wformat(
-            node.options.F_abstract_interface_subprogram_template, fmt
-        )
+        if name is None:
+            name = wformat(
+                node.options.F_abstract_interface_subprogram_template, fmt
+            )
         entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
             meta = get_arg_bind(node, arg, "f").meta

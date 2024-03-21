@@ -2748,6 +2748,11 @@
                 "wrap": {
                     "python": true
                 },
+                "zz_bind": {
+                    "share": {
+                        "TypeID": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
                     "F_name_api": "type_id",
@@ -2784,6 +2789,11 @@
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_bind": {
+                    "share": {
+                        "EnumTypeID": {}
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "EnumTypeID",

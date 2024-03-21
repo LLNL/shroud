@@ -8716,6 +8716,17 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "TypeID": {}
+                    },
+                    "f": {
+                        "TypeID": {}
+                    },
+                    "share": {
+                        "TypeID": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
                     "C_name_typedef": "CLI_TypeID",
@@ -8756,6 +8767,17 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "EnumTypeID": {}
+                    },
+                    "f": {
+                        "EnumTypeID": {}
+                    },
+                    "share": {
+                        "EnumTypeID": {}
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "EnumTypeID",

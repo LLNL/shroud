@@ -6,7 +6,6 @@ C c void typestruct(Struct1Rename * arg1)
 C f void typestruct(Struct1Rename * arg1)
 C c int returnBytesForIndexType(IndexType arg)
 C f int returnBytesForIndexType(IndexType arg)
-Close wraptypedefs.h
 class Struct1Rename
 typedef TypeID
 typedef IndexType

@@ -42,6 +42,11 @@ declarations:
     description: |
       The caller is responsible for using c_funloc to pass the function address.
 
+#####
+# Function pointers with arguments.
+# name argument to force a Fortran wrapper
+
+- decl: typedef void (*incrtype)(int i);
 
 ### from other tests
 #- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),

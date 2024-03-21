@@ -38,6 +38,12 @@ module funptr_mod
             implicit none
         end subroutine callback1_wrap_incr
 
+        subroutine incrtype(i) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: i
+        end subroutine incrtype
+
     end interface
 
     interface

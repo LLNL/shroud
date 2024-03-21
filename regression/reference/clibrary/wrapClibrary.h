@@ -18,16 +18,6 @@
 // shroud
 #include "typesClibrary.h"
 
-// typedef TypeID
-// splicer begin typedef.TypeID
-typedef int CLI_TypeID;
-// splicer end typedef.TypeID
-
-// typedef EnumTypeID
-// splicer begin typedef.EnumTypeID
-typedef int CLI_EnumTypeID;
-// splicer end typedef.EnumTypeID
-
 // splicer begin C_declarations
 // splicer end C_declarations
 

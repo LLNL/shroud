@@ -7,6 +7,7 @@ C c void callback1_external(void ( * incr)(void) +external)
 C f void callback1_external(void ( * incr)(void) +external)
 C c void callback1_funptr(void ( * incr)(void) +funptr)
 C f void callback1_funptr(void ( * incr)(void) +funptr)
+typedef incrtype
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))
 Fortran void callback1_external(void ( * incr)(void) +external)

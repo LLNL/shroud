@@ -12,6 +12,7 @@
 
 #include <string.h>
 
+//----------------------------------------------------------------------
 // Uses a Fortran abstract interface
 // start callback1
 void callback1(void (*incr)(void))
@@ -37,6 +38,29 @@ void callback1_funptr(void (*incr)(void))
 {
     incr();
 }
+
+//----------------------------------------------------------------------
+// Uses a Fortran abstract interface
+// start callback2
+void callback2(const char *name, int ival, void (*incr)(int i))
+{
+    incr(ival);
+}
+// end callback2
+
+// incr +external
+void callback2_external(const char *name, int ival, void (*incr)(int i))
+{
+    incr(ival);
+}
+
+// incr +funptr
+void callback2_funptr(const char *name, int ival, void (*incr)(int))
+{
+    incr(ival);
+}
+
+//----------------------------------------------------------------------
 
 #if 0
 void callback1a(int type, void (*incr)(void))

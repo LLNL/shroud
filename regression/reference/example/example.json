@@ -16347,6 +16347,17 @@
                     "lua": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "SidreLength": {}
+                    },
+                    "f": {
+                        "SidreLength": {}
+                    },
+                    "share": {
+                        "SidreLength": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "SidreLength",
                     "C_name_typedef": "AA_SidreLength",
@@ -16390,6 +16401,17 @@
                     "fortran": true,
                     "lua": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "TypeID": {}
+                    },
+                    "f": {
+                        "TypeID": {}
+                    },
+                    "share": {
+                        "TypeID": {}
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",

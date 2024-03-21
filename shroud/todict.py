@@ -498,6 +498,7 @@ class ToDict(visitor.Visitor):
         d = dict(name=node.name)
         add_comment(d, "typedef", node.name)
         self.add_visit_fields(node, d, [
+            "_bind",
             "ast",
             "user_fmt",
             "user_fields",

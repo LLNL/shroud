@@ -73,6 +73,17 @@ def fetch_arg_bind(node, arg, wlang):
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg
 
+def fetch_typedef_bind(node, wlang):
+    # Similar to fetch_arg_bind, except arg is derived direcly from node.
+    bind = node._bind.setdefault(wlang, {})
+    arg = node.ast
+    # XXX - better to turn off wrapping when 'Argument must have name'
+    name = arg.declarator.user_name or arg.declarator.arg_name
+    bindarg = bind.setdefault(name, BindArg())
+    if bindarg.meta is None:
+        bindarg.meta = collections.defaultdict(lambda: None)
+    return bindarg
+
 def fetch_func_metaattrs(node, wlang):
     return fetch_func_bind(node, wlang).meta
 

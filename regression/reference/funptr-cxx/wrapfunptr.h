@@ -24,6 +24,11 @@
 extern "C" {
 #endif
 
+// typedef incrtype
+// splicer begin typedef.incrtype
+typedef void ( * FUN_incrtype)(int i);
+// splicer end typedef.incrtype
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

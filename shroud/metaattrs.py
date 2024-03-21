@@ -68,6 +68,13 @@ class FillMeta(object):
                 cursor.pop_node(func)
             cursor.pop_phase("FillMeta class function")
 
+        cursor.push_phase("FillMeta typedef")
+        for typ in node.typedefs:
+            cursor.push_node(typ)
+            self.meta_typedef(None, typ)
+            cursor.pop_node(typ)
+        cursor.pop_phase("FillMeta typedef")
+
         cursor.push_phase("FillMeta function")
         for func in node.functions:
             cursor.push_node(func)
@@ -610,10 +617,32 @@ class FillMeta(object):
         ]:
             meta[attr] = share_meta[attr]
         
+    def set_typedef_share(self, node, meta):
+        """Use shared meta attribute unless already set.
+        """
+        share_meta = statements.fetch_typedef_bind(node, "share").meta
+        for attr in [
+                "fptr",
+        ]:
+            meta[attr] = share_meta[attr]
+
 ######################################################################
 #
 
 class FillMetaShare(FillMeta):
+    def meta_typedef(self, cls, node):
+        # node - ast.TypedefNode
+        wlang = self.wlang
+        func_cursor = self.cursor.current
+        #####
+        r_bind = statements.fetch_typedef_bind(node, wlang)
+
+        arg = node.ast
+        if arg.declarator.is_function_pointer():
+            fptr = FunctionNode(arg.gen_decl(), parent=node, ast=arg)
+            r_bind.meta["fptr"] = fptr
+            self.meta_function_params(fptr, is_fptr=True)
+
     def meta_variable(self, cls, node):
         wlang = self.wlang
         node_cursor = self.cursor.current
@@ -626,9 +655,6 @@ class FillMetaShare(FillMeta):
         wlang = self.wlang
         func_cursor = self.cursor.current
         #####
-        ast = node.ast
-        declarator = ast.declarator
-
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
         
@@ -858,6 +884,14 @@ class FillMetaShare(FillMeta):
 #
 
 class FillMetaC(FillMeta):
+    def meta_typedef(self, cls, node):
+        # node - ast.TypedefNode
+        wlang = self.wlang
+        func_cursor = self.cursor.current
+        #####
+        r_bind = statements.fetch_typedef_bind(node, wlang)
+        self.set_typedef_share(node, r_bind.meta)
+
     def meta_variable(self, cls, node):
         wlang = self.wlang
         node_cursor = self.cursor.current
@@ -868,8 +902,7 @@ class FillMetaC(FillMeta):
         wlang = self.wlang
         func_cursor = self.cursor.current
         #####
-        ast = node.ast
-        declarator = ast.declarator
+        declarator = node.ast.declarator
 
         r_bind = statements.fetch_func_bind(node, wlang)
         r_meta = r_bind.meta
@@ -879,7 +912,7 @@ class FillMetaC(FillMeta):
         self.set_func_api_c(node, r_meta)
 
         # --- Loop over function parameters
-        for arg in ast.declarator.params:
+        for arg in declarator.params:
             func_cursor.arg = arg
             a_bind = statements.fetch_arg_bind(node, arg, wlang)
             meta = a_bind.meta
@@ -897,7 +930,7 @@ class FillMetaC(FillMeta):
             r_bind.stmt = result_stmt
             if stmt0 is not result_stmt:
                 r_bind.fstmts = wlang
-            for arg in ast.declarator.params:
+            for arg in declarator.params:
                 arg_stmt = statements.lookup_c_arg_stmt(node, arg)
                 a_bind = statements.get_arg_bind(node, arg, wlang)
                 a_bind.stmt = arg_stmt
@@ -906,6 +939,18 @@ class FillMetaC(FillMeta):
 #
 
 class FillMetaFortran(FillMeta):
+    def meta_typedef(self, cls, node):
+        # node - ast.TypedefNode
+        wlang = self.wlang
+        func_cursor = self.cursor.current
+        #####
+        meta = statements.fetch_typedef_bind(node, wlang).meta
+        self.set_typedef_share(node, meta)
+
+        arg = node.ast
+        if arg.declarator.is_function_pointer():
+            self.meta_function_params(meta["fptr"])
+
     def meta_variable(self, cls, node):
         wlang = self.wlang
         node_cursor = self.cursor.current
@@ -1002,6 +1047,9 @@ class FillMetaFortran(FillMeta):
 #
 
 class FillMetaPython(FillMeta):
+    def meta_typedef(self, cls, node):
+        pass
+
     def meta_variable(self, cls, node):
         wlang = self.wlang
         node_cursor = self.cursor.current
@@ -1078,6 +1126,9 @@ class FillMetaPython(FillMeta):
 #
 
 class FillMetaLua(FillMeta):
+    def meta_typedef(self, cls, node):
+        pass
+
     def meta_variable(self, cls, node):
         wlang = self.wlang
         node_cursor = self.cursor.current
