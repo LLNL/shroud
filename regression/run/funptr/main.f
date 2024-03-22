@@ -9,10 +9,23 @@
 !
 
 module state
+  ! shared by test and callbacks.
   integer counter
 end module state
 
 
+!----------------------------------------------------------------------
+! external routines for function pointer arguments.
+! These have no interfaces.
+
+subroutine incr1_noiface()
+  use state
+  implicit none
+  counter = counter + 1
+end subroutine incr1_noiface
+
+
+!----------
 subroutine incr2_int(input)
   use iso_c_binding
   implicit none
@@ -43,13 +56,13 @@ end subroutine incr3_double
 
 module callback_mod
 contains
-  subroutine incr1_int() bind(C)
+  subroutine incr1() bind(C)
     ! A bind(C) is required for the intel/oneapi/ibm compiler since
     ! it is passed directly to C via a bind(C) interface.
     use state
     implicit none
     counter = counter + 1
-  end subroutine incr1_int
+  end subroutine incr1
 
   subroutine incr1_external()
     ! Note that bind(C) is not required with an EXTERNAL statement.
@@ -114,7 +127,7 @@ contains
     input = input + 20.5_C_DOUBLE
   end subroutine incr3b_double
 
-  ! On Intel, bind(C) is required because of the VALUE attribute.
+! On Intel, bind(C) is required because of the VALUE attribute.
 !  subroutine set_alloc(tc, arr) bind(C)
 !    use iso_c_binding, only : C_INT
 !    use funptr_mod, only : array_info
@@ -137,6 +150,7 @@ program tester
   call init_fruit
 
   call test_callback1
+  call test_callback1_noiface
   call test_callback2
 
   call fruit_summary
@@ -149,6 +163,7 @@ program tester
 
 contains
 
+  ! Test passing function with interface
   subroutine test_callback1
     use callback_mod
     use state
@@ -157,10 +172,10 @@ contains
 
     counter = 0
     
-    call callback1(incr1_int)
+    call callback1(incr1)
     call assert_equals(1, counter, "callback1")
 
-    call callback1_wrap(incr1_int)
+    call callback1_wrap(incr1)
     call assert_equals(2, counter, "callback1_wrap")
 
     call callback1_external(incr1_external)
@@ -171,6 +186,30 @@ contains
 
   end subroutine test_callback1
 
+  ! Test passing function without interface
+  subroutine test_callback1_noiface
+    use state
+    external incr1_noiface
+
+    call set_case_name("test_callback1_noiface")
+
+    counter = 0
+    
+    call callback1(incr1_noiface)
+    call assert_equals(1, counter, "callback1 noiface")
+
+    call callback1_wrap(incr1_noiface)
+    call assert_equals(2, counter, "callback1_wrap noiface")
+
+    call callback1_external(incr1_noiface)
+    call assert_equals(3, counter, "callback1_wrap noiface")
+
+    call callback1_funptr(c_funloc(incr1_noiface))
+    call assert_equals(4, counter, "callback1_funptr noiface")
+
+  end subroutine test_callback1_noiface
+
+  ! Test passing function with argument with interface
   subroutine test_callback2
     use callback_mod
     use state
