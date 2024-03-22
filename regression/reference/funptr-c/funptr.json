@@ -894,7 +894,9 @@
                     "description": "The caller is responsible for using c_funloc to pass the function address.\n"
                 },
                 "name": "callback1_funptr",
-                "options": {},
+                "options": {
+                    "literalinclude": true
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true

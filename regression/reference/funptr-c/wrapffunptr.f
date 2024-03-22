@@ -26,10 +26,6 @@ module funptr_mod
             implicit none
         end subroutine callback1_external_incr
 
-        subroutine callback1_funptr_incr() bind(C)
-            implicit none
-        end subroutine callback1_funptr_incr
-
         subroutine callback1_incr() bind(C)
             implicit none
         end subroutine callback1_incr
@@ -69,12 +65,14 @@ module funptr_mod
             procedure(callback1_external_incr) :: incr
         end subroutine c_callback1_external
 
+        ! start callback1_funptr
         subroutine callback1_funptr(incr) &
                 bind(C, name="callback1_funptr")
             use iso_c_binding, only : C_FUNPTR
             implicit none
             type(C_FUNPTR), value :: incr
         end subroutine callback1_funptr
+        ! end callback1_funptr
 
         subroutine c_callback2(name, ival, incr) &
                 bind(C, name="callback2")

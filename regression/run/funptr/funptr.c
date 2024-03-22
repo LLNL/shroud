@@ -14,12 +14,10 @@
 
 //----------------------------------------------------------------------
 // Uses a Fortran abstract interface
-// start callback1
 void callback1(void (*incr)(void))
 {
     incr();
 }
-// end callback1
 
 // F_force_wrapper=True, abstract interface
 void callback1_wrap(void (*incr)(void))
@@ -34,10 +32,12 @@ void callback1_external(void (*incr)(void))
 }
 
 // incr +funptr
+// start callback1_funptr
 void callback1_funptr(void (*incr)(void))
 {
     incr();
 }
+// end callback1_funptr
 
 //----------------------------------------------------------------------
 // Uses a Fortran abstract interface

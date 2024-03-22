@@ -368,9 +368,8 @@ attribute.
     See example :ref:`callback1 <example_callback1>`.
 
 ``void (*incr)()``
-    Adding the *external* attribute will allow any function to be passed.
-    In C this is accomplished by using a cast.
-    See example :ref:`callback1c <example_callback1c>`.
+    Adding the *funptr* attribute will allow any function to be passed.
+    In C this is accomplished by using a cast in the wrapped library.
 
 The *intent* and *value* attributes may be used on arguments of the
 function pointer.
@@ -405,6 +404,8 @@ argument will be defined as ``type(C_FUNPTR)`` from the
 ``C_FUNLOC`` to pass down the function address.  All interface
 information is lost and the C library is expected to know how to deal
 with arbitrary function pointers.
+See example :ref:`callback1_funptr <example_callback1_funptr>`.
+
 
 The *external* attribute can be added to define the argument with
 an ``EXTERNAL`` statement. This can be made to work for some situations.

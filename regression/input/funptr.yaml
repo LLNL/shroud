@@ -41,6 +41,8 @@ declarations:
     brief: Declare callback as c_funptr
     description: |
       The caller is responsible for using c_funloc to pass the function address.
+  options:
+    literalinclude: True
 
 #####
 # Function pointers with arguments.

@@ -1626,11 +1626,11 @@ rv = .false.
                 # function pointers are pass thru without any other action
                 continue
             elif f_declarator.is_function_pointer():
-                absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                 if "funptr" in f_attrs:
                     self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
                     arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
                 else:
+                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     arg_f_decl.append(
                         "procedure({}) :: {}".format(absiface, fmt_arg.f_var)
                     )
