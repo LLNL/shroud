@@ -577,6 +577,7 @@ statement for the argument.  This will allow any function to be used
 as the dummy argument for the function pointer.
 
 See also the *funptr* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
 
 free_pattern
 ^^^^^^^^^^^^
@@ -601,6 +602,7 @@ The advantage is that this will work with any function and does
 not require an abstract interface.
 
 See also the *external* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
 
 hidden
 ^^^^^^

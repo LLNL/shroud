@@ -98,14 +98,14 @@ contains
     counter = int(i)
   end subroutine incr2_d
 
-  function incr2_fun(i) bind(C)
+  function incr2_fun(i) bind(C) result(rv)
     use iso_c_binding
     use state
     implicit none
-    integer(C_INT) :: incr2_fun
+    integer(C_INT) :: rv
     integer(C_INT), value :: i
     counter = i
-    incr2_fun = counter
+    rv = counter
   end function incr2_fun
 
 !----------  
@@ -225,7 +225,7 @@ contains
     use callback_mod
     use state
 
-    call set_case_name("test_callback1")
+    call set_case_name("test_callback2")
 
     counter = 0
     call callback2("one", 2, incr2)
