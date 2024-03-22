@@ -55,6 +55,10 @@ void callback2_external(const char *name, int ival, incrtype incr)
         incrtype_d incr_d = (incrtype_d) incr;
         incr_d( (double) ival);
     }
+    else if (strcmp(name, "function") == 0) {
+        incrtype_fun incr_fun = (incrtype_fun) incr;
+        (void) incr_fun(ival);
+    }
     else {
         incr(ival);
     }
@@ -66,6 +70,10 @@ void callback2_funptr(const char *name, int ival, incrtype incr)
     if (strcmp(name, "double") == 0) {
         incrtype_d incr_d = (incrtype_d) incr;
         incr_d( (double) ival);
+    }
+    else if (strcmp(name, "function") == 0) {
+        incrtype_fun incr_fun = (incrtype_fun) incr;
+        (void) incr_fun(ival);
     }
     else {
         incr(ival);

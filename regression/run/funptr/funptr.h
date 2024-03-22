@@ -18,6 +18,7 @@ void callback1_funptr(void (*incr)(void));
 
 typedef void (*incrtype)(int i);
 typedef void (*incrtype_d)(double i);
+typedef int (*incrtype_fun)(int i);
 
 void callback2(const char *name, int ival, incrtype incr);
 void callback2_external(const char *name, int ival, incrtype incr);

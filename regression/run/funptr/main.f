@@ -55,6 +55,7 @@ subroutine incr3_double(input)
 end subroutine incr3_double
 
 module callback_mod
+  implicit none
 contains
   subroutine incr1() bind(C)
     ! A bind(C) is required for the intel/oneapi/ibm compiler since
@@ -86,7 +87,7 @@ contains
     use state
     implicit none
     integer(C_INT), value :: i
-    counter = counter + i
+    counter = i
   end subroutine incr2
 
   subroutine incr2_d(i) bind(C)
@@ -94,8 +95,18 @@ contains
     use state
     implicit none
     real(C_DOUBLE), value :: i
-    counter = counter + int(i)
+    counter = int(i)
   end subroutine incr2_d
+
+  function incr2_fun(i) bind(C)
+    use iso_c_binding
+    use state
+    implicit none
+    integer(C_INT) :: incr2_fun
+    integer(C_INT), value :: i
+    counter = i
+    incr2_fun = counter
+  end function incr2_fun
 
 !----------  
 
@@ -217,24 +228,39 @@ contains
     call set_case_name("test_callback1")
 
     counter = 0
-    
     call callback2("one", 2, incr2)
     call assert_equals(2, counter, "callback2")
 
+    counter = 0
     call callback2_external("two", 3, incr2)
-    call assert_equals(5, counter, "callback2_wrap")
+    call assert_equals(3, counter, "callback2_wrap")
 
-    call callback2_funptr("three", 2, c_funloc(incr2))
-    call assert_equals(7, counter, "callback2_funptr")
+    counter = 0
+    call callback2_funptr("three", 4, c_funloc(incr2))
+    call assert_equals(4, counter, "callback2_funptr")
 
     ! call with different interface for incr
 
-    call callback2_external("double", 4, incr2_d)
-    call assert_equals(11, counter, "callback2_external double")
+    counter = 0
+    call callback2_external("double", 5, incr2_d)
+    call assert_equals(5, counter, "callback2_external double")
 
-    call callback2_funptr("double", 3, c_funloc(incr2_d))
-    call assert_equals(14, counter, "callback2_funptr double")
-    
+    counter = 0
+    call callback2_funptr("double", 6, c_funloc(incr2_d))
+    call assert_equals(6, counter, "callback2_funptr double")
+
+    ! call with a function instead of subroutine
+
+    ! gfortran 12.1 assumes the same type will be passed to callback2_external.
+    ! Error: Interface mismatch in dummy procedure ‘incr’ at (1):
+    ! 'incr2_fun' is not a subroutine
+!   counter = 0
+!   call callback2_external("function", 7, incr2_fun)
+!   call assert_equals(7, counter, "callback2_external function")
+
+    counter = 0
+    call callback2_funptr("function", 8, c_funloc(incr2_fun))
+    call assert_equals(8, counter, "callback2_funptr function")
 
   end subroutine test_callback2
 
