@@ -26,4 +26,7 @@ void callback2_funptr(const char *name, int ival, incrtype incr);
 
 void callback3(int type, void * in, void (*incr)(void));
 
+int callback4(int *ilow, int nargs,
+              int (*actor)(int *ilow, int nargs));
+
 #endif // FUNPTR_H

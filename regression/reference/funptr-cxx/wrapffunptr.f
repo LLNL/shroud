@@ -34,6 +34,14 @@ module funptr_mod
             implicit none
         end subroutine callback1_wrap_incr
 
+        function callback4_actor(ilow, nargs) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: ilow(*)
+            integer(C_INT), value, intent(IN) :: nargs
+            integer(C_INT) :: callback4_actor
+        end function callback4_actor
+
         subroutine incrtype(i) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
@@ -111,6 +119,18 @@ module funptr_mod
             type(*) :: in
             type(C_FUNPTR), value :: incr
         end subroutine callback3
+
+        function c_callback4(ilow, nargs, actor) &
+                result(SHT_rv) &
+                bind(C, name="FUN_callback4")
+            use iso_c_binding, only : C_INT
+            import :: callback4_actor
+            implicit none
+            integer(C_INT), intent(IN) :: ilow(*)
+            integer(C_INT), value, intent(IN) :: nargs
+            procedure(callback4_actor) :: actor
+            integer(C_INT) :: SHT_rv
+        end function c_callback4
     end interface
 
     ! splicer begin additional_declarations
@@ -184,6 +204,23 @@ contains
         call c_callback2_funptr(trim(name)//C_NULL_CHAR, ival, incr)
         ! splicer end function.callback2_funptr
     end subroutine callback2_funptr
+
+    !>
+    !! \brief Test attributes on callback arguments
+    !!
+    !<
+    function callback4(ilow, actor) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: ilow(:)
+        integer(C_INT) :: SH_nargs
+        procedure(callback4_actor) :: actor
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.callback4
+        SH_nargs = size(ilow,kind=C_INT)
+        SHT_rv = c_callback4(ilow, SH_nargs, actor)
+        ! splicer end function.callback4
+    end function callback4
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

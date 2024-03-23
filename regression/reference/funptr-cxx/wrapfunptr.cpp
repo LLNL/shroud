@@ -114,4 +114,17 @@ void FUN_callback3(int type, void * in, void ( * incr)(void))
     // splicer end function.callback3
 }
 
+/**
+ * \brief Test attributes on callback arguments
+ *
+ */
+int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
+    int nargs))
+{
+    // splicer begin function.callback4
+    int SHC_rv = callback4(ilow, nargs, actor);
+    return SHC_rv;
+    // splicer end function.callback4
+}
+
 }  // extern "C"

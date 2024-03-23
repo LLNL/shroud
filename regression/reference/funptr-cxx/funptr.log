@@ -15,6 +15,8 @@ C c void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C f void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C c void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 C f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
+C c int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
+C f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 Close wrapfunptr.h
 Close wrapfunptr.cpp
 typedef incrtype
@@ -26,6 +28,7 @@ Fortran void callback2(const char * name, int ival, incrtype incr)
 Fortran void callback2_external(const char * name, int ival, incrtype incr +external)
 Fortran void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 Fortran void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
+Fortran int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 C-interface f void callback1(void ( * incr)(void))
 C-interface f void callback1_wrap(void ( * incr)(void))
 C-interface f void callback1_external(void ( * incr)(void) +external)
@@ -34,6 +37,7 @@ C-interface f void callback2(const char * name, int ival, incrtype incr)
 C-interface f void callback2_external(const char * name, int ival, incrtype incr +external)
 C-interface f void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C-interface f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
+C-interface f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 Close wrapffunptr.f
 Close utilfunptr.cpp
 Close typesfunptr.h

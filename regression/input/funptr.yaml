@@ -75,6 +75,15 @@ declarations:
   doxygen:
     brief: Test function pointer with assumedtype
 
+#####
+
+- decl: int callback4(int *ilow+rank(1)+intent(in), int nargs+implied(size(ilow)),
+                      int (*actor)(int *ilow+rank(1)+intent(in),
+                                   int nargs+intent(in)))
+  doxygen:
+    brief: Test attributes on callback arguments
+
+
 #- decl: void Rtserv(const char *attr,
 #                    typedef void (*actor) (
 #                      const char *name,

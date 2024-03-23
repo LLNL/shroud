@@ -86,7 +86,7 @@ contains
     rv = counter
   end function incr2_fun
 
-  !----------
+!----------
 
   subroutine incr3_int(in) bind(C)
     use iso_c_binding
@@ -103,7 +103,35 @@ contains
     ival = 0
     dval = in
   end subroutine incr3_double
-  
+
+!----------
+
+  function sum4(ilow, nargs) bind(C)
+    use iso_c_binding, only : C_INT
+    implicit none
+    integer(C_INT), intent(IN) :: ilow(*)
+    integer(C_INT), value, intent(IN) :: nargs
+    integer(C_INT) :: sum4
+    integer i
+    sum4 = ilow(1)
+    do i = 2, nargs
+       sum4 = sum4 + ilow(i)
+    enddo
+  end function sum4
+
+  function product4(ilow, nargs) bind(C)
+    use iso_c_binding, only : C_INT
+    implicit none
+    integer(C_INT), intent(IN) :: ilow(*)
+    integer(C_INT), value, intent(IN) :: nargs
+    integer(C_INT) :: product4
+    integer i
+    product4 = ilow(1)
+    do i = 2, nargs
+       product4 = product4 * ilow(i)
+    enddo
+  end function product4
+
 end module callback_mod
 
 program tester
@@ -121,6 +149,7 @@ program tester
   call test_callback1_noiface
   call test_callback2
   call test_callback3
+  call test_callback4
 
   call fruit_summary
   call fruit_finalize
@@ -244,4 +273,23 @@ contains
 
   end subroutine test_callback3
 
+  ! Test attributes on callback
+  subroutine test_callback4
+    use callback_mod
+    use state
+    integer(C_INT) :: rv, in(4)
+
+    call set_case_name("test_callback4")
+
+    in = [1,2,3,4]
+
+    rv = callback4(in, sum4)
+    call assert_equals(sum(in), rv, "callback4 sum")
+    
+    rv = callback4(in, product4)
+    call assert_equals(product(in), rv, "callback4 product")
+    
+  end subroutine test_callback4
+
+  
 end program tester

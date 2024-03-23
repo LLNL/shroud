@@ -2518,6 +2518,701 @@
                     "F_name_impl": "callback3",
                     "function_name": "callback3"
                 }
+            },
+            {
+                "<FUNCTION>": "callback4  8 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback4",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": "1"
+                                    },
+                                    "name": "ilow",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "size(ilow)"
+                                    },
+                                    "name": "nargs",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "actor",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "name": "actor",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "in",
+                                                    "rank": "1"
+                                                },
+                                                "name": "ilow",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "in"
+                                                },
+                                                "name": "nargs",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int callback4(int *ilow+rank(1)+intent(in), int nargs+implied(size(ilow)), int (*actor)(int *ilow+rank(1)+intent(in), int nargs+intent(in)))",
+                "declgen": "int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))",
+                "doxygen": {
+                    "brief": "Test attributes on callback arguments"
+                },
+                "name": "callback4",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "actor": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "actor  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "actor",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "actor",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "rank": "1"
+                                                        },
+                                                        "name": "ilow",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "nargs",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
+                                    "name": "actor",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "actor",
+                                        "F_name_api": "actor",
+                                        "function_name": "actor"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "ilow": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "c_in_native_*"
+                        },
+                        "nargs": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "actor": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "actor  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "actor",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "actor",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "rank": "1"
+                                                        },
+                                                        "name": "ilow",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "nargs",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
+                                    "name": "actor",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "actor",
+                                        "F_name_api": "actor",
+                                        "function_name": "actor"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "ilow": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "f_in_native_*"
+                        },
+                        "nargs": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "actor": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "actor  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "actor",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "actor",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "rank": "1"
+                                                        },
+                                                        "name": "ilow",
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "intent": "in"
+                                                        },
+                                                        "name": "nargs",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
+                                    "name": "actor",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "actor",
+                                        "F_name_api": "actor",
+                                        "function_name": "actor"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "ilow": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            }
+                        },
+                        "nargs": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
+                            "C_call_list": "ilow,\t nargs,\t actor",
+                            "C_name": "callback4",
+                            "C_prototype": "int * ilow,\t int nargs,\t int ( * actor)(\tint * ilow,\t int nargs)",
+                            "C_return_type": "int",
+                            "F_C_name": "c_callback4",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
+                            "C_call_list": "ilow,\t nargs,\t actor",
+                            "C_name": "callback4",
+                            "C_prototype": "int * ilow,\t int nargs,\t int ( * actor)(\tint * ilow,\t int nargs)",
+                            "C_return_type": "int",
+                            "F_C_arguments": "ilow,\t nargs,\t actor",
+                            "F_C_call": "c_callback4",
+                            "F_C_name": "c_callback4",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "ilow,\t SH_nargs,\t actor",
+                            "F_arguments": "ilow,\t actor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "actor": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "actor",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&actor",
+                            "cxx_type": "int",
+                            "cxx_var": "actor",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "actor",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&actor",
+                            "cxx_type": "int",
+                            "cxx_var": "actor",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "actor",
+                            "fc_var": "actor",
+                            "i_var": "actor",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "ilow": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "ilow",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ilow",
+                            "cxx_type": "int",
+                            "cxx_var": "ilow",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_*"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "ilow",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ilow",
+                            "cxx_type": "int",
+                            "cxx_var": "ilow",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "ilow",
+                            "fc_var": "ilow",
+                            "i_dimension": "(*)",
+                            "i_var": "ilow",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(ilow)",
+                            "stmt_name": "f_in_native_*"
+                        }
+                    },
+                    "nargs": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "nargs",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nargs",
+                            "cxx_type": "int",
+                            "cxx_var": "nargs",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "nargs",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nargs",
+                            "cxx_type": "int",
+                            "cxx_var": "nargs",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "nargs",
+                            "fc_var": "SH_nargs",
+                            "i_var": "nargs",
+                            "idtor": "0",
+                            "pre_call_intent": "size(ilow,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback4",
+                    "F_name_api": "callback4",
+                    "F_name_function": "callback4",
+                    "F_name_generic": "callback4",
+                    "F_name_impl": "callback4",
+                    "function_name": "callback4"
+                }
             }
         ],
         "language": "c",
