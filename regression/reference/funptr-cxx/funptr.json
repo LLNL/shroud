@@ -2075,6 +2075,449 @@
                     "F_name_impl": "callback2_funptr",
                     "function_name": "callback2_funptr"
                 }
+            },
+            {
+                "<FUNCTION>": "callback3  7 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback3",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true,
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "funptr": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "incr",
+                                    "params": [],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback3(int type, void *in+assumedtype+intent(in), void (*incr)(void)+funptr)",
+                "declgen": "void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)",
+                "doxygen": {
+                    "brief": "Test function pointer with assumedtype"
+                },
+                "name": "callback3",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "in": {
+                            "meta": {
+                                "assumedtype": true,
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_void_*"
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "funptr": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +funptr",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_void_scalar"
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "in": {
+                            "meta": {
+                                "assumedtype": true,
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_void_*"
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "funptr": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +funptr",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_void_scalar"
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "assumedtype": true,
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "incr": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "attrs": {
+                                                "funptr": true
+                                            },
+                                            "func": {
+                                                "name": "incr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "name": "incr",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void ( * incr)(void) +funptr",
+                                    "name": "incr",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "incr",
+                                        "F_name_api": "incr",
+                                        "function_name": "incr"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "callback3(\ttype,\t in,\t incr)",
+                            "C_call_list": "type,\t in,\t incr",
+                            "C_name": "FUN_callback3",
+                            "C_prototype": "int type,\t void * in,\t void ( * incr)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_name": "c_callback3",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "callback3(\ttype,\t in,\t incr)",
+                            "C_call_list": "type,\t in,\t incr",
+                            "C_name": "FUN_callback3",
+                            "C_prototype": "int type,\t void * in,\t void ( * incr)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_arguments": "type,\t in,\t incr",
+                            "F_C_call": "c_callback3",
+                            "F_C_name": "callback3",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "type,\t in,\t incr",
+                            "F_arguments": "type,\t in,\t incr",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "void",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "in",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_*"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "void",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "in",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "in",
+                            "fc_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "f_in_void_*"
+                        }
+                    },
+                    "incr": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "void",
+                            "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "c_in_void_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "void",
+                            "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "incr",
+                            "fc_var": "incr",
+                            "i_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt_name": "f_in_void_scalar"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "type",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "type",
+                            "fc_var": "type",
+                            "i_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback3",
+                    "F_name_api": "callback3",
+                    "F_name_function": "callback3",
+                    "F_name_generic": "callback3",
+                    "F_name_impl": "callback3",
+                    "function_name": "callback3"
+                }
             }
         ],
         "language": "cxx",

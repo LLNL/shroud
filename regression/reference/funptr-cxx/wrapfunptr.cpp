@@ -102,4 +102,15 @@ void FUN_callback2_funptr(const char * name, int ival,
     // splicer end function.callback2_funptr
 }
 
+/**
+ * \brief Test function pointer with assumedtype
+ *
+ */
+void FUN_callback3(int type, void * in, void ( * incr)(void))
+{
+    // splicer begin function.callback3
+    callback3(type, in, incr);
+    // splicer end function.callback3
+}
+
 }  // extern "C"

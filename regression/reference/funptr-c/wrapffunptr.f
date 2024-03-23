@@ -102,6 +102,15 @@ module funptr_mod
             integer(C_INT), value, intent(IN) :: ival
             type(C_FUNPTR), value :: incr
         end subroutine c_callback2_funptr
+
+        subroutine callback3(type, in, incr) &
+                bind(C, name="callback3")
+            use iso_c_binding, only : C_FUNPTR, C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            type(*) :: in
+            type(C_FUNPTR), value :: incr
+        end subroutine callback3
     end interface
 
     ! splicer begin additional_declarations

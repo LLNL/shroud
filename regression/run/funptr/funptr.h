@@ -24,6 +24,8 @@ void callback2(const char *name, int ival, incrtype incr);
 void callback2_external(const char *name, int ival, incrtype incr);
 void callback2_funptr(const char *name, int ival, incrtype incr);
 
+void callback3(int type, void * in, void (*incr)(void));
+
 #if 0
 
 void callback1a(int type, void (*incr)(void));

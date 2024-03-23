@@ -10,7 +10,12 @@
 
 module state
   ! shared by test and callbacks.
+  use iso_c_binding
   integer counter
+
+  ! callback3
+  integer(C_INT) ival
+  real(C_DOUBLE) dval
 end module state
 
 
@@ -108,6 +113,24 @@ contains
     rv = counter
   end function incr2_fun
 
+  !----------
+
+  subroutine incr3_int(in) bind(C)
+    use iso_c_binding
+    use state
+    integer(C_INT), value :: in
+    ival = in
+    dval = 0.0
+  end subroutine incr3_int
+
+  subroutine incr3_double(in) bind(C)
+    use iso_c_binding
+    use state
+    real(C_DOUBLE), value :: in
+    ival = 0
+    dval = in
+  end subroutine incr3_double
+  
 !----------  
 
   subroutine incr2b_int(input)
@@ -163,6 +186,7 @@ program tester
   call test_callback1
   call test_callback1_noiface
   call test_callback2
+  call test_callback3
 
   call fruit_summary
   call fruit_finalize
@@ -263,6 +287,28 @@ contains
     call assert_equals(8, counter, "callback2_funptr function")
 
   end subroutine test_callback2
+  
+  subroutine test_callback3
+    use callback_mod
+    use state
+    integer(C_INT) :: i_in
+    real(C_DOUBLE) :: d_in
+
+    call set_case_name("test_callback3")
+
+    i_in = 2
+    d_in = 0.0
+    call callback3(1, i_in, c_funloc(incr3_int))
+    call assert_equals(i_in, ival, "callback3 int ival")
+    call assert_equals(d_in, dval, "callback3 int dval")
+
+    i_in = 0
+    d_in = 2.5
+    call callback3(2, d_in, c_funloc(incr3_double))
+    call assert_equals(i_in, ival, "callback3 int ival")
+    call assert_equals(d_in, dval, "callback3 int dval")
+
+  end subroutine test_callback3
 
 !--  subroutine test_callback
 !--    use callback_mod

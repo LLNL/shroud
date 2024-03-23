@@ -82,6 +82,24 @@ void callback2_funptr(const char *name, int ival, incrtype incr)
 
 //----------------------------------------------------------------------
 
+void callback3(int type, void * in, void (*incr)(void))
+{
+    switch(type) {
+    case 1: {
+        void (*incr2)(int) = (void(*)(int)) incr;
+        incr2(*(int *) in);
+        break;
+    }
+    case 2: {
+        void (*incr2)(double) = (void(*)(double)) incr;
+        incr2(*(double *) in);
+        break;
+    }
+    }
+}
+
+//----------------------------------------------------------------------
+
 #if 0
 void callback1a(int type, void (*incr)(void))
 {
@@ -97,19 +115,6 @@ void callback2(int type, void * in, void (*incr)(int *))
     void (*incr2)(double *) = (void(*)(double *)) incr;
     incr2(in);
   }
-}
-
-void callback3(const char *type, void * in, void (*incr)(int *),
-               char *outbuf)
-{
-  if (strcmp(type, "int") == 0) {
-    // default function pointer from prototype
-    incr(in);
-  } else if (strcmp(type, "double") == 0) {
-    void (*incr2)(double *) = (void(*)(double *)) incr;
-    incr2(in);
-  }
-  //  strncpy(outbuf, "callback3", LENOUTBUF);
 }
 
 void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))

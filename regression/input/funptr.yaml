@@ -64,6 +64,16 @@ declarations:
     description: |
       The caller is responsible for using c_funloc to pass the function address.
 
+#####
+# Test assumedtype
+
+- decl: void callback3(int type, void *in+assumedtype+intent(in),
+                       void (*incr)(void)+funptr)
+  doxygen:
+    brief: Test function pointer with assumedtype
+
+
+
 ### from other tests
 #- decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
 #                                void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))
