@@ -196,43 +196,8 @@ int passAssumedTypeBuf(void *arg, char *outbuf)
 
 //----------------------------------------------------------------------
 
-// start callback1
-void callback1(int type, void (*incr)(void))
-{
-  // Use type to decide how to call incr
-}
-// end callback1
-
-void callback1a(int type, void (*incr)(void))
-{
-  // Use type to decide how to call incr
-}
-
-void callback2(int type, void * in, void (*incr)(int *))
-{
-  if (type == 1) {
-    // default function pointer from prototype
-    incr(in);
-  } else if (type == 2) {
-    void (*incr2)(double *) = (void(*)(double *)) incr;
-    incr2(in);
-  }
-}
-
-void callback3(const char *type, void * in, void (*incr)(int *),
-               char *outbuf)
-{
-  if (strcmp(type, "int") == 0) {
-    // default function pointer from prototype
-    incr(in);
-  } else if (strcmp(type, "double") == 0) {
-    void (*incr2)(double *) = (void(*)(double *)) incr;
-    incr2(in);
-  }
-  strncpy(outbuf, "callback3", LENOUTBUF);
-}
-
-void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))
+void callback_set_alloc(int tc, array_info *arr,
+                        void (*alloc)(int tc, array_info *arr))
 {
   alloc(tc, arr);
 }

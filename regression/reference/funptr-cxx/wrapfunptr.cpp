@@ -93,6 +93,7 @@ void FUN_callback2_external(const char * name, int ival,
  * \brief Declare callback as c_funptr
  *
  * The caller is responsible for using c_funloc to pass the function address.
+ * Allows any function to be passed as an argument.
  */
 void FUN_callback2_funptr(const char * name, int ival,
     FUN_incrtype incr)

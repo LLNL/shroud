@@ -173,6 +173,7 @@ contains
     !! \brief Declare callback as c_funptr
     !!
     !! The caller is responsible for using c_funloc to pass the function address.
+    !! Allows any function to be passed as an argument.
     !<
     subroutine callback2_funptr(name, ival, incr)
         use iso_c_binding, only : C_FUNPTR, C_INT, C_NULL_CHAR

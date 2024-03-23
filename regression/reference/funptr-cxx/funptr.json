@@ -1819,7 +1819,7 @@
                 "declgen": "void callback2_funptr(const char * name, int ival, incrtype incr +funptr)",
                 "doxygen": {
                     "brief": "Declare callback as c_funptr",
-                    "description": "The caller is responsible for using c_funloc to pass the function address.\n"
+                    "description": "The caller is responsible for using c_funloc to pass the function address.\nAllows any function to be passed as an argument.\n"
                 },
                 "name": "callback2_funptr",
                 "options": {},
