@@ -200,10 +200,10 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         Args:
             node - ast.ClassNode, ast.LibraryNode
         """
-        if self.language == "c":
-            # No need for wrapper with C.
-            # Use typedef definition in user's header from cxx_header.
-            return
+#        if self.language == "c":
+#            # No need for wrapper with C.
+#            # Use typedef definition in user's header from cxx_header.
+#            return
         self._push_splicer("typedef")
         for typ in node.typedefs:
             self.wrap_typedef(typ)

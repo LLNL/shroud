@@ -17,6 +17,7 @@ C c void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(v
 C f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 C c int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 C f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
+Close wrapfunptr.h
 typedef incrtype
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))
