@@ -1931,49 +1931,33 @@ Fortran usage:
 
 .. ############################################################
 
-.. _example_callback1c:
+.. _example_callback1_funptr:
 
-callback1c
-^^^^^^^^^^
+callback1_funptr
+^^^^^^^^^^^^^^^^
 
-C library function in :file:`clibrary.c`:
+C library function in :file:`funptr.c`. The actual function would need
+some way to know the interface/prototype of the function that was
+passed in. Perhaps by another argument or some other state:
 
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
+.. literalinclude:: ../regression/run/funptr/funptr.c
    :language: c
-   :start-after: start callback1
-   :end-before: end callback1
+   :start-after: start callback1_funptr
+   :end-before: end callback1_funptr
 
-:file:`clibrary.yaml`:
+:file:`funptr.yaml`:
 
 .. code-block:: yaml
 
-    - decl: int callback1(int type, void (*incr)()+external)
-
-Creates the abstract interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start abstract callback1_incr
-   :end-before: end abstract callback1_incr
-   :dedent: 4
-
-Fortran calls C via the following interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start c_callback1
-   :end-before: end c_callback1
-   :dedent: 4
-
-.. XXX why is C_PTR used here ^
+    - decl: void callback1_funptr(void (*incr)(void)+funptr)
 
 The Fortran wrapper.
-By using ``external`` no abstract interface is used:
+By using ``funptr`` no abstract interface is used:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+.. literalinclude:: ../regression/reference/funptr-c/wrapffunptr.f
    :language: fortran
-   :start-after: start callback1
-   :end-before: end callback1
+   :start-after: start callback1_funptr
+   :end-before: end callback1_funptr
    :dedent: 4
 
 Fortran usage:
@@ -1983,20 +1967,18 @@ Fortran usage:
     module worker
       use iso_c_binding
     contains
-      subroutine userincr_int(i) bind(C)
-        integer(C_INT), value :: i
+      subroutine userincr_int() bind(C)
         ! do work of callback
       end subroutine user_int
 
-      subroutine userincr_double(i) bind(C)
-        real(C_DOUBLE), value :: i
+      subroutine userincr_double() bind(C)
         ! do work of callback
       end subroutine user_int
 
       subroutine work
-        call callback1c(1, userincr_int)
-        call callback1c(1, userincr_double)
-      end subrouine work
+        call callback1_funptr(c_funloc(userincr_int))
+        call callback1_funptr(c_funloc(userincr_double))
+      end subroutine work
     end module worker
 
 Struct

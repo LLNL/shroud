@@ -290,6 +290,9 @@ class ToDict(visitor.Visitor):
                     for key, ntypemap in value.items():
                         names[key] = ntypemap.name
                     d["cxx_instantiation"] = names
+            elif key == "ast":
+                if value is not None:
+                    d["ast"] = self.visit(value)
             else:
                 if value is not defvalue:
                     d[key] = value
@@ -498,6 +501,7 @@ class ToDict(visitor.Visitor):
         d = dict(name=node.name)
         add_comment(d, "typedef", node.name)
         self.add_visit_fields(node, d, [
+            "_bind",
             "ast",
             "user_fmt",
             "user_fields",

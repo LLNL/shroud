@@ -15,6 +15,13 @@ Unreleased
 Changes to YAML input
 ^^^^^^^^^^^^^^^^^^^^^
 
+* Added attribute *+funptr*. Uses ``type(C_FUNPTR)`` for
+  function pointer arguments.
+
+* Create an abstract interface for typedef statements which
+  are function pointers. Previously, only function pointers
+  arguments were supported.
+
 * Attribute *+allocatable* is now *+deref(allocatable)*.
   This avoids setting *+allocatable* inconsistent with *+deref*.
 

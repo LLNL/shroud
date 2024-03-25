@@ -1875,6 +1875,7 @@ class TypedefNode(AstNode):
         # From arguments
         self.name = name
         self.parent = parent
+        self.symtab = parent.symtab
         self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
         self.splicer = splicer
@@ -1890,6 +1891,7 @@ class TypedefNode(AstNode):
 
         self.ast = ast
         self.user_fields = fields
+        self._bind = {}                   # Access with get_arg_bind
 
         # save info from original type used in generated declarations.
         ntypemap = ast.typemap

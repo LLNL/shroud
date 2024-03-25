@@ -223,44 +223,6 @@ declarations:
     wrap_python: false
 
 ######################################################################
-# Function pointer (from tutorial.yaml)
-
-- decl: void callback1(int type, void (*incr)(void)+external)
-  doxygen:
-    brief: Test function pointer
-  options:
-    wrap_lua: False
-    wrap_python: False
-    literalinclude: True
-  
-- decl: void callback1a(int type, void (*incr)(void)+external)
-  doxygen:
-    brief: Test function pointer
-    description: |
-      Add C_force_wrapper to test generating function pointer prototype.
-  options:
-    C_force_wrapper: True
-    wrap_lua: False
-    wrap_python: False
-    literalinclude: True
-  
-- decl: void callback2(int type, void * in+assumedtype,
-                       void (*incr)(int *)+external)
-  doxygen:
-    brief: Test function pointer
-  options:
-    wrap_lua: False
-    wrap_python: False
-
-- decl: void callback3(const char *type, void * in+assumedtype,
-                       void (*incr)(int *)+external, char *outbuf+intent(out))
-  doxygen:
-    brief: Test function pointer
-    description: |
-      A bufferify function will be created.
-  options:
-    wrap_lua: False
-    wrap_python: False
 
 - decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
                                 void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))

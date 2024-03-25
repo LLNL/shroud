@@ -576,6 +576,9 @@ that a Fortran wrapper is created which uses the ``external``
 statement for the argument.  This will allow any function to be used
 as the dummy argument for the function pointer.
 
+See also the *funptr* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
+
 free_pattern
 ^^^^^^^^^^^^
 
@@ -588,6 +591,18 @@ See :ref:`MemoryManagementAnchor` for details.
 
 ..  and *intent(out)* arguments.
 
+funptr
+^^^^^^
+
+This attribute is only valid with function pointers.
+Create a ``type(C_FUNPTR)`` argument for the function pointer.
+The caller is required to use ``C_FUNLOC`` to get the address
+of the function.
+The advantage is that this will work with any function and does
+not require an abstract interface.
+
+See also the *external* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
 
 hidden
 ^^^^^^

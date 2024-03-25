@@ -1262,6 +1262,17 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "CustomType": {}
+                    },
+                    "f": {
+                        "CustomType": {}
+                    },
+                    "share": {
+                        "CustomType": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "CustomType",
                     "C_name_typedef": "LIB_CustomType",

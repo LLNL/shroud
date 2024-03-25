@@ -58,6 +58,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
+- Attribute *+funptr*.
+- function pointer typedefs now create an abstract interface.	
 
 ### Fixed
 - Avoid memory leaks by using 'N' instead of 'O' in `Py_BuildValue`

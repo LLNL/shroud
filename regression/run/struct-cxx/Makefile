@@ -40,7 +40,7 @@ struct-cxx : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $(C_OBJS) $(F_OBJS) -o $@ $(FLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod struct-cxx
+	rm -f $(C_OBJS) $(F_OBJS) *.mod struct-cxx
 
 struct.o : struct.cpp struct.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<

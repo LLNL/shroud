@@ -5314,6 +5314,17 @@
                     "c": true,
                     "fortran": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "TypeID": {}
+                    },
+                    "f": {
+                        "TypeID": {}
+                    },
+                    "share": {
+                        "TypeID": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
                     "C_name_typedef": "DEF_TypeID",

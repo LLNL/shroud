@@ -51,9 +51,4 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len);
 int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len);
 
-void CLI_callback1a(int type, void ( * incr)(void));
-
-void CLI_callback3_bufferify(const char * type, void * in,
-    void ( * incr)(int *), char *outbuf, int SHT_outbuf_len);
-
 #endif  // WRAPCLIBRARY_H

@@ -8,6 +8,8 @@
 A top-down, recursive descent parser for C/C++ expressions with
 additions for shroud attributes.
 
+Typical usage:
+  declast.check_decl(decl, self.symtab)
 """
 
 from __future__ import print_function
@@ -1086,7 +1088,10 @@ def check_attrs(decl, bind, bindfcn, trace=False):
 # Abstract Syntax Tree Nodes
 
 class Node(object):
-    """
+    """Abstract Symtax Tree base object.
+
+    Contains the symbol table for the scope.
+
     children - Symbol table nodes of types.
     group - Parse tree nodes.
     """
@@ -1834,12 +1839,16 @@ class Declaration(Node):
                 "Type {} has no value for i_type".format(self.typename)
             )
         t.append(typ)
-        self.append_fortran_value(t, is_result)
-        if intent in ["in", "out", "inout"]:
-            t.append("intent(%s)" % intent.upper())
-        elif intent == "setter":
-            # Argument to setter function.
-            t.append("intent(IN)")
+        if basedef.base == "procedure":
+            # dummy procedure can not have intent or value.
+            pass
+        else:
+            self.append_fortran_value(t, is_result)
+            if intent in ["in", "out", "inout"]:
+                t.append("intent(%s)" % intent.upper())
+            elif intent == "setter":
+                # Argument to setter function.
+                t.append("intent(IN)")
 
         decl = []
         decl.append(", ".join(t))
@@ -2329,8 +2338,9 @@ class SymbolTable(object):
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,
-                base="fcnptr",
-                sgroup="fcnptr",
+                base="procedure",
+                sgroup="procedure",
+#                ast=ast,  # XXX - maybe needed later
             )
             self.register_typemap(ntypemap.name, ntypemap)
             node = Typedef(name, ast, ntypemap)
@@ -2441,9 +2451,12 @@ def symtab_to_typemap(node):
         return symbols
 
 def check_decl(decl, symtab, trace=False):
-    """ parse expr as a declaration, return list/dict result.
+    """ parse expr as a declaration, return Node.
 
-    namespace - An ast.AstNode subclass.
+    Args:
+        decl   - str, string to parse
+        symtab - declast.SymbolTable
+        trace  - bool
     """
     #trace = True   # GGG For debug
     a = Parser(decl, symtab, trace).decl_statement()

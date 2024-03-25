@@ -89,6 +89,8 @@ root
           cdesc -- f_in/out/inout_native_*_cdesc
         ** -- f_in_native_**
         scalar -- f_shared_native_scalar
+      procedure
+        scalar -- f_in_procedure_scalar
       shadow
         & -- f_in_shadow_&
         * -- f_in_shadow_*
@@ -541,6 +543,8 @@ root
           cfi -- f_in/inout_native_*_cfi
         ** -- f_in_native_**
         scalar -- f_shared_native_scalar
+      procedure
+        scalar -- f_in_procedure_scalar
       shadow
         & -- f_in_shadow_&
         * -- f_in_shadow_*
@@ -1767,6 +1771,10 @@ c_in_native_*_cdesc:
 c_in_native_scalar:
   intent: in
   name: c_in_native_scalar
+  owner: library
+c_in_procedure_scalar:
+  intent: in
+  name: c_in_procedure_scalar
   owner: library
 c_in_shadow_&:
   c_arg_decl:
@@ -8063,6 +8071,12 @@ f_in_native_*_cfi:
 f_in_native_scalar:
   intent: in
   name: f_in_native_scalar
+  owner: library
+f_in_procedure_scalar:
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: in
+  name: f_in_procedure_scalar
   owner: library
 f_in_shadow_&:
   c_arg_decl:

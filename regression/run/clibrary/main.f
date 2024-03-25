@@ -7,63 +7,10 @@
 !
 ! Test Fortran API generated from clibrary.yaml.
 !
-subroutine incr2_int(input)
-  use iso_c_binding
-  implicit none
-  integer(C_INT) :: input
-  input = input + 20
-end subroutine incr2_int
-
-subroutine incr2_double(input)
-  use iso_c_binding
-  implicit none
-  real(C_DOUBLE) :: input
-  input = input + 20.5_C_DOUBLE
-end subroutine incr2_double
-
-subroutine incr3_int(input)
-  use iso_c_binding
-  implicit none
-  integer(C_INT) :: input
-  input = input + 20
-end subroutine incr3_int
-
-subroutine incr3_double(input)
-  use iso_c_binding
-  implicit none
-  real(C_DOUBLE) :: input
-  input = input + 20.5_C_DOUBLE
-end subroutine incr3_double
 
 module callback_mod
+  implicit none
 contains
-  subroutine incr2b_int(input)
-    use iso_c_binding
-    implicit none
-    integer(C_INT) :: input
-    input = input + 20
-  end subroutine incr2b_int
-
-  subroutine incr2b_double(input)
-    use iso_c_binding
-    implicit none
-    real(C_DOUBLE) :: input
-    input = input + 20.5_C_DOUBLE
-  end subroutine incr2b_double
-  
-  subroutine incr3b_int(input)
-    use iso_c_binding
-    implicit none
-    integer(C_INT) :: input
-    input = input + 20
-  end subroutine incr3b_int
-
-  subroutine incr3b_double(input)
-    use iso_c_binding
-    implicit none
-    real(C_DOUBLE) :: input
-    input = input + 20.5_C_DOUBLE
-  end subroutine incr3b_double
 
   ! On Intel, bind(C) is required because of the VALUE attribute.
   subroutine set_alloc(tc, arr) bind(C)
@@ -239,68 +186,14 @@ contains
 
   subroutine test_callback
     use callback_mod
-    integer(C_INT) arg_int
-    real(C_DOUBLE) arg_dbl
-    character(lenoutbuf)  :: outbuf
     type(array_info) :: arr
-    external incr2_int, incr2_double
-    external incr3_int, incr3_double
 
     call set_case_name("test_callback")
-
-    ! incr_int matches the prototype in the YAML file.
-    ! incr_double, does not.
-
-    !----------
-    ! callback2, accept any type of function.
-    ! first argument, tells C how to cast pointer.
-    arg_int = 10_C_INT
-    call callback2(1, arg_int, incr2_int)
-    call assert_equals(30, arg_int, "incr2_int")
-
-    arg_dbl = 3.4_C_DOUBLE
-    call callback2(2, arg_dbl, incr2_double)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr2_int")
-
-    !----------
-    ! callback3, accept any type of function.
-    ! first argument, tells C how to cast pointer.
-    arg_int = 10_C_INT
-    call callback3("int", arg_int, incr3_int, outbuf)
-    call assert_equals(30, arg_int, "incr3_int")
-
-    arg_dbl = 3.4_C_DOUBLE
-    call callback3("double", arg_dbl, incr3_double, outbuf)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3_double")
-
-    !----------
-    ! routines from a module, with an implicit interface.
-    ! callback2, accept any type of function.
-    ! first argument, tells C how to cast pointer.
-    arg_int = 10_C_INT
-    call callback2(1, arg_int, incr2b_int)
-    call assert_equals(30, arg_int, "incr2b_int")
-
-    arg_dbl = 3.4_C_DOUBLE
-    call callback2(2, arg_dbl, incr2b_double)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr2b_double")
-
-    !----------
-    ! callback3, accept any type of function.
-    ! first argument, tells C how to cast pointer.
-    arg_int = 10_C_INT
-    call callback3("int", arg_int, incr3b_int, outbuf)
-    call assert_equals(30, arg_int, "incr3b_int")
-
-    arg_dbl = 3.4_C_DOUBLE
-    call callback3("double", arg_dbl, incr3b_double, outbuf)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3b_double")
 
     ! The callback sets tc
     arr%tc = 0
     call callback_set_alloc(3, arr, set_alloc)
     call assert_equals(3, arr%tc, "callback_set_alloc")
-    
 
   end subroutine test_callback
 

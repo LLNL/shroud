@@ -783,6 +783,17 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "TypeID": {}
+                    },
+                    "f": {
+                        "TypeID": {}
+                    },
+                    "share": {
+                        "TypeID": {}
+                    }
+                },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
                     "C_name_typedef": "TYP_TypeID",
@@ -819,6 +830,17 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "Struct1Rename": {}
+                    },
+                    "f": {
+                        "Struct1Rename": {}
+                    },
+                    "share": {
+                        "Struct1Rename": {}
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "Struct1Rename",
@@ -860,6 +882,17 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "IndexType": {}
+                    },
+                    "f": {
+                        "IndexType": {}
+                    },
+                    "share": {
+                        "IndexType": {}
+                    }
                 },
                 "zz_fmtdict": {
                     "C_name_api": "IndexType",

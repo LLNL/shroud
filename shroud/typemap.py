@@ -56,15 +56,13 @@ class Typemap(object):
     For example, std::string uses <string>. <string> should not be in
     the interface since the wrapper is a C API.
 
-    A new typemap is created for each class and struct
+    A new typemap is created for each class, struct, and typedef.
 
     A new typemap is created for each templated class/struct
     instantiation:
         - decl: template<typename T> class A
           cxx_template:
           - instantiation: <int>
-
-    A new typemap is created for each typedef.
     """
 
     # Array of known keys with default values
@@ -77,6 +75,7 @@ class Typemap(object):
         ("typedef", None),  # Initialize from existing type (name of type)
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
+        ("ast", None),  # Abstract syntax tree (typedef)
         ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
@@ -1309,11 +1308,12 @@ def create_fcnptr_typemap(symtab, name):
         node - ast.TypedefNode
         fields - dictionary
     """
+    raise NotImplemented
     type_name = symtab.scopename + name
     ntypemap = Typemap(
         type_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
     )
     # Check if all fields are C compatible
 #            ntypemap.compute_flat_name()
@@ -1345,8 +1345,8 @@ def fill_fcnptr_typemap(node, fields={}):
     c_type = fmt.C_prefix + cxx_name
     ntypemap = Typemap(
         cxx_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
         c_type="c_type",
         cxx_type="cxx_type",
         f_type="XXXf_type",

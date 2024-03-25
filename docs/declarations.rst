@@ -358,8 +358,9 @@ Function Pointers
 C or C++ arguments which are pointers to functions are supported.
 The function pointer type is wrapped using a Fortran ``abstract interface``.
 Only C compatible arguments in the function pointer are supported since
-no wrapper for the function pointer is created.  It must be callable 
-directly from Fortran.
+the function will be called by the wrapped library.
+To be portable, functions passed to the library must have the ``BIND(C)``
+attribute.
 
 ``int (*incr)(int)``
     Create a Fortran abstract interface for the function pointer.
@@ -367,9 +368,8 @@ directly from Fortran.
     See example :ref:`callback1 <example_callback1>`.
 
 ``void (*incr)()``
-    Adding the ``external`` attribute will allow any function to be passed.
-    In C this is accomplished by using a cast.
-    See example :ref:`callback1c <example_callback1c>`.
+    Adding the *funptr* attribute will allow any function to be passed.
+    In C this is accomplished by using a cast in the wrapped library.
 
 The *intent* and *value* attributes may be used on arguments of the
 function pointer.
@@ -397,14 +397,32 @@ argument to an argument):
       F_abstract_interface_subprogram_template: custom_funptr
       F_abstract_interface_argument_template: XX{index}arg
 
-It is also possible to pass a function which will accept any function
-interface as the dummy argument. This is done by adding the *external*
-attribute.  A Fortran wrapper function is created with an ``external``
-declaration for the argument. The C function is called via an interace
-with the ``bind(C)`` attribute.  In the interface, an ``abstract
-interface`` for the function pointer argument is used.  The user's
-library is responsible for calling the argument correctly since the
-interface is not preserved by the ``external`` declaration.
+To allow any function to be passed, the *funptr* attribute can be
+added. This will not use an ``abstract interface``. Instead the
+argument will be defined as ``type(C_FUNPTR)`` from the
+``iso_c_binding`` module.  However, it requires the caller to use
+``C_FUNLOC`` to pass down the function address.  All interface
+information is lost and the C library is expected to know how to deal
+with arbitrary function pointers.
+See example :ref:`callback1_funptr <example_callback1_funptr>`.
+
+
+The *external* attribute can be added to define the argument with
+an ``EXTERNAL`` statement. This can be made to work for some situations.
+However, it is not portable between compilers.  The Fortran standard does
+not allow ``EXTERNAL`` arguments in a ``bind(C)`` subprogram.
+A Fortran wrapper function is created with an ``EXTERNAL``
+declaration for the argument.
+The C function is called via an abstract interace with the ``bind(C)`` attribute.
+
+.. gfortran will not allow multiple calls that mix passing subroutines
+   and functions. It creates an implicit interface based on the first
+   usage and reports error if later uses are not the same.
+
+   It is required to use BIND(C) if the VALUE attribute is used.
+   intel compiler implements 'value semantics'. It will pass down
+   the address of a copy of the dummy argument unless BIND(C) is used.
+      
 
 Struct
 ------

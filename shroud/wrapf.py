@@ -414,6 +414,9 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_typedef(self, node, fileinfo):
         """Wrap a typedef declaration.
 
+        Simple typedefs are mapped to a parameter for the
+        corresponding kind.
+
         Args:
             node - ast.TypedefNode.
             fileinfo - ModuleInfo
@@ -422,9 +425,15 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         fmtdict = node.fmtdict
         self.log.write("typedef {0.name}\n".format(node))
 
+        declarator = node.ast.declarator
+
         if "f" in node.splicer:
             F_code = None
             F_force = node.splicer["f"]
+        elif declarator.is_function_pointer():
+            # Create an abstract interface
+            self.add_abstract_interface(node, node.ast, fileinfo, name=node.name)
+            return
         else:
             F_code = ["integer, parameter :: {} = {}".format(
                 node.fmtdict.F_name_typedef, node.f_kind)]
@@ -929,11 +938,13 @@ rv = .false.
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
-    def add_abstract_interface(self, node, arg, fileinfo):
+    def add_abstract_interface(self, node, arg, fileinfo, name=None):
         """Record an abstract interface.
 
         Function pointers are converted to abstract interfaces.
         The interface is named after the function and the argument.
+
+        If from a typedef, then name argument will be set.
 
         Args:
             node -
@@ -942,9 +953,10 @@ rv = .false.
         """
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.declarator.user_name
-        name = wformat(
-            node.options.F_abstract_interface_subprogram_template, fmt
-        )
+        if name is None:
+            name = wformat(
+                node.options.F_abstract_interface_subprogram_template, fmt
+            )
         entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
             meta = get_arg_bind(node, arg, "f").meta
@@ -1066,6 +1078,7 @@ rv = .false.
             declarator = ast.declarator
             name = declarator.user_name
             attrs = declarator.attrs
+            ntypemap = declarator.typemap
             arg_c_names.append(name)
             # argument declarations
             if meta["assumedtype"]:
@@ -1076,18 +1089,39 @@ rv = .false.
                 elif meta["dimension"]:
                     arg_c_decl.append(
                         "type(*) :: {}({})".format(
-                            name, attrs["dimension"])
+                            name, meta["dimension"])
                     )
                 else:
                     arg_c_decl.append(
                         "type(*) :: {}".format(name)
                     )
+#            elif "external" in attrs:
+#                # EXTERNAL is not compatible with BIND(C)
+#                arg_c_decl.append("external :: {}".format(name))
+            elif ntypemap.base == "procedure":
+                if "funptr" in attrs:
+                    arg_c_decl.append(
+                        "type(C_FUNPTR), value :: {}".format(name)
+                    )
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                else:
+                    # abstract interface already created via typedef
+                    arg_c_decl.append(
+                        "procedure({}) :: {}".format(fmt.f_kind, name)
+                    )
+                    imports[fmt.f_kind] = True
             elif declarator.is_function_pointer():
-                absiface = self.add_abstract_interface(node, ast, fileinfo)
-                arg_c_decl.append(
-                    "procedure({}) :: {}".format(absiface, name)
-                )
-                imports[absiface] = True
+                if "funptr" in attrs:
+                    arg_c_decl.append(
+                        "type(C_FUNPTR), value :: {}".format(name)
+                    )
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                else:
+                    absiface = self.add_abstract_interface(node, ast, fileinfo)
+                    arg_c_decl.append(
+                        "procedure({}) :: {}".format(absiface, name)
+                    )
+                    imports[absiface] = True
             elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
@@ -1568,15 +1602,35 @@ rv = .false.
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)
                 continue
-            elif f_declarator.is_function_pointer():
-                absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                if "external" in f_attrs:
-                    # external is similar to assumed type, in that it will
-                    # accept any function.  But external is not allowed
-                    # in bind(C), so make sure a wrapper is generated.
-                    arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
-                    need_wrapper = True
+            elif "external" in f_attrs:
+                # external is similar to assumed type, in that it will
+                # accept any function.  But external is not allowed
+                # in bind(C), so make sure a wrapper is generated.
+                arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
+                need_wrapper = True
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append(fmt_arg.f_var)
+                # function pointers are pass thru without any other action
+                continue
+            elif arg_typemap.base == "procedure":
+                if "funptr" in f_attrs:
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
                 else:
+                    # abstract interface already created via typedef
+                    arg_f_decl.append(
+                        "procedure({}) :: {}".format(fmt_arg.f_kind, fmt_arg.f_var)
+                    )
+                arg_f_names.append(fmt_arg.f_var)
+                arg_c_call.append(fmt_arg.f_var)
+                # function pointers are pass thru without any other action
+                continue
+            elif f_declarator.is_function_pointer():
+                if "funptr" in f_attrs:
+                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
+                else:
+                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     arg_f_decl.append(
                         "procedure({}) :: {}".format(absiface, fmt_arg.f_var)
                     )
