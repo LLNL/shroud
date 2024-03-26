@@ -519,10 +519,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_trim_char_in=True,
             F_auto_reference_count=False,
             F_create_generic=True,
-            wrap_c=True,
-            wrap_fortran=True,
-            wrap_python=False,
-            wrap_lua=False,
+            # wrap options are set in by command line options in main.py
+#            wrap_c=True,
+#            wrap_fortran=True,
+#            wrap_python=False,
+#            wrap_lua=False,
             doxygen=True,  # create doxygen comments
             literalinclude=False, # Create sphinx literalinclude markers
             literalinclude2=False, # Used with global identifiers
