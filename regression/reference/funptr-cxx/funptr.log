@@ -19,6 +19,7 @@ C c int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow))
 C f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 Close wrapfunptr.h
 Close wrapfunptr.cpp
+typedef TypeID
 typedef incrtype
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))

@@ -31,3 +31,5 @@ clean :
 	rm -f $(OBJS) *.mod funptr-c
 
 main.o : fruit.o wrapffunptr.o
+funptr.o : funptr.c funptr.h
+wrapfunptr.o : wrapfunptr.h funptr.h

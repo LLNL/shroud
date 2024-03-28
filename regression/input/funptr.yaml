@@ -50,7 +50,8 @@ declarations:
 # char * name argument will force a Fortran wrapper.
 # Use a typedef for function pointer.
 
-- decl: typedef void (*incrtype)(int i);
+- decl: typedef int TypeID
+- decl: typedef void (*incrtype)(int i, TypeID j);
 
 - decl: void callback2(const char *name, int ival, incrtype incr)
   doxygen:

@@ -39,4 +39,3 @@ main.o : fruit.o wrapffunptr.o
 funptr.o : funptr.cpp funptr.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 wrapfunptr.o : wrapfunptr.h funptr.h
-main.o : fruit.o wrapffunptr.o

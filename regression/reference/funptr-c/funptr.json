@@ -2298,6 +2298,49 @@
         ],
         "typedefs": [
             {
+                "<TYPEDEF>": "TypeID ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "TypeID",
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "TypeID"
+                },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
+                "name": "TypeID",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "TypeID": {}
+                    },
+                    "share": {
+                        "TypeID": {}
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "TypeID",
+                    "C_name_typedef": "TypeID",
+                    "F_name_api": "type_id",
+                    "F_name_typedef": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID"
+                }
+            },
+            {
                 "<TYPEDEF>": "incrtype ****************************************",
                 "ast": {
                     "declarator": {
@@ -2321,6 +2364,16 @@
                                     "int"
                                 ],
                                 "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "j",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
                             }
                         ],
                         "typemap_name": "void"
@@ -2366,6 +2419,16 @@
                                                         "int"
                                                     ],
                                                     "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "name": "j",
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    "specifier": [
+                                                        "TypeID"
+                                                    ],
+                                                    "typemap_name": "TypeID"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -2378,7 +2441,7 @@
                                         ],
                                         "typemap_name": "incrtype"
                                     },
-                                    "decl": "typedef void ( * incrtype)(int i)",
+                                    "decl": "typedef void ( * incrtype)(int i, TypeID j)",
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
@@ -2390,10 +2453,20 @@
                                                 "meta": {
                                                     "value": true
                                                 }
+                                            },
+                                            "j": {
+                                                "meta": {
+                                                    "value": true
+                                                }
                                             }
                                         },
                                         "share": {
                                             "i": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "j": {
                                                 "meta": {
                                                     "value": true
                                                 }
@@ -2436,6 +2509,16 @@
                                                         "int"
                                                     ],
                                                     "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "name": "j",
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    "specifier": [
+                                                        "TypeID"
+                                                    ],
+                                                    "typemap_name": "TypeID"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -2448,7 +2531,7 @@
                                         ],
                                         "typemap_name": "incrtype"
                                     },
-                                    "decl": "typedef void ( * incrtype)(int i)",
+                                    "decl": "typedef void ( * incrtype)(int i, TypeID j)",
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
@@ -2460,10 +2543,20 @@
                                                 "meta": {
                                                     "value": true
                                                 }
+                                            },
+                                            "j": {
+                                                "meta": {
+                                                    "value": true
+                                                }
                                             }
                                         },
                                         "share": {
                                             "i": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "j": {
                                                 "meta": {
                                                     "value": true
                                                 }
@@ -2495,6 +2588,40 @@
         }
     },
     "types": {
+        "TypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_type": "TypeID",
+            "cfi_type": "CFI_type_int",
+            "cxx_type": "TypeID",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "type_id",
+            "f_module": {
+                "funptr_mod": [
+                    "type_id"
+                ]
+            },
+            "f_module_name": "funptr_mod",
+            "f_type": "integer(type_id)",
+            "flat_name": "int",
+            "i_module": {
+                "funptr_mod": [
+                    "type_id"
+                ]
+            },
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wrapfunptr.h"
+            ]
+        },
         "incrtype": {
             "base": "procedure",
             "c_type": "incrtype",

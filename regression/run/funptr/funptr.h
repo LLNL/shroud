@@ -16,7 +16,8 @@ void callback1_wrap(void (*incr)(void));
 void callback1_external(void (*incr)(void));
 void callback1_funptr(void (*incr)(void));
 
-typedef void (*incrtype)(int i);
+typedef int TypeID;
+typedef void (*incrtype)(int i, TypeID j);
 typedef void (*incrtype_d)(double i);
 typedef int (*incrtype_fun)(int i);
 
