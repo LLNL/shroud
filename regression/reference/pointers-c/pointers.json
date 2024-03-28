@@ -48,24 +48,9 @@
                 "name": "intargs_in",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -95,15 +80,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "intargs_in(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "intargs_in",
-                            "C_prototype": "const int * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_intargs_in",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "intargs_in(\targ)",
                             "C_call_list": "arg",
@@ -121,23 +97,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -210,24 +169,9 @@
                 "name": "intargs_inout",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -257,15 +201,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "intargs_inout(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "intargs_inout",
-                            "C_prototype": "int * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_intargs_inout",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "intargs_inout(\targ)",
                             "C_call_list": "arg",
@@ -283,23 +218,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -372,24 +290,9 @@
                 "name": "intargs_out",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -419,15 +322,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "intargs_out(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "intargs_out",
-                            "C_prototype": "int * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_intargs_out",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "intargs_out(\targ)",
                             "C_call_list": "arg",
@@ -445,23 +339,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -566,37 +443,9 @@
                 "name": "intargs",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "argin": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "arginout": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_native_*"
-                        },
-                        "argout": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -650,15 +499,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "intargs(\targin,\t arginout,\t argout)",
-                            "C_call_list": "argin,\t arginout,\t argout",
-                            "C_name": "intargs",
-                            "C_prototype": "const int argin,\t int * arginout,\t int * argout",
-                            "C_return_type": "void",
-                            "F_C_name": "c_intargs",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "intargs(\targin,\t arginout,\t argout)",
                             "C_call_list": "argin,\t arginout,\t argout",
@@ -676,23 +516,6 @@
                         }
                     },
                     "argin": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "const ",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "argin",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "(int *) &argin",
-                            "cxx_type": "int",
-                            "cxx_var": "argin",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "const ",
@@ -719,23 +542,6 @@
                         }
                     },
                     "arginout": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arginout",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arginout",
-                            "cxx_type": "int",
-                            "cxx_var": "arginout",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -762,23 +568,6 @@
                         }
                     },
                     "argout": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "argout",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "argout",
-                            "cxx_type": "int",
-                            "cxx_var": "argout",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -888,49 +677,9 @@
                 "name": "cos_doubles",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "in": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_native_*"
-                        },
-                        "out": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "args": [
-                                            {
-                                                "name": "in"
-                                            }
-                                        ],
-                                        "name": "size"
-                                    }
-                                ],
-                                "dimension": "size(in)",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "sizein": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1008,15 +757,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "cos_doubles(\tin,\t out,\t sizein)",
-                            "C_call_list": "in,\t out,\t sizein",
-                            "C_name": "cos_doubles",
-                            "C_prototype": "double * in,\t double * out,\t int sizein",
-                            "C_return_type": "void",
-                            "F_C_name": "c_cos_doubles",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "cos_doubles(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
@@ -1034,23 +774,6 @@
                         }
                     },
                     "in": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double",
-                            "c_var": "in",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "in",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1081,25 +804,6 @@
                         }
                     },
                     "out": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "size(*in)",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double",
-                            "c_var": "out",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "out",
-                            "cxx_type": "double",
-                            "cxx_var": "out",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "size(*in)",
@@ -1130,23 +834,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&sizein",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1257,49 +944,9 @@
                 "name": "truncate_to_int",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "in": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_native_*"
-                        },
-                        "out": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "args": [
-                                            {
-                                                "name": "in"
-                                            }
-                                        ],
-                                        "name": "size"
-                                    }
-                                ],
-                                "dimension": "size(in)",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "sizein": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1377,15 +1024,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "truncate_to_int(\tin,\t out,\t sizein)",
-                            "C_call_list": "in,\t out,\t sizein",
-                            "C_name": "truncate_to_int",
-                            "C_prototype": "double * in,\t int * out,\t int sizein",
-                            "C_return_type": "void",
-                            "F_C_name": "c_truncate_to_int",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "truncate_to_int(\tin,\t out,\t sizein)",
                             "C_call_list": "in,\t out,\t sizein",
@@ -1403,23 +1041,6 @@
                         }
                     },
                     "in": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double",
-                            "c_var": "in",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "in",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1450,25 +1071,6 @@
                         }
                     },
                     "out": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "size(*in)",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "out",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "out",
-                            "cxx_type": "int",
-                            "cxx_var": "out",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "size(*in)",
@@ -1499,23 +1101,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&sizein",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1612,36 +1197,9 @@
                 "name": "get_values",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nvalues": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "values": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1694,15 +1252,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "get_values(\tnvalues,\t values)",
-                            "C_call_list": "nvalues,\t values",
-                            "C_name": "get_values",
-                            "C_prototype": "int * nvalues,\t int * values",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_values",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "get_values(\tnvalues,\t values)",
                             "C_call_list": "nvalues,\t values",
@@ -1720,23 +1269,6 @@
                         }
                     },
                     "nvalues": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "nvalues",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nvalues",
-                            "cxx_type": "int",
-                            "cxx_var": "nvalues",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1763,25 +1295,6 @@
                         }
                     },
                     "values": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "3",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "values",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "3",
@@ -1882,42 +1395,9 @@
                 "name": "get_values2",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "arg2": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1982,15 +1462,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "get_values2(\targ1,\t arg2)",
-                            "C_call_list": "arg1,\t arg2",
-                            "C_name": "get_values2",
-                            "C_prototype": "int * arg1,\t int * arg2",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_values2",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "get_values2(\targ1,\t arg2)",
                             "C_call_list": "arg1,\t arg2",
@@ -2008,25 +1479,6 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "3",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "int",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "3",
@@ -2057,25 +1509,6 @@
                         }
                     },
                     "arg2": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "3",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg2",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg2",
-                            "cxx_type": "int",
-                            "cxx_var": "arg2",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "3",
@@ -2163,37 +1596,9 @@
                 "name": "iota_dimension",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nvar": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "values": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "name": "nvar"
-                                    }
-                                ],
-                                "dimension": "nvar",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2248,15 +1653,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "iota_dimension(\tnvar,\t values)",
-                            "C_call_list": "nvar,\t values",
-                            "C_name": "iota_dimension",
-                            "C_prototype": "int nvar,\t int * values",
-                            "C_return_type": "void",
-                            "F_C_name": "c_iota_dimension",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "iota_dimension(\tnvar,\t values)",
                             "C_call_list": "nvar,\t values",
@@ -2274,23 +1670,6 @@
                         }
                     },
                     "nvar": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "nvar",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&nvar",
-                            "cxx_type": "int",
-                            "cxx_var": "nvar",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2317,25 +1696,6 @@
                         }
                     },
                     "values": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "nvar",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "values",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "nvar",
@@ -2446,38 +1806,9 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "len": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "result": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "values": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2533,15 +1864,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Sum(\tlen,\t values,\t result)",
-                            "C_call_list": "len,\t values,\t result",
-                            "C_name": "Sum",
-                            "C_prototype": "int len,\t const int * values,\t int * result",
-                            "C_return_type": "void",
-                            "F_C_name": "c_sum",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "Sum(\tlen,\t values,\t result)",
                             "C_call_list": "len,\t values,\t result",
@@ -2559,23 +1881,6 @@
                         }
                     },
                     "len": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "len",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2603,23 +1908,6 @@
                         }
                     },
                     "result": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "result",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "result",
-                            "cxx_type": "int",
-                            "cxx_var": "result",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2646,23 +1934,6 @@
                         }
                     },
                     "values": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) values",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -2743,30 +2014,9 @@
                 "name": "fillIntArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "out": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2808,15 +2058,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "fillIntArray(\tout)",
-                            "C_call_list": "out",
-                            "C_name": "fillIntArray",
-                            "C_prototype": "int * out",
-                            "C_return_type": "void",
-                            "F_C_name": "c_fill_int_array",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "fillIntArray(\tout)",
                             "C_call_list": "out",
@@ -2834,25 +2075,6 @@
                         }
                     },
                     "out": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "3",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "out",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "out",
-                            "cxx_type": "int",
-                            "cxx_var": "out",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "3",
@@ -2946,32 +2168,9 @@
                 "name": "incrementIntArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "array": {
-                            "meta": {
-                                "intent": "inout",
-                                "rank": 1
-                            },
-                            "stmt": "c_inout_native_*"
-                        },
-                        "sizein": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3016,15 +2215,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "incrementIntArray(\tarray,\t sizein)",
-                            "C_call_list": "array,\t sizein",
-                            "C_name": "incrementIntArray",
-                            "C_prototype": "int * array,\t int sizein",
-                            "C_return_type": "void",
-                            "F_C_name": "c_increment_int_array",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "incrementIntArray(\tarray,\t sizein)",
                             "C_call_list": "array,\t sizein",
@@ -3042,23 +2232,6 @@
                         }
                     },
                     "array": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "array",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "array",
-                            "cxx_type": "int",
-                            "cxx_var": "array",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3089,23 +2262,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "sizein",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&sizein",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3192,32 +2348,9 @@
                 "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "x": {
-                            "meta": {
-                                "intent": "inout",
-                                "rank": 1
-                            },
-                            "stmt": "c_inout_native_*"
-                        },
-                        "x_length": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3262,15 +2395,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "fill_with_zeros(\tx,\t x_length)",
-                            "C_call_list": "x,\t x_length",
-                            "C_name": "fill_with_zeros",
-                            "C_prototype": "double * x,\t int x_length",
-                            "C_return_type": "void",
-                            "F_C_name": "c_fill_with_zeros",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "fill_with_zeros(\tx,\t x_length)",
                             "C_call_list": "x,\t x_length",
@@ -3288,23 +2412,6 @@
                         }
                     },
                     "x": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double",
-                            "c_var": "x",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "x",
-                            "cxx_type": "double",
-                            "cxx_var": "x",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3335,23 +2442,6 @@
                         }
                     },
                     "x_length": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "x_length",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&x_length",
-                            "cxx_type": "int",
-                            "cxx_var": "x_length",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3439,32 +2529,9 @@
                 "name": "accumulate",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arr": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_native_*"
-                        },
-                        "len": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3509,28 +2576,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "accumulate(\tarr,\t len)",
-                            "C_call_list": "arr,\t len",
-                            "C_name": "accumulate",
-                            "C_prototype": "const int * arr,\t size_t len",
-                            "C_return_type": "int",
-                            "F_C_name": "c_accumulate",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "accumulate(\tarr,\t len)",
                             "C_call_list": "arr,\t len",
@@ -3570,23 +2615,6 @@
                         }
                     },
                     "arr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arr",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) arr",
-                            "cxx_type": "int",
-                            "cxx_var": "arr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -3617,23 +2645,6 @@
                         }
                     },
                     "len": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "size_t",
-                            "c_var": "len",
-                            "cfi_type": "CFI_type_size_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&len",
-                            "cxx_type": "size_t",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3719,25 +2730,9 @@
                 "name": "acceptCharArrayIn",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "names": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_char_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3770,37 +2765,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptCharArrayIn(\tnames)",
-                            "C_call_list": "names",
-                            "C_name": "acceptCharArrayIn",
-                            "C_prototype": "char **names",
-                            "C_return_type": "int",
-                            "F_C_arguments": "names",
-                            "F_C_name": "c_accept_char_array_in",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptCharArrayIn(\tSHCXX_names)",
                             "C_call_list": "SHCXX_names",
@@ -3841,33 +2805,6 @@
                         }
                     },
                     "names": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "names",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "names",
-                            "cxx_type": "char",
-                            "cxx_var": "names",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "names",
-                            "i_dimension": "(*)",
-                            "i_var": "names",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "size": "size(names)",
-                            "stmt_name": "c_in_char_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3942,25 +2879,9 @@
                 "name": "setGlobalInt",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "value": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3992,15 +2913,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "setGlobalInt(\tvalue)",
-                            "C_call_list": "value",
-                            "C_name": "setGlobalInt",
-                            "C_prototype": "int value",
-                            "C_return_type": "void",
-                            "F_C_name": "c_set_global_int",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "setGlobalInt(\tvalue)",
                             "C_call_list": "value",
@@ -4018,23 +2930,6 @@
                         }
                     },
                     "value": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "value",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&value",
-                            "cxx_type": "int",
-                            "cxx_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -4091,18 +2986,9 @@
                 "name": "sumFixedArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4121,27 +3007,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "sumFixedArray(\t)",
-                            "C_name": "sumFixedArray",
-                            "C_prototype": "void",
-                            "C_return_type": "int",
-                            "F_C_name": "c_sum_fixed_array",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "sumFixedArray(\t)",
                             "C_name": "sumFixedArray",
@@ -4238,24 +3103,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nitems": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4287,17 +3137,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToScalar(\tnitems)",
-                            "C_call_list": "nitems",
-                            "C_name": "getPtrToScalar",
-                            "C_prototype": "int * * nitems",
-                            "C_return_type": "void",
-                            "F_C_arguments": "nitems",
-                            "F_C_name": "c_get_ptr_to_scalar",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToScalar(\t&nitems)",
                             "C_call_list": "&nitems",
@@ -4316,29 +3155,6 @@
                         }
                     },
                     "nitems": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "nitems",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nitems",
-                            "cxx_type": "int",
-                            "cxx_var": "nitems",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "nitems",
-                            "i_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -4431,30 +3247,9 @@
                 "name": "getPtrToFixedArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4498,17 +3293,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToFixedArray(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getPtrToFixedArray",
-                            "C_prototype": "int * * count",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count",
-                            "F_C_name": "c_get_ptr_to_fixed_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToFixedArray(\t&count)",
                             "C_call_list": "&count",
@@ -4527,33 +3311,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "10",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
@@ -4673,36 +3430,9 @@
                 "name": "getPtrToDynamicArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "name": "ncount"
-                                    }
-                                ],
-                                "dimension": "ncount",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        },
-                        "ncount": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4758,17 +3488,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToDynamicArray(\tcount,\t ncount)",
-                            "C_call_list": "count,\t ncount",
-                            "C_name": "getPtrToDynamicArray",
-                            "C_prototype": "int * * count,\t int * ncount",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count,\t ncount",
-                            "F_C_name": "c_get_ptr_to_dynamic_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToDynamicArray(\t&count,\t &ncount)",
                             "C_call_list": "&count,\t &ncount",
@@ -4787,33 +3506,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "ncount",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(ncount)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
@@ -4853,29 +3545,6 @@
                         }
                     },
                     "ncount": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "ncount",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "ncount",
-                            "cxx_type": "int",
-                            "cxx_var": "ncount",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "ncount",
-                            "i_var": "ncount",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -4962,31 +3631,9 @@
                 "name": "getPtrToFuncArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "args": [],
-                                        "name": "getLen"
-                                    }
-                                ],
-                                "dimension": "getLen()",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5032,17 +3679,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToFuncArray(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getPtrToFuncArray",
-                            "C_prototype": "int * * count",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count",
-                            "F_C_name": "c_get_ptr_to_func_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToFuncArray(\t&count)",
                             "C_call_list": "&count",
@@ -5061,33 +3697,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "getLen()",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(getLen())",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = getLen();",
@@ -5187,24 +3796,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nitems": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5236,17 +3830,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToConstScalar(\tnitems)",
-                            "C_call_list": "nitems",
-                            "C_name": "getPtrToConstScalar",
-                            "C_prototype": "const int * * nitems",
-                            "C_return_type": "void",
-                            "F_C_arguments": "nitems",
-                            "F_C_name": "c_get_ptr_to_const_scalar",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToConstScalar(\t&nitems)",
                             "C_call_list": "&nitems",
@@ -5265,29 +3848,6 @@
                         }
                     },
                     "nitems": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "nitems",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) nitems",
-                            "cxx_type": "int",
-                            "cxx_var": "nitems",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "nitems",
-                            "i_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -5378,30 +3938,9 @@
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5445,17 +3984,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToFixedConstArray(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getPtrToFixedConstArray",
-                            "C_prototype": "const int * * count",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count",
-                            "F_C_name": "c_get_ptr_to_fixed_const_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToFixedConstArray(\t&count)",
                             "C_call_list": "&count",
@@ -5474,33 +4002,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "10",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
@@ -5618,36 +4119,9 @@
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "name": "ncount"
-                                    }
-                                ],
-                                "dimension": "ncount",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        },
-                        "ncount": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5703,17 +4177,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getPtrToDynamicConstArray(\tcount,\t ncount)",
-                            "C_call_list": "count,\t ncount",
-                            "C_name": "getPtrToDynamicConstArray",
-                            "C_prototype": "const int * * count,\t int * ncount",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count,\t ncount",
-                            "F_C_name": "c_get_ptr_to_dynamic_const_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getPtrToDynamicConstArray(\t&count,\t &ncount)",
                             "C_call_list": "&count,\t &ncount",
@@ -5732,33 +4195,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "ncount",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(ncount)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
@@ -5798,29 +4234,6 @@
                         }
                     },
                     "ncount": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "ncount",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "ncount",
-                            "cxx_type": "int",
-                            "cxx_var": "ncount",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "ncount",
-                            "i_var": "ncount",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -5899,24 +4312,9 @@
                 "name": "getRawPtrToScalar",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nitems": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5947,15 +4345,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getRawPtrToScalar(\tnitems)",
-                            "C_call_list": "nitems",
-                            "C_name": "getRawPtrToScalar",
-                            "C_prototype": "int * * nitems",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_raw_ptr_to_scalar",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getRawPtrToScalar(\tnitems)",
                             "C_call_list": "nitems",
@@ -5973,23 +4362,6 @@
                         }
                     },
                     "nitems": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "nitems",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nitems",
-                            "cxx_type": "int",
-                            "cxx_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6072,24 +4444,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "nitems": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6120,15 +4477,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getRawPtrToScalarForce(\tnitems)",
-                            "C_call_list": "nitems",
-                            "C_name": "getRawPtrToScalarForce",
-                            "C_prototype": "int * * nitems",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_raw_ptr_to_scalar_force",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getRawPtrToScalarForce(\tnitems)",
                             "C_call_list": "nitems",
@@ -6146,23 +4494,6 @@
                         }
                     },
                     "nitems": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "nitems",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nitems",
-                            "cxx_type": "int",
-                            "cxx_var": "nitems",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6242,24 +4573,9 @@
                 "name": "getRawPtrToFixedArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6290,15 +4606,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getRawPtrToFixedArray(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getRawPtrToFixedArray",
-                            "C_prototype": "int * * count",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_raw_ptr_to_fixed_array",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getRawPtrToFixedArray(\tcount)",
                             "C_call_list": "count",
@@ -6316,23 +4623,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6415,24 +4705,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6463,15 +4738,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getRawPtrToFixedArrayForce(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getRawPtrToFixedArrayForce",
-                            "C_prototype": "int * * count",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getRawPtrToFixedArrayForce(\tcount)",
                             "C_call_list": "count",
@@ -6489,23 +4755,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6589,24 +4838,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_***"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6636,15 +4870,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getRawPtrToInt2d(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "getRawPtrToInt2d",
-                            "C_prototype": "int * * * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_get_raw_ptr_to_int2d",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getRawPtrToInt2d(\targ)",
                             "C_call_list": "arg",
@@ -6662,23 +4887,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_***"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6759,24 +4967,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6806,28 +4999,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "checkInt2d(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "checkInt2d",
-                            "C_prototype": "int **arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_check_int2d",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "checkInt2d(\targ)",
                             "C_call_list": "arg",
@@ -6867,23 +5038,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -6963,33 +5117,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    },
-                                    {
-                                        "constant": "20"
-                                    }
-                                ],
-                                "dimension": "10,20",
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -7037,15 +5167,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "DimensionIn(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "DimensionIn",
-                            "C_prototype": "const int * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_dimension_in",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "DimensionIn(\targ)",
                             "C_call_list": "arg",
@@ -7063,25 +5184,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "10*\t20",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) arg",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "rank": "2",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_size2": "10*\t20",
@@ -7179,30 +5281,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "count": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -7246,17 +5327,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "getAllocToFixedArray(\tcount)",
-                            "C_call_list": "count",
-                            "C_name": "getAllocToFixedArray",
-                            "C_prototype": "int * * count",
-                            "C_return_type": "void",
-                            "F_C_arguments": "count",
-                            "F_C_name": "c_get_alloc_to_fixed_array",
-                            "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "getAllocToFixedArray(\t&count)",
                             "C_call_list": "&count",
@@ -7275,33 +5345,6 @@
                         }
                     },
                     "count": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_array_size2": "10",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "count",
-                            "i_var": "count",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
@@ -7391,25 +5434,9 @@
                 "name": "returnAddress1",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_void_*"
-                        },
-                        "flag": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -7441,28 +5468,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnAddress1(\tflag)",
-                            "C_call_list": "flag",
-                            "C_name": "returnAddress1",
-                            "C_prototype": "int flag",
-                            "C_return_type": "void *",
-                            "F_C_name": "c_return_address1",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "void",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "void * SHC_rv",
-                            "cxx_type": "void",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_function_void_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnAddress1(\tflag)",
                             "C_call_list": "flag",
@@ -7501,23 +5506,6 @@
                         }
                     },
                     "flag": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -7589,25 +5577,9 @@
                     "F_force_wrapper": true
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_void_*"
-                        },
-                        "flag": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -7639,28 +5611,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnAddress2(\tflag)",
-                            "C_call_list": "flag",
-                            "C_name": "returnAddress2",
-                            "C_prototype": "int flag",
-                            "C_return_type": "void *",
-                            "F_C_name": "c_return_address2",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "void",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "void * SHC_rv",
-                            "cxx_type": "void",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_function_void_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnAddress2(\tflag)",
                             "C_call_list": "flag",
@@ -7699,23 +5649,6 @@
                         }
                     },
                     "flag": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -7791,24 +5724,9 @@
                 "name": "fetchVoidPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "addr": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_void_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -7838,15 +5756,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "fetchVoidPtr(\taddr)",
-                            "C_call_list": "addr",
-                            "C_name": "fetchVoidPtr",
-                            "C_prototype": "void **addr",
-                            "C_return_type": "void",
-                            "F_C_name": "c_fetch_void_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "fetchVoidPtr(\taddr)",
                             "C_call_list": "addr",
@@ -7864,23 +5773,6 @@
                         }
                     },
                     "addr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "addr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
-                            "cxx_type": "void",
-                            "cxx_var": "addr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_out_void_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -7958,24 +5850,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "addr": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_void_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8005,15 +5882,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "updateVoidPtr(\taddr)",
-                            "C_call_list": "addr",
-                            "C_name": "updateVoidPtr",
-                            "C_prototype": "void **addr",
-                            "C_return_type": "void",
-                            "F_C_name": "c_update_void_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "updateVoidPtr(\taddr)",
                             "C_call_list": "addr",
@@ -8031,23 +5899,6 @@
                         }
                     },
                     "addr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "addr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
-                            "cxx_type": "void",
-                            "cxx_var": "addr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_inout_void_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -8125,25 +5976,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "addr": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_void_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8175,28 +6010,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "VoidPtrArray(\taddr)",
-                            "C_call_list": "addr",
-                            "C_name": "VoidPtrArray",
-                            "C_prototype": "void **addr",
-                            "C_return_type": "int",
-                            "F_C_name": "c_void_ptr_array",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "VoidPtrArray(\taddr)",
                             "C_call_list": "addr",
@@ -8236,23 +6049,6 @@
                         }
                     },
                     "addr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "addr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
-                            "cxx_type": "void",
-                            "cxx_var": "addr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_**"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -8314,18 +6110,9 @@
                 "name": "returnIntPtrToScalar",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8345,36 +6132,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntPtrToScalar(\t)",
-                            "C_name": "returnIntPtrToScalar",
-                            "C_prototype": "void",
-                            "C_return_type": "int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_ptr_to_scalar",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntPtrToScalar(\t)",
                             "C_name": "POI_returnIntPtrToScalar_bufferify",
@@ -8457,24 +6214,9 @@
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8507,40 +6249,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntPtrToFixedArray(\t)",
-                            "C_name": "returnIntPtrToFixedArray",
-                            "C_prototype": "void",
-                            "C_return_type": "int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_ptr_to_fixed_array",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_array_size2": "10",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntPtrToFixedArray(\t)",
                             "C_name": "POI_returnIntPtrToFixedArray_bufferify",
@@ -8625,18 +6333,9 @@
                 "name": "returnIntPtrToConstScalar",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8656,36 +6355,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntPtrToConstScalar(\t)",
-                            "C_name": "returnIntPtrToConstScalar",
-                            "C_prototype": "void",
-                            "C_return_type": "const int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_ptr_to_const_scalar",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "const ",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) SHC_rv",
-                            "cxx_rv_decl": "const int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntPtrToConstScalar(\t)",
                             "C_name": "POI_returnIntPtrToConstScalar_bufferify",
@@ -8769,24 +6438,9 @@
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8819,40 +6473,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntPtrToFixedConstArray(\t)",
-                            "C_name": "returnIntPtrToFixedConstArray",
-                            "C_prototype": "void",
-                            "C_return_type": "const int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_ptr_to_fixed_const_array",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_array_size2": "10",
-                            "c_const": "const ",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(int *) SHC_rv",
-                            "cxx_rv_decl": "const int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntPtrToFixedConstArray(\t)",
                             "C_name": "POI_returnIntPtrToFixedConstArray_bufferify",
@@ -8939,18 +6559,9 @@
                 "name": "returnIntScalar",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -8970,36 +6581,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntScalar(\t)",
-                            "C_name": "returnIntScalar",
-                            "C_prototype": "void",
-                            "C_return_type": "int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_scalar",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntScalar(\t)",
                             "C_name": "POI_returnIntScalar_bufferify",
@@ -9077,18 +6658,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -9108,27 +6680,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntRaw(\t)",
-                            "C_name": "returnIntRaw",
-                            "C_prototype": "void",
-                            "C_return_type": "int *",
-                            "F_C_name": "c_return_int_raw",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntRaw(\t)",
                             "C_name": "returnIntRaw",
@@ -9223,24 +6774,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        },
-                        "name": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -9272,28 +6808,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntRawWithArgs(\tname)",
-                            "C_call_list": "name",
-                            "C_name": "returnIntRawWithArgs",
-                            "C_prototype": "const char * name",
-                            "C_return_type": "int *",
-                            "F_C_name": "c_return_int_raw_with_args",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntRawWithArgs(\tname)",
                             "C_call_list": "name",
@@ -9333,23 +6847,6 @@
                         }
                     },
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -9417,18 +6914,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_**"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -9447,27 +6935,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnRawPtrToInt2d(\t)",
-                            "C_name": "returnRawPtrToInt2d",
-                            "C_prototype": "void",
-                            "C_return_type": "int * *",
-                            "F_C_name": "c_return_raw_ptr_to_int2d",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_**"
-                        },
                         "fmtf": {
                             "C_call_function": "returnRawPtrToInt2d(\t)",
                             "C_name": "returnRawPtrToInt2d",
@@ -9554,24 +7021,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "10"
-                                    }
-                                ],
-                                "dimension": "10",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -9604,40 +7056,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnIntAllocToFixedArray(\t)",
-                            "C_name": "returnIntAllocToFixedArray",
-                            "C_prototype": "void",
-                            "C_return_type": "int *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_int_alloc_to_fixed_array",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_array_size2": "10",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "int * SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_array_allocate": "(10)",
-                            "f_assumed_shape": "(:)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnIntAllocToFixedArray(\t)",
                             "C_name": "POI_returnIntAllocToFixedArray_bufferify",
@@ -9711,7 +7129,6 @@
             "pointers"
         ],
         "wrap": {
-            "c": true,
             "fortran": true
         }
     }

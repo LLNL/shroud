@@ -55,60 +55,9 @@
                 "name": "callback1",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
-                                            "params": [],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -144,7 +93,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -193,7 +141,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -210,15 +157,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback1(\tincr)",
-                            "C_call_list": "incr",
-                            "C_name": "callback1",
-                            "C_prototype": "void ( * incr)(\tvoid)",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback1",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback1(\tincr)",
                             "C_call_list": "incr",
@@ -236,23 +174,6 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -332,60 +253,9 @@
                     "F_force_wrapper": true
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
-                                            "params": [],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -421,7 +291,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -470,7 +339,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -487,15 +355,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback1_wrap(\tincr)",
-                            "C_call_list": "incr",
-                            "C_name": "callback1_wrap",
-                            "C_prototype": "void ( * incr)(\tvoid)",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback1_wrap",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback1_wrap(\tincr)",
                             "C_call_list": "incr",
@@ -513,23 +372,6 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -609,63 +451,9 @@
                 "name": "callback1_external",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "attrs": {
-                                                "external": true
-                                            },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
-                                            "params": [],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "decl": "void ( * incr)(void) +external",
-                                    "name": "incr",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -704,7 +492,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -756,7 +543,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -773,15 +559,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback1_external(\tincr)",
-                            "C_call_list": "incr",
-                            "C_name": "callback1_external",
-                            "C_prototype": "void ( * incr)(\tvoid)",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback1_external",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback1_external(\tincr)",
                             "C_call_list": "incr",
@@ -799,23 +576,6 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -898,63 +658,9 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "attrs": {
-                                                "funptr": true
-                                            },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
-                                            "params": [],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -993,7 +699,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -1045,7 +750,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -1062,15 +766,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback1_funptr(\tincr)",
-                            "C_call_list": "incr",
-                            "C_name": "callback1_funptr",
-                            "C_prototype": "void ( * incr)(\tvoid)",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback1_funptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback1_funptr(\tincr)",
                             "C_call_list": "incr",
@@ -1088,23 +783,6 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1197,38 +875,9 @@
                 "name": "callback2",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_procedure_scalar"
-                        },
-                        "ival": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1285,20 +934,11 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback2(\tname,\t ival,\t incr)",
-                            "C_call_list": "name,\t ival,\t incr",
-                            "C_name": "callback2",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback2",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback2(\tname,\t ival,\t incr)",
                             "C_call_list": "name,\t ival,\t incr",
                             "C_name": "callback2",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
+                            "C_prototype": "const char * name,\t int ival,\t --NOTYPE-- incr",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t ival,\t incr",
                             "F_C_call": "c_callback2",
@@ -1311,29 +951,12 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "FUN_incrtype",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "incrtype",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_procedure_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "FUN_incrtype",
+                            "c_type": "",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "&",
@@ -1354,23 +977,6 @@
                         }
                     },
                     "ival": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "ival",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ival",
-                            "cxx_type": "int",
-                            "cxx_var": "ival",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1397,23 +1003,6 @@
                         }
                     },
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -1510,38 +1099,9 @@
                 "name": "callback2_external",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_procedure_scalar"
-                        },
-                        "ival": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1598,20 +1158,11 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback2_external(\tname,\t ival,\t incr)",
-                            "C_call_list": "name,\t ival,\t incr",
-                            "C_name": "callback2_external",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback2_external",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback2_external(\tname,\t ival,\t incr)",
                             "C_call_list": "name,\t ival,\t incr",
                             "C_name": "callback2_external",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
+                            "C_prototype": "const char * name,\t int ival,\t --NOTYPE-- incr",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t ival,\t incr",
                             "F_C_call": "c_callback2_external",
@@ -1624,29 +1175,12 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "FUN_incrtype",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "incrtype",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_procedure_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "FUN_incrtype",
+                            "c_type": "",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "&",
@@ -1667,23 +1201,6 @@
                         }
                     },
                     "ival": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "ival",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ival",
-                            "cxx_type": "int",
-                            "cxx_var": "ival",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -1710,23 +1227,6 @@
                         }
                     },
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -1824,38 +1324,9 @@
                 "name": "callback2_funptr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "incr": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_procedure_scalar"
-                        },
-                        "ival": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "name": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -1912,20 +1383,11 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback2_funptr(\tname,\t ival,\t incr)",
-                            "C_call_list": "name,\t ival,\t incr",
-                            "C_name": "callback2_funptr",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback2_funptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback2_funptr(\tname,\t ival,\t incr)",
                             "C_call_list": "name,\t ival,\t incr",
                             "C_name": "callback2_funptr",
-                            "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
+                            "C_prototype": "const char * name,\t int ival,\t --NOTYPE-- incr",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t ival,\t incr",
                             "F_C_call": "c_callback2_funptr",
@@ -1938,29 +1400,12 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "FUN_incrtype",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "incrtype",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_procedure_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "FUN_incrtype",
+                            "c_type": "",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "&",
@@ -1981,23 +1426,6 @@
                         }
                     },
                     "ival": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "ival",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&ival",
-                            "cxx_type": "int",
-                            "cxx_var": "ival",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2024,23 +1452,6 @@
                         }
                     },
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -2150,78 +1561,9 @@
                 "name": "callback3",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "in": {
-                            "meta": {
-                                "assumedtype": true,
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_*"
-                        },
-                        "incr": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "attrs": {
-                                                "funptr": true
-                                            },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
-                                            "params": [],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "typemap_name": "void"
-                                    },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_void_scalar"
-                        },
-                        "type": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2268,7 +1610,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -2334,7 +1675,6 @@
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_fmtdict": {
@@ -2357,15 +1697,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback3(\ttype,\t in,\t incr)",
-                            "C_call_list": "type,\t in,\t incr",
-                            "C_name": "callback3",
-                            "C_prototype": "int type,\t void * in,\t void ( * incr)(\tvoid)",
-                            "C_return_type": "void",
-                            "F_C_name": "c_callback3",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "callback3(\ttype,\t in,\t incr)",
                             "C_call_list": "type,\t in,\t incr",
@@ -2383,23 +1714,6 @@
                         }
                     },
                     "in": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "in",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "in",
-                            "cxx_type": "void",
-                            "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2425,23 +1739,6 @@
                         }
                     },
                     "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "void",
-                            "c_var": "incr",
-                            "cfi_type": "CFI_type_intptr_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2467,23 +1764,6 @@
                         }
                     },
                     "type": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "type",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&type",
-                            "cxx_type": "int",
-                            "cxx_var": "type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2626,137 +1906,9 @@
                 "name": "callback4",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "actor": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "actor  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "func": {
-                                                "name": "actor",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "actor",
-                                            "params": [
-                                                {
-                                                    "declarator": {
-                                                        "attrs": {
-                                                            "intent": "in",
-                                                            "rank": "1"
-                                                        },
-                                                        "name": "ilow",
-                                                        "pointer": [
-                                                            {
-                                                                "ptr": "*"
-                                                            }
-                                                        ],
-                                                        "typemap_name": "int"
-                                                    },
-                                                    "specifier": [
-                                                        "int"
-                                                    ],
-                                                    "typemap_name": "int"
-                                                },
-                                                {
-                                                    "declarator": {
-                                                        "attrs": {
-                                                            "intent": "in"
-                                                        },
-                                                        "name": "nargs",
-                                                        "typemap_name": "int"
-                                                    },
-                                                    "specifier": [
-                                                        "int"
-                                                    ],
-                                                    "typemap_name": "int"
-                                                }
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        "specifier": [
-                                            "int"
-                                        ],
-                                        "typemap_name": "int"
-                                    },
-                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
-                                    "name": "actor",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_bind": {
-                                        "f": {
-                                            "ilow": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "rank": 1
-                                                }
-                                            },
-                                            "nargs": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "value": true
-                                                }
-                                            }
-                                        },
-                                        "share": {
-                                            "ilow": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "rank": 1
-                                                }
-                                            },
-                                            "nargs": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "value": true
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "actor",
-                                        "F_name_api": "actor",
-                                        "function_name": "actor"
-                                    }
-                                },
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "ilow": {
-                            "meta": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "c_in_native_*"
-                        },
-                        "nargs": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2825,7 +1977,6 @@
                                     "name": "actor",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_bind": {
@@ -2951,7 +2102,6 @@
                                     "name": "actor",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_bind": {
@@ -3010,28 +2160,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
-                            "C_call_list": "ilow,\t nargs,\t actor",
-                            "C_name": "callback4",
-                            "C_prototype": "int * ilow,\t int nargs,\t int ( * actor)(\tint * ilow,\t int nargs)",
-                            "C_return_type": "int",
-                            "F_C_name": "c_callback4",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
                             "C_call_list": "ilow,\t nargs,\t actor",
@@ -3071,23 +2199,6 @@
                         }
                     },
                     "actor": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "actor",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&actor",
-                            "cxx_type": "int",
-                            "cxx_var": "actor",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3114,23 +2225,6 @@
                         }
                     },
                     "ilow": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "ilow",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "ilow",
-                            "cxx_type": "int",
-                            "cxx_var": "ilow",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3161,23 +2255,6 @@
                         }
                     },
                     "nargs": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "nargs",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&nargs",
-                            "cxx_type": "int",
-                            "cxx_var": "nargs",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3259,81 +2336,9 @@
                 "name": "incrtype",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "incrtype": {
-                            "meta": {
-                                "fptr": {
-                                    "<FUNCTION>": "incrtype  None ****************************************",
-                                    "ast": {
-                                        "declarator": {
-                                            "func": {
-                                                "name": "incrtype",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incrtype",
-                                            "params": [
-                                                {
-                                                    "declarator": {
-                                                        "name": "i",
-                                                        "typemap_name": "int"
-                                                    },
-                                                    "specifier": [
-                                                        "int"
-                                                    ],
-                                                    "typemap_name": "int"
-                                                }
-                                            ],
-                                            "typemap_name": "void"
-                                        },
-                                        "specifier": [
-                                            "void"
-                                        ],
-                                        "storage": [
-                                            "typedef"
-                                        ],
-                                        "typemap_name": "incrtype"
-                                    },
-                                    "decl": "typedef void ( * incrtype)(int i)",
-                                    "name": "incrtype",
-                                    "options": {},
-                                    "wrap": {
-                                        "c": true,
-                                        "fortran": true
-                                    },
-                                    "zz_bind": {
-                                        "f": {
-                                            "i": {
-                                                "meta": {
-                                                    "value": true
-                                                }
-                                            }
-                                        },
-                                        "share": {
-                                            "i": {
-                                                "meta": {
-                                                    "value": true
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtdict": {
-                                        "C_name_api": "incrtype",
-                                        "F_name_api": "incrtype",
-                                        "function_name": "incrtype"
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "f": {
                         "incrtype": {
                             "meta": {
@@ -3377,7 +2382,6 @@
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_bind": {
@@ -3448,7 +2452,6 @@
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
-                                        "c": true,
                                         "fortran": true
                                     },
                                     "zz_bind": {
@@ -3479,7 +2482,6 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "incrtype",
-                    "C_name_typedef": "FUN_incrtype",
                     "F_name_api": "incrtype",
                     "F_name_typedef": "incrtype",
                     "cxx_type": "incrtype",
@@ -3488,14 +2490,13 @@
             }
         ],
         "wrap": {
-            "c": true,
             "fortran": true
         }
     },
     "types": {
         "incrtype": {
             "base": "procedure",
-            "c_type": "FUN_incrtype",
+            "c_type": "",
             "cxx_type": "incrtype",
             "f_kind": "incrtype",
             "f_module": {

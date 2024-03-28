@@ -26,11 +26,11 @@ class WrapFlags(object):
     """Keep track of which languages to wrap.
     """
     def __init__(self, options):
-        self.fortran = options.wrap_fortran
-        self.c = options.wrap_c
+        self.fortran = options.get("wrap_fortran", False)
+        self.c = options.get("wrap_c", False)
         self.f_or_c = self.fortran or self.c
-        self.lua = options.wrap_lua
-        self.python = options.wrap_python
+        self.lua = options.get("wrap_lua", False)
+        self.python = options.get("wrap_python", False)
         self.signature_c = None
         self.signature_f = None
 

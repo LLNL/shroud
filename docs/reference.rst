@@ -519,6 +519,7 @@ wrap_struct_as
 wrap_c
   If *true*, create C wrappers.
   Defaults to *true*.
+  Will not have an effect if ``language=c``.
 
 wrap_fortran
   If *true*, create Fortran wrappers.

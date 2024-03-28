@@ -1,23 +1,13 @@
 Read yaml funptr.yaml
-C c void callback1(void ( * incr)(void))
 C f void callback1(void ( * incr)(void))
-C c void callback1_wrap(void ( * incr)(void))
 C f void callback1_wrap(void ( * incr)(void))
-C c void callback1_external(void ( * incr)(void) +external)
 C f void callback1_external(void ( * incr)(void) +external)
-C c void callback1_funptr(void ( * incr)(void) +funptr)
 C f void callback1_funptr(void ( * incr)(void) +funptr)
-C c void callback2(const char * name, int ival, incrtype incr)
 C f void callback2(const char * name, int ival, incrtype incr)
-C c void callback2_external(const char * name, int ival, incrtype incr +external)
 C f void callback2_external(const char * name, int ival, incrtype incr +external)
-C c void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C f void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
-C c void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 C f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
-C c int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
 C f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
-Close wrapfunptr.h
 typedef incrtype
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))

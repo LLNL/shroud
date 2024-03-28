@@ -18,20 +18,10 @@
 // shroud
 #include "typesClibrary.h"
 
-// typedef TypeID
-// splicer begin typedef.TypeID
-typedef int CLI_TypeID;
-// splicer end typedef.TypeID
-
-// typedef EnumTypeID
-// splicer begin typedef.EnumTypeID
-typedef int CLI_EnumTypeID;
-// splicer end typedef.EnumTypeID
-
 // splicer begin C_declarations
 // splicer end C_declarations
 
-double CLI_PassByValueMacro(int arg2);
+double CLI_PassByValueMacro_bufferify(int arg2);
 
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len);

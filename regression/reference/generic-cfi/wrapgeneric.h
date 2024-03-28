@@ -47,8 +47,6 @@ void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 #endif
 
-void GEN_SavePointer2(void * addr, int type, size_t size);
-
 void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 
@@ -63,9 +61,8 @@ void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
-GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv);
-
-long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew);
+GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
+    GEN_StructAsClass * SHC_rv);
 
 long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
     int inew);

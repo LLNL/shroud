@@ -29,7 +29,6 @@
                         "name": "i",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -60,7 +59,6 @@
                         "name": "d",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -78,7 +76,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -147,26 +144,10 @@
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -211,34 +192,12 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "typefunc(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "typefunc",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
-                            "F_C_name": "c_typefunc",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "TYP_TypeID",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_name": "typefunc",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
+                            "C_prototype": "--NOTYPE-- arg",
+                            "C_return_type": "--NOTYPE--",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc",
                             "F_C_name": "typefunc",
@@ -250,7 +209,7 @@
                             "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -288,29 +247,12 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "TYP_TypeID",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -332,7 +274,7 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
@@ -393,25 +335,10 @@
                 "name": "typestruct",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -453,20 +380,11 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "typestruct(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "typestruct",
-                            "C_prototype": "TYP_Struct1Rename * arg1",
-                            "C_return_type": "void",
-                            "F_C_name": "c_typestruct",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "typestruct(\targ1)",
                             "C_call_list": "arg1",
                             "C_name": "typestruct",
-                            "C_prototype": "TYP_Struct1Rename * arg1",
+                            "C_prototype": "--NOTYPE-- * arg1",
                             "C_return_type": "void",
                             "F_C_arguments": "arg1",
                             "F_C_call": "c_typestruct",
@@ -479,29 +397,12 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "TYP_Struct1Rename",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "Struct1Rename",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_inout_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_type": "TYP_Struct1Rename",
+                            "c_type": "",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
@@ -527,7 +428,7 @@
                             "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
-                            "c_type": "TYP_Struct1Rename",
+                            "c_type": "",
                             "c_var": "arg1",
                             "ctor_expr": "*arg1",
                             "cxx_addr": "",
@@ -586,25 +487,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -636,33 +521,11 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnBytesForIndexType(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "returnBytesForIndexType",
-                            "C_prototype": "TYP_IndexType arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_return_bytes_for_index_type",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "returnBytesForIndexType(\targ)",
                             "C_call_list": "arg",
                             "C_name": "returnBytesForIndexType",
-                            "C_prototype": "TYP_IndexType arg",
+                            "C_prototype": "--NOTYPE-- arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_return_bytes_for_index_type",
@@ -697,29 +560,12 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "TYP_IndexType",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int32_t",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "IndexType",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TYP_IndexType",
+                            "c_type": "",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
                             "cxx_addr": "&",
@@ -779,14 +625,10 @@
                 "name": "TypeID",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "TypeID": {}
-                    },
                     "f": {
                         "TypeID": {}
                     },
@@ -796,7 +638,6 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_name_typedef": "TYP_TypeID",
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
@@ -827,14 +668,10 @@
                 "name": "Struct1Rename",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "Struct1Rename": {}
-                    },
                     "f": {
                         "Struct1Rename": {}
                     },
@@ -844,7 +681,6 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "Struct1Rename",
-                    "C_name_typedef": "TYP_Struct1Rename",
                     "F_name_api": "struct1_rename",
                     "F_name_typedef": "struct1_rename",
                     "cxx_type": "Struct1Rename",
@@ -879,14 +715,10 @@
                     "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})"
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "IndexType": {}
-                    },
                     "f": {
                         "IndexType": {}
                     },
@@ -896,7 +728,6 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "IndexType",
-                    "C_name_typedef": "TYP_IndexType",
                     "F_name_api": "index_type",
                     "F_name_typedef": "index_type",
                     "cxx_type": "IndexType",
@@ -905,7 +736,6 @@
             }
         ],
         "wrap": {
-            "c": true,
             "fortran": true,
             "python": true
         }
@@ -929,7 +759,7 @@
                 "<stdint.h>"
             ],
             "c_to_cxx": "static_cast<IndexType>({c_var})",
-            "c_type": "TYP_IndexType",
+            "c_type": "",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
@@ -967,7 +797,7 @@
             "c_header": [
                 "typedefs.h"
             ],
-            "c_type": "TYP_Struct1Rename",
+            "c_type": "",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "Struct1Rename",
             "f_derived_type": "s_struct1",
@@ -1001,7 +831,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_type": "TYP_TypeID",
+            "c_type": "",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
             "f_cast": "int({f_var}, C_INT)",

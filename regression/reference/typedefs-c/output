@@ -1,5 +1,5 @@
+Will not generate C wrappers for a language=c library
 Wrote typedefs_types.yaml
-Wrote wraptypedefs.h
 Wrote wrapftypedefs.f
 Wrote utiltypedefs.c
 Wrote typestypedefs.h

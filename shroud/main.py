@@ -549,7 +549,11 @@ def main_with_args(args):
     if args.language:
         allinput['language'] = args.language
 
-    #    print(allinput)
+    language = util.find_language(allinput.get("language"))
+    wrap_c = allinput["options"]["wrap_c"]
+    if language == "c" and wrap_c:
+        allinput["options"]["wrap_c"] = False
+        print("Will not generate C wrappers for a language=c library")
 
     symtab = declast.SymbolTable()
     def_types = symtab.typemaps  #typemap.initialize()

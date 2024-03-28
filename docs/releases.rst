@@ -28,6 +28,11 @@ Changes to YAML input
 * C wrappers can now be generated independent of Fortran wrappers
   instead of just as a side effect of creating Fortran Wrappers.
 
+  Shroud will not generate a C wrapper (option *c_wrap=True*) when
+  language is ``c``.
+
+.. Fortran interfaces are not generated for the C library routines.
+  
   As part of this effort some uses of *fstatements* in the YAML file
   must be changed.  The C wrapper created for the Fortran wrapper to call
   is now considered part of the Fortran wrapper processing.

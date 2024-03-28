@@ -1,3 +1,4 @@
+Will not generate C wrappers for a language=c library
 Wrote struct_types.yaml
 Wrote wrapCstruct_as_class.h
 Wrote wrapCstruct_as_class.c
