@@ -24,6 +24,17 @@ declarations:
 - decl: typedef int TypeID;
 - decl: TypeID typefunc(TypeID arg);
 
+- decl: TypeID typefunc_wrap(TypeID arg);
+  options:
+    C_force_wrapper: True
+    wrap_python: False
+    wrap_lua: False
+  doxygen:
+    brief: Use typedef with a C wrapper
+    description: |
+      Use C_force_wrapper to ensure the typedef will be used
+      in the C wrapper.
+
 # struct typedef
 - decl: struct s_Struct1 {
           int i;

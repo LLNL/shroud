@@ -360,7 +360,207 @@
                 }
             },
             {
-                "<FUNCTION>": "typestruct  1 ****************************************",
+                "<FUNCTION>": "typefunc_wrap  1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "typefunc_wrap",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            }
+                        ],
+                        "typemap_name": "TypeID"
+                    },
+                    "specifier": [
+                        "TypeID"
+                    ],
+                    "typemap_name": "TypeID"
+                },
+                "decl": "TypeID typefunc_wrap(TypeID arg);",
+                "declgen": "TypeID typefunc_wrap(TypeID arg)",
+                "doxygen": {
+                    "brief": "Use typedef with a C wrapper",
+                    "description": "Use C_force_wrapper to ensure the typedef will be used\nin the C wrapper.\n"
+                },
+                "name": "typefunc_wrap",
+                "options": {
+                    "C_force_wrapper": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "typefunc_wrap(\targ)",
+                            "C_call_list": "arg",
+                            "C_name": "TYP_typefunc_wrap",
+                            "C_prototype": "TYP_TypeID arg",
+                            "C_return_type": "TYP_TypeID",
+                            "F_C_name": "c_typefunc_wrap",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "typefunc_wrap(\targ)",
+                            "C_call_list": "arg",
+                            "C_name": "TYP_typefunc_wrap",
+                            "C_prototype": "TYP_TypeID arg",
+                            "C_return_type": "TYP_TypeID",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_typefunc_wrap",
+                            "F_C_name": "typefunc_wrap",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "TYP_TypeID",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "arg",
+                            "f_intent": "IN",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "arg",
+                            "fc_var": "arg",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "typefunc_wrap",
+                    "F_name_api": "typefunc_wrap",
+                    "F_name_function": "typefunc_wrap",
+                    "F_name_generic": "typefunc_wrap",
+                    "F_name_impl": "typefunc_wrap",
+                    "function_name": "typefunc_wrap"
+                }
+            },
+            {
+                "<FUNCTION>": "typestruct  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "typestruct",
@@ -556,7 +756,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnBytesForIndexType  2 ****************************************",
+                "<FUNCTION>": "returnBytesForIndexType  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnBytesForIndexType",

@@ -5203,6 +5203,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
+                    "C_name_typedef": "TypeID",
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
@@ -5250,6 +5251,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "EnumTypeID",
+                    "C_name_typedef": "EnumTypeID",
                     "F_name_api": "enum_type_id",
                     "F_name_typedef": "enum_type_id",
                     "cxx_type": "EnumTypeID",
@@ -5277,7 +5279,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
             "c_to_cxx": "static_cast<EnumTypeID>({c_var})",
-            "c_type": "",
+            "c_type": "EnumTypeID",
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "EnumTypeID",
@@ -5312,7 +5314,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_type": "",
+            "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
             "f_cast": "int({f_var}, C_INT)",

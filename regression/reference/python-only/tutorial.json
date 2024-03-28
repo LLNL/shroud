@@ -2109,7 +2109,7 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "",
+                            "c_type": "TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
@@ -2215,7 +2215,7 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "",
+                            "c_type": "EnumTypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
@@ -2755,6 +2755,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
+                    "C_name_typedef": "TypeID",
                     "F_name_api": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID"
@@ -2797,6 +2798,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "EnumTypeID",
+                    "C_name_typedef": "EnumTypeID",
                     "F_name_api": "enum_type_id",
                     "cxx_type": "EnumTypeID",
                     "typedef_name": "EnumTypeID"
@@ -2911,7 +2913,7 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
             "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
-            "c_type": "",
+            "c_type": "EnumTypeID",
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "tutorial::EnumTypeID",
@@ -2946,7 +2948,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_type": "",
+            "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "tutorial::TypeID",
             "f_cast": "int({f_var}, C_INT)",

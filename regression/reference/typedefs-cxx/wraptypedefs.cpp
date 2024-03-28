@@ -36,6 +36,28 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 }
 // end TYP_typefunc
 
+/**
+ * \brief Use typedef with a C wrapper
+ *
+ * Use C_force_wrapper to ensure the typedef will be used
+ * in the C wrapper.
+ */
+// ----------------------------------------
+// Function:  TypeID typefunc_wrap
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  TypeID arg
+// Statement: c_in_native_scalar
+// start TYP_typefunc_wrap
+TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
+{
+    // splicer begin function.typefunc_wrap
+    TypeID SHC_rv = typefunc_wrap(arg);
+    return SHC_rv;
+    // splicer end function.typefunc_wrap
+}
+// end TYP_typefunc_wrap
+
 // ----------------------------------------
 // Function:  void typestruct
 // Statement: c_subroutine

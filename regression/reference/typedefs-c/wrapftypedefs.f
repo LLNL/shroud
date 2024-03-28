@@ -67,6 +67,25 @@ module typedefs_mod
     ! end typefunc
 
     ! ----------------------------------------
+    ! Function:  TypeID typefunc_wrap
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID arg
+    ! Statement: f_in_native_scalar
+    ! start typefunc_wrap
+    interface
+        function typefunc_wrap(arg) &
+                result(SHT_rv) &
+                bind(C, name="TYP_typefunc_wrap_bufferify")
+            import :: type_id
+            implicit none
+            integer(type_id), value, intent(IN) :: arg
+            integer(type_id) :: SHT_rv
+        end function typefunc_wrap
+    end interface
+    ! end typefunc_wrap
+
+    ! ----------------------------------------
     ! Function:  void typestruct
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -126,6 +145,32 @@ contains
         ! splicer end function.typefunc
     end function typefunc
     ! end typefunc
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  TypeID typefunc_wrap
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID arg
+    ! Statement: f_in_native_scalar
+    !>
+    !! \brief Use typedef with a C wrapper
+    !!
+    !! Use C_force_wrapper to ensure the typedef will be used
+    !! in the C wrapper.
+    !<
+    ! start typefunc_wrap
+    function typefunc_wrap(arg) &
+            result(SHT_rv)
+        integer(type_id), value, intent(IN) :: arg
+        integer(type_id) :: SHT_rv
+        ! splicer begin function.typefunc_wrap
+        SHT_rv = c_typefunc_wrap_bufferify(arg)
+        ! splicer end function.typefunc_wrap
+    end function typefunc_wrap
+    ! end typefunc_wrap
 #endif
 
 #if 0

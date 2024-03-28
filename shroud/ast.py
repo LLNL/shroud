@@ -1924,6 +1924,9 @@ class TypedefNode(AstNode):
         fmt = self.fmtdict
         if self.wrap.c:
             self.reeval_template("C_name_typedef")
+        else:
+            # language=c, use original name.
+            fmt.C_name_typedef = fmt.typedef_name
         if self.wrap.fortran:
             self.reeval_template("F_name_typedef")
 

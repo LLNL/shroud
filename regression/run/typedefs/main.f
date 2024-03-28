@@ -43,6 +43,10 @@ contains
     rv = typefunc(arg1)
     call assert_equals(rv, arg1 + 1, "typefunc")
 
+    arg1 = 20
+    rv = typefunc_wrap(arg1)
+    call assert_equals(rv, arg1 + 1, "typefunc_wrap")
+
   end subroutine test_alias
 
   subroutine test_struct

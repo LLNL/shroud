@@ -80,6 +80,8 @@ extern "C" {
 
 TYP_TypeID TYP_typefunc(TYP_TypeID arg);
 
+TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
+
 void TYP_typestruct(TYP_Struct1Rename * arg1);
 
 int TYP_returnBytesForIndexType(TYP_IndexType arg);
