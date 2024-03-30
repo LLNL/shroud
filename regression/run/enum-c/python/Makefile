@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-#  Compile the python enum module
+#  Compile the python enum C module
 #
 include $(top)/regression/run/defaults.mk
 
