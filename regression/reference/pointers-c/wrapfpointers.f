@@ -377,25 +377,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  char * * names +intent(in)
-    ! Statement: c_in_char_**
-    ! start c_accept_char_array_in
-    interface
-        function c_accept_char_array_in(names) &
-                result(SHT_rv) &
-                bind(C, name="acceptCharArrayIn")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            type(C_PTR), intent(IN) :: names(*)
-            integer(C_INT) :: SHT_rv
-        end function c_accept_char_array_in
-    end interface
-    ! end c_accept_char_array_in
-
-    ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)
@@ -450,23 +431,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * nitems +intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_ptr_to_scalar
-    interface
-        subroutine c_get_ptr_to_scalar(nitems) &
-                bind(C, name="getPtrToScalar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: nitems
-        end subroutine c_get_ptr_to_scalar
-    end interface
-    ! end c_get_ptr_to_scalar
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToScalar
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
@@ -481,23 +445,6 @@ module pointers_mod
         end subroutine c_get_ptr_to_scalar_bufferify
     end interface
     ! end c_get_ptr_to_scalar_bufferify
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToFixedArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_ptr_to_fixed_array
-    interface
-        subroutine c_get_ptr_to_fixed_array(count) &
-                bind(C, name="getPtrToFixedArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_ptr_to_fixed_array
-    end interface
-    ! end c_get_ptr_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
@@ -518,27 +465,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Statement: c_out_native_**
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Statement: c_out_native_*
-    ! start c_get_ptr_to_dynamic_array
-    interface
-        subroutine c_get_ptr_to_dynamic_array(count, ncount) &
-                bind(C, name="getPtrToDynamicArray")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-            integer(C_INT), intent(OUT) :: ncount
-        end subroutine c_get_ptr_to_dynamic_array
-    end interface
-    ! end c_get_ptr_to_dynamic_array
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToDynamicArray
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
@@ -553,23 +479,6 @@ module pointers_mod
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_array_bufferify
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToFuncArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_ptr_to_func_array
-    interface
-        subroutine c_get_ptr_to_func_array(count) &
-                bind(C, name="getPtrToFuncArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_ptr_to_func_array
-    end interface
-    ! end c_get_ptr_to_func_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
@@ -590,23 +499,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * nitems +intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_ptr_to_const_scalar
-    interface
-        subroutine c_get_ptr_to_const_scalar(nitems) &
-                bind(C, name="getPtrToConstScalar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: nitems
-        end subroutine c_get_ptr_to_const_scalar
-    end interface
-    ! end c_get_ptr_to_const_scalar
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToConstScalar
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
@@ -621,23 +513,6 @@ module pointers_mod
         end subroutine c_get_ptr_to_const_scalar_bufferify
     end interface
     ! end c_get_ptr_to_const_scalar_bufferify
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToFixedConstArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_ptr_to_fixed_const_array
-    interface
-        subroutine c_get_ptr_to_fixed_const_array(count) &
-                bind(C, name="getPtrToFixedConstArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_ptr_to_fixed_const_array
-    end interface
-    ! end c_get_ptr_to_fixed_const_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
@@ -656,27 +531,6 @@ module pointers_mod
         end subroutine c_get_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_const_array_bufferify
-
-    ! ----------------------------------------
-    ! Function:  void getPtrToDynamicConstArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Statement: c_out_native_**
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Statement: c_out_native_*
-    ! start c_get_ptr_to_dynamic_const_array
-    interface
-        subroutine c_get_ptr_to_dynamic_const_array(count, ncount) &
-                bind(C, name="getPtrToDynamicConstArray")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-            integer(C_INT), intent(OUT) :: ncount
-        end subroutine c_get_ptr_to_dynamic_const_array
-    end interface
-    ! end c_get_ptr_to_dynamic_const_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
@@ -819,23 +673,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getAllocToFixedArray
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-    ! Statement: c_out_native_**
-    ! start c_get_alloc_to_fixed_array
-    interface
-        subroutine c_get_alloc_to_fixed_array(count) &
-                bind(C, name="getAllocToFixedArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_alloc_to_fixed_array
-    end interface
-    ! end c_get_alloc_to_fixed_array
-
-    ! ----------------------------------------
-    ! Function:  void getAllocToFixedArray
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
@@ -946,21 +783,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Statement: c_function_native_*
-    ! start c_return_int_ptr_to_scalar
-    interface
-        function c_return_int_ptr_to_scalar() &
-                result(SHT_rv) &
-                bind(C, name="returnIntPtrToScalar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_scalar
-    end interface
-    ! end c_return_int_ptr_to_scalar
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntPtrToScalar
     ! Statement: f_function_native_*_pointer
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
@@ -973,21 +795,6 @@ module pointers_mod
         end function c_return_int_ptr_to_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_scalar_bufferify
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Statement: c_function_native_*
-    ! start c_return_int_ptr_to_fixed_array
-    interface
-        function c_return_int_ptr_to_fixed_array() &
-                result(SHT_rv) &
-                bind(C, name="returnIntPtrToFixedArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_fixed_array
-    end interface
-    ! end c_return_int_ptr_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -1006,21 +813,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Statement: c_function_native_*
-    ! start c_return_int_ptr_to_const_scalar
-    interface
-        function c_return_int_ptr_to_const_scalar() &
-                result(SHT_rv) &
-                bind(C, name="returnIntPtrToConstScalar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_const_scalar
-    end interface
-    ! end c_return_int_ptr_to_const_scalar
-
-    ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToConstScalar
     ! Statement: f_function_native_*_pointer
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
@@ -1036,21 +828,6 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: c_function_native_*
-    ! start c_return_int_ptr_to_fixed_const_array
-    interface
-        function c_return_int_ptr_to_fixed_const_array() &
-                result(SHT_rv) &
-                bind(C, name="returnIntPtrToFixedConstArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_fixed_const_array
-    end interface
-    ! end c_return_int_ptr_to_fixed_const_array
-
-    ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Statement: f_function_native_*_cdesc_pointer
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
@@ -1063,21 +840,6 @@ module pointers_mod
         end subroutine c_return_int_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_return_int_ptr_to_fixed_const_array_bufferify
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: c_function_native_*
-    ! start c_return_int_scalar
-    interface
-        function c_return_int_scalar() &
-                result(SHT_rv) &
-                bind(C, name="returnIntScalar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_scalar
-    end interface
-    ! end c_return_int_scalar
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
@@ -1142,21 +904,6 @@ module pointers_mod
         end function c_return_raw_ptr_to_int2d
     end interface
     ! end c_return_raw_ptr_to_int2d
-
-    ! ----------------------------------------
-    ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Statement: c_function_native_*
-    ! start c_return_int_alloc_to_fixed_array
-    interface
-        function c_return_int_alloc_to_fixed_array() &
-                result(SHT_rv) &
-                bind(C, name="returnIntAllocToFixedArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_alloc_to_fixed_array
-    end interface
-    ! end c_return_int_alloc_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)

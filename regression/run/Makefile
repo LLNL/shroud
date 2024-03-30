@@ -43,11 +43,14 @@ endif
 
 .PHONY : sync-cxx
 sync-cxx : \
+  $(relrunpath)/cxx/enum.cpp \
   $(relrunpath)/cxx/pointers.cpp \
   $(relrunpath)/cxx/struct.cpp \
   $(relrunpath)/cxx/funptr.cpp \
   $(relrunpath)/cxx/typedefs.cpp
 
+$(relrunpath)/cxx/enum.cpp : regression/run/enum/enum.c | $(relrunpath)/cxx/..
+	cp $< $@
 $(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
@@ -69,6 +72,7 @@ fortran-test-list-std = \
   test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \
+  test-fortran-enum-cxx \
   test-fortran-typedefs-c \
   test-fortran-typedefs-cxx \
   test-fortran-namespace \
@@ -132,12 +136,13 @@ c-test-list = \
   test-c-typemap32 \
   test-c-typemap64 \
   test-c-classes \
-  test-c-enum-c \
+  test-c-enum-cxx \
   test-c-typedefs-cxx \
   test-c-namespace \
   test-c-pointers-cxx \
   test-c-pointers-cxx-c \
   test-c-struct-cxx \
+  test-c-funptr-cxx \
   test-c-vectors \
   test-c-statement \
   test-c-templates
@@ -204,6 +209,7 @@ python-test-list = \
   test-python-types \
   test-python-classes \
   test-python-enum-c \
+  test-python-enum-cxx \
   test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cxx \

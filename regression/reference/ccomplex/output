@@ -1,3 +1,4 @@
+Will not generate C wrappers for a language=c library
 Wrote wrapfccomplex.f
 Wrote utilccomplex.c
 Wrote typesccomplex.h

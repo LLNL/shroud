@@ -154,8 +154,6 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
 
         self.assertEqual(library.language, "c++")
-        self.assertEqual(library.options.wrap_c, True)
-        self.assertEqual(library.options.wrap_fortran, True)
 
         fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, "DEF_")
@@ -170,7 +168,6 @@ class CheckAst(unittest.TestCase):
 
         self.assertEqual(library.language, "c")  # updated from dict
         self.assertEqual(library.options.wrap_c, False)  # updated from dict
-        self.assertEqual(library.options.wrap_fortran, True)
         self.assertEqual(library.fmtdict.fmt1, "fmt1value")
         self.assertEqual(library.fmtdict.fmt2, "fmt2value")
 

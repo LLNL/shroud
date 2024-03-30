@@ -1427,8 +1427,10 @@ class Declarator(Node):
 
     def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False,
                       append_init=True, continuation=False,
-                      attrs=True, **kwargs):
-        """Generate string by appending text to decl.
+                      attrs=True, arg_lang=None, **kwargs):
+        """Generate string for Declarator.
+
+        Appending text to decl.
 
         Replace name with value from kwargs.
         name=None will skip appending any existing name.
@@ -1473,7 +1475,8 @@ class Declarator(Node):
                 comma = ""
                 for arg in params:
                     decl.append(comma)
-                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation)
+                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation,
+                                      in_params=True, arg_lang=arg_lang)
                     if continuation:
                         comma = ",\t "
                     else:
@@ -1635,8 +1638,12 @@ class Declaration(Node):
         self.gen_decl_work(decl, **kwargs)
         return "".join(decl)
 
-    def gen_decl_work(self, decl, attrs=True, **kwargs):
-        """Generate string by appending text to decl.
+    def gen_decl_work(self, decl, attrs=True,
+                      in_params=False, arg_lang=None,
+                      **kwargs):
+        """Generate string for Declaration.
+
+        Append text to decl list.
 
         Replace params with value from kwargs.
         Most useful to call with params=None to skip parameters
@@ -1652,11 +1659,18 @@ class Declaration(Node):
             if self.storage:
                 decl.append(" ".join(self.storage))
                 decl.append(" ")
-            decl.append(" ".join(self.specifier))
+            if in_params and arg_lang:
+                # typedefs in C wrapper must use c_type typedef for arguments.
+                # i.e. with function pointers
+                decl.append(getattr(self.typemap, arg_lang))
+            else:
+                decl.append(" ".join(self.specifier))
         if self.template_arguments:
             decl.append(self.gen_template_arguments())
 
-        self.declarator.gen_decl_work(decl, attrs=attrs, **kwargs)
+        self.declarator.gen_decl_work(decl, attrs=attrs,
+                                      in_params=in_params, arg_lang=arg_lang,
+                                      **kwargs)
 
     def gen_template_arguments(self):
         """Return string for template_arguments."""

@@ -50,24 +50,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -97,15 +82,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptFloatComplexInoutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptFloatComplexInoutPtr",
-                            "C_prototype": "float complex * arg1",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_float_complex_inout_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptFloatComplexInoutPtr(\targ1)",
                             "C_call_list": "arg1",
@@ -123,23 +99,6 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "float complex",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_float_Complex",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<float>",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -210,25 +169,10 @@
                 "name": "acceptDoubleComplexInoutPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -270,15 +214,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptDoubleComplexInoutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptDoubleComplexInoutPtr",
-                            "C_prototype": "double complex * arg1",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_double_complex_inout_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptDoubleComplexInoutPtr(\targ1)",
                             "C_call_list": "arg1",
@@ -296,23 +231,6 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_double_Complex",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "c_inout_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -409,25 +327,10 @@
                 "name": "acceptDoubleComplexOutPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -469,15 +372,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptDoubleComplexOutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptDoubleComplexOutPtr",
-                            "C_prototype": "double complex * arg1",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_double_complex_out_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptDoubleComplexOutPtr(\targ1)",
                             "C_call_list": "arg1",
@@ -495,23 +389,6 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_double_Complex",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -779,31 +656,10 @@
                 "name": "acceptDoubleComplexOutPtrFlag",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg1": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        },
-                        "flag": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_native_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -861,15 +717,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptDoubleComplexOutPtrFlag(\targ1,\t flag)",
-                            "C_call_list": "arg1,\t flag",
-                            "C_name": "acceptDoubleComplexOutPtrFlag",
-                            "C_prototype": "double complex * arg1,\t int * flag",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_double_complex_out_ptr_flag",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptDoubleComplexOutPtrFlag(\targ1,\t flag)",
                             "C_call_list": "arg1,\t flag",
@@ -887,23 +734,6 @@
                         }
                     },
                     "arg1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "cfi_type": "CFI_type_double_Complex",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -951,23 +781,6 @@
                         }
                     },
                     "flag": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -1029,7 +842,6 @@
             "ccomplex"
         ],
         "wrap": {
-            "c": true,
             "fortran": true,
             "python": true
         }

@@ -915,6 +915,7 @@ class GenFunctions(object):
             Create functions are appended to this list.
 
         """
+        any_need_wrapper = False
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
@@ -957,6 +958,7 @@ class GenFunctions(object):
                 # generic.yaml: GenericReal
                 new.C_force_wrapper = True
                 new._PTR_C_CXX_index = node._function_index
+                any_need_wrapper = True
             else:
                 new.C_fortran_generic = True
                 new._PTR_F_C_index = node._function_index
@@ -965,6 +967,11 @@ class GenFunctions(object):
         # generated functions above.
         #        node.wrap.c = False
         node.wrap.fortran = False
+
+        # At least one of the fortran_generic functions will call
+        # The C library function directly.
+        if not any_need_wrapper:
+            node.wrap.c = True
 
     #        node.wrap.python = False
 

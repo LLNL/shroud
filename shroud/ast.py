@@ -26,11 +26,11 @@ class WrapFlags(object):
     """Keep track of which languages to wrap.
     """
     def __init__(self, options):
-        self.fortran = options.wrap_fortran
-        self.c = options.wrap_c
+        self.fortran = options.get("wrap_fortran", False)
+        self.c = options.get("wrap_c", False)
         self.f_or_c = self.fortran or self.c
-        self.lua = options.wrap_lua
-        self.python = options.wrap_python
+        self.lua = options.get("wrap_lua", False)
+        self.python = options.get("wrap_python", False)
         self.signature_c = None
         self.signature_f = None
 
@@ -519,10 +519,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_trim_char_in=True,
             F_auto_reference_count=False,
             F_create_generic=True,
-            wrap_c=True,
-            wrap_fortran=True,
-            wrap_python=False,
-            wrap_lua=False,
+            # wrap options are set in by command line options in main.py
+#            wrap_c=True,
+#            wrap_fortran=True,
+#            wrap_python=False,
+#            wrap_lua=False,
             doxygen=True,  # create doxygen comments
             literalinclude=False, # Create sphinx literalinclude markers
             literalinclude2=False, # Used with global identifiers
@@ -1923,6 +1924,9 @@ class TypedefNode(AstNode):
         fmt = self.fmtdict
         if self.wrap.c:
             self.reeval_template("C_name_typedef")
+        else:
+            # language=c, use original name.
+            fmt.C_name_typedef = fmt.typedef_name
         if self.wrap.fortran:
             self.reeval_template("F_name_typedef")
 

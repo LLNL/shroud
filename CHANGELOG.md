@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   wrappers.
 
 ### Removed
+- Will not create C wrappers when ``language=c``.
 - Removed attribute *+cdesc*. Replace by *+api(cdesc)*
 - Removed *f_module_line* and *c_module_line* from both statements and Typemap.
 - Remove *f_imports* from statements.
@@ -59,7 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
 - Attribute *+funptr*.
-- function pointer typedefs now create an abstract interface.	
+- function pointer typedefs now create an abstract interface.
 
 ### Fixed
 - Avoid memory leaks by using 'N' instead of 'O' in `Py_BuildValue`

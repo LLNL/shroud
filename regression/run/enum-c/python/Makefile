@@ -5,19 +5,18 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-#  Compile the python enum module
+#  Compile the python enum C module
 #
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/enum-c \
-    -I$(top)/regression/run/enum-c \
+    -I$(top)/regression/run/enum \
     $(PYTHON_INC)
 
 VPATH = \
     $(top)/regression/reference/enum-c \
-    $(top)/regression/run/enum-c \
-    $(top)/regression/run/enum-c/python
+    $(top)/regression/run/enum
 
 OBJS = \
     enum.o \

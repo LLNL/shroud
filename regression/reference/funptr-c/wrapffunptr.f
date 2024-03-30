@@ -13,12 +13,18 @@
 ! splicer begin file_top
 ! splicer end file_top
 module funptr_mod
+    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! typedef TypeID
+    ! splicer begin typedef.TypeID
+    integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
 
     abstract interface
 
@@ -42,10 +48,12 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
-        subroutine incrtype(i) bind(C)
+        subroutine incrtype(i, j) bind(C)
             use iso_c_binding, only : C_INT
+            import :: type_id
             implicit none
             integer(C_INT), value :: i
+            integer(type_id), value :: j
         end subroutine incrtype
 
     end interface

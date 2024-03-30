@@ -788,7 +788,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             C_code = None
             C_force = node.splicer["c"]
         else:
-            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef)
+            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
+                                     arg_lang="c_type")
             C_code = [decl + ";"]
             C_force = None
 

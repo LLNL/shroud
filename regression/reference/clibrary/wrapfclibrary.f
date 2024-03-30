@@ -112,7 +112,7 @@ module clibrary_mod
     interface
         function pass_by_value_macro(arg2) &
                 result(SHT_rv) &
-                bind(C, name="CLI_PassByValueMacro")
+                bind(C, name="CLI_PassByValueMacro_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg2
@@ -144,27 +144,6 @@ module clibrary_mod
         end subroutine c_check_bool
     end interface
     ! end c_check_bool
-
-    ! ----------------------------------------
-    ! Function:  char * Function4a +len(30)
-    ! Statement: c_function_char_*
-    ! ----------------------------------------
-    ! Argument:  const char * arg1
-    ! Statement: c_in_char_*
-    ! ----------------------------------------
-    ! Argument:  const char * arg2
-    ! Statement: c_in_char_*
-    interface
-        function c_function4a(arg1, arg2) &
-                result(SHT_rv) &
-                bind(C, name="Function4a")
-            use iso_c_binding, only : C_CHAR, C_PTR
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            type(C_PTR) SHT_rv
-        end function c_function4a
-    end interface
 
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
@@ -207,21 +186,6 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
-    ! Statement: c_inout_char_*
-    interface
-        subroutine c_pass_char_ptr_in_out(s) &
-                bind(C, name="passCharPtrInOut")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR), intent(INOUT) :: s(*)
-        end subroutine c_pass_char_ptr_in_out
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
@@ -261,23 +225,6 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void returnOneName
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-    ! Statement: c_out_char_*
-    ! start c_return_one_name
-    interface
-        subroutine c_return_one_name(name1) &
-                bind(C, name="returnOneName")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: name1(*)
-        end subroutine c_return_one_name
-    end interface
-    ! end c_return_one_name
-
-    ! ----------------------------------------
-    ! Function:  void returnOneName
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
@@ -293,25 +240,6 @@ module clibrary_mod
         end subroutine c_return_one_name_bufferify
     end interface
     ! end c_return_one_name_bufferify
-
-    ! ----------------------------------------
-    ! Function:  void returnTwoNames
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-    ! Statement: c_out_char_*
-    ! ----------------------------------------
-    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
-    ! Statement: c_out_char_*
-    interface
-        subroutine c_return_two_names(name1, name2) &
-                bind(C, name="returnTwoNames")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: name1(*)
-            character(kind=C_CHAR), intent(OUT) :: name2(*)
-        end subroutine c_return_two_names
-    end interface
 
     ! ----------------------------------------
     ! Function:  void returnTwoNames
@@ -334,27 +262,6 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: SHT_name2_len
         end subroutine c_return_two_names_bufferify
     end interface
-
-    ! ----------------------------------------
-    ! Function:  void ImpliedTextLen
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * text +charlen(MAXNAME)+intent(out)
-    ! Statement: c_out_char_*
-    ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))
-    ! Statement: c_in_native_scalar
-    ! start c_implied_text_len
-    interface
-        subroutine c_implied_text_len(text, ltext) &
-                bind(C, name="ImpliedTextLen")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: text(*)
-            integer(C_INT), value, intent(IN) :: ltext
-        end subroutine c_implied_text_len
-    end interface
-    ! end c_implied_text_len
 
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
@@ -475,21 +382,6 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void bindC2
-    ! Statement: c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
-    ! Statement: c_out_char_*
-    interface
-        subroutine c_bind_c2(outbuf) &
-                bind(C, name="bindC2")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-        end subroutine c_bind_c2
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  void bindC2
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -559,27 +451,6 @@ module clibrary_mod
         end subroutine pass_assumed_type_dim
     end interface
     ! end pass_assumed_type_dim
-
-    ! ----------------------------------------
-    ! Function:  int passAssumedTypeBuf
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype
-    ! Statement: c_in_void_*
-    ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
-    ! Statement: c_out_char_*
-    interface
-        function c_pass_assumed_type_buf(arg, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="passAssumedTypeBuf")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            type(*) :: arg
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT) :: SHT_rv
-        end function c_pass_assumed_type_buf
-    end interface
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
@@ -713,7 +584,7 @@ contains
         integer(C_INT), value, intent(IN) :: arg2
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin function.pass_by_value_macro
-        SHT_rv = c_pass_by_value_macro(arg2)
+        SHT_rv = c_pass_by_value_macro_bufferify(arg2)
         ! splicer end function.pass_by_value_macro
     end function pass_by_value_macro
 #endif

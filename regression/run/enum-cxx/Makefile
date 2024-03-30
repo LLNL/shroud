@@ -5,13 +5,13 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# run/enum-c
+# run/enum-cxx
 #
 ifeq ($(top),)
 top := ../../..
 endif 
 
-refname = enum-c
+refname = enum-cxx
 runname = enum
 
 include $(top)/regression/run/defaults.mk
@@ -23,11 +23,14 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/$(refname) \
+    ../cxx \
     $(top)/regression/run/$(runname) \
     $(top)/regression/run/fruit
 
 C_OBJS = \
-    enum.o
+    enum.o \
+    wrapenum.o \
+    utilenum.o
 F_OBJS = \
     wrapfenum.o \
     fruit.o \
@@ -40,6 +43,8 @@ clean :
 	rm -f $(OBJS) *.mod enum-c
 
 main.o : fruit.o wrapfenum.o
+enum.o : enum.cpp enum.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o 

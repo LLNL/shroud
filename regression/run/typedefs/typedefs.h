@@ -12,6 +12,7 @@
 
 typedef int TypeID;
 TypeID typefunc(TypeID arg);
+TypeID typefunc_wrap(TypeID arg);
 
 struct s_Struct1 {
     int i;

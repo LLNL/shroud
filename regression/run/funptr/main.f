@@ -60,12 +60,14 @@ contains
 
 !----------  
 
-  subroutine incr2(i) bind(C)
+  subroutine incr2(i, j) bind(C)
     use iso_c_binding
     use state
+    use funptr_mod, only : type_id
     implicit none
     integer(C_INT), value :: i
-    counter = i
+    integer(type_id), value :: j
+    if (j == 1) counter = i
   end subroutine incr2
 
   subroutine incr2_d(i) bind(C)

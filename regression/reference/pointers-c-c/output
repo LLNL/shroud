@@ -1,2 +1,1 @@
-Wrote utilpointers.c
-Wrote typespointers.h
+Will not generate C wrappers for a language=c library

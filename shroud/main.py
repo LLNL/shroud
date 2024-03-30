@@ -245,6 +245,44 @@ def main():
     )
     parser.add_argument("--version", action="version",
                         version=metadata.__version__)
+
+    ##### Set option wrap fields
+    parser.add_argument(
+        "--fortran", action="append_const", const="fortran", dest="wrappers",
+        help="Create Fortran wrapper"
+    )
+    parser.add_argument(
+        "--c", action="append_const", const="c", dest="wrappers",
+        help="Create C wrapper"
+    )
+    parser.add_argument(
+        "--python", action="append_const", const="python", dest="wrappers",
+        help="Create Python wrapper"
+    )
+    parser.add_argument(
+        "--lua", action="append_const", const="lua", dest="wrappers",
+        help="Create Lua wrapper"
+    )
+
+    ##### Turn off wrap options
+    # Aftet 3.9 use action=argparse.BooleanOptionalAction
+    parser.add_argument(
+        "--no-fortran", action="append_const", const="no-fortran", dest="wrappers",
+        help="Do not create Fortran wrapper"
+    )
+    parser.add_argument(
+        "--no-c", action="append_const", const="no-c", dest="wrappers",
+        help="Do not create C wrapper"
+    )
+    parser.add_argument(
+        "--no-python", action="append_const", const="no-python", dest="wrappers",
+        help="Do not create Python wrapper"
+    )
+    parser.add_argument(
+        "--no-lua", action="append_const", const="no-lua", dest="wrappers",
+        help="Do not create Lua wrapper"
+    )
+    
     parser.add_argument(
         "--outdir",
         default="",
@@ -328,7 +366,20 @@ def main():
     #    sys.stderr.write("Some useful message")  # example error message
     sys.exit(0)  # set status for errors
 
+def process_lang_wrapper_flags(options, wraplist):
+    """Update options based on wraplist.
 
+    options=dict
+    wraplist = [ "fortran", "no-fortran", ...]
+    """
+    if wraplist is None:
+        return
+    for opt in wraplist:
+        if opt[:3] == "no-":
+            options["wrap_" + opt[3:]] = False
+        else:
+            options["wrap_" + opt] = True
+    
 def create_wrapper(filename, outdir="", path=None):
     """Translate function arguments into command line options.
     Return config instance. It has list of files created.
@@ -429,9 +480,18 @@ def main_with_args(args):
     #    config.pyfiles = [] # list of Python module files created
 
     # accumulated input
-    allinput = {}
+    allinput = dict(options={})
     splicers = dict(c={}, f={}, py={}, lua={})
 
+    # Defaults based on entry point.
+    wraplang = dict(
+        wrap_fortran=True,
+        wrap_c=True,
+        wrap_python=False,
+        wrap_lua=False,
+    )
+    allinput["options"].update(wraplang)
+    
     for filename in args.filename:
         ext = os.path.splitext(filename)[1]
         if ext in [".yaml", ".yml"]:
@@ -462,14 +522,17 @@ def main_with_args(args):
 
             fp.close()
             if d is not None:
-                allinput.update(d)
-        #            util.update(allinput, d)  # recursive update
+#                allinput.update(d)
+               util.update(allinput, d)  # recursive update
         elif ext == ".json":
             raise NotImplementedError("Can not deal with json input for now")
         else:
             # process splicer file on command line, search path is not used
             splicer.get_splicer_based_on_suffix(filename, splicers)
 
+    # Default language options from command line arguments
+    process_lang_wrapper_flags(allinput["options"], args.wrappers)
+            
     # Add options from command line last
     # so they replace values from YAML files.
     if args.option:
@@ -481,15 +544,16 @@ def main_with_args(args):
             elif value in ["false", "False"]:
                 value = False
             cmdoptions[name] = value
-        if "options" in allinput:
-            allinput["options"].update(cmdoptions)
-        else:
-            allinput["options"] = cmdoptions
+        allinput["options"].update(cmdoptions)
 
     if args.language:
         allinput['language'] = args.language
 
-    #    print(allinput)
+    language = util.find_language(allinput.get("language"))
+    wrap_c = allinput["options"]["wrap_c"]
+    if language == "c" and wrap_c:
+        allinput["options"]["wrap_c"] = False
+        print("Will not generate C wrappers for a language=c library")
 
     symtab = declast.SymbolTable()
     def_types = symtab.typemaps  #typemap.initialize()

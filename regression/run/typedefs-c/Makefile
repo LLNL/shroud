@@ -19,14 +19,16 @@ VPATH = \
     $(top)/regression/run/typedefs \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
+    typedefs.o \
+    wraptypedefs.o \
+    utiltypedefs.o
+F_OBJS = \
     main.o \
     fruit.o \
-    wrapftypedefs.o \
-    typedefs.o \
-    utiltypedefs.o
+    wrapftypedefs.o
 
-typedefs-c : $(OBJS)
+typedefs-c : $(F_OBJS) $(C_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 main.o : main.f fruit.o wrapftypedefs.o

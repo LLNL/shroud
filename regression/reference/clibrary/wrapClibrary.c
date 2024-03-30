@@ -91,16 +91,16 @@ static void ShroudCharFree(char *src)
  */
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Statement: c_function_native_scalar
+// Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: c_in_native_scalar
-double CLI_PassByValueMacro(int arg2)
+// Statement: f_in_native_scalar
+double CLI_PassByValueMacro_bufferify(int arg2)
 {
-    // splicer begin function.PassByValueMacro
+    // splicer begin function.PassByValueMacro_bufferify
     double SHC_rv = PassByValueMacro(arg2);
     return SHC_rv;
-    // splicer end function.PassByValueMacro
+    // splicer end function.PassByValueMacro_bufferify
 }
 
 // ----------------------------------------

@@ -44,7 +44,7 @@ void callback1_funptr(void (*incr)(void))
 // start callback2
 void callback2(const char *name, int ival, incrtype incr)
 {
-    incr(ival);
+    incr(ival, 1);
 }
 // end callback2
 
@@ -60,7 +60,7 @@ void callback2_external(const char *name, int ival, incrtype incr)
         (void) incr_fun(ival);
     }
     else {
-        incr(ival);
+        incr(ival, 1);
     }
 }
 
@@ -76,7 +76,7 @@ void callback2_funptr(const char *name, int ival, incrtype incr)
         (void) incr_fun(ival);
     }
     else {
-        incr(ival);
+        incr(ival, 1);
     }
 }
 

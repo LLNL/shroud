@@ -1,11 +1,7 @@
 Read yaml ccomplex.yaml
-C c void acceptFloatComplexInoutPtr(float complex * arg1)
 C f void acceptFloatComplexInoutPtr(float complex * arg1)
-C c void acceptDoubleComplexInoutPtr(double complex * arg1)
 C f void acceptDoubleComplexInoutPtr(double complex * arg1)
-C c void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 C f void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
-C c void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 C f void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Fortran void acceptFloatComplexInoutPtr(float complex * arg1)
 Fortran void acceptDoubleComplexInoutPtr(double complex * arg1)

@@ -38,7 +38,6 @@
                         "name": "ifield",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -68,7 +67,6 @@
                         "name": "dfield",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -85,7 +83,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -135,7 +132,6 @@
                         "name": "cfield",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -171,7 +167,6 @@
                         "name": "const_dvalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -188,7 +183,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -235,7 +229,6 @@
                         "name": "nitems",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -273,7 +266,6 @@
                         "name": "ivalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -326,7 +318,6 @@
                         "name": "dvalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -382,7 +373,6 @@
                         "name": "svalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -408,7 +398,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -456,7 +445,6 @@
                         "name": "nitems",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -494,7 +482,6 @@
                         "name": "ivalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -541,7 +528,6 @@
                         "name": "dvalue",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -567,7 +553,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -619,7 +604,6 @@
                         "name": "name",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -654,7 +638,6 @@
                         "name": "count",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -671,7 +654,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -1202,7 +1184,6 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -1232,7 +1213,6 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -1249,7 +1229,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "wrap_as": "class",
@@ -2025,7 +2004,6 @@
                         "name": "x1",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -2055,7 +2033,6 @@
                         "name": "y1",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -2085,7 +2062,6 @@
                         "name": "z1",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -2102,7 +2078,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "wrap_as": "class",
@@ -2154,7 +2129,6 @@
                         "name": "sublevels",
                         "options": {},
                         "wrap": {
-                            "c": true,
                             "fortran": true
                         },
                         "zz_bind": {
@@ -2171,7 +2145,6 @@
                     }
                 ],
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -2236,25 +2209,9 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_struct_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2286,28 +2243,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "passStructByValue(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "passStructByValue",
-                            "C_prototype": "Cstruct1 arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_pass_struct_by_value",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "passStructByValue(\targ)",
                             "C_call_list": "arg",
@@ -2347,23 +2282,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_in_struct_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -2437,24 +2355,9 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2484,28 +2387,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "passStruct1(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "passStruct1",
-                            "C_prototype": "const Cstruct1 * arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_pass_struct1",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "passStruct1(\targ)",
                             "C_call_list": "arg",
@@ -2545,23 +2426,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(Cstruct1 *) arg",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_in_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -2660,30 +2524,9 @@
                 "name": "passStruct2",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "outbuf": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_char_*"
-                        },
-                        "s1": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2725,37 +2568,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "passStruct2(\ts1,\t outbuf)",
-                            "C_call_list": "s1,\t outbuf",
-                            "C_name": "passStruct2",
-                            "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
-                            "C_return_type": "int",
-                            "F_C_arguments": "s1,\t outbuf",
-                            "F_C_name": "c_pass_struct2",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "passStruct2(\ts1,\t outbuf)",
                             "C_call_list": "s1,\t outbuf",
@@ -2796,29 +2608,6 @@
                         }
                     },
                     "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "outbuf",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "outbuf",
-                            "i_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -2849,30 +2638,6 @@
                         }
                     },
                     "s1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "s1",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(Cstruct1 *) s1",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "s1",
-                            "f_derived_type": "cstruct1",
-                            "f_intent": "IN",
-                            "f_kind": "cstruct1",
-                            "f_type": "type(cstruct1)",
-                            "f_type_module": "struct_mod",
-                            "f_var": "s1",
-                            "i_var": "s1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_in_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -2946,24 +2711,9 @@
                 "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -2993,28 +2743,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptStructInPtr(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "acceptStructInPtr",
-                            "C_prototype": "Cstruct1 * arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_accept_struct_in_ptr",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptStructInPtr(\targ)",
                             "C_call_list": "arg",
@@ -3054,23 +2782,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_in_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3167,38 +2878,9 @@
                 "name": "acceptStructOutPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_struct_*"
-                        },
-                        "d": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "i": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3254,15 +2936,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
-                            "C_call_list": "arg,\t i,\t d",
-                            "C_name": "acceptStructOutPtr",
-                            "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_struct_out_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptStructOutPtr(\targ,\t i,\t d)",
                             "C_call_list": "arg,\t i,\t d",
@@ -3280,23 +2953,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_out_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3324,23 +2980,6 @@
                         }
                     },
                     "d": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&d",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3367,23 +3006,6 @@
                         }
                     },
                     "i": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&i",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3456,24 +3078,9 @@
                 "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "inout"
-                            },
-                            "stmt": "c_inout_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3503,15 +3110,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "acceptStructInOutPtr(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "acceptStructInOutPtr",
-                            "C_prototype": "Cstruct1 * arg",
-                            "C_return_type": "void",
-                            "F_C_name": "c_accept_struct_in_out_ptr",
-                            "stmt_name": "c_subroutine"
-                        },
                         "fmtf": {
                             "C_call_function": "acceptStructInOutPtr(\targ)",
                             "C_call_list": "arg",
@@ -3529,23 +3127,6 @@
                         }
                     },
                     "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_inout_struct_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -3621,32 +3202,9 @@
                 "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_struct_scalar"
-                        },
-                        "d": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "i": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3691,35 +3249,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnStructByValue(\ti,\t d)",
-                            "C_call_list": "i,\t d",
-                            "C_name": "STR_returnStructByValue",
-                            "C_prototype": "int i,\t double d,\t Cstruct1 *SHC_rv",
-                            "C_return_type": "void",
-                            "F_C_name": "c_return_struct_by_value",
-                            "c_const": "",
-                            "c_type": "Cstruct1",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_rv_decl": "Cstruct1 SHC_rv",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "returnStructByValue(\ti,\t d)",
                             "C_call_list": "i,\t d",
-                            "C_name": "STR_returnStructByValue",
+                            "C_name": "STR_returnStructByValue_bufferify",
                             "C_prototype": "int i,\t double d,\t Cstruct1 *SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "i,\t d,\t SHT_rv",
-                            "F_C_call": "c_return_struct_by_value",
-                            "F_C_name": "c_return_struct_by_value",
+                            "F_C_call": "c_return_struct_by_value_bufferify",
+                            "F_C_name": "c_return_struct_by_value_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "i,\t d,\t SHT_rv",
@@ -3735,6 +3273,7 @@
                             "cxx_rv_decl": "Cstruct1 SHC_rv",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_derived_type": "cstruct1",
                             "f_intent": "OUT",
                             "f_kind": "cstruct1",
@@ -3749,23 +3288,6 @@
                         }
                     },
                     "d": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&d",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3792,23 +3314,6 @@
                         }
                     },
                     "i": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&i",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -3900,32 +3405,9 @@
                 "name": "returnStructPtr1",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_struct_*"
-                        },
-                        "d": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "i": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -3972,38 +3454,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnStructPtr1(\ti,\t d)",
-                            "C_call_list": "i,\t d",
-                            "C_name": "STR_returnStructPtr1",
-                            "C_prototype": "int i,\t double d",
-                            "C_return_type": "Cstruct1 *",
-                            "F_C_arguments": "i,\t d",
-                            "F_C_name": "c_return_struct_ptr1",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "Cstruct1",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHC_rv",
-                            "f_derived_type": "cstruct1",
-                            "f_intent": "OUT",
-                            "f_kind": "cstruct1",
-                            "f_type": "type(cstruct1)",
-                            "f_type_module": "struct_mod",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnStructPtr1(\ti,\t d)",
                             "C_call_list": "i,\t d",
@@ -4049,29 +3499,6 @@
                         }
                     },
                     "d": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&d",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "f_intent": "IN",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "d",
-                            "i_var": "d",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -4098,29 +3525,6 @@
                         }
                     },
                     "i": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&i",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "i",
-                            "i_var": "i",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -4232,38 +3636,9 @@
                 "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_struct_*"
-                        },
-                        "d": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "i": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "outbuf": {
-                            "meta": {
-                                "intent": "out"
-                            },
-                            "stmt": "c_out_char_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4322,38 +3697,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
-                            "C_call_list": "i,\t d,\t outbuf",
-                            "C_name": "STR_returnStructPtr2",
-                            "C_prototype": "int i,\t double d,\t char * outbuf",
-                            "C_return_type": "Cstruct1 *",
-                            "F_C_arguments": "i,\t d,\t outbuf",
-                            "F_C_name": "c_return_struct_ptr2",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "Cstruct1",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHC_rv",
-                            "f_derived_type": "cstruct1",
-                            "f_intent": "OUT",
-                            "f_kind": "cstruct1",
-                            "f_type": "type(cstruct1)",
-                            "f_type_module": "struct_mod",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnStructPtr2(\ti,\t d,\t outbuf)",
                             "C_call_list": "i,\t d,\t outbuf",
@@ -4399,29 +3742,6 @@
                         }
                     },
                     "d": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&d",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "f_intent": "IN",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "d",
-                            "i_var": "d",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -4448,29 +3768,6 @@
                         }
                     },
                     "i": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&i",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "i",
-                            "i_var": "i",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -4497,29 +3794,6 @@
                         }
                     },
                     "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "outbuf",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "outbuf",
-                            "i_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
@@ -4596,24 +3870,9 @@
                 "name": "returnStructPtrArray",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "dim_ast": [
-                                    {
-                                        "constant": "2"
-                                    }
-                                ],
-                                "dimension": "2",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4646,41 +3905,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "returnStructPtrArray(\t)",
-                            "C_name": "STR_returnStructPtrArray",
-                            "C_prototype": "void",
-                            "C_return_type": "Cstruct1 *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_return_struct_ptr_array",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_array_size2": "2",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "Cstruct1",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHC_rv",
-                            "f_array_allocate": "(2)",
-                            "f_assumed_shape": "(:)",
-                            "f_derived_type": "cstruct1",
-                            "f_intent": "OUT",
-                            "f_kind": "cstruct1",
-                            "f_type": "type(cstruct1)",
-                            "f_type_module": "struct_mod",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
                         "fmtf": {
                             "C_call_function": "returnStructPtrArray(\t)",
                             "C_name": "STR_returnStructPtrArray_bufferify",
@@ -4773,18 +3997,9 @@
                 "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_struct_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4805,37 +4020,6 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "get_global_struct_list(\t)",
-                            "C_name": "STR_get_global_struct_list",
-                            "C_prototype": "void",
-                            "C_return_type": "Cstruct_list *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_get_global_struct_list",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "Cstruct_list",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_rv_decl": "Cstruct_list * SHC_rv",
-                            "cxx_type": "Cstruct_list",
-                            "cxx_var": "SHC_rv",
-                            "f_derived_type": "cstruct_list",
-                            "f_intent": "OUT",
-                            "f_kind": "cstruct_list",
-                            "f_type": "type(cstruct_list)",
-                            "f_type_module": "struct_mod",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_function_struct_*"
-                        },
                         "fmtf": {
                             "C_call_function": "get_global_struct_list(\t)",
                             "C_name": "STR_get_global_struct_list_bufferify",
@@ -4916,19 +4100,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capptr"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -4948,35 +4122,14 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Create_Cstruct_as_class(\t)",
-                            "C_name": "STR_Create_Cstruct_as_class",
-                            "C_prototype": "STR_Cstruct_as_class * SHC_rv",
-                            "C_return_type": "STR_Cstruct_as_class *",
-                            "F_C_name": "c_create_cstruct_as_class",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_class",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "SHCXX_rv",
-                            "f_local_ptr": "SHT_prv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capptr"
-                        },
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_class(\t)",
-                            "C_name": "STR_Create_Cstruct_as_class",
+                            "C_name": "STR_Create_Cstruct_as_class_bufferify",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "F_C_arguments": "SHT_rv",
-                            "F_C_call": "c_create_cstruct_as_class",
-                            "F_C_name": "c_create_cstruct_as_class",
+                            "F_C_call": "c_create_cstruct_as_class_bufferify",
+                            "F_C_name": "c_create_cstruct_as_class_bufferify",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -4995,6 +4148,7 @@
                             "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_class",
                             "f_intent": "OUT",
@@ -5066,33 +4220,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capptr"
-                        },
-                        "x": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "y": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5138,37 +4268,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
-                            "C_call_list": "x,\t y",
-                            "C_name": "STR_Create_Cstruct_as_class_args",
-                            "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
-                            "C_return_type": "STR_Cstruct_as_class *",
-                            "F_C_name": "c_create_cstruct_as_class_args",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_class",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "SHCXX_rv",
-                            "f_local_ptr": "SHT_prv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capptr"
-                        },
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
-                            "C_name": "STR_Create_Cstruct_as_class_args",
+                            "C_name": "STR_Create_Cstruct_as_class_args_bufferify",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_class *",
                             "F_C_arguments": "x,\t y,\t SHT_rv",
-                            "F_C_call": "c_create_cstruct_as_class_args",
-                            "F_C_name": "c_create_cstruct_as_class_args",
+                            "F_C_call": "c_create_cstruct_as_class_args_bufferify",
+                            "F_C_name": "c_create_cstruct_as_class_args_bufferify",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
@@ -5187,6 +4295,7 @@
                             "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_class",
                             "f_intent": "OUT",
@@ -5202,23 +4311,6 @@
                         }
                     },
                     "x": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "x",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&x",
-                            "cxx_type": "int",
-                            "cxx_var": "x",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -5245,23 +4337,6 @@
                         }
                     },
                     "y": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "y",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&y",
-                            "cxx_type": "int",
-                            "cxx_var": "y",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -5323,19 +4398,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capsule",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capsule"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5355,34 +4420,14 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Return_Cstruct_as_class(\t)",
-                            "C_name": "STR_Return_Cstruct_as_class",
-                            "C_prototype": "STR_Cstruct_as_class * SHC_rv",
-                            "C_return_type": "void",
-                            "F_C_name": "c_return_cstruct_as_class",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_class",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capsule"
-                        },
                         "fmtf": {
                             "C_call_function": "Return_Cstruct_as_class(\t)",
-                            "C_name": "STR_Return_Cstruct_as_class",
+                            "C_name": "STR_Return_Cstruct_as_class_bufferify",
                             "C_prototype": "STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "SHT_rv",
-                            "F_C_call": "c_return_cstruct_as_class",
-                            "F_C_name": "c_return_cstruct_as_class",
+                            "F_C_call": "c_return_cstruct_as_class_bufferify",
+                            "F_C_name": "c_return_cstruct_as_class_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -5399,6 +4444,7 @@
                             "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_class",
                             "f_intent": "OUT",
@@ -5469,33 +4515,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capsule",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capsule"
-                        },
-                        "x": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "y": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5541,36 +4563,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Return_Cstruct_as_class_args(\tx,\t y)",
-                            "C_call_list": "x,\t y",
-                            "C_name": "STR_Return_Cstruct_as_class_args",
-                            "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
-                            "C_return_type": "void",
-                            "F_C_name": "c_return_cstruct_as_class_args",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_class",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capsule"
-                        },
                         "fmtf": {
                             "C_call_function": "Return_Cstruct_as_class_args(\tx,\t y)",
                             "C_call_list": "x,\t y",
-                            "C_name": "STR_Return_Cstruct_as_class_args",
+                            "C_name": "STR_Return_Cstruct_as_class_args_bufferify",
                             "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "x,\t y,\t SHT_rv",
-                            "F_C_call": "c_return_cstruct_as_class_args",
-                            "F_C_name": "c_return_cstruct_as_class_args",
+                            "F_C_call": "c_return_cstruct_as_class_args_bufferify",
+                            "F_C_name": "c_return_cstruct_as_class_args_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
@@ -5587,6 +4588,7 @@
                             "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_class",
                             "f_intent": "OUT",
@@ -5601,23 +4603,6 @@
                         }
                     },
                     "x": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "x",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&x",
-                            "cxx_type": "int",
-                            "cxx_var": "x",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -5644,23 +4629,6 @@
                         }
                     },
                     "y": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "y",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&y",
-                            "cxx_type": "int",
-                            "cxx_var": "y",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -5740,24 +4708,9 @@
                     "F_name_function": "sum"
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native_scalar"
-                        },
-                        "point": {
-                            "meta": {
-                                "intent": "in"
-                            },
-                            "stmt": "c_in_shadow_*"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -5787,37 +4740,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
-                            "C_call_list": "SHCXX_point",
-                            "C_name": "STR_Cstruct_as_class_sum",
-                            "C_prototype": "STR_Cstruct_as_class * point",
-                            "C_return_type": "int",
-                            "F_C_name": "c_cstruct_as_class_sum",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
                         "fmtf": {
                             "C_call_function": "Cstruct_as_class_sum(\tSHCXX_point)",
                             "C_call_list": "SHCXX_point",
-                            "C_name": "STR_Cstruct_as_class_sum",
+                            "C_name": "STR_Cstruct_as_class_sum_bufferify",
                             "C_prototype": "STR_Cstruct_as_class * point",
                             "C_return_type": "int",
                             "F_C_arguments": "point",
-                            "F_C_call": "c_cstruct_as_class_sum",
-                            "F_C_name": "c_cstruct_as_class_sum",
+                            "F_C_call": "c_cstruct_as_class_sum_bufferify",
+                            "F_C_name": "c_cstruct_as_class_sum_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "point%cxxmem",
@@ -5835,6 +4766,7 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -5848,23 +4780,6 @@
                         }
                     },
                     "point": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "STR_Cstruct_as_class",
-                            "c_var": "point",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(Cstruct_as_class *) SHCXX_point",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "SHCXX_point",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_shadow_*"
-                        },
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "const ",
@@ -5958,40 +4873,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capptr"
-                        },
-                        "x": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "y": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "z": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6050,37 +4934,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
-                            "C_call_list": "x,\t y,\t z",
-                            "C_name": "STR_Create_Cstruct_as_subclass_args",
-                            "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
-                            "C_return_type": "STR_Cstruct_as_subclass *",
-                            "F_C_name": "c_create_cstruct_as_subclass_args",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_subclass",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_subclass",
-                            "cxx_var": "SHCXX_rv",
-                            "f_local_ptr": "SHT_prv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capptr"
-                        },
                         "fmtf": {
                             "C_call_function": "Create_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
-                            "C_name": "STR_Create_Cstruct_as_subclass_args",
+                            "C_name": "STR_Create_Cstruct_as_subclass_args_bufferify",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "STR_Cstruct_as_subclass *",
                             "F_C_arguments": "x,\t y,\t z,\t SHT_rv",
-                            "F_C_call": "c_create_cstruct_as_subclass_args",
-                            "F_C_name": "c_create_cstruct_as_subclass_args",
+                            "F_C_call": "c_create_cstruct_as_subclass_args_bufferify",
+                            "F_C_name": "c_create_cstruct_as_subclass_args_bufferify",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
@@ -6099,6 +4961,7 @@
                             "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
                             "cxx_type": "Cstruct_as_subclass",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_subclass",
                             "f_intent": "OUT",
@@ -6114,23 +4977,6 @@
                         }
                     },
                     "x": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "x",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&x",
-                            "cxx_type": "int",
-                            "cxx_var": "x",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -6157,23 +5003,6 @@
                         }
                     },
                     "y": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "y",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&y",
-                            "cxx_type": "int",
-                            "cxx_var": "y",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -6200,23 +5029,6 @@
                         }
                     },
                     "z": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "z",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&z",
-                            "cxx_type": "int",
-                            "cxx_var": "z",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -6309,40 +5121,9 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "api": "capsule",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_shadow_*_capsule"
-                        },
-                        "x": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "y": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        },
-                        "z": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native_scalar"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "meta": {
@@ -6401,36 +5182,15 @@
                 },
                 "zz_fmtargs": {
                     "+result": {
-                        "fmtc": {
-                            "C_call_function": "Return_Cstruct_as_subclass_args(\tx,\t y,\t z)",
-                            "C_call_list": "x,\t y,\t z",
-                            "C_name": "STR_Return_Cstruct_as_subclass_args",
-                            "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
-                            "C_return_type": "void",
-                            "F_C_name": "c_return_cstruct_as_subclass_args",
-                            "c_const": "",
-                            "c_type": "STR_Cstruct_as_subclass",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
-                            "cxx_type": "Cstruct_as_subclass",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_*_capsule"
-                        },
                         "fmtf": {
                             "C_call_function": "Return_Cstruct_as_subclass_args(\tx,\t y,\t z)",
                             "C_call_list": "x,\t y,\t z",
-                            "C_name": "STR_Return_Cstruct_as_subclass_args",
+                            "C_name": "STR_Return_Cstruct_as_subclass_args_bufferify",
                             "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHC_rv",
                             "C_return_type": "void",
                             "F_C_arguments": "x,\t y,\t z,\t SHT_rv",
-                            "F_C_call": "c_return_cstruct_as_subclass_args",
-                            "F_C_name": "c_return_cstruct_as_subclass_args",
+                            "F_C_call": "c_return_cstruct_as_subclass_args_bufferify",
+                            "F_C_name": "c_return_cstruct_as_subclass_args_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
@@ -6447,6 +5207,7 @@
                             "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
                             "cxx_type": "Cstruct_as_subclass",
                             "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_capsule_data_type": "STR_SHROUD_capsule_data",
                             "f_derived_type": "cstruct_as_subclass",
                             "f_intent": "OUT",
@@ -6461,23 +5222,6 @@
                         }
                     },
                     "x": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "x",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&x",
-                            "cxx_type": "int",
-                            "cxx_var": "x",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -6504,23 +5248,6 @@
                         }
                     },
                     "y": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "y",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&y",
-                            "cxx_type": "int",
-                            "cxx_var": "y",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -6547,23 +5274,6 @@
                         }
                     },
                     "z": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "int",
-                            "c_var": "z",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&z",
-                            "cxx_type": "int",
-                            "cxx_var": "z",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
-                        },
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
@@ -7782,7 +6492,6 @@
             "PY_module_name": "cstruct"
         },
         "wrap": {
-            "c": true,
             "fortran": true
         }
     },

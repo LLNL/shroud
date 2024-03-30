@@ -10,7 +10,7 @@
 #
 include $(top)/regression/run/defaults.mk
 
-TEST_FFLAGS = -DTEST_C_WRAPPER
+#TEST_FFLAGS = -DTEST_C_WRAPPER
 
 INCLUDE = \
     -I$(top)/regression/reference/strings \

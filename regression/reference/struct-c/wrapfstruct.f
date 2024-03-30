@@ -394,28 +394,6 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct2
-    ! Statement: c_function_native_scalar
-    ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1
-    ! Statement: c_in_struct_*
-    ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-    ! Statement: c_out_char_*
-    interface
-        function c_pass_struct2(s1, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="passStruct2")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT) :: SHT_rv
-        end function c_pass_struct2
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  int passStruct2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
@@ -504,36 +482,15 @@ module struct_mod
     ! Argument:  double d
     ! Statement: f_in_native_scalar
     interface
-        subroutine c_return_struct_by_value(i, d, SHT_rv) &
-                bind(C, name="STR_returnStructByValue")
+        subroutine c_return_struct_by_value_bufferify(i, d, SHT_rv) &
+                bind(C, name="STR_returnStructByValue_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
             import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
             type(cstruct1), intent(OUT) :: SHT_rv
-        end subroutine c_return_struct_by_value
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr1
-    ! Statement: c_function_struct_*
-    ! ----------------------------------------
-    ! Argument:  int i
-    ! Statement: c_in_native_scalar
-    ! ----------------------------------------
-    ! Argument:  double d
-    ! Statement: c_in_native_scalar
-    interface
-        function c_return_struct_ptr1(i, d) &
-                result(SHT_rv) &
-                bind(C, name="STR_returnStructPtr1")
-            use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
-            implicit none
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr1
+        end subroutine c_return_struct_by_value_bufferify
     end interface
 
     ! ----------------------------------------
@@ -555,31 +512,6 @@ module struct_mod
             real(C_DOUBLE), value, intent(IN) :: d
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_return_struct_ptr1_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr2
-    ! Statement: c_function_struct_*
-    ! ----------------------------------------
-    ! Argument:  int i
-    ! Statement: c_in_native_scalar
-    ! ----------------------------------------
-    ! Argument:  double d
-    ! Statement: c_in_native_scalar
-    ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-    ! Statement: c_out_char_*
-    interface
-        function c_return_struct_ptr2(i, d, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="STR_returnStructPtr2")
-            use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
-            implicit none
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr2
     end interface
 
     ! ----------------------------------------
@@ -611,19 +543,6 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
-    ! Statement: c_function_struct_*
-    interface
-        function c_return_struct_ptr_array() &
-                result(SHT_rv) &
-                bind(C, name="STR_returnStructPtrArray")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr_array
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
     ! Statement: f_function_struct_*_cdesc_pointer
     interface
         subroutine c_return_struct_ptr_array_bufferify(SHT_rv_cdesc) &
@@ -632,19 +551,6 @@ module struct_mod
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
         end subroutine c_return_struct_ptr_array_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  Cstruct_list * get_global_struct_list
-    ! Statement: c_function_struct_*
-    interface
-        function c_get_global_struct_list() &
-                result(SHT_rv) &
-                bind(C, name="STR_get_global_struct_list")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_get_global_struct_list
     end interface
 
     ! ----------------------------------------
@@ -662,19 +568,19 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Statement: f_function_shadow_*_capptr
-    ! start c_create_cstruct_as_class
+    ! start c_create_cstruct_as_class_bufferify
     interface
-        function c_create_cstruct_as_class(SHT_rv) &
+        function c_create_cstruct_as_class_bufferify(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_Create_Cstruct_as_class")
+                bind(C, name="STR_Create_Cstruct_as_class_bufferify")
             use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
-        end function c_create_cstruct_as_class
+        end function c_create_cstruct_as_class_bufferify
     end interface
-    ! end c_create_cstruct_as_class
+    ! end c_create_cstruct_as_class_bufferify
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
@@ -686,9 +592,9 @@ module struct_mod
     ! Argument:  int y
     ! Statement: f_in_native_scalar
     interface
-        function c_create_cstruct_as_class_args(x, y, SHT_rv) &
+        function c_create_cstruct_as_class_args_bufferify(x, y, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_Create_Cstruct_as_class_args")
+                bind(C, name="STR_Create_Cstruct_as_class_args_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -696,19 +602,19 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: y
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
-        end function c_create_cstruct_as_class_args
+        end function c_create_cstruct_as_class_args_bufferify
     end interface
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Return_Cstruct_as_class
     ! Statement: f_function_shadow_*_capsule
     interface
-        subroutine c_return_cstruct_as_class(SHT_rv) &
-                bind(C, name="STR_Return_Cstruct_as_class")
+        subroutine c_return_cstruct_as_class_bufferify(SHT_rv) &
+                bind(C, name="STR_Return_Cstruct_as_class_bufferify")
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_return_cstruct_as_class
+        end subroutine c_return_cstruct_as_class_bufferify
     end interface
 
     ! ----------------------------------------
@@ -721,15 +627,16 @@ module struct_mod
     ! Argument:  int y
     ! Statement: f_in_native_scalar
     interface
-        subroutine c_return_cstruct_as_class_args(x, y, SHT_rv) &
-                bind(C, name="STR_Return_Cstruct_as_class_args")
+        subroutine c_return_cstruct_as_class_args_bufferify(x, y, &
+                SHT_rv) &
+                bind(C, name="STR_Return_Cstruct_as_class_args_bufferify")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_return_cstruct_as_class_args
+        end subroutine c_return_cstruct_as_class_args_bufferify
     end interface
 
     ! ----------------------------------------
@@ -739,15 +646,15 @@ module struct_mod
     ! Argument:  const Cstruct_as_class * point +pass
     ! Statement: f_in_shadow_*
     interface
-        function c_cstruct_as_class_sum(point) &
+        function c_cstruct_as_class_sum_bufferify(point) &
                 result(SHT_rv) &
-                bind(C, name="STR_Cstruct_as_class_sum")
+                bind(C, name="STR_Cstruct_as_class_sum_bufferify")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(IN) :: point
             integer(C_INT) :: SHT_rv
-        end function c_cstruct_as_class_sum
+        end function c_cstruct_as_class_sum_bufferify
     end interface
 
     ! ----------------------------------------
@@ -763,9 +670,10 @@ module struct_mod
     ! Argument:  int z
     ! Statement: f_in_native_scalar
     interface
-        function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
+        function c_create_cstruct_as_subclass_args_bufferify(x, y, z, &
+                SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_Create_Cstruct_as_subclass_args")
+                bind(C, name="STR_Create_Cstruct_as_subclass_args_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -774,7 +682,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: z
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
-        end function c_create_cstruct_as_subclass_args
+        end function c_create_cstruct_as_subclass_args_bufferify
     end interface
 
     ! ----------------------------------------
@@ -790,8 +698,9 @@ module struct_mod
     ! Argument:  int z
     ! Statement: f_in_native_scalar
     interface
-        subroutine c_return_cstruct_as_subclass_args(x, y, z, SHT_rv) &
-                bind(C, name="STR_Return_Cstruct_as_subclass_args")
+        subroutine c_return_cstruct_as_subclass_args_bufferify(x, y, z, &
+                SHT_rv) &
+                bind(C, name="STR_Return_Cstruct_as_subclass_args_bufferify")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -799,7 +708,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: y
             integer(C_INT), value, intent(IN) :: z
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_return_cstruct_as_subclass_args
+        end subroutine c_return_cstruct_as_subclass_args_bufferify
     end interface
 
     ! Generated by getter/setter
@@ -1256,7 +1165,7 @@ contains
         real(C_DOUBLE), value, intent(IN) :: d
         type(cstruct1) :: SHT_rv
         ! splicer begin function.return_struct_by_value
-        call c_return_struct_by_value(i, d, SHT_rv)
+        call c_return_struct_by_value_bufferify(i, d, SHT_rv)
         ! splicer end function.return_struct_by_value
     end function return_struct_by_value
 
@@ -1364,7 +1273,7 @@ contains
         type(cstruct_as_class) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin function.create_cstruct_as_class
-        SHT_prv = c_create_cstruct_as_class(SHT_rv%cxxmem)
+        SHT_prv = c_create_cstruct_as_class_bufferify(SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class
     end function create_cstruct_as_class
     ! end create_cstruct_as_class
@@ -1386,7 +1295,8 @@ contains
         type(cstruct_as_class) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin function.create_cstruct_as_class_args
-        SHT_prv = c_create_cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        SHT_prv = c_create_cstruct_as_class_args_bufferify(x, y, &
+            SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class_args
     end function create_cstruct_as_class_args
 
@@ -1397,7 +1307,7 @@ contains
             result(SHT_rv)
         type(cstruct_as_class) :: SHT_rv
         ! splicer begin function.return_cstruct_as_class
-        call c_return_cstruct_as_class(SHT_rv%cxxmem)
+        call c_return_cstruct_as_class_bufferify(SHT_rv%cxxmem)
         ! splicer end function.return_cstruct_as_class
     end function return_cstruct_as_class
 
@@ -1417,7 +1327,8 @@ contains
         integer(C_INT), value, intent(IN) :: y
         type(cstruct_as_class) :: SHT_rv
         ! splicer begin function.return_cstruct_as_class_args
-        call c_return_cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        call c_return_cstruct_as_class_args_bufferify(x, y, &
+            SHT_rv%cxxmem)
         ! splicer end function.return_cstruct_as_class_args
     end function return_cstruct_as_class_args
 
@@ -1433,7 +1344,7 @@ contains
         class(cstruct_as_class), intent(IN) :: point
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum
-        SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
+        SHT_rv = c_cstruct_as_class_sum_bufferify(point%cxxmem)
         ! splicer end function.sum
     end function cstruct_as_class_sum
 
@@ -1458,7 +1369,7 @@ contains
         type(cstruct_as_subclass) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin function.create_cstruct_as_subclass_args
-        SHT_prv = c_create_cstruct_as_subclass_args(x, y, z, &
+        SHT_prv = c_create_cstruct_as_subclass_args_bufferify(x, y, z, &
             SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_subclass_args
     end function create_cstruct_as_subclass_args
@@ -1483,7 +1394,8 @@ contains
         integer(C_INT), value, intent(IN) :: z
         type(cstruct_as_subclass) :: SHT_rv
         ! splicer begin function.return_cstruct_as_subclass_args
-        call c_return_cstruct_as_subclass_args(x, y, z, SHT_rv%cxxmem)
+        call c_return_cstruct_as_subclass_args_bufferify(x, y, z, &
+            SHT_rv%cxxmem)
         ! splicer end function.return_cstruct_as_subclass_args
     end function return_cstruct_as_subclass_args
 

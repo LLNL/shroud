@@ -15,35 +15,14 @@
 #ifndef WRAPTYPEDEFS_H
 #define WRAPTYPEDEFS_H
 
+// typemap
+#include "wraptypedefs.h"
 // shroud
 #include "typestypedefs.h"
 
-// start typedef TypeID
-// typedef TypeID
-// splicer begin typedef.TypeID
-typedef int TYP_TypeID;
-// splicer end typedef.TypeID
-// end typedef TypeID
-
-// start typedef Struct1Rename
-// typedef Struct1Rename
-// splicer begin typedef.Struct1Rename
-typedef struct s_Struct1 TYP_Struct1Rename;
-// splicer end typedef.Struct1Rename
-// end typedef Struct1Rename
-
-// start typedef IndexType
-// typedef IndexType
-// splicer begin typedef.IndexType
-#if defined(USE_64BIT_INDEXTYPE)
-typedef int64_t TYP_IndexType;
-#else
-typedef int32_t TYP_IndexType;
-#endif
-// splicer end typedef.IndexType
-// end typedef IndexType
-
 // splicer begin C_declarations
 // splicer end C_declarations
+
+TypeID TYP_typefunc_wrap_bufferify(TypeID arg);
 
 #endif  // WRAPTYPEDEFS_H

@@ -25,9 +25,14 @@
 extern "C" {
 #endif
 
+// typedef TypeID
+// splicer begin typedef.TypeID
+typedef int FUN_TypeID;
+// splicer end typedef.TypeID
+
 // typedef incrtype
 // splicer begin typedef.incrtype
-typedef void ( * FUN_incrtype)(int i);
+typedef void ( * FUN_incrtype)(int i, FUN_TypeID j);
 // splicer end typedef.incrtype
 
 // splicer begin C_declarations

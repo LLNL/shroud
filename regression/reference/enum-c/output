@@ -1,4 +1,4 @@
-Wrote wrapenum.h
+Will not generate C wrappers for a language=c library
 Wrote wrapfenum.f
 Wrote utilenum.c
 Wrote typesenum.h
