@@ -142,6 +142,7 @@ c-test-list = \
   test-c-pointers-cxx \
   test-c-pointers-cxx-c \
   test-c-struct-cxx \
+  test-c-funptr-cxx \
   test-c-vectors \
   test-c-statement \
   test-c-templates

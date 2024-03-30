@@ -32,7 +32,7 @@ typedef int FUN_TypeID;
 
 // typedef incrtype
 // splicer begin typedef.incrtype
-typedef void ( * FUN_incrtype)(int i, TypeID j);
+typedef void ( * FUN_incrtype)(int i, FUN_TypeID j);
 // splicer end typedef.incrtype
 
 // splicer begin C_declarations

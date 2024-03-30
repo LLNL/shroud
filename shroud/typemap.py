@@ -87,7 +87,7 @@ class Typemap(object):
             # None = non-templated type.
             # index example ["<int>"] = Typemap for instantiated class.
         # For example, if cxx_to_c was a function
-        ("c_type", None),  # Name of type in C
+        ("c_type", None),  # Name of type in C, used with C wrapper
         ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion

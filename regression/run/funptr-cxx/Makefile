@@ -31,6 +31,10 @@ F_OBJS = \
 funptr-cxx : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
+testc.o : testc.c wrapfunptr.h
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
+
 clean :
 	rm -f $(C_OBJS) $(F_OBJS) *.mod funptr-cxx
 
