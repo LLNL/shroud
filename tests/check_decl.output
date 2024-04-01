@@ -178,8 +178,8 @@ class Class2 {
 };
 XXXX PRINT_NODE
 class Class2{
-Class2 ();
-~Class2 ();
+Class2 (void);
+~Class2 (void);
 }
 ;
 
@@ -237,7 +237,7 @@ int y;
 ;
 struct Point end;
 Point start;
-void func1(struct Point arg1,Point arg2);
+void func1(struct Point arg1, Point arg2);
 
 XXXX AST
 stmts:
@@ -591,7 +591,7 @@ XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };;
 enum Color global;
 Color flag=RED;
-void func1(enum Color arg1,Color arg2);
+void func1(enum Color arg1, Color arg2);
 
 XXXX AST
 stmts:
@@ -773,10 +773,10 @@ template<T> class user {
 user<int> returnUserType(void);
 XXXX PRINT_NODE
 template<T>  class user{
-template<U>  void nested(T arg1,U arg2);
+template<U>  void nested(T arg1, U arg2);
 }
 ;
-user returnUserType();
+user returnUserType(void);
 
 XXXX AST
 stmts:

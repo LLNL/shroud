@@ -1531,8 +1531,10 @@ class Declarator(Node):
             if self.params:
                 out.append(str(self.params[0]))
                 for param in self.params[1:]:
-                    out.append(",")
+                    out.append(", ")
                     out.append(str(param))
+            else:
+                out.append("void")
             out.append(")")
             if self.func_const:
                 out.append(" const")
@@ -1544,6 +1546,7 @@ class Declarator(Node):
         if self.init:
             out.append("=")
             out.append(str(self.init))
+        self.gen_attrs(self.attrs, out)
 
         return "".join(out)
 
@@ -2105,6 +2108,9 @@ class Struct(Node):
         symtab.push_scope(self)
 
     def gen_decl(self, **kwargs):
+        return "struct " + self.name
+
+    def __str__(self):
         return "struct " + self.name
 
 
