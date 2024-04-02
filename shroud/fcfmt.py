@@ -119,7 +119,7 @@ class FillFormat(object):
             fmt_result.sh_type = result_typemap.sh_type
             fmt_result.cfi_type = result_typemap.cfi_type
             if ast.template_arguments:
-                fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+                fmt_result.cxx_T = ast.gen_template_argument()
             if result_stmt.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
@@ -339,7 +339,7 @@ class FillFormat(object):
             fmt.idtor = "0"
 
             if ntypemap.base != "shadow" and ast.template_arguments:
-                fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+                fmt.cxx_T = ast.gen_template_argument()
             
             if meta["blanknull"]:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
@@ -480,7 +480,7 @@ class FillFormat(object):
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             # XXX - need to add an argument for each template arg
             ntypemap = c_ast.template_arguments[0].typemap
-            fmt.cxx_T = ','.join([str(targ) for targ in c_ast.template_arguments])
+            fmt.cxx_T = c_ast.gen_template_argument()
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, bind, fmt, rootname,
                                       ntypemap, subprogram)

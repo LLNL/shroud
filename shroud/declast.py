@@ -496,7 +496,7 @@ class Parser(ExprParser):
                 self.enum_decl(node)
                 found_type = True
             elif self.token.typ == "STRUCT":
-                specifier = self.struct_decl(node)
+                self.struct_decl(node)
                 found_type = True
             else:
                 more = False
@@ -1529,10 +1529,14 @@ class Declarator(Node):
         if self.params is not None:
             out.append("(")
             if self.params:
-                out.append(str(self.params[0]))
-                for param in self.params[1:]:
-                    out.append(", ")
+                for param in self.params:
                     out.append(str(param))
+                    s = str(param.declarator)
+                    if s:
+                        out.append(" ")
+                        out.append(s)
+                    out.append(", ")
+                out.pop()
             else:
                 out.append("void")
             out.append(")")
@@ -1624,11 +1628,6 @@ class Declaration(Node):
                 out.append(" ".join(self.specifier))
             else:
                 out.append("int")
-
-        var = str(self.declarator)
-        if var:
-            out.append(" ")
-            out.append(var)
         return "".join(out)
 
     def gen_decl(self, **kwargs):
@@ -1675,15 +1674,26 @@ class Declaration(Node):
                                       in_params=in_params, arg_lang=arg_lang,
                                       **kwargs)
 
-    def gen_template_arguments(self):
-        """Return string for template_arguments."""
-        decl = ["<"]
+    def gen_template_argument(self):
+        """
+        ex  "int, double *"
+        """
+        decl = []
         for targ in self.template_arguments:
             decl.append(str(targ))
+            if targ.declarator:
+                s = str(targ.declarator)
+                if s:
+                    decl.append(" ")
+                    decl.append(s)
             decl.append(",")
-        decl[-1] = ">"
+        decl.pop()
         return ''.join(decl)
-
+        
+    def gen_template_arguments(self):
+        """Return string for template_arguments."""
+        return "<" + self.gen_template_argument() + ">"
+        
     def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
         No parameters or attributes.

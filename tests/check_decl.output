@@ -515,7 +515,7 @@ enum Color global;
 typedef enum Color Color_typ;
 Color_typ local;
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;
+enum Color { RED, WHITE, BLUE };
 enum Color global;
 typedef enum Color Color_typ;
 Color_typ local;
@@ -588,7 +588,7 @@ enum Color global;
 Color flag = RED;
 void func1(enum Color arg1, Color arg2);
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;
+enum Color { RED, WHITE, BLUE };
 enum Color global;
 Color flag=RED;
 void func1(enum Color arg1, Color arg2);

@@ -727,7 +727,15 @@ class PrintNode(visitor.Visitor):
             s += self.visit(node.enum_specifier)
         elif node.class_specifier:
             s += self.visit(node.class_specifier)
+
+        if node.declarator:
+            sdecl = self.visit(node.declarator)
+            if sdecl:
+                s += " " + sdecl
         return s
+
+    def visit_Declarator(self, node):
+        return str(node)
 
     def visit_EnumValue(self, node):
         if node.value is None:
@@ -736,7 +744,7 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        return " {{ {} }};".format(
+        return " {{ {} }}".format(
             self.comma_list(node.members)
         )
 
