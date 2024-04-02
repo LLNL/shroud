@@ -199,6 +199,14 @@ def test_block(comments, code, symtab):
         ast = declast.Parser(decl, symtab, trace).top_level()
         asdict = todict.to_dict(ast, labelast=True)
 
+        print("XXXX PRINT")
+        for i, stmt in enumerate(ast.stmts):
+            if isinstance(stmt, declast.Declaration):
+                print(i, stmt)
+                print("  ", stmt.declarator)
+            elif isinstance(stmt, declast.Template):
+                print(i, stmt)
+
         print("XXXX PRINT_NODE")
         s = todict.print_node(ast)
         print(s)

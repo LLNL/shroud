@@ -2156,7 +2156,12 @@ class Template(Node):
           template<U> class name
         """
         self.parent.add_child(name, node)
-            
+
+    def __str__(self):
+        s = []
+        for param in self.parameters:
+            s.append(str(param))
+        return "<" + ",".join(s) + ">"
 
 class TemplateParam(Node):
     """A template parameter.
@@ -2180,6 +2185,9 @@ class TemplateParam(Node):
         # But use an illegal identifer name since it should never be used.
         self.name = name
 
+    def __str__(self):
+        return self.name
+        
 
 class Typedef(Node):
     """
