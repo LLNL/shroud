@@ -3213,6 +3213,840 @@
                     "F_name_impl": "callback4",
                     "function_name": "callback4"
                 }
+            },
+            {
+                "<FUNCTION>": "callback_ptr  9 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_ptr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "get",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "name": "get",
+                                    "params": [],
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_ptr(int *(*get)(void));",
+                "declgen": "void callback_ptr(int * ( * get)(void))",
+                "doxygen": {
+                    "brief": "Return a C_PTR",
+                    "description": "No other arguments to test that a function result\nuses iso_c_binding C_PTR.\n"
+                },
+                "name": "callback_ptr",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [],
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int * ( * get)(void)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [],
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int * ( * get)(void)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [],
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int * ( * get)(void)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "callback_ptr(\tget)",
+                            "C_call_list": "get",
+                            "C_name": "FUN_callback_ptr",
+                            "C_prototype": "int * ( * get)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_name": "c_callback_ptr",
+                            "stmt_name": "c_subroutine"
+                        },
+                        "fmtf": {
+                            "C_call_function": "callback_ptr(\tget)",
+                            "C_call_list": "get",
+                            "C_name": "FUN_callback_ptr",
+                            "C_prototype": "int * ( * get)(\tvoid)",
+                            "C_return_type": "void",
+                            "F_C_arguments": "get",
+                            "F_C_call": "c_callback_ptr",
+                            "F_C_name": "callback_ptr",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "get",
+                            "F_arguments": "get",
+                            "F_subprogram": "subroutine",
+                            "stmt_name": "f_subroutine"
+                        }
+                    },
+                    "get": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "get",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "get",
+                            "cxx_type": "int",
+                            "cxx_var": "get",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_*"
+                        },
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "get",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "get",
+                            "cxx_type": "int",
+                            "cxx_var": "get",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "get",
+                            "fc_var": "get",
+                            "i_var": "get",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_ptr",
+                    "F_name_api": "callback_ptr",
+                    "F_name_function": "callback_ptr",
+                    "F_name_generic": "callback_ptr",
+                    "F_name_impl": "callback_ptr",
+                    "function_name": "callback_ptr"
+                }
+            },
+            {
+                "<FUNCTION>": "abstract1  10 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "abstract1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "input",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "get",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "name": "get",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "double"
+                                            },
+                                            "specifier": [
+                                                "double"
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int abstract1(int input, int (*get)(double, int));",
+                "declgen": "int abstract1(int input, int ( * get)(double, int))",
+                "doxygen": {
+                    "brief": "abstract argument"
+                },
+                "name": "abstract1",
+                "options": {
+                    "F_abstract_interface_argument_template": "XX{index}arg",
+                    "F_abstract_interface_subprogram_template": "custom_funptr",
+                    "F_force_wrapper": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "input": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "input": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    "decl": "int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "input": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "abstract1(\tinput,\t get)",
+                            "C_call_list": "input,\t get",
+                            "C_name": "FUN_abstract1",
+                            "C_prototype": "int input,\t int ( * get)(\tdouble,\t int)",
+                            "C_return_type": "int",
+                            "F_C_name": "c_abstract1",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "abstract1(\tinput,\t get)",
+                            "C_call_list": "input,\t get",
+                            "C_name": "FUN_abstract1",
+                            "C_prototype": "int input,\t int ( * get)(\tdouble,\t int)",
+                            "C_return_type": "int",
+                            "F_C_arguments": "input,\t get",
+                            "F_C_call": "c_abstract1",
+                            "F_C_name": "c_abstract1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "input,\t get",
+                            "F_arguments": "input,\t get",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "get": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "get",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&get",
+                            "cxx_type": "int",
+                            "cxx_var": "get",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "get",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&get",
+                            "cxx_type": "int",
+                            "cxx_var": "get",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "get",
+                            "fc_var": "get",
+                            "i_var": "get",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "input": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "input",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&input",
+                            "cxx_type": "int",
+                            "cxx_var": "input",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "input",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&input",
+                            "cxx_type": "int",
+                            "cxx_var": "input",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "input",
+                            "fc_var": "input",
+                            "i_var": "input",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "abstract1",
+                    "F_name_api": "abstract1",
+                    "F_name_function": "abstract1",
+                    "F_name_generic": "abstract1",
+                    "F_name_impl": "abstract1",
+                    "function_name": "abstract1"
+                }
             }
         ],
         "language": "cxx",
@@ -3602,6 +4436,334 @@
                     "cxx_type": "incrtype",
                     "typedef_name": "incrtype"
                 }
+            },
+            {
+                "<TYPEDEF>": "get ****************************************",
+                "ast": {
+                    "declarator": {
+                        "func": {
+                            "name": "get",
+                            "pointer": [
+                                {
+                                    "ptr": "*"
+                                }
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "get",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            },
+                            {
+                                "declarator": {
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "get"
+                },
+                "name": "get",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "get"
+                                    },
+                                    "decl": "typedef int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "f": {
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "get"
+                                    },
+                                    "decl": "typedef int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "share": {
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "func": {
+                                                "name": "get",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "double"
+                                                    },
+                                                    "specifier": [
+                                                        "double"
+                                                    ],
+                                                    "typemap_name": "double"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "get"
+                                    },
+                                    "decl": "typedef int ( * get)(double, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        },
+                                        "share": {
+                                            "arg1": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "get",
+                    "C_name_typedef": "FUN_get",
+                    "F_name_api": "get",
+                    "F_name_typedef": "get",
+                    "cxx_type": "get",
+                    "typedef_name": "get"
+                }
             }
         ],
         "wrap": {
@@ -3640,6 +4802,29 @@
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
+            "wrap_header": [
+                "wrapfunptr.h"
+            ]
+        },
+        "get": {
+            "base": "procedure",
+            "c_type": "FUN_get",
+            "cxx_type": "get",
+            "f_kind": "get",
+            "f_module": {
+                "funptr_mod": [
+                    "get"
+                ]
+            },
+            "f_module_name": "funptr_mod",
+            "f_type": "procedure(get)",
+            "flat_name": "get",
+            "i_module": {
+                "funptr_mod": [
+                    "get"
+                ]
+            },
+            "sgroup": "procedure",
             "wrap_header": [
                 "wrapfunptr.h"
             ]

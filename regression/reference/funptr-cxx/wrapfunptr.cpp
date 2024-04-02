@@ -127,4 +127,29 @@ int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
     // splicer end function.callback4
 }
 
+/**
+ * \brief Return a C_PTR
+ *
+ * No other arguments to test that a function result
+ * uses iso_c_binding C_PTR.
+ */
+void FUN_callback_ptr(int * ( * get)(void))
+{
+    // splicer begin function.callback_ptr
+    callback_ptr(get);
+    // splicer end function.callback_ptr
+}
+
+/**
+ * \brief abstract argument
+ *
+ */
+int FUN_abstract1(int input, int ( * get)(double, int))
+{
+    // splicer begin function.abstract1
+    int SHC_rv = abstract1(input, get);
+    return SHC_rv;
+    // splicer end function.abstract1
+}
+
 }  // extern "C"

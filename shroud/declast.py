@@ -1843,18 +1843,27 @@ class Declaration(Node):
                 else:
                     t.append("value")
     
-    def bind_c(self, intent=None, is_result=False, **kwargs):
+    def bind_c(self, modules, intent=None, is_result=False,
+               is_callback=False, **kwargs):
         """Generate an argument used with the bind(C) interface from Fortran.
 
         Args:
             intent - Explicit intent 'in', 'inout', 'out'.
                      Defaults to None to use intent from attrs.
+            is_callback - Abstract interface for callbacks.
+                     A function which returns a pointer must
+                     use type(C_PTR).
 
             name   - Set name explicitly, else self.name.
         """
+        # XXX - callers should not need to set modules directly,
+        #       this routine should set modules.
         t = []
         attrs = self.declarator.attrs
-        ntypemap = self.typemap
+        if is_result and "typedef" in self.storage:
+            ntypemap = self.declarator.typemap
+        else:
+            ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
             # If a template, use its type
@@ -1865,6 +1874,9 @@ class Declaration(Node):
             raise RuntimeError(
                 "Type {} has no value for i_type".format(self.typename)
             )
+        if is_callback and self.declarator.is_indirect():
+            typ = "type(C_PTR)"
+            modules.setdefault("iso_c_binding", {})["C_PTR"] = True
         t.append(typ)
         if basedef.base == "procedure":
             # dummy procedure can not have intent or value.

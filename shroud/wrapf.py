@@ -980,7 +980,6 @@ rv = .false.
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg, fptr = fileinfo.f_abstract_interface[key]
                 options = node.options
-                ast = node.ast
                 subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
@@ -997,7 +996,7 @@ rv = .false.
                             fmt,
                         )
                     arg_f_names.append(name)
-                    arg_c_decl.append(param.bind_c(intent=intent, name=name))
+                    arg_c_decl.append(param.bind_c(modules, intent=intent, name=name))
 
                     arg_typemap, specialize = statements.lookup_c_statements(
                         param
@@ -1009,7 +1008,9 @@ rv = .false.
                     )
 
                 if subprogram == "function":
-                    arg_c_decl.append(ast.bind_c(name=key, is_result=True, params=None))
+                    arg_c_decl.append(fptr.ast.bind_c(
+                        modules, name=key, is_result=True, is_callback=True,
+                        params=None))
                 arguments = ",\t ".join(arg_f_names)
                 if options.literalinclude:
                     iface.append("! start abstract " + key)
@@ -1130,7 +1131,7 @@ rv = .false.
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c(meta["intent"]))
+                arg_c_decl.append(ast.bind_c(modules, meta["intent"]))
                 arg_typemap = ast.typemap
                 if ast.template_arguments:
                     # If a template, use its type
@@ -1299,7 +1300,7 @@ rv = .false.
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(is_result=True, name=fmt_result.F_result))
+                arg_c_decl.append(ast.bind_c(modules, is_result=True, name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,

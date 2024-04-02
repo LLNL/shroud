@@ -8,8 +8,11 @@ C f void callback2_external(const char * name, int ival, incrtype incr +external
 C f void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 C f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
+C f void callback_ptr(int * ( * get)(void))
+C f int abstract1(int input, int ( * get)(double, int))
 typedef TypeID
 typedef incrtype
+typedef get
 Fortran void callback1(void ( * incr)(void))
 Fortran void callback1_wrap(void ( * incr)(void))
 Fortran void callback1_external(void ( * incr)(void) +external)
@@ -19,6 +22,8 @@ Fortran void callback2_external(const char * name, int ival, incrtype incr +exte
 Fortran void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 Fortran void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 Fortran int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
+Fortran void callback_ptr(int * ( * get)(void))
+Fortran int abstract1(int input, int ( * get)(double, int))
 C-interface f void callback1(void ( * incr)(void))
 C-interface f void callback1_wrap(void ( * incr)(void))
 C-interface f void callback1_external(void ( * incr)(void) +external)
@@ -28,6 +33,8 @@ C-interface f void callback2_external(const char * name, int ival, incrtype incr
 C-interface f void callback2_funptr(const char * name, int ival, incrtype incr +funptr)
 C-interface f void callback3(int type, void * in +assumedtype+intent(in), void ( * incr)(void) +funptr)
 C-interface f int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))
+C-interface f void callback_ptr(int * ( * get)(void))
+C-interface f int abstract1(int input, int ( * get)(double, int))
 Close wrapffunptr.f
 Close utilfunptr.c
 Close typesfunptr.h

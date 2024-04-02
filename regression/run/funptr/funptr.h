@@ -30,4 +30,8 @@ void callback3(int type, void * in, void (*incr)(void));
 int callback4(int *ilow, int nargs,
               int (*actor)(int *ilow, int nargs));
 
+void callback_ptr(int *(*get)(void));
+
+int abstract1(int input, int (*get)(double, int));
+
 #endif // FUNPTR_H

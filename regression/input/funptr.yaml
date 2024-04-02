@@ -84,8 +84,27 @@ declarations:
   doxygen:
     brief: Test attributes on callback arguments
 
+#####
 
-#- decl: void Rtserv(const char *attr,
-#                    typedef void (*actor) (
-#                      const char *name,
-#                      long *ilow+rank(1)))
+- decl: void callback_ptr(int *(*get)(void));
+  doxygen:
+    brief: Return a C_PTR
+    description: |
+      No other arguments to test that a function result
+      uses iso_c_binding C_PTR.
+
+#####
+
+- decl: typedef int (*get)(double, int);
+  doxygen:
+    brief: abstract argument
+
+- decl: int abstract1(int input, int (*get)(double, int));
+  doxygen:
+    brief: abstract argument
+  options:
+    F_force_wrapper: True
+    F_abstract_interface_subprogram_template: custom_funptr
+    F_abstract_interface_argument_template: XX{index}arg
+
+
