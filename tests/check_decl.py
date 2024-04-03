@@ -29,8 +29,8 @@ lines = """
 # create_std
 --------------------
 # variable declarations
-int i;
-const double d;
+int i, j;
+const double d, *d2;
 --------------------
 # variable pointer declarations
 int *i1;
@@ -203,7 +203,8 @@ def test_block(comments, code, symtab):
         for i, stmt in enumerate(ast.stmts):
             if isinstance(stmt, declast.Declaration):
                 print(i, stmt)
-                print("  ", stmt.declarator)
+                for d2 in stmt.declarators:
+                    print("  ", d2)
             elif isinstance(stmt, declast.Template):
                 print(i, stmt)
 

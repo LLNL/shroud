@@ -587,7 +587,7 @@ class Parser(ExprParser):
         elif self.token.typ == "TEMPLATE":
             node = self.template_statement()
         else:
-            node = self.declaration()
+            node = self.declaration(stmt=True)
         return node
 
     def decl_statement(self):
@@ -599,7 +599,7 @@ class Parser(ExprParser):
         self.mustbe("EOF")
         return node
 
-    def declaration(self):
+    def declaration(self, stmt=False):
         """Parse a declaration statement.
         Use with decl_statement and function arguments
 
@@ -610,13 +610,19 @@ class Parser(ExprParser):
         self.declaration_specifier(node)
         self.get_canonical_typemap(node)
 
-        self.declarator_item(node)
+        node.declarator = self.declarator_item(node)
+        node.declarators.append(node.declarator)
+        if stmt:
+            # A declaration statement may have multiple declarators
+            while self.have("COMMA"):
+                d2 = self.declarator_item(node)
+                node.declarators.append(d2)
 
         # SSS Share fields between Declaration and Declarator for now
-        declarator = node.declarator
-        declarator.typemap = node.typemap
-        if declarator.func:
-            declarator.func.typemap = node.typemap
+        for d2 in node.declarators:
+            d2.typemap = node.typemap
+            if d2.func:
+                d2.func.typemap = node.typemap
         
         if "typedef" in node.storage:
             self.symtab.create_typedef(node)
@@ -645,7 +651,6 @@ class Parser(ExprParser):
             declarator.default_name = "ctor"
         else:
             declarator = self.declarator()
-        node.declarator = declarator
 
         if self.token.typ == "LPAREN":  # peek
             # Function parameters.
@@ -688,7 +693,7 @@ class Parser(ExprParser):
             declarator.ctor_dtor_name = declarator.attrs.get("name", declarator.default_name)
             
         self.exit("declarator_item", str(node))
-        return node
+        return declarator
 
     def declarator(self):
         """
@@ -1583,7 +1588,8 @@ class Declaration(Node):
         self.tag_body = False        # if True, members are defined.
         self.const = False
         self.volatile = False
-        self.declarator = None
+        self.declarator = None       # declarators[0]
+        self.declarators = []
         self.template_arguments = []    # vector<int>, list of Declaration
         self.template_argument = None   # T arg, str
         self.is_ctor = False

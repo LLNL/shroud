@@ -54,30 +54,38 @@ symbols:
 XXXXXXXXXXXXXXXXXXXX
 # variable declarations
 XXXX CODE
-int i;
-const double d;
+int i, j;
+const double d, *d2;
 XXXX PRINT
 0 int
    i
+   j
 1 const double
    d
+   * d2
 XXXX PRINT_NODE
-int i;
-const double d;
+int i, j;
+const double d, * d2;
 
 XXXX AST
 stmts:
 - _ast: Declaration
-  declarator:
-    name: i
+  declarators:
+  - name: i
+    typemap_name: int
+  - name: j
     typemap_name: int
   specifier:
   - int
   typemap_name: int
 - _ast: Declaration
   const: true
-  declarator:
-    name: d
+  declarators:
+  - name: d
+    typemap_name: double
+  - name: d2
+    pointer:
+    - ptr: '*'
     typemap_name: double
   specifier:
   - double

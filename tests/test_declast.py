@@ -32,6 +32,7 @@ class CheckParse(unittest.TestCase):
         Combinations of const and pointer.
         """
         symtab = declast.SymbolTable()
+        modules = {}
 
         r = declast.check_decl("int", symtab)
         declarator = r.declarator
@@ -48,9 +49,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, declarator.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int var1", s)
-        s = r.bind_c()
+        s = r.bind_c(modules)
         self.assertEqual("integer(C_INT), value :: var1", s)
-        s = r.bind_c(intent="out", is_result=True)
+        s = r.bind_c(modules, intent="out", is_result=True)
         self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
         s = r.gen_arg_as_fortran(local=True)
         self.assertEqual("integer(C_INT) :: var1", s)
@@ -106,7 +107,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
-        self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
+        self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c(modules))
 
         r = declast.check_decl("const int * var1", symtab)
         s = r.gen_decl()
@@ -222,7 +223,7 @@ class CheckParse(unittest.TestCase):
         symtab = declast.SymbolTable()
 
         r = declast.check_decl("int var1[20]", symtab)
-        self.assertEqual("int var1[20]", str(r))
+        self.assertEqual("int", str(r))
         s = r.gen_decl()
         self.assertEqual("int var1[20]", s)
         self.assertEqual(
@@ -246,7 +247,8 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran())
         
         r = declast.check_decl("int var2[20][10]", symtab)
-        self.assertEqual("int var2[20][10]", str(r))
+        self.assertEqual("int", str(r))
+        self.assertEqual("var2[20][10]", str(r.declarator))
         s = r.gen_decl()
         self.assertEqual("int var2[20][10]", s)
         self.assertEqual(
@@ -271,7 +273,7 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran(local=True))
         
         r = declast.check_decl("int var3[DEFINE + 3]", symtab)
-        self.assertEqual("int var3[DEFINE+3]", str(r))
+        self.assertEqual("var3[DEFINE+3]", str(r.declarator))
         s = r.gen_decl()
         self.assertEqual("int var3[DEFINE+3]", s)
         self.assertEqual(
@@ -365,7 +367,7 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("char var1[20]", symtab)
         declarator = r.declarator
-        self.assertEqual("char var1[20]", str(r))
+        self.assertEqual("char", str(r))
         self.assertEqual(0, declarator.is_indirect())
         self.assertEqual(1, declarator.is_array())
         self.assertEqual("char *", r.as_cast())
@@ -397,7 +399,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', declarator.get_indirect_stmt())
         self.assertEqual("(20)*(10)*(5)", declarator.get_array_size())
-        self.assertEqual("char var2[20][10][5]", str(r))
+        self.assertEqual("var2[20][10][5]", str(declarator))
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
         self.assertEqual(
@@ -428,7 +430,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', declarator.get_indirect_stmt())
         self.assertEqual("DEFINE+3", declarator.get_array_size())
-        self.assertEqual("char var3[DEFINE+3]", str(r))
+        self.assertEqual("var3[DEFINE+3]", str(declarator))
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
         self.assertEqual(
@@ -454,7 +456,7 @@ class CheckParse(unittest.TestCase):
     
         r = declast.check_decl("char *var4[44]", symtab)
         declarator = r.declarator
-        self.assertEqual("char * var4[44]", str(r))
+        self.assertEqual("* var4[44]", str(declarator))
         self.assertEqual(1, declarator.is_indirect())
         self.assertEqual(2, declarator.is_array())
         self.assertEqual("char **", r.as_cast())
@@ -1705,7 +1707,7 @@ class CheckEnum(unittest.TestCase):
         symtab = declast.SymbolTable()
         r = declast.check_decl("enum Color{RED=1,BLUE,WHITE}", symtab)
         self.assertEqual(
-            "enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r)
+            "enum Color { RED = 1, BLUE, WHITE }", todict.print_node(r)
         )
         self.assertEqual(
             {
@@ -1731,7 +1733,7 @@ class CheckEnum(unittest.TestCase):
         symtab = declast.SymbolTable()
         r = declast.check_decl("enum Color{RED=1,BLUE,WHITE,}", symtab)
         self.assertEqual(
-            "enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r)
+            "enum Color { RED = 1, BLUE, WHITE }", todict.print_node(r)
         )
 
     def test_enum_var1_cxx(self):

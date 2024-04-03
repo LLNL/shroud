@@ -167,7 +167,12 @@ class ToDict(visitor.Visitor):
             "const", "volatile",
             "is_ctor", "is_dtor",
         ])
-        if node.declarator:
+        if len(node.declarators) > 1:
+            lst = []
+            d["declarators"] = lst
+            for d2 in node.declarators:
+                lst.append(self.visit(d2))
+        elif node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
         if node.storage:
@@ -728,10 +733,12 @@ class PrintNode(visitor.Visitor):
         elif node.class_specifier:
             s += self.visit(node.class_specifier)
 
-        if node.declarator:
-            sdecl = self.visit(node.declarator)
+        comma = " "
+        for d2 in node.declarators:
+            sdecl = self.visit(d2)
             if sdecl:
-                s += " " + sdecl
+                s += comma + sdecl
+                comma = ", "
         return s
 
     def visit_Declarator(self, node):
