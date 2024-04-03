@@ -367,11 +367,21 @@ class NamespaceMixin(object):
     def add_variable(self, decl, ast=None, **kwargs):
         """Add a variable or class member.
 
+        Create a VariableNode for each declarator.
+
         decl - C/C++ declaration of function
         ast  - parsed declaration. None if not yet parsed.
         """
         node = VariableNode(decl, parent=self, ast=ast, **kwargs)
         self.variables.append(node)
+        if len(ast.declarators) > 1:
+            declarators = ast.declarators
+            ast.declarators = []
+            for declarator in declarators[1:]:
+                d2 = copy.copy(ast)
+                d2.declarator = declarator
+                node = VariableNode(decl, parent=self, ast=d2, **kwargs)
+                self.variables.append(node)
         return node
 
 
