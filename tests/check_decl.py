@@ -134,7 +134,7 @@ namespace ns1 {
 # class in namespace
 namespace ns {
   class name {
-     int imem;
+     int imem, jmem;
   };
 }
 --------------------

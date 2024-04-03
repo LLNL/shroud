@@ -982,7 +982,7 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 namespace ns {
   class name {
-     int imem;
+     int imem, jmem;
   };
 }
 XXXX PRINT
@@ -999,8 +999,10 @@ stmts:
       _ast: CXXClass
       members:
       - _ast: Declaration
-        declarator:
-          name: imem
+        declarators:
+        - name: imem
+          typemap_name: int
+        - name: jmem
           typemap_name: int
         specifier:
         - int
