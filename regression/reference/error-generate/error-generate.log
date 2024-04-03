@@ -8,6 +8,7 @@ Close wraperror.h
 Close wraperror.cpp
 class struct1
 class nested
+typedef none
 Fortran int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)
 Fortran void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)
 C-interface f int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)

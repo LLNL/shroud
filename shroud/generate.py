@@ -164,7 +164,7 @@ class VerifyAttrs(object):
             if not temp:
                 cursor.generate(
                     "std::vector must have template argument: {}".format(
-                        arg.gen_decl()
+                        gen_decl(arg)
                     )
                 )
             else:
@@ -173,12 +173,12 @@ class VerifyAttrs(object):
                     # XXX - Not sure this can happen with current parser
                     raise RuntimeError(
                         "check_arg_attr: No such type %s for template: %s"
-                        % (temp, arg.gen_decl())
+                        % (temp, gen_decl(arg))
                     )
         elif temp:
-            raise RuntimeError(
+            cursor.generate(
                 "Type '%s' may not supply template argument: %s"
-                % (arg_typemap.name, arg.gen_decl())
+                % (arg_typemap.name, gen_decl(arg))
             )
 
         # Flag node if any argument is assumed-rank.
@@ -1253,3 +1253,10 @@ def check_implied(context, expr, decls):
     node = declast.ExprParser(expr).expression()
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
+
+def gen_decl(ast):
+    """Create str for Declaration and Declarator.
+    """
+    s = str(ast)
+    s2 = str(ast.declarator)
+    return s + " " + s2

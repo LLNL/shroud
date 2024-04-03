@@ -25,6 +25,11 @@
 extern "C" {
 #endif
 
+// typedef none
+// splicer begin typedef.none
+typedef int ERR_none;
+// splicer end typedef.none
+
 #ifdef __cplusplus
 }
 #endif

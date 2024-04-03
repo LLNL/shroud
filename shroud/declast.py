@@ -1633,6 +1633,8 @@ class Declaration(Node):
                 out.append(" ".join(self.specifier))
             else:
                 out.append("int")
+        if self.template_arguments:
+            out.append(self.gen_template_arguments())
         return "".join(out)
 
     def gen_decl(self, **kwargs):
