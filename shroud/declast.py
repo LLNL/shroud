@@ -1010,8 +1010,7 @@ class Parser(ExprParser):
             structnode = Struct(sname, self.symtab)
             members = structnode.members
             while self.token.typ != "RCURLY":
-#                members.append(self.declaration()) # GGG, accepts too much
-                members.append(self.line_statement())
+                members.append(self.declaration(stmt=True))
                 self.mustbe("SEMICOLON")
             self.mustbe("RCURLY")
             self.symtab.pop_scope()

@@ -49,7 +49,7 @@ class Class2 {
 };
 --------------------
 # Structure for C++
-struct Point { int x; int y;};
+struct Point { int x, x2; int y;};
 struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
@@ -152,7 +152,7 @@ struct Point_s foo;
 """
 Xlines = """
 # language=c
-typedef struct Point_s { int x; int y;} Point;
+typedef struct Point_s { int x, x2; int y;} Point;
 --------------------
 """
 Xlines = """

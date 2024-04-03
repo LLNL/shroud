@@ -255,7 +255,7 @@ symbols:
 XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
 XXXX CODE
-struct Point { int x; int y;};
+struct Point { int x, x2; int y;};
 struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
@@ -270,7 +270,7 @@ XXXX PRINT
    func1(struct Point arg1, Point arg2)
 XXXX PRINT_NODE
 struct Point{
-int x;
+int x, x2;
 int y;
 }
 ;
@@ -285,8 +285,10 @@ stmts:
     _ast: Struct
     members:
     - _ast: Declaration
-      declarator:
-        name: x
+      declarators:
+      - name: x
+        typemap_name: int
+      - name: x2
         typemap_name: int
       specifier:
       - int
