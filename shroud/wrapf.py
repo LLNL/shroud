@@ -2259,9 +2259,10 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     # XXX - callers should not need to set modules directly,
     #       this routine should set modules.
     t = []
-    attrs = declaration.declarator.attrs
+    declarator = declaration.declarator
+    attrs = declarator.attrs
     if is_result and "typedef" in declaration.storage:
-        ntypemap = declaration.declarator.typemap
+        ntypemap = declarator.typemap
     else:
         ntypemap = declaration.typemap
     basedef = ntypemap
@@ -2274,7 +2275,7 @@ def bind_c(declaration, modules, intent=None, is_result=False,
         raise RuntimeError(
             "Type {} has no value for i_type".format(declaration.typename)
         )
-    if is_callback and declaration.declarator.is_indirect():
+    if is_callback and declarator.is_indirect():
         typ = "type(C_PTR)"
         modules.setdefault("iso_c_binding", {})["C_PTR"] = True
     t.append(typ)
@@ -2296,7 +2297,7 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     if kwargs.get("name", None):
         decl.append(kwargs["name"])
     else:
-        decl.append(declaration.declarator.user_name)
+        decl.append(declarator.user_name)
 
     if basedef.base == "vector":
         decl.append("(*)")  # is array
