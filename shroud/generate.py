@@ -17,6 +17,7 @@ import copy
 
 from . import ast
 from . import declast
+from . import declstr
 from . import error
 from . import todict
 from . import statements
@@ -380,7 +381,7 @@ class GenFunctions(object):
 
         ##########
         # getter
-        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get)
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name=funcname_get)
         decl = "{}({})".format(argdecl, this_get)
 
         attrs = declarator.attrs
@@ -403,7 +404,7 @@ class GenFunctions(object):
         # setter
         if declarator.attrs.get("readonly", False):
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val")
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name="val")
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         fattrs = dict(

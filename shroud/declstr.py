@@ -53,6 +53,12 @@ class DeclStr(object):
 
         self.in_params = False
         self.arg_lang = None
+
+        # From gen_arg_as_language
+        self.lang = None
+        self.asgn_value = False
+        self.remove_const = False
+        self.with_template_args = False
         return self
 
     def update(self, **kwargs):
@@ -199,10 +205,125 @@ class DeclStr(object):
             parts.append(" const")
         if pointer.volatile:
             parts.append(" volatile")
-        
+
+    ##########
+
+    def gen_arg_as_cxx(self, declaration):
+        """Generate C++ declaration of variable.
+        No parameters or attributes.
+        """
+        self.parts = []
+        self.gen_arg_as_lang(declaration, "cxx_type")
+        return "".join(decl)
+
+    def gen_arg_as_c(self, declaration):
+        """Return a string of the unparsed declaration.
+        """
+        self.parts = []
+        self.gen_arg_as_lang(declaration, "c_type")
+        return "".join(decl)
+
+    def gen_arg_as_language(self, declaration, lang, name=None):
+        """Generate C++ declaration of variable.
+        No parameters or attributes.
+
+        Called from add_var_getter_setter.
+
+        Parameters
+        ----------
+        lang : str
+            "c_type" or "cxx_type"
+        """
+        self.lang = lang
+        self.name = name
+        self.parts = []
+        self.gen_arg_as_lang(declaration)
+        return "".join(self.parts)
+
+    def gen_arg_as_lang(self, declaration):
+#        lang,
+#        continuation=False,
+#        asgn_value=False,
+#        remove_const=False,
+#        with_template_args=False,
+#        force_ptr=False,
+#        **kwargs
+        """Generate an argument for the C wrapper.
+        C++ types are converted to C types using typemap.
+
+        Args:
+            lang = c_type or cxx_type
+            continuation - True - insert tabs to aid continuations.
+                           Defaults to False.
+            asgn_value - If True, make sure the value can be assigned
+                         by removing const. Defaults to False.
+            remove_const - Defaults to False.
+            as_ptr - Change reference to pointer
+            force_ptr - Change a scalar into a pointer
+            as_scalar - Do not print Ptr
+            params - if None, do not print function parameters.
+            with_template_args - if True, print template arguments
+
+        If a templated type, assume std::vector.
+        The C argument will be a pointer to the template type.
+        'std::vector<int> &'  generates 'int *'
+        The length info is lost but will be provided as another argument
+        to the C wrapper.
+        """
+        parts = self.parts
+        const_index = None
+        if declaration.const:
+            const_index = len(parts)
+            parts.append("const ")
+
+        if self.with_template_args and declaration.template_arguments:
+            # Use template arguments from declaration
+            typ = getattr(declaration.typemap, self.lang)
+            if declaration.typemap.sgroup == "vector":
+                # Vector types are not explicitly instantiated in the YAML file.
+                parts.append(declaration.typemap.name)
+                parts.append(declaration.gen_template_arguments())
+            else:
+                # cxx_type includes template  ex. user<int>
+                parts.append(declaration.typemap.cxx_type)
+        else:
+            # Convert template_argument.
+            # ex vector<int> -> int
+            if declaration.template_arguments:
+                ntypemap = declaration.template_arguments[0].typemap
+            else:
+                ntypemap = declaration.typemap
+            typ = getattr(ntypemap, self.lang) or "--NOTYPE--"
+            parts.append(typ)
+
+        declarator = declaration.declarator
+        if declaration.is_ctor and self.lang == "c_type":
+            # The C wrapper wants a pointer to the type.
+            force_ptr = True
+
+        if self.asgn_value and const_index is not None and not declaration.declarator.is_indirect():
+            # Remove 'const' so the variable can be assigned to.
+            parts[const_index] = ""
+        elif self.remove_const and const_index is not None:
+            parts[const_index] = ""
+
+        if self.lang == "c_type":
+            self.as_c = True
+            self.declarator(declarator)
+#            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr,
+#                                     append_init=False, ctor_dtor=True,
+#                                     attrs=False, continuation=continuation, **kwargs)
+        else:
+            self.declarator(declarator)
+#            declarator.gen_decl_work(decl, force_ptr=force_ptr,
+#                                     append_init=False, ctor_dtor=True,
+#                                     attrs=False, continuation=continuation, **kwargs)
+
+    
 
 decl_str = DeclStr()
 decl_str_noparams = DeclStr().update(add_params=False)
 
-gen_arg_as_c = DeclStr().update(lang="c_type")
-gen_arg_as_cxx = DeclStr().update(lang="cxx_type")
+gen_arg_as_language = DeclStr().gen_arg_as_language
+gen_arg_as_c = DeclStr().gen_arg_as_c
+gen_arg_as_cxx = DeclStr().gen_arg_as_cxx

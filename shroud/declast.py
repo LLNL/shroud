@@ -1720,19 +1720,6 @@ class Declaration(Node):
         self.gen_arg_as_lang(decl, lang="c_type", **kwargs)
         return "".join(decl)
 
-    def gen_arg_as_language(self, lang, **kwargs):
-        """Generate C++ declaration of variable.
-        No parameters or attributes.
-
-        Parameters
-        ----------
-        lang : str
-            "c_type" or "cxx_type"
-        """
-        decl = []
-        self.gen_arg_as_lang(decl, lang=lang, **kwargs)
-        return "".join(decl)
-
     def gen_arg_as_lang(
         self,
         decl,
