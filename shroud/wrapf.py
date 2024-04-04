@@ -996,7 +996,7 @@ rv = .false.
                             fmt,
                         )
                     arg_f_names.append(name)
-                    arg_c_decl.append(param.bind_c(modules, intent=intent, name=name))
+                    arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
                     arg_typemap, specialize = statements.lookup_c_statements(
                         param
@@ -1008,7 +1008,7 @@ rv = .false.
                     )
 
                 if subprogram == "function":
-                    arg_c_decl.append(fptr.ast.bind_c(
+                    arg_c_decl.append(bind_c(fptr.ast,
                         modules, name=key, is_result=True, is_callback=True,
                         params=None))
                 arguments = ",\t ".join(arg_f_names)
@@ -1131,7 +1131,7 @@ rv = .false.
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c(modules, meta["intent"]))
+                arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap
                 if ast.template_arguments:
                     # If a template, use its type
@@ -1300,7 +1300,7 @@ rv = .false.
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(modules, is_result=True, name=fmt_result.F_result))
+                arg_c_decl.append(bind_c(ast, modules, is_result=True, name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,
@@ -2240,3 +2240,72 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
+
+######################################################################
+
+def bind_c(declaration, modules, intent=None, is_result=False,
+           is_callback=False, **kwargs):
+    """Generate an argument used with the bind(C) interface from Fortran.
+
+    Args:
+        intent - Explicit intent 'in', 'inout', 'out'.
+                 Defaults to None to use intent from attrs.
+        is_callback - Abstract interface for callbacks.
+                 A function which returns a pointer must
+                 use type(C_PTR).
+
+        name   - Set name explicitly, else self.name.
+    """
+    # XXX - callers should not need to set modules directly,
+    #       this routine should set modules.
+    t = []
+    attrs = declaration.declarator.attrs
+    if is_result and "typedef" in declaration.storage:
+        ntypemap = declaration.declarator.typemap
+    else:
+        ntypemap = declaration.typemap
+    basedef = ntypemap
+    if declaration.template_arguments:
+        # If a template, use its type
+        ntypemap = declaration.template_arguments[0].typemap
+
+    typ = ntypemap.i_type or ntypemap.f_type
+    if typ is None:
+        raise RuntimeError(
+            "Type {} has no value for i_type".format(declaration.typename)
+        )
+    if is_callback and declaration.declarator.is_indirect():
+        typ = "type(C_PTR)"
+        modules.setdefault("iso_c_binding", {})["C_PTR"] = True
+    t.append(typ)
+    if basedef.base == "procedure":
+        # dummy procedure can not have intent or value.
+        pass
+    else:
+        declaration.append_fortran_value(t, is_result)
+        if intent in ["in", "out", "inout"]:
+            t.append("intent(%s)" % intent.upper())
+        elif intent == "setter":
+            # Argument to setter function.
+            t.append("intent(IN)")
+
+    decl = []
+    decl.append(", ".join(t))
+    decl.append(" :: ")
+
+    if kwargs.get("name", None):
+        decl.append(kwargs["name"])
+    else:
+        decl.append(declaration.declarator.user_name)
+
+    if basedef.base == "vector":
+        decl.append("(*)")  # is array
+    elif ntypemap.base == "string":
+        decl.append("(*)")
+    elif "dimension" in attrs:
+        # Any dimension is changed to assumed-size.
+        decl.append("(*)")
+    elif int(attrs.get("rank",0)) > 0:
+        # Any dimension is changed to assumed-size.
+        decl.append("(*)")
+    return "".join(decl)

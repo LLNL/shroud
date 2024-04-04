@@ -12,6 +12,7 @@ from __future__ import print_function
 from shroud import declast
 from shroud import error
 from shroud import todict
+from shroud import wrapf
 
 import unittest
 import copy
@@ -49,9 +50,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, declarator.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int var1", s)
-        s = r.bind_c(modules)
+        s = wrapf.bind_c(r, modules)
         self.assertEqual("integer(C_INT), value :: var1", s)
-        s = r.bind_c(modules, intent="out", is_result=True)
+        s = wrapf.bind_c(r, modules, intent="out", is_result=True)
         self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
         s = r.gen_arg_as_fortran(local=True)
         self.assertEqual("integer(C_INT) :: var1", s)
@@ -107,7 +108,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
-        self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c(modules))
+        self.assertEqual("integer(C_INT) :: var1(*)", wrapf.bind_c(r, modules))
 
         r = declast.check_decl("const int * var1", symtab)
         s = r.gen_decl()
