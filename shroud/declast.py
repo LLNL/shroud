@@ -1638,6 +1638,9 @@ class Declaration(Node):
             out.append(self.gen_template_arguments())
         return "".join(out)
 
+    def __repr__(self):
+        return "<Declaration('{}')>".format(str(self))
+    
     def gen_decl(self, **kwargs):
         """Return a string of the unparsed declaration.
 
@@ -1828,134 +1831,6 @@ class Declaration(Node):
             decl.extend(ptrs)
         return ''.join(decl)
         
-    ##############
-
-    def append_fortran_value(self, t, is_result=False):
-        declarator = self.declarator
-        attrs = declarator.attrs
-        if is_result:
-            pass
-        elif attrs.get("value", False):
-            t.append("value")
-        else:
-            is_ptr = declarator.is_indirect()
-            if is_ptr:
-                if self.typemap.name == "void":
-                    # This causes Fortran to dereference the C_PTR
-                    # Otherwise a void * argument becomes void **
-                    if len(declarator.pointer) == 1:
-                        t.append("value")     # void *
-            else:
-                if self.typemap.sgroup in["char", "string"]:
-                    pass
-                else:
-                    t.append("value")
-    
-    def gen_arg_as_fortran(
-        self,
-        intent=None,
-        bindc=False,
-        local=False,
-        pass_obj=False,
-        optional=False,
-        **kwargs
-    ):
-        """Geneate declaration for Fortran variable.
-
-        bindc - Use C interoperable type. Used with hidden and implied arguments.
-        If local==True, this is a local variable, skip attributes
-          OPTIONAL, VALUE, and INTENT
-        """
-        t = []
-        declarator = self.declarator
-        attrs = declarator.attrs
-        ntypemap = self.typemap
-        if ntypemap.sgroup == "vector":
-            # If std::vector, use its type (<int>)
-            ntypemap = self.template_arguments[0].typemap
-
-        is_allocatable = False
-        is_pointer = False
-        deref = attrs.get("deref", None)
-        if deref == "allocatable":
-            is_allocatable = True
-        elif deref == "pointer":
-            is_pointer = True
-
-        if ntypemap.base == "string":
-            if "len" in attrs and local:
-                # Also used with function result declaration.
-                t.append("character(len={})".format(attrs["len"]))
-            elif is_allocatable:
-                t.append("character(len=:)")
-            elif declarator.array:
-                t.append("character(kind=C_CHAR)")
-            elif not local:
-                t.append("character(len=*)")
-            else:
-                t.append("character")
-        elif pass_obj:
-            # Used with wrap_struct_as=class for passed-object dummy argument.
-            t.append(ntypemap.f_class)
-        elif bindc:
-            t.append(ntypemap.i_type or ntypemap.f_type)
-        else:
-            t.append(ntypemap.f_type)
-
-        if not local:  # must be dummy argument
-            self.append_fortran_value(t)
-            if intent in ["in", "out", "inout"]:
-                t.append("intent(%s)" % intent.upper())
-            elif intent == "setter":
-                # Argument to setter function.
-                t.append("intent(IN)")
-
-        if is_allocatable:
-            t.append("allocatable")
-        if is_pointer:
-            t.append("pointer")
-        if optional:
-            t.append("optional")
-
-        decl = []
-        decl.append(", ".join(t))
-        decl.append(" :: ")
-
-        if "name" in kwargs:
-            decl.append(kwargs["name"])
-        else:
-            decl.append(self.declarator.user_name)
-
-        dimension = attrs.get("dimension")
-        rank = attrs.get("rank")
-        if rank is not None:
-            rank = int(rank)
-            decl.append(self.fortran_ranks[rank])
-        elif dimension:
-            if is_allocatable:
-                # Assume 1-d.
-                decl.append("(:)")
-            elif is_pointer:
-                decl.append("(:)")  # XXX - 1d only
-            else:
-                decl.append("(" + dimension + ")")
-        elif is_allocatable:
-            # Assume 1-d.
-            if ntypemap.base != "string":
-                decl.append("(:)")
-        elif declarator.array:
-            decl.append("(")
-            # Convert to column-major order.
-            for dim in reversed(declarator.array):
-                decl.append(todict.print_node(dim))
-                decl.append(",")
-            decl[-1] = ")"
-
-        return "".join(decl)
-
-    def __repr__(self):
-        return "<Declaration('{}')>".format(str(self))
-    
 
 class CXXClass(Node):
     """A C++ class statement.
