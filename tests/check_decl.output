@@ -60,9 +60,13 @@ XXXX PRINT
 0 int
    i
    j
+XXXX DeclStr
+     decl_str: 0 int i
 1 const double
    d
    * d2
+XXXX DeclStr
+     decl_str: 1 const double d
 XXXX PRINT_NODE
 int i, j;
 const double d, * d2;
@@ -102,10 +106,16 @@ int &i3;
 XXXX PRINT
 0 int
    * i1
+XXXX DeclStr
+     decl_str: 0 int * i1
 1 int
    * * i2
+XXXX DeclStr
+     decl_str: 1 int * * i2
 2 int
    & i3
+XXXX DeclStr
+     decl_str: 2 int & i3
 XXXX PRINT_NODE
 int * i1;
 int * * i2;
@@ -150,6 +160,8 @@ typedef int footype;
 XXXX PRINT
 0 typedef int
    footype
+XXXX DeclStr
+     decl_str: 0 typedef int footype
 XXXX PRINT_NODE
 typedef int footype;
 
@@ -178,6 +190,8 @@ class Class1;
 XXXX PRINT
 0 class Class1
    
+XXXX DeclStr
+     decl_str: 0 class Class1
 XXXX PRINT_NODE
 class Class1;
 
@@ -206,6 +220,8 @@ class Class2 {
 XXXX PRINT
 0 class Class2
    
+XXXX DeclStr
+     decl_str: 0 class Class2
 XXXX PRINT_NODE
 class Class2{
 Class2(void);
@@ -262,12 +278,23 @@ void func1(struct Point arg1, Point arg2);
 XXXX PRINT
 0 struct Point
    
+XXXX DeclStr
+     decl_str: 0 struct Point
 1 struct Point
    end
+XXXX DeclStr
+     decl_str: 1 struct Point end
 2 Point
    start
+XXXX DeclStr
+     decl_str: 2 Point start
 3 void
    func1(struct Point arg1, Point arg2)
+XXXX DeclStr
+     decl_str: 3 void func1(struct Point arg1, Point arg2)
+     no params: void func1
+         decl_str: 0 struct Point arg1
+         decl_str: 1 Point arg2
 XXXX PRINT_NODE
 struct Point{
 int x, x2;
@@ -366,12 +393,20 @@ list_typ var2;
 XXXX PRINT
 0 struct list_s
    
+XXXX DeclStr
+     decl_str: 0 struct list_s
 1 struct list_s
    var1
+XXXX DeclStr
+     decl_str: 1 struct list_s var1
 2 typedef struct list_s
    list_typ
+XXXX DeclStr
+     decl_str: 2 typedef struct list_s list_typ
 3 list_typ
    var2
+XXXX DeclStr
+     decl_str: 3 list_typ var2
 XXXX PRINT_NODE
 struct list_s{
 int i;
@@ -446,8 +481,12 @@ struct list_s var1;
 XXXX PRINT
 0 struct list_s
    
+XXXX DeclStr
+     decl_str: 0 struct list_s
 1 struct list_s
    var1
+XXXX DeclStr
+     decl_str: 1 struct list_s var1
 XXXX PRINT_NODE
 struct list_s{
 struct list_s * next;
@@ -516,6 +555,8 @@ struct list_s {
 XXXX PRINT
 0 struct list_s
    
+XXXX DeclStr
+     decl_str: 0 struct list_s
 XXXX PRINT_NODE
 struct list_s{
 struct list_s * next;
@@ -575,12 +616,20 @@ Color_typ local;
 XXXX PRINT
 0 enum Color
    
+XXXX DeclStr
+     decl_str: 0 enum Color
 1 enum Color
    global
+XXXX DeclStr
+     decl_str: 1 enum Color global
 2 typedef enum Color
    Color_typ
+XXXX DeclStr
+     decl_str: 2 typedef enum Color Color_typ
 3 Color_typ
    local
+XXXX DeclStr
+     decl_str: 3 Color_typ local
 XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };
 enum Color global;
@@ -657,12 +706,23 @@ void func1(enum Color arg1, Color arg2);
 XXXX PRINT
 0 enum Color
    
+XXXX DeclStr
+     decl_str: 0 enum Color
 1 enum Color
    global
+XXXX DeclStr
+     decl_str: 1 enum Color global
 2 Color
    flag=RED
+XXXX DeclStr
+     decl_str: 2 Color flag
 3 void
    func1(enum Color arg1, Color arg2)
+XXXX DeclStr
+     decl_str: 3 void func1(enum Color arg1, Color arg2)
+     no params: void func1
+         decl_str: 0 enum Color arg1
+         decl_str: 1 Color arg2
 XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };
 enum Color global;
@@ -741,10 +801,18 @@ void caller(address arg1);
 XXXX PRINT
 0 typedef void
    * address
+XXXX DeclStr
+     decl_str: 0 typedef void * address
 1 address
    var
+XXXX DeclStr
+     decl_str: 1 address var
 2 void
    caller(address arg1)
+XXXX DeclStr
+     decl_str: 2 void caller(address arg1)
+     no params: void caller
+         decl_str: 0 address arg1
 XXXX PRINT_NODE
 typedef void * address;
 address var;
@@ -801,8 +869,16 @@ void caller(fcn callback);
 XXXX PRINT
 0 typedef int
    (* fcn)(int)
+XXXX DeclStr
+     decl_str: 0 typedef int ( * fcn)(int)
+     no params: typedef int ( * fcn)
+         decl_str: 0 int
 1 void
    caller(fcn callback)
+XXXX DeclStr
+     decl_str: 1 void caller(fcn callback)
+     no params: void caller
+         decl_str: 0 fcn callback
 XXXX PRINT_NODE
 typedef int (* fcn)(int);
 void caller(fcn callback);
@@ -863,6 +939,9 @@ XXXX PRINT
 0 <T>
 1 user<int>
    returnUserType(void)
+XXXX DeclStr
+     decl_str: 1 user<int> returnUserType(void)
+     no params: user<int> returnUserType
 XXXX PRINT_NODE
 template<T>  class user{
 template<U>  void nested(T arg1, U arg2);

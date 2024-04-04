@@ -18,6 +18,7 @@ make test-decl-replace
 """
 
 from shroud import declast
+from shroud import declstr
 from shroud import error
 from shroud import todict
 
@@ -171,6 +172,24 @@ void caller(fcn callback);
 --------------------
 """
 
+Xlines = """
+int * work(int *arg1);
+--------------------
+"""
+
+decl_str = declstr.decl_str
+decl_str_noparams = declstr.decl_str_noparams
+
+def test_decl_str(idx, declaration, indent):
+    indent = indent + "    "
+    s = decl_str.gen_decl(declaration)
+    print(indent, "decl_str:", idx, s)
+    if declaration.declarator.params is not None:
+        s = decl_str_noparams.gen_decl(declaration)
+        print(indent, "no params:", s)
+        for i,  d2 in enumerate(declaration.declarator.params):
+            test_decl_str(i, d2, indent)
+
 def test_block(comments, code, symtab):
     """Parse a single block of code.
     """
@@ -205,6 +224,10 @@ def test_block(comments, code, symtab):
                 print(i, stmt)
                 for d2 in stmt.declarators:
                     print("  ", d2)
+
+                print("XXXX DeclStr")
+                test_decl_str(i, stmt, "")
+
             elif isinstance(stmt, declast.Template):
                 print(i, stmt)
 
