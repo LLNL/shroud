@@ -62,7 +62,6 @@ class DeclStr(object):
         return self
 
     def update(self, **kwargs):
-        self.reset()
         for key, value in kwargs.items():
             setattr(self, key, value)
         return self
@@ -211,19 +210,25 @@ class DeclStr(object):
     def gen_arg_as_cxx(self, declaration):
         """Generate C++ declaration of variable.
         No parameters or attributes.
-        """
-        self.parts = []
-        self.gen_arg_as_lang(declaration, "cxx_type")
-        return "".join(decl)
 
-    def gen_arg_as_c(self, declaration):
+        Used to generate declarations in wrappers.
+        """
+        self.lang = "cxx_type"
+        self.parts = []
+        self.gen_arg_as_lang(declaration)
+        return "".join(self.parts)
+
+    def gen_arg_as_c(self, declaration, name=None):
         """Return a string of the unparsed declaration.
         """
+        self.lang = "c_type"
+        if name is not None:
+            self.name = name
         self.parts = []
-        self.gen_arg_as_lang(declaration, "c_type")
-        return "".join(decl)
+        self.gen_arg_as_lang(declaration)
+        return "".join(self.parts)
 
-    def gen_arg_as_language(self, declaration, lang, name=None):
+    def gen_arg_as_language(self, declaration, lang, name):
         """Generate C++ declaration of variable.
         No parameters or attributes.
 
@@ -319,11 +324,18 @@ class DeclStr(object):
 #                                     append_init=False, ctor_dtor=True,
 #                                     attrs=False, continuation=continuation, **kwargs)
 
+######################################################################
+# Create some instances to change defaults.
     
 
 decl_str = DeclStr()
 decl_str_noparams = DeclStr().update(add_params=False)
 
 gen_arg_as_language = DeclStr().gen_arg_as_language
-gen_arg_as_c = DeclStr().gen_arg_as_c
-gen_arg_as_cxx = DeclStr().gen_arg_as_cxx
+
+gen_arg_instance = DeclStr().update(
+    add_params=False,
+    continuation=True
+)
+gen_arg_as_c = gen_arg_instance.gen_arg_as_c
+gen_arg_as_cxx = gen_arg_instance.gen_arg_as_cxx

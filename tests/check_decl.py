@@ -18,9 +18,21 @@ make test-decl-replace
 """
 
 from shroud import declast
-from shroud import declstr
+#from shroud import declstr
 from shroud import error
 from shroud import todict
+
+from shroud import declstr
+
+decl_str = declstr.decl_str
+decl_str_noparams = declstr.decl_str_noparams
+
+gen_arg_as_c = declstr.gen_arg_as_c
+gen_arg_as_cxx = declstr.gen_arg_as_cxx
+
+# Turn off continuation for testing (avoids adding tabs into output)
+declstr.gen_arg_instance.update(continuation=False)
+
 
 import yaml
 import pprint
@@ -139,6 +151,12 @@ namespace ns {
   };
 }
 --------------------
+# declstr language=c
+int fun1(int arg1, int *arg2, const int *arg3);
+--------------------
+# declstr language=c++ create_std
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+--------------------
 """  # end line
 
 # Run only one test by assigning here and
@@ -173,17 +191,20 @@ void caller(fcn callback);
 """
 
 Xlines = """
-int * work(int *arg1);
+# declstr  create_std language=c++
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 --------------------
 """
-
-decl_str = declstr.decl_str
-decl_str_noparams = declstr.decl_str_noparams
 
 def test_decl_str(idx, declaration, indent):
     indent = indent + "    "
     s = decl_str.gen_decl(declaration)
     print(indent, "decl_str:", idx, s)
+    s = gen_arg_as_c(declaration)
+    print(indent, "as_c    :", idx, s)
+    s = gen_arg_as_cxx(declaration)
+    print(indent, "as_cxx  :", idx, s)
+    
     if declaration.declarator.params is not None:
         s = decl_str_noparams.gen_decl(declaration)
         print(indent, "no params:", s)
@@ -197,13 +218,16 @@ def test_block(comments, code, symtab):
     print("XXXXXXXXXXXXXXXXXXXX")
     language = "cxx"
     create_std = False
+    do_declstr = False
     for cmt in comments:
         if cmt.find("language=c++") != -1:
             language = "cxx"
         elif cmt.find("language=c") != -1:
             language = "c"
-        elif cmt.find("create_std") != -1:
+        if cmt.find("create_std") != -1:
             create_std = True
+        if cmt.find("declstr") != -1:
+            do_declstr = True
         print(f"{cmt}")
     trace = True
     trace = False
@@ -225,8 +249,9 @@ def test_block(comments, code, symtab):
                 for d2 in stmt.declarators:
                     print("  ", d2)
 
-                print("XXXX DeclStr")
-                test_decl_str(i, stmt, "")
+                if do_declstr:
+                    print("XXXX DeclStr")
+                    test_decl_str(i, stmt, "")
 
             elif isinstance(stmt, declast.Template):
                 print(i, stmt)
