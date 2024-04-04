@@ -380,7 +380,7 @@ class GenFunctions(object):
 
         ##########
         # getter
-        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get)
         decl = "{}({})".format(argdecl, this_get)
 
         attrs = declarator.attrs
@@ -403,8 +403,7 @@ class GenFunctions(object):
         # setter
         if declarator.attrs.get("readonly", False):
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val",
-                                          continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name="val")
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         fattrs = dict(
