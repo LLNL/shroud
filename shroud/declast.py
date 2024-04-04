@@ -1522,25 +1522,26 @@ class Declarator(Node):
     def __str__(self):
         out = []
         for ptr in self.pointer:
-            out.append(str(ptr))
             out.append(" ")
+            out.append(str(ptr))
 
         if self.func:
-            out.append("(" + str(self.func) + ")")
+            out.append(" (" + str(self.func) + ")")
         elif self.name:
+            out.append(" ")
             out.append(self.name)
 
         if self.params is not None:
             out.append("(")
             if self.params:
+                comma = ""
                 for param in self.params:
+                    out.append(comma)
                     out.append(str(param))
                     s = str(param.declarator)
                     if s:
-                        out.append(" ")
                         out.append(s)
-                    out.append(", ")
-                out.pop()
+                    comma = ", "
             else:
                 out.append("void")
             out.append(")")
@@ -1551,7 +1552,7 @@ class Declarator(Node):
                 out.append("[")
                 out.append(todict.print_node(dim))
                 out.append("]")
-        if self.init:
+        if self.init is not None:
             out.append("=")
             out.append(str(self.init))
         self.gen_attrs(self.attrs, out)
@@ -1691,7 +1692,6 @@ class Declaration(Node):
             if targ.declarator:
                 s = str(targ.declarator)
                 if s:
-                    decl.append(" ")
                     decl.append(s)
             decl.append(",")
         decl.pop()

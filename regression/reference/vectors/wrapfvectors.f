@@ -356,7 +356,7 @@ module vectors_mod
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  std::vector<const double * > & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> & arg1 +intent(in)
     ! Statement: f_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
     ! Argument:  int num
@@ -785,7 +785,7 @@ contains
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  std::vector<const double * > & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> & arg1 +intent(in)
     ! Statement: f_in_vector_&_buf_targ_native_*
     ! ----------------------------------------
     ! Argument:  int num

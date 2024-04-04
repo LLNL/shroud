@@ -569,7 +569,7 @@ class GenFunctions(object):
             struct_members[a.declarator.user_name] = var
             ast.declarator.params.append(a)
         node = cls.add_function(name, ast)
-        node.declgen = node.ast.gen_decl()
+        node.declgen = gen_decl(node.ast)
         node.struct_members = struct_members
         node.wrap.assign(python=True)
         node._generated = "struct_as_class_ctor"
@@ -868,7 +868,7 @@ class GenFunctions(object):
             dim = attrs.get("dimension", None)
             if dim == "..":   # assumed-rank
                 del attrs["dimension"]
-        node.declgen = node.ast.gen_decl()
+        node.declgen = gen_decl(node.ast)
         
     def generic_function(self, node, ordered_functions):
         """Create overloaded functions for each generic method.
@@ -1090,7 +1090,7 @@ class GenFunctions(object):
             functions - list of ast.FunctionNode.
         """
         for node in functions:
-            node.declgen = node.ast.gen_decl()
+            node.declgen = gen_decl(node.ast)
 
 def generate_functions(library, config):
     whelpers.set_library(library)
@@ -1259,4 +1259,4 @@ def gen_decl(ast):
     """
     s = str(ast)
     s2 = str(ast.declarator)
-    return s + " " + s2
+    return s + s2
