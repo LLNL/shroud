@@ -733,12 +733,15 @@ class PrintNode(visitor.Visitor):
         elif node.class_specifier:
             s += self.visit(node.class_specifier)
 
-        comma = ""
+        if node.is_ctor or node.is_dtor:
+            comma = ""
+        else:
+            comma = " "
         for d2 in node.declarators:
             sdecl = self.visit(d2)
             if sdecl:
                 s += comma + sdecl
-                comma = ","
+                comma = ", "
         return s
 
     def visit_Declarator(self, node):

@@ -3435,7 +3435,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr+intent(inout), int *err+intent(out)), void (*afree)(double *arr+intent(inout)), void (*assoc)(double *arr+intent(in), int *err+intent(out)))",
-                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)), void ( * afree)(double * arr +intent(inout)), void ( * assoc)(double * arr +intent(in), int * err +intent(out)))",
+                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void (* alloc)(double * arr +intent(inout), int * err +intent(out)), void (* afree)(double * arr +intent(inout)), void (* assoc)(double * arr +intent(in), int * err +intent(out)))",
                 "name": "external_funcs",
                 "options": {
                     "wrap_python": false

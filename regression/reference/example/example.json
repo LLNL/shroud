@@ -9566,7 +9566,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr1(void (*get)());",
-                                "declgen": "void FuncPtr1(void ( * get)(void))",
+                                "declgen": "void FuncPtr1(void (* get)(void))",
                                 "doxygen": {
                                     "brief": "subroutine"
                                 },
@@ -9990,7 +9990,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr2(double * (*get)());",
-                                "declgen": "void FuncPtr2(double * ( * get)(void))",
+                                "declgen": "void FuncPtr2(double * (* get)(void))",
                                 "doxygen": {
                                     "brief": "return a pointer"
                                 },
@@ -10451,7 +10451,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr3(double (*get)(int i, int));",
-                                "declgen": "void FuncPtr3(double ( * get)(int i, int))",
+                                "declgen": "void FuncPtr3(double (* get)(int i, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -11122,7 +11122,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr4(double (*get)(double, int));",
-                                "declgen": "void FuncPtr4(double ( * get)(double, int))",
+                                "declgen": "void FuncPtr4(double (* get)(double, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -11639,7 +11639,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
-                                "declgen": "void FuncPtr5(void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
+                                "declgen": "void FuncPtr5(void (* get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
                                 "name": "FuncPtr5",
                                 "options": {},
                                 "wrap": {

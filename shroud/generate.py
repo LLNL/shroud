@@ -1259,4 +1259,9 @@ def gen_decl(ast):
     """
     s = str(ast)
     s2 = str(ast.declarator)
-    return s + s2
+    if ast.is_ctor or ast.is_dtor:
+        # Class()  -- no blank afer declaration
+        return s + s2
+    else:
+        # int (*)(void)  -- add blank after declaration
+        return s + " " + s2

@@ -838,7 +838,7 @@ static int l_example_nested_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void FuncPtr1(void ( * get)(void))
+// void FuncPtr1(void (* get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr1
 // Statement: lua_subroutine
@@ -857,7 +857,7 @@ static int l_example_nested_FuncPtr1(lua_State *)
     // splicer end function.FuncPtr1
 }
 
-// void FuncPtr2(double * ( * get)(void))
+// void FuncPtr2(double * (* get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr2
 // Statement: lua_subroutine
@@ -876,7 +876,7 @@ static int l_example_nested_FuncPtr2(lua_State *)
     // splicer end function.FuncPtr2
 }
 
-// void FuncPtr3(double ( * get)(int i, int))
+// void FuncPtr3(double (* get)(int i, int))
 // ----------------------------------------
 // Function:  void FuncPtr3
 // Statement: lua_subroutine
@@ -896,7 +896,7 @@ static int l_example_nested_FuncPtr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-// void FuncPtr5(void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+// void FuncPtr5(void (* get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
 // ----------------------------------------
 // Function:  void FuncPtr5
 // Statement: lua_subroutine

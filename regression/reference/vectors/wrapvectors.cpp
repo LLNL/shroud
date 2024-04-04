@@ -424,7 +424,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Function:  int vector_of_pointers
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  std::vector<const double *> & arg1 +intent(in)
+// Argument:  std::vector<const double * > & arg1 +intent(in)
 // Statement: c_in_vector_&_buf_targ_native_*
 // ----------------------------------------
 // Argument:  int num
@@ -433,7 +433,7 @@ int VEC_vector_of_pointers(double *arg1, size_t SHT_arg1_len,
     size_t SHT_arg1_size, int num)
 {
     // splicer begin function.vector_of_pointers
-    std::vector<const double *> SHCXX_arg1;
+    std::vector<const double * > SHCXX_arg1;
     for (size_t i=0; i < SHT_arg1_size; ++i) {
         SHCXX_arg1.push_back(arg1 + (SHT_arg1_len*i));
     }

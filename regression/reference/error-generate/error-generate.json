@@ -2320,7 +2320,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
-                "declgen": "void callback_set_alloc(void ( * alloc)(int tc +intent(none)))",
+                "declgen": "void callback_set_alloc(void (* alloc)(int tc +intent(none)))",
                 "name": "callback_set_alloc",
                 "options": {},
                 "wrap": {},

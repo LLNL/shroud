@@ -248,7 +248,7 @@ class CheckParse(unittest.TestCase):
         
         r = declast.check_decl("int var2[20][10]", symtab)
         self.assertEqual("int", str(r))
-        self.assertEqual(" var2[20][10]", str(r.declarator))
+        self.assertEqual("var2[20][10]", str(r.declarator))
         s = r.gen_decl()
         self.assertEqual("int var2[20][10]", s)
         self.assertEqual(
@@ -273,7 +273,7 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran(local=True))
         
         r = declast.check_decl("int var3[DEFINE + 3]", symtab)
-        self.assertEqual(" var3[DEFINE+3]", str(r.declarator))
+        self.assertEqual("var3[DEFINE+3]", str(r.declarator))
         s = r.gen_decl()
         self.assertEqual("int var3[DEFINE+3]", s)
         self.assertEqual(
@@ -399,7 +399,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', declarator.get_indirect_stmt())
         self.assertEqual("(20)*(10)*(5)", declarator.get_array_size())
-        self.assertEqual(" var2[20][10][5]", str(declarator))
+        self.assertEqual("var2[20][10][5]", str(declarator))
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
         self.assertEqual(
@@ -430,7 +430,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char *", r.as_cast())
         self.assertEqual('[]', declarator.get_indirect_stmt())
         self.assertEqual("DEFINE+3", declarator.get_array_size())
-        self.assertEqual(" var3[DEFINE+3]", str(declarator))
+        self.assertEqual("var3[DEFINE+3]", str(declarator))
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
         self.assertEqual(
@@ -456,7 +456,7 @@ class CheckParse(unittest.TestCase):
     
         r = declast.check_decl("char *var4[44]", symtab)
         declarator = r.declarator
-        self.assertEqual(" * var4[44]", str(declarator))
+        self.assertEqual("* var4[44]", str(declarator))
         self.assertEqual(1, declarator.is_indirect())
         self.assertEqual(2, declarator.is_array())
         self.assertEqual("char **", r.as_cast())
@@ -583,7 +583,7 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("std::vector<int *> var1", symtab)
         s = r.gen_decl()
-        self.assertEqual("std::vector<int *> var1", s)
+        self.assertEqual("std::vector<int * > var1", s)
         self.assertEqual(
             {
                 'declarator': {
@@ -617,7 +617,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int * var1", s)
 
         s = r.gen_arg_as_cxx(force_ptr=True, with_template_args=True)
-        self.assertEqual("std::vector<int *> * var1", s)
+        self.assertEqual("std::vector<int * > * var1", s)
 
     def test_template_argument_list(self):
         symtab = declast.SymbolTable()

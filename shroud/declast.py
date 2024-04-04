@@ -1522,13 +1522,12 @@ class Declarator(Node):
     def __str__(self):
         out = []
         for ptr in self.pointer:
-            out.append(" ")
             out.append(str(ptr))
+            out.append(" ")
 
         if self.func:
-            out.append(" (" + str(self.func) + ")")
+            out.append("(" + str(self.func) + ")")
         elif self.name:
-            out.append(" ")
             out.append(self.name)
 
         if self.params is not None:
@@ -1540,6 +1539,7 @@ class Declarator(Node):
                     out.append(str(param))
                     s = str(param.declarator)
                     if s:
+                        out.append(" ")
                         out.append(s)
                     comma = ", "
             else:
@@ -1692,6 +1692,7 @@ class Declaration(Node):
             if targ.declarator:
                 s = str(targ.declarator)
                 if s:
+                    decl.append(" ")
                     decl.append(s)
             decl.append(",")
         decl.pop()

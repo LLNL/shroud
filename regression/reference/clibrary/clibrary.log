@@ -22,7 +22,7 @@ C f void passVoidStarStar(void * in +intent(in), void * * out +intent(out))
 C f int passAssumedType(void * arg +assumedtype)
 C f void passAssumedTypeDim(void * arg +assumedtype+rank(1))
 C f int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))
-C f void callback_set_alloc(int tc, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)))
+C f void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))
 Close wrapClibrary.h
 Close wrapClibrary.c
 class array_info
@@ -50,7 +50,7 @@ Fortran void passVoidStarStar(void * in +intent(in), void * * out +intent(out))
 Fortran int passAssumedType(void * arg +assumedtype)
 Fortran void passAssumedTypeDim(void * arg +assumedtype+rank(1))
 Fortran int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))
-Fortran void callback_set_alloc(int tc, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)))
+Fortran void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))
 C-interface f void NoReturnNoArguments(void)
 C-interface f double PassByValue(double arg1, int arg2)
 C-interface f void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
@@ -73,7 +73,7 @@ C-interface f void passVoidStarStar(void * in +intent(in), void * * out +intent(
 C-interface f int passAssumedType(void * arg +assumedtype)
 C-interface f void passAssumedTypeDim(void * arg +assumedtype+rank(1))
 C-interface f int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))
-C-interface f void callback_set_alloc(int tc, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)))
+C-interface f void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))
 Close wrapfclibrary.f
 Close utilClibrary.c
 Close typesClibrary.h

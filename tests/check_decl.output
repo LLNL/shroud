@@ -58,11 +58,11 @@ int i, j;
 const double d, *d2;
 XXXX PRINT
 0 int
-    i
-    j
+   i
+   j
 1 const double
-    d
-    * d2
+   d
+   * d2
 XXXX PRINT_NODE
 int i, j;
 const double d, * d2;
@@ -101,11 +101,11 @@ int **i2;
 int &i3;
 XXXX PRINT
 0 int
-    * i1
+   * i1
 1 int
-    * * i2
+   * * i2
 2 int
-    & i3
+   & i3
 XXXX PRINT_NODE
 int * i1;
 int * * i2;
@@ -149,7 +149,7 @@ XXXX CODE
 typedef int footype;
 XXXX PRINT
 0 typedef int
-    footype
+   footype
 XXXX PRINT_NODE
 typedef int footype;
 
@@ -263,11 +263,11 @@ XXXX PRINT
 0 struct Point
    
 1 struct Point
-    end
+   end
 2 Point
-    start
+   start
 3 void
-    func1(struct Point arg1, Point arg2)
+   func1(struct Point arg1, Point arg2)
 XXXX PRINT_NODE
 struct Point{
 int x, x2;
@@ -367,11 +367,11 @@ XXXX PRINT
 0 struct list_s
    
 1 struct list_s
-    var1
+   var1
 2 typedef struct list_s
-    list_typ
+   list_typ
 3 list_typ
-    var2
+   var2
 XXXX PRINT_NODE
 struct list_s{
 int i;
@@ -447,7 +447,7 @@ XXXX PRINT
 0 struct list_s
    
 1 struct list_s
-    var1
+   var1
 XXXX PRINT_NODE
 struct list_s{
 struct list_s * next;
@@ -576,11 +576,11 @@ XXXX PRINT
 0 enum Color
    
 1 enum Color
-    global
+   global
 2 typedef enum Color
-    Color_typ
+   Color_typ
 3 Color_typ
-    local
+   local
 XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };
 enum Color global;
@@ -658,11 +658,11 @@ XXXX PRINT
 0 enum Color
    
 1 enum Color
-    global
+   global
 2 Color
-    flag=RED
+   flag=RED
 3 void
-    func1(enum Color arg1, Color arg2)
+   func1(enum Color arg1, Color arg2)
 XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };
 enum Color global;
@@ -740,11 +740,11 @@ address var;
 void caller(address arg1);
 XXXX PRINT
 0 typedef void
-    * address
+   * address
 1 address
-    var
+   var
 2 void
-    caller(address arg1)
+   caller(address arg1)
 XXXX PRINT_NODE
 typedef void * address;
 address var;
@@ -800,11 +800,11 @@ typedef int (*fcn)(int);
 void caller(fcn callback);
 XXXX PRINT
 0 typedef int
-    ( * fcn)(int)
+   (* fcn)(int)
 1 void
-    caller(fcn callback)
+   caller(fcn callback)
 XXXX PRINT_NODE
-typedef int ( * fcn)(int);
+typedef int (* fcn)(int);
 void caller(fcn callback);
 
 XXXX AST
@@ -862,7 +862,7 @@ user<int> returnUserType(void);
 XXXX PRINT
 0 <T>
 1 user<int>
-    returnUserType(void)
+   returnUserType(void)
 XXXX PRINT_NODE
 template<T>  class user{
 template<U>  void nested(T arg1, U arg2);
