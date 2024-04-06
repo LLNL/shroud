@@ -153,9 +153,11 @@ namespace ns {
 --------------------
 # declstr language=c
 int fun1(int arg1, int *arg2, const int *arg3);
+int callback1(int in, int (*incr)(int));
 --------------------
 # declstr language=c++ create_std
 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
 --------------------
 """  # end line
 
@@ -192,24 +194,34 @@ void caller(fcn callback);
 
 Xlines = """
 # declstr  create_std language=c++
-int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+#int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
 --------------------
 """
 
 def test_decl_str(idx, declaration, indent):
+    """Convert function declaration to C and C++.
+    Along with its arguments.
+    """
     indent = indent + "    "
     s = decl_str.gen_decl(declaration)
     print(indent, "decl_str:", idx, s)
-    s = gen_arg_as_c(declaration)
+    s = gen_arg_as_c(declaration, add_params=False)
     print(indent, "as_c    :", idx, s)
-    s = gen_arg_as_cxx(declaration)
+    s = gen_arg_as_cxx(declaration, add_params=False)
     print(indent, "as_cxx  :", idx, s)
     
     if declaration.declarator.params is not None:
         s = decl_str_noparams.gen_decl(declaration)
         print(indent, "no params:", s)
-        for i,  d2 in enumerate(declaration.declarator.params):
-            test_decl_str(i, d2, indent)
+        indent = indent + "    "
+        for i,  arg in enumerate(declaration.declarator.params):
+            s = decl_str.gen_decl(arg)
+            print(indent, "decl_str:", i, s)
+            s = gen_arg_as_c(arg)
+            print(indent, "as_c    :", i, s)
+            s = gen_arg_as_cxx(arg)
+            print(indent, "as_cxx  :", i, s)
 
 def test_block(comments, code, symtab):
     """Parse a single block of code.

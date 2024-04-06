@@ -19,19 +19,39 @@ Options used to control generation:
    attrs
       Add attributes from YAML to the declaration.
       Must be False to create code that will compile.
-   continuation
+   continuation - True - insert tabs to aid continuations.
+                  Defaults to False.
 
    lang - c_type or cxx_type
 
    in_params = True/False
    arg_lang = c_type or cxx_type
+
+   asgn_value - If True, make sure the value can be assigned
+                by removing const. Defaults to False.
+   remove_const - Defaults to False.
+   as_ptr - Change reference to pointer
+   force_ptr - Change a scalar into a pointer
+   as_scalar - Do not print Ptr
+   add_params - if False, do not print function parameters.
+   with_template_args - if True, print template arguments
+
+   If a templated type, assume std::vector.
+   The C argument will be a pointer to the template type.
+   'std::vector<int> &'  generates 'int *'
+   The length info is lost but will be provided as another argument
+   to the C wrapper.
 """
+
+from . import todict
 
 class DeclStr(object):
     """
     Convert Declarator to a specific C declaration.
 
     A Declaration contains declarators
+
+    name - False, do not add a name.
     """
     def __init__(self):
         super(DeclStr, self).__init__()
@@ -137,10 +157,11 @@ class DeclStr(object):
             parts.append(" (")
             self.declarator(declarator.func)
             parts.append(")")
-        elif self.name:
-            if self.name:
-                parts.append(" ")
-                parts.append(self.name)
+        elif self.name is False:
+            pass
+        elif self.name is not None:
+            parts.append(" ")
+            parts.append(self.name)
         elif declarator.name:
             parts.append(" ")
             parts.append(declarator.name)
@@ -154,7 +175,7 @@ class DeclStr(object):
         #        if use_attrs:
         #            declarator.gen_attrs(self.attrs, decl)
 
-        if not self.add_params:
+        if self.add_params is False:
             pass
         elif declarator.params is not None:
             parts.append("(")
@@ -166,8 +187,6 @@ class DeclStr(object):
                 for arg in declarator.params:
                     parts.append(comma)
                     self.declaration(arg)
-#                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation,
-#                                      in_params=True, arg_lang=arg_lang)
                     if self.continuation:
                         comma = ",\t "
                     else:
@@ -207,23 +226,41 @@ class DeclStr(object):
 
     ##########
 
-    def gen_arg_as_cxx(self, declaration):
+    def gen_arg_as_cxx(self, declaration, add_params=True,
+                       as_ptr=False, name=None,
+                       force_ptr=False, remove_const=False,
+                       with_template_args=False):
         """Generate C++ declaration of variable.
         No parameters or attributes.
 
-        Used to generate declarations in wrappers.
+        Used to generate declarations in wrappers implementation.
         """
+        self.add_params = add_params
+        self.as_ptr = as_ptr
+        self.name = name
+        self.force_ptr = force_ptr
+        self.remove_const = remove_const
+        self.with_template_args = with_template_args
+        
         self.lang = "cxx_type"
         self.parts = []
         self.gen_arg_as_lang(declaration)
         return "".join(self.parts)
 
-    def gen_arg_as_c(self, declaration, name=None):
+    def gen_arg_as_c(self, declaration, add_params=True, name=None,
+                     remove_const=False):
         """Return a string of the unparsed declaration.
+
+        Used to generate declarations in wrappers headers.
         """
+        self.add_params = add_params
+        self.as_ptr = False
+        self.name = name
+        self.force_ptr = False
+        self.remove_const = remove_const
+        self.with_template_args = False
+        
         self.lang = "c_type"
-        if name is not None:
-            self.name = name
         self.parts = []
         self.gen_arg_as_lang(declaration)
         return "".join(self.parts)
@@ -246,13 +283,7 @@ class DeclStr(object):
         return "".join(self.parts)
 
     def gen_arg_as_lang(self, declaration):
-#        lang,
-#        continuation=False,
 #        asgn_value=False,
-#        remove_const=False,
-#        with_template_args=False,
-#        force_ptr=False,
-#        **kwargs
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
@@ -302,9 +333,6 @@ class DeclStr(object):
             parts.append(typ)
 
         declarator = declaration.declarator
-        if declaration.is_ctor and self.lang == "c_type":
-            # The C wrapper wants a pointer to the type.
-            force_ptr = True
 
         if self.asgn_value and const_index is not None and not declaration.declarator.is_indirect():
             # Remove 'const' so the variable can be assigned to.
@@ -314,15 +342,13 @@ class DeclStr(object):
 
         if self.lang == "c_type":
             self.as_c = True
+            # The C wrapper wants a pointer to the type.
+            if declaration.is_ctor:
+                self.force_ptr = True
             self.declarator(declarator)
-#            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr,
-#                                     append_init=False, ctor_dtor=True,
-#                                     attrs=False, continuation=continuation, **kwargs)
         else:
+            self.as_c = False
             self.declarator(declarator)
-#            declarator.gen_decl_work(decl, force_ptr=force_ptr,
-#                                     append_init=False, ctor_dtor=True,
-#                                     attrs=False, continuation=continuation, **kwargs)
 
 ######################################################################
 # Create some instances to change defaults.
@@ -334,7 +360,9 @@ decl_str_noparams = DeclStr().update(add_params=False)
 gen_arg_as_language = DeclStr().gen_arg_as_language
 
 gen_arg_instance = DeclStr().update(
-    add_params=False,
+    append_init=False,
+    ctor_dtor=True,
+    attrs=False,
     continuation=True
 )
 gen_arg_as_c = gen_arg_instance.gen_arg_as_c

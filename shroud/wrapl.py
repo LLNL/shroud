@@ -11,6 +11,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 from . import error
+from .declstr import gen_arg_as_cxx
 from . import statements
 from . import typemap
 from . import util
@@ -481,8 +482,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 fmt_result.c_var = fmt_result.cxx_var
 
-            fmt_func.rv_decl = ast.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None
+            fmt_func.rv_decl = gen_arg_as_cxx(ast,
+                name=fmt_result.cxx_var, add_params=False
             )
             fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
 

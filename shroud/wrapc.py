@@ -16,6 +16,7 @@ from collections import OrderedDict, namedtuple
 
 from . import error
 from . import declast
+from .declstr import gen_arg_as_c
 from . import fcfmt
 from . import todict
 from . import statements
@@ -623,7 +624,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         )
         for var in node.variables:
             ast = var.ast
-            output.append(ast.gen_arg_as_c() + ";")
+            output.append(gen_arg_as_c(ast) + ";")
         output.extend(
             [
                 -1,
@@ -851,7 +852,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             pass
         else:
             # vector<int> -> int *
-            proto_list.append(ast.gen_arg_as_c(continuation=True))
+            proto_list.append(gen_arg_as_c(ast))
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -1203,8 +1204,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             elif result_typemap.cxx_to_c is not None:
                 # Make intermediate c_var value if a conversion
                 # is required i.e. not the same as cxx_var.
-                fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
-                    name=fmt_result.c_var, params=None, continuation=True
+                fmt_result.c_rv_decl = gen_arg_as_c(CXX_ast,
+                    name=fmt_result.c_var, add_params=False
                 )
                 fmt_result.c_val = wformat(
                     result_typemap.cxx_to_c, fmt_result

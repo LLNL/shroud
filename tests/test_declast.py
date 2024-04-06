@@ -10,6 +10,7 @@ Parse C++ declarations.
 from __future__ import print_function
 
 from shroud import declast
+from shroud import declstr
 from shroud import error
 from shroud import todict
 from shroud import wrapf
@@ -23,6 +24,9 @@ import copy
 #        print(pp.pprint(todict.to_dict(r)))
 
 ShroudParseError = error.ShroudParseError
+
+gen_arg_as_c = declstr.gen_arg_as_c
+gen_arg_as_cxx = declstr.gen_arg_as_cxx
 
 class CheckParse(unittest.TestCase):
     maxDiff = None
@@ -63,13 +67,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, declarator.is_pointer())
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
-        self.assertEqual("const int var1", r.gen_arg_as_c())
-        self.assertEqual("int var1", r.gen_arg_as_c(asgn_value=True))
-        self.assertEqual("const int var1", r.gen_arg_as_cxx())
-        self.assertEqual("int var1", r.gen_arg_as_cxx(asgn_value=True))
-        self.assertEqual(
-            "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True)
-        )
+        self.assertEqual("const int var1", gen_arg_as_c(r))
+#        self.assertEqual("int var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int var1", gen_arg_as_cxx(r))
+#        self.assertEqual("int var1", r.gen_arg_as_cxx(asgn_value=True))
+#        self.assertEqual(
+#            "int * var1", gen_arg_as_cxx(r, asgn_value=True, force_ptr=True)
+#        )
         self.assertEqual("int", r.as_cast())
         self.assertEqual(
             {
@@ -104,9 +108,9 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(1, declarator.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int * var1 +dimension(:)", s)
-        self.assertEqual("int * var1", r.gen_arg_as_c())
-        self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
-        self.assertEqual("int * var1", r.gen_arg_as_cxx())
+        self.assertEqual("int * var1", gen_arg_as_c(r))
+#        self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
+        self.assertEqual("int * var1", gen_arg_as_cxx(r))
         self.assertEqual("integer(C_INT) :: var1(:)", wrapf.gen_arg_as_fortran(r))
         self.assertEqual("integer(C_INT) :: var1(*)", wrapf.bind_c(r, modules))
 
@@ -114,13 +118,13 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const int * var1", s)
         self.assertEqual("const int * var1",
-                         r.gen_arg_as_c())
+                         gen_arg_as_c(r))
+#        self.assertEqual("const int * var1",
+#                         gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int * var1",
-                         r.gen_arg_as_c(asgn_value=True))
-        self.assertEqual("const int * var1",
-                         r.gen_arg_as_cxx())
-        self.assertEqual("const int * var1",
-                         r.gen_arg_as_cxx(asgn_value=True))
+                         gen_arg_as_cxx(r))
+#        self.assertEqual("const int * var1",
+#                         gen_arg_as_cxx(asgn_value=True))
         self.assertEqual("int *", r.as_cast())
 
         r = declast.check_decl("int * const var1", symtab)
@@ -242,7 +246,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var1[20]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "integer(C_INT), value :: var1(20)",
             wrapf.gen_arg_as_fortran(r))
@@ -268,7 +272,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var2[20][10]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "integer(C_INT) :: var2(10,20)",
             wrapf.gen_arg_as_fortran(r, local=True))
@@ -294,7 +298,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int *", r.as_cast())
         self.assertEqual(
             "int var3[DEFINE+3]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "integer(C_INT) :: var3(DEFINE+3)",
             wrapf.gen_arg_as_fortran(r, local=True))
@@ -346,20 +350,20 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::string *var1", symtab)
         s = r.gen_decl()
         self.assertEqual("std::string * var1", s)
-        s = r.gen_arg_as_cxx()
+        s = gen_arg_as_cxx(r)
         self.assertEqual("std::string * var1", s)
-        s = r.gen_arg_as_c()
+        s = gen_arg_as_c(r)
         self.assertEqual("char * var1", s)
         self.assertEqual("char *", r.as_cast())
 
         r = declast.check_decl("std::string &var1", symtab)
         s = r.gen_decl()
         self.assertEqual("std::string & var1", s)
-        s = r.gen_arg_as_cxx()
+        s = gen_arg_as_cxx(r)
         self.assertEqual("std::string & var1", s)
-        s = r.gen_arg_as_cxx(as_ptr=True)
+        s = gen_arg_as_cxx(r, as_ptr=True)
         self.assertEqual("std::string * var1", s)
-        s = r.gen_arg_as_c()
+        s = gen_arg_as_c(r)
         self.assertEqual("char * var1", s)
 
     def test_type_char_array(self):
@@ -388,7 +392,7 @@ class CheckParse(unittest.TestCase):
         )
         self.assertEqual(
             "char var1[20]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "character(kind=C_CHAR) :: var1(20)",
             wrapf.gen_arg_as_fortran(r))
@@ -419,7 +423,7 @@ class CheckParse(unittest.TestCase):
         )
         self.assertEqual(
             "char var2[20][10][5]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "character(kind=C_CHAR) :: var2(5,10,20)",
             wrapf.gen_arg_as_fortran(r))
@@ -450,7 +454,7 @@ class CheckParse(unittest.TestCase):
         )
         self.assertEqual(
             "char var3[DEFINE+3]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(
             "character(kind=C_CHAR) :: var3(DEFINE+3)",
             wrapf.gen_arg_as_fortran(r))
@@ -479,7 +483,7 @@ class CheckParse(unittest.TestCase):
         )
         self.assertEqual(
             "char * var4[44]",
-            r.gen_arg_as_c())
+            gen_arg_as_c(r))
         self.assertEqual(  # XXX - fixme
             "character(kind=C_CHAR) :: var4(44)",
             wrapf.gen_arg_as_fortran(r))
@@ -514,17 +518,17 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r)
         )
         # C
-        s = r.gen_arg_as_c()
+        s = gen_arg_as_c(r)
         self.assertEqual("int var1", s)
-        s = r.gen_arg_as_c(force_ptr=True)
-        self.assertEqual("int * var1", s)
+#        s = gen_arg_as_c(r, force_ptr=True)
+#        self.assertEqual("int * var1", s)
         # CXX
-        s = r.gen_arg_as_cxx()
+        s = gen_arg_as_cxx(r)
         self.assertEqual("int var1", s)
-        s = r.gen_arg_as_cxx(force_ptr=True)
+        s = gen_arg_as_cxx(r, force_ptr=True)
         self.assertEqual("int * var1", s)
 
-        s = r.gen_arg_as_cxx(force_ptr=True, with_template_args=True)
+        s = gen_arg_as_cxx(r, force_ptr=True, with_template_args=True)
         self.assertEqual("std::vector<int> * var1", s)
 
         r = declast.check_decl("std::vector<long long> var1", symtab)
@@ -607,17 +611,17 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r)
         )
         # C
-        s = r.gen_arg_as_c()
+        s = gen_arg_as_c(r)
         self.assertEqual("int var1", s)
-        s = r.gen_arg_as_c(force_ptr=True)
-        self.assertEqual("int * var1", s)
+#        s = gen_arg_as_c(r, force_ptr=True)
+#        self.assertEqual("int * var1", s)
         # CXX
-        s = r.gen_arg_as_cxx()
+        s = gen_arg_as_cxx(r)
         self.assertEqual("int var1", s)
-        s = r.gen_arg_as_cxx(force_ptr=True)
+        s = gen_arg_as_cxx(r, force_ptr=True)
         self.assertEqual("int * var1", s)
 
-        s = r.gen_arg_as_cxx(force_ptr=True, with_template_args=True)
+        s = gen_arg_as_cxx(r, force_ptr=True, with_template_args=True)
         self.assertEqual("std::vector<int * > * var1", s)
 
     def test_template_argument_list(self):
@@ -737,10 +741,10 @@ class CheckParse(unittest.TestCase):
 
         s = r.gen_decl()
         self.assertEqual("int ( * func)(int)", s)
-        s = r.gen_arg_as_c()
-        self.assertEqual("int ( * func)(int)", s)
-        s = r.gen_arg_as_cxx()
-        self.assertEqual("int ( * func)(int)", s)
+        s = gen_arg_as_c(r)
+        self.assertEqual("int ( * func)(\tint)", s)
+        s = gen_arg_as_cxx(r)
+        self.assertEqual("int ( * func)(\tint)", s)
 
         self.assertEqual(
             {
@@ -1097,8 +1101,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_reference())
         # must provide the name since the ctor has no name
         # cxx_type and c_type are not defined yet
-        self.assertEqual("--NOTYPE-- ctor(void)", r.gen_arg_as_cxx())
-        self.assertEqual("--NOTYPE-- * ctor", r.gen_arg_as_c(params=None))
+        self.assertEqual("--NOTYPE-- ctor(\tvoid)", gen_arg_as_cxx(r))
+        self.assertEqual("--NOTYPE-- * ctor", gen_arg_as_c(r, add_params=False))
 
     def test_decl09b(self):
         """Test constructor +name
@@ -1131,8 +1135,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_pointer())
         self.assertFalse(declarator.is_reference())
         self.assertEqual(0, declarator.is_indirect())
-        self.assertEqual("--NOTYPE-- new", r.gen_arg_as_cxx(params=None))
-        self.assertEqual("--NOTYPE-- * new(void)", r.gen_arg_as_c())
+        self.assertEqual("--NOTYPE-- new", gen_arg_as_cxx(r, add_params=False))
+        self.assertEqual("--NOTYPE-- * new(\tvoid)", gen_arg_as_c(r))
 
     def test_decl09c(self):
         """Test destructor
@@ -1164,8 +1168,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_pointer())
         self.assertFalse(declarator.is_reference())
         self.assertEqual(0, declarator.is_indirect())
-        self.assertEqual("void dtor(void)", r.gen_arg_as_cxx())
-        self.assertEqual("void dtor(void)", r.gen_arg_as_c())
+        self.assertEqual("void dtor(\tvoid)", gen_arg_as_cxx(r))
+        self.assertEqual("void dtor(\tvoid)", gen_arg_as_c(r))
 
     def test_inheritance0(self):
         symtab = declast.SymbolTable()

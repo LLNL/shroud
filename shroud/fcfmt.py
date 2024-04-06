@@ -9,6 +9,7 @@ Fill the fmtdict for C and Fortran wrappers.
 """
 
 from . import error
+from .declstr import gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
 from . import util
@@ -136,8 +137,8 @@ class FillFormat(object):
             else:
                 fmt_result.c_const = ""
 
-            fmt_result.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                name=fmt_result.cxx_var, params=None, continuation=True
+            fmt_result.cxx_rv_decl = gen_arg_as_cxx(CXX_ast,
+                name=fmt_result.cxx_var, add_params=False
             )
 
             compute_cxx_deref(
@@ -148,10 +149,10 @@ class FillFormat(object):
             fmt_result.C_return_type = wformat(
                 result_stmt.c_return_type, fmt_result)
         else:
-            fmt_result.C_return_type = ast.gen_arg_as_c(
-                name=None, params=None, continuation=True
+            fmt_result.C_return_type = gen_arg_as_c(ast,
+                name=False, add_params=False
             )
-            
+           
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
@@ -184,11 +185,10 @@ class FillFormat(object):
             # convert C argument to C++
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-            fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+            fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
                 name=fmt_arg.cxx_var,
-                params=None,
-                as_ptr=True,
-                continuation=True,
+                add_params=False,
+                as_ptr=True
             )
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)

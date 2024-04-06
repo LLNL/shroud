@@ -39,6 +39,7 @@ import re
 
 from . import error
 from . import declast
+from .declstr import gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
 from . import typemap
@@ -821,7 +822,7 @@ return 1;""",
             "{{+",
             fmt,
         )
-        fmt.cxx_decl = ast.gen_arg_as_cxx(name="rv")
+        fmt.cxx_decl = gen_arg_as_cxx(ast, name="rv")
         if arg_typemap.PY_ctor:
             fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
         else:
@@ -1419,8 +1420,8 @@ return 1;""",
                 # Convert type like with enums or MPI_Comm.
                 # Helpful with debugging.
                 fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var, params=None, continuation=True
+                fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
+                    name=fmt_arg.cxx_var, add_params=False
                 )
                 fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 append_format(post_declare_code,
@@ -1441,7 +1442,7 @@ return 1;""",
             else:
                 # Since all declarations are at the top, remove const
                 # since it will be assigned later.
-                junk = arg.gen_arg_as_c(remove_const=True, continuation=True)
+                junk = gen_arg_as_c(arg, remove_const=True)
                 declare_code.append(junk + ";")
             
             if implied or hidden:
@@ -2018,9 +2019,9 @@ return 1;""",
             "{CXX_local}{C_result}", fmt_result
         )
 
-        fmt.C_rv_decl = CXX_result.gen_arg_as_cxx(
-            name=fmt_result.cxx_var, params=None,
-            with_template_args=True, continuation=True
+        fmt.C_rv_decl = gen_arg_as_cxx(CXX_result,
+            name=fmt_result.cxx_var, add_params=False,
+            with_template_args=True
         )
 
         if CXX_result.declarator.is_pointer():
@@ -2121,13 +2122,13 @@ return 1;""",
             # We're creating a pointer to a struct which will later then be assigned to.
             # Have to discard constness or the assignment will produce a compile error.
             #  *result = returnConstStructByValue()
-            fmt.cxx_alloc_decl = ast.gen_arg_as_cxx(
-                name=fmt.cxx_var, force_ptr=True, params=None,
+            fmt.cxx_alloc_decl = gen_arg_as_cxx(ast,
+                name=fmt.cxx_var, force_ptr=True, add_params=False,
                 remove_const=True,
-                with_template_args=True, continuation=True,
+                with_template_args=True,
             )
-            capsule_type = ast.gen_arg_as_cxx(
-                name=None, force_ptr=True, params=None,
+            capsule_type = gen_arg_as_cxx(ast,
+                name=False, force_ptr=True, add_params=False,
                 with_template_args=True,
             )
             fmt.py_capsule = "SHC_" + fmt.c_var
