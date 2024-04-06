@@ -39,7 +39,7 @@ import re
 
 from . import error
 from . import declast
-from .declstr import gen_arg_as_c, gen_arg_as_cxx
+from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
 from . import typemap
@@ -1231,7 +1231,7 @@ return 1;""",
             stmts_comments.append(
                 "// ----------------------------------------")
             stmts_comments.append(
-                "// Function:  " + ast.gen_decl(params=None))
+                "// Function:  " + gen_decl_noparams(ast))
             self.document_stmts(stmts_comments, ast, result_blk.name)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
         statements.apply_fmtdict_from_stmts(result_blk, fmt_result)
@@ -1383,7 +1383,7 @@ return 1;""",
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
-                stmts_comments.append("// Argument:  " + arg.gen_decl())
+                stmts_comments.append("// Argument:  " + gen_decl(arg))
             if stmts is not None:
                 if intent_blk is None:
                     intent_blk = lookup_stmts(stmts)

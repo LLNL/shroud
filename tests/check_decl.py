@@ -24,8 +24,8 @@ from shroud import todict
 
 from shroud import declstr
 
-decl_str = declstr.decl_str
-decl_str_noparams = declstr.decl_str_noparams
+gen_decl = declstr.gen_decl
+gen_decl_noparams = declstr.gen_decl_noparams
 
 gen_arg_as_c = declstr.gen_arg_as_c
 gen_arg_as_cxx = declstr.gen_arg_as_cxx
@@ -204,20 +204,20 @@ def test_decl_str(idx, declaration, indent):
     Along with its arguments.
     """
     indent = indent + "    "
-    s = decl_str.gen_decl(declaration)
-    print(indent, "decl_str:", idx, s)
+    s = gen_decl(declaration)
+    print(indent, "gen_decl:", idx, s)
     s = gen_arg_as_c(declaration, add_params=False)
     print(indent, "as_c    :", idx, s)
     s = gen_arg_as_cxx(declaration, add_params=False)
     print(indent, "as_cxx  :", idx, s)
     
     if declaration.declarator.params is not None:
-        s = decl_str_noparams.gen_decl(declaration)
+        s = gen_decl_noparams(declaration)
         print(indent, "no params:", s)
         indent = indent + "    "
         for i,  arg in enumerate(declaration.declarator.params):
-            s = decl_str.gen_decl(arg)
-            print(indent, "decl_str:", i, s)
+            s = gen_decl(arg)
+            print(indent, "gen_decl:", i, s)
             s = gen_arg_as_c(arg)
             print(indent, "as_c    :", i, s)
             s = gen_arg_as_cxx(arg)

@@ -22,6 +22,7 @@ import re
 
 from . import error
 from . import declast
+from .declstr import gen_decl, gen_decl_noparams
 from . import fcfmt
 from . import statements
 from . import todict
@@ -1190,7 +1191,7 @@ rv = .false.
                     node._generated_path))
             stmts_comments.append(
                 "! ----------------------------------------")
-            c_decl = ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(ast)
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
@@ -1243,7 +1244,7 @@ rv = .false.
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
-                c_decl = arg.gen_decl()
+                c_decl = gen_decl(arg)
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.build_arg_list_interface(
@@ -1509,12 +1510,12 @@ rv = .false.
                     node._generated_path))
             stmts_comments.append(
                 "! ----------------------------------------")
-            f_decl = ast.gen_decl(params=None)
+            f_decl = gen_decl_noparams(ast)
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
-            c_decl = C_node.ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(C_node.ast)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
 
@@ -1676,10 +1677,10 @@ rv = .false.
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
-                f_decl = f_arg.gen_decl()
+                f_decl = gen_decl(f_arg)
                 stmts_comments.append("! Argument:  " + f_decl)
                 self.document_stmts(stmts_comments, f_arg, arg_stmt.name)
-                c_decl = c_arg.gen_decl()
+                c_decl = gen_decl(c_arg)
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 

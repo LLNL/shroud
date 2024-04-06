@@ -202,8 +202,29 @@ class DeclStr(object):
             parts.append(todict.print_node(dim))
             parts.append("]")
         if self.attrs:
-            self.gen_attrs(self.attrs, decl)
+            self.gen_attrs(declarator.attrs, parts)
 
+    _skip_annotations = ["template"]
+
+    def gen_attrs(self, attrs, parts, skip={}):
+        space = " "
+        for attr in sorted(attrs):
+            if attr[0] == "_":  # internal attribute
+                continue
+            if attr in self._skip_annotations:
+                continue
+            if attr in skip:
+                continue
+            value = attrs[attr]
+            if value is None:  # unset
+                continue
+            parts.append(space)
+            parts.append("+")
+            if value is True:
+                parts.append(attr)
+            else:
+                parts.append("{}({})".format(attr, value))
+            space = ""
 
     def ptr(self, pointer):
         """Generate string by appending text to decl.
@@ -354,8 +375,8 @@ class DeclStr(object):
 # Create some instances to change defaults.
     
 
-decl_str = DeclStr()
-decl_str_noparams = DeclStr().update(add_params=False)
+gen_decl = DeclStr().update(append_init=True, attrs=True).gen_decl
+gen_decl_noparams = DeclStr().update(add_params=False, attrs=True).gen_decl
 
 gen_arg_as_language = DeclStr().gen_arg_as_language
 

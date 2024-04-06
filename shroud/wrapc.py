@@ -16,7 +16,7 @@ from collections import OrderedDict, namedtuple
 
 from . import error
 from . import declast
-from .declstr import gen_arg_as_c
+from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c
 from . import fcfmt
 from . import todict
 from . import statements
@@ -992,7 +992,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 "// ----------------------------------------")
             if options.debug_index:
                 stmts_comments.append("// Index:     {}".format(node._function_index))
-            c_decl = ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(ast)
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
         
@@ -1090,7 +1090,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
-                c_decl = arg.gen_decl()
+                c_decl = gen_decl(arg)
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
 
