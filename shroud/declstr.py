@@ -18,12 +18,12 @@ Options used to control generation:
    continuation - True - insert tabs to aid continuations.
                   Defaults to False.
 
-   lang - c_type or cxx_type
+   lang - c_type or cxx_type, field in Typemap.
 
    in_params = True/False
    arg_lang = c_type or cxx_type
 
-   remove_const - Defaults to False.
+   remove_const - Remove any const in declaration. Defaults to False.
    as_ptr - Change reference to pointer
    force_ptr - Change a scalar into a pointer
    add_params - if False, do not print function parameters.
@@ -157,8 +157,6 @@ class DeclStr(object):
         if self.append_init and declarator.init is not None:
             parts.append("=")
             parts.append(str(declarator.init))
-        #        if use_attrs:
-        #            declarator.gen_attrs(self.attrs, decl)
 
         if self.add_params is False:
             pass
@@ -286,20 +284,7 @@ class DeclStr(object):
         C++ types are converted to C types using typemap.
 
         Args:
-            lang = c_type or cxx_type
-            continuation - True - insert tabs to aid continuations.
-                           Defaults to False.
-            remove_const - Defaults to False.
-            as_ptr - Change reference to pointer
-            force_ptr - Change a scalar into a pointer
-            add_params - if None, do not print function parameters.
-            with_template_args - if True, print template arguments
-
-        If a templated type, assume std::vector.
-        The C argument will be a pointer to the template type.
-        'std::vector<int> &'  generates 'int *'
-        The length info is lost but will be provided as another argument
-        to the C wrapper.
+            declaraton - declast.Declaration
         """
         parts = self.parts
         const_index = None

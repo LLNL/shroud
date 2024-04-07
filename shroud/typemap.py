@@ -1386,7 +1386,6 @@ def fill_typedef_typemap(node, fields={}):
     # Define equivalent parameter for Fortran
 #    node.f_define_parameter = "integer, parameter :: {} = {}".format(
 #        f_name, ntypemap.f_kind)
-#    node.c_typedef = node.ast.gen_decl(as_c=True, name=c_name)
 
 ##############################    print("XXXXX DD", ntypemap.name, fmtdict.C_header_filename)
     ntypemap.update(dict(
