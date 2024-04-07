@@ -9,9 +9,7 @@ Generating declarations
 
 Options used to control generation:
    as_c        -
-      references become pointers
-   force_ptr
-      change reference to pointer
+      references become pointers  (internal use)
    append_init
    ctor_dtor
    attrs
@@ -25,8 +23,6 @@ Options used to control generation:
    in_params = True/False
    arg_lang = c_type or cxx_type
 
-   asgn_value - If True, make sure the value can be assigned
-                by removing const. Defaults to False.
    remove_const - Defaults to False.
    as_ptr - Change reference to pointer
    force_ptr - Change a scalar into a pointer
@@ -72,7 +68,6 @@ class DeclStr(object):
 
         # From gen_arg_as_language
         self.lang = None
-        self.asgn_value = False
         self.remove_const = False
         self.with_template_args = False
         return self
@@ -138,7 +133,7 @@ class DeclStr(object):
         """
         parts = self.parts
         if self.force_ptr:
-            # Force to be a pointer
+            # Force to be a pointer, even if scalar
             parts.append(" *")
         else:
             for ptr in declarator.pointer:
@@ -287,7 +282,6 @@ class DeclStr(object):
         return "".join(self.parts)
 
     def gen_arg_as_lang(self, declaration):
-#        asgn_value=False,
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
@@ -295,8 +289,6 @@ class DeclStr(object):
             lang = c_type or cxx_type
             continuation - True - insert tabs to aid continuations.
                            Defaults to False.
-            asgn_value - If True, make sure the value can be assigned
-                         by removing const. Defaults to False.
             remove_const - Defaults to False.
             as_ptr - Change reference to pointer
             force_ptr - Change a scalar into a pointer
@@ -337,10 +329,7 @@ class DeclStr(object):
 
         declarator = declaration.declarator
 
-        if self.asgn_value and const_index is not None and not declaration.declarator.is_indirect():
-            # Remove 'const' so the variable can be assigned to.
-            parts[const_index] = ""
-        elif self.remove_const and const_index is not None:
+        if self.remove_const and const_index is not None:
             parts[const_index] = ""
 
         if self.lang == "c_type":
