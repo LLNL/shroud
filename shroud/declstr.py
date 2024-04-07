@@ -122,7 +122,7 @@ class DeclStr(object):
             if self.in_params and self.arg_lang:
                 # typedefs in C wrapper must use c_type typedef for arguments.
                 # i.e. with function pointers
-                parts.append(getattr(declaration.typemap, arg_lang))
+                parts.append(getattr(declaration.typemap, self.arg_lang))
             else:
                 parts.append(" ".join(declaration.specifier))
         if declaration.template_arguments:
@@ -184,6 +184,7 @@ class DeclStr(object):
             if declarator.params:
                 comma = ""
                 self.in_params = True
+                self.name = None  # Do not override parameter names
                 for arg in declarator.params:
                     parts.append(comma)
                     self.declaration(arg)
