@@ -1411,26 +1411,18 @@ class Declarator(Node):
         """Return index of argument in params with name."""
         return find_arg_index_by_name(self.params, name)
 
-    _skip_annotations = ["template"]
-
-    def gen_attrs(self, attrs, decl, skip={}):
+    def gen_attrs(self, attrs, parts):
         space = " "
         for attr in sorted(attrs):
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr in self._skip_annotations:
-                continue
-            if attr in skip:
+            if attr[0] == "_":  # internal attribute, __line__
                 continue
             value = attrs[attr]
-            if value is None:  # unset
-                continue
-            decl.append(space)
-            decl.append("+")
+            parts.append(space)
+            parts.append("+")
             if value is True:
-                decl.append(attr)
+                parts.append(attr)
             else:
-                decl.append("{}({})".format(attr, value))
+                parts.append("{}({})".format(attr, value))
             space = ""
 
     def __str__(self):

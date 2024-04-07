@@ -129,10 +129,6 @@ class DeclStr(object):
             parts.append(declaration.gen_template_arguments())
 
         self.declarator(declaration.declarator)
-        #, decl, attrs=attrs,
-#                        in_params=in_params, arg_lang=arg_lang,
-#                        **kwargs)
-
 
     def declarator(self, declarator):
         """Generate string for Declarator.
@@ -205,20 +201,12 @@ class DeclStr(object):
         if self.attrs:
             self.gen_attrs(declarator.attrs, parts)
 
-    _skip_annotations = ["template"]
-
-    def gen_attrs(self, attrs, parts, skip={}):
+    def gen_attrs(self, attrs, parts):
         space = " "
         for attr in sorted(attrs):
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr in self._skip_annotations:
-                continue
-            if attr in skip:
+            if attr[0] == "_":  # internal attribute, __line__
                 continue
             value = attrs[attr]
-            if value is None:  # unset
-                continue
             parts.append(space)
             parts.append("+")
             if value is True:
