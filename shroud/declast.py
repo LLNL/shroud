@@ -1263,24 +1263,6 @@ class Ptr(Node):
         self.const = False
         self.volatile = False
 
-    def gen_decl_work(self, decl, **kwargs):
-        """Generate string by appending text to decl.
-        """
-        if self.ptr:
-            decl.append(" ")
-            if kwargs.get("as_c", False):
-                # references become pointers with as_c
-                decl.append("*")
-            elif kwargs.get("as_ptr", False):
-                # Change reference to pointer
-                decl.append("*")
-            else:
-                decl.append(self.ptr)
-        if self.const:
-            decl.append(" const")
-        if self.volatile:
-            decl.append(" volatile")
-
     def __str__(self):
         if self.const:
             return self.ptr + " const"
@@ -1429,74 +1411,6 @@ class Declarator(Node):
         """Return index of argument in params with name."""
         return find_arg_index_by_name(self.params, name)
 
-    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False,
-                      append_init=True, continuation=False,
-                      attrs=True, arg_lang=None, **kwargs):
-        """Generate string for Declarator.
-
-        Appending text to decl.
-
-        Replace name with value from kwargs.
-        name=None will skip appending any existing name.
-
-        attrs=False give compilable code.
-        """
-        if force_ptr:
-            # Force to be a pointer
-            decl.append(" *")
-        elif kwargs.get("as_scalar", False):
-            pass  # Do not print pointer
-        else:
-            for ptr in self.pointer:
-                ptr.gen_decl_work(decl, **kwargs)
-        if self.func:
-            decl.append(" (")
-            self.func.gen_decl_work(decl, attrs=attrs, **kwargs)
-            decl.append(")")
-        elif "name" in kwargs:
-            if kwargs["name"]:
-                decl.append(" ")
-                decl.append(kwargs["name"])
-        elif self.name:
-            decl.append(" ")
-            decl.append(self.name)
-        elif ctor_dtor and self.ctor_dtor_name:
-            decl.append(" ")
-            decl.append(self.ctor_dtor_name)
-
-        if append_init and self.init is not None:
-            decl.append("=")
-            decl.append(str(self.init))
-        #        if use_attrs:
-        #            self.gen_attrs(self.attrs, decl)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            if continuation:
-                decl.append("\t")
-            if params:
-                comma = ""
-                for arg in params:
-                    decl.append(comma)
-                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation,
-                                      in_params=True, arg_lang=arg_lang)
-                    if continuation:
-                        comma = ",\t "
-                    else:
-                        comma = ", "
-            else:
-                decl.append("void")
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        for dim in self.array:
-            decl.append("[")
-            decl.append(todict.print_node(dim))
-            decl.append("]")
-        if attrs:
-            self.gen_attrs(self.attrs, decl)
-
     _skip_annotations = ["template"]
 
     def gen_attrs(self, attrs, decl, skip={}):
@@ -1641,50 +1555,6 @@ class Declaration(Node):
     def __repr__(self):
         return "<Declaration('{}')>".format(str(self))
     
-    def gen_decl(self, **kwargs):
-        """Return a string of the unparsed declaration.
-
-        Args:
-            params - None do not print parameters.
-        """
-        decl = []
-        self.gen_decl_work(decl, **kwargs)
-        return "".join(decl)
-
-    def gen_decl_work(self, decl, attrs=True,
-                      in_params=False, arg_lang=None,
-                      **kwargs):
-        """Generate string for Declaration.
-
-        Append text to decl list.
-
-        Replace params with value from kwargs.
-        Most useful to call with params=None to skip parameters
-        and only get function result.
-        """
-        if self.const:
-            decl.append("const ")
-
-        if self.is_dtor:
-            decl.append("~")
-            decl.append(self.is_dtor)
-        else:
-            if self.storage:
-                decl.append(" ".join(self.storage))
-                decl.append(" ")
-            if in_params and arg_lang:
-                # typedefs in C wrapper must use c_type typedef for arguments.
-                # i.e. with function pointers
-                decl.append(getattr(self.typemap, arg_lang))
-            else:
-                decl.append(" ".join(self.specifier))
-        if self.template_arguments:
-            decl.append(self.gen_template_arguments())
-
-        self.declarator.gen_decl_work(decl, attrs=attrs,
-                                      in_params=in_params, arg_lang=arg_lang,
-                                      **kwargs)
-
     def gen_template_argument(self):
         """
         ex  "int, double *"
@@ -1838,9 +1708,6 @@ class Struct(Node):
             self.newtypemap = ntypemap
             self.typemap = ntypemap
         symtab.push_scope(self)
-
-    def gen_decl(self, **kwargs):
-        return "struct " + self.name
 
     def __str__(self):
         return "struct " + self.name
