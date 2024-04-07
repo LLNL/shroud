@@ -358,7 +358,7 @@ class NamespaceMixin(object):
         if ast.class_specifier:
             struct = ast.class_specifier
             for cls in self.classes:
-                if cls.ast is struct:
+                if cls.ast.class_specifier is struct:
                     cls.rename(node)
                     typemap.fill_struct_typemap(cls, cls.user_fields)
         
@@ -1168,9 +1168,8 @@ class ClassNode(AstNode, NamespaceMixin):
         if not isinstance(ast, declast.Declaration):
             raise RuntimeError("class decl is not a Declaration")
         class_specifier = ast.class_specifier
-        self.ast = class_specifier  # declast.CXXClass
-        if not (isinstance(class_specifier, declast.CXXClass)
-                or isinstance(class_specifier, declast.Struct)):
+        self.ast = ast
+        if not isinstance(class_specifier, (declast.CXXClass, declast.Struct)):
             raise RuntimeError("class decl is not a CXXClass or Struct Node")
         self.name = class_specifier.name
         self.name_api = None            # ex. name_int
@@ -1373,6 +1372,16 @@ class ClassNode(AstNode, NamespaceMixin):
             self.map_name_to_node[var.name] = var
         for node in self.functions:
             self.map_name_to_node[node.ast.declarator.user_name] = node
+
+    def qualified_lookup(self, name):
+        """Look for symbols within this AstNode."""
+        return self.ast.class_specifier.qualified_lookup(name)
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within the Abstract Syntax Tree
+        and its parents."""
+        return self.ast.class_specifier.unqualified_lookup(name)
+
 
 ######################################################################
 

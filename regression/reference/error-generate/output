@@ -67,7 +67,7 @@ Phase: generate functions
 ----------------------------------------
 Node: nested
 line 103
-struct nested
+struct nested * parent
 process_class: class nested already exists in class_map
 Wrote error_types.yaml
 

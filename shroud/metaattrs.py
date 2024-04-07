@@ -640,7 +640,7 @@ class FillMetaShare(FillMeta):
 
         arg = node.ast
         if arg.declarator.is_function_pointer():
-            fptr = FunctionNode(arg.gen_decl(), parent=node, ast=arg)
+            fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
             r_bind.meta["fptr"] = fptr
             self.meta_function_params(fptr, is_fptr=True)
 

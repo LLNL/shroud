@@ -55,7 +55,7 @@ class Namespace(unittest.TestCase):
         class1.symtab.pop_scope()
 
         node = lib.qualified_lookup("Class1")
-        self.assertEqual(class1.ast, node)
+        self.assertEqual(class1.ast.class_specifier, node)
 
         ns = lib.add_namespace("namespace ns1")
         self.assertEqual("ns1::", ns.scope)
@@ -65,9 +65,9 @@ class Namespace(unittest.TestCase):
         self.assertEqual("ns1::Class2::", class2.scope)
 
         node = ns.unqualified_lookup("Class1")
-        self.assertEqual(class1.ast, node)
+        self.assertEqual(class1.ast.class_specifier, node)
         node = ns.unqualified_lookup("Class2")
-        self.assertEqual(class2.ast, node)
+        self.assertEqual(class2.ast.class_specifier, node)
 
         # look for Class2 in lib
         node = lib.unqualified_lookup("Class2")
@@ -76,7 +76,7 @@ class Namespace(unittest.TestCase):
         # using namespace ns1
         lib.ast.using_directive("ns1")
         node = lib.unqualified_lookup("Class2")
-        self.assertEqual(class2.ast, node)
+        self.assertEqual(class2.ast.class_specifier, node)
 
     def test_ns3_enum(self):
         # test enum
@@ -129,7 +129,7 @@ class Namespace(unittest.TestCase):
         class1 = ns2.add_class("class Class1")
         class1.symtab.pop_scope()
         enumx = ns2.add_enum("enum Enumx {}")
-        self.assertEqual(class1.ast, ns2.qualified_lookup("Class1"))
+        self.assertEqual(class1.ast.class_specifier, ns2.qualified_lookup("Class1"))
         self.assertEqual(enumx.ast, ns2.qualified_lookup("Enumx"))
 
         # from ns1, try to lookup Enumx
