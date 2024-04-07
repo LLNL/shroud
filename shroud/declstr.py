@@ -10,8 +10,6 @@ Generating declarations
 Options used to control generation:
    as_c        -
       references become pointers
-   as_scalar
-      Skip pointer declarations
    force_ptr
       change reference to pointer
    append_init
@@ -32,7 +30,6 @@ Options used to control generation:
    remove_const - Defaults to False.
    as_ptr - Change reference to pointer
    force_ptr - Change a scalar into a pointer
-   as_scalar - Do not print Ptr
    add_params - if False, do not print function parameters.
    with_template_args - if True, print template arguments
 
@@ -64,7 +61,6 @@ class DeclStr(object):
         self.attrs = False
         self.as_c = False
         self.as_ptr = False
-        self.as_scalar = False
         self.continuation = False
         self.ctor_dtor = False
         self.force_ptr = False
@@ -144,8 +140,6 @@ class DeclStr(object):
         if self.force_ptr:
             # Force to be a pointer
             parts.append(" *")
-        elif self.as_scalar:
-            pass  # Do not print pointer
         else:
             for ptr in declarator.pointer:
                 self.ptr(ptr)
@@ -306,8 +300,7 @@ class DeclStr(object):
             remove_const - Defaults to False.
             as_ptr - Change reference to pointer
             force_ptr - Change a scalar into a pointer
-            as_scalar - Do not print Ptr
-            params - if None, do not print function parameters.
+            add_params - if None, do not print function parameters.
             with_template_args - if True, print template arguments
 
         If a templated type, assume std::vector.
