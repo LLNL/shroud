@@ -31,7 +31,7 @@ gen_arg_as_c = declstr.gen_arg_as_c
 gen_arg_as_cxx = declstr.gen_arg_as_cxx
 
 # Turn off continuation for testing (avoids adding tabs into output)
-declstr.gen_arg_instance.update(continuation=False)
+declstr.gen_arg_instance.continuation=False
 
 
 import yaml

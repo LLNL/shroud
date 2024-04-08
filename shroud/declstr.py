@@ -5,35 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 """
-Generating declarations
-
-Options used to control generation:
-   as_c        -
-      references become pointers  (internal use)
-   append_init
-   ctor_dtor
-   attrs
-      Add attributes from YAML to the declaration.
-      Must be False to create code that will compile.
-   continuation - True - insert tabs to aid continuations.
-                  Defaults to False.
-
-   lang - c_type or cxx_type, field in Typemap.
-
-   in_params = True/False
-   arg_lang = c_type or cxx_type
-
-   remove_const - Remove any const in declaration. Defaults to False.
-   as_ptr - Change reference to pointer
-   force_ptr - Change a scalar into a pointer
-   add_params - if False, do not print function parameters.
-   with_template_args - if True, print template arguments
-
-   If a templated type, assume std::vector.
-   The C argument will be a pointer to the template type.
-   'std::vector<int> &'  generates 'int *'
-   The length info is lost but will be provided as another argument
-   to the C wrapper.
+Generating declarations for wrappers from AST.
 """
 
 from . import todict
@@ -44,38 +16,58 @@ class DeclStr(object):
 
     A Declaration contains declarators
 
-    name - False, do not add a name.
+    add_params   - if False, do not print function parameters.
+    append_init  -
+    arg_lang     - c_type or cxx_type
+    attrs        - Add attributes from YAML to the declaration.
+                   Must be False to create code that will compile.
+    continuation - True - insert tabs to aid continuations.
+                   Defaults to False.
+    ctor_dtor    -
+    name         - False, do not add a name.
+                   non-None, use argument instead of declarator name.
+
+    Internal state:
+    as_c         - references become pointers.
+    as_ptr       - Change reference to pointer
+    force_ptr    - Change a scalar into a pointer
+    in_params    - True/False
+    lang         - c_type or cxx_type, field in Typemap.
+    remove_const - Remove any const in declaration. Defaults to False.
+    with_template_args - if True, print template arguments
+
+    If a templated type, assume std::vector.
+    The C argument will be a pointer to the template type.
+    'std::vector<int> &'  generates 'int *'
+    The length info is lost but will be provided as another argument
+    to the C wrapper.
+
     """
-    def __init__(self):
-        super(DeclStr, self).__init__()
-        self.reset()
+    def __init__(self,
+                 add_params=True,
+                 append_init=False,
+                 arg_lang=None,
+                 attrs=False,
+                 continuation=False,
+                 ctor_dtor=False,
+                 name=None):
+        self.add_params = add_params
+        self.append_init = append_init
+        self.arg_lang = arg_lang
+        self.attrs = attrs
+        self.continuation = continuation
+        self.ctor_dtor = ctor_dtor
+        self.name = name
 
-    def reset(self):
         self.parts = []
-
-        self.append_init = False
-        self.attrs = False
         self.as_c = False
         self.as_ptr = False
-        self.continuation = False
-        self.ctor_dtor = False
         self.force_ptr = False
-        self.name = None
-        self.add_params = True
-
         self.in_params = False
-        self.arg_lang = None
-
         # From gen_arg_as_language
         self.lang = None
         self.remove_const = False
         self.with_template_args = False
-        return self
-
-    def update(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-        return self
 
     def gen_decl(self, declaration):
         """Return a string of the unparsed declaration.
@@ -331,12 +323,12 @@ class DeclStr(object):
 # Create some instances to change defaults.
     
 
-gen_decl = DeclStr().update(append_init=True, attrs=True).gen_decl
-gen_decl_noparams = DeclStr().update(add_params=False, attrs=True).gen_decl
+gen_decl = DeclStr(append_init=True, attrs=True).gen_decl
+gen_decl_noparams = DeclStr(add_params=False, attrs=True).gen_decl
 
 gen_arg_as_language = DeclStr().gen_arg_as_language
 
-gen_arg_instance = DeclStr().update(
+gen_arg_instance = DeclStr(
     append_init=False,
     ctor_dtor=True,
     attrs=False,

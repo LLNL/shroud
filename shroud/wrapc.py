@@ -792,7 +792,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # XXX - Should gen_arg_as_c be used here?
 #            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
 #                                     arg_lang="c_type")
-            decl = DeclStr().update(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
+            decl = DeclStr(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
             C_code = [decl + ";"]
             C_force = None
 

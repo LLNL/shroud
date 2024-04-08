@@ -70,12 +70,7 @@ class CheckParse(unittest.TestCase):
         s = gen_decl(r)
         self.assertEqual("const int var1", s)
         self.assertEqual("const int var1", gen_arg_as_c(r))
-#        self.assertEqual("int var1", r.gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int var1", gen_arg_as_cxx(r))
-#        self.assertEqual("int var1", r.gen_arg_as_cxx(asgn_value=True))
-#        self.assertEqual(
-#            "int * var1", gen_arg_as_cxx(r, asgn_value=True, force_ptr=True)
-#        )
         self.assertEqual("int", r.as_cast())
         self.assertEqual(
             {
@@ -111,7 +106,6 @@ class CheckParse(unittest.TestCase):
         s = gen_decl(r)
         self.assertEqual("int * var1 +dimension(:)", s)
         self.assertEqual("int * var1", gen_arg_as_c(r))
-#        self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", gen_arg_as_cxx(r))
         self.assertEqual("integer(C_INT) :: var1(:)", wrapf.gen_arg_as_fortran(r))
         self.assertEqual("integer(C_INT) :: var1(*)", wrapf.bind_c(r, modules))
@@ -121,12 +115,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const int * var1", s)
         self.assertEqual("const int * var1",
                          gen_arg_as_c(r))
-#        self.assertEqual("const int * var1",
-#                         gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int * var1",
                          gen_arg_as_cxx(r))
-#        self.assertEqual("const int * var1",
-#                         gen_arg_as_cxx(asgn_value=True))
         self.assertEqual("int *", r.as_cast())
 
         r = declast.check_decl("int * const var1", symtab)
