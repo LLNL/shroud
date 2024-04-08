@@ -17,6 +17,7 @@ import copy
 
 from . import ast
 from . import declast
+from . import declstr
 from . import error
 from . import todict
 from . import statements
@@ -164,7 +165,7 @@ class VerifyAttrs(object):
             if not temp:
                 cursor.generate(
                     "std::vector must have template argument: {}".format(
-                        arg.gen_decl()
+                        gen_decl(arg)
                     )
                 )
             else:
@@ -173,12 +174,12 @@ class VerifyAttrs(object):
                     # XXX - Not sure this can happen with current parser
                     raise RuntimeError(
                         "check_arg_attr: No such type %s for template: %s"
-                        % (temp, arg.gen_decl())
+                        % (temp, gen_decl(arg))
                     )
         elif temp:
-            raise RuntimeError(
+            cursor.generate(
                 "Type '%s' may not supply template argument: %s"
-                % (arg_typemap.name, arg.gen_decl())
+                % (arg_typemap.name, gen_decl(arg))
             )
 
         # Flag node if any argument is assumed-rank.
@@ -380,7 +381,7 @@ class GenFunctions(object):
 
         ##########
         # getter
-        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name=funcname_get)
         decl = "{}({})".format(argdecl, this_get)
 
         attrs = declarator.attrs
@@ -403,8 +404,7 @@ class GenFunctions(object):
         # setter
         if declarator.attrs.get("readonly", False):
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val",
-                                          continuation=True)
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name="val")
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         fattrs = dict(
@@ -569,7 +569,7 @@ class GenFunctions(object):
             struct_members[a.declarator.user_name] = var
             ast.declarator.params.append(a)
         node = cls.add_function(name, ast)
-        node.declgen = node.ast.gen_decl()
+        node.declgen = gen_decl(node.ast)
         node.struct_members = struct_members
         node.wrap.assign(python=True)
         node._generated = "struct_as_class_ctor"
@@ -868,7 +868,7 @@ class GenFunctions(object):
             dim = attrs.get("dimension", None)
             if dim == "..":   # assumed-rank
                 del attrs["dimension"]
-        node.declgen = node.ast.gen_decl()
+        node.declgen = gen_decl(node.ast)
         
     def generic_function(self, node, ordered_functions):
         """Create overloaded functions for each generic method.
@@ -1090,7 +1090,7 @@ class GenFunctions(object):
             functions - list of ast.FunctionNode.
         """
         for node in functions:
-            node.declgen = node.ast.gen_decl()
+            node.declgen = gen_decl(node.ast)
 
 def generate_functions(library, config):
     whelpers.set_library(library)
@@ -1253,3 +1253,15 @@ def check_implied(context, expr, decls):
     node = declast.ExprParser(expr).expression()
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
+
+def gen_decl(ast):
+    """Create str for Declaration and Declarator.
+    """
+    s = str(ast)
+    s2 = str(ast.declarator)
+    if ast.is_ctor or ast.is_dtor:
+        # Class()  -- no blank afer declaration
+        return s + s2
+    else:
+        # int (*)(void)  -- add blank after declaration
+        return s + " " + s2

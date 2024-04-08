@@ -245,6 +245,8 @@ New Features
 
 * Support recursive structs. Allows trees to be build in structs.
 * Add getter/setter for ``struct`` pointer fields in a struct.
+* Support multiple declarators for a declaration in a struct.
+  ex. ``struct name {int i, j;};``
 
 .. Setting *deref* attribute on struct members will be used with the getter.
    Before only dimension was used.

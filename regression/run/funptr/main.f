@@ -13,7 +13,7 @@ module state
   use iso_c_binding
   implicit none
 
-  integer counter
+  integer, target :: counter
 
   ! callback3
   integer(C_INT) ival
@@ -134,6 +134,29 @@ contains
     enddo
   end function product4
 
+!----------
+
+  ! Return C_PTR to counter
+  function set_ptr1() bind(C)
+    use iso_c_binding
+    use state
+    type(C_PTR) :: set_ptr1
+    set_ptr1 = C_LOC(counter)
+  end function set_ptr1
+!----------
+
+  function abscallback(darg, iarg) bind(C)
+    use iso_c_binding, only : C_DOUBLE, C_INT
+    real(C_DOUBLE), value :: darg
+    integer(C_INT), value :: iarg
+    integer(C_INT) :: abscallback
+    if (darg > 0.0) then
+       abscallback = iarg
+    else
+       abscallback = -1
+    endif
+  end function abscallback
+  
 end module callback_mod
 
 program tester
@@ -152,6 +175,7 @@ program tester
   call test_callback2
   call test_callback3
   call test_callback4
+  call test_abstract_declarator
 
   call fruit_summary
   call fruit_finalize
@@ -290,8 +314,23 @@ contains
     
     rv = callback4(in, product4)
     call assert_equals(product(in), rv, "callback4 product")
+
+    ! The callback sets counter to 100
+    counter = 0
+    call callback_ptr(set_ptr1)
+    call assert_equals(100, counter, "callback_ptr")
     
   end subroutine test_callback4
 
+  subroutine test_abstract_declarator
+    use callback_mod
+    integer rv
+
+    call set_case_name("test_abstract_declarator")
+    
+    rv = abstract1(21, abscallback)
+    call assert_equals(21, rv, "abstract2")
+    
+  end subroutine test_abstract_declarator
   
 end program tester

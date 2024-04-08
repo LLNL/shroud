@@ -16,6 +16,7 @@ from collections import OrderedDict, namedtuple
 
 from . import error
 from . import declast
+from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, DeclStr
 from . import fcfmt
 from . import todict
 from . import statements
@@ -623,7 +624,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         )
         for var in node.variables:
             ast = var.ast
-            output.append(ast.gen_arg_as_c() + ";")
+            output.append(gen_arg_as_c(ast) + ";")
         output.extend(
             [
                 -1,
@@ -788,8 +789,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             C_code = None
             C_force = node.splicer["c"]
         else:
-            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
-                                     arg_lang="c_type")
+            # XXX - Should gen_arg_as_c be used here?
+#            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
+#                                     arg_lang="c_type")
+            decl = DeclStr(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
             C_code = [decl + ";"]
             C_force = None
 
@@ -851,7 +854,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             pass
         else:
             # vector<int> -> int *
-            proto_list.append(ast.gen_arg_as_c(continuation=True))
+            proto_list.append(gen_arg_as_c(ast))
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -991,7 +994,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 "// ----------------------------------------")
             if options.debug_index:
                 stmts_comments.append("// Index:     {}".format(node._function_index))
-            c_decl = ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(ast)
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
         
@@ -1089,7 +1092,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
-                c_decl = arg.gen_decl()
+                c_decl = gen_decl(arg)
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
 
@@ -1203,8 +1206,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             elif result_typemap.cxx_to_c is not None:
                 # Make intermediate c_var value if a conversion
                 # is required i.e. not the same as cxx_var.
-                fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
-                    name=fmt_result.c_var, params=None, continuation=True
+                fmt_result.c_rv_decl = gen_arg_as_c(CXX_ast,
+                    name=fmt_result.c_var, add_params=False
                 )
                 fmt_result.c_val = wformat(
                     result_typemap.cxx_to_c, fmt_result

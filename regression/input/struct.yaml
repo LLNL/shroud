@@ -140,8 +140,7 @@ declarations:
 
 # start Cstruct_as_class
 - decl: struct Cstruct_as_class {
-          int x1;
-          int y1;
+          int x1, y1;
         };
   options:
     wrap_struct_as: class

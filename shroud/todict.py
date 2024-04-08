@@ -167,7 +167,12 @@ class ToDict(visitor.Visitor):
             "const", "volatile",
             "is_ctor", "is_dtor",
         ])
-        if node.declarator:
+        if len(node.declarators) > 1:
+            lst = []
+            d["declarators"] = lst
+            for d2 in node.declarators:
+                lst.append(self.visit(d2))
+        elif node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
         if node.storage:
@@ -727,7 +732,20 @@ class PrintNode(visitor.Visitor):
             s += self.visit(node.enum_specifier)
         elif node.class_specifier:
             s += self.visit(node.class_specifier)
+
+        if node.is_ctor or node.is_dtor:
+            comma = ""
+        else:
+            comma = " "
+        for d2 in node.declarators:
+            sdecl = self.visit(d2)
+            if sdecl:
+                s += comma + sdecl
+                comma = ", "
         return s
+
+    def visit_Declarator(self, node):
+        return str(node)
 
     def visit_EnumValue(self, node):
         if node.value is None:
@@ -736,7 +754,7 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        return " {{ {} }};".format(
+        return " {{ {} }}".format(
             self.comma_list(node.members)
         )
 

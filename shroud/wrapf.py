@@ -22,6 +22,7 @@ import re
 
 from . import error
 from . import declast
+from .declstr import gen_decl, gen_decl_noparams
 from . import fcfmt
 from . import statements
 from . import todict
@@ -206,7 +207,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 self.set_f_module(fileinfo.module_use,
                                   "iso_c_binding", "C_PTR")
             else:
-                output.append(ast.gen_arg_as_fortran(local=True))
+                output.append(gen_arg_as_fortran(ast, local=True))
                 self.update_f_module(
                     fileinfo.module_use,
                     ntypemap.i_module or ntypemap.f_module,
@@ -980,7 +981,6 @@ rv = .false.
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg, fptr = fileinfo.f_abstract_interface[key]
                 options = node.options
-                ast = node.ast
                 subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
@@ -997,7 +997,7 @@ rv = .false.
                             fmt,
                         )
                     arg_f_names.append(name)
-                    arg_c_decl.append(param.bind_c(intent=intent, name=name))
+                    arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
                     arg_typemap, specialize = statements.lookup_c_statements(
                         param
@@ -1009,7 +1009,9 @@ rv = .false.
                     )
 
                 if subprogram == "function":
-                    arg_c_decl.append(ast.bind_c(name=key, is_result=True, params=None))
+                    arg_c_decl.append(bind_c(fptr.ast,
+                        modules, name=key, is_result=True, is_callback=True,
+                        params=None))
                 arguments = ",\t ".join(arg_f_names)
                 if options.literalinclude:
                     iface.append("! start abstract " + key)
@@ -1130,7 +1132,7 @@ rv = .false.
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c(meta["intent"]))
+                arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap
                 if ast.template_arguments:
                     # If a template, use its type
@@ -1189,7 +1191,7 @@ rv = .false.
                     node._generated_path))
             stmts_comments.append(
                 "! ----------------------------------------")
-            c_decl = ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(ast)
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
@@ -1242,7 +1244,7 @@ rv = .false.
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
-                c_decl = arg.gen_decl()
+                c_decl = gen_decl(arg)
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.build_arg_list_interface(
@@ -1299,7 +1301,7 @@ rv = .false.
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
             else:
-                arg_c_decl.append(ast.bind_c(is_result=True, name=fmt_result.F_result))
+                arg_c_decl.append(bind_c(ast, modules, is_result=True, name=fmt_result.F_result))
                 self.update_f_module(
                     modules,
                     result_typemap.i_module or result_typemap.f_module,
@@ -1508,12 +1510,12 @@ rv = .false.
                     node._generated_path))
             stmts_comments.append(
                 "! ----------------------------------------")
-            f_decl = ast.gen_decl(params=None)
+            f_decl = gen_decl_noparams(ast)
             if options.debug_index:
                 stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(stmts_comments, ast, result_stmt.name)
-            c_decl = C_node.ast.gen_decl(params=None)
+            c_decl = gen_decl_noparams(C_node.ast)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
 
@@ -1644,7 +1646,7 @@ rv = .false.
                     implied, node, f_arg)
                 if intermediate:
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                    arg_f_decl.append(gen_arg_as_fortran(f_arg,
                         name=fmt_arg.fc_var, local=True, bindc=True))
                     append_format(pre_call, "{fc_var} = {pre_call_intent}", fmt_arg)
                     arg_c_call.append(fmt_arg.fc_var)
@@ -1668,17 +1670,17 @@ rv = .false.
                     fmt_arg.default_value = f_arg.declarator.init
                     optattr = True
                 intent = arg_bind.meta["intent"]
-                arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                arg_f_decl.append(gen_arg_as_fortran(f_arg,
                     intent=intent, pass_obj=pass_obj, optional=optattr))
                 arg_f_names.append(fmt_arg.f_var)
 
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
-                f_decl = f_arg.gen_decl()
+                f_decl = gen_decl(f_arg)
                 stmts_comments.append("! Argument:  " + f_decl)
                 self.document_stmts(stmts_comments, f_arg, arg_stmt.name)
-                c_decl = c_arg.gen_decl()
+                c_decl = gen_decl(c_arg)
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
@@ -1755,7 +1757,7 @@ rv = .false.
                 # local=True will add any character len attributes
                 # e.g.  CHARACTER(LEN=30)
                 arg_f_decl.append(
-                    ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True)
+                    gen_arg_as_fortran(ast, name=fmt_result.F_result, local=True)
                 )
 
             if ast.declarator.is_indirect() < 2:
@@ -2239,3 +2241,199 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
+
+######################################################################
+
+def bind_c(declaration, modules, intent=None, is_result=False,
+           is_callback=False, **kwargs):
+    """Generate an argument used with the bind(C) interface from Fortran.
+
+    Args:
+        intent - Explicit intent 'in', 'inout', 'out'.
+                 Defaults to None to use intent from attrs.
+        is_callback - Abstract interface for callbacks.
+                 A function which returns a pointer must
+                 use type(C_PTR).
+
+        name   - Set name explicitly, else self.name.
+    """
+    # XXX - callers should not need to set modules directly,
+    #       this routine should set modules.
+    t = []
+    declarator = declaration.declarator
+    attrs = declarator.attrs
+    if is_result and "typedef" in declaration.storage:
+        ntypemap = declarator.typemap
+    else:
+        ntypemap = declaration.typemap
+    basedef = ntypemap
+    if declaration.template_arguments:
+        # If a template, use its type
+        ntypemap = declaration.template_arguments[0].typemap
+
+    typ = ntypemap.i_type or ntypemap.f_type
+    if typ is None:
+        raise RuntimeError(
+            "Type {} has no value for i_type".format(declaration.typename)
+        )
+    if is_callback and declarator.is_indirect():
+        typ = "type(C_PTR)"
+        modules.setdefault("iso_c_binding", {})["C_PTR"] = True
+    t.append(typ)
+    if basedef.base == "procedure":
+        # dummy procedure can not have intent or value.
+        pass
+    else:
+        append_fortran_value(declaration, t, is_result)
+        if intent in ["in", "out", "inout"]:
+            t.append("intent(%s)" % intent.upper())
+        elif intent == "setter":
+            # Argument to setter function.
+            t.append("intent(IN)")
+
+    decl = []
+    decl.append(", ".join(t))
+    decl.append(" :: ")
+
+    if kwargs.get("name", None):
+        decl.append(kwargs["name"])
+    else:
+        decl.append(declarator.user_name)
+
+    if basedef.base == "vector":
+        decl.append("(*)")  # is array
+    elif ntypemap.base == "string":
+        decl.append("(*)")
+    elif "dimension" in attrs:
+        # Any dimension is changed to assumed-size.
+        decl.append("(*)")
+    elif int(attrs.get("rank",0)) > 0:
+        # Any dimension is changed to assumed-size.
+        decl.append("(*)")
+    return "".join(decl)
+
+######################################################################
+
+def append_fortran_value(declaration, t, is_result=False):
+    declarator = declaration.declarator
+    attrs = declarator.attrs
+    if is_result:
+        pass
+    elif attrs.get("value", False):
+        t.append("value")
+    else:
+        is_ptr = declarator.is_indirect()
+        if is_ptr:
+            if declaration.typemap.name == "void":
+                # This causes Fortran to dereference the C_PTR
+                # Otherwise a void * argument becomes void **
+                if len(declarator.pointer) == 1:
+                    t.append("value")     # void *
+        else:
+            if declaration.typemap.sgroup in["char", "string"]:
+                pass
+            else:
+                t.append("value")
+
+def gen_arg_as_fortran(
+    declaration,
+    intent=None,
+    bindc=False,
+    local=False,
+    pass_obj=False,
+    optional=False,
+    **kwargs
+):
+    """Geneate declaration for Fortran variable.
+
+    bindc - Use C interoperable type. Used with hidden and implied arguments.
+    If local==True, this is a local variable, skip attributes
+      OPTIONAL, VALUE, and INTENT
+    """
+    t = []
+    declarator = declaration.declarator
+    attrs = declarator.attrs
+    ntypemap = declaration.typemap
+    if ntypemap.sgroup == "vector":
+        # If std::vector, use its type (<int>)
+        ntypemap = declaration.template_arguments[0].typemap
+
+    is_allocatable = False
+    is_pointer = False
+    deref = attrs.get("deref", None)
+    if deref == "allocatable":
+        is_allocatable = True
+    elif deref == "pointer":
+        is_pointer = True
+
+    if ntypemap.base == "string":
+        if "len" in attrs and local:
+            # Also used with function result declaration.
+            t.append("character(len={})".format(attrs["len"]))
+        elif is_allocatable:
+            t.append("character(len=:)")
+        elif declarator.array:
+            t.append("character(kind=C_CHAR)")
+        elif not local:
+            t.append("character(len=*)")
+        else:
+            t.append("character")
+    elif pass_obj:
+        # Used with wrap_struct_as=class for passed-object dummy argument.
+        t.append(ntypemap.f_class)
+    elif bindc:
+        t.append(ntypemap.i_type or ntypemap.f_type)
+    else:
+        t.append(ntypemap.f_type)
+
+    if not local:  # must be dummy argument
+        append_fortran_value(declaration, t)
+        if intent in ["in", "out", "inout"]:
+            t.append("intent(%s)" % intent.upper())
+        elif intent == "setter":
+            # Argument to setter function.
+            t.append("intent(IN)")
+
+    if is_allocatable:
+        t.append("allocatable")
+    if is_pointer:
+        t.append("pointer")
+    if optional:
+        t.append("optional")
+
+    decl = []
+    decl.append(", ".join(t))
+    decl.append(" :: ")
+
+    if "name" in kwargs:
+        decl.append(kwargs["name"])
+    else:
+        decl.append(declaration.declarator.user_name)
+
+    dimension = attrs.get("dimension")
+    rank = attrs.get("rank")
+    if rank is not None:
+        rank = int(rank)
+        decl.append(declaration.fortran_ranks[rank])
+    elif dimension:
+        if is_allocatable:
+            # Assume 1-d.
+            decl.append("(:)")
+        elif is_pointer:
+            decl.append("(:)")  # XXX - 1d only
+        else:
+            decl.append("(" + dimension + ")")
+    elif is_allocatable:
+        # Assume 1-d.
+        if ntypemap.base != "string":
+            decl.append("(:)")
+    elif declarator.array:
+        decl.append("(")
+        # Convert to column-major order.
+        for dim in reversed(declarator.array):
+            decl.append(todict.print_node(dim))
+            decl.append(",")
+        decl[-1] = ")"
+
+    return "".join(decl)
+

@@ -10,6 +10,8 @@ Keep track of the current state of the application so that
 errors can be reported with a context.
 """
 
+from .declstr import gen_decl
+
 cursor = None
 
 def get_cursor():
@@ -87,7 +89,7 @@ class Cursor(object):
         self.last_phase = self.phase
 
     def decl_line(self, node):
-        print(node.ast.gen_decl())
+        print(gen_decl(node.ast))
         
     def warning(self, message):
         self.nwarning += 1

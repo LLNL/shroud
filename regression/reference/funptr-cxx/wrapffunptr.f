@@ -48,6 +48,28 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
+        function callback_ptr_get() bind(C)
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: callback_ptr_get
+        end function callback_ptr_get
+
+        function custom_funptr(XX0arg, XX1arg) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), value :: XX0arg
+            integer(C_INT), value :: XX1arg
+            integer(C_INT) :: custom_funptr
+        end function custom_funptr
+
+        function get(arg0, arg1) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), value :: arg0
+            integer(C_INT), value :: arg1
+            integer(C_INT) :: get
+        end function get
+
         subroutine incrtype(i, j) bind(C)
             use iso_c_binding, only : C_INT
             import :: type_id
@@ -139,6 +161,24 @@ module funptr_mod
             procedure(callback4_actor) :: actor
             integer(C_INT) :: SHT_rv
         end function c_callback4
+
+        subroutine callback_ptr(get) &
+                bind(C, name="FUN_callback_ptr")
+            import :: callback_ptr_get
+            implicit none
+            procedure(callback_ptr_get) :: get
+        end subroutine callback_ptr
+
+        function c_abstract1(input, get) &
+                result(SHT_rv) &
+                bind(C, name="FUN_abstract1")
+            use iso_c_binding, only : C_INT
+            import :: custom_funptr
+            implicit none
+            integer(C_INT), value, intent(IN) :: input
+            procedure(custom_funptr) :: get
+            integer(C_INT) :: SHT_rv
+        end function c_abstract1
     end interface
 
     ! splicer begin additional_declarations
@@ -229,6 +269,21 @@ contains
         SHT_rv = c_callback4(ilow, SH_nargs, actor)
         ! splicer end function.callback4
     end function callback4
+
+    !>
+    !! \brief abstract argument
+    !!
+    !<
+    function abstract1(input, get) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: input
+        procedure(custom_funptr) :: get
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.abstract1
+        SHT_rv = c_abstract1(input, get)
+        ! splicer end function.abstract1
+    end function abstract1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

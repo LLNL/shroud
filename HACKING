@@ -150,7 +150,7 @@ main.py
 wrapX.py  generate.py
 fcfmt.py  metaattrs.py
 ast.py
-declast.py
+declast.py declstr.py
 whelpers.py
 typemap.py statements.py todict.py
 util.py visitor.py

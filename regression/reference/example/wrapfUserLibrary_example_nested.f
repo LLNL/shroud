@@ -148,7 +148,7 @@ module userlibrary_example_nested_mod
             implicit none
             real(C_DOUBLE), value :: XX0arg
             integer(C_INT), value :: XX1arg
-            type(C_PTR) :: custom_funptr
+            real(C_DOUBLE) :: custom_funptr
         end function custom_funptr
 
         subroutine func_ptr1_get() bind(C)
@@ -156,6 +156,7 @@ module userlibrary_example_nested_mod
         end subroutine func_ptr1_get
 
         function func_ptr2_get() bind(C)
+            use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: func_ptr2_get
         end function func_ptr2_get
@@ -165,7 +166,7 @@ module userlibrary_example_nested_mod
             implicit none
             integer(C_INT), value :: i
             integer(C_INT), value :: arg1
-            type(C_PTR) :: func_ptr3_get
+            real(C_DOUBLE) :: func_ptr3_get
         end function func_ptr3_get
 
         subroutine func_ptr5_get(verylongname1, verylongname2, &

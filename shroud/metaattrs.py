@@ -33,6 +33,7 @@ Fortran:
 
 from . import ast
 from . import declast
+from .declstr import gen_decl
 from . import error
 from . import statements
 
@@ -639,7 +640,7 @@ class FillMetaShare(FillMeta):
 
         arg = node.ast
         if arg.declarator.is_function_pointer():
-            fptr = FunctionNode(arg.gen_decl(), parent=node, ast=arg)
+            fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
             r_bind.meta["fptr"] = fptr
             self.meta_function_params(fptr, is_fptr=True)
 
@@ -680,7 +681,7 @@ class FillMetaShare(FillMeta):
             self.check_value(arg, meta)
 
             if arg.declarator.is_function_pointer():
-                fptr = FunctionNode(arg.gen_decl(), parent=node, ast=arg)
+                fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
                 meta["fptr"] = fptr
                 self.meta_function_params(fptr, is_fptr=True)
         # --- End loop over function parameters

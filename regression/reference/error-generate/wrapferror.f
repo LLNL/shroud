@@ -21,6 +21,11 @@ module error_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! typedef none
+    ! splicer begin typedef.none
+    integer, parameter :: none = C_INT
+    ! splicer end typedef.none
+
 
     type, bind(C) :: struct1
         integer(C_INT) :: arg1(10)

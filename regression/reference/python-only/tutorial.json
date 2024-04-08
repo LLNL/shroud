@@ -2554,7 +2554,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
-                "declgen": "int callback1(int in, int ( * incr)(int))",
+                "declgen": "int callback1(int in, int (* incr)(int))",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },

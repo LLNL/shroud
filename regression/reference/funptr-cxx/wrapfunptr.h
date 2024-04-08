@@ -35,6 +35,11 @@ typedef int FUN_TypeID;
 typedef void ( * FUN_incrtype)(int i, FUN_TypeID j);
 // splicer end typedef.incrtype
 
+// typedef get
+// splicer begin typedef.get
+typedef int ( * FUN_get)(double, int);
+// splicer end typedef.get
+
 // splicer begin C_declarations
 // splicer end C_declarations
 
@@ -58,6 +63,10 @@ void FUN_callback3(int type, void * in, void ( * incr)(void));
 
 int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
     int nargs));
+
+void FUN_callback_ptr(int * ( * get)(void));
+
+int FUN_abstract1(int input, int ( * get)(double, int));
 
 #ifdef __cplusplus
 }

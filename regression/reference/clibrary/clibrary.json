@@ -4800,7 +4800,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(int tc, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout)))",
+                "declgen": "void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))",
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
