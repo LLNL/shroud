@@ -1312,11 +1312,7 @@ rv = .false.
             modules, fmt_result.F_module_name, imports
         )
 
-        c_interface = fileinfo.c_interface
-        c_interface.append("")
-        if notimplemented:
-            c_interface.append("#if 0")
-            c_interface.append("! Not Implemented")
+        c_interface = []
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
@@ -1346,8 +1342,20 @@ rv = .false.
             append_format(c_interface, "! end {F_C_name}", fmt_result)
         if node.cpp_if:
             c_interface.append("#endif")
+
+        code = fileinfo.c_interface
         if notimplemented:
-            c_interface.append("#endif")
+            if options.debug:
+                # Include interface which would of been generated
+                code.append("")
+                code.append("#if 0")
+                code.append("! Not Implemented")
+                code.extend(c_interface)
+                code.append("#endif")
+        else:
+            code.append("")
+            code.extend(c_interface)
+            
         cursor.pop_node(node)
 
     def build_arg_list_impl(
