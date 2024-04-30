@@ -22,6 +22,7 @@ need to be used in a different YAML file.
 """
 from __future__ import print_function
 
+from . import error
 from . import util
 
 # translation table to convert type name to flat name
@@ -187,7 +188,8 @@ class Typemap(object):
             elif key in self.defaults:
                 setattr(self, key, value)
             else:
-                raise RuntimeError("Unknown key for Typemap %s", key)
+                cursor = error.get_cursor()
+                cursor.warning("Unknown key for Typemap '%s'" % key)
 
     def finalize(self):
         """Compute some fields based on other fields."""

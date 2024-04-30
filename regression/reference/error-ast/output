@@ -99,3 +99,11 @@ Error in 'decl' field
 ( ) name
    ^
 Expected EOF, found ID
+--------------------
+Node: testattrs4
+line 103
+Unknown key for Typemap 'no_such_keyword'
+--------------------
+Node: testattrs4
+line 103
+Unknown key for Typemap 'f_c_module'
