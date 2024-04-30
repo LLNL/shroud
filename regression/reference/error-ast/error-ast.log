@@ -5,7 +5,6 @@ class Class1
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h
-Python function void PYGoodFunction(void)
 Close pyerrormodule.cpp
 Close pyerrormodule.hpp
 Close setup.py

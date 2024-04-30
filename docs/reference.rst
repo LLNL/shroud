@@ -326,6 +326,11 @@ debug
   be useful for debugging.
   Defaults to *false*.
 
+  If a function does not require a Fortran wrapper and can be called
+  via an interface only, the wrapper will still be generated but
+  within an ``#if 0`` / ``#endif`` block requiring the use of the C
+  preprocessor to compile the Fortran file.
+
 debug_index
   Print index number of function and relationships between 
   C and Fortran wrappers in the wrappers and json file.

@@ -1217,7 +1217,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  8 ****************************************",
+                "<FUNCTION>": "AssumedRank  9 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_gen_fortran_generic": true,
@@ -1353,7 +1353,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  9 ****************************************",
+                "<FUNCTION>": "AssumedRank  10 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_gen_fortran_generic": true,
@@ -1491,7 +1491,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  10 ****************************************",
+                "<FUNCTION>": "AssumedRank  11 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_gen_fortran_generic": true,
@@ -1626,6 +1626,54 @@
                     "F_name_impl": "assumed_rank_2d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_2d"
+                }
+            },
+            {
+                "<FUNCTION>": "PYGoodFunction  8 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "PYGoodFunction",
+                        "params": [],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void PYGoodFunction(void)",
+                "declgen": "void PYGoodFunction(void)",
+                "name": "PYGoodFunction",
+                "options": {
+                    "PY_array_arg": "none",
+                    "PY_struct_arg": "none",
+                    "wrap_c": false,
+                    "wrap_fortran": false
+                },
+                "wrap": {
+                    "python": true
+                },
+                "zz_bind": {
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "PYGoodFunction",
+                    "F_name_api": "py_good_function",
+                    "PY_name_impl": "PY_PYGoodFunction",
+                    "function_name": "PYGoodFunction"
                 }
             }
         ],

@@ -289,10 +289,11 @@ class TestDesc(object):
     yaml = basename of yaml file, defaults to name.
     cmdline = list of command line arguments to append.
     """
-    def __init__(self, name, yaml=None, cmdline=None):
+    def __init__(self, name, yaml=None, cmdline=None, keywords=[]):
         self.name = name
         self.yaml = (yaml or name) + ".yaml"
         self.cmdline = cmdline or []
+        self.keywords = keywords
 
 if __name__ == "__main__":
     # XXX raise KeyError(key)
@@ -575,9 +576,12 @@ if __name__ == "__main__":
                  ]),
         TestDesc("memdoc"),
         TestDesc("wrap"),
-        TestDesc("error"),
-        TestDesc("error-ast"),
-        TestDesc("error-generate"),
+        TestDesc("error",
+                 keywords=["err"]),
+        TestDesc("error-ast",
+                 keywords=["err"]),
+        TestDesc("error-generate",
+                 keywords=["err"]),
     ]
 
     if args.testname:
@@ -593,8 +597,12 @@ if __name__ == "__main__":
                 elif testname + ".yaml" == predefined.yaml:
                     runTests.append(predefined)
                     found = True
+                elif testname in predefined.keywords:
+                    runTests.append(predefined)
+                    found = True
             if not found:
-                # If not predefined, assume testname.yaml
+                # If not predefined, assume testname.yaml.
+                # Useful for tests which are not in availTests.
                 runTests.append(TestDesc(testname))
     else:
         runTests = availTests

@@ -30,28 +30,7 @@
 PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
-
-// ----------------------------------------
-// Function:  void PYGoodFunction
-// Statement: py_default
-static char PY_PYGoodFunction__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_PYGoodFunction(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin function.PYGoodFunction
-    PYGoodFunction();
-    Py_RETURN_NONE;
-// splicer end function.PYGoodFunction
-}
 static PyMethodDef PY_methods[] = {
-{"PYGoodFunction", (PyCFunction)PY_PYGoodFunction, METH_NOARGS,
-    PY_PYGoodFunction__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

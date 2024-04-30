@@ -58,34 +58,51 @@ void GoodFunction(void)
 Unexpected value of option C_API_case: none
 --------------------
 Node: returnThis
-line 79
+line 72
 void * returnThis(void)
 return_this can only be set for class methods
 --------------------
 Node: returnThis
-line 88
+line 82
 void * returnThis(void)
 return_this must return a pointer to the class
 --------------------
 Node: returnThis2
-line 90
+line 85
 Class1 returnThis2(void)
 return_this must return a pointer to the class
+--------------------
+Node: testattrs1
+line 91
+Error in 'decl' field
+(+attr)
+^
+Expected ID, found PLUS
+--------------------
+Node: testattrs2
+line 95
+Error in 'decl' field
+( name, )
+       ^
+Expected ID, found RPAREN
+--------------------
+Node: testattrs3
+line 99
+Error in 'decl' field
+( name
+^
+Expected RPAREN, found EOF
+--------------------
+Node: testattrs4
+line 103
+Error in 'decl' field
+( ) name
+   ^
+Expected EOF, found ID
 Wrote error_types.yaml
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
-
-----------------------------------------
-Phase: Wrapp.wrap_functions
-----------------------------------------
-Node: PYGoodFunction
-line 73
-Illegal value for PY_array_arg 'none'
---------------------
-Node: PYGoodFunction
-line 73
-Illegal value for PY_struct_arg 'none'
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp
 Wrote setup.py

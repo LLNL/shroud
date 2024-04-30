@@ -89,11 +89,32 @@ PY_AssumedRank(
     return (PyObject *) SHPy_data;
 // splicer end function.AssumedRank
 }
+
+// ----------------------------------------
+// Function:  void PYGoodFunction
+// Statement: py_default
+static char PY_PYGoodFunction__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_PYGoodFunction(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.PYGoodFunction
+    PYGoodFunction();
+    Py_RETURN_NONE;
+// splicer end function.PYGoodFunction
+}
 static PyMethodDef PY_methods[] = {
 {"BadFstatements", (PyCFunction)PY_BadFstatements, METH_NOARGS,
     PY_BadFstatements__doc__},
 {"AssumedRank", (PyCFunction)PY_AssumedRank, METH_VARARGS|METH_KEYWORDS,
     PY_AssumedRank__doc__},
+{"PYGoodFunction", (PyCFunction)PY_PYGoodFunction, METH_NOARGS,
+    PY_PYGoodFunction__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

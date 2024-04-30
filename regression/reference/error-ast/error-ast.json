@@ -133,54 +133,6 @@
                     "F_name_api": "fortran_generic_overloaded3",
                     "function_name": "FortranGenericOverloaded3"
                 }
-            },
-            {
-                "<FUNCTION>": "PYGoodFunction  1 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "PYGoodFunction",
-                        "params": [],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void PYGoodFunction(void)",
-                "declgen": "void PYGoodFunction(void)",
-                "name": "PYGoodFunction",
-                "options": {
-                    "PY_array_arg": "none",
-                    "PY_struct_arg": "none",
-                    "wrap_c": false,
-                    "wrap_fortran": false
-                },
-                "wrap": {
-                    "python": true
-                },
-                "zz_bind": {
-                    "py": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            }
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "PYGoodFunction",
-                    "F_name_api": "py_good_function",
-                    "PY_name_impl": "PY_PYGoodFunction",
-                    "function_name": "PYGoodFunction"
-                }
             }
         ],
         "language": "cxx",
