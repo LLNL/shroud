@@ -99,10 +99,3 @@ Error in 'decl' field
 ( ) name
    ^
 Expected EOF, found ID
-Wrote error_types.yaml
-Wrote wrapferror.f
-Wrote utilerror.cpp
-Wrote typeserror.h
-Wrote pyerrormodule.cpp
-Wrote pyerrormodule.hpp
-Wrote setup.py

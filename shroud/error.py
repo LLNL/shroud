@@ -117,7 +117,10 @@ class Cursor(object):
             print("".join(err.message))
         else:
             print(decl)
-        
+
+    def check_for_warnings(self):
+        if self.nwarning > 0:
+            raise SystemExit
 
 class ShroudError(Exception):
     def __init__(self, message):

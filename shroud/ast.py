@@ -2538,5 +2538,6 @@ def create_library_from_dictionary(node, symtab):
                 new[key] = listify_cleanup(value)
         node["splicer_code"] = new
     cursor.pop_phase("Create library")
+    cursor.check_for_warnings()
     
     return library
