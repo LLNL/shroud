@@ -102,8 +102,8 @@ Expected EOF, found ID
 --------------------
 Node: testattrs4
 line 103
-Unknown key for Typemap 'no_such_keyword'
+Typemap IndexType: Unknown key 'no_such_keyword'
 --------------------
 Node: testattrs4
 line 103
-Unknown key for Typemap 'f_c_module'
+Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'

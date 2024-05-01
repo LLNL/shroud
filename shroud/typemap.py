@@ -152,6 +152,13 @@ class Typemap(object):
     # valid fields
     defaults = dict(_order)
 
+    deprecated = dict(
+        # v0.14
+        f_c_module="i_module",
+        f_c_module_line="i_module_line",
+        f_c_type="i_type",
+    )
+
     def __init__(self, name, **kw):
         """
         Args:
@@ -187,9 +194,15 @@ class Typemap(object):
                     setattr(self, key, value.split())
             elif key in self.defaults:
                 setattr(self, key, value)
+            elif key in self.deprecated:
+                setattr(self, self.deprecated[key], value)
+                cursor = error.get_cursor()
+                cursor.deprecated("Typemap %s: Replacing deprecated field '%s' with '%s'" %
+                                  (self.name, key, self.deprecated[key]))
             else:
                 cursor = error.get_cursor()
-                cursor.warning("Unknown key for Typemap '%s'" % key)
+                cursor.warning("Typemap %s: Unknown key '%s'" % (
+                    self.name, key))
 
     def finalize(self):
         """Compute some fields based on other fields."""

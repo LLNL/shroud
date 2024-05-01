@@ -91,6 +91,11 @@ class Cursor(object):
     def decl_line(self, node):
         print(gen_decl(node.ast))
         
+    def deprecated(self, message):
+        """Report message to help user move to newer syntax"""
+        self.context()
+        print(message)
+
     def warning(self, message):
         self.nwarning += 1
         self.context()
