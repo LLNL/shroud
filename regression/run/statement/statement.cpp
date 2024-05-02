@@ -25,4 +25,14 @@ const std::string& getNameErrorPattern()
     return name;
 }
 
+const std::string InvalidName;
+
+// The C and Fortran wrappers provide different implemenations via a splicer.
+
+bool nameIsValid(const std::string& name)
+{
+    return name != InvalidName;
+}
+
+
 //----------------------------------------------------------------------

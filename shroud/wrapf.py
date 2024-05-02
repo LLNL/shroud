@@ -726,7 +726,7 @@ rv = .false.
                 self.log.write("C-interface c {0.declgen}\n".format(
                     node))
                 self.wrap_function_interface("c", cls, node, fileinfo)
-            if wrap.fortran:
+            if wrap.fortran and node.options.F_create_bufferify_function:
                 self.log.write("C-interface f {0.declgen}\n".format(
                     node))
                 self.wrap_function_interface("f", cls, node, fileinfo)

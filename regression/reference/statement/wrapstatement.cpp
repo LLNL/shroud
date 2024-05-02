@@ -86,4 +86,17 @@ void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
     // splicer end function.getNameErrorPattern_bufferify
 }
 
+// ----------------------------------------
+// Function:  bool nameIsValid
+// Statement: c_function_bool_scalar
+// ----------------------------------------
+// Argument:  const std::string & name
+// Statement: c_in_string_&
+bool STMT_nameIsValid(const char * name)
+{
+    // splicer begin function.nameIsValid
+    return name != NULL;
+    // splicer end function.nameIsValid
+}
+
 }  // extern "C"

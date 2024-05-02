@@ -232,7 +232,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         for node in library.functions:
             if node.wrap.c:
                 self.wrap_function("c", None, node)
-            if node.wrap.fortran:
+            if node.wrap.fortran and node.options.F_create_bufferify_function:
                 self.wrap_function("f", None, node)
         self._pop_splicer("function")
         self.cursor.pop_phase("Wrapc.wrap_function")

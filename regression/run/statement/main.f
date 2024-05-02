@@ -41,6 +41,9 @@ contains
     nlen = get_name_length()
     call assert_equals(len_trim(name), nlen  , "get_name_len")
 
+    call assert_true(name_is_valid("dog"), "nameIsValid true")
+    call assert_false(name_is_valid("  "), "nameIsValid false")
+    
   end subroutine test_statement
 
 end program tester

@@ -38,6 +38,14 @@ Changes to YAML input
   is now considered part of the Fortran wrapper processing.
   The *c_buf* label used with *fstatements* is now *f*.
 
+  Some uses of option *F_create_bufferify_function* are no longer needed.
+  Similar functionality by using the attribute *+api(capi)* to pass the
+  address of the string without any buffer arguments or ``NULL`` termination.
+  The C++ function needs some way to know how long the string string is.
+  Typically as another argument to the C++ function.
+
+  .. See clibrary.yaml ImpliedLen
+
 * Rename some fields in Statements to allow C and Fortran entries to exist
   in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
   This allows a single group to contains all the fields used for more complex

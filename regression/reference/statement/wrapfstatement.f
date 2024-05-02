@@ -55,6 +55,21 @@ module statement_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_name_error_pattern_bufferify
+
+        ! ----------------------------------------
+        ! Function:  bool nameIsValid
+        ! Statement: c_function_bool_scalar
+        ! ----------------------------------------
+        ! Argument:  const std::string & name
+        ! Statement: c_in_string_&
+        function c_name_is_valid(name) &
+                result(SHT_rv) &
+                bind(C, name="STMT_nameIsValid")
+            use iso_c_binding, only : C_BOOL, C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            logical(C_BOOL) :: SHT_rv
+        end function c_name_is_valid
     end interface
 
     ! splicer begin additional_declarations
@@ -94,6 +109,22 @@ contains
         call c_get_name_error_pattern_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.get_name_error_pattern
     end function get_name_error_pattern
+
+    ! ----------------------------------------
+    ! Function:  bool nameIsValid
+    ! Statement: f_function_bool_scalar
+    ! ----------------------------------------
+    ! Argument:  const std::string & name
+    ! Statement: f_in_string_&_buf
+    function name_is_valid(name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL, C_INT
+        character(len=*), intent(IN) :: name
+        logical :: SHT_rv
+        ! splicer begin function.name_is_valid
+        SHT_rv = name .ne. " "
+        ! splicer end function.name_is_valid
+    end function name_is_valid
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

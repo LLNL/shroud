@@ -523,6 +523,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
             F_blanknull=False,
+            F_create_bufferify_function=True,
             F_default_args="generic",  # "generic", "optional", "require"
             F_flatten_namespace=False,
             F_line_length=72,
