@@ -1309,7 +1309,7 @@
                             ],
                             "typemap_name": "Class1"
                         },
-                        "decl": "Class1* declare(int flag, int length = 1)",
+                        "decl": "Class1* declare(int flag, LengthType length = 1)",
                         "declgen": "Class1 * declare(int flag)",
                         "name": "declare",
                         "options": {},
@@ -1509,12 +1509,12 @@
                                         "declarator": {
                                             "init": 1,
                                             "name": "length",
-                                            "typemap_name": "int"
+                                            "typemap_name": "LengthType"
                                         },
                                         "specifier": [
-                                            "int"
+                                            "LengthType"
                                         ],
-                                        "typemap_name": "int"
+                                        "typemap_name": "LengthType"
                                     }
                                 ],
                                 "pointer": [
@@ -1529,8 +1529,8 @@
                             ],
                             "typemap_name": "Class1"
                         },
-                        "decl": "Class1* declare(int flag, int length = 1)",
-                        "declgen": "Class1 * declare(int flag, int length=1)",
+                        "decl": "Class1* declare(int flag, LengthType length = 1)",
+                        "declgen": "Class1 * declare(int flag, LengthType length=1)",
                         "fortran_generic": [
                             {
                                 "decls": [
@@ -1643,7 +1643,7 @@
                                     "C_call_function": "SH_this->declare(\tflag,\t length)",
                                     "C_call_list": "flag,\t length",
                                     "C_name": "CXX_Class1_declare_1",
-                                    "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
+                                    "C_prototype": "CXX_Class1 * self,\t int flag,\t CXX_LengthType length",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t flag,\t length",
                                     "F_C_name": "c_class1_declare_1",
@@ -1701,22 +1701,22 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
-                                    "c_type": "int",
+                                    "c_type": "CXX_LengthType",
                                     "c_var": "length",
-                                    "cfi_type": "CFI_type_int",
+                                    "cfi_type": "CFI_type_long",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&length",
-                                    "cxx_type": "int",
+                                    "cxx_type": "LengthType",
                                     "cxx_var": "length",
                                     "f_intent": "IN",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
+                                    "f_kind": "length_type",
+                                    "f_type": "integer(length_type)",
+                                    "f_type_module": "cxxlibrary_mod",
                                     "f_var": "length",
                                     "i_var": "length",
                                     "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
+                                    "sh_type": "SH_TYPE_LONG",
                                     "stmt_name": "c_in_native_scalar"
                                 }
                             }
@@ -1787,7 +1787,7 @@
                             ],
                             "typemap_name": "Class1"
                         },
-                        "decl": "Class1* declare(int flag, int length = 1)",
+                        "decl": "Class1* declare(int flag, LengthType length = 1)",
                         "declgen": "Class1 * declare(int flag, int length=1)",
                         "name": "declare",
                         "options": {},
@@ -1849,7 +1849,7 @@
                                     "C_return_type": "void",
                                     "F_C_call": "c_class1_declare_1",
                                     "F_C_name": "c_class1_declare_1_int",
-                                    "F_arg_c_call": "obj%cxxmem,\t flag,\t length",
+                                    "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, length_type)",
                                     "F_arguments": "obj,\t flag,\t length",
                                     "F_subprogram": "subroutine",
                                     "c_const": "",
@@ -1986,7 +1986,7 @@
                             ],
                             "typemap_name": "Class1"
                         },
-                        "decl": "Class1* declare(int flag, int length = 1)",
+                        "decl": "Class1* declare(int flag, LengthType length = 1)",
                         "declgen": "Class1 * declare(int flag, long length=1)",
                         "name": "declare",
                         "options": {},
@@ -2048,7 +2048,7 @@
                                     "C_return_type": "void",
                                     "F_C_call": "c_class1_declare_1",
                                     "F_C_name": "c_class1_declare_1_long",
-                                    "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, C_INT)",
+                                    "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, length_type)",
                                     "F_arguments": "obj,\t flag,\t length",
                                     "F_subprogram": "subroutine",
                                     "c_const": "",
@@ -6717,6 +6717,56 @@
         "scope_file": [
             "cxxlibrary"
         ],
+        "typedefs": [
+            {
+                "<TYPEDEF>": "LengthType ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "LengthType",
+                        "typemap_name": "long"
+                    },
+                    "specifier": [
+                        "long"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "LengthType"
+                },
+                "f_kind": "C_LONG",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_LONG"
+                    ]
+                },
+                "name": "LengthType",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "LengthType": {}
+                    },
+                    "f": {
+                        "LengthType": {}
+                    },
+                    "share": {
+                        "LengthType": {}
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "LengthType",
+                    "C_name_typedef": "CXX_LengthType",
+                    "F_name_api": "length_type",
+                    "F_name_typedef": "length_type",
+                    "cxx_type": "LengthType",
+                    "typedef_name": "LengthType"
+                }
+            }
+        ],
         "wrap": {
             "c": true,
             "fortran": true,
@@ -6801,6 +6851,40 @@
             },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
+        },
+        "LengthType": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_LONG",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "l",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_type": "CXX_LengthType",
+            "cfi_type": "CFI_type_long",
+            "cxx_type": "LengthType",
+            "f_cast": "int({f_var}, length_type)",
+            "f_kind": "length_type",
+            "f_module": {
+                "cxxlibrary_mod": [
+                    "length_type"
+                ]
+            },
+            "f_module_name": "cxxlibrary_mod",
+            "f_type": "integer(length_type)",
+            "flat_name": "long",
+            "i_module": {
+                "cxxlibrary_mod": [
+                    "length_type"
+                ]
+            },
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_LONG",
+            "typedef": "long",
+            "wrap_header": [
+                "wrapcxxlibrary.h"
+            ]
         },
         "nested": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

@@ -32,6 +32,11 @@
 extern "C" {
 #endif
 
+// typedef LengthType
+// splicer begin typedef.LengthType
+typedef long CXX_LengthType;
+// splicer end typedef.LengthType
+
 #ifdef __cplusplus
 }
 #endif

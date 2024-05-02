@@ -91,9 +91,10 @@ void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 // Argument:  int flag
 // Statement: c_in_native_scalar
 // ----------------------------------------
-// Argument:  int length=1
+// Argument:  LengthType length=1
 // Statement: c_in_native_scalar
-void CXX_Class1_declare_1(CXX_Class1 * self, int flag, int length)
+void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
+    CXX_LengthType length)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.declare_1
