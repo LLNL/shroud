@@ -1354,7 +1354,7 @@
                 "type_header.hpp"
             ],
             "cxx_type": "CustomType",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, custom_type)",
             "f_kind": "custom_type",
             "f_module": {
                 "library_mod": [

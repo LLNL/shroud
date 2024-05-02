@@ -1423,6 +1423,10 @@ def fill_typedef_typemap(node, fields={}):
 
     if ntypemap.base in ["shadow", "struct"]:
         ntypemap.f_type = "type({})".format(f_name)
+    elif ntypemap.base == "integer":
+        ntypemap.f_cast = "int({f_var}, %s)" % f_name
+    elif ntypemap.base == "real":
+        ntypemap.f_cast = "real({f_var}, %s)" % f_name
     
     # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules

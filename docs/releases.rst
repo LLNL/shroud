@@ -266,6 +266,13 @@ Fixed
   The *fortran_generic* was restore arguments in the Fortran wrapper
   which were being trimmed by default arguments.
 
+* Define the typemap *f_cast* field for typedefs to use the
+  typedef name instead of the type name. This make the use of the
+  typedef in the Fortran wrapper explicit.
+
+  From example, ``tutorial.yaml`` declaration ``typedef int EnumTypeID``
+  changes from  ``int({f_var}, C_INT)`` to ``int({f_var}, enum_type_id)``.
+
 v0.13.0
 -------
 

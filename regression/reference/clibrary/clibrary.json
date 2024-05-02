@@ -5283,7 +5283,7 @@
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "EnumTypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, enum_type_id)",
             "f_kind": "enum_type_id",
             "f_module": {
                 "clibrary_mod": [
@@ -5317,7 +5317,7 @@
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
             "f_module": {
                 "clibrary_mod": [

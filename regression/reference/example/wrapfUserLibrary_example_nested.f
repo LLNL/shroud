@@ -1537,7 +1537,8 @@ contains
         integer(type_id), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_int
-        call c_ex_class2_declare_1(obj%cxxmem, type, int(len, C_LONG))
+        call c_ex_class2_declare_1(obj%cxxmem, type, &
+            int(len, sidre_length))
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_int
     end subroutine ex_class2_declare_1_int
 
@@ -1559,7 +1560,8 @@ contains
         integer(type_id), value, intent(IN) :: type
         integer(C_LONG), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_long
-        call c_ex_class2_declare_1(obj%cxxmem, type, int(len, C_LONG))
+        call c_ex_class2_declare_1(obj%cxxmem, type, &
+            int(len, sidre_length))
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_long
     end subroutine ex_class2_declare_1_long
 

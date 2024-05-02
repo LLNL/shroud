@@ -4875,7 +4875,7 @@
                                                     "C_return_type": "void",
                                                     "F_C_call": "c_ex_class2_declare_1",
                                                     "F_C_name": "c_ex_class2_declare_1_int",
-                                                    "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
+                                                    "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, sidre_length)",
                                                     "F_arguments": "obj,\t type,\t len",
                                                     "F_subprogram": "subroutine",
                                                     "c_const": "",
@@ -5076,7 +5076,7 @@
                                                     "C_return_type": "void",
                                                     "F_C_call": "c_ex_class2_declare_1",
                                                     "F_C_name": "c_ex_class2_declare_1_long",
-                                                    "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
+                                                    "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, sidre_length)",
                                                     "F_arguments": "obj,\t type,\t len",
                                                     "F_subprogram": "subroutine",
                                                     "c_const": "",
@@ -16460,7 +16460,7 @@
             "c_type": "SIDRE_SidreLength",
             "cfi_type": "CFI_type_long",
             "cxx_type": "SidreLength",
-            "f_cast": "int({f_var}, C_LONG)",
+            "f_cast": "int({f_var}, sidre_length)",
             "f_kind": "sidre_length",
             "f_module": {
                 "userlibrary_mod": [
@@ -16502,7 +16502,7 @@
             ],
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
             "f_module": {
                 "userlibrary_mod": [

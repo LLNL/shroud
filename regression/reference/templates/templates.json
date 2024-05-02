@@ -5859,7 +5859,7 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_cast": "int({f_var}, vector_size_type)",
             "f_kind": "vector_size_type",
             "f_module": {
                 "templates_std_mod": [
@@ -5897,7 +5897,7 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector<double>::size_type",
-            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_cast": "int({f_var}, vector_double_size_type)",
             "f_kind": "vector_double_size_type",
             "f_module": {
                 "templates_std_mod": [
@@ -5935,7 +5935,7 @@
                 "<cstddef>"
             ],
             "cxx_type": "std::vector<int>::size_type",
-            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_cast": "int({f_var}, vector_int_size_type)",
             "f_kind": "vector_int_size_type",
             "f_module": {
                 "templates_std_mod": [

@@ -3402,7 +3402,7 @@
             "c_type": "ERR_none",
             "cfi_type": "CFI_type_int",
             "cxx_type": "none",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, none)",
             "f_kind": "none",
             "f_module": {
                 "error_mod": [

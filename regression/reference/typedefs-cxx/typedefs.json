@@ -1382,7 +1382,7 @@
             ],
             "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})",
             "cxx_type": "IndexType",
-            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_cast": "int({f_var}, index_type)",
             "f_kind": "index_type",
             "f_module": {
                 "typedefs_mod": [
@@ -1422,7 +1422,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "IndexType2",
-            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_cast": "int({f_var}, index_type2)",
             "f_kind": "index_type2",
             "f_module": {
                 "typedefs_mod": [
@@ -1487,7 +1487,7 @@
             "c_type": "TYP_TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
             "f_module": {
                 "typedefs_mod": [
