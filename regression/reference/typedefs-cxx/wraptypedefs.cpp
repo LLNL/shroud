@@ -97,7 +97,7 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
 // Argument:  IndexType2 arg
 // Statement: c_in_native_scalar
 // start TYP_returnBytesForIndexType2
-int TYP_returnBytesForIndexType2(TYP_IndexType2 arg)
+int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 {
     // splicer begin function.returnBytesForIndexType2
     int SHC_rv = returnBytesForIndexType2(arg);

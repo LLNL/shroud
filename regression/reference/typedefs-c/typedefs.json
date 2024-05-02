@@ -859,8 +859,8 @@
                             "cxx_type": "IndexType2",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "index_type2",
-                            "f_type": "integer(index_type2)",
+                            "f_kind": "LOCAL_Index_Type",
+                            "f_type": "integer(LOCAL_Index_Type)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -1045,6 +1045,10 @@
                 },
                 "name": "IndexType2",
                 "options": {},
+                "user_fmt": {
+                    "C_name_typedef": "LOCAL_IndexType",
+                    "F_name_typedef": "LOCAL_Index_Type"
+                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -1061,7 +1065,7 @@
                     "C_name_api": "IndexType2",
                     "C_name_typedef": "IndexType2",
                     "F_name_api": "index_type2",
-                    "F_name_typedef": "index_type2",
+                    "F_name_typedef": "LOCAL_Index_Type",
                     "cxx_type": "IndexType2",
                     "typedef_name": "IndexType2"
                 }
@@ -1138,19 +1142,19 @@
                 "<cstdint>"
             ],
             "cxx_type": "IndexType2",
-            "f_cast": "int({f_var}, index_type2)",
-            "f_kind": "index_type2",
+            "f_cast": "int({f_var}, LOCAL_Index_Type)",
+            "f_kind": "LOCAL_Index_Type",
             "f_module": {
                 "typedefs_mod": [
-                    "index_type2"
+                    "LOCAL_Index_Type"
                 ]
             },
             "f_module_name": "typedefs_mod",
-            "f_type": "integer(index_type2)",
+            "f_type": "integer(LOCAL_Index_Type)",
             "flat_name": "int32_t",
             "i_module": {
                 "typedefs_mod": [
-                    "index_type2"
+                    "LOCAL_Index_Type"
                 ]
             },
             "sgroup": "native",

@@ -29,7 +29,7 @@ in several options used to define names consistently:
 **F_C_name_template**, **F_name_impl_template**,
 **F_name_function_template**, **F_name_generic_template**,
 **F_abstract_interface_subprogram_template**,
-**F_derived_name_template**, **F_typedef_name_template**.
+**F_derived_name_template**, **F_name_typedef_template**.
 
 A Fortran module will be created for the library.  This allows the
 compiler to do it's own mangling so it is unnecessary to add an

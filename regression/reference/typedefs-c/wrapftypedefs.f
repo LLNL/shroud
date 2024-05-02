@@ -43,9 +43,9 @@ module typedefs_mod
     ! typedef IndexType2
     ! splicer begin typedef.IndexType2
 #if defined(USE_64BIT_INDEXTYPE)
-    integer, parameter :: INDEX_TYPE2 = C_INT64_T
+    integer, parameter :: LOCAL_INDEX_TYPE = C_INT64_T
 #else
-    integer, parameter :: INDEX_TYPE2 = C_INT32_T
+    integer, parameter :: LOCAL_INDEX_TYPE = C_INT32_T
 #endif
     ! splicer end typedef.IndexType2
     ! end typedef IndexType2
@@ -145,9 +145,9 @@ module typedefs_mod
                 result(SHT_rv) &
                 bind(C, name="returnBytesForIndexType2")
             use iso_c_binding, only : C_INT
-            import :: index_type2
+            import :: LOCAL_Index_Type
             implicit none
-            integer(index_type2), value, intent(IN) :: arg
+            integer(LOCAL_Index_Type), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function return_bytes_for_index_type2
     end interface
@@ -255,7 +255,7 @@ contains
     function return_bytes_for_index_type2(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        integer(index_type2), value, intent(IN) :: arg
+        integer(LOCAL_Index_Type), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.return_bytes_for_index_type2
         SHT_rv = c_return_bytes_for_index_type2(arg)

@@ -635,7 +635,7 @@ F_module_name_namespace_template
 F_name_function_template
     ``{F_name_api}{function_suffix}{template_suffix}``
 
-F_typedef_name_template
+F_name_typedef_template
     ``{F_name_scope}{F_name_api}``
     
 LUA_class_reg_template
@@ -961,7 +961,7 @@ F_name_api
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
-    **F_typedef_name_template**.
+    **F_name_typedef_template**.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -1586,6 +1586,22 @@ Result
 
 cxx_rv_decl
     Declaration of variable to hold return value for function.
+
+
+Typedef
+^^^^^^^
+
+C_name_typedef
+    Default from ``C_name_typedef_template``
+
+.. ``{C_prefix}{C_name_scope}{typedef_name}``
+
+F_name_typedef
+    Default from ``F_name_typedef_template``.
+
+.. ``{F_name_scope}{F_name_api}``
+   F_name_scope includes template instantiation - vector_int_
+
 
 
 Variable

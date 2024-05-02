@@ -1038,7 +1038,7 @@
                             "C_call_function": "returnBytesForIndexType2(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_returnBytesForIndexType2",
-                            "C_prototype": "TYP_IndexType2 arg",
+                            "C_prototype": "LOCAL_IndexType arg",
                             "C_return_type": "int",
                             "F_C_name": "c_return_bytes_for_index_type2",
                             "c_const": "",
@@ -1060,7 +1060,7 @@
                             "C_call_function": "returnBytesForIndexType2(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_returnBytesForIndexType2",
-                            "C_prototype": "TYP_IndexType2 arg",
+                            "C_prototype": "LOCAL_IndexType arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_return_bytes_for_index_type2",
@@ -1100,7 +1100,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TYP_IndexType2",
+                            "c_type": "LOCAL_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
                             "cxx_addr": "&",
@@ -1117,7 +1117,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TYP_IndexType2",
+                            "c_type": "LOCAL_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
                             "cxx_addr": "&",
@@ -1126,8 +1126,8 @@
                             "cxx_type": "IndexType2",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "index_type2",
-                            "f_type": "integer(index_type2)",
+                            "f_kind": "LOCAL_Index_Type",
+                            "f_type": "integer(LOCAL_Index_Type)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -1324,6 +1324,10 @@
                 },
                 "name": "IndexType2",
                 "options": {},
+                "user_fmt": {
+                    "C_name_typedef": "LOCAL_IndexType",
+                    "F_name_typedef": "LOCAL_Index_Type"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -1342,9 +1346,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "IndexType2",
-                    "C_name_typedef": "TYP_IndexType2",
+                    "C_name_typedef": "LOCAL_IndexType",
                     "F_name_api": "index_type2",
-                    "F_name_typedef": "index_type2",
+                    "F_name_typedef": "LOCAL_Index_Type",
                     "cxx_type": "IndexType2",
                     "typedef_name": "IndexType2"
                 }
@@ -1416,25 +1420,25 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_type": "TYP_IndexType2",
+            "c_type": "LOCAL_IndexType",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
             "cxx_type": "IndexType2",
-            "f_cast": "int({f_var}, index_type2)",
-            "f_kind": "index_type2",
+            "f_cast": "int({f_var}, LOCAL_Index_Type)",
+            "f_kind": "LOCAL_Index_Type",
             "f_module": {
                 "typedefs_mod": [
-                    "index_type2"
+                    "LOCAL_Index_Type"
                 ]
             },
             "f_module_name": "typedefs_mod",
-            "f_type": "integer(index_type2)",
+            "f_type": "integer(LOCAL_Index_Type)",
             "flat_name": "int32_t",
             "i_module": {
                 "typedefs_mod": [
-                    "index_type2"
+                    "LOCAL_Index_Type"
                 ]
             },
             "sgroup": "native",
