@@ -49,7 +49,6 @@ declarations:
   fields:
     c_to_cxx : static_cast<IndexType>({c_var})
     cxx_to_c : static_cast<TYP_IndexType>({cxx_var})
-#    c_type   : SIDRE_TypeID
   splicer:
     c: |
       #if defined(USE_64BIT_INDEXTYPE)
@@ -65,6 +64,32 @@ declarations:
       #endif
 
 - decl: int returnBytesForIndexType(IndexType arg);
+  options:
+    wrap_python: False
+
+#####
+# Define a typedef but change the names of the generated types
+
+- decl: typedef int32_t IndexType2
+#  fields:
+#    c_to_cxx : static_cast<IndexType>({c_var})
+#    cxx_to_c : static_cast<TYP_IndexType>({cxx_var})
+#    c_type   : SIDRE_TypeID
+  splicer:
+    c: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      typedef int64_t TYP_IndexType2;
+      #else
+      typedef int32_t TYP_IndexType2;
+      #endif
+    f: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      integer, parameter :: INDEX_TYPE2 = C_INT64_T
+      #else
+      integer, parameter :: INDEX_TYPE2 = C_INT32_T
+      #endif
+
+- decl: int returnBytesForIndexType2(IndexType2 arg);
   options:
     wrap_python: False
 

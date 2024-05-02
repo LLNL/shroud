@@ -64,15 +64,24 @@ contains
   subroutine test_indextype
     integer nbytes
     integer(INDEX_TYPE) arg
+    integer(INDEX_TYPE2) arg2
     
     call set_case_name("test_index")
 
     arg = 0_INDEX_TYPE
     nbytes = return_bytes_for_index_type(arg)
 #if defined(USE_64BIT_INDEXTYPE)
-    call assert_equals(8, nbytes, "return_bytes_for_index_type")
+    call assert_equals(8, nbytes, "returnBytesForIndexType")
 #else
-    call assert_equals(4, nbytes, "return_bytes_for_index_type")
+    call assert_equals(4, nbytes, "returnBytesForIndexType")
+#endif
+
+    arg2 = 0_INDEX_TYPE2
+    nbytes = return_bytes_for_index_type2(arg)
+#if defined(USE_64BIT_INDEXTYPE)
+    call assert_equals(8, nbytes, "returnBytesForIndexType2")
+#else
+    call assert_equals(4, nbytes, "returnBytesForIndexType2")
 #endif
     
   end subroutine test_indextype

@@ -39,6 +39,17 @@ module typedefs_mod
     ! splicer end typedef.IndexType
     ! end typedef IndexType
 
+    ! start typedef IndexType2
+    ! typedef IndexType2
+    ! splicer begin typedef.IndexType2
+#if defined(USE_64BIT_INDEXTYPE)
+    integer, parameter :: INDEX_TYPE2 = C_INT64_T
+#else
+    integer, parameter :: INDEX_TYPE2 = C_INT32_T
+#endif
+    ! splicer end typedef.IndexType2
+    ! end typedef IndexType2
+
 
     ! start derived-type struct1_rename
     type, bind(C) :: struct1_rename
@@ -121,6 +132,26 @@ module typedefs_mod
         end function return_bytes_for_index_type
     end interface
     ! end return_bytes_for_index_type
+
+    ! ----------------------------------------
+    ! Function:  int returnBytesForIndexType2
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  IndexType2 arg
+    ! Statement: f_in_native_scalar
+    ! start return_bytes_for_index_type2
+    interface
+        function return_bytes_for_index_type2(arg) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnBytesForIndexType2")
+            use iso_c_binding, only : C_INT
+            import :: index_type2
+            implicit none
+            integer(index_type2), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function return_bytes_for_index_type2
+    end interface
+    ! end return_bytes_for_index_type2
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -210,6 +241,27 @@ contains
         ! splicer end function.return_bytes_for_index_type
     end function return_bytes_for_index_type
     ! end return_bytes_for_index_type
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int returnBytesForIndexType2
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  IndexType2 arg
+    ! Statement: f_in_native_scalar
+    ! start return_bytes_for_index_type2
+    function return_bytes_for_index_type2(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(index_type2), value, intent(IN) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.return_bytes_for_index_type2
+        SHT_rv = c_return_bytes_for_index_type2(arg)
+        ! splicer end function.return_bytes_for_index_type2
+    end function return_bytes_for_index_type2
+    ! end return_bytes_for_index_type2
 #endif
 
     ! splicer begin additional_functions

@@ -34,3 +34,8 @@ int returnBytesForIndexType(IndexType arg)
 {
     return sizeof(arg);
 }
+
+int returnBytesForIndexType2(IndexType2 arg)
+{
+    return sizeof(arg);
+}

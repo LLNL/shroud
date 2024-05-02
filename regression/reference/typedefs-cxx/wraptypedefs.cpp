@@ -90,4 +90,20 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
 }
 // end TYP_returnBytesForIndexType
 
+// ----------------------------------------
+// Function:  int returnBytesForIndexType2
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  IndexType2 arg
+// Statement: c_in_native_scalar
+// start TYP_returnBytesForIndexType2
+int TYP_returnBytesForIndexType2(TYP_IndexType2 arg)
+{
+    // splicer begin function.returnBytesForIndexType2
+    int SHC_rv = returnBytesForIndexType2(arg);
+    return SHC_rv;
+    // splicer end function.returnBytesForIndexType2
+}
+// end TYP_returnBytesForIndexType2
+
 }  // extern "C"

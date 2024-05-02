@@ -57,6 +57,17 @@ typedef int32_t TYP_IndexType;
 // splicer end typedef.IndexType
 // end typedef IndexType
 
+// start typedef IndexType2
+// typedef IndexType2
+// splicer begin typedef.IndexType2
+#if defined(USE_64BIT_INDEXTYPE)
+typedef int64_t TYP_IndexType2;
+#else
+typedef int32_t TYP_IndexType2;
+#endif
+// splicer end typedef.IndexType2
+// end typedef IndexType2
+
 #ifdef __cplusplus
 }
 #endif
@@ -85,6 +96,8 @@ TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
 void TYP_typestruct(TYP_Struct1Rename * arg1);
 
 int TYP_returnBytesForIndexType(TYP_IndexType arg);
+
+int TYP_returnBytesForIndexType2(TYP_IndexType2 arg);
 
 #ifdef __cplusplus
 }

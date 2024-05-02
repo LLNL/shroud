@@ -4,19 +4,23 @@ C f TypeID typefunc(TypeID arg)
 C f TypeID typefunc_wrap(TypeID arg)
 C f void typestruct(Struct1Rename * arg1)
 C f int returnBytesForIndexType(IndexType arg)
+C f int returnBytesForIndexType2(IndexType2 arg)
 Close wraptypedefs.h
 Close wraptypedefs.c
 class Struct1Rename
 typedef TypeID
 typedef IndexType
+typedef IndexType2
 Fortran TypeID typefunc(TypeID arg)
 Fortran TypeID typefunc_wrap(TypeID arg)
 Fortran void typestruct(Struct1Rename * arg1)
 Fortran int returnBytesForIndexType(IndexType arg)
+Fortran int returnBytesForIndexType2(IndexType2 arg)
 C-interface f TypeID typefunc(TypeID arg)
 C-interface f TypeID typefunc_wrap(TypeID arg)
 C-interface f void typestruct(Struct1Rename * arg1)
 C-interface f int returnBytesForIndexType(IndexType arg)
+C-interface f int returnBytesForIndexType2(IndexType2 arg)
 Close wrapftypedefs.f
 Close utiltypedefs.c
 Close typestypedefs.h

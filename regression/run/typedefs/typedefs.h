@@ -34,4 +34,14 @@ typedef int32_t IndexType;
 
 int returnBytesForIndexType(IndexType arg);
 
+//----------------------------------------------------------------------
+
+#if defined(USE_64BIT_INDEXTYPE)
+typedef int64_t IndexType2;
+#else
+typedef int32_t IndexType2;
+#endif
+
+int returnBytesForIndexType2(IndexType arg);
+
 #endif // TYPEDEFS_HPP
