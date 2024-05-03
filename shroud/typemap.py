@@ -1425,8 +1425,12 @@ def fill_typedef_typemap(node, fields={}):
         ntypemap.f_type = "type({})".format(f_name)
     elif ntypemap.base == "integer":
         ntypemap.f_cast = "int({f_var}, %s)" % f_name
+        ntypemap.c_to_cxx = "static_cast<%s>({c_var})" % ntypemap.cxx_type
+        ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % c_name
     elif ntypemap.base == "real":
         ntypemap.f_cast = "real({f_var}, %s)" % f_name
+        ntypemap.c_to_cxx = "static_cast<%s>({c_var})" % ntypemap.cxx_type
+        ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % c_name
     
     # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules

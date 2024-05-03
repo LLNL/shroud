@@ -278,10 +278,12 @@
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SH_arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -1136,11 +1138,13 @@
             "c_header": [
                 "<stdint.h>"
             ],
+            "c_to_cxx": "static_cast<IndexType2>({c_var})",
             "c_type": "IndexType2",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
+            "cxx_to_c": "static_cast<IndexType2>({cxx_var})",
             "cxx_type": "IndexType2",
             "f_cast": "int({f_var}, LOCAL_Index_Type)",
             "f_kind": "LOCAL_Index_Type",
@@ -1207,8 +1211,10 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_to_cxx": "static_cast<TypeID>({c_var})",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<TypeID>({cxx_var})",
             "cxx_type": "TypeID",
             "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",

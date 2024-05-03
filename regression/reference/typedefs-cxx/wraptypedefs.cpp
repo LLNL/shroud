@@ -30,7 +30,9 @@ extern "C" {
 TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 {
     // splicer begin function.typefunc
-    TypeID SHC_rv = typefunc(arg);
+    TypeID SHCXX_arg = static_cast<TypeID>(arg);
+    TypeID SHCXX_rv = typefunc(SHCXX_arg);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.typefunc
 }
@@ -52,7 +54,9 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
 {
     // splicer begin function.typefunc_wrap
-    TypeID SHC_rv = typefunc_wrap(arg);
+    TypeID SHCXX_arg = static_cast<TypeID>(arg);
+    TypeID SHCXX_rv = typefunc_wrap(SHCXX_arg);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.typefunc_wrap
 }
@@ -100,7 +104,8 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
 int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 {
     // splicer begin function.returnBytesForIndexType2
-    int SHC_rv = returnBytesForIndexType2(arg);
+    IndexType2 SHCXX_arg = static_cast<IndexType2>(arg);
+    int SHC_rv = returnBytesForIndexType2(SHCXX_arg);
     return SHC_rv;
     // splicer end function.returnBytesForIndexType2
 }

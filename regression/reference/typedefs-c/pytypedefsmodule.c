@@ -62,7 +62,10 @@ PY_typefunc(
         SHT_kwlist, &arg))
         return NULL;
 
-    TypeID SHCXX_rv = typefunc(arg);
+    // post_declare
+    TypeID SH_arg = static_cast<TypeID>(arg);
+
+    TypeID SHCXX_rv = typefunc(SH_arg);
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);

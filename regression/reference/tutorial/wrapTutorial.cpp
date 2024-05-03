@@ -501,7 +501,9 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
-    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
+    tutorial::TypeID SHCXX_arg = static_cast<tutorial::TypeID>(arg);
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(SHCXX_arg);
+    TUT_TypeID SHC_rv = static_cast<TUT_TypeID>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.typefunc
 }
