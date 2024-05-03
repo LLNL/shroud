@@ -1370,6 +1370,12 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_abstract_decl
+  Includes the declaration and any declarators.
+  For example, ``double *``.
+
+.. used with cxx_to_c static_cast
+
 c_array_shape
 
 c_array_size
@@ -1431,6 +1437,12 @@ c_var_cdesc2
 c_var_extents
 
 c_var_lower
+
+cxx_abstract_decl
+  Includes the declaration and any declarators.
+  For example, ``double *``.
+
+.. used with c_to_cxx static_cast
 
 cxx_addr
     Syntax to take address of argument.

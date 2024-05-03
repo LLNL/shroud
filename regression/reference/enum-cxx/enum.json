@@ -383,6 +383,7 @@
                     },
                     "in": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -390,6 +391,7 @@
                             "c_type": "int",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "Color",
                             "cxx_addr": "&",
                             "cxx_decl": "Color SHCXX_in",
                             "cxx_member": ".",
@@ -402,6 +404,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -409,6 +412,7 @@
                             "c_type": "int",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "Color",
                             "cxx_addr": "&",
                             "cxx_decl": "Color SHCXX_in",
                             "cxx_member": ".",

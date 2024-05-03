@@ -24,7 +24,7 @@ class DeclStr(object):
     continuation - True - insert tabs to aid continuations.
                    Defaults to False.
     ctor_dtor    -
-    name         - False, do not add a name.
+    name         - False, do not add a name (abstract declarator).
                    non-None, use argument instead of declarator name.
 
     Internal state:

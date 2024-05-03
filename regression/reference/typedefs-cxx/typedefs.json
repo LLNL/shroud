@@ -218,6 +218,7 @@
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
                             "F_C_name": "c_typefunc",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TYP_TypeID SHC_rv",
@@ -225,6 +226,7 @@
                             "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -250,6 +252,7 @@
                             "F_arguments": "arg",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TYP_TypeID SHC_rv",
@@ -257,6 +260,7 @@
                             "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -293,6 +297,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -300,6 +305,7 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
@@ -312,6 +318,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -319,6 +326,7 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
@@ -463,6 +471,7 @@
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
                             "F_C_name": "c_typefunc_wrap",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TYP_TypeID SHC_rv",
@@ -470,6 +479,7 @@
                             "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -495,6 +505,7 @@
                             "F_arguments": "arg",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
                             "c_rv_decl": "TYP_TypeID SHC_rv",
@@ -502,6 +513,7 @@
                             "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -522,6 +534,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -529,6 +542,7 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
@@ -541,6 +555,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -548,6 +563,7 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
@@ -916,6 +932,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -923,6 +940,7 @@
                             "c_type": "TYP_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType SHCXX_arg",
                             "cxx_member": ".",
@@ -935,6 +953,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -942,6 +961,7 @@
                             "c_type": "TYP_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType SHCXX_arg",
                             "cxx_member": ".",
@@ -1114,6 +1134,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "LOCAL_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1121,6 +1142,7 @@
                             "c_type": "LOCAL_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType2 SHCXX_arg",
                             "cxx_member": ".",
@@ -1133,6 +1155,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "LOCAL_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1140,6 +1163,7 @@
                             "c_type": "LOCAL_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType2 SHCXX_arg",
                             "cxx_member": ".",
