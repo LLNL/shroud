@@ -999,10 +999,6 @@
                 },
                 "name": "IndexType",
                 "options": {},
-                "user_fields": {
-                    "c_to_cxx": "static_cast<IndexType>({c_var})",
-                    "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})"
-                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -1102,7 +1098,7 @@
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})",
+            "cxx_to_c": "static_cast<IndexType>({cxx_var})",
             "cxx_type": "IndexType",
             "f_cast": "int({f_var}, index_type)",
             "f_kind": "index_type",

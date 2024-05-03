@@ -1294,10 +1294,6 @@
                 },
                 "name": "IndexType",
                 "options": {},
-                "user_fields": {
-                    "c_to_cxx": "static_cast<IndexType>({c_var})",
-                    "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})"
-                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
