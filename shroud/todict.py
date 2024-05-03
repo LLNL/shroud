@@ -298,6 +298,9 @@ class ToDict(visitor.Visitor):
             elif key == "ast":
                 if value is not None:
                     d["ast"] = self.visit(value)
+            elif key == "typedef":
+                if value is not None:
+                    d["typedef"] = value.name
             else:
                 if value is not defvalue:
                     d[key] = value

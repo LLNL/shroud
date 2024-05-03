@@ -1973,7 +1973,7 @@ class SymbolTable(object):
             type_name = self.scopename + name
             orig = ast.typemap
             ntypemap = orig.clone_as(type_name)
-            ntypemap.typedef = orig.name
+            ntypemap.typedef = orig
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
             self.register_typemap(ntypemap.name, ntypemap)

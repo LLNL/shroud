@@ -74,6 +74,7 @@ class Typemap(object):
                     # Set from format.template_suffix in YAML for class.
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
         ("typedef", None),  # Initialize from existing type (name of type)
+                            # A Typemap instance
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
         ("ast", None),  # Abstract syntax tree (typedef)
