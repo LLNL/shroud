@@ -11,7 +11,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 from . import error
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_cxx
+from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_cxx, DeclStr
 from . import statements
 from . import typemap
 from . import util
@@ -74,6 +74,7 @@ class Wrapl(util.WrapperMixin):
         self.luaL_Reg_module = []
         self.body_lines = []
         self.class_lines = []
+        self.typedef_impl = []
         self.lua_type_structs = []
 
         self.wrap_namespace(newlibrary.wrap_namespace)
@@ -87,6 +88,9 @@ class Wrapl(util.WrapperMixin):
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
         """
+        if node.wrap.lua:
+            self.wrap_typedefs(node)
+        
         self._push_splicer("class")
         for cls in node.classes:
             if not cls.wrap.lua:
@@ -109,6 +113,54 @@ class Wrapl(util.WrapperMixin):
             if ns.wrap.lua:
                 self.wrap_namespace(ns)
 
+    def wrap_typedefs(self, node):
+        """Wrap all typedefs in a splicer block
+
+        Args:
+            node - ast.ClassNode, ast.LibraryNode
+        """
+        self._push_splicer("typedef")
+        for typ in node.typedefs:
+            self.wrap_typedef(typ)
+        self._pop_splicer("typedef")
+
+    def wrap_typedef(self, node):
+        """Wrap a typedef declaration.
+
+        A C style typedef is written for each C++ typedef so it can be
+        used in Typemap.cxx_to_c conversions.  For example,
+        lua_pushinteger expects a C type when wrapping TypeID function
+        result in tutorial.yaml.
+
+        Args:
+            node - ast.TypedefNode.
+
+        """
+        # This is lifted from wrapc.py
+        options = node.options
+        fmtdict = node.fmtdict
+        ast = node.ast
+        output = self.typedef_impl
+
+        if "lua" in node.splicer:
+            C_code = None
+            C_force = node.splicer["c"]
+        else:
+            # XXX - Should gen_arg_as_c be used here?
+#            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
+#                                     arg_lang="c_type")
+            decl = DeclStr(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
+            C_code = [decl + ";"]
+            C_force = None
+
+        output.append("")
+        if options.literalinclude:
+            output.append("// start typedef " + node.name)
+        append_format(output, "// typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
+        self._create_splicer(node.name, output, C_code, C_force)
+        if options.literalinclude:
+            output.append("// end typedef " + node.name)
+        
     def wrap_class(self, node):
         """
         Args:
@@ -127,6 +179,7 @@ class Wrapl(util.WrapperMixin):
             "{LUA_userdata_var}->{LUA_userdata_member}->", fmt_class
         )
 
+        self.lua_type_structs.append("")
         self._create_splicer("C_declaration", self.lua_type_structs)
         self.lua_type_structs.append("")
         self.lua_type_structs.append("typedef struct {+")
@@ -142,6 +195,9 @@ class Wrapl(util.WrapperMixin):
 
         self.luaL_Reg_class = []
 
+        if node.wrap.lua:
+            self.wrap_typedefs(node)
+        
         # wrap methods
         self._push_splicer("method")
         self.wrap_functions(node, node.functions)
@@ -682,6 +738,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         header_impl.write_headers(output)
 
         output.append('#include "lua.h"')
+        output.extend(self.typedef_impl)
         output.extend(self.lua_type_structs)
         append_format(
             output,

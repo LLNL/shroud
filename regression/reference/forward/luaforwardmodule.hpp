@@ -15,6 +15,7 @@ extern "C" {
 // cxx_header
 #include "forward.hpp"
 #include "lua.h"
+
 // splicer begin class.Class3.C_declaration
 // splicer end class.Class3.C_declaration
 
@@ -23,6 +24,7 @@ typedef struct {
     // splicer begin class.Class3.C_object
     // splicer end class.Class3.C_object
 } l_Class3_Type;
+
 // splicer begin class.Class2.C_declaration
 // splicer end class.Class2.C_declaration
 

@@ -15,6 +15,7 @@ extern "C" {
 // cxx_header
 #include "ownership.hpp"
 #include "lua.h"
+
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
 
