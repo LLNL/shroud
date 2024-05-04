@@ -15,6 +15,8 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
+// typemap
+#include "wrapcxxlibrary.h"
 // shroud
 #include "typescxxlibrary.h"
 
@@ -36,7 +38,8 @@ int CXX_Class1_check_length_1(CXX_Class1 * self, int length);
 
 void CXX_Class1_declare_0(CXX_Class1 * self, int flag);
 
-void CXX_Class1_declare_1(CXX_Class1 * self, int flag, int length);
+void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
+    CXX_LengthType length);
 
 int CXX_Class1_get_length(CXX_Class1 * self);
 

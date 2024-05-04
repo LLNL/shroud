@@ -130,6 +130,10 @@ class FillFormat(object):
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
             else:
+                fmt_result.c_abstract_decl = gen_arg_as_c(
+                    ast, name=False, add_params=False)
+                fmt_result.cxx_abstract_decl = gen_arg_as_cxx(
+                    ast, name=False, add_params=False, as_ptr=True)
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
             if ast.const:
@@ -183,6 +187,10 @@ class FillFormat(object):
             fmt_arg.cxx_var = fmt_arg.c_var
         else:
             # convert C argument to C++
+            fmt_arg.c_abstract_decl = gen_arg_as_c(
+                arg, name=False, add_params=False)
+            fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
+                arg, name=False, add_params=False, as_ptr=True)
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
             fmt_arg.cxx_decl = gen_arg_as_cxx(arg,

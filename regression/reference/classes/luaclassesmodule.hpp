@@ -15,6 +15,7 @@ extern "C" {
 // cxx_header
 #include "classes.hpp"
 #include "lua.h"
+
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
 
@@ -23,6 +24,7 @@ typedef struct {
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } l_Class1_Type;
+
 // splicer begin class.Class2.C_declaration
 // splicer end class.Class2.C_declaration
 
@@ -31,6 +33,7 @@ typedef struct {
     // splicer begin class.Class2.C_object
     // splicer end class.Class2.C_object
 } l_Class2_Type;
+
 // splicer begin class.Shape.C_declaration
 // splicer end class.Shape.C_declaration
 
@@ -39,6 +42,7 @@ typedef struct {
     // splicer begin class.Shape.C_object
     // splicer end class.Shape.C_object
 } l_Shape_Type;
+
 // splicer begin class.Circle.C_declaration
 // splicer end class.Circle.C_declaration
 

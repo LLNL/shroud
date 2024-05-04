@@ -230,7 +230,11 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
-                node = self.add_typedef(decl, ast=ast, fields=fields, **kwargs)
+                # XXX - move arguments to caller
+                fmtdict = kwargs.get("format", {})
+                options = kwargs.get("options", {})
+                splicer = kwargs.get("splicer", {})
+                node = self.add_typedef(decl, ast, fields, fmtdict, options, splicer)
             elif ast.enum_specifier:
                 node = self.add_enum(decl, ast=ast, **kwargs)
             elif ast.class_specifier:
@@ -337,7 +341,8 @@ class NamespaceMixin(object):
         self.classes.append(node)
         return node
 
-    def add_typedef(self, decl, ast=None, fields={}, **kwargs):
+    def add_typedef(self, decl, ast=None, fields={},
+                    format={}, options={}, splicer={}):
         """Add a TypedefNode to the typedefs list.
 
         This may be the YAML file as a typemap which may have 'fields',
@@ -347,8 +352,7 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, self.symtab)
 
         name = ast.declarator.user_name  # Local name.
-        splicer = kwargs.get("splicer", {})
-        node = TypedefNode(name, self, ast, fields, splicer)
+        node = TypedefNode(name, self, ast, fields, format, options, splicer)
         self.typedefs.append(node)
 
         # Add typedefs names to structs/enums.
@@ -519,6 +523,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
             F_blanknull=False,
+            F_create_bufferify_function=True,
             F_default_args="generic",  # "generic", "optional", "require"
             F_flatten_namespace=False,
             F_line_length=72,
@@ -1882,8 +1887,7 @@ class TypedefNode(AstNode):
     """
 
     def __init__(self, name, parent, ast, fields,
-                 splicer={},
-                 format={}, options=None,
+                 format={}, options={}, splicer={},
                  **kwargs):
         """
         Args:
@@ -1906,7 +1910,9 @@ class TypedefNode(AstNode):
         self.wrap = WrapFlags(self.options)
 
         self.user_fmt = format
-        self.default_format(parent, format, kwargs)
+        self.default_format(parent, format)
+        if self.user_fmt:
+            self.fmtdict.update(self.user_fmt, replace=True)
         self.update_names()
 
         self.ast = ast
@@ -1926,7 +1932,7 @@ class TypedefNode(AstNode):
     def get_typename(self):
         return self.typemap.name
 
-    def default_format(self, parent, format, kwargs):
+    def default_format(self, parent, format):
         """Set format dictionary."""
         self.fmtdict = util.Scope(
             parent=parent.fmtdict,
@@ -1937,17 +1943,21 @@ class TypedefNode(AstNode):
         )
 
     def update_names(self):
-        """Update C and Fortran names."""
-        ### XXX - how to allow user to override since reevaluate is being used.
-        ### XXX - maybe preserve the original fmt from yaml file.
+        """Update C and Fortran names.
+
+        Called when reading declaration and
+        when instantiation a class in GenFunctions.template_typedef.
+        """
         fmt = self.fmtdict
         if self.wrap.c:
-            self.reeval_template("C_name_typedef")
+            if "C_name_typedef" not in self.user_fmt:
+                self.reeval_template("C_name_typedef")
         else:
             # language=c, use original name.
             fmt.C_name_typedef = fmt.typedef_name
         if self.wrap.fortran:
-            self.reeval_template("F_name_typedef")
+            if "F_name_typedef" not in self.user_fmt:
+                self.reeval_template("F_name_typedef")
 
     def clone(self):
         """Create a copy of a TypedefNode to use with C++ template.
@@ -2538,5 +2548,6 @@ def create_library_from_dictionary(node, symtab):
                 new[key] = listify_cleanup(value)
         node["splicer_code"] = new
     cursor.pop_phase("Create library")
+    cursor.check_for_warnings()
     
     return library

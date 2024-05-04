@@ -181,3 +181,50 @@ This mapping makes the assumption that ``integer`` and
 .. Complex Type
    ------------
 
+
+Typedef
+-------
+
+A typedef is used to create an alias for another type.
+Often to create an abstraction for the intented use of the type.
+
+.. code-block:: c++
+
+   typedef int IndexType;
+
+From the Fortran side, this will create a parameter for the kind parameter.
+
+.. code-block:: fortran
+
+   integer, parameter :: index_type = C_INT
+
+This allows variables to continue to use the typedef.
+
+.. code-block:: c++
+
+   IndexType arg;
+
+From the Fortran side, this will create a parameter for the kind parameter.
+
+.. code-block:: fortran
+
+   integer(index_type) :: arg
+
+A C wrapper will create another typedef which is accessible from C.
+A C++ typedef may be in a scope so Shroud will mangle the name
+to make it accessible at the global level.
+
+.. code-block:: c
+
+    typedef int TYP_IndexType;
+
+The name of the generated typedef can be modified using format fields.
+
+.. code-block:: yaml
+
+    - decl: typedef int32_t IndexType2
+      format:
+        F_name_typedef: LOCAL_Index_Type
+        C_name_typedef: LOCAL_IndexType
+
+.. from typedefs.yaml

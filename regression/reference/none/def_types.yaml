@@ -260,7 +260,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT16_T
-      f_cast: int({f_var}, C_INT16_t)
+      f_cast: int({f_var}, C_INT16_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -288,7 +288,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT32_T
-      f_cast: int({f_var}, C_INT32_t)
+      f_cast: int({f_var}, C_INT32_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -316,7 +316,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT64_T
-      f_cast: int({f_var}, C_INT64_t)
+      f_cast: int({f_var}, C_INT64_T)
       PY_format: L
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -344,7 +344,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT8_T
-      f_cast: int({f_var}, C_INT8_t)
+      f_cast: int({f_var}, C_INT8_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -514,7 +514,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT16_T
-      f_cast: int({f_var}, C_INT16_t)
+      f_cast: int({f_var}, C_INT16_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -542,7 +542,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT32_T
-      f_cast: int({f_var}, C_INT32_t)
+      f_cast: int({f_var}, C_INT32_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -570,7 +570,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT64_T
-      f_cast: int({f_var}, C_INT64_t)
+      f_cast: int({f_var}, C_INT64_T)
       PY_format: L
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
@@ -598,7 +598,7 @@ typemap:
       f_module:
         iso_c_binding:
         - C_INT8_T
-      f_cast: int({f_var}, C_INT8_t)
+      f_cast: int({f_var}, C_INT8_T)
       PY_format: i
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})

@@ -34,3 +34,29 @@ int returnBytesForIndexType(IndexType arg)
 {
     return sizeof(arg);
 }
+
+IndexType returnShapeSize(int ndims, const IndexType *shape)
+{
+    IndexType size = 1;
+    
+    for (int i=0; i<ndims; ++i) {
+        size = size * shape[i];
+    }
+    return size;
+}
+
+int returnBytesForIndexType2(IndexType2 arg)
+{
+    return sizeof(arg);
+}
+
+IndexType returnShapeSize2(int ndims, const IndexType2 *shape)
+{
+    IndexType2 size = 1;
+    
+    for (int i=0; i<ndims; ++i) {
+        size = size * shape[i];
+    }
+    return size;
+}
+

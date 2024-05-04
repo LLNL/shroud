@@ -212,30 +212,34 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
-                            "C_call_function": "typefunc(\targ)",
-                            "C_call_list": "arg",
+                            "C_call_function": "typefunc(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
                             "C_name": "TYP_typefunc",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
                             "F_C_name": "c_typefunc",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_rv_decl": "TYP_TypeID SHC_rv",
                             "c_type": "TYP_TypeID",
+                            "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "TypeID SHCXX_rv",
                             "cxx_type": "TypeID",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
-                            "C_call_function": "typefunc(\targ)",
-                            "C_call_list": "arg",
+                            "C_call_function": "typefunc(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
                             "C_name": "TYP_typefunc",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
@@ -248,17 +252,21 @@
                             "F_arguments": "arg",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_rv_decl": "TYP_TypeID SHC_rv",
                             "c_type": "TYP_TypeID",
+                            "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "TypeID SHCXX_rv",
                             "cxx_type": "TypeID",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "f_intent": "OUT",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
@@ -289,6 +297,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -296,16 +305,20 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -313,11 +326,14 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
@@ -330,16 +346,20 @@
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SH_arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -447,30 +467,34 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtc": {
-                            "C_call_function": "typefunc_wrap(\targ)",
-                            "C_call_list": "arg",
+                            "C_call_function": "typefunc_wrap(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
                             "C_name": "TYP_typefunc_wrap",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
                             "F_C_name": "c_typefunc_wrap",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_rv_decl": "TYP_TypeID SHC_rv",
                             "c_type": "TYP_TypeID",
+                            "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "TypeID SHCXX_rv",
                             "cxx_type": "TypeID",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_function_native_scalar"
                         },
                         "fmtf": {
-                            "C_call_function": "typefunc_wrap(\targ)",
-                            "C_call_list": "arg",
+                            "C_call_function": "typefunc_wrap(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
                             "C_name": "TYP_typefunc_wrap",
                             "C_prototype": "TYP_TypeID arg",
                             "C_return_type": "TYP_TypeID",
@@ -483,17 +507,21 @@
                             "F_arguments": "arg",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_rv_decl": "TYP_TypeID SHC_rv",
                             "c_type": "TYP_TypeID",
+                            "c_val": "static_cast<TYP_TypeID>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "TypeID SHCXX_rv",
                             "cxx_type": "TypeID",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "f_intent": "OUT",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
@@ -508,6 +536,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -515,16 +544,20 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_TypeID",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -532,11 +565,14 @@
                             "c_type": "TYP_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_arg",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "TypeID",
-                            "cxx_var": "arg",
+                            "cxx_val": "static_cast<TypeID>(arg)",
+                            "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
@@ -898,6 +934,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "TYP_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -905,6 +942,7 @@
                             "c_type": "TYP_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType SHCXX_arg",
                             "cxx_member": ".",
@@ -917,6 +955,7 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "TYP_IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -924,6 +963,7 @@
                             "c_type": "TYP_IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
                             "cxx_addr": "&",
                             "cxx_decl": "IndexType SHCXX_arg",
                             "cxx_member": ".",
@@ -951,6 +991,802 @@
                     "F_name_generic": "return_bytes_for_index_type",
                     "F_name_impl": "return_bytes_for_index_type",
                     "function_name": "returnBytesForIndexType"
+                }
+            },
+            {
+                "<FUNCTION>": "returnShapeSize  4 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnShapeSize",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "ndims",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": "1"
+                                    },
+                                    "name": "shape",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "IndexType"
+                    },
+                    "specifier": [
+                        "IndexType"
+                    ],
+                    "typemap_name": "IndexType"
+                },
+                "decl": "IndexType returnShapeSize(int ndims, const IndexType *shape+intent(in)+rank(1));",
+                "declgen": "IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))",
+                "name": "returnShapeSize",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "returnShapeSize(\tndims,\t SHCXX_shape)",
+                            "C_call_list": "ndims,\t SHCXX_shape",
+                            "C_name": "TYP_returnShapeSize",
+                            "C_prototype": "int ndims,\t const TYP_IndexType * shape",
+                            "C_return_type": "TYP_IndexType",
+                            "F_C_name": "c_return_shape_size",
+                            "c_abstract_decl": "TYP_IndexType",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "TYP_IndexType SHC_rv",
+                            "c_type": "TYP_IndexType",
+                            "c_val": "static_cast<TYP_IndexType>(SHCXX_rv)",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "IndexType SHCXX_rv",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnShapeSize(\tndims,\t SHCXX_shape)",
+                            "C_call_list": "ndims,\t SHCXX_shape",
+                            "C_name": "TYP_returnShapeSize",
+                            "C_prototype": "int ndims,\t const TYP_IndexType * shape",
+                            "C_return_type": "TYP_IndexType",
+                            "F_C_arguments": "ndims,\t shape",
+                            "F_C_call": "c_return_shape_size",
+                            "F_C_name": "return_shape_size",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "ndims,\t shape",
+                            "F_arguments": "ndims,\t shape",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "TYP_IndexType",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "TYP_IndexType SHC_rv",
+                            "c_type": "TYP_IndexType",
+                            "c_val": "static_cast<TYP_IndexType>(SHCXX_rv)",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "IndexType SHCXX_rv",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "SHCXX_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "index_type",
+                            "f_type": "integer(index_type)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "ndims": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "ndims",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ndims",
+                            "cxx_type": "int",
+                            "cxx_var": "ndims",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "ndims",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ndims",
+                            "cxx_type": "int",
+                            "cxx_var": "ndims",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "ndims",
+                            "fc_var": "ndims",
+                            "i_var": "ndims",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "shape": {
+                        "fmtc": {
+                            "c_abstract_decl": "const TYP_IndexType *",
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "TYP_IndexType",
+                            "c_var": "shape",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType *",
+                            "cxx_addr": "",
+                            "cxx_decl": "const IndexType * SHCXX_shape",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<IndexType *>\t(SHCXX_shape)",
+                            "cxx_type": "IndexType",
+                            "cxx_val": "static_cast<const IndexType *>(shape)",
+                            "cxx_var": "SHCXX_shape",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_in_native_*"
+                        },
+                        "fmtf": {
+                            "c_abstract_decl": "const TYP_IndexType *",
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "TYP_IndexType",
+                            "c_var": "shape",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType *",
+                            "cxx_addr": "",
+                            "cxx_decl": "const IndexType * SHCXX_shape",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<IndexType *>\t(SHCXX_shape)",
+                            "cxx_type": "IndexType",
+                            "cxx_val": "static_cast<const IndexType *>(shape)",
+                            "cxx_var": "SHCXX_shape",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "index_type",
+                            "f_type": "integer(index_type)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "shape",
+                            "fc_var": "shape",
+                            "i_dimension": "(*)",
+                            "i_var": "shape",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "size": "size(shape)",
+                            "stmt_name": "f_in_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnShapeSize",
+                    "F_name_api": "return_shape_size",
+                    "F_name_function": "return_shape_size",
+                    "F_name_generic": "return_shape_size",
+                    "F_name_impl": "return_shape_size",
+                    "function_name": "returnShapeSize"
+                }
+            },
+            {
+                "<FUNCTION>": "returnBytesForIndexType2  5 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnBytesForIndexType2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg",
+                                    "typemap_name": "IndexType2"
+                                },
+                                "specifier": [
+                                    "IndexType2"
+                                ],
+                                "typemap_name": "IndexType2"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int returnBytesForIndexType2(IndexType2 arg);",
+                "declgen": "int returnBytesForIndexType2(IndexType2 arg)",
+                "name": "returnBytesForIndexType2",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "returnBytesForIndexType2(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
+                            "C_name": "TYP_returnBytesForIndexType2",
+                            "C_prototype": "LOCAL_IndexType arg",
+                            "C_return_type": "int",
+                            "F_C_name": "c_return_bytes_for_index_type2",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnBytesForIndexType2(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
+                            "C_name": "TYP_returnBytesForIndexType2",
+                            "C_prototype": "LOCAL_IndexType arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_return_bytes_for_index_type2",
+                            "F_C_name": "return_bytes_for_index_type2",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "int",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "cxx_type": "int",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "arg": {
+                        "fmtc": {
+                            "c_abstract_decl": "LOCAL_IndexType",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "LOCAL_IndexType",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
+                            "cxx_addr": "&",
+                            "cxx_decl": "IndexType2 SHCXX_arg",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
+                            "cxx_type": "IndexType2",
+                            "cxx_val": "static_cast<IndexType2>(arg)",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_abstract_decl": "LOCAL_IndexType",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "LOCAL_IndexType",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
+                            "cxx_addr": "&",
+                            "cxx_decl": "IndexType2 SHCXX_arg",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg",
+                            "cxx_type": "IndexType2",
+                            "cxx_val": "static_cast<IndexType2>(arg)",
+                            "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_kind": "LOCAL_Index_Type",
+                            "f_type": "integer(LOCAL_Index_Type)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "arg",
+                            "fc_var": "arg",
+                            "i_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnBytesForIndexType2",
+                    "F_name_api": "return_bytes_for_index_type2",
+                    "F_name_function": "return_bytes_for_index_type2",
+                    "F_name_generic": "return_bytes_for_index_type2",
+                    "F_name_impl": "return_bytes_for_index_type2",
+                    "function_name": "returnBytesForIndexType2"
+                }
+            },
+            {
+                "<FUNCTION>": "returnShapeSize2  6 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnShapeSize2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "ndims",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": "1"
+                                    },
+                                    "name": "shape",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "IndexType2"
+                                },
+                                "specifier": [
+                                    "IndexType2"
+                                ],
+                                "typemap_name": "IndexType2"
+                            }
+                        ],
+                        "typemap_name": "IndexType2"
+                    },
+                    "specifier": [
+                        "IndexType2"
+                    ],
+                    "typemap_name": "IndexType2"
+                },
+                "decl": "IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape+intent(in)+rank(1));",
+                "declgen": "IndexType2 returnShapeSize2(int ndims, const IndexType2 * shape +intent(in)+rank(1))",
+                "name": "returnShapeSize2",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native_scalar"
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native_scalar"
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "c_in_native_*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "stmt": "f_in_native_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "ndims": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "shape": {
+                            "meta": {
+                                "intent": "in",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "returnShapeSize2(\tndims,\t SHCXX_shape)",
+                            "C_call_list": "ndims,\t SHCXX_shape",
+                            "C_name": "TYP_returnShapeSize2",
+                            "C_prototype": "int ndims,\t const LOCAL_IndexType * shape",
+                            "C_return_type": "LOCAL_IndexType",
+                            "F_C_name": "c_return_shape_size2",
+                            "c_abstract_decl": "LOCAL_IndexType",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "LOCAL_IndexType SHC_rv",
+                            "c_type": "LOCAL_IndexType",
+                            "c_val": "static_cast<LOCAL_IndexType>(SHCXX_rv)",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "IndexType2 SHCXX_rv",
+                            "cxx_type": "IndexType2",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_function_native_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "returnShapeSize2(\tndims,\t SHCXX_shape)",
+                            "C_call_list": "ndims,\t SHCXX_shape",
+                            "C_name": "TYP_returnShapeSize2",
+                            "C_prototype": "int ndims,\t const LOCAL_IndexType * shape",
+                            "C_return_type": "LOCAL_IndexType",
+                            "F_C_arguments": "ndims,\t shape",
+                            "F_C_call": "c_return_shape_size2",
+                            "F_C_name": "return_shape_size2",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "ndims,\t shape",
+                            "F_arguments": "ndims,\t shape",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "LOCAL_IndexType",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "LOCAL_IndexType SHC_rv",
+                            "c_type": "LOCAL_IndexType",
+                            "c_val": "static_cast<LOCAL_IndexType>(SHCXX_rv)",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "IndexType2 SHCXX_rv",
+                            "cxx_type": "IndexType2",
+                            "cxx_var": "SHCXX_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "LOCAL_Index_Type",
+                            "f_type": "integer(LOCAL_Index_Type)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "f_function_native_scalar"
+                        }
+                    },
+                    "ndims": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "ndims",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ndims",
+                            "cxx_type": "int",
+                            "cxx_var": "ndims",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_in_native_scalar"
+                        },
+                        "fmtf": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "ndims",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&ndims",
+                            "cxx_type": "int",
+                            "cxx_var": "ndims",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "ndims",
+                            "fc_var": "ndims",
+                            "i_var": "ndims",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_native_scalar"
+                        }
+                    },
+                    "shape": {
+                        "fmtc": {
+                            "c_abstract_decl": "const LOCAL_IndexType *",
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "LOCAL_IndexType",
+                            "c_var": "shape",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType2 *",
+                            "cxx_addr": "",
+                            "cxx_decl": "const IndexType2 * SHCXX_shape",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<IndexType2 *>\t(SHCXX_shape)",
+                            "cxx_type": "IndexType2",
+                            "cxx_val": "static_cast<const IndexType2 *>(shape)",
+                            "cxx_var": "SHCXX_shape",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt_name": "c_in_native_*"
+                        },
+                        "fmtf": {
+                            "c_abstract_decl": "const LOCAL_IndexType *",
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "LOCAL_IndexType",
+                            "c_var": "shape",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType2 *",
+                            "cxx_addr": "",
+                            "cxx_decl": "const IndexType2 * SHCXX_shape",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<IndexType2 *>\t(SHCXX_shape)",
+                            "cxx_type": "IndexType2",
+                            "cxx_val": "static_cast<const IndexType2 *>(shape)",
+                            "cxx_var": "SHCXX_shape",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_kind": "LOCAL_Index_Type",
+                            "f_type": "integer(LOCAL_Index_Type)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "shape",
+                            "fc_var": "shape",
+                            "i_dimension": "(*)",
+                            "i_var": "shape",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "size": "size(shape)",
+                            "stmt_name": "f_in_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnShapeSize2",
+                    "F_name_api": "return_shape_size2",
+                    "F_name_function": "return_shape_size2",
+                    "F_name_generic": "return_shape_size2",
+                    "F_name_impl": "return_shape_size2",
+                    "function_name": "returnShapeSize2"
                 }
             }
         ],
@@ -1078,10 +1914,6 @@
                 },
                 "name": "IndexType",
                 "options": {},
-                "user_fields": {
-                    "c_to_cxx": "static_cast<IndexType>({c_var})",
-                    "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})"
-                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -1105,6 +1937,58 @@
                     "F_name_typedef": "index_type",
                     "cxx_type": "IndexType",
                     "typedef_name": "IndexType"
+                }
+            },
+            {
+                "<TYPEDEF>": "IndexType2 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "IndexType2",
+                        "typemap_name": "int32_t"
+                    },
+                    "specifier": [
+                        "int32_t"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "IndexType2"
+                },
+                "f_kind": "C_INT32_T",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT32_T"
+                    ]
+                },
+                "name": "IndexType2",
+                "options": {},
+                "user_fmt": {
+                    "C_name_typedef": "LOCAL_IndexType",
+                    "F_name_typedef": "LOCAL_Index_Type"
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "IndexType2": {}
+                    },
+                    "f": {
+                        "IndexType2": {}
+                    },
+                    "share": {
+                        "IndexType2": {}
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "IndexType2",
+                    "C_name_typedef": "LOCAL_IndexType",
+                    "F_name_api": "index_type2",
+                    "F_name_typedef": "LOCAL_Index_Type",
+                    "cxx_type": "IndexType2",
+                    "typedef_name": "IndexType2"
                 }
             }
         ],
@@ -1132,15 +2016,15 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_to_cxx": "static_cast<IndexType>({c_var})",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TYP_IndexType",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<TYP_IndexType>({cxx_var})",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "IndexType",
-            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_cast": "int({f_var}, index_type)",
             "f_kind": "index_type",
             "f_module": {
                 "typedefs_mod": [
@@ -1153,6 +2037,48 @@
             "i_module": {
                 "typedefs_mod": [
                     "index_type"
+                ]
+            },
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT32_T",
+            "typedef": "int32_t",
+            "wrap_header": [
+                "wraptypedefs.h"
+            ]
+        },
+        "IndexType2": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT32",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "<stdint.h>"
+            ],
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
+            "c_type": "LOCAL_IndexType",
+            "cfi_type": "CFI_type_int32_t",
+            "cxx_header": [
+                "<cstdint>"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_type": "IndexType2",
+            "f_cast": "int({f_var}, LOCAL_Index_Type)",
+            "f_kind": "LOCAL_Index_Type",
+            "f_module": {
+                "typedefs_mod": [
+                    "LOCAL_Index_Type"
+                ]
+            },
+            "f_module_name": "typedefs_mod",
+            "f_type": "integer(LOCAL_Index_Type)",
+            "flat_name": "int32_t",
+            "i_module": {
+                "typedefs_mod": [
+                    "LOCAL_Index_Type"
                 ]
             },
             "sgroup": "native",
@@ -1202,10 +2128,12 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TYP_TypeID",
             "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
             "f_module": {
                 "typedefs_mod": [

@@ -44,12 +44,10 @@ declarations:
 - decl: void typestruct(Struct1Rename *arg1);
 
 ######################################################################
+#
+# Use the Shroud default names, TYP_IndexType and INDEX_TYPE, in the splicer
 
 - decl: typedef int32_t IndexType
-  fields:
-    c_to_cxx : static_cast<IndexType>({c_var})
-    cxx_to_c : static_cast<TYP_IndexType>({cxx_var})
-#    c_type   : SIDRE_TypeID
   splicer:
     c: |
       #if defined(USE_64BIT_INDEXTYPE)
@@ -68,6 +66,40 @@ declarations:
   options:
     wrap_python: False
 
+- decl: IndexType returnShapeSize(int ndims,
+                                  const IndexType *shape+intent(in)+rank(1));
+  options:
+    wrap_python: False
+
+#####
+# Define a typedef but change the names of the generated types
+
+- decl: typedef int32_t IndexType2
+  format:
+    F_name_typedef: LOCAL_Index_Type
+    C_name_typedef: LOCAL_IndexType
+  splicer:
+    c: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      typedef int64_t LOCAL_IndexType;
+      #else
+      typedef int32_t LOCAL_IndexType;
+      #endif
+    f: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      integer, parameter :: LOCAL_INDEX_TYPE = C_INT64_T
+      #else
+      integer, parameter :: LOCAL_INDEX_TYPE = C_INT32_T
+      #endif
+
+- decl: int returnBytesForIndexType2(IndexType2 arg);
+  options:
+    wrap_python: False
+
+- decl: IndexType2 returnShapeSize2(int ndims,
+                                    const IndexType2 *shape+intent(in)+rank(1));
+  options:
+    wrap_python: False
 
 ######################################################################
 

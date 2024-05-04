@@ -1419,6 +1419,10 @@ return 1;""",
                 # Needed to pass address of variable.
                 # Convert type like with enums or MPI_Comm.
                 # Helpful with debugging.
+                fmt_arg.c_abstract_decl = gen_arg_as_c(
+                    arg, name=False, add_params=False)
+                fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
+                    arg, name=False, add_params=False, as_ptr=True)
                 fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
                 fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
                     name=fmt_arg.cxx_var, add_params=False

@@ -22,6 +22,7 @@ need to be used in a different YAML file.
 """
 from __future__ import print_function
 
+from . import error
 from . import util
 
 # translation table to convert type name to flat name
@@ -73,6 +74,7 @@ class Typemap(object):
                     # Set from format.template_suffix in YAML for class.
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
         ("typedef", None),  # Initialize from existing type (name of type)
+                            # A Typemap instance
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
         ("ast", None),  # Abstract syntax tree (typedef)
@@ -151,6 +153,13 @@ class Typemap(object):
     # valid fields
     defaults = dict(_order)
 
+    deprecated = dict(
+        # v0.14
+        f_c_module="i_module",
+        f_c_module_line="i_module_line",
+        f_c_type="i_type",
+    )
+
     def __init__(self, name, **kw):
         """
         Args:
@@ -186,8 +195,15 @@ class Typemap(object):
                     setattr(self, key, value.split())
             elif key in self.defaults:
                 setattr(self, key, value)
+            elif key in self.deprecated:
+                setattr(self, self.deprecated[key], value)
+                cursor = error.get_cursor()
+                cursor.deprecated("Typemap %s: Replacing deprecated field '%s' with '%s'" %
+                                  (self.name, key, self.deprecated[key]))
             else:
-                raise RuntimeError("Unknown key for Typemap %s", key)
+                cursor = error.get_cursor()
+                cursor.warning("Typemap %s: Unknown key '%s'" % (
+                    self.name, key))
 
     def finalize(self):
         """Compute some fields based on other fields."""
@@ -503,7 +519,7 @@ def default_typemap():
             cxx_type="int8_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT8_t)",
+            f_cast="int({f_var}, C_INT8_T)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
             f_module_name="iso_c_binding",
@@ -526,7 +542,7 @@ def default_typemap():
             cxx_type="int16_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT16_t)",
+            f_cast="int({f_var}, C_INT16_T)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
             f_module_name="iso_c_binding",
@@ -549,7 +565,7 @@ def default_typemap():
             cxx_type="int32_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT32_t)",
+            f_cast="int({f_var}, C_INT32_T)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
             f_module_name="iso_c_binding",
@@ -572,7 +588,7 @@ def default_typemap():
             cxx_type="int64_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT64_t)",
+            f_cast="int({f_var}, C_INT64_T)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
             f_module_name="iso_c_binding",
@@ -596,7 +612,7 @@ def default_typemap():
             cxx_type="uint8_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT8_t)",
+            f_cast="int({f_var}, C_INT8_T)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
             f_module_name="iso_c_binding",
@@ -619,7 +635,7 @@ def default_typemap():
             cxx_type="uint16_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT16_t)",
+            f_cast="int({f_var}, C_INT16_T)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
             f_module_name="iso_c_binding",
@@ -642,7 +658,7 @@ def default_typemap():
             cxx_type="uint32_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT32_t)",
+            f_cast="int({f_var}, C_INT32_T)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
             f_module_name="iso_c_binding",
@@ -665,7 +681,7 @@ def default_typemap():
             cxx_type="uint64_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT64_t)",
+            f_cast="int({f_var}, C_INT64_T)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
             f_module_name="iso_c_binding",
@@ -1408,6 +1424,14 @@ def fill_typedef_typemap(node, fields={}):
 
     if ntypemap.base in ["shadow", "struct"]:
         ntypemap.f_type = "type({})".format(f_name)
+    elif ntypemap.base == "integer":
+        ntypemap.f_cast = "int({f_var}, %s)" % f_name
+        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
+        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
+    elif ntypemap.base == "real":
+        ntypemap.f_cast = "real({f_var}, %s)" % f_name
+        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
+        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
     
     # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules

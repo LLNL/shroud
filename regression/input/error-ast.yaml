@@ -68,14 +68,7 @@ declarations:
     wrap_python: False
     C_API_case: none
 
-- decl: void PYGoodFunction(void)
-  options:
-  options:
-    wrap_c: False
-    wrap_fortran: False
-    PY_array_arg: none
-    PY_struct_arg: none
-
+# return_this can only be set for class methods
 - decl: void *returnThis()
   options:
     wrap_python: False
@@ -85,8 +78,40 @@ declarations:
   options:
     wrap_python: False
   declarations:
+  # return_this must return a pointer to the class
   - decl: void *returnThis()
     return_this: True
+  # return_this must return a pointer to the class
   - decl: Class1 returnThis2()
     return_this: True
-  
+
+#####
+# Test declast.check_attrs
+
+- decl: void testattrs1()
+  bind:
+    f:
+      decl:  (+attr)
+- decl: void testattrs2()
+  bind:
+    f:
+      decl:  ( name, )
+- decl: void testattrs3()
+  bind:
+    f:
+      decl:  ( name
+- decl: void testattrs4()
+  bind:
+    f:
+      decl:  ( ) name
+
+####
+#
+
+- decl: typedef int64_t IndexType
+  fields:
+    # Unknown key for Typemap 'no_such_keyword'
+    no_such_keyword: True
+    f_c_module:
+      "--import--":
+      -  LIB_IndexType

@@ -326,6 +326,11 @@ debug
   be useful for debugging.
   Defaults to *false*.
 
+  If a function does not require a Fortran wrapper and can be called
+  via an interface only, the wrapper will still be generated but
+  within an ``#if 0`` / ``#endif`` block requiring the use of the C
+  preprocessor to compile the Fortran file.
+
 debug_index
   Print index number of function and relationships between 
   C and Fortran wrappers in the wrappers and json file.
@@ -364,6 +369,13 @@ F_CFI
   Use the C Fortran Interface provided by *Futher Interoperability with C*
   from Fortran 2018 (initially defined in TS29113 2012).
 
+F_create_bufferify_function
+  Defaults to *true* which will create a C wrapper if necessary for the
+  Fortran wrapper to call.
+  If a splicer is provided for the function, the Fortran wrapper may
+  not need to call any C wrapper. In this case setting to *false* will
+  prevent the C bufferify wrapper from being created.
+  
 F_create_generic
   Controls creation of a generic interface.  It defaults to *true* for
   most cases but will be set to *False* if a function is templated on
@@ -630,7 +642,7 @@ F_module_name_namespace_template
 F_name_function_template
     ``{F_name_api}{function_suffix}{template_suffix}``
 
-F_typedef_name_template
+F_name_typedef_template
     ``{F_name_scope}{F_name_api}``
     
 LUA_class_reg_template
@@ -956,7 +968,7 @@ F_name_api
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
-    **F_typedef_name_template**.
+    **F_name_typedef_template**.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -1358,6 +1370,12 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_abstract_decl
+  Includes the declaration and any declarators.
+  For example, ``double *``.
+
+.. used with cxx_to_c static_cast
+
 c_array_shape
 
 c_array_size
@@ -1419,6 +1437,12 @@ c_var_cdesc2
 c_var_extents
 
 c_var_lower
+
+cxx_abstract_decl
+  Includes the declaration and any declarators.
+  For example, ``double *``.
+
+.. used with c_to_cxx static_cast
 
 cxx_addr
     Syntax to take address of argument.
@@ -1581,6 +1605,22 @@ Result
 
 cxx_rv_decl
     Declaration of variable to hold return value for function.
+
+
+Typedef
+^^^^^^^
+
+C_name_typedef
+    Default from ``C_name_typedef_template``
+
+.. ``{C_prefix}{C_name_scope}{typedef_name}``
+
+F_name_typedef
+    Default from ``F_name_typedef_template``.
+
+.. ``{F_name_scope}{F_name_api}``
+   F_name_scope includes template instantiation - vector_int_
+
 
 
 Variable

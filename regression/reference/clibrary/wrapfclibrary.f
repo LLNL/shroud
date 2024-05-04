@@ -290,8 +290,8 @@ module clibrary_mod
     ! Function:  int ImpliedLen
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  const char * text
-    ! Statement: f_in_char_*
+    ! Argument:  const char * text +api(capi)
+    ! Statement: f_in_char_*_capi
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))
     ! Statement: f_in_native_scalar
@@ -315,8 +315,8 @@ module clibrary_mod
     ! Function:  int ImpliedLenTrim
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  const char * text
-    ! Statement: f_in_char_*
+    ! Argument:  const char * text +api(capi)
+    ! Statement: f_in_char_*_capi
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len_trim(text))
     ! Statement: f_in_native_scalar
@@ -788,15 +788,18 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const char * text +api(capi)
+    ! Statement: f_in_char_*_capi
     !>
     !! \brief Return the implied argument - text length
     !!
     !! Pass the Fortran length of the char argument directy to the C function.
-    !! No need for the bufferify version which will needlessly copy the string.
+    !! Use api(capi) to avoid needlessly copying the string.
     !<
     function implied_len(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
+        use iso_c_binding, only : C_BOOL, C_INT
         character(len=*), intent(IN) :: text
         integer(C_INT) :: SH_ltext
         logical(C_BOOL) :: SH_flag
@@ -804,23 +807,25 @@ contains
         ! splicer begin function.implied_len
         SH_ltext = len(text,kind=C_INT)
         SH_flag = .FALSE._C_BOOL
-        SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR, SH_ltext, &
-            SH_flag)
+        SHT_rv = c_implied_len(text, SH_ltext, SH_flag)
         ! splicer end function.implied_len
     end function implied_len
 
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const char * text +api(capi)
+    ! Statement: f_in_char_*_capi
     !>
     !! \brief Return the implied argument - text length
     !!
     !! Pass the Fortran length of the char argument directy to the C function.
-    !! No need for the bufferify version which will needlessly copy the string.
+    !! Use api(capi) to avoid needlessly copying the string.
     !<
     function implied_len_trim(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
+        use iso_c_binding, only : C_BOOL, C_INT
         character(len=*), intent(IN) :: text
         integer(C_INT) :: SH_ltext
         logical(C_BOOL) :: SH_flag
@@ -828,8 +833,7 @@ contains
         ! splicer begin function.implied_len_trim
         SH_ltext = len_trim(text,kind=C_INT)
         SH_flag = .TRUE._C_BOOL
-        SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR, SH_ltext, &
-            SH_flag)
+        SHT_rv = c_implied_len_trim(text, SH_ltext, SH_flag)
         ! splicer end function.implied_len_trim
     end function implied_len_trim
 

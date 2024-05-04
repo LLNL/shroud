@@ -32,6 +32,17 @@ declarations:
   C_error_pattern: C_invalid_name
   PY_error_pattern: PY_invalid_name
 
+- decl: bool nameIsValid(const std::string& name)
+   # The concept of a valid name is different for C++, C and Fortran
+   # The wrappers create a different implementation that the C++ function.
+  options:
+    F_create_bufferify_function: false
+  splicer:
+    c:
+    - "return name != NULL;"
+    f:
+    - 'SHT_rv = name .ne. " "'
+
 
 ######################################################################
 patterns:

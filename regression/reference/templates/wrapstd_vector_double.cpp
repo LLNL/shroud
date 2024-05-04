@@ -77,7 +77,9 @@ double * TEM_vector_double_at(TEM_vector_double * self,
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
         (self->addr);
     // splicer begin namespace.std.class.vector.method.at
-    double & SHC_rv = SH_this->at(n);
+    std::vector<double>::size_type SHCXX_n =
+        static_cast<std::vector<double>::size_type>(n);
+    double & SHC_rv = SH_this->at(SHCXX_n);
     return &SHC_rv;
     // splicer end namespace.std.class.vector.method.at
 }
@@ -95,7 +97,9 @@ double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
         (self->addr);
     // splicer begin namespace.std.class.vector.method.at_bufferify
-    double & SHC_rv = SH_this->at(n);
+    std::vector<double>::size_type SHCXX_n =
+        static_cast<std::vector<double>::size_type>(n);
+    double & SHC_rv = SH_this->at(SHCXX_n);
     return &SHC_rv;
     // splicer end namespace.std.class.vector.method.at_bufferify
 }

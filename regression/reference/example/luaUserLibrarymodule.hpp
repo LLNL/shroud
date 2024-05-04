@@ -12,6 +12,17 @@
 extern "C" {
 #endif
 #include "lua.h"
+
+// typedef SidreLength
+// splicer begin typedef.SidreLength
+typedef long AA_SidreLength;
+// splicer end typedef.SidreLength
+
+// typedef TypeID
+// splicer begin typedef.TypeID
+typedef int AA_TypeID;
+// splicer end typedef.TypeID
+
 // splicer begin class.ExClass1.C_declaration
 // splicer end class.ExClass1.C_declaration
 
@@ -20,6 +31,7 @@ typedef struct {
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } l_ExClass1_Type;
+
 // splicer begin class.ExClass2.C_declaration
 // splicer end class.ExClass2.C_declaration
 

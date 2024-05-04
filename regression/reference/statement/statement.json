@@ -215,6 +215,7 @@
                             "F_C_name": "c_get_name_error_pattern",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "c_abstract_decl": "const char *",
                             "c_char_len": "get_name_length()",
                             "c_const": "const ",
                             "c_rv_decl": "const char * SHC_rv",
@@ -222,6 +223,7 @@
                             "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -253,6 +255,7 @@
                             "F_arguments": "",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "const char *",
                             "c_char_len": "get_name_length()",
                             "c_const": "const ",
                             "c_helper_char_copy": "ShroudCharCopy",
@@ -260,6 +263,7 @@
                             "c_var": "SHC_rv",
                             "c_var_len": "SHT_rv_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -290,6 +294,198 @@
                     "F_name_generic": "get_name_error_pattern",
                     "F_name_impl": "get_name_error_pattern",
                     "function_name": "getNameErrorPattern"
+                }
+            },
+            {
+                "<FUNCTION>": "nameIsValid  2 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "nameIsValid",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            }
+                        ],
+                        "typemap_name": "bool"
+                    },
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool nameIsValid(const std::string& name)",
+                "declgen": "bool nameIsValid(const std::string & name)",
+                "helpers": {
+                    "c": [
+                        "char_len_trim"
+                    ]
+                },
+                "name": "nameIsValid",
+                "options": {
+                    "F_create_bufferify_function": false
+                },
+                "splicer": {
+                    "c": [
+                        "return name != NULL;"
+                    ],
+                    "f": [
+                        "SHT_rv = name .ne. \" \""
+                    ]
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_bool_scalar"
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string_&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_bool_scalar"
+                        },
+                        "name": {
+                            "meta": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string_&_buf"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "name": {
+                            "meta": {
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtc": {
+                            "C_call_function": "nameIsValid(\tSHCXX_name)",
+                            "C_call_list": "SHCXX_name",
+                            "C_name": "STMT_nameIsValid",
+                            "C_prototype": "const char * name",
+                            "C_return_type": "bool",
+                            "F_C_arguments": "name",
+                            "F_C_name": "c_name_is_valid",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_type": "bool",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_Bool",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHC_rv",
+                            "cxx_rv_decl": "bool SHC_rv",
+                            "cxx_type": "bool",
+                            "cxx_var": "SHC_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_BOOL",
+                            "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt_name": "c_function_bool_scalar"
+                        },
+                        "fmtf": {
+                            "F_C_call": "-F_C_name-",
+                            "F_arg_c_call": "name,\t SHT_name_len",
+                            "F_arguments": "name",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "f_intent": "OUT",
+                            "f_kind": "C_BOOL",
+                            "f_type": "logical",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt_name": "f_function_bool_scalar"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name",
+                            "i_var": "name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_string_&"
+                        },
+                        "fmtf": {
+                            "c_helper_char_len_trim": "ShroudCharLenTrim",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "name",
+                            "f_var_len": "SHT_name_len",
+                            "fc_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "f_in_string_&_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "nameIsValid",
+                    "F_name_api": "name_is_valid",
+                    "F_name_function": "name_is_valid",
+                    "F_name_generic": "name_is_valid",
+                    "F_name_impl": "name_is_valid",
+                    "function_name": "nameIsValid"
                 }
             }
         ],

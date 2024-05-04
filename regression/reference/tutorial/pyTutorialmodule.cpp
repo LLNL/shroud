@@ -520,7 +520,10 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
+    // post_declare
+    tutorial::TypeID SH_arg = static_cast<tutorial::TypeID>(arg);
+
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(SH_arg);
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);

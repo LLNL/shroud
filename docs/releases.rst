@@ -38,6 +38,14 @@ Changes to YAML input
   is now considered part of the Fortran wrapper processing.
   The *c_buf* label used with *fstatements* is now *f*.
 
+  Some uses of option *F_create_bufferify_function* are no longer needed.
+  Similar functionality by using the attribute *+api(capi)* to pass the
+  address of the string without any buffer arguments or ``NULL`` termination.
+  The C++ function needs some way to know how long the string string is.
+  Typically as another argument to the C++ function.
+
+  .. See clibrary.yaml ImpliedLen
+
 * Rename some fields in Statements to allow C and Fortran entries to exist
   in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
   This allows a single group to contains all the fields used for more complex
@@ -127,7 +135,16 @@ is now:
         f_call:
         -  "{F_result} = {F_C_call}({F_arg_c_call})"              
 
+* Likewise, some fields were renamed for Typemaps.
 
+===============   =============
+Old Name          New Name
+===============   =============
+f_c_module        i_module
+f_c_module_line   i_module_line
+f_c_type          i_type
+===============   =============
+           
 * Added format field *f_c_suffix*. Used in format fields
   *C_name_template* and *F_C_name_template* to allow Fortran wrapper
   *to call a C function with additional mangling such as
@@ -251,12 +268,22 @@ New Features
 .. Setting *deref* attribute on struct members will be used with the getter.
    Before only dimension was used.
 
+* Add format fields *F_name_typedef* and *C_name_typedef* to name a typedef
+  for Fortran or C.
+
 Fixed
 ^^^^^
 
 * Fixed the case of mixing default arguments with *fortran_generic*.
   The *fortran_generic* was restore arguments in the Fortran wrapper
   which were being trimmed by default arguments.
+
+* Define the typemap *f_cast* field for typedefs to use the
+  typedef name instead of the type name. This make the use of the
+  typedef in the Fortran wrapper explicit.
+
+  From example, ``tutorial.yaml`` declaration ``typedef int EnumTypeID``
+  changes from  ``int({f_var}, C_INT)`` to ``int({f_var}, enum_type_id)``.
 
 v0.13.0
 -------

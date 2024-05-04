@@ -43,6 +43,7 @@
             "F_blanknull": false,
             "F_capsule_data_type_template": "{C_prefix}SHROUD_capsule_data",
             "F_capsule_type_template": "{C_prefix}SHROUD_capsule",
+            "F_create_bufferify_function": true,
             "F_create_generic": true,
             "F_default_args": "generic",
             "F_derived_name_template": "{F_name_api}",
@@ -500,7 +501,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "int16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
+            "f_cast": "int({f_var}, C_INT16_T)",
             "f_kind": "C_INT16_T",
             "f_module": {
                 "iso_c_binding": [
@@ -531,7 +532,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "int32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_cast": "int({f_var}, C_INT32_T)",
             "f_kind": "C_INT32_T",
             "f_module": {
                 "iso_c_binding": [
@@ -562,7 +563,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "int64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
+            "f_cast": "int({f_var}, C_INT64_T)",
             "f_kind": "C_INT64_T",
             "f_module": {
                 "iso_c_binding": [
@@ -593,7 +594,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "int8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
+            "f_cast": "int({f_var}, C_INT8_T)",
             "f_kind": "C_INT8_T",
             "f_module": {
                 "iso_c_binding": [
@@ -765,7 +766,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "uint16_t",
-            "f_cast": "int({f_var}, C_INT16_t)",
+            "f_cast": "int({f_var}, C_INT16_T)",
             "f_kind": "C_INT16_T",
             "f_module": {
                 "iso_c_binding": [
@@ -796,7 +797,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "uint32_t",
-            "f_cast": "int({f_var}, C_INT32_t)",
+            "f_cast": "int({f_var}, C_INT32_T)",
             "f_kind": "C_INT32_T",
             "f_module": {
                 "iso_c_binding": [
@@ -827,7 +828,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "uint64_t",
-            "f_cast": "int({f_var}, C_INT64_t)",
+            "f_cast": "int({f_var}, C_INT64_T)",
             "f_kind": "C_INT64_T",
             "f_module": {
                 "iso_c_binding": [
@@ -858,7 +859,7 @@
                 "<cstdint>"
             ],
             "cxx_type": "uint8_t",
-            "f_cast": "int({f_var}, C_INT8_t)",
+            "f_cast": "int({f_var}, C_INT8_T)",
             "f_kind": "C_INT8_T",
             "f_module": {
                 "iso_c_binding": [

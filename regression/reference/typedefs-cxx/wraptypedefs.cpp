@@ -30,7 +30,9 @@ extern "C" {
 TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 {
     // splicer begin function.typefunc
-    TypeID SHC_rv = typefunc(arg);
+    TypeID SHCXX_arg = static_cast<TypeID>(arg);
+    TypeID SHCXX_rv = typefunc(SHCXX_arg);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.typefunc
 }
@@ -52,7 +54,9 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
 {
     // splicer begin function.typefunc_wrap
-    TypeID SHC_rv = typefunc_wrap(arg);
+    TypeID SHCXX_arg = static_cast<TypeID>(arg);
+    TypeID SHCXX_rv = typefunc_wrap(SHCXX_arg);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.typefunc_wrap
 }
@@ -89,5 +93,68 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
     // splicer end function.returnBytesForIndexType
 }
 // end TYP_returnBytesForIndexType
+
+// ----------------------------------------
+// Function:  IndexType returnShapeSize
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  int ndims
+// Statement: c_in_native_scalar
+// ----------------------------------------
+// Argument:  const IndexType * shape +intent(in)+rank(1)
+// Statement: c_in_native_*
+// start TYP_returnShapeSize
+TYP_IndexType TYP_returnShapeSize(int ndims,
+    const TYP_IndexType * shape)
+{
+    // splicer begin function.returnShapeSize
+    const IndexType * SHCXX_shape =
+        static_cast<const IndexType *>(shape);
+    IndexType SHCXX_rv = returnShapeSize(ndims, SHCXX_shape);
+    TYP_IndexType SHC_rv = static_cast<TYP_IndexType>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnShapeSize
+}
+// end TYP_returnShapeSize
+
+// ----------------------------------------
+// Function:  int returnBytesForIndexType2
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  IndexType2 arg
+// Statement: c_in_native_scalar
+// start TYP_returnBytesForIndexType2
+int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
+{
+    // splicer begin function.returnBytesForIndexType2
+    IndexType2 SHCXX_arg = static_cast<IndexType2>(arg);
+    int SHC_rv = returnBytesForIndexType2(SHCXX_arg);
+    return SHC_rv;
+    // splicer end function.returnBytesForIndexType2
+}
+// end TYP_returnBytesForIndexType2
+
+// ----------------------------------------
+// Function:  IndexType2 returnShapeSize2
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  int ndims
+// Statement: c_in_native_scalar
+// ----------------------------------------
+// Argument:  const IndexType2 * shape +intent(in)+rank(1)
+// Statement: c_in_native_*
+// start TYP_returnShapeSize2
+LOCAL_IndexType TYP_returnShapeSize2(int ndims,
+    const LOCAL_IndexType * shape)
+{
+    // splicer begin function.returnShapeSize2
+    const IndexType2 * SHCXX_shape =
+        static_cast<const IndexType2 *>(shape);
+    IndexType2 SHCXX_rv = returnShapeSize2(ndims, SHCXX_shape);
+    LOCAL_IndexType SHC_rv = static_cast<LOCAL_IndexType>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnShapeSize2
+}
+// end TYP_returnShapeSize2
 
 }  // extern "C"

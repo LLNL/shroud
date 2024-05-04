@@ -470,7 +470,7 @@ PY_ImpliedTextLen(
 // Function:  int ImpliedLen
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  const char * text
+// Argument:  const char * text +api(capi)
 // Statement: py_in_char_*
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
@@ -486,7 +486,7 @@ static char PY_ImpliedLen__doc__[] =
  * \brief Return the implied argument - text length
  *
  * Pass the Fortran length of the char argument directy to the C function.
- * No need for the bufferify version which will needlessly copy the string.
+ * Use api(capi) to avoid needlessly copying the string.
  */
 static PyObject *
 PY_ImpliedLen(
@@ -524,7 +524,7 @@ PY_ImpliedLen(
 // Function:  int ImpliedLenTrim
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  const char * text
+// Argument:  const char * text +api(capi)
 // Statement: py_in_char_*
 // ----------------------------------------
 // Argument:  int ltext +implied(len_trim(text))
@@ -540,7 +540,7 @@ static char PY_ImpliedLenTrim__doc__[] =
  * \brief Return the implied argument - text length
  *
  * Pass the Fortran length of the char argument directy to the C function.
- * No need for the bufferify version which will needlessly copy the string.
+ * Use api(capi) to avoid needlessly copying the string.
  */
 static PyObject *
 PY_ImpliedLenTrim(

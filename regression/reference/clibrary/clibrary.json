@@ -2707,6 +2707,9 @@
                             {
                                 "const": true,
                                 "declarator": {
+                                    "attrs": {
+                                        "api": "capi"
+                                    },
                                     "name": "text",
                                     "pointer": [
                                         {
@@ -2754,16 +2757,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text)), bool flag +implied(false))",
+                "decl": "int ImpliedLen(const char *text+api(capi), int ltext+implied(len(text)), bool flag+implied(false))",
+                "declgen": "int ImpliedLen(const char * text +api(capi), int ltext +implied(len(text)), bool flag +implied(false))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
-                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
+                    "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
                 },
                 "name": "ImpliedLen",
-                "options": {
-                    "F_create_bufferify_function": false
-                },
+                "options": {},
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -2792,10 +2793,10 @@
                         },
                         "text": {
                             "meta": {
-                                "ftrim_char_in": true,
+                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char_*_capi"
                         }
                     },
                     "py": {
@@ -2860,7 +2861,7 @@
                             "F_C_name": "c_implied_len",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
+                            "F_arg_c_call": "text,\t SH_ltext,\t SH_flag",
                             "F_arguments": "text",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
@@ -3018,7 +3019,7 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char_*_capi"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3060,6 +3061,9 @@
                             {
                                 "const": true,
                                 "declarator": {
+                                    "attrs": {
+                                        "api": "capi"
+                                    },
                                     "name": "text",
                                     "pointer": [
                                         {
@@ -3107,16 +3111,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text)), bool flag +implied(true))",
+                "decl": "int ImpliedLenTrim(const char *text+api(capi), int ltext+implied(len_trim(text)), bool flag+implied(true))",
+                "declgen": "int ImpliedLenTrim(const char * text +api(capi), int ltext +implied(len_trim(text)), bool flag +implied(true))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
-                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
+                    "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
                 },
                 "name": "ImpliedLenTrim",
-                "options": {
-                    "F_create_bufferify_function": false
-                },
+                "options": {},
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -3145,10 +3147,10 @@
                         },
                         "text": {
                             "meta": {
-                                "ftrim_char_in": true,
+                                "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char_*_capi"
                         }
                     },
                     "py": {
@@ -3213,7 +3215,7 @@
                             "F_C_name": "c_implied_len_trim",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
+                            "F_arg_c_call": "text,\t SH_ltext,\t SH_flag",
                             "F_arguments": "text",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
@@ -3371,7 +3373,7 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char_*_capi"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5283,7 +5285,7 @@
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "EnumTypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, enum_type_id)",
             "f_kind": "enum_type_id",
             "f_module": {
                 "clibrary_mod": [
@@ -5314,10 +5316,12 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
+            "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
             "f_module": {
                 "clibrary_mod": [

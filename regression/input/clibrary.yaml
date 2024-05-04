@@ -130,25 +130,21 @@ declarations:
   options:
     literalinclude: True
 
-- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
+- decl: int ImpliedLen(const char *text+api(capi), int ltext+implied(len(text)),
                        bool flag+implied(false))
-  options:
-    F_create_bufferify_function: false
   doxygen:
     brief: Return the implied argument - text length
     description: |
        Pass the Fortran length of the char argument directy to the C function.
-       No need for the bufferify version which will needlessly copy the string.
+       Use api(capi) to avoid needlessly copying the string.
 
-- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)),
+- decl: int ImpliedLenTrim(const char *text+api(capi), int ltext+implied(len_trim(text)),
                            bool flag+implied(true))
-  options:
-    F_create_bufferify_function: false
   doxygen:
     brief: Return the implied argument - text length
     description: |
        Pass the Fortran length of the char argument directy to the C function.
-       No need for the bufferify version which will needlessly copy the string.
+       Use api(capi) to avoid needlessly copying the string.
 
 - decl: bool ImpliedBoolTrue(bool flag+implied(true))
   doxygen:
