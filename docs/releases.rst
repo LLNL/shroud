@@ -268,6 +268,9 @@ New Features
 .. Setting *deref* attribute on struct members will be used with the getter.
    Before only dimension was used.
 
+* Add format fields *F_name_typedef* and *C_name_typedef* to name a typedef
+  for Fortran or C.
+
 Fixed
 ^^^^^
 
