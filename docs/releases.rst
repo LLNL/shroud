@@ -137,12 +137,13 @@ is now:
 
 * Likewise, some fields were renamed for Typemaps.
 
-=============   =============
-Old Name        New Name
-=============   =============
-f_c_module      i_module
-f_c_module_line i_module_line
-f_c_type        i_type
+===============   =============
+Old Name          New Name
+===============   =============
+f_c_module        i_module
+f_c_module_line   i_module_line
+f_c_type          i_type
+===============   =============
            
 * Added format field *f_c_suffix*. Used in format fields
   *C_name_template* and *F_C_name_template* to allow Fortran wrapper
