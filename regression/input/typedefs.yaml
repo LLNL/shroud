@@ -66,6 +66,11 @@ declarations:
   options:
     wrap_python: False
 
+- decl: IndexType returnShapeSize(int ndims,
+                                  const IndexType *shape+intent(in)+rank(1));
+  options:
+    wrap_python: False
+
 #####
 # Define a typedef but change the names of the generated types
 
@@ -91,6 +96,10 @@ declarations:
   options:
     wrap_python: False
 
+- decl: IndexType2 returnShapeSize2(int ndims,
+                                    const IndexType2 *shape+intent(in)+rank(1));
+  options:
+    wrap_python: False
 
 ######################################################################
 

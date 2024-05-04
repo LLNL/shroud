@@ -134,6 +134,30 @@ module typedefs_mod
     ! end return_bytes_for_index_type
 
     ! ----------------------------------------
+    ! Function:  IndexType returnShapeSize
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  int ndims
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const IndexType * shape +intent(in)+rank(1)
+    ! Statement: f_in_native_*
+    ! start return_shape_size
+    interface
+        function return_shape_size(ndims, shape) &
+                result(SHT_rv) &
+                bind(C, name="returnShapeSize")
+            use iso_c_binding, only : C_INT
+            import :: index_type
+            implicit none
+            integer(C_INT), value, intent(IN) :: ndims
+            integer(index_type), intent(IN) :: shape(*)
+            integer(index_type) :: SHT_rv
+        end function return_shape_size
+    end interface
+    ! end return_shape_size
+
+    ! ----------------------------------------
     ! Function:  int returnBytesForIndexType2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
@@ -152,6 +176,30 @@ module typedefs_mod
         end function return_bytes_for_index_type2
     end interface
     ! end return_bytes_for_index_type2
+
+    ! ----------------------------------------
+    ! Function:  IndexType2 returnShapeSize2
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  int ndims
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
+    ! Statement: f_in_native_*
+    ! start return_shape_size2
+    interface
+        function return_shape_size2(ndims, shape) &
+                result(SHT_rv) &
+                bind(C, name="returnShapeSize2")
+            use iso_c_binding, only : C_INT
+            import :: LOCAL_Index_Type
+            implicit none
+            integer(C_INT), value, intent(IN) :: ndims
+            integer(LOCAL_Index_Type), intent(IN) :: shape(*)
+            integer(LOCAL_Index_Type) :: SHT_rv
+        end function return_shape_size2
+    end interface
+    ! end return_shape_size2
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -246,6 +294,31 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
+    ! Function:  IndexType returnShapeSize
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  int ndims
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const IndexType * shape +intent(in)+rank(1)
+    ! Statement: f_in_native_*
+    ! start return_shape_size
+    function return_shape_size(ndims, shape) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: ndims
+        integer(index_type), intent(IN) :: shape(:)
+        integer(index_type) :: SHT_rv
+        ! splicer begin function.return_shape_size
+        SHT_rv = c_return_shape_size(ndims, shape)
+        ! splicer end function.return_shape_size
+    end function return_shape_size
+    ! end return_shape_size
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
     ! Function:  int returnBytesForIndexType2
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
@@ -262,6 +335,31 @@ contains
         ! splicer end function.return_bytes_for_index_type2
     end function return_bytes_for_index_type2
     ! end return_bytes_for_index_type2
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  IndexType2 returnShapeSize2
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  int ndims
+    ! Statement: f_in_native_scalar
+    ! ----------------------------------------
+    ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
+    ! Statement: f_in_native_*
+    ! start return_shape_size2
+    function return_shape_size2(ndims, shape) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: ndims
+        integer(LOCAL_Index_Type), intent(IN) :: shape(:)
+        integer(LOCAL_Index_Type) :: SHT_rv
+        ! splicer begin function.return_shape_size2
+        SHT_rv = c_return_shape_size2(ndims, shape)
+        ! splicer end function.return_shape_size2
+    end function return_shape_size2
+    ! end return_shape_size2
 #endif
 
     ! splicer begin additional_functions

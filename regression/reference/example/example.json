@@ -164,6 +164,7 @@
                                                     "stmt_name": "f_ctor_shadow_scalar_capptr"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_example_nested_ExClass1 *",
                                                     "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -413,6 +414,7 @@
                                                     "stmt_name": "f_ctor_shadow_scalar_capptr"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_example_nested_ExClass1 *",
                                                     "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -1112,6 +1114,7 @@
                                                     "stmt_name": "f_function_string_&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "const char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -1312,6 +1315,7 @@
                                                     "stmt_name": "f_function_string_&_buf_arg"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "const char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -2623,6 +2627,7 @@
                                                     "stmt_name": "f_ctor_shadow_scalar_capptr"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_example_nested_ExClass2 *",
                                                     "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -3030,6 +3035,7 @@
                                                     "stmt_name": "f_function_string_&_buf_copy"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "const char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -3243,6 +3249,7 @@
                                                     "stmt_name": "f_function_string_&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "const char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -3457,6 +3464,7 @@
                                                     "stmt_name": "f_function_string_&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -3669,6 +3677,7 @@
                                                     "stmt_name": "f_function_string_&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "char *",
                                                     "c_var": "SHCXX_rv.c_str()",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -4065,6 +4074,7 @@
                                                     "stmt_name": "f_function_shadow_*_capptr"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_example_nested_ExClass1 *",
                                                     "c_var": "static_cast<void *>(\tSHCXX_rv)",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -4143,6 +4153,7 @@
                                                     "c_member": "->",
                                                     "c_var": "\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")",
                                                     "c_var_len": "Lin",
+                                                    "cxx_abstract_decl": "const example::nested::ExClass1 *",
                                                     "cxx_member": "->",
                                                     "cxx_type": "example::nested::ExClass1",
                                                     "cxx_var": "in",
@@ -4642,6 +4653,7 @@
                                                     "stmt_name": "c_function_shadow_*_this"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_example_nested_ExClass2 *",
                                                     "c_var": "static_cast<void *>(\tSHCXX_rv)",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -4705,6 +4717,7 @@
                                                     "c_member": ".",
                                                     "c_var": "lua_tointeger(L, 2)",
                                                     "c_var_len": "Llen",
+                                                    "cxx_abstract_decl": "SidreLength",
                                                     "cxx_member": ".",
                                                     "cxx_type": "SidreLength",
                                                     "cxx_var": "len",
@@ -4713,11 +4726,13 @@
                                                     "stmt": "lua_in_native_scalar"
                                                 },
                                                 "fmtpy": {
+                                                    "c_abstract_decl": "SIDRE_SidreLength",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_type": "SIDRE_SidreLength",
                                                     "c_var": "len",
                                                     "ctor_expr": "len",
+                                                    "cxx_abstract_decl": "SidreLength",
                                                     "cxx_addr": "&",
                                                     "cxx_decl": "SidreLength SH_len",
                                                     "cxx_member": ".",
@@ -4767,6 +4782,7 @@
                                                     "c_member": ".",
                                                     "c_var": "lua_tointeger(L, 1)",
                                                     "c_var_len": "Ltype",
+                                                    "cxx_abstract_decl": "TypeID",
                                                     "cxx_member": ".",
                                                     "cxx_type": "TypeID",
                                                     "cxx_var": "type",
@@ -4775,11 +4791,13 @@
                                                     "stmt": "lua_in_native_scalar"
                                                 },
                                                 "fmtpy": {
+                                                    "c_abstract_decl": "AA_TypeID",
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_type": "AA_TypeID",
                                                     "c_var": "type",
                                                     "ctor_expr": "type",
+                                                    "cxx_abstract_decl": "TypeID",
                                                     "cxx_addr": "&",
                                                     "cxx_decl": "TypeID SH_type",
                                                     "cxx_member": ".",
@@ -5462,6 +5480,7 @@
                                                     "stmt_name": "f_function_native_scalar"
                                                 },
                                                 "fmtl": {
+                                                    "c_abstract_decl": "AA_TypeID",
                                                     "c_var": "static_cast<int>(SHCXX_rv)",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -9453,6 +9472,7 @@
                                             "c_member": ".",
                                             "c_var": "POP",
                                             "c_var_len": "Lcomm",
+                                            "cxx_abstract_decl": "MPI_Comm",
                                             "cxx_member": ".",
                                             "cxx_type": "MPI_Comm",
                                             "cxx_var": "comm",
@@ -9461,11 +9481,13 @@
                                             "stmt": "lua_in_unknown_scalar"
                                         },
                                         "fmtpy": {
+                                            "c_abstract_decl": "MPI_Fint",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_type": "MPI_Fint",
                                             "c_var": "comm",
                                             "ctor_expr": "comm",
+                                            "cxx_abstract_decl": "MPI_Comm",
                                             "cxx_addr": "&",
                                             "cxx_decl": "MPI_Comm SH_comm",
                                             "cxx_member": ".",
@@ -16527,10 +16549,10 @@
             "c_header": [
                 "sidre/SidreTypes.h"
             ],
-            "c_to_cxx": "static_cast<SidreLength>({c_var})",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "SIDRE_SidreLength",
             "cfi_type": "CFI_type_long",
-            "cxx_to_c": "static_cast<AA_SidreLength>({cxx_var})",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "SidreLength",
             "f_cast": "int({f_var}, sidre_length)",
             "f_kind": "sidre_length",

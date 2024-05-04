@@ -33,6 +33,7 @@ typedef int32_t IndexType;
 #endif
 
 int returnBytesForIndexType(IndexType arg);
+IndexType returnShapeSize(int ndims, const IndexType *shape);
 
 //----------------------------------------------------------------------
 
@@ -43,5 +44,6 @@ typedef int32_t IndexType2;
 #endif
 
 int returnBytesForIndexType2(IndexType arg);
+IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape);
 
 #endif // TYPEDEFS_HPP

@@ -1360,13 +1360,13 @@
             "c_header": [
                 "type_header.h"
             ],
-            "c_to_cxx": "static_cast<CustomType>({c_var})",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "LIB_CustomType",
             "cfi_type": "CFI_type_int",
             "cxx_header": [
                 "type_header.hpp"
             ],
-            "cxx_to_c": "static_cast<LIB_CustomType>({cxx_var})",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "CustomType",
             "f_cast": "int({f_var}, custom_type)",
             "f_kind": "custom_type",

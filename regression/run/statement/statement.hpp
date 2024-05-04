@@ -16,4 +16,6 @@ bool isNameValid(const std::string& name);
 int GetNameLength();
 const std::string& getNameErrorPattern();
 
+bool nameIsValid(const std::string& name);
+
 #endif // STATEMENT_HPP

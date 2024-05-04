@@ -840,6 +840,7 @@
                             "stmt_name": "f_function_string_scalar_cdesc_allocatable"
                         },
                         "fmtl": {
+                            "c_abstract_decl": "const char",
                             "c_var": "SHCXX_rv.c_str()",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -6535,6 +6536,7 @@
                             "stmt_name": "f_function_native_scalar"
                         },
                         "fmtl": {
+                            "c_abstract_decl": "TUT_TypeID",
                             "c_var": "static_cast<TUT_TypeID>(SHCXX_rv)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -6616,6 +6618,7 @@
                             "c_member": ".",
                             "c_var": "lua_tointeger(L, 1)",
                             "c_var_len": "Larg",
+                            "cxx_abstract_decl": "tutorial::TypeID",
                             "cxx_member": ".",
                             "cxx_type": "tutorial::TypeID",
                             "cxx_var": "arg",
@@ -6624,11 +6627,13 @@
                             "stmt": "lua_in_native_scalar"
                         },
                         "fmtpy": {
+                            "c_abstract_decl": "TUT_TypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TUT_TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
+                            "cxx_abstract_decl": "tutorial::TypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "tutorial::TypeID SH_arg",
                             "cxx_member": ".",
@@ -6833,6 +6838,7 @@
                             "stmt_name": "f_function_native_scalar"
                         },
                         "fmtl": {
+                            "c_abstract_decl": "TUT_EnumTypeID",
                             "c_var": "static_cast<int>(SHCXX_rv)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -6914,6 +6920,7 @@
                             "c_member": ".",
                             "c_var": "lua_tointeger(L, 1)",
                             "c_var_len": "Larg",
+                            "cxx_abstract_decl": "tutorial::EnumTypeID",
                             "cxx_member": ".",
                             "cxx_type": "tutorial::EnumTypeID",
                             "cxx_var": "arg",
@@ -6922,11 +6929,13 @@
                             "stmt": "lua_in_native_scalar"
                         },
                         "fmtpy": {
+                            "c_abstract_decl": "TUT_EnumTypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TUT_EnumTypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
+                            "cxx_abstract_decl": "tutorial::EnumTypeID",
                             "cxx_addr": "&",
                             "cxx_decl": "tutorial::EnumTypeID SH_arg",
                             "cxx_member": ".",
@@ -7131,6 +7140,7 @@
                             "stmt_name": "f_function_native_scalar"
                         },
                         "fmtl": {
+                            "c_abstract_decl": "int",
                             "c_var": "static_cast<int>(SHCXX_rv)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -7212,6 +7222,7 @@
                             "c_member": ".",
                             "c_var": "lua_tointeger(L, 1)",
                             "c_var_len": "Larg",
+                            "cxx_abstract_decl": "tutorial::Color",
                             "cxx_member": ".",
                             "cxx_type": "tutorial::Color",
                             "cxx_var": "arg",
@@ -7220,11 +7231,13 @@
                             "stmt": "lua_in_native_scalar"
                         },
                         "fmtpy": {
+                            "c_abstract_decl": "int",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "arg",
                             "ctor_expr": "arg",
+                            "cxx_abstract_decl": "tutorial::Color",
                             "cxx_addr": "&",
                             "cxx_decl": "tutorial::Color SH_arg",
                             "cxx_member": ".",
@@ -8209,6 +8222,7 @@
                             "stmt_name": "f_function_string_&_buf_copy"
                         },
                         "fmtl": {
+                            "c_abstract_decl": "const char *",
                             "c_var": "SHCXX_rv.c_str()",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -8510,10 +8524,10 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<tutorial::TypeID>({c_var})",
+            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TUT_TypeID",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<TUT_TypeID>({cxx_var})",
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "tutorial::TypeID",
             "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",

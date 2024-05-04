@@ -11,7 +11,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 from . import error
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_cxx, DeclStr
+from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr
 from . import statements
 from . import typemap
 from . import util
@@ -532,6 +532,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_result.cxx_member = "."
                 fmt_result.cxx_addr = "&"
             if result_typemap.cxx_to_c:
+                fmt_result.c_abstract_decl = gen_arg_as_c(
+                    ast, name=False, add_params=False)
                 fmt_result.c_var = wformat(
                     result_typemap.cxx_to_c, fmt_result
                 )  # if C++
@@ -622,6 +624,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 if self.language == "c":
                     pass
                 elif arg_typemap.c_to_cxx:
+#                    fmt_arg.c_abstract_decl = gen_arg_as_c(
+#                        arg, name=False, add_params=False)
+                    fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
+                        arg, name=False, add_params=False, as_ptr=True)
                     fmt_arg.c_var = fmt_arg.pop_expr
                     fmt_arg.pop_expr = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 LUA_index += 1

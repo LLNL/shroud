@@ -136,6 +136,10 @@ Expression to convert from C to C++.
 Defaults to *None* which implies *{c_var}*.
 i.e. no conversion required.
 
+For typedefs, this will use a ``static_cast`` to convert
+between equivelent types.
+
+See also *cxx_to_c*.
 
 c_templates
 ^^^^^^^^^^^
@@ -177,6 +181,11 @@ cxx_to_c
 Expression to convert from C++ to C.
 Defaults to *None* which implies *{cxx_var}*.
 i.e. no conversion required.
+
+Native POD types do not require any conversion.
+The ``std::string`` uses the ``c_str`` method to get a ``char *``.
+
+See also *c_to_cxx*.
 
 cxx_header
 ^^^^^^^^^^

@@ -197,6 +197,7 @@
                                     "stmt_name": "f_ctor_shadow_scalar_capptr"
                                 },
                                 "fmtl": {
+                                    "c_abstract_decl": "FOR_Class2 *",
                                     "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -538,6 +539,7 @@
                                     "c_member": "->",
                                     "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
                                     "c_var_len": "Larg",
+                                    "cxx_abstract_decl": "tutorial::Class1 *",
                                     "cxx_member": "->",
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "arg",
@@ -772,6 +774,7 @@
                                     "c_member": "->",
                                     "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
                                     "c_var_len": "Larg",
+                                    "cxx_abstract_decl": "forward::Class3 *",
                                     "cxx_member": "->",
                                     "cxx_type": "forward::Class3",
                                     "cxx_var": "arg",
