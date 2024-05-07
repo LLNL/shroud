@@ -216,8 +216,17 @@ class Typemap(object):
         ntypemap.update(self._to_dict())
         return ntypemap
 
-    def clone_as(self, name):
+    def copy_from_typemap(self, node):
+        """Copy default fields from node.
+        Used to update an existing Typemap.
         """
+        for key, defvalue in self.defaults.items():
+            value = getattr(node, key)
+            setattr(self, key, value)
+
+    def clone_as(self, name):
+        """Creates a new Typemap.
+
         Args:
             name - name of new instance.
         """
@@ -1006,12 +1015,15 @@ def fill_native_typemap_defaults(ntypemap, fmt):
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
-def fill_enum_typemap(node):
+def fill_enum_typemap(node, ftypemap):
     """Fill an enum typemap with wrapping fields.
     The typemap is created in declast.Enum.
 
 # XXX    Create a typemap similar to an int.
 # XXX    C++ enums are converted to a C int.
+
+    ftypemap is how the enum is represented in the Fortran wrapper.
+    Typically an 'int'.
 
     Args:
         node - EnumNode instance.
@@ -1022,14 +1034,13 @@ def fill_enum_typemap(node):
     if ntypemap is None:
         raise RuntimeError("Missing typemap on EnumNode")
     else:
+        ntypemap.copy_from_typemap(ftypemap)
+        ntypemap.is_enum = True
+        
         language = node.get_language()
 
-##        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
-##        ntypemap = inttypemap.clone_as(type_name)
-#        ntypemap.sgroup = "enum"
         if language == "c":
-#            ntypemap.c_type = "enum {}".format(fmt_enum.enum_name)
-            ntypemap.c_type = "int"
+            # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
                 "enum {namespace_scope}{enum_name}", fmt_enum
             )

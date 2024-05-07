@@ -1863,8 +1863,9 @@ class EnumNode(AstNode):
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"
+        ftypemap = self.symtab.lookup_typemap("int")
         self.typemap = ast.typemap
-        typemap.fill_enum_typemap(self)
+        typemap.fill_enum_typemap(self, ftypemap)
         # also 'enum class foo' will alter scope
 
 ######################################################################
