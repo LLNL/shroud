@@ -14,6 +14,20 @@ typedef int TypeID;
 TypeID typefunc(TypeID arg);
 TypeID typefunc_wrap(TypeID arg);
 
+//----------------------------------------------------------------------
+
+enum Color {
+  RED = 10,
+  BLUE,
+  WHITE
+};
+
+typedef enum Color iColor;
+
+iColor returnEnum(iColor in);
+
+//----------------------------------------------------------------------
+
 struct s_Struct1 {
     int i;
     double d;

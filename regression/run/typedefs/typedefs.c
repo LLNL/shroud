@@ -23,6 +23,15 @@ TypeID typefunc_wrap(TypeID arg)
     return arg + 1;
 }
 
+//----------------------------------------------------------------------
+
+iColor returnEnum(iColor in)
+{
+    return in;
+}
+
+//----------------------------------------------------------------------
+
 void typestruct(Struct1Rename *arg1)
 {
     arg1->d = arg1->i;

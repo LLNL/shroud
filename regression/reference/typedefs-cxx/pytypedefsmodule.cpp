@@ -75,6 +75,45 @@ PY_typefunc(
 }
 
 // ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: py_function_native_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: py_in_native_scalar
+static char PY_returnEnum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnEnum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.returnEnum
+    int in;
+    const char *SHT_kwlist[] = {
+        "in",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:returnEnum",
+        const_cast<char **>(SHT_kwlist), &in))
+        return nullptr;
+
+    // post_declare
+    iColor SH_in = static_cast<iColor>(in);
+
+    iColor SHCXX_rv = returnEnum(SH_in);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.returnEnum
+}
+
+// ----------------------------------------
 // Function:  void typestruct
 // Statement: py_default
 // ----------------------------------------
@@ -111,6 +150,8 @@ PY_typestruct(
 static PyMethodDef PY_methods[] = {
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
+{"returnEnum", (PyCFunction)PY_returnEnum, METH_VARARGS|METH_KEYWORDS,
+    PY_returnEnum__doc__},
 {"typestruct", (PyCFunction)PY_typestruct, METH_VARARGS|METH_KEYWORDS,
     PY_typestruct__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
@@ -256,6 +297,11 @@ inittypedefs(void)
     struct module_state *st = GETSTATE(m);
 
     import_array();
+
+    // enum Color
+    PyModule_AddIntConstant(m, "RED", RED);
+    PyModule_AddIntConstant(m, "BLUE", BLUE);
+    PyModule_AddIntConstant(m, "WHITE", WHITE);
 
     // Define PyArray_Descr for structs
     PY_Struct1Rename_array_descr = PY_Struct1Rename_create_array_descr();

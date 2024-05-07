@@ -20,6 +20,7 @@ program tester
   call init_fruit
 
   call test_alias
+  call test_enum
   call test_struct
   call test_indextype
   call test_indextype2
@@ -49,6 +50,17 @@ contains
     call assert_equals(rv, arg1 + 1, "typefunc_wrap")
 
   end subroutine test_alias
+
+  subroutine test_enum
+    integer(i_color) color1, color2
+
+    call set_case_name("test_enum")
+
+    color1 = red
+    color2 = return_enum(color1)
+    call assert_equals(color1, color2, "returnColor")
+
+  end subroutine test_enum
 
   subroutine test_struct
     type(struct1_rename) arg

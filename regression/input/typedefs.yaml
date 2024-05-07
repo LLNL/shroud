@@ -35,6 +35,23 @@ declarations:
       Use C_force_wrapper to ensure the typedef will be used
       in the C wrapper.
 
+#####
+# Pass an enum via a typedef
+# enum from enum.yaml
+
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+
+- decl: typedef enum Color iColor;
+
+- decl: iColor returnEnum(iColor in);
+
+#####
+
 # struct typedef
 - decl: struct s_Struct1 {
           int i;

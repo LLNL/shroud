@@ -5,6 +5,8 @@ C c TypeID typefunc(TypeID arg)
 C f TypeID typefunc(TypeID arg)
 C c TypeID typefunc_wrap(TypeID arg)
 C f TypeID typefunc_wrap(TypeID arg)
+C c iColor returnEnum(iColor in)
+C f iColor returnEnum(iColor in)
 C c void typestruct(Struct1Rename * arg1)
 C f void typestruct(Struct1Rename * arg1)
 C c int returnBytesForIndexType(IndexType arg)
@@ -19,10 +21,12 @@ Close wraptypedefs.h
 Close wraptypedefs.cpp
 class Struct1Rename
 typedef TypeID
+typedef iColor
 typedef IndexType
 typedef IndexType2
 Fortran TypeID typefunc(TypeID arg)
 Fortran TypeID typefunc_wrap(TypeID arg)
+Fortran iColor returnEnum(iColor in)
 Fortran void typestruct(Struct1Rename * arg1)
 Fortran int returnBytesForIndexType(IndexType arg)
 Fortran IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))
@@ -30,6 +34,7 @@ Fortran int returnBytesForIndexType2(IndexType2 arg)
 Fortran IndexType2 returnShapeSize2(int ndims, const IndexType2 * shape +intent(in)+rank(1))
 C-interface f TypeID typefunc(TypeID arg)
 C-interface f TypeID typefunc_wrap(TypeID arg)
+C-interface f iColor returnEnum(iColor in)
 C-interface f void typestruct(Struct1Rename * arg1)
 C-interface f int returnBytesForIndexType(IndexType arg)
 C-interface f IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))
@@ -39,6 +44,7 @@ Close wrapftypedefs.f
 Close utiltypedefs.cpp
 Close typestypedefs.h
 Python function TypeID typefunc(TypeID arg)
+Python function iColor returnEnum(iColor in)
 Python function void typestruct(Struct1Rename * arg1)
 Close pytypedefsmodule.cpp
 Close pytypedefsmodule.hpp

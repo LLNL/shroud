@@ -39,6 +39,13 @@ typedef int TYP_TypeID;
 // splicer end typedef.TypeID
 // end typedef TypeID
 
+// start typedef iColor
+// typedef iColor
+// splicer begin typedef.iColor
+typedef enum Color TYP_iColor;
+// splicer end typedef.iColor
+// end typedef iColor
+
 // start typedef Struct1Rename
 // typedef Struct1Rename
 // splicer begin typedef.Struct1Rename
@@ -68,6 +75,13 @@ typedef int32_t LOCAL_IndexType;
 // splicer end typedef.IndexType2
 // end typedef IndexType2
 
+//  Color
+enum TYP_Color {
+    TYP_RED = 10,
+    TYP_BLUE,
+    TYP_WHITE
+};
+
 #ifdef __cplusplus
 }
 #endif
@@ -92,6 +106,8 @@ extern "C" {
 TYP_TypeID TYP_typefunc(TYP_TypeID arg);
 
 TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
+
+TYP_iColor TYP_returnEnum(TYP_iColor in);
 
 void TYP_typestruct(TYP_Struct1Rename * arg1);
 

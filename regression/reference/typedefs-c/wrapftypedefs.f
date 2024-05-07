@@ -28,6 +28,13 @@ module typedefs_mod
     ! splicer end typedef.TypeID
     ! end typedef TypeID
 
+    ! start typedef iColor
+    ! typedef iColor
+    ! splicer begin typedef.iColor
+    integer, parameter :: i_color = C_INT
+    ! splicer end typedef.iColor
+    ! end typedef iColor
+
     ! start typedef IndexType
     ! typedef IndexType
     ! splicer begin typedef.IndexType
@@ -49,6 +56,11 @@ module typedefs_mod
 #endif
     ! splicer end typedef.IndexType2
     ! end typedef IndexType2
+
+    !  enum Color
+    integer(C_INT), parameter :: red = 10
+    integer(C_INT), parameter :: blue = 11
+    integer(C_INT), parameter :: white = 12
 
 
     ! start derived-type struct1_rename
@@ -95,6 +107,25 @@ module typedefs_mod
         end function typefunc_wrap
     end interface
     ! end typefunc_wrap
+
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: f_in_native_scalar
+    ! start return_enum
+    interface
+        function return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="returnEnum")
+            import :: i_color
+            implicit none
+            integer(i_color), value, intent(IN) :: in
+            integer(i_color) :: SHT_rv
+        end function return_enum
+    end interface
+    ! end return_enum
 
     ! ----------------------------------------
     ! Function:  void typestruct
@@ -250,6 +281,26 @@ contains
         ! splicer end function.typefunc_wrap
     end function typefunc_wrap
     ! end typefunc_wrap
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: f_in_native_scalar
+    ! start return_enum
+    function return_enum(in) &
+            result(SHT_rv)
+        integer(i_color), value, intent(IN) :: in
+        integer(i_color) :: SHT_rv
+        ! splicer begin function.return_enum
+        SHT_rv = c_return_enum(in)
+        ! splicer end function.return_enum
+    end function return_enum
+    ! end return_enum
 #endif
 
 #if 0

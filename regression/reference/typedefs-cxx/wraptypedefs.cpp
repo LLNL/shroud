@@ -63,6 +63,24 @@ TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
 // end TYP_typefunc_wrap
 
 // ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: c_in_native_scalar
+// start TYP_returnEnum
+TYP_iColor TYP_returnEnum(TYP_iColor in)
+{
+    // splicer begin function.returnEnum
+    iColor SHCXX_in = static_cast<iColor>(in);
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    TYP_iColor SHC_rv = static_cast<TYP_iColor>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum
+}
+// end TYP_returnEnum
+
+// ----------------------------------------
 // Function:  void typestruct
 // Statement: c_subroutine
 // ----------------------------------------
