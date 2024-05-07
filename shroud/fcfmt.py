@@ -163,7 +163,7 @@ class FillFormat(object):
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
         self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
 
-    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg, meta):
+    def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap  # XXX - look up vector
@@ -197,6 +197,9 @@ class FillFormat(object):
                 name=fmt_arg.cxx_var,
                 add_params=False,
                 as_ptr=True
+            )
+            append_format(
+                pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
             )
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)

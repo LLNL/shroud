@@ -1080,12 +1080,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
-            self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg, c_meta)
-            if fmt_arg.inlocal("cxx_val"):
-                append_format(
-                    pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
-                )
-            
+            self.fill_c_arg(wlang, cls, node, arg, arg_stmt, fmt_arg, c_meta, pre_call)
             self.c_helper.update(node.helpers.get("c", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented
