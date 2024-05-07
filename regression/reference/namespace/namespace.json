@@ -341,7 +341,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "NS_upper_Color",
+                            "C_enum_type": "NS_upper_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR"

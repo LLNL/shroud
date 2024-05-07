@@ -177,7 +177,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_Class1_Color",
+                            "C_enum_type": "SCO_Class1_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
@@ -271,7 +271,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_Class2_Color",
+                            "C_enum_type": "SCO_Class2_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
@@ -371,7 +371,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_Color",
+                    "C_enum_type": "SCO_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -432,7 +432,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_ns3_Color",
+                    "C_enum_type": "SCO_ns3_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -500,7 +500,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_ColorEnum",
+                    "C_enum_type": "SCO_ColorEnum",
                     "enum_lower": "colorenum",
                     "enum_name": "ColorEnum",
                     "enum_upper": "COLORENUM"
@@ -1076,7 +1076,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_ns1_Color",
+                            "C_enum_type": "SCO_ns1_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
@@ -1679,7 +1679,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_ns2_Color",
+                            "C_enum_type": "SCO_ns2_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR"

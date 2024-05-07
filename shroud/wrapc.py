@@ -817,13 +817,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         ast = node.ast
         output = self.enum_impl
 
-        node.eval_template("C_enum")
         fmt_enum = node.fmtdict
         fmtmembers = node._fmtmembers
 
         output.append("")
         append_format(output, "//  {namespace_scope}{enum_name}", fmt_enum)
-        append_format(output, "enum {C_enum} {{+", fmt_enum)
+        append_format(output, "enum {C_enum_type} {{+", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
             if member.value is not None:

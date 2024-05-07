@@ -1669,6 +1669,7 @@ f_to_c
     If this field is set, it will be used before f_cast.
     Defaults to *None*.
 
+    For example, to extract the *F_derived_member* before passing to C.
 
 
 Doxygen

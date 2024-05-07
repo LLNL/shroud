@@ -242,6 +242,9 @@ f_c_type          i_type
    Likewise, *patterns* used by *C_error_pattern* and local splicers
    use *buf* and *cfi* and will need to change.
 
+* Renamed format field *C_enum* to *C_enum_type*.
+  Likewise, option *C_enum_template* is now *C_enum_type_template*.
+
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a
   scalar was returned. The C wrapper will now return a pointer giving

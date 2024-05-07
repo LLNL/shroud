@@ -86,7 +86,7 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "CLA_Class1_DIRECTION",
+                            "C_enum_type": "CLA_Class1_DIRECTION",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",

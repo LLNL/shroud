@@ -69,7 +69,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "ENU_Color",
+                    "C_enum_type": "ENU_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -204,7 +204,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "ENU_val",
+                    "C_enum_type": "ENU_val",
                     "enum_lower": "val",
                     "enum_name": "val",
                     "enum_upper": "VAL"

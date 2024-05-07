@@ -357,6 +357,7 @@ A ``struct`` defined in another YAML file.
                 
 .. XXX - explain about generated type file.
    
+Also used to extract the *F_derived_member* before passing to C.
 
 Statements
 ----------

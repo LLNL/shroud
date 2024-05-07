@@ -559,7 +559,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
-            C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
+            C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
@@ -1800,6 +1800,8 @@ class EnumNode(AstNode):
             fmt_enum.namespace_scope = (
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
             )
+        if self.wrap.c:
+            self.eval_template("C_enum_type")
 
         # Format for each enum member.
         # Compute all names first since any expression must be converted to 

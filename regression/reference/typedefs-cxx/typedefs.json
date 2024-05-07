@@ -174,7 +174,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "TYP_Color",
+                    "C_enum_type": "TYP_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
