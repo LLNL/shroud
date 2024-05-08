@@ -109,6 +109,8 @@ TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
 
 TYP_iColor TYP_returnEnum(TYP_iColor in);
 
+TYP_iColor TYP_returnEnum_bufferify(int in);
+
 void TYP_typestruct(TYP_Struct1Rename * arg1);
 
 int TYP_returnBytesForIndexType(TYP_IndexType arg);

@@ -596,11 +596,11 @@
                         "fmtf": {
                             "C_call_function": "returnEnum(\tin)",
                             "C_call_list": "in",
-                            "C_name": "returnEnum",
+                            "C_name": "TYP_returnEnum_bufferify",
                             "C_prototype": "int in",
                             "C_return_type": "iColor",
                             "F_C_arguments": "in",
-                            "F_C_call": "c_return_enum",
+                            "F_C_call": "c_return_enum_bufferify",
                             "F_C_name": "return_enum",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
@@ -619,6 +619,7 @@
                             "cxx_rv_decl": "iColor SHC_rv",
                             "cxx_type": "iColor",
                             "cxx_var": "SHC_rv",
+                            "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "i_color",
                             "f_type": "integer(i_color)",
@@ -1791,6 +1792,7 @@
         "Color": "enum-Color",
         "Struct1Rename": "Struct1Rename",
         "enum-Color": "Color",
+        "iColor": "iColor",
         "s_Struct1": "struct-s_Struct1",
         "struct-s_Struct1": "s_Struct1"
     },
@@ -1821,6 +1823,7 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
+            "is_enum": true,
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT"
         },
@@ -2009,6 +2012,7 @@
                     "i_color"
                 ]
             },
+            "is_enum": true,
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "Color",

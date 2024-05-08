@@ -36,3 +36,19 @@ TypeID TYP_typefunc_wrap_bufferify(TypeID arg)
     // splicer end function.typefunc_wrap_bufferify
 }
 // end TYP_typefunc_wrap_bufferify
+
+// ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: f_in_native_scalar
+// start TYP_returnEnum_bufferify
+iColor TYP_returnEnum_bufferify(int in)
+{
+    // splicer begin function.returnEnum_bufferify
+    iColor SHC_rv = returnEnum(in);
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
+// end TYP_returnEnum_bufferify

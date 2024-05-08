@@ -25,4 +25,6 @@
 
 TypeID TYP_typefunc_wrap_bufferify(TypeID arg);
 
+iColor TYP_returnEnum_bufferify(int in);
+
 #endif  // WRAPTYPEDEFS_H

@@ -146,6 +146,7 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
         ("__line__", None),
     )
@@ -1472,7 +1473,7 @@ def return_shadow_types(typemaps):  # typemaps -> dict
             continue
         elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
             dct[key] = ntypemap
-        elif hasattr(ntypemap, "is_enum"):
+        elif ntypemap.is_enum:
             dct[key] = ntypemap
         elif hasattr(ntypemap, "is_typedef"):
             dct[key] = ntypemap

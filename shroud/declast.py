@@ -2049,7 +2049,7 @@ def symtab_to_typemap(node):
         # Global and Namespace do not have typemaps.
         if node.typemap.sgroup in ["shadow", "struct", "template", "enum"]:
             return node.typemap.name
-        elif hasattr(node.typemap, "is_enum"):
+        elif node.typemap.is_enum:
             return node.typemap.name
         else:
             return None

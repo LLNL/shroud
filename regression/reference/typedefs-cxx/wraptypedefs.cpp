@@ -81,6 +81,24 @@ TYP_iColor TYP_returnEnum(TYP_iColor in)
 // end TYP_returnEnum
 
 // ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: f_in_native_scalar
+// start TYP_returnEnum_bufferify
+TYP_iColor TYP_returnEnum_bufferify(int in)
+{
+    // splicer begin function.returnEnum_bufferify
+    iColor SHCXX_in = static_cast<iColor>(in);
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    TYP_iColor SHC_rv = static_cast<TYP_iColor>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
+// end TYP_returnEnum_bufferify
+
+// ----------------------------------------
 // Function:  void typestruct
 // Statement: c_subroutine
 // ----------------------------------------

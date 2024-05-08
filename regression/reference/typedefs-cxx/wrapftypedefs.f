@@ -110,6 +110,25 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  iColor returnEnum
+    ! Statement: c_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: c_in_native_scalar
+    ! start c_return_enum
+    interface
+        function c_return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnEnum")
+            import :: i_color
+            implicit none
+            integer(i_color), value, intent(IN) :: in
+            integer(i_color) :: SHT_rv
+        end function c_return_enum
+    end interface
+    ! end c_return_enum
+
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
@@ -118,7 +137,7 @@ module typedefs_mod
     interface
         function return_enum(in) &
                 result(SHT_rv) &
-                bind(C, name="TYP_returnEnum")
+                bind(C, name="TYP_returnEnum_bufferify")
             import :: i_color
             implicit none
             integer(i_color), value, intent(IN) :: in
@@ -297,7 +316,7 @@ contains
         integer(i_color), value, intent(IN) :: in
         integer(i_color) :: SHT_rv
         ! splicer begin function.return_enum
-        SHT_rv = c_return_enum(in)
+        SHT_rv = c_return_enum_bufferify(in)
         ! splicer end function.return_enum
     end function return_enum
     ! end return_enum

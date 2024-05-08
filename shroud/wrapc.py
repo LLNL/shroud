@@ -1077,7 +1077,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
 
-            if hasattr(arg_typemap, "is_enum"):
+            if arg_typemap.is_enum:
                 # enums use the ci_type field.
                 # make sure awrapper is written, and make sure a
                 # a C and C bufferify functions are created.
