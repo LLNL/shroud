@@ -201,6 +201,10 @@ class FillFormat(object):
             append_format(
                 pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
             )
+
+        # vector<int> -> int *
+        fmt_arg.c_proto_decl = gen_arg_as_c(arg)
+
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
         self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt, meta)

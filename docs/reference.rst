@@ -1387,6 +1387,9 @@ c_abstract_decl
 
 .. used with cxx_to_c static_cast
 
+c_proto_decl
+  Declaration used with function prototype.
+
 c_array_shape
 
 c_array_size

@@ -832,15 +832,13 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast, stmts_blk, proto_list):
+    def build_proto_list(self, fmt, stmts_blk, proto_list):
         """Find prototype based on c_arg_decl in fc_statements.
 
         Parameters
         ----------
         fmt - util.Scope
             Format dictionary (fmt_arg or fmt_result).
-        ast - declast.Declaration
-            Abstract Syntax Tree from parser.
         stmts_blk  - typemap.CStmts or util.Scope.
         proto_list - list
             Prototypes are appended to list.
@@ -852,8 +850,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Functions do not pass an argument by default.
             pass
         else:
-            # vector<int> -> int *
-            proto_list.append(gen_arg_as_c(ast))
+            proto_list.append(fmt.c_proto_decl)
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -1093,7 +1090,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if not hidden:
                 self.build_proto_list(
                     fmt_arg,
-                    arg,
                     arg_stmt,
                     proto_list,
                 )
@@ -1133,7 +1129,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.build_proto_list(
             fmt_result,
-            ast,
             result_stmt,
             proto_list,
         )
