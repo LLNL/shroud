@@ -177,6 +177,15 @@ class FillFormat(object):
         self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
+        # prototype:  vector<int> -> int *
+        if wlang == "f":
+#            converter = arg_typemap.ci_to_cxx or arg_typemap.c_to_cxx
+            converter = arg_typemap.c_to_cxx
+            fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang="ci_type")
+        else:
+            converter = arg_typemap.c_to_cxx
+            fmt_arg.c_proto_decl = gen_arg_as_c(arg)
+        
         if arg_stmt.cxx_local_var:
             # Explicit conversion must be in pre_call.
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
@@ -201,9 +210,6 @@ class FillFormat(object):
             append_format(
                 pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
             )
-
-        # vector<int> -> int *
-        fmt_arg.c_proto_decl = gen_arg_as_c(arg)
 
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
