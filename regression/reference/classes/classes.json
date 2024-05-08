@@ -87,6 +87,7 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "CLA_Class1_DIRECTION",
+                            "F_enum_kind": "C_INT",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",

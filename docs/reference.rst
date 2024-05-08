@@ -399,6 +399,10 @@ F_default_args
   require
       Require all arguments to be provided to the wrapper.
 
+F_enum_type
+  C type used to represent enumerations in the Fortran wrapper.
+  Defaults to ``int``.
+
 F_line_length
   Control length of output line for generated Fortran.
   This is not an exact line width, but is instead a hint of where
@@ -552,7 +556,7 @@ Option Templates
 Templates are set in options then expanded to assign to the format 
 dictionary to create names in the generated code.
 
-C_enum_template
+C_enum_type_template
     Name of enumeration in C wrapper.
     ``{C_prefix}{C_name_scope}{enum_name}``
 
@@ -1141,6 +1145,10 @@ C_enum_member
     C name for enum member.
     Computed from option *C_enum_member_template*.
 
+C_enum_type
+    The name of the generated C_enum when wrapping a C++ library.
+    Used with *C_enum_type_template*.
+
 C_value
     Evalued value of enumeration.
     If the enum does not have an explict value, it will not be present.
@@ -1158,6 +1166,9 @@ F_scope_name
 F_enum_member
     Fortran name for enum member.
     Computed from option *F_enum_member_template*.
+
+F_enum_kind
+    Fortran ``INTEGER`` kind used to represent enumerations.
 
 F_value
     Evalued value of enumeration.

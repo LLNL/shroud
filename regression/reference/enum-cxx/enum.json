@@ -70,6 +70,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "ENU_Color",
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -205,6 +206,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "ENU_val",
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "val",
                     "enum_name": "val",
                     "enum_upper": "VAL"

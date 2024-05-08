@@ -48,6 +48,7 @@
             "F_default_args": "generic",
             "F_derived_name_template": "{F_name_api}",
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_enum_type": "int",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",

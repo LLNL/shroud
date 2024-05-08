@@ -525,6 +525,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_blanknull=False,
             F_create_bufferify_function=True,
             F_default_args="generic",  # "generic", "optional", "require"
+            F_enum_type="int",
             F_flatten_namespace=False,
             F_line_length=72,
             F_force_wrapper=False,
@@ -1776,6 +1777,7 @@ class EnumNode(AstNode):
         #        self.default_format(parent, format, kwargs)
         self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
+        error.cursor.push_node(self)
 
         if not decl:
             raise RuntimeError("EnumNode missing decl")
@@ -1865,10 +1867,16 @@ class EnumNode(AstNode):
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"
-        ftypemap = self.symtab.lookup_typemap("int")
+        ftypemap = self.symtab.lookup_typemap(options.F_enum_type)
+        if ftypemap is None:
+            error.cursor.ast(self.linenumber,
+                             "Unknown type in F_enum_type: %s" % options.F_enum_type)
+            ftypemap = self.symtab.lookup_typemap("int")  # recover from error
+        fmt_enum.F_enum_kind = ftypemap.f_kind
         self.typemap = ast.typemap
         typemap.fill_enum_typemap(self, ftypemap)
         # also 'enum class foo' will alter scope
+        error.cursor.pop_node(self)
 
 ######################################################################
 

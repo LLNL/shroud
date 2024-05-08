@@ -178,6 +178,7 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_Class1_Color",
+                            "F_enum_kind": "C_INT",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
@@ -272,6 +273,7 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_Class2_Color",
+                            "F_enum_kind": "C_INT",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
@@ -372,6 +374,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_Color",
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -433,6 +436,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_ns3_Color",
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -501,6 +505,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_ColorEnum",
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "colorenum",
                     "enum_name": "ColorEnum",
                     "enum_upper": "COLORENUM"
@@ -1077,6 +1082,7 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_ns1_Color",
+                            "F_enum_kind": "C_INT",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR"
@@ -1680,6 +1686,7 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_ns2_Color",
+                            "F_enum_kind": "C_INT",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR"

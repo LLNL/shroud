@@ -68,6 +68,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
