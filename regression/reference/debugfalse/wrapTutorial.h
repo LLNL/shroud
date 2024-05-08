@@ -107,6 +107,8 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg);
 
 int TUT_colorfunc(int arg);
 
+int TUT_colorfunc_bufferify(int arg);
+
 void TUT_getMinMax(int * min, int * max);
 
 int TUT_callback1(int in, int ( * incr)(int));

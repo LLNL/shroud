@@ -30,6 +30,8 @@ extern "C" {
 
 int CLA_directionFunc(int arg);
 
+int CLA_directionFunc_bufferify(int arg);
+
 void CLA_passClassByValue(CLA_Class1 arg);
 
 int CLA_useclass(CLA_Class1 * arg);

@@ -46,7 +46,7 @@ module enum_mod
         ! Statement: f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
-                bind(C, name="convert_to_int")
+                bind(C, name="ENU_convert_to_int_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: in
@@ -73,7 +73,7 @@ contains
         integer(C_INT), value, intent(IN) :: in
         integer(C_INT) :: SHT_rv
         ! splicer begin function.convert_to_int
-        SHT_rv = c_convert_to_int(in)
+        SHT_rv = c_convert_to_int_bufferify(in)
         ! splicer end function.convert_to_int
     end function convert_to_int
 #endif

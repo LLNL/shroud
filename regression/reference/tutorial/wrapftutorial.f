@@ -605,6 +605,23 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
+    ! Statement: c_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  Color arg
+    ! Statement: c_in_native_scalar
+    interface
+        function c_colorfunc(arg) &
+                result(SHT_rv) &
+                bind(C, name="TUT_colorfunc")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function c_colorfunc
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Color colorfunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
@@ -612,7 +629,7 @@ module tutorial_mod
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
-                bind(C, name="TUT_colorfunc")
+                bind(C, name="TUT_colorfunc_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
@@ -1216,7 +1233,7 @@ contains
         integer(C_INT), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.colorfunc
-        SHT_rv = c_colorfunc(arg)
+        SHT_rv = c_colorfunc_bufferify(arg)
         ! splicer end function.colorfunc
     end function colorfunc
 #endif

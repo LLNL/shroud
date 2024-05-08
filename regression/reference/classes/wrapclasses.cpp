@@ -57,6 +57,24 @@ int CLA_directionFunc(int arg)
     // splicer end function.directionFunc
 }
 
+// ----------------------------------------
+// Function:  Class1::DIRECTION directionFunc
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  Class1::DIRECTION arg
+// Statement: f_in_native_scalar
+int CLA_directionFunc_bufferify(int arg)
+{
+    // splicer begin function.directionFunc_bufferify
+    classes::Class1::DIRECTION SHCXX_arg =
+        static_cast<classes::Class1::DIRECTION>(arg);
+    classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
+        SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.directionFunc_bufferify
+}
+
 /**
  * \brief Pass arguments to a function.
  *

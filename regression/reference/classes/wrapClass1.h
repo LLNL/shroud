@@ -69,6 +69,8 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 
 int CLA_Class1_directionFunc(CLA_Class1 * self, int arg);
 
+int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg);
+
 int CLA_Class1_get_m_flag(CLA_Class1 * self);
 
 int CLA_Class1_get_test(CLA_Class1 * self);

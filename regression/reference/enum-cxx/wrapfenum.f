@@ -40,13 +40,28 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  int convert_to_int
+        ! Statement: c_function_native_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color in
+        ! Statement: c_in_native_scalar
+        function c_convert_to_int(in) &
+                result(SHT_rv) &
+                bind(C, name="ENU_convert_to_int")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: in
+            integer(C_INT) :: SHT_rv
+        end function c_convert_to_int
+
+        ! ----------------------------------------
+        ! Function:  int convert_to_int
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
         ! Statement: f_in_native_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
-                bind(C, name="ENU_convert_to_int")
+                bind(C, name="ENU_convert_to_int_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: in
@@ -73,7 +88,7 @@ contains
         integer(C_INT), value, intent(IN) :: in
         integer(C_INT) :: SHT_rv
         ! splicer begin function.convert_to_int
-        SHT_rv = c_convert_to_int(in)
+        SHT_rv = c_convert_to_int_bufferify(in)
         ! splicer end function.convert_to_int
     end function convert_to_int
 #endif

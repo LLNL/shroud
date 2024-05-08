@@ -541,6 +541,22 @@ int TUT_colorfunc(int arg)
     // splicer end function.colorfunc
 }
 
+// ----------------------------------------
+// Function:  Color colorfunc
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  Color arg
+// Statement: f_in_native_scalar
+int TUT_colorfunc_bufferify(int arg)
+{
+    // splicer begin function.colorfunc_bufferify
+    tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
+    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.colorfunc_bufferify
+}
+
 /**
  * \brief Pass in reference to scalar
  *

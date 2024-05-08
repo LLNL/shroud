@@ -388,9 +388,20 @@ module tutorial_mod
     end interface
 
     interface
-        function colorfunc(arg) &
+        function c_colorfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_colorfunc")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function c_colorfunc
+    end interface
+
+    interface
+        function colorfunc(arg) &
+                result(SHT_rv) &
+                bind(C, name="TUT_colorfunc_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
