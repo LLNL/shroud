@@ -235,6 +235,26 @@ A C ``int`` is represented as:
 Fortran
 -------
 
+ci_type
+^^^^^^^
+
+The type of the argument in the C bufferify wrapper.
+Usually this is the same as *c_type*.
+
+One case where it is different is with enumerations.  In Fortran, the
+option *F_enum_type" determines the type of ``enum`` values in
+Fortran. This defaults to an ``int`` which is then cast to the correct
+type using *c_to_cxx*.
+
+.. ci_to_cxx does not exist since it would always be the samea as c_to_cxx.
+
+cxx_to_ci
+^^^^^^^^^
+
+Convert the C++ type into a Fortran interface type.
+Used to convert function return values.
+If unset, then *cxx_to_c* is used.
+
 i_module
 ^^^^^^^^
 

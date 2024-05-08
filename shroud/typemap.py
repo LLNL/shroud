@@ -81,6 +81,7 @@ class Typemap(object):
         ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
+        ("cxx_to_ci", None), # convert from C++ to Fortran interface (ex. enums)
         (
             "cxx_header",
             [],
@@ -93,6 +94,7 @@ class Typemap(object):
         ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
+        ("ci_type", None),   # C interface type
         ("c_return_code", None),
         ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
@@ -1036,10 +1038,13 @@ def fill_enum_typemap(node, ftypemap):
     else:
         ntypemap.copy_from_typemap(ftypemap)
         ntypemap.is_enum = True
+        ntypemap.ci_type = ftypemap.c_type
         
         language = node.get_language()
 
         if language == "c":
+#            ntypemap.c_type = "enum %s" % ntypemap.name
+            
             # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
                 "enum {namespace_scope}{enum_name}", fmt_enum
@@ -1047,15 +1052,22 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.c_to_cxx = util.wformat(
                 "(enum {namespace_scope}{enum_name}) {{c_var}}", fmt_enum
             )
-            ntypemap.cxx_to_c = "(int) {cxx_var}"
+            ntypemap.cxx_to_c = "(%s) {cxx_var}" % ntypemap.c_type
+
+            ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
+
         else:
+#            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
+
             ntypemap.cxx_type = util.wformat(
                 "{namespace_scope}{enum_name}", fmt_enum
             )
             ntypemap.c_to_cxx = util.wformat(
                 "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
             )
-            ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
+            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.c_type
+            
+            ntypemap.cxx_to_ci = "static_cast<%s>({cxx_var})" % ntypemap.ci_type
         ntypemap.compute_flat_name()
     return ntypemap
 
