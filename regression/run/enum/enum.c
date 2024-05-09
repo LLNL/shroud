@@ -19,3 +19,8 @@ enum Color returnEnum(enum Color in)
 {
     return in;
 }
+
+void returnEnumAsArg(enum Color *in)
+{
+    *in = BLUE;
+}

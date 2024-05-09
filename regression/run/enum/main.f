@@ -61,6 +61,9 @@ contains
 
     outcolor = return_enum(RED)
     call assert_true(RED == outcolor, "returnEnum")
+
+!    call return_enum_as_arg(outcolor)
+!    call assert_true(BLUE == outcolor, "returnEnumAsArg")
     
   end subroutine test_enum_functions
   
