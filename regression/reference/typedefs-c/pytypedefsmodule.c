@@ -99,7 +99,7 @@ PY_returnEnum(
         return NULL;
 
     // post_declare
-    iColor SH_in = (enum Color) in;
+    iColor SH_in = (iColor) in;
 
     iColor SHCXX_rv = returnEnum(SH_in);
 

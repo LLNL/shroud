@@ -1031,6 +1031,7 @@ def fill_enum_typemap(node, ftypemap):
     Args:
         node - EnumNode instance.
     """
+    # Using abstract_decl in the converters, maps to any typedef declaration.
     fmt_enum = node.fmtdict
 
     ntypemap = node.typemap
@@ -1058,6 +1059,7 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.c_to_cxx = util.wformat(
                 "(enum {namespace_scope}{enum_name}) {{c_var}}", fmt_enum
             )
+            ntypemap.c_to_cxx = "({cxx_abstract_decl}) {c_var}"
             ntypemap.cxx_to_c = "(%s) {cxx_var}" % ntypemap.c_type
 
             ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
@@ -1071,8 +1073,6 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.c_to_cxx = util.wformat(
                 "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
             )
-#            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.c_type
-#            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.cxx_type
             ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
             
             ntypemap.cxx_to_ci = "static_cast<%s>({cxx_var})" % ntypemap.ci_type

@@ -440,7 +440,7 @@
             "c_header": [
                 "wrapenum.h"
             ],
-            "c_to_cxx": "(enum Color) {c_var}",
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
             "c_type": "enum Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
@@ -476,7 +476,7 @@
             "c_header": [
                 "wrapenum.h"
             ],
-            "c_to_cxx": "(enum val) {c_var}",
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
             "c_type": "enum val",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",

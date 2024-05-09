@@ -666,7 +666,7 @@
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_in",
                             "cxx_type": "iColor",
-                            "cxx_val": "(enum Color) in",
+                            "cxx_val": "(iColor) in",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
                             "f_kind": "i_color",
@@ -692,7 +692,7 @@
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&in",
                             "cxx_type": "iColor",
-                            "cxx_val": "(enum Color) in",
+                            "cxx_val": "(iColor) in",
                             "cxx_var": "SH_in",
                             "data_var": "SHData_in",
                             "numpy_type": "NPY_INT",
@@ -1814,7 +1814,7 @@
             "c_header": [
                 "wraptypedefs.h"
             ],
-            "c_to_cxx": "(enum Color) {c_var}",
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
             "c_type": "enum Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
@@ -1998,7 +1998,7 @@
             "c_header": [
                 "wraptypedefs.h"
             ],
-            "c_to_cxx": "(enum Color) {c_var}",
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
             "c_type": "iColor",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
