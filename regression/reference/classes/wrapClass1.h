@@ -16,6 +16,7 @@
 #define WRAPCLASS1_H
 
 // typemap
+#include "wrapClass1.h"
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
@@ -67,7 +68,8 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc,
     CLA_SHROUD_capsule_data *SHT_rv_capsule);
 
-int CLA_Class1_directionFunc(CLA_Class1 * self, int arg);
+enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
+    enum CLA_Class1_DIRECTION arg);
 
 int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg);
 

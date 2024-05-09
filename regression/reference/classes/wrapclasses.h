@@ -15,6 +15,8 @@
 #ifndef WRAPCLASSES_H
 #define WRAPCLASSES_H
 
+// typemap
+#include "wrapClass1.h"
 // shroud
 #include "typesclasses.h"
 
@@ -28,7 +30,8 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int CLA_directionFunc(int arg);
+enum CLA_Class1_DIRECTION CLA_directionFunc(
+    enum CLA_Class1_DIRECTION arg);
 
 int CLA_directionFunc_bufferify(int arg);
 

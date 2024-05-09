@@ -2206,11 +2206,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapClass1.h"
+            ],
             "c_to_cxx": "static_cast<Class1::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Class1_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapClass1.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Class1::Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2268,11 +2274,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapClass2.h"
+            ],
             "c_to_cxx": "static_cast<Class2::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Class2_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapClass2.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Class2::Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2298,11 +2310,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope.h"
+            ],
             "c_to_cxx": "static_cast<Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapscope.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2328,11 +2346,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope.h"
+            ],
             "c_to_cxx": "static_cast<ColorEnum>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ColorEnum",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapscope.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ColorEnum",
             "f_cast": "int({f_var}, C_INT)",
@@ -2358,11 +2382,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns1.h"
+            ],
             "c_to_cxx": "static_cast<ns1::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns1_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapscope_ns1.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns1::Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2415,11 +2445,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns2.h"
+            ],
             "c_to_cxx": "static_cast<ns2::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns2_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapscope_ns2.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns2::Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2472,11 +2508,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns3.h"
+            ],
             "c_to_cxx": "static_cast<ns3::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns3_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapscope_ns3.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns3::Color",
             "f_cast": "int({f_var}, C_INT)",

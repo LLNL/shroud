@@ -300,7 +300,8 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // Argument:  DIRECTION arg
 // Statement: c_in_native_scalar
 // start CLA_Class1_directionFunc
-int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
+enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
+    enum CLA_Class1_DIRECTION arg)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -309,7 +310,8 @@ int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
         static_cast<classes::Class1::DIRECTION>(arg);
     classes::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
         SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    enum CLA_Class1_DIRECTION SHC_rv =
+        static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv);
     return SHC_rv;
     // splicer end class.Class1.method.directionFunc
 }

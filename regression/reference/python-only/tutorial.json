@@ -68,6 +68,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_enum_type": "TUT_Color",
                     "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
@@ -2108,20 +2109,16 @@
                     },
                     "arg": {
                         "fmtpy": {
-                            "c_abstract_decl": "TypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
-                            "cxx_abstract_decl": "tutorial::TypeID",
                             "cxx_addr": "&",
-                            "cxx_decl": "tutorial::TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "tutorial::TypeID",
-                            "cxx_val": "static_cast<tutorial::TypeID>(arg)",
-                            "cxx_var": "SH_arg",
+                            "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -2328,10 +2325,10 @@
                     },
                     "arg": {
                         "fmtpy": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum TUT_Color",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "enum TUT_Color",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_abstract_decl": "tutorial::Color",
@@ -2894,11 +2891,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapTutorial.h"
+            ],
             "c_to_cxx": "static_cast<tutorial::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum TUT_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapTutorial.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "tutorial::Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -2960,10 +2963,8 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "tutorial::TypeID",
             "f_cast": "int({f_var}, )",
             "f_kind": "",

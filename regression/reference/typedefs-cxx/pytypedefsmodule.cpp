@@ -62,10 +62,7 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_declare
-    TypeID SH_arg = static_cast<TypeID>(arg);
-
-    TypeID SHCXX_rv = typefunc(SH_arg);
+    TypeID SHCXX_rv = typefunc(arg);
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -102,7 +99,7 @@ PY_returnEnum(
         return nullptr;
 
     // post_declare
-    iColor SH_in = static_cast<iColor>(in);
+    iColor SH_in = static_cast<Color>(in);
 
     iColor SHCXX_rv = returnEnum(SH_in);
 

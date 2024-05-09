@@ -977,7 +977,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
-        self.fill_c_result(cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
+        self.fill_c_result(wlang, cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
 
         self.c_helper.update(node.helpers.get("c", {}))
         
@@ -1189,9 +1189,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             
             raw_call_code = ["{cxx_rv_decl} =\t {C_call_function};"]
             # Return result from function
-            if self.language == "c":
-                pass
-            elif result_stmt.c_return_type == "void":
+            converter, lang = fcfmt.find_result_converter(
+                wlang, self.language, result_typemap)
+            if result_stmt.c_return_type == "void":
                 # Do not return C++ result in C wrapper.
                 # Probably assigned to an argument.
                 pass
@@ -1200,15 +1200,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 # it may be passed in as an argument.
                 # For example, with struct and shadow.
                 pass
-            elif result_typemap.cxx_to_c is not None:
+            elif converter is not None:
                 # Make intermediate c_var value if a conversion
                 # is required i.e. not the same as cxx_var.
-                fmt_result.c_rv_decl = gen_arg_as_c(CXX_ast,
-                    name=fmt_result.c_var, add_params=False
-                )
-                fmt_result.c_val = wformat(
-                    result_typemap.cxx_to_c, fmt_result
-                )
+                fmt_result.c_rv_decl = gen_arg_as_c(
+                    CXX_ast, name=fmt_result.c_var, add_params=False, lang=lang)
+                fmt_result.c_val = wformat(converter, fmt_result)
                 append_format(
                     return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                 )

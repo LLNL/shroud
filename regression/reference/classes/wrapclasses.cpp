@@ -45,14 +45,16 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
 // Statement: c_in_native_scalar
-int CLA_directionFunc(int arg)
+enum CLA_Class1_DIRECTION CLA_directionFunc(
+    enum CLA_Class1_DIRECTION arg)
 {
     // splicer begin function.directionFunc
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
     classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
         SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    enum CLA_Class1_DIRECTION SHC_rv =
+        static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.directionFunc
 }

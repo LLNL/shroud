@@ -4351,8 +4351,8 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
-                                            "C_call_function": "SH_this->at(\tSHCXX_n)",
-                                            "C_call_list": "SHCXX_n",
+                                            "C_call_function": "SH_this->at(\tn)",
+                                            "C_call_list": "n",
                                             "C_name": "TEM_vector_int_at",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
@@ -4382,8 +4382,8 @@
                                             "stmt_name": "c_function_native_&"
                                         },
                                         "fmtf": {
-                                            "C_call_function": "SH_this->at(\tSHCXX_n)",
-                                            "C_call_list": "SHCXX_n",
+                                            "C_call_function": "SH_this->at(\tn)",
+                                            "C_call_list": "n",
                                             "C_name": "TEM_vector_int_at_bufferify",
                                             "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                             "C_return_type": "int *",
@@ -4440,7 +4440,6 @@
                                     },
                                     "n": {
                                         "fmtc": {
-                                            "c_abstract_decl": "TEM_vector_int_size_type",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -4449,14 +4448,11 @@
                                             "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
-                                            "cxx_abstract_decl": "std::vector<int>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<int>::size_type SHCXX_n",
                                             "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&SHCXX_n",
+                                            "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<int>::size_type",
-                                            "cxx_val": "static_cast<std::vector<int>::size_type>(n)",
-                                            "cxx_var": "SHCXX_n",
+                                            "cxx_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
@@ -4468,7 +4464,6 @@
                                             "stmt_name": "c_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "c_abstract_decl": "TEM_vector_int_size_type",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -4477,14 +4472,11 @@
                                             "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
-                                            "cxx_abstract_decl": "std::vector<int>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<int>::size_type SHCXX_n",
                                             "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&SHCXX_n",
+                                            "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<int>::size_type",
-                                            "cxx_val": "static_cast<std::vector<int>::size_type>(n)",
-                                            "cxx_var": "SHCXX_n",
+                                            "cxx_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_int_size_type",
                                             "f_type": "integer(vector_int_size_type)",
@@ -4497,20 +4489,16 @@
                                             "stmt_name": "f_in_native_scalar"
                                         },
                                         "fmtpy": {
-                                            "c_abstract_decl": "TEM_vector_int_size_type",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "ctor_expr": "n",
-                                            "cxx_abstract_decl": "std::vector<int>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<int>::size_type SH_n",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<int>::size_type",
-                                            "cxx_val": "static_cast<std::vector<int>::size_type>(n)",
-                                            "cxx_var": "SH_n",
+                                            "cxx_var": "n",
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
                                             "py_var": "SHPy_n",
@@ -5316,8 +5304,8 @@
                                 "zz_fmtargs": {
                                     "+result": {
                                         "fmtc": {
-                                            "C_call_function": "SH_this->at(\tSHCXX_n)",
-                                            "C_call_list": "SHCXX_n",
+                                            "C_call_function": "SH_this->at(\tn)",
+                                            "C_call_list": "n",
                                             "C_name": "TEM_vector_double_at",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",
@@ -5347,8 +5335,8 @@
                                             "stmt_name": "c_function_native_&"
                                         },
                                         "fmtf": {
-                                            "C_call_function": "SH_this->at(\tSHCXX_n)",
-                                            "C_call_list": "SHCXX_n",
+                                            "C_call_function": "SH_this->at(\tn)",
+                                            "C_call_list": "n",
                                             "C_name": "TEM_vector_double_at_bufferify",
                                             "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                             "C_return_type": "double *",
@@ -5405,7 +5393,6 @@
                                     },
                                     "n": {
                                         "fmtc": {
-                                            "c_abstract_decl": "TEM_vector_double_size_type",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -5414,14 +5401,11 @@
                                             "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
-                                            "cxx_abstract_decl": "std::vector<double>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<double>::size_type SHCXX_n",
                                             "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&SHCXX_n",
+                                            "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<double>::size_type",
-                                            "cxx_val": "static_cast<std::vector<double>::size_type>(n)",
-                                            "cxx_var": "SHCXX_n",
+                                            "cxx_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
@@ -5433,7 +5417,6 @@
                                             "stmt_name": "c_in_native_scalar"
                                         },
                                         "fmtf": {
-                                            "c_abstract_decl": "TEM_vector_double_size_type",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -5442,14 +5425,11 @@
                                             "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
-                                            "cxx_abstract_decl": "std::vector<double>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<double>::size_type SHCXX_n",
                                             "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&SHCXX_n",
+                                            "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<double>::size_type",
-                                            "cxx_val": "static_cast<std::vector<double>::size_type>(n)",
-                                            "cxx_var": "SHCXX_n",
+                                            "cxx_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "vector_double_size_type",
                                             "f_type": "integer(vector_double_size_type)",
@@ -5462,20 +5442,16 @@
                                             "stmt_name": "f_in_native_scalar"
                                         },
                                         "fmtpy": {
-                                            "c_abstract_decl": "TEM_vector_double_size_type",
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "ctor_expr": "n",
-                                            "cxx_abstract_decl": "std::vector<double>::size_type",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "std::vector<double>::size_type SH_n",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
                                             "cxx_type": "std::vector<double>::size_type",
-                                            "cxx_val": "static_cast<std::vector<double>::size_type>(n)",
-                                            "cxx_var": "SH_n",
+                                            "cxx_var": "n",
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
                                             "py_var": "SHPy_n",
@@ -5925,13 +5901,11 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TEM_vector_size_type",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "std::vector::size_type",
             "f_cast": "int({f_var}, vector_size_type)",
             "f_kind": "vector_size_type",
@@ -5965,13 +5939,11 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TEM_vector_double_size_type",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "std::vector<double>::size_type",
             "f_cast": "int({f_var}, vector_double_size_type)",
             "f_kind": "vector_double_size_type",
@@ -6005,13 +5977,11 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TEM_vector_int_size_type",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "std::vector<int>::size_type",
             "f_cast": "int({f_var}, vector_int_size_type)",
             "f_kind": "vector_int_size_type",

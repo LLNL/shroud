@@ -1653,8 +1653,8 @@
                         "zz_fmtargs": {
                             "+result": {
                                 "fmtc": {
-                                    "C_call_function": "SH_this->declare(\tflag,\t SHCXX_length)",
-                                    "C_call_list": "flag,\t SHCXX_length",
+                                    "C_call_function": "SH_this->declare(\tflag,\t length)",
+                                    "C_call_list": "flag,\t length",
                                     "C_name": "CXX_Class1_declare_1",
                                     "C_prototype": "CXX_Class1 * self,\t int flag,\t CXX_LengthType length",
                                     "C_return_type": "void",
@@ -1713,7 +1713,6 @@
                             },
                             "length": {
                                 "fmtc": {
-                                    "c_abstract_decl": "CXX_LengthType",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1722,14 +1721,11 @@
                                     "c_type": "CXX_LengthType",
                                     "c_var": "length",
                                     "cfi_type": "CFI_type_long",
-                                    "cxx_abstract_decl": "LengthType",
                                     "cxx_addr": "&",
-                                    "cxx_decl": "LengthType SHCXX_length",
                                     "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHCXX_length",
+                                    "cxx_nonconst_ptr": "&length",
                                     "cxx_type": "LengthType",
-                                    "cxx_val": "static_cast<LengthType>(length)",
-                                    "cxx_var": "SHCXX_length",
+                                    "cxx_var": "length",
                                     "f_intent": "IN",
                                     "f_kind": "length_type",
                                     "f_type": "integer(length_type)",
@@ -6932,10 +6928,8 @@
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "CXX_LengthType",
             "cfi_type": "CFI_type_long",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "LengthType",
             "f_cast": "int({f_var}, length_type)",
             "f_kind": "length_type",

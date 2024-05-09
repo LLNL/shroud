@@ -119,11 +119,7 @@ PY_at(
         const_cast<char **>(SHT_kwlist), &n))
         return nullptr;
 
-    // post_declare
-    std::vector<int>::size_type SH_n =
-        static_cast<std::vector<int>::size_type>(n);
-
-    int & SHCXX_rv = self->obj->at(SH_n);
+    int & SHCXX_rv = self->obj->at(n);
 
     // post_call
     SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT,

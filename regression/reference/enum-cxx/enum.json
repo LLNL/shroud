@@ -311,7 +311,7 @@
                             "C_call_function": "convert_to_int(\tSHCXX_in)",
                             "C_call_list": "SHCXX_in",
                             "C_name": "ENU_convert_to_int",
-                            "C_prototype": "int in",
+                            "C_prototype": "enum ENU_Color in",
                             "C_return_type": "int",
                             "F_C_arguments": "in",
                             "F_C_name": "c_convert_to_int",
@@ -395,13 +395,13 @@
                     },
                     "in": {
                         "fmtc": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum ENU_Color",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int in",
-                            "c_type": "int",
+                            "c_proto_decl": "enum ENU_Color in",
+                            "c_type": "enum ENU_Color",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
                             "cxx_abstract_decl": "Color",
@@ -423,13 +423,13 @@
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum ENU_Color",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
                             "c_proto_decl": "int in",
-                            "c_type": "int",
+                            "c_type": "enum ENU_Color",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
                             "cxx_abstract_decl": "Color",
@@ -452,10 +452,10 @@
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum ENU_Color",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "enum ENU_Color",
                             "c_var": "in",
                             "ctor_expr": "in",
                             "cxx_abstract_decl": "Color",
@@ -515,11 +515,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapenum.h"
+            ],
             "c_to_cxx": "static_cast<Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum ENU_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapenum.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -545,11 +551,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapenum.h"
+            ],
             "c_to_cxx": "static_cast<val>({c_var})",
-            "c_type": "int",
+            "c_type": "enum ENU_val",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapenum.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "val",
             "f_cast": "int({f_var}, C_INT)",

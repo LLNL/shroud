@@ -170,6 +170,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_enum_type": "TYP_Color",
                     "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
@@ -336,20 +337,16 @@
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
-                            "c_abstract_decl": "TypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
-                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
-                            "cxx_decl": "TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "TypeID",
-                            "cxx_val": "static_cast<TypeID>(arg)",
-                            "cxx_var": "SH_arg",
+                            "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -594,11 +591,11 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "returnEnum(\tin)",
-                            "C_call_list": "in",
+                            "C_call_function": "returnEnum(\tSHCXX_in)",
+                            "C_call_list": "SHCXX_in",
                             "C_name": "TYP_returnEnum_bufferify",
                             "C_prototype": "int in",
-                            "C_return_type": "iColor",
+                            "C_return_type": "int",
                             "F_C_arguments": "in",
                             "F_C_call": "c_return_enum_bufferify",
                             "F_C_name": "return_enum",
@@ -608,17 +605,21 @@
                             "F_arguments": "in",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "c_abstract_decl": "iColor",
                             "c_const": "",
                             "c_get_value": "",
+                            "c_rv_decl": "int SHC_rv",
                             "c_type": "iColor",
+                            "c_val": "(int) SHCXX_rv",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "iColor",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "iColor SHC_rv",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "iColor SHCXX_rv",
                             "cxx_type": "iColor",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
                             "f_kind": "i_color",
@@ -650,6 +651,7 @@
                     },
                     "in": {
                         "fmtf": {
+                            "c_abstract_decl": "iColor",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -658,11 +660,14 @@
                             "c_type": "iColor",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "iColor",
                             "cxx_addr": "&",
+                            "cxx_decl": "iColor SHCXX_in",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&in",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
                             "cxx_type": "iColor",
-                            "cxx_var": "in",
+                            "cxx_val": "(enum Color) in",
+                            "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
                             "f_kind": "i_color",
                             "f_type": "integer(i_color)",
@@ -687,7 +692,7 @@
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&in",
                             "cxx_type": "iColor",
-                            "cxx_val": "static_cast<iColor>(in)",
+                            "cxx_val": "(enum Color) in",
                             "cxx_var": "SH_in",
                             "data_var": "SHData_in",
                             "numpy_type": "NPY_INT",
@@ -1806,11 +1811,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
             "c_to_cxx": "(enum Color) {c_var}",
-            "c_type": "int",
+            "c_type": "enum Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "(int) {cxx_var}",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum Color) {cxx_var}",
             "cxx_to_ci": "(int) {cxx_var}",
             "cxx_type": "enum Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -1839,13 +1850,11 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "IndexType",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "IndexType",
             "f_cast": "int({f_var}, index_type)",
             "f_kind": "index_type",
@@ -1881,13 +1890,11 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "IndexType2",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "IndexType2",
             "f_cast": "int({f_var}, LOCAL_Index_Type)",
             "f_kind": "LOCAL_Index_Type",
@@ -1954,10 +1961,8 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "TypeID",
             "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
@@ -1990,11 +1995,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
+            "c_to_cxx": "(enum Color) {c_var}",
             "c_type": "iColor",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum Color) {cxx_var}",
             "cxx_to_ci": "(int) {cxx_var}",
             "cxx_type": "iColor",
             "f_cast": "int({f_var}, i_color)",

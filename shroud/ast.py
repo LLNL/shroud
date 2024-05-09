@@ -1767,6 +1767,7 @@ class EnumNode(AstNode):
         # From arguments
         self.parent = parent
         self.symtab = parent.symtab
+        self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
@@ -1802,8 +1803,7 @@ class EnumNode(AstNode):
             fmt_enum.namespace_scope = (
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
             )
-        if self.wrap.c:
-            self.eval_template("C_enum_type")
+        self.eval_template("C_enum_type")
 
         # Format for each enum member.
         # Compute all names first since any expression must be converted to 

@@ -105,7 +105,7 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg);
 
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg);
 
-int TUT_colorfunc(int arg);
+enum TUT_Color TUT_colorfunc(enum TUT_Color arg);
 
 int TUT_colorfunc_bufferify(int arg);
 

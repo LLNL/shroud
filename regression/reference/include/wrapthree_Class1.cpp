@@ -26,8 +26,7 @@ void LIB_three_Class1_method1(LIB_three_Class1 * self,
     LIB_CustomType arg1)
 {
     three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);
-    CustomType SHCXX_arg1 = static_cast<CustomType>(arg1);
-    SH_this->method1(SHCXX_arg1);
+    SH_this->method1(arg1);
 }
 
 }  // extern "C"

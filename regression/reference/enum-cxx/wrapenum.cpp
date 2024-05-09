@@ -26,7 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  enum Color in
 // Statement: c_in_native_scalar
-int ENU_convert_to_int(int in)
+int ENU_convert_to_int(enum ENU_Color in)
 {
     // splicer begin function.convert_to_int
     Color SHCXX_in = static_cast<Color>(in);

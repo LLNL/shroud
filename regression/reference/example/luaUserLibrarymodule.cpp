@@ -440,8 +440,7 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
         if (SH_itype1 == LUA_TNUMBER &&
             SH_itype2 == LUA_TNUMBER) {
             TypeID type = getTypeID(lua_tointeger(L, 1));
-            SidreLength len =
-                static_cast<SidreLength>(lua_tointeger(L, 2));
+            SidreLength len = lua_tointeger(L, 2);
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
             example::nested::ExClass2 * SHCXX_rv =

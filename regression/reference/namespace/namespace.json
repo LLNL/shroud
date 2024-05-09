@@ -974,11 +974,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapns_upper.h"
+            ],
             "c_to_cxx": "static_cast<upper::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum NS_upper_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "wrapns_upper.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "upper::Color",
             "f_cast": "int({f_var}, C_INT)",

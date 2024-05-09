@@ -6452,11 +6452,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "top.h"
+            ],
             "c_to_cxx": "static_cast<Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum TES_Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_header": [
+                "top.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Color",
             "f_cast": "int({f_var}, C_INT)",

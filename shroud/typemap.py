@@ -1040,11 +1040,16 @@ def fill_enum_typemap(node, ftypemap):
         ntypemap.copy_from_typemap(ftypemap)
         ntypemap.is_enum = True
         ntypemap.ci_type = ftypemap.c_type
+
+        # Include the generated C header file for the
+        # C declaration of the C++ enum.
+        ntypemap.c_header = [fmt_enum.C_header_filename]
+        ntypemap.cxx_header = [fmt_enum.C_header_filename]
         
         language = node.get_language()
 
         if language == "c":
-#            ntypemap.c_type = "enum %s" % ntypemap.name
+            ntypemap.c_type = "enum %s" % ntypemap.name
             
             # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
@@ -1058,7 +1063,7 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
 
         else:
-#            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
+            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
 
             ntypemap.cxx_type = util.wformat(
                 "{namespace_scope}{enum_name}", fmt_enum
@@ -1066,7 +1071,9 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.c_to_cxx = util.wformat(
                 "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
             )
-            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.c_type
+#            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.c_type
+#            ntypemap.cxx_to_c = "static_cast<%s>({cxx_var})" % ntypemap.cxx_type
+            ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
             
             ntypemap.cxx_to_ci = "static_cast<%s>({cxx_var})" % ntypemap.ci_type
         ntypemap.compute_flat_name()
@@ -1450,12 +1457,8 @@ def fill_typedef_typemap(node, fields={}):
         ntypemap.f_type = "type({})".format(f_name)
     elif ntypemap.base == "integer":
         ntypemap.f_cast = "int({f_var}, %s)" % f_name
-        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
-        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
     elif ntypemap.base == "real":
         ntypemap.f_cast = "real({f_var}, %s)" % f_name
-        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
-        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
     
     # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules

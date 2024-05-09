@@ -15,6 +15,8 @@
 #ifndef WRAPENUM_H
 #define WRAPENUM_H
 
+// typemap
+#include "wrapenum.h"
 // shroud
 #include "typesenum.h"
 

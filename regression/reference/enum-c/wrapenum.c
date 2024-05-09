@@ -24,7 +24,8 @@
 int ENU_convert_to_int_bufferify(int in)
 {
     // splicer begin function.convert_to_int_bufferify
-    int SHC_rv = convert_to_int(in);
+    enum Color SHCXX_in = (enum Color) in;
+    int SHC_rv = convert_to_int(SHCXX_in);
     return SHC_rv;
     // splicer end function.convert_to_int_bufferify
 }

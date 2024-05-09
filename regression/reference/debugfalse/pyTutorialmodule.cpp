@@ -390,8 +390,7 @@ PY_typefunc(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
-    tutorial::TypeID SH_arg = static_cast<tutorial::TypeID>(arg);
-    tutorial::TypeID SHCXX_rv = tutorial::typefunc(SH_arg);
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc

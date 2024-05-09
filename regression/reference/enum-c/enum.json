@@ -68,6 +68,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_enum_type": "ENU_Color",
                     "F_enum_kind": "C_INT",
                     "enum_lower": "color",
                     "enum_name": "Color",
@@ -202,6 +203,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_enum_type": "ENU_val",
                     "F_enum_kind": "C_INT",
                     "enum_lower": "val",
                     "enum_name": "val",
@@ -288,8 +290,8 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "convert_to_int(\tin)",
-                            "C_call_list": "in",
+                            "C_call_function": "convert_to_int(\tSHCXX_in)",
+                            "C_call_list": "SHCXX_in",
                             "C_name": "ENU_convert_to_int_bufferify",
                             "C_prototype": "int in",
                             "C_return_type": "int",
@@ -344,19 +346,23 @@
                     },
                     "in": {
                         "fmtf": {
+                            "c_abstract_decl": "enum Color",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
                             "c_proto_decl": "int in",
-                            "c_type": "int",
+                            "c_type": "enum Color",
                             "c_var": "in",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "enum Color",
                             "cxx_addr": "&",
+                            "cxx_decl": "enum Color SHCXX_in",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&in",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
                             "cxx_type": "enum Color",
-                            "cxx_var": "in",
+                            "cxx_val": "(enum Color) in",
+                            "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -369,10 +375,10 @@
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum Color",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "enum Color",
                             "c_var": "in",
                             "ctor_expr": "in",
                             "cxx_abstract_decl": "enum Color",
@@ -431,11 +437,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapenum.h"
+            ],
             "c_to_cxx": "(enum Color) {c_var}",
-            "c_type": "int",
+            "c_type": "enum Color",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "(int) {cxx_var}",
+            "cxx_header": [
+                "wrapenum.h"
+            ],
+            "cxx_to_c": "(enum Color) {cxx_var}",
             "cxx_to_ci": "(int) {cxx_var}",
             "cxx_type": "enum Color",
             "f_cast": "int({f_var}, C_INT)",
@@ -461,11 +473,17 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapenum.h"
+            ],
             "c_to_cxx": "(enum val) {c_var}",
-            "c_type": "int",
+            "c_type": "enum val",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
-            "cxx_to_c": "(int) {cxx_var}",
+            "cxx_header": [
+                "wrapenum.h"
+            ],
+            "cxx_to_c": "(enum val) {cxx_var}",
             "cxx_to_ci": "(int) {cxx_var}",
             "cxx_type": "enum val",
             "f_cast": "int({f_var}, C_INT)",

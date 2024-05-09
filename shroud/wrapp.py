@@ -40,6 +40,7 @@ import re
 from . import error
 from . import declast
 from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx
+from . import fcfmt
 from . import todict
 from . import statements
 from . import typemap
@@ -1399,6 +1400,7 @@ return 1;""",
             func_cursor.stmt = result_blk
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
+            converter, lang = fcfmt.find_arg_converter("f", self.language, arg_typemap)
             cxx_local_var = intent_blk.cxx_local_var
             if cxx_local_var:
                 # cxx_local_var is used when explicitly converting
@@ -1414,7 +1416,7 @@ return 1;""",
                     fmt_arg.cxx_member = "."
                 elif cxx_local_var == "pointer":
                     fmt_arg.cxx_member = "->"
-            elif intent != "out" and arg_typemap.c_to_cxx:
+            elif intent != "out" and converter:
                 # Make intermediate C++ variable
                 # Needed to pass address of variable.
                 # Convert type like with enums or MPI_Comm.
@@ -1427,7 +1429,7 @@ return 1;""",
                 fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
                     name=fmt_arg.cxx_var, add_params=False
                 )
-                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                fmt_arg.cxx_val = wformat(converter, fmt_arg)
                 append_format(post_declare_code,
                               "{cxx_decl} =\t {cxx_val};", fmt_arg)
                 pass_var = fmt_arg.cxx_var
@@ -1446,7 +1448,9 @@ return 1;""",
             else:
                 # Since all declarations are at the top, remove const
                 # since it will be assigned later.
-                junk = gen_arg_as_c(arg, remove_const=True)
+                # The type must be usable with ParseTupleAndKeywords.
+                # enums will use ci_type.
+                junk = gen_arg_as_c(arg, remove_const=True, lang=lang)
                 declare_code.append(junk + ";")
             
             if implied or hidden:

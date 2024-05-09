@@ -401,7 +401,6 @@ PP_declare_1(
         {
             // post_declare
             TypeID SH_type = getTypeID(type);
-            SidreLength SH_len = static_cast<SidreLength>(len);
 
             SHCXX_rv = self->obj->declare(SH_type);
             break;
@@ -410,9 +409,8 @@ PP_declare_1(
         {
             // post_declare
             TypeID SH_type = getTypeID(type);
-            SidreLength SH_len = static_cast<SidreLength>(len);
 
-            SHCXX_rv = self->obj->declare(SH_type, SH_len);
+            SHCXX_rv = self->obj->declare(SH_type, len);
             break;
         }
     default:

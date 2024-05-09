@@ -15,6 +15,8 @@
 #ifndef WRAPENUM_H
 #define WRAPENUM_H
 
+// typemap
+#include "wrapenum.h"
 // shroud
 #include "typesenum.h"
 
@@ -47,7 +49,7 @@ enum ENU_val {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int ENU_convert_to_int(int in);
+int ENU_convert_to_int(enum ENU_Color in);
 
 int ENU_convert_to_int_bufferify(int in);
 

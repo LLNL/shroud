@@ -44,10 +44,12 @@ TypeID TYP_typefunc_wrap_bufferify(TypeID arg)
 // Argument:  iColor in
 // Statement: f_in_native_scalar
 // start TYP_returnEnum_bufferify
-iColor TYP_returnEnum_bufferify(int in)
+int TYP_returnEnum_bufferify(int in)
 {
     // splicer begin function.returnEnum_bufferify
-    iColor SHC_rv = returnEnum(in);
+    iColor SHCXX_in = (enum Color) in;
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    int SHC_rv = (int) SHCXX_rv;
     return SHC_rv;
     // splicer end function.returnEnum_bufferify
 }

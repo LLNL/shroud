@@ -12,6 +12,7 @@ from __future__ import absolute_import
 
 from . import error
 from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr
+from . import fcfmt
 from . import statements
 from . import typemap
 from . import util
@@ -531,11 +532,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 #                fmt_result.c_member = '.'
                 fmt_result.cxx_member = "."
                 fmt_result.cxx_addr = "&"
-            if result_typemap.cxx_to_c:
+            converter, lang = fcfmt.find_result_converter("f", self.language, result_typemap)
+            if converter is not None:
                 fmt_result.c_abstract_decl = gen_arg_as_c(
                     ast, name=False, add_params=False)
                 fmt_result.c_var = wformat(
-                    result_typemap.cxx_to_c, fmt_result
+                    converter, fmt_result
                 )  # if C++
             else:
                 fmt_result.c_var = fmt_result.cxx_var
