@@ -50,4 +50,36 @@ int ENU_convert_to_int_bufferify(short in)
     // splicer end function.convert_to_int_bufferify
 }
 
+// ----------------------------------------
+// Function:  enum Color returnEnum
+// Statement: c_function_native_scalar
+// ----------------------------------------
+// Argument:  enum Color in
+// Statement: c_in_native_scalar
+enum ENU_Color ENU_returnEnum(enum ENU_Color in)
+{
+    // splicer begin function.returnEnum
+    Color SHCXX_in = static_cast<Color>(in);
+    Color SHCXX_rv = returnEnum(SHCXX_in);
+    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum
+}
+
+// ----------------------------------------
+// Function:  enum Color returnEnum
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  enum Color in
+// Statement: f_in_native_scalar
+short ENU_returnEnum_bufferify(short in)
+{
+    // splicer begin function.returnEnum_bufferify
+    Color SHCXX_in = static_cast<Color>(in);
+    Color SHCXX_rv = returnEnum(SHCXX_in);
+    short SHC_rv = static_cast<short>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
+
 }  // extern "C"

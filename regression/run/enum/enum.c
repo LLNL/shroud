@@ -14,3 +14,8 @@ int convert_to_int(enum Color in)
 {
     return in;
 }
+
+enum Color returnEnum(enum Color in)
+{
+    return in;
+}

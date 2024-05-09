@@ -52,11 +52,15 @@ contains
     ! test functions which pass enums
 
     integer icol
+    integer(C_SHORT) outcolor
 
     call set_case_name("test_enum_functions")
 
     icol = convert_to_int(RED)
     call assert_true(RED == icol, "convert_to_int")
+
+    outcolor = return_enum(RED)
+    call assert_true(RED == outcolor, "returnEnum")
     
   end subroutine test_enum_functions
   

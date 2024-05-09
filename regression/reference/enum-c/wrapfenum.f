@@ -52,6 +52,21 @@ module enum_mod
             integer(C_SHORT), value, intent(IN) :: in
             integer(C_INT) :: SHT_rv
         end function convert_to_int
+
+        ! ----------------------------------------
+        ! Function:  enum Color returnEnum
+        ! Statement: f_function_native_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color in
+        ! Statement: f_in_native_scalar
+        function return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="ENU_returnEnum_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), value, intent(IN) :: in
+            integer(C_SHORT) :: SHT_rv
+        end function return_enum
     end interface
 
     ! splicer begin additional_declarations
@@ -76,6 +91,25 @@ contains
         SHT_rv = c_convert_to_int_bufferify(in)
         ! splicer end function.convert_to_int
     end function convert_to_int
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  enum Color returnEnum
+    ! Statement: f_function_native_scalar
+    ! ----------------------------------------
+    ! Argument:  enum Color in
+    ! Statement: f_in_native_scalar
+    function return_enum(in) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), value, intent(IN) :: in
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.return_enum
+        SHT_rv = c_return_enum_bufferify(in)
+        ! splicer end function.return_enum
+    end function return_enum
 #endif
 
     ! splicer begin additional_functions

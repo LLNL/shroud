@@ -409,6 +409,206 @@
                     "PY_name_impl": "PY_convert_to_int",
                     "function_name": "convert_to_int"
                 }
+            },
+            {
+                "<FUNCTION>": "returnEnum  1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnEnum",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "in",
+                                    "typemap_name": "Color"
+                                },
+                                "specifier": [
+                                    "enum Color"
+                                ],
+                                "typemap_name": "Color"
+                            }
+                        ],
+                        "typemap_name": "Color"
+                    },
+                    "specifier": [
+                        "enum Color"
+                    ],
+                    "typemap_name": "Color"
+                },
+                "decl": "enum Color returnEnum(enum Color in)",
+                "declgen": "enum Color returnEnum(enum Color in)",
+                "name": "returnEnum",
+                "options": {},
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native_scalar"
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "returnEnum(\tSHCXX_in)",
+                            "C_call_list": "SHCXX_in",
+                            "C_name": "ENU_returnEnum_bufferify",
+                            "C_prototype": "short in",
+                            "C_return_type": "short",
+                            "F_C_arguments": "in",
+                            "F_C_call": "c_return_enum_bufferify",
+                            "F_C_name": "return_enum",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "in",
+                            "F_arguments": "in",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "enum Color",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "short SHC_rv",
+                            "c_type": "enum Color",
+                            "c_val": "(short) SHCXX_rv",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_short",
+                            "cxx_abstract_decl": "enum Color",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "enum Color SHCXX_rv",
+                            "cxx_type": "enum Color",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SHORT",
+                            "stmt_name": "f_function_native_scalar"
+                        },
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "enum Color",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_SHORT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_native_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
+                    "in": {
+                        "fmtf": {
+                            "c_abstract_decl": "enum Color",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_proto_decl": "short in",
+                            "c_type": "enum Color",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_short",
+                            "cxx_abstract_decl": "enum Color",
+                            "cxx_addr": "&",
+                            "cxx_decl": "enum Color SHCXX_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
+                            "cxx_type": "enum Color",
+                            "cxx_val": "(enum Color) in",
+                            "cxx_var": "SHCXX_in",
+                            "f_intent": "IN",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "in",
+                            "fc_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SHORT",
+                            "stmt_name": "f_in_native_scalar"
+                        },
+                        "fmtpy": {
+                            "c_abstract_decl": "enum Color",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "enum Color",
+                            "c_var": "in",
+                            "ctor_expr": "in",
+                            "cxx_abstract_decl": "enum Color",
+                            "cxx_addr": "&",
+                            "cxx_decl": "enum Color SH_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "enum Color",
+                            "cxx_val": "(enum Color) in",
+                            "cxx_var": "SH_in",
+                            "data_var": "SHData_in",
+                            "numpy_type": "NPY_SHORT",
+                            "py_var": "SHPy_in",
+                            "size_var": "SHSize_in",
+                            "stmt": "py_in_native_scalar",
+                            "value_var": "SHValue_in"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnEnum",
+                    "F_name_api": "return_enum",
+                    "F_name_function": "return_enum",
+                    "F_name_generic": "return_enum",
+                    "F_name_impl": "return_enum",
+                    "PY_name_impl": "PY_returnEnum",
+                    "function_name": "returnEnum"
+                }
             }
         ],
         "language": "c",

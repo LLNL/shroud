@@ -69,9 +69,50 @@ PY_convert_to_int(
     return (PyObject *) SHTPy_rv;
 // splicer end function.convert_to_int
 }
+
+// ----------------------------------------
+// Function:  enum Color returnEnum
+// Statement: py_function_native_scalar
+// ----------------------------------------
+// Argument:  enum Color in
+// Statement: py_in_native_scalar
+static char PY_returnEnum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnEnum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.returnEnum
+    short in;
+    char *SHT_kwlist[] = {
+        "in",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:returnEnum",
+        SHT_kwlist, &in))
+        return NULL;
+
+    // post_declare
+    enum Color SH_in = (enum Color) in;
+
+    enum Color SHCXX_rv = returnEnum(SH_in);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.returnEnum
+}
 static PyMethodDef PY_methods[] = {
 {"convert_to_int", (PyCFunction)PY_convert_to_int,
     METH_VARARGS|METH_KEYWORDS, PY_convert_to_int__doc__},
+{"returnEnum", (PyCFunction)PY_returnEnum, METH_VARARGS|METH_KEYWORDS,
+    PY_returnEnum__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

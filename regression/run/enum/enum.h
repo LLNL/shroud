@@ -27,6 +27,7 @@ enum val {
 };
 
 int convert_to_int(enum Color in);
+enum Color returnEnum(enum Color in);
 
 #endif // ENUM_H
 

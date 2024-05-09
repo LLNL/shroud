@@ -45,3 +45,4 @@ declarations:
 
 
 - decl: int convert_to_int(enum Color in)
+- decl: enum Color returnEnum(enum Color in)

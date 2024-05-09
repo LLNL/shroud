@@ -29,3 +29,19 @@ int ENU_convert_to_int_bufferify(short in)
     return SHC_rv;
     // splicer end function.convert_to_int_bufferify
 }
+
+// ----------------------------------------
+// Function:  enum Color returnEnum
+// Statement: f_function_native_scalar
+// ----------------------------------------
+// Argument:  enum Color in
+// Statement: f_in_native_scalar
+short ENU_returnEnum_bufferify(short in)
+{
+    // splicer begin function.returnEnum_bufferify
+    enum Color SHCXX_in = (enum Color) in;
+    enum Color SHCXX_rv = returnEnum(SHCXX_in);
+    short SHC_rv = (short) SHCXX_rv;
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
