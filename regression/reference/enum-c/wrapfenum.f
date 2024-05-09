@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module enum_mod
-    use iso_c_binding, only : C_INT
+    use iso_c_binding, only : C_INT, C_SHORT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -22,9 +22,9 @@ module enum_mod
     ! splicer end module_top
 
     !  enum Color
-    integer(C_INT), parameter :: red = 10
-    integer(C_INT), parameter :: blue = 11
-    integer(C_INT), parameter :: white = 12
+    integer(C_SHORT), parameter :: red = 10
+    integer(C_SHORT), parameter :: blue = 11
+    integer(C_SHORT), parameter :: white = 12
 
     !  enum val
     integer(C_INT), parameter :: a1 = 0
@@ -47,9 +47,9 @@ module enum_mod
         function convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_convert_to_int_bufferify")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_SHORT
             implicit none
-            integer(C_INT), value, intent(IN) :: in
+            integer(C_SHORT), value, intent(IN) :: in
             integer(C_INT) :: SHT_rv
         end function convert_to_int
     end interface
@@ -69,8 +69,8 @@ contains
     ! Statement: f_in_native_scalar
     function convert_to_int(in) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), value, intent(IN) :: in
+        use iso_c_binding, only : C_INT, C_SHORT
+        integer(C_SHORT), value, intent(IN) :: in
         integer(C_INT) :: SHT_rv
         ! splicer begin function.convert_to_int
         SHT_rv = c_convert_to_int_bufferify(in)

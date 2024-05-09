@@ -23,6 +23,6 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int ENU_convert_to_int_bufferify(int in);
+int ENU_convert_to_int_bufferify(short in);
 
 #endif  // WRAPENUM_H

@@ -51,7 +51,7 @@ enum ENU_val {
 
 int ENU_convert_to_int(enum ENU_Color in);
 
-int ENU_convert_to_int_bufferify(int in);
+int ENU_convert_to_int_bufferify(short in);
 
 #ifdef __cplusplus
 }

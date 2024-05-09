@@ -61,7 +61,9 @@
                 },
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
-                "options": {},
+                "options": {
+                    "F_enum_type": "short"
+                },
                 "typemap_name": "Color",
                 "wrap": {
                     "c": true,
@@ -70,7 +72,7 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "ENU_Color",
-                    "F_enum_kind": "C_INT",
+                    "F_enum_kind": "C_SHORT",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR"
@@ -342,7 +344,7 @@
                             "C_call_function": "convert_to_int(\tSHCXX_in)",
                             "C_call_list": "SHCXX_in",
                             "C_name": "ENU_convert_to_int_bufferify",
-                            "C_prototype": "int in",
+                            "C_prototype": "short in",
                             "C_return_type": "int",
                             "F_C_arguments": "in",
                             "F_C_call": "c_convert_to_int_bufferify",
@@ -403,7 +405,7 @@
                             "c_proto_decl": "enum ENU_Color in",
                             "c_type": "enum ENU_Color",
                             "c_var": "in",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_short",
                             "cxx_abstract_decl": "Color",
                             "cxx_addr": "&",
                             "cxx_decl": "Color SHCXX_in",
@@ -413,13 +415,13 @@
                             "cxx_val": "static_cast<Color>(in)",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "i_var": "in",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_SHORT",
                             "stmt_name": "c_in_native_scalar"
                         },
                         "fmtf": {
@@ -428,10 +430,10 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int in",
+                            "c_proto_decl": "short in",
                             "c_type": "enum ENU_Color",
                             "c_var": "in",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_short",
                             "cxx_abstract_decl": "Color",
                             "cxx_addr": "&",
                             "cxx_decl": "Color SHCXX_in",
@@ -441,14 +443,14 @@
                             "cxx_val": "static_cast<Color>(in)",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_SHORT",
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
@@ -467,7 +469,7 @@
                             "cxx_val": "static_cast<Color>(in)",
                             "cxx_var": "SH_in",
                             "data_var": "SHData_in",
-                            "numpy_type": "NPY_INT",
+                            "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
                             "stmt": "py_in_native_scalar",
@@ -510,9 +512,9 @@
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
+            "PYN_typenum": "NPY_SHORT",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
-            "PY_format": "i",
+            "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
             "c_header": [
@@ -520,27 +522,27 @@
             ],
             "c_to_cxx": "static_cast<Color>({c_var})",
             "c_type": "enum ENU_Color",
-            "cfi_type": "CFI_type_int",
-            "ci_type": "int",
+            "cfi_type": "CFI_type_short",
+            "ci_type": "short",
             "cxx_header": [
                 "wrapenum.h"
             ],
             "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
-            "cxx_to_ci": "static_cast<int>({cxx_var})",
+            "cxx_to_ci": "static_cast<short>({cxx_var})",
             "cxx_type": "Color",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
+            "f_cast": "int({f_var}, C_SHORT)",
+            "f_kind": "C_SHORT",
             "f_module": {
                 "iso_c_binding": [
-                    "C_INT"
+                    "C_SHORT"
                 ]
             },
             "f_module_name": "iso_c_binding",
-            "f_type": "integer(C_INT)",
-            "flat_name": "int",
+            "f_type": "integer(C_SHORT)",
+            "flat_name": "short",
             "is_enum": true,
             "sgroup": "native",
-            "sh_type": "SH_TYPE_INT"
+            "sh_type": "SH_TYPE_SHORT"
         },
         "val": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

@@ -21,7 +21,7 @@
 // ----------------------------------------
 // Argument:  enum Color in
 // Statement: f_in_native_scalar
-int ENU_convert_to_int_bufferify(int in)
+int ENU_convert_to_int_bufferify(short in)
 {
     // splicer begin function.convert_to_int_bufferify
     enum Color SHCXX_in = (enum Color) in;

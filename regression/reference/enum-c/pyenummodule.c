@@ -48,13 +48,13 @@ PY_convert_to_int(
   PyObject *kwds)
 {
 // splicer begin function.convert_to_int
-    int in;
+    short in;
     char *SHT_kwlist[] = {
         "in",
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:convert_to_int",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:convert_to_int",
         SHT_kwlist, &in))
         return NULL;
 

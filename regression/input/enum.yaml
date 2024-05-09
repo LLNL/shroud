@@ -28,6 +28,8 @@ declarations:
         BLUE,
         WHITE
       };
+  options:
+    F_enum_type: short
 
 - decl: |
       enum val {

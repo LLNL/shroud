@@ -492,7 +492,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 "integer({F_enum_kind}), parameter :: {F_enum_member} = {F_value}",
                 fmt_id,
             )
-        self.set_f_module(fileinfo.module_use, "iso_c_binding", "C_INT")
+        self.set_f_module(fileinfo.module_use, "iso_c_binding", fmt_enum.F_enum_kind)
 
     def write_object_get_set(self, node, fileinfo):
         """Write get and set methods for instance pointer.
