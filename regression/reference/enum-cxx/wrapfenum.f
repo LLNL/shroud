@@ -22,19 +22,21 @@ module enum_mod
     ! splicer end module_top
 
     !  enum Color
-    integer(C_SHORT), parameter :: red = 10
-    integer(C_SHORT), parameter :: blue = 11
-    integer(C_SHORT), parameter :: white = 12
+    integer, parameter :: color = C_SHORT
+    integer(color), parameter :: red = 10
+    integer(color), parameter :: blue = 11
+    integer(color), parameter :: white = 12
 
     !  enum val
-    integer(C_INT), parameter :: a1 = 0
-    integer(C_INT), parameter :: b1 = 3
-    integer(C_INT), parameter :: c1 = 4
-    integer(C_INT), parameter :: d1 = b1-a1
-    integer(C_INT), parameter :: e1 = d1
-    integer(C_INT), parameter :: f1 = d1+1
-    integer(C_INT), parameter :: g1 = d1+2
-    integer(C_INT), parameter :: h1 = 100
+    integer, parameter :: val = C_INT
+    integer(val), parameter :: a1 = 0
+    integer(val), parameter :: b1 = 3
+    integer(val), parameter :: c1 = 4
+    integer(val), parameter :: d1 = b1-a1
+    integer(val), parameter :: e1 = d1
+    integer(val), parameter :: f1 = d1+1
+    integer(val), parameter :: g1 = d1+2
+    integer(val), parameter :: h1 = 100
 
     interface
 

@@ -72,10 +72,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "ENU_Color",
+                    "C_name_api": "Color",
                     "F_enum_kind": "C_SHORT",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             },
             {
@@ -208,10 +209,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "ENU_val",
+                    "C_name_api": "val",
                     "F_enum_kind": "C_INT",
-                    "enum_lower": "val",
-                    "enum_name": "val",
-                    "enum_upper": "VAL"
+                    "F_name_api": "val",
+                    "F_name_enum": "val",
+                    "enum_name": "val"
                 }
             }
         ],

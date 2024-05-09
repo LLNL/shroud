@@ -59,6 +59,9 @@ declarations:
     F_impl_filename: foo.f
   declarations:
   - decl: namespace inner
+    declarations:
+    - decl: enum Color2 { RED, WHITE, BLUE };
+    
   - decl: class Names
     options:
       none: foo

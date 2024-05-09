@@ -69,10 +69,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "TUT_Color",
+                    "C_name_api": "Color",
                     "F_enum_kind": "C_INT",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             }
         ],

@@ -587,6 +587,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             F_name_function_template="{F_name_api}{function_suffix}{template_suffix}",
             F_name_generic_template="{F_name_api}",
+            F_name_enum_template="{F_name_scope}{F_name_api}",
             F_name_typedef_template="{F_name_scope}{F_name_api}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
@@ -716,6 +717,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_derived_member_base="",
             F_name_assign="assign",
             F_name_associated="associated",
+            F_name_enum="",
             F_name_instance_get="get_instance",
             F_name_instance_set="set_instance",
             F_name_final="final",
@@ -1797,12 +1799,13 @@ class EnumNode(AstNode):
         # format for enum
         fmt_enum = self.fmtdict
         fmt_enum.enum_name = self.name
-        fmt_enum.enum_lower = self.name.lower()
-        fmt_enum.enum_upper = self.name.upper()
         if fmt_enum.cxx_class:
             fmt_enum.namespace_scope = (
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
             )
+        fmt_enum.C_name_api = self.apply_C_API_option(self.name)
+        fmt_enum.F_name_api = self.apply_F_API_option(self.name)
+        self.eval_template("F_name_enum")
         self.eval_template("C_enum_type")
 
         # Format for each enum member.

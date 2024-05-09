@@ -643,6 +643,9 @@ F_module_name_library_template
 F_module_name_namespace_template
     ``{file_scope}_mod``
 
+F_name_enum_template
+    ``{F_name_scope}{F_name_api}``
+    
 F_name_function_template
     ``{F_name_api}{function_suffix}{template_suffix}``
 
@@ -972,7 +975,7 @@ F_name_api
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
-    **F_name_typedef_template**.
+    **F_name_enum_template**, **F_name_typedef_template**.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -1124,11 +1127,7 @@ Enumeration
 cxx_value
     Value of enum from YAML file.
 
-enum_lower
-
 enum_name
-
-enum_upper
 
 enum_member_lower
 
@@ -1169,6 +1168,9 @@ F_enum_member
 
 F_enum_kind
     Fortran ``INTEGER`` kind used to represent enumerations.
+
+F_name_typedef
+    Default from ``F_name_enum_template``.
 
 F_value
     Evalued value of enumeration.

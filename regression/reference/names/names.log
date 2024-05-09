@@ -1,5 +1,6 @@
 Read yaml names.yaml
 Close testnames_types.yaml
+Close wraptestnames_ns0_inner.hh
 Close wraptestnames_ns0_inner.cc
 class Names
 C c Names(void) +name(defaultctor)

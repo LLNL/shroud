@@ -80,10 +80,11 @@ module classes_mod
     ! end helper capsule_data_helper
 
     !  enum classes::Class1::DIRECTION
-    integer(C_INT), parameter :: class1_up = 2
-    integer(C_INT), parameter :: class1_down = 3
-    integer(C_INT), parameter :: class1_left = 100
-    integer(C_INT), parameter :: class1_right = 101
+    integer, parameter :: class1_direction = C_INT
+    integer(class1_direction), parameter :: class1_up = 2
+    integer(class1_direction), parameter :: class1_down = 3
+    integer(class1_direction), parameter :: class1_left = 100
+    integer(class1_direction), parameter :: class1_right = 101
 
     ! start derived-type class1
     type class1

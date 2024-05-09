@@ -28,9 +28,10 @@ module top_module
     end type TES_SHROUD_capsule_data
 
     !  enum Color
-    integer(C_INT), parameter :: red = 0
-    integer(C_INT), parameter :: blue = 1
-    integer(C_INT), parameter :: white = 2
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 0
+    integer(color), parameter :: blue = 1
+    integer(color), parameter :: white = 2
 
     type names2
         type(TES_SHROUD_capsule_data) :: cxxmem

@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// shroud
+#include "wraptestnames_ns0_inner.hh"
+
 // splicer begin namespace.ns0::inner.CXX_definitions
 // CXX_definitions for ns0::inner
 // Allow blank line below (convert None to '')

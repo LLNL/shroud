@@ -70,9 +70,10 @@ module scope_ns1_mod
     end type SCO_SHROUD_array
 
     !  enum ns1::Color
-    integer(C_INT), parameter :: red = 20
-    integer(C_INT), parameter :: blue = 21
-    integer(C_INT), parameter :: white = 22
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 20
+    integer(color), parameter :: blue = 21
+    integer(color), parameter :: white = 22
 
 
     type, bind(C) :: data_pointer

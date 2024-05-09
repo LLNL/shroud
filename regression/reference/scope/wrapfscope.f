@@ -76,29 +76,33 @@ module scope_mod
     end type SCO_SHROUD_capsule_data
 
     !  enum Class1::Color
-    integer(C_INT), parameter :: class1_red = 40
-    integer(C_INT), parameter :: class1_blue = 41
-    integer(C_INT), parameter :: class1_white = 42
+    integer, parameter :: class1_color = C_INT
+    integer(class1_color), parameter :: class1_red = 40
+    integer(class1_color), parameter :: class1_blue = 41
+    integer(class1_color), parameter :: class1_white = 42
 
     !  enum Class2::Color
-    integer(C_INT), parameter :: class2_red = 50
-    integer(C_INT), parameter :: class2_blue = 51
-    integer(C_INT), parameter :: class2_white = 52
+    integer, parameter :: class2_color = C_INT
+    integer(class2_color), parameter :: class2_red = 50
+    integer(class2_color), parameter :: class2_blue = 51
+    integer(class2_color), parameter :: class2_white = 52
 
     !  enum Color
-    integer(C_INT), parameter :: red = 10
-    integer(C_INT), parameter :: blue = 11
-    integer(C_INT), parameter :: white = 12
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 10
+    integer(color), parameter :: blue = 11
+    integer(color), parameter :: white = 12
 
     !  enum ns3::Color
-    integer(C_INT), parameter :: ns3_red = 70
-    integer(C_INT), parameter :: ns3_blue = 71
-    integer(C_INT), parameter :: ns3_white = 72
+    integer, parameter :: ns3_color = C_INT
+    integer(ns3_color), parameter :: ns3_red = 70
+    integer(ns3_color), parameter :: ns3_blue = 71
+    integer(ns3_color), parameter :: ns3_white = 72
 
     !  enum class ColorEnum
-    integer(C_INT), parameter :: colorenum_red = 60
-    integer(C_INT), parameter :: colorenum_blue = 61
-    integer(C_INT), parameter :: colorenum_white = 62
+    integer(color_enum), parameter :: colorenum_red = 60
+    integer(color_enum), parameter :: colorenum_blue = 61
+    integer(color_enum), parameter :: colorenum_white = 62
 
 
     type, bind(C) :: data_pointer

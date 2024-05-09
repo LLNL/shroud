@@ -242,8 +242,17 @@ f_c_type          i_type
    Likewise, *patterns* used by *C_error_pattern* and local splicers
    use *buf* and *cfi* and will need to change.
 
-* Renamed format field *C_enum* to *C_enum_type*.
-  Likewise, option *C_enum_template* is now *C_enum_type_template*.
+* Changes for enumerations
+
+  * Add option *F_enum_type* to define the kind of the Fortran parameter
+    for the enumeration values.
+
+  * Renamed format field *C_enum* to *C_enum_type*.
+    Likewise, option *C_enum_template* is now *C_enum_type_template*.
+
+  * Added option *F_name_enum_template* to compute format field *F_name_enum*.
+    Define format fields C_name_api and F_name_api to replace
+    format fields *enum_lower* and *enum_upper*.
 
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a

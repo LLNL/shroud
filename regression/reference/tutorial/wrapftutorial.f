@@ -90,9 +90,10 @@ module tutorial_mod
     ! splicer end typedef.EnumTypeID
 
     !  enum tutorial::Color
-    integer(C_INT), parameter :: red = 0
-    integer(C_INT), parameter :: blue = 1
-    integer(C_INT), parameter :: white = 2
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 0
+    integer(color), parameter :: blue = 1
+    integer(color), parameter :: white = 2
 
     ! start abstract callback1_incr
     abstract interface

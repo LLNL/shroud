@@ -178,10 +178,11 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_Class1_Color",
+                            "C_name_api": "Color",
                             "F_enum_kind": "C_INT",
-                            "enum_lower": "color",
+                            "F_name_api": "color",
+                            "F_name_enum": "class1_color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
                             "namespace_scope": "Class1::"
                         }
                     }
@@ -273,10 +274,11 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_Class2_Color",
+                            "C_name_api": "Color",
                             "F_enum_kind": "C_INT",
-                            "enum_lower": "color",
+                            "F_name_api": "color",
+                            "F_name_enum": "class2_color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
                             "namespace_scope": "Class2::"
                         }
                     }
@@ -374,10 +376,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_Color",
+                    "C_name_api": "Color",
                     "F_enum_kind": "C_INT",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             },
             {
@@ -436,10 +439,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_ns3_Color",
+                    "C_name_api": "Color",
                     "F_enum_kind": "C_INT",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "F_name_api": "color",
+                    "F_name_enum": "ns3_color",
+                    "enum_name": "Color"
                 }
             },
             {
@@ -505,10 +509,11 @@
                 },
                 "zz_fmtdict": {
                     "C_enum_type": "SCO_ColorEnum",
+                    "C_name_api": "ColorEnum",
                     "F_enum_kind": "C_INT",
-                    "enum_lower": "colorenum",
-                    "enum_name": "ColorEnum",
-                    "enum_upper": "COLORENUM"
+                    "F_name_api": "color_enum",
+                    "F_name_enum": "color_enum",
+                    "enum_name": "ColorEnum"
                 }
             }
         ],
@@ -1085,10 +1090,11 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_ns1_Color",
+                            "C_name_api": "Color",
                             "F_enum_kind": "C_INT",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "F_name_api": "color",
+                            "F_name_enum": "color",
+                            "enum_name": "Color"
                         }
                     }
                 ],
@@ -1692,10 +1698,11 @@
                         },
                         "zz_fmtdict": {
                             "C_enum_type": "SCO_ns2_Color",
+                            "C_name_api": "Color",
                             "F_enum_kind": "C_INT",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "F_name_api": "color",
+                            "F_name_enum": "color",
+                            "enum_name": "Color"
                         }
                     }
                 ],

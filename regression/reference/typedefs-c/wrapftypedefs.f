@@ -58,9 +58,10 @@ module typedefs_mod
     ! end typedef IndexType2
 
     !  enum Color
-    integer(C_INT), parameter :: red = 10
-    integer(C_INT), parameter :: blue = 11
-    integer(C_INT), parameter :: white = 12
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 10
+    integer(color), parameter :: blue = 11
+    integer(color), parameter :: white = 12
 
 
     ! start derived-type struct1_rename
