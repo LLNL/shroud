@@ -193,23 +193,23 @@
                             {
                                 "declarator": {
                                     "name": "arg",
-                                    "typemap_name": "TypeID"
+                                    "typemap_name": "Alias"
                                 },
                                 "specifier": [
-                                    "TypeID"
+                                    "Alias"
                                 ],
-                                "typemap_name": "TypeID"
+                                "typemap_name": "Alias"
                             }
                         ],
-                        "typemap_name": "TypeID"
+                        "typemap_name": "Alias"
                     },
                     "specifier": [
-                        "TypeID"
+                        "Alias"
                     ],
-                    "typemap_name": "TypeID"
+                    "typemap_name": "Alias"
                 },
-                "decl": "TypeID typefunc(TypeID arg);",
-                "declgen": "TypeID typefunc(TypeID arg)",
+                "decl": "Alias typefunc(Alias arg);",
+                "declgen": "Alias typefunc(Alias arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -281,19 +281,19 @@
                             "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_typefunc",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
+                            "C_prototype": "TYP_Alias arg",
+                            "C_return_type": "TYP_Alias",
                             "F_C_name": "c_typefunc",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "TYP_Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
@@ -303,8 +303,8 @@
                             "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_typefunc",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
+                            "C_prototype": "TYP_Alias arg",
+                            "C_return_type": "TYP_Alias",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc",
                             "F_C_name": "typefunc",
@@ -316,18 +316,18 @@
                             "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "TYP_Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
@@ -343,7 +343,7 @@
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHCXX_rv",
                             "data_var": "SHData_rv",
                             "numpy_type": "NPY_INT",
@@ -359,14 +359,14 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "TYP_TypeID arg",
-                            "c_type": "TYP_TypeID",
+                            "c_proto_decl": "TYP_Alias arg",
+                            "c_type": "TYP_Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
@@ -377,18 +377,18 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "TYP_TypeID arg",
-                            "c_type": "TYP_TypeID",
+                            "c_proto_decl": "TYP_Alias arg",
+                            "c_type": "TYP_Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -400,13 +400,13 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "TYP_Alias",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
@@ -436,23 +436,23 @@
                             {
                                 "declarator": {
                                     "name": "arg",
-                                    "typemap_name": "TypeID"
+                                    "typemap_name": "Alias"
                                 },
                                 "specifier": [
-                                    "TypeID"
+                                    "Alias"
                                 ],
-                                "typemap_name": "TypeID"
+                                "typemap_name": "Alias"
                             }
                         ],
-                        "typemap_name": "TypeID"
+                        "typemap_name": "Alias"
                     },
                     "specifier": [
-                        "TypeID"
+                        "Alias"
                     ],
-                    "typemap_name": "TypeID"
+                    "typemap_name": "Alias"
                 },
-                "decl": "TypeID typefunc_wrap(TypeID arg);",
-                "declgen": "TypeID typefunc_wrap(TypeID arg)",
+                "decl": "Alias typefunc_wrap(Alias arg);",
+                "declgen": "Alias typefunc_wrap(Alias arg)",
                 "doxygen": {
                     "brief": "Use typedef with a C wrapper",
                     "description": "Use C_force_wrapper to ensure the typedef will be used\nin the C wrapper.\n"
@@ -518,19 +518,19 @@
                             "C_call_function": "typefunc_wrap(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_typefunc_wrap",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
+                            "C_prototype": "TYP_Alias arg",
+                            "C_return_type": "TYP_Alias",
                             "F_C_name": "c_typefunc_wrap",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "TYP_Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
@@ -540,8 +540,8 @@
                             "C_call_function": "typefunc_wrap(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_typefunc_wrap",
-                            "C_prototype": "TYP_TypeID arg",
-                            "C_return_type": "TYP_TypeID",
+                            "C_prototype": "TYP_Alias arg",
+                            "C_return_type": "TYP_Alias",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc_wrap",
                             "F_C_name": "typefunc_wrap",
@@ -553,18 +553,18 @@
                             "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TYP_TypeID",
+                            "c_type": "TYP_Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
@@ -580,14 +580,14 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "TYP_TypeID arg",
-                            "c_type": "TYP_TypeID",
+                            "c_proto_decl": "TYP_Alias arg",
+                            "c_type": "TYP_Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
@@ -598,18 +598,18 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "TYP_TypeID arg",
-                            "c_type": "TYP_TypeID",
+                            "c_proto_decl": "TYP_Alias arg",
+                            "c_type": "TYP_Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -2075,10 +2075,10 @@
         ],
         "typedefs": [
             {
-                "<TYPEDEF>": "TypeID ****************************************",
+                "<TYPEDEF>": "Alias ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
+                        "name": "Alias",
                         "typemap_name": "int"
                     },
                     "specifier": [
@@ -2087,7 +2087,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "TypeID"
+                    "typemap_name": "Alias"
                 },
                 "f_kind": "C_INT",
                 "f_module": {
@@ -2095,7 +2095,7 @@
                         "C_INT"
                     ]
                 },
-                "name": "TypeID",
+                "name": "Alias",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2104,22 +2104,22 @@
                 },
                 "zz_bind": {
                     "c": {
-                        "TypeID": {}
+                        "Alias": {}
                     },
                     "f": {
-                        "TypeID": {}
+                        "Alias": {}
                     },
                     "share": {
-                        "TypeID": {}
+                        "Alias": {}
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "TypeID",
-                    "C_name_typedef": "TYP_TypeID",
-                    "F_name_api": "type_id",
-                    "F_name_typedef": "type_id",
-                    "cxx_type": "TypeID",
-                    "typedef_name": "TypeID"
+                    "C_name_api": "Alias",
+                    "C_name_typedef": "TYP_Alias",
+                    "F_name_api": "alias",
+                    "F_name_typedef": "alias",
+                    "cxx_type": "Alias",
+                    "typedef_name": "Alias"
                 }
             },
             {
@@ -2334,6 +2334,40 @@
         "struct-s_Struct1": "s_Struct1"
     },
     "types": {
+        "Alias": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_type": "TYP_Alias",
+            "cfi_type": "CFI_type_int",
+            "cxx_type": "Alias",
+            "f_cast": "int({f_var}, alias)",
+            "f_kind": "alias",
+            "f_module": {
+                "typedefs_mod": [
+                    "alias"
+                ]
+            },
+            "f_module_name": "typedefs_mod",
+            "f_type": "integer(alias)",
+            "flat_name": "int",
+            "i_module": {
+                "typedefs_mod": [
+                    "alias"
+                ]
+            },
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wraptypedefs.h"
+            ]
+        },
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
@@ -2477,40 +2511,6 @@
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT",
             "typedef": "s_Struct1",
-            "wrap_header": [
-                "wraptypedefs.h"
-            ]
-        },
-        "TypeID": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({ctor_expr})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "base": "integer",
-            "c_type": "TYP_TypeID",
-            "cfi_type": "CFI_type_int",
-            "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, type_id)",
-            "f_kind": "type_id",
-            "f_module": {
-                "typedefs_mod": [
-                    "type_id"
-                ]
-            },
-            "f_module_name": "typedefs_mod",
-            "f_type": "integer(type_id)",
-            "flat_name": "int",
-            "i_module": {
-                "typedefs_mod": [
-                    "type_id"
-                ]
-            },
-            "sgroup": "native",
-            "sh_type": "SH_TYPE_INT",
-            "typedef": "int",
             "wrap_header": [
                 "wraptypedefs.h"
             ]

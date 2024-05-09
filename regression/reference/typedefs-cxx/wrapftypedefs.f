@@ -21,12 +21,12 @@ module typedefs_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! start typedef TypeID
-    ! typedef TypeID
-    ! splicer begin typedef.TypeID
-    integer, parameter :: type_id = C_INT
-    ! splicer end typedef.TypeID
-    ! end typedef TypeID
+    ! start typedef Alias
+    ! typedef Alias
+    ! splicer begin typedef.Alias
+    integer, parameter :: alias = C_INT
+    ! splicer end typedef.Alias
+    ! end typedef Alias
 
     ! start typedef iColor
     ! typedef iColor
@@ -74,39 +74,39 @@ module typedefs_mod
     ! end derived-type struct1_rename
 
     ! ----------------------------------------
-    ! Function:  TypeID typefunc
+    ! Function:  Alias typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_typefunc")
-            import :: type_id
+            import :: alias
             implicit none
-            integer(type_id), value, intent(IN) :: arg
-            integer(type_id) :: SHT_rv
+            integer(alias), value, intent(IN) :: arg
+            integer(alias) :: SHT_rv
         end function typefunc
     end interface
     ! end typefunc
 
     ! ----------------------------------------
-    ! Function:  TypeID typefunc_wrap
+    ! Function:  Alias typefunc_wrap
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc_wrap
     interface
         function typefunc_wrap(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_typefunc_wrap")
-            import :: type_id
+            import :: alias
             implicit none
-            integer(type_id), value, intent(IN) :: arg
-            integer(type_id) :: SHT_rv
+            integer(alias), value, intent(IN) :: arg
+            integer(alias) :: SHT_rv
         end function typefunc_wrap
     end interface
     ! end typefunc_wrap
@@ -262,16 +262,16 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  TypeID typefunc
+    ! Function:  Alias typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
             result(SHT_rv)
-        integer(type_id), value, intent(IN) :: arg
-        integer(type_id) :: SHT_rv
+        integer(alias), value, intent(IN) :: arg
+        integer(alias) :: SHT_rv
         ! splicer begin function.typefunc
         SHT_rv = c_typefunc(arg)
         ! splicer end function.typefunc
@@ -282,10 +282,10 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  TypeID typefunc_wrap
+    ! Function:  Alias typefunc_wrap
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     !>
     !! \brief Use typedef with a C wrapper
@@ -296,8 +296,8 @@ contains
     ! start typefunc_wrap
     function typefunc_wrap(arg) &
             result(SHT_rv)
-        integer(type_id), value, intent(IN) :: arg
-        integer(type_id) :: SHT_rv
+        integer(alias), value, intent(IN) :: arg
+        integer(alias) :: SHT_rv
         ! splicer begin function.typefunc_wrap
         SHT_rv = c_typefunc_wrap(arg)
         ! splicer end function.typefunc_wrap

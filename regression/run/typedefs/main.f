@@ -37,7 +37,7 @@ contains
 
   subroutine test_alias
 
-    integer(Type_ID) arg1, rv
+    integer(alias) arg1, rv
 
     call set_case_name("test_alias")
 

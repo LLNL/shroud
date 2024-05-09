@@ -36,10 +36,10 @@ PyArray_Descr *PY_Struct1Rename_array_descr;
 // splicer end additional_functions
 
 // ----------------------------------------
-// Function:  TypeID typefunc
+// Function:  Alias typefunc
 // Statement: py_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: py_in_native_scalar
 static char PY_typefunc__doc__[] =
 "documentation"
@@ -62,7 +62,7 @@ PY_typefunc(
         SHT_kwlist, &arg))
         return NULL;
 
-    TypeID SHCXX_rv = typefunc(arg);
+    Alias SHCXX_rv = typefunc(arg);
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);

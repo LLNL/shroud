@@ -21,10 +21,10 @@ options:
 declarations:
 
 # Using a typedef as an alias
-- decl: typedef int TypeID;
-- decl: TypeID typefunc(TypeID arg);
+- decl: typedef int Alias;
+- decl: Alias typefunc(Alias arg);
 
-- decl: TypeID typefunc_wrap(TypeID arg);
+- decl: Alias typefunc_wrap(Alias arg);
   options:
     C_force_wrapper: True
     wrap_python: False

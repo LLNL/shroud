@@ -21,16 +21,16 @@ extern "C" {
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  TypeID typefunc
+// Function:  Alias typefunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: c_in_native_scalar
 // start TYP_typefunc
-TYP_TypeID TYP_typefunc(TYP_TypeID arg)
+TYP_Alias TYP_typefunc(TYP_Alias arg)
 {
     // splicer begin function.typefunc
-    TypeID SHC_rv = typefunc(arg);
+    Alias SHC_rv = typefunc(arg);
     return SHC_rv;
     // splicer end function.typefunc
 }
@@ -43,16 +43,16 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
  * in the C wrapper.
  */
 // ----------------------------------------
-// Function:  TypeID typefunc_wrap
+// Function:  Alias typefunc_wrap
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: c_in_native_scalar
 // start TYP_typefunc_wrap
-TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
+TYP_Alias TYP_typefunc_wrap(TYP_Alias arg)
 {
     // splicer begin function.typefunc_wrap
-    TypeID SHC_rv = typefunc_wrap(arg);
+    Alias SHC_rv = typefunc_wrap(arg);
     return SHC_rv;
     // splicer end function.typefunc_wrap
 }

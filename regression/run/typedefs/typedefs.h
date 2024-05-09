@@ -10,9 +10,9 @@
 #ifndef TYPEDEFS_HPP
 #define TYPEDEFS_HPP
 
-typedef int TypeID;
-TypeID typefunc(TypeID arg);
-TypeID typefunc_wrap(TypeID arg);
+typedef int Alias;
+Alias typefunc(Alias arg);
+Alias typefunc_wrap(Alias arg);
 
 //----------------------------------------------------------------------
 

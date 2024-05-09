@@ -32,12 +32,12 @@
 extern "C" {
 #endif
 
-// start typedef TypeID
-// typedef TypeID
-// splicer begin typedef.TypeID
-typedef int TYP_TypeID;
-// splicer end typedef.TypeID
-// end typedef TypeID
+// start typedef Alias
+// typedef Alias
+// splicer begin typedef.Alias
+typedef int TYP_Alias;
+// splicer end typedef.Alias
+// end typedef Alias
 
 // start typedef iColor
 // typedef iColor
@@ -103,9 +103,9 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-TYP_TypeID TYP_typefunc(TYP_TypeID arg);
+TYP_Alias TYP_typefunc(TYP_Alias arg);
 
-TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
+TYP_Alias TYP_typefunc_wrap(TYP_Alias arg);
 
 TYP_iColor TYP_returnEnum(TYP_iColor in);
 

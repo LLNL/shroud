@@ -13,12 +13,12 @@
 s_Struct1 tmp1;
 #endif
 
-TypeID typefunc(TypeID arg)
+Alias typefunc(Alias arg)
 {
     return arg + 1;
 }
 
-TypeID typefunc_wrap(TypeID arg)
+Alias typefunc_wrap(Alias arg)
 {
     return arg + 1;
 }

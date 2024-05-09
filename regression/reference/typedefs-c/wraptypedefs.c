@@ -22,16 +22,16 @@
  * in the C wrapper.
  */
 // ----------------------------------------
-// Function:  TypeID typefunc_wrap
+// Function:  Alias typefunc_wrap
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: f_in_native_scalar
 // start TYP_typefunc_wrap_bufferify
-TypeID TYP_typefunc_wrap_bufferify(TypeID arg)
+Alias TYP_typefunc_wrap_bufferify(Alias arg)
 {
     // splicer begin function.typefunc_wrap_bufferify
-    TypeID SHC_rv = typefunc_wrap(arg);
+    Alias SHC_rv = typefunc_wrap(arg);
     return SHC_rv;
     // splicer end function.typefunc_wrap_bufferify
 }

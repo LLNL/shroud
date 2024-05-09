@@ -14,9 +14,9 @@
 
 void test_alias(void)
 {
-    TYP_TypeID arg1, rv;
+    TYP_Alias arg1, rv;
 
-    assert(sizeof(int)  == sizeof(TYP_TypeID) && "test_alias - sizeof");
+    assert(sizeof(int)  == sizeof(TYP_Alias) && "test_alias - sizeof");
 
     arg1 = 10;
     rv = TYP_typefunc(arg1);
