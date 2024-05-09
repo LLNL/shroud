@@ -41,10 +41,10 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: c_function_native_scalar
+// Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 enum CLA_Class1_DIRECTION CLA_directionFunc(
     enum CLA_Class1_DIRECTION arg)
 {
@@ -61,10 +61,10 @@ enum CLA_Class1_DIRECTION CLA_directionFunc(
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 int CLA_directionFunc_bufferify(int arg)
 {
     // splicer begin function.directionFunc_bufferify

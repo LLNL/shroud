@@ -525,10 +525,10 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: c_function_native_scalar
+// Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 {
     // splicer begin function.colorfunc
@@ -541,10 +541,10 @@ enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 int TUT_colorfunc_bufferify(int arg)
 {
     // splicer begin function.colorfunc_bufferify

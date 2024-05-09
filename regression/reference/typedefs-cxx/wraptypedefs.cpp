@@ -60,10 +60,10 @@ TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: c_function_native_scalar
+// Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 // start TYP_returnEnum
 TYP_iColor TYP_returnEnum(TYP_iColor in)
 {
@@ -78,10 +78,10 @@ TYP_iColor TYP_returnEnum(TYP_iColor in)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 // start TYP_returnEnum_bufferify
 int TYP_returnEnum_bufferify(int in)
 {

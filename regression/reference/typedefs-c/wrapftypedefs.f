@@ -110,10 +110,10 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  iColor returnEnum
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     ! start return_enum
     interface
         function return_enum(in) &
@@ -287,10 +287,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  iColor returnEnum
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     ! start return_enum
     function return_enum(in) &
             result(SHT_rv)

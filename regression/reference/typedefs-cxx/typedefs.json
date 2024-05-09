@@ -667,14 +667,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_enum_scalar"
                         },
                         "in": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_enum_scalar"
                         }
                     },
                     "f": {
@@ -682,14 +682,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_enum_scalar"
                         },
                         "in": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_enum_scalar"
                         }
                     },
                     "py": {
@@ -754,7 +754,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_enum_scalar"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnum(\tSHCXX_in)",
@@ -796,7 +796,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_enum_scalar"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -811,7 +811,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_enum_scalar",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -842,7 +842,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_enum_scalar"
                         },
                         "fmtf": {
                             "c_abstract_decl": "TYP_iColor",
@@ -871,7 +871,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_enum_scalar"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "TYP_iColor",
@@ -892,7 +892,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_enum_scalar",
                             "value_var": "SHValue_in"
                         }
                     }
@@ -2366,7 +2366,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "IndexType": {
@@ -2552,7 +2552,7 @@
                 ]
             },
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT",
             "typedef": "Color",
             "wrap_header": [

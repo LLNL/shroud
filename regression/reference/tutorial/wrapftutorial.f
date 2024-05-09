@@ -605,10 +605,10 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_enum_scalar
     interface
         function c_colorfunc(arg) &
                 result(SHT_rv) &
@@ -622,10 +622,10 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
@@ -1223,10 +1223,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function colorfunc(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

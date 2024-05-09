@@ -36,7 +36,7 @@ PyObject *PY_error_obj;
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_convert_to_int__doc__[] =
 "documentation"
 ;
@@ -72,10 +72,10 @@ PY_convert_to_int(
 
 // ----------------------------------------
 // Function:  enum Color returnEnum
-// Statement: py_function_native_scalar
+// Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_returnEnum__doc__[] =
 "documentation"
 ;

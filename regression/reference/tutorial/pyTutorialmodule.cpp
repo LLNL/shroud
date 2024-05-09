@@ -571,10 +571,10 @@ PY_enumfunc(
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: py_function_native_scalar
+// Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_colorfunc__doc__[] =
 "documentation"
 ;

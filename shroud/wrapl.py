@@ -1100,6 +1100,9 @@ lua_statements = [
     # native
     dict(
         name="lua_in_native_scalar",
+        alias=[
+            "lua_in_enum_scalar",
+        ],
         pre_call=[
             "{cxx_type} {cxx_var} =\t {pop_expr};",
         ],
@@ -1115,6 +1118,9 @@ lua_statements = [
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
+        ],
+        alias=[
+            "lua_function_enum_scalar",
         ],
     ),
     #####

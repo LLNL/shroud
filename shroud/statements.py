@@ -937,6 +937,8 @@ fc_statements = [
     dict(
         name="f_function_native_scalar",
         alias=[
+            "f_function_enum_scalar",
+            "c_function_enum_scalar",
             "c_function_native_scalar",
         ],
     ),
@@ -1667,6 +1669,9 @@ fc_statements = [
             "f_in_char_*_capi",
             "f_out_char_*_capi",
             "f_inout_char_*_capi",
+
+            "f_in_enum_scalar",
+            "c_in_enum_scalar",
 
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",

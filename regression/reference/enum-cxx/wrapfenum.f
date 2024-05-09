@@ -43,7 +43,7 @@ module enum_mod
         ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_enum_scalar
         function c_convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_convert_to_int")
@@ -58,7 +58,7 @@ module enum_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_enum_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_convert_to_int_bufferify")
@@ -70,10 +70,10 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnum
-        ! Statement: c_function_native_scalar
+        ! Statement: c_function_enum_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_enum_scalar
         function c_return_enum(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_returnEnum")
@@ -85,10 +85,10 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnum
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_enum_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_enum_scalar
         function return_enum(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_returnEnum_bufferify")
@@ -111,7 +111,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function convert_to_int(in) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_SHORT
@@ -127,10 +127,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  enum Color returnEnum
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function return_enum(in) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT

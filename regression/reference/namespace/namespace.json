@@ -998,7 +998,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         }
     }

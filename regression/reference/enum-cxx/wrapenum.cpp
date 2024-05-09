@@ -25,7 +25,7 @@ extern "C" {
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 int ENU_convert_to_int(enum ENU_Color in)
 {
     // splicer begin function.convert_to_int
@@ -40,7 +40,7 @@ int ENU_convert_to_int(enum ENU_Color in)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 int ENU_convert_to_int_bufferify(short in)
 {
     // splicer begin function.convert_to_int_bufferify
@@ -52,10 +52,10 @@ int ENU_convert_to_int_bufferify(short in)
 
 // ----------------------------------------
 // Function:  enum Color returnEnum
-// Statement: c_function_native_scalar
+// Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 enum ENU_Color ENU_returnEnum(enum ENU_Color in)
 {
     // splicer begin function.returnEnum
@@ -68,10 +68,10 @@ enum ENU_Color ENU_returnEnum(enum ENU_Color in)
 
 // ----------------------------------------
 // Function:  enum Color returnEnum
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 short ENU_returnEnum_bufferify(short in)
 {
     // splicer begin function.returnEnum_bufferify

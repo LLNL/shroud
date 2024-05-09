@@ -3755,6 +3755,10 @@ py_statements = [
             "py_function_native_scalar",
             "py_in_native_scalar",
             "py_function_native_*_scalar",
+
+            "py_function_enum_scalar",
+            "py_in_enum_scalar",
+
             "py_in_unknown_scalar",
             "py_function_struct_list",
         ],

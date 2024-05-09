@@ -39,10 +39,10 @@ TypeID TYP_typefunc_wrap_bufferify(TypeID arg)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 // start TYP_returnEnum_bufferify
 int TYP_returnEnum_bufferify(int in)
 {

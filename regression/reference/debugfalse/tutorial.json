@@ -7046,14 +7046,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_enum_scalar"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_enum_scalar"
                         }
                     },
                     "f": {
@@ -7061,14 +7061,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_enum_scalar"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_enum_scalar"
                         }
                     },
                     "lua": {
@@ -7146,7 +7146,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_enum_scalar"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
@@ -7188,7 +7188,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_enum_scalar"
                         },
                         "fmtl": {
                             "c_abstract_decl": "enum TUT_Color",
@@ -7198,7 +7198,7 @@
                             "cxx_var": "SHCXX_rv",
                             "push_arg": "static_cast<int>(SHCXX_rv)",
                             "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_native_scalar"
+                            "stmt": "lua_function_enum_scalar"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -7213,7 +7213,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_enum_scalar",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -7244,7 +7244,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_enum_scalar"
                         },
                         "fmtf": {
                             "c_abstract_decl": "enum TUT_Color",
@@ -7273,7 +7273,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_enum_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -7287,7 +7287,7 @@
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
                             "pop_expr": "static_cast<tutorial::Color>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_native_scalar"
+                            "stmt": "lua_in_enum_scalar"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum TUT_Color",
@@ -7308,7 +7308,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_enum_scalar",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -8552,7 +8552,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "tutorial::EnumTypeID": {

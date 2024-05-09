@@ -408,10 +408,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_enum_scalar
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -429,10 +429,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     ! start c_class1_direction_func_bufferify
     interface
         function c_class1_direction_func_bufferify(self, arg) &
@@ -811,10 +811,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_enum_scalar
     interface
         function c_direction_func(arg) &
                 result(SHT_rv) &
@@ -828,10 +828,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -1267,10 +1267,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
@@ -1704,10 +1704,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function direction_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

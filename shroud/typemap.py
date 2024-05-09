@@ -1041,6 +1041,7 @@ def fill_enum_typemap(node, ftypemap):
         ntypemap.copy_from_typemap(ftypemap)
         ntypemap.is_enum = True
         ntypemap.ci_type = ftypemap.c_type
+        ntypemap.sgroup = "enum"
 
         # Include the generated C header file for the
         # C declaration of the C++ enum.

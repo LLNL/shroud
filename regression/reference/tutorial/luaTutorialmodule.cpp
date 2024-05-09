@@ -483,10 +483,10 @@ static int l_enumfunc(lua_State *L)
 // Color colorfunc(Color arg)
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_enum_scalar
 static int l_colorfunc(lua_State *L)
 {
     // splicer begin function.colorfunc

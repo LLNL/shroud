@@ -2230,7 +2230,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "Class2": {
@@ -2298,7 +2298,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "Color": {
@@ -2334,7 +2334,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ColorEnum": {
@@ -2370,7 +2370,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns1::Color": {
@@ -2406,7 +2406,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns1::DataPointer": {
@@ -2469,7 +2469,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns2::DataPointer": {
@@ -2532,7 +2532,7 @@
             "f_type": "integer(C_INT)",
             "flat_name": "int",
             "is_enum": true,
-            "sgroup": "native",
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns3::DataPointer": {

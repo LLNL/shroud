@@ -17,6 +17,8 @@ root
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
         scalar -- f_function_char_scalar
+      enum
+        scalar -- f_function_native_scalar
       native
         & -- f_function_native_*_raw
         * -- f_function_native_*_raw
@@ -83,6 +85,8 @@ root
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
+      enum
+        scalar -- f_shared_native_scalar
       native
         & -- f_shared_native_scalar
         * -- f_shared_native_scalar
@@ -396,6 +400,8 @@ root
           cfi
             allocatable -- f_function_char_*_cfi_allocatable
             pointer -- f_function_char_scalar_cfi_pointer
+      enum
+        scalar -- f_function_native_scalar
       native
         & -- f_function_native_&
           pointer -- f_function_native_&
@@ -536,6 +542,8 @@ root
           buf -- f_in_char_**_buf
           cfi -- f_in_char_**_cfi
         scalar -- f_in_char_scalar
+      enum
+        scalar -- f_shared_native_scalar
       native
         & -- f_shared_native_scalar
         * -- f_shared_native_scalar
@@ -995,6 +1003,10 @@ c_function_char_scalar:
     - C_CHAR
   intent: function
   name: c_function_char_scalar
+  owner: library
+c_function_enum_scalar:
+  intent: function
+  name: c_function_enum_scalar
   owner: library
 c_function_native_&:
   i_module:
@@ -1720,6 +1732,10 @@ c_in_char_scalar:
     - C_CHAR
   intent: in
   name: c_in_char_scalar
+  owner: library
+c_in_enum_scalar:
+  intent: in
+  name: c_in_enum_scalar
   owner: library
 c_in_native_&:
   intent: in
@@ -4437,6 +4453,10 @@ f_function_char_scalar_cfi_pointer:
   - ISO_Fortran_binding.h
   intent: function
   name: f_function_char_scalar_cfi_pointer
+  owner: library
+f_function_enum_scalar:
+  intent: function
+  name: f_function_enum_scalar
   owner: library
 f_function_native_&:
   c_need_wrapper: true
@@ -7986,6 +8006,10 @@ f_in_char_scalar:
   intent: in
   name: f_in_char_scalar
   owner: library
+f_in_enum_scalar:
+  intent: in
+  name: f_in_enum_scalar
+  owner: library
 f_in_native_&:
   intent: in
   name: f_in_native_&
@@ -11503,6 +11527,8 @@ root
       char
         * -- py_function_char_*
         scalar -- py_function_char_scalar
+      enum
+        scalar -- py_defaulttmp
       native
         &
           numpy -- py_function_native_*/&_numpy
@@ -11541,6 +11567,8 @@ root
         * -- py_in_char_*
         ** -- py_in_char_**
         scalar -- py_in_char_scalar
+      enum
+        scalar -- py_defaulttmp
       native
         & -- py_in_native_&
         * -- py_in_native_*
@@ -12172,6 +12200,9 @@ py_function_char_scalar:
   object_created: true
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
+py_function_enum_scalar:
+  intent: function
+  name: py_function_enum_scalar
 py_function_native_&_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
@@ -12465,6 +12496,9 @@ py_in_char_scalar:
   parse_args:
   - '&{c_var}'
   parse_format: s
+py_in_enum_scalar:
+  intent: in
+  name: py_in_enum_scalar
 py_in_native_&:
   arg_declare:
   - '{c_type} {c_var};'
@@ -13494,6 +13528,8 @@ root
     function
       bool
         scalar -- lua_function_bool_scalar
+      enum
+        scalar -- lua_function_native_scalar
       native
         scalar -- lua_function_native_scalar
       shadow
@@ -13506,6 +13542,8 @@ root
     in
       bool
         scalar -- lua_in_bool_scalar
+      enum
+        scalar -- lua_in_native_scalar
       native
         * -- lua_defaulttmp
         scalar -- lua_in_native_scalar
@@ -13556,6 +13594,13 @@ lua_function_bool_scalar:
   name: lua_function_bool_scalar
   post_call:
   - '{push_expr};'
+lua_function_enum_scalar:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
+  name: lua_function_enum_scalar
+  post_call:
+  - '{push_expr};'
 lua_function_native_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
@@ -13594,6 +13639,11 @@ lua_in_bool_scalar:
   name: lua_in_bool_scalar
   pre_call:
   - bool {c_var} = {pop_expr};
+lua_in_enum_scalar:
+  intent: in
+  name: lua_in_enum_scalar
+  pre_call:
+  - "{cxx_type} {cxx_var} =\t {pop_expr};"
 lua_in_native_*:
   intent: in
   name: lua_in_native_*

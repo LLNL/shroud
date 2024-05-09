@@ -295,10 +295,10 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Statement: c_function_native_scalar
+// Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: c_in_native_scalar
+// Statement: c_in_enum_scalar
 // start CLA_Class1_directionFunc
 enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
     enum CLA_Class1_DIRECTION arg)
@@ -319,10 +319,10 @@ enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 // start CLA_Class1_directionFunc_bufferify
 int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg)
 {

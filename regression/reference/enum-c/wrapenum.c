@@ -20,7 +20,7 @@
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 int ENU_convert_to_int_bufferify(short in)
 {
     // splicer begin function.convert_to_int_bufferify
@@ -32,10 +32,10 @@ int ENU_convert_to_int_bufferify(short in)
 
 // ----------------------------------------
 // Function:  enum Color returnEnum
-// Statement: f_function_native_scalar
+// Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_native_scalar
+// Statement: f_in_enum_scalar
 short ENU_returnEnum_bufferify(short in)
 {
     // splicer begin function.returnEnum_bufferify

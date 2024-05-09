@@ -73,10 +73,10 @@ PY_typefunc(
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: py_function_native_scalar
+// Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_returnEnum__doc__[] =
 "documentation"
 ;

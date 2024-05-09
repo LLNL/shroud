@@ -33,10 +33,10 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: py_function_native_scalar
+// Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
