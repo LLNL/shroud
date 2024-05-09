@@ -59,9 +59,11 @@ module typedefs_mod
 
     !  enum Color
     integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
     integer(color), parameter :: red = 10
     integer(color), parameter :: blue = 11
     integer(color), parameter :: white = 12
+    ! splicer end enum.Color
 
 
     ! start derived-type struct1_rename

@@ -91,9 +91,11 @@ module tutorial_mod
 
     !  enum tutorial::Color
     integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
     integer(color), parameter :: red = 0
     integer(color), parameter :: blue = 1
     integer(color), parameter :: white = 2
+    ! splicer end enum.Color
 
     ! start abstract callback1_incr
     abstract interface

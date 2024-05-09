@@ -81,10 +81,12 @@ module classes_mod
 
     !  enum classes::Class1::DIRECTION
     integer, parameter :: class1_direction = C_INT
+    ! splicer begin class.Class1.enum.DIRECTION
     integer(class1_direction), parameter :: class1_up = 2
     integer(class1_direction), parameter :: class1_down = 3
     integer(class1_direction), parameter :: class1_left = 100
     integer(class1_direction), parameter :: class1_right = 101
+    ! splicer end class.Class1.enum.DIRECTION
 
     ! start derived-type class1
     type class1

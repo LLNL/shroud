@@ -29,9 +29,11 @@ module top_module
 
     !  enum Color
     integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
     integer(color), parameter :: red = 0
     integer(color), parameter :: blue = 1
     integer(color), parameter :: white = 2
+    ! splicer end enum.Color
 
     type names2
         type(TES_SHROUD_capsule_data) :: cxxmem

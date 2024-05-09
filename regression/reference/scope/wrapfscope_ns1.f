@@ -71,9 +71,11 @@ module scope_ns1_mod
 
     !  enum ns1::Color
     integer, parameter :: color = C_INT
+    ! splicer begin namespace.ns1.enum.Color
     integer(color), parameter :: red = 20
     integer(color), parameter :: blue = 21
     integer(color), parameter :: white = 22
+    ! splicer end namespace.ns1.enum.Color
 
 
     type, bind(C) :: data_pointer

@@ -23,12 +23,15 @@ module enum_mod
 
     !  enum Color
     integer, parameter :: color = C_SHORT
+    ! splicer begin enum.Color
     integer(color), parameter :: red = 10
     integer(color), parameter :: blue = 11
     integer(color), parameter :: white = 12
+    ! splicer end enum.Color
 
     !  enum val
     integer, parameter :: val = C_INT
+    ! splicer begin enum.val
     integer(val), parameter :: a1 = 0
     integer(val), parameter :: b1 = 3
     integer(val), parameter :: c1 = 4
@@ -37,6 +40,7 @@ module enum_mod
     integer(val), parameter :: f1 = d1+1
     integer(val), parameter :: g1 = d1+2
     integer(val), parameter :: h1 = 100
+    ! splicer end enum.val
 
     interface
 
