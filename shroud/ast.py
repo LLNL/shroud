@@ -561,7 +561,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
             C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
-            C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
+            C_enum_member_template="{C_prefix}{C_name_scope}{C_name_api}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
@@ -581,7 +581,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
-            F_enum_member_template="{F_name_scope}{enum_member_lower}",
+            F_enum_member_template="{F_name_scope}{F_name_api}",
             F_name_impl_template=(
                 "{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
@@ -1820,8 +1820,8 @@ class EnumNode(AstNode):
         for member in enum_specifier.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
-            fmt.enum_member_lower = member.name.lower()
-            fmt.enum_member_upper = member.name.upper()
+            fmt.C_name_api = self.apply_C_API_option(member.name)
+            fmt.F_name_api = self.apply_F_API_option(member.name)
             if enum_specifier.scope is not None:
                 fmt.C_name_scope = C_name_scope
                 fmt.F_name_scope = F_name_scope

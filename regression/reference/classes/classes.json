@@ -19,37 +19,37 @@
                         "_fmtmembers": {
                             "DOWN": {
                                 "C_enum_member": "CLA_Class1_DOWN",
+                                "C_name_api": "DOWN",
                                 "F_enum_member": "class1_down",
+                                "F_name_api": "down",
                                 "F_value": 3,
-                                "enum_member_lower": "down",
-                                "enum_member_name": "DOWN",
-                                "enum_member_upper": "DOWN"
+                                "enum_member_name": "DOWN"
                             },
                             "LEFT": {
                                 "C_enum_member": "CLA_Class1_LEFT",
+                                "C_name_api": "LEFT",
                                 "C_value": 100,
                                 "F_enum_member": "class1_left",
+                                "F_name_api": "left",
                                 "F_value": 100,
-                                "enum_member_lower": "left",
-                                "enum_member_name": "LEFT",
-                                "enum_member_upper": "LEFT"
+                                "enum_member_name": "LEFT"
                             },
                             "RIGHT": {
                                 "C_enum_member": "CLA_Class1_RIGHT",
+                                "C_name_api": "RIGHT",
                                 "F_enum_member": "class1_right",
+                                "F_name_api": "right",
                                 "F_value": 101,
-                                "enum_member_lower": "right",
-                                "enum_member_name": "RIGHT",
-                                "enum_member_upper": "RIGHT"
+                                "enum_member_name": "RIGHT"
                             },
                             "UP": {
                                 "C_enum_member": "CLA_Class1_UP",
+                                "C_name_api": "UP",
                                 "C_value": 2,
                                 "F_enum_member": "class1_up",
+                                "F_name_api": "up",
                                 "F_value": 2,
-                                "enum_member_lower": "up",
-                                "enum_member_name": "UP",
-                                "enum_member_upper": "UP"
+                                "enum_member_name": "UP"
                             }
                         },
                         "ast": {

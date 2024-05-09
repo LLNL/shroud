@@ -254,6 +254,10 @@ f_c_type          i_type
     Define format fields C_name_api and F_name_api to replace
     format fields *enum_lower* and *enum_upper*.
 
+  * Replaced format fields *enum_member_lower* and *enum_member_upper* with
+    *C_name_api* and *F_name_api* (controlled by options *C_API_case* and
+    *F_API_case*.
+
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a
   scalar was returned. The C wrapper will now return a pointer giving

@@ -18,27 +18,27 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "TUT_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "blue",
+                        "F_name_api": "blue",
                         "F_value": 1,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "TUT_RED",
+                        "C_name_api": "RED",
                         "F_enum_member": "red",
+                        "F_name_api": "red",
                         "F_value": 0,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "TUT_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "white",
+                        "F_name_api": "white",
                         "F_value": 2,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {

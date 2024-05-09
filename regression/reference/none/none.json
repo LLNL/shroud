@@ -13,7 +13,7 @@
         "options": {
             "CXX_standard": 2011,
             "C_API_case": "preserve",
-            "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
+            "C_enum_member_template": "{C_prefix}{C_name_scope}{C_name_api}",
             "C_enum_type_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_force_wrapper": false,
             "C_header_filename_class_template": "wrap{file_scope}.{C_header_filename_suffix}",
@@ -47,7 +47,7 @@
             "F_create_generic": true,
             "F_default_args": "generic",
             "F_derived_name_template": "{F_name_api}",
-            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{F_name_api}",
             "F_enum_type": "int",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,

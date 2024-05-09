@@ -18,28 +18,28 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "ENU_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "blue",
+                        "F_name_api": "blue",
                         "F_value": 11,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "ENU_RED",
+                        "C_name_api": "RED",
                         "C_value": 10,
                         "F_enum_member": "red",
+                        "F_name_api": "red",
                         "F_value": 10,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "ENU_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "white",
+                        "F_name_api": "white",
                         "F_value": 12,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -83,71 +83,71 @@
                 "_fmtmembers": {
                     "a1": {
                         "C_enum_member": "ENU_a1",
+                        "C_name_api": "a1",
                         "F_enum_member": "a1",
+                        "F_name_api": "a1",
                         "F_value": 0,
-                        "enum_member_lower": "a1",
-                        "enum_member_name": "a1",
-                        "enum_member_upper": "A1"
+                        "enum_member_name": "a1"
                     },
                     "b1": {
                         "C_enum_member": "ENU_b1",
+                        "C_name_api": "b1",
                         "C_value": 3,
                         "F_enum_member": "b1",
+                        "F_name_api": "b1",
                         "F_value": 3,
-                        "enum_member_lower": "b1",
-                        "enum_member_name": "b1",
-                        "enum_member_upper": "B1"
+                        "enum_member_name": "b1"
                     },
                     "c1": {
                         "C_enum_member": "ENU_c1",
+                        "C_name_api": "c1",
                         "F_enum_member": "c1",
+                        "F_name_api": "c1",
                         "F_value": 4,
-                        "enum_member_lower": "c1",
-                        "enum_member_name": "c1",
-                        "enum_member_upper": "C1"
+                        "enum_member_name": "c1"
                     },
                     "d1": {
                         "C_enum_member": "ENU_d1",
+                        "C_name_api": "d1",
                         "C_value": "ENU_b1-ENU_a1",
                         "F_enum_member": "d1",
+                        "F_name_api": "d1",
                         "F_value": "b1-a1",
-                        "enum_member_lower": "d1",
-                        "enum_member_name": "d1",
-                        "enum_member_upper": "D1"
+                        "enum_member_name": "d1"
                     },
                     "e1": {
                         "C_enum_member": "ENU_e1",
+                        "C_name_api": "e1",
                         "C_value": "ENU_d1",
                         "F_enum_member": "e1",
+                        "F_name_api": "e1",
                         "F_value": "d1",
-                        "enum_member_lower": "e1",
-                        "enum_member_name": "e1",
-                        "enum_member_upper": "E1"
+                        "enum_member_name": "e1"
                     },
                     "f1": {
                         "C_enum_member": "ENU_f1",
+                        "C_name_api": "f1",
                         "F_enum_member": "f1",
+                        "F_name_api": "f1",
                         "F_value": "d1+1",
-                        "enum_member_lower": "f1",
-                        "enum_member_name": "f1",
-                        "enum_member_upper": "F1"
+                        "enum_member_name": "f1"
                     },
                     "g1": {
                         "C_enum_member": "ENU_g1",
+                        "C_name_api": "g1",
                         "F_enum_member": "g1",
+                        "F_name_api": "g1",
                         "F_value": "d1+2",
-                        "enum_member_lower": "g1",
-                        "enum_member_name": "g1",
-                        "enum_member_upper": "G1"
+                        "enum_member_name": "g1"
                     },
                     "h1": {
                         "C_enum_member": "ENU_h1",
+                        "C_name_api": "h1",
                         "C_value": 100,
                         "F_enum_member": "h1",
+                        "F_name_api": "h1",
                         "F_value": 100,
-                        "enum_member_lower": "h1",
-                        "enum_member_name": "h1",
-                        "enum_member_upper": "H1"
+                        "enum_member_name": "h1"
                     }
                 },
                 "ast": {
