@@ -2241,6 +2241,22 @@
                 },
                 "name": "IndexType",
                 "options": {},
+                "splicer": {
+                    "c": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "typedef int64_t TYP_IndexType;",
+                        "#else",
+                        "typedef int32_t TYP_IndexType;",
+                        "#endif"
+                    ],
+                    "f": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "integer, parameter :: INDEX_TYPE = C_INT64_T",
+                        "#else",
+                        "integer, parameter :: INDEX_TYPE = C_INT32_T",
+                        "#endif"
+                    ]
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -2289,6 +2305,22 @@
                 },
                 "name": "IndexType2",
                 "options": {},
+                "splicer": {
+                    "c": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "typedef int64_t LOCAL_IndexType;",
+                        "#else",
+                        "typedef int32_t LOCAL_IndexType;",
+                        "#endif"
+                    ],
+                    "f": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "integer, parameter :: LOCAL_INDEX_TYPE = C_INT64_T",
+                        "#else",
+                        "integer, parameter :: LOCAL_INDEX_TYPE = C_INT32_T",
+                        "#endif"
+                    ]
+                },
                 "user_fmt": {
                     "C_name_typedef": "LOCAL_IndexType",
                     "F_name_typedef": "LOCAL_Index_Type"

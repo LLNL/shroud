@@ -1763,7 +1763,8 @@ class EnumNode(AstNode):
     """
 
     def __init__(
-        self, decl, parent, format={}, ast=None, options=None, **kwargs
+            self, decl, parent, ast=None,
+            format={}, options=None, splicer={}, **kwargs
     ):
 
         # From arguments
@@ -1771,6 +1772,7 @@ class EnumNode(AstNode):
         self.symtab = parent.symtab
         self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
+        self.splicer = splicer
 
         self.options = util.Scope(parent.options)
         if options:

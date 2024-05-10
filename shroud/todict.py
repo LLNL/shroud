@@ -490,6 +490,7 @@ class ToDict(visitor.Visitor):
             "user_fmt",
             "fmtdict",
             "options",
+            "splicer",
             "wrap",
         ])
         return d
@@ -515,6 +516,7 @@ class ToDict(visitor.Visitor):
             "user_fields",
             "fmtdict",
             "options",
+            "splicer",
             "wrap",
             "f_kind",
             "f_module",
