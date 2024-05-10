@@ -77,9 +77,11 @@ typedef int32_t LOCAL_IndexType;
 
 //  Color
 enum TYP_Color {
+    // splicer begin enum.Color
     TYP_RED = 10,
-    TYP_BLUE,
-    TYP_WHITE
+    TYP_BLUE = 11,
+    TYP_WHITE = 12
+    // splicer end enum.Color
 };
 
 #ifdef __cplusplus

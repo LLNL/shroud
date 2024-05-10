@@ -33,9 +33,11 @@ extern "C" {
 
 //  Color
 enum TES_Color {
+    // splicer begin enum.Color
     TES_RED,
     TES_BLUE,
     TES_WHITE
+    // splicer end enum.Color
 };
 
 // splicer begin C_declarations

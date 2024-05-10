@@ -27,8 +27,10 @@ extern "C" {
 
 //  upper::Color
 enum NS_upper_Color {
+    // splicer begin namespace.upper.enum.Color
     NS_upper_ERROR,
     NS_upper_WARN
+    // splicer end namespace.upper.enum.Color
 };
 
 // splicer begin namespace.upper.C_declarations

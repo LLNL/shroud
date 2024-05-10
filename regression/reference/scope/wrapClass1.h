@@ -27,9 +27,11 @@ extern "C" {
 
 //  Class1::Color
 enum SCO_Class1_Color {
+    // splicer begin class.Class1.enum.Color
     SCO_Class1_RED = 40,
     SCO_Class1_BLUE,
     SCO_Class1_WHITE
+    // splicer end class.Class1.enum.Color
 };
 
 // splicer begin class.Class1.C_declarations

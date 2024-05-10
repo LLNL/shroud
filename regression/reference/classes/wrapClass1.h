@@ -32,10 +32,12 @@ extern "C" {
 
 //  classes::Class1::DIRECTION
 enum CLA_Class1_DIRECTION {
+    // splicer begin class.Class1.enum.DIRECTION
     CLA_Class1_UP = 2,
     CLA_Class1_DOWN,
     CLA_Class1_LEFT = 100,
     CLA_Class1_RIGHT
+    // splicer end class.Class1.enum.DIRECTION
 };
 
 // splicer begin class.Class1.C_declarations

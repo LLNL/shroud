@@ -42,9 +42,11 @@ typedef int TUT_EnumTypeID;
 
 //  tutorial::Color
 enum TUT_Color {
+    // splicer begin enum.Color
     TUT_RED,
     TUT_BLUE,
     TUT_WHITE
+    // splicer end enum.Color
 };
 
 // splicer begin C_declarations

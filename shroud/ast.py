@@ -231,12 +231,15 @@ class NamespaceMixin(object):
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
                 # XXX - move arguments to caller
-                fmtdict = kwargs.get("format", {})
-                options = kwargs.get("options", {})
-                splicer = kwargs.get("splicer", {})
+                fmtdict = kwargs.pop("format", {})
+                options = kwargs.pop("options", {})
+                splicer = kwargs.pop("splicer", {})
                 node = self.add_typedef(decl, ast, fields, fmtdict, options, splicer)
             elif ast.enum_specifier:
-                node = self.add_enum(decl, ast=ast, **kwargs)
+                fmtdict = kwargs.pop("format", {})
+                options = kwargs.pop("options", {})
+                splicer = kwargs.pop("splicer", {})
+                node = self.add_enum(decl, ast, fmtdict, options, splicer, **kwargs)
             elif ast.class_specifier:
                 if isinstance(ast.class_specifier, declast.Struct):
                     node = self.add_struct(
@@ -278,12 +281,13 @@ class NamespaceMixin(object):
             )
         return node
 
-    def add_enum(self, decl, ast=None, **kwargs):
+    def add_enum(self, decl, ast=None,
+                    format={}, options={}, splicer={}, **kwargs):
         """Add an enumeration.
 
         Add as a type for C++ but not C.
         """
-        node = EnumNode(decl, parent=self, ast=ast, **kwargs)
+        node = EnumNode(decl, self, ast, format, options, splicer, **kwargs)
         self.enums.append(node)
         return node
 
@@ -1755,6 +1759,9 @@ class EnumNode(AstNode):
              bar: 4
           format:
              baz: 4
+          splicer:
+            f: |
+              blah blah blah
 
     _fmtmembers = {
       'RED': Scope(_fmt_func)

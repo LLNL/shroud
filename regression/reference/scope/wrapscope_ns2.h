@@ -27,9 +27,11 @@ extern "C" {
 
 //  ns2::Color
 enum SCO_ns2_Color {
+    // splicer begin namespace.ns2.enum.Color
     SCO_ns2_RED = 30,
     SCO_ns2_BLUE,
     SCO_ns2_WHITE
+    // splicer end namespace.ns2.enum.Color
 };
 
 #ifdef __cplusplus

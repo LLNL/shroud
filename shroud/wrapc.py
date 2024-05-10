@@ -823,13 +823,20 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         output.append("")
         append_format(output, "//  {namespace_scope}{enum_name}", fmt_enum)
         append_format(output, "enum {C_enum_type} {{+", fmt_enum)
-        for member in ast.members:
-            fmt_id = fmtmembers[member.name]
-            if member.value is not None:
-                append_format(output, "{C_enum_member} = {C_value},", fmt_id)
-            else:
-                append_format(output, "{C_enum_member},", fmt_id)
-        output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
+        if "c" in node.splicer:
+            C_code = None
+            C_force = node.splicer["c"]
+        else:
+            C_code = []
+            C_force = None
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                if member.value is not None:
+                    append_format(C_code, "{C_enum_member} = {C_value},", fmt_id)
+                else:
+                    append_format(C_code, "{C_enum_member},", fmt_id)
+            C_code[-1] = C_code[-1][:-1]  # Avoid trailing comma for older compilers
+        self._create_splicer(node.name, output, C_code, C_force)
         append_format(output, "-}};", fmt_enum)
 
     def build_proto_list(self, fmt, stmts_blk, proto_list):

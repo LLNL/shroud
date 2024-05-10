@@ -29,13 +29,16 @@ extern "C" {
 
 //  Color
 enum ENU_Color {
+    // splicer begin enum.Color
     ENU_RED = 10,
     ENU_BLUE,
     ENU_WHITE
+    // splicer end enum.Color
 };
 
 //  val
 enum ENU_val {
+    // splicer begin enum.val
     ENU_a1,
     ENU_b1 = 3,
     ENU_c1,
@@ -44,6 +47,7 @@ enum ENU_val {
     ENU_f1,
     ENU_g1,
     ENU_h1 = 100
+    // splicer end enum.val
 };
 
 // splicer begin C_declarations

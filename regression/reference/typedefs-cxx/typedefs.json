@@ -167,6 +167,17 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
+                "splicer": {
+                    "c": [
+                        "TYP_RED = 10,",
+                        "TYP_BLUE = 11,",
+                        "TYP_WHITE = 12"
+                    ],
+                    "f": [
+                        "integer(color), parameter :: &",
+                        "  red=10, blue=11, white=12"
+                    ]
+                },
                 "typemap_name": "Color",
                 "wrap": {
                     "c": true,

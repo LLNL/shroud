@@ -27,23 +27,29 @@ extern "C" {
 
 //  Color
 enum SCO_Color {
+    // splicer begin enum.Color
     SCO_RED = 10,
     SCO_BLUE,
     SCO_WHITE
+    // splicer end enum.Color
 };
 
 //  ns3::Color
 enum SCO_ns3_Color {
+    // splicer begin enum.Color
     SCO_ns3_RED = 70,
     SCO_ns3_BLUE,
     SCO_ns3_WHITE
+    // splicer end enum.Color
 };
 
 //  ColorEnum
 enum SCO_ColorEnum {
+    // splicer begin enum.ColorEnum
     SCO_ColorEnum_RED = 60,
     SCO_ColorEnum_BLUE,
     SCO_ColorEnum_WHITE
+    // splicer end enum.ColorEnum
 };
 
 #ifdef __cplusplus

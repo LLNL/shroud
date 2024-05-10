@@ -490,15 +490,20 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 "integer, parameter :: {F_name_enum} = {F_enum_kind}",
                 fmt_enum
             )
-        code = []
-        for member in ast.members:
-            fmt_id = fmtmembers[member.name]
-            append_format(
-                code,
-                "integer({F_name_enum}), parameter :: {F_enum_member} = {F_value}",
-                fmt_id,
-            )
-        self._create_splicer(node.name, output, code)
+        if "f" in node.splicer:
+            F_code = None
+            F_force = node.splicer["f"]
+        else:
+            F_code = []
+            F_force = None
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                append_format(
+                    F_code,
+                    "integer({F_name_enum}), parameter :: {F_enum_member} = {F_value}",
+                    fmt_id,
+                )
+        self._create_splicer(node.name, output, F_code, F_force)
         self.set_f_module(fileinfo.module_use, "iso_c_binding", fmt_enum.F_enum_kind)
 
     def write_object_get_set(self, node, fileinfo):
