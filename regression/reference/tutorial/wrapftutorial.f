@@ -79,6 +79,14 @@ module tutorial_mod
     end type TUT_SHROUD_capsule_data
     ! end helper capsule_data_helper
 
+    !  enum tutorial::Color
+    integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
+    integer(color), parameter :: red = 0
+    integer(color), parameter :: blue = 1
+    integer(color), parameter :: white = 2
+    ! splicer end enum.Color
+
     ! typedef tutorial::TypeID
     ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
@@ -88,14 +96,6 @@ module tutorial_mod
     ! splicer begin typedef.EnumTypeID
     integer, parameter :: enum_type_id = C_INT
     ! splicer end typedef.EnumTypeID
-
-    !  enum tutorial::Color
-    integer, parameter :: color = C_INT
-    ! splicer begin enum.Color
-    integer(color), parameter :: red = 0
-    integer(color), parameter :: blue = 1
-    integer(color), parameter :: white = 2
-    ! splicer end enum.Color
 
     ! start abstract callback1_incr
     abstract interface

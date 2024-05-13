@@ -21,6 +21,13 @@ module typedefs_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    !  enum Color
+    integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
+    integer(color), parameter :: &
+      red=10, blue=11, white=12
+    ! splicer end enum.Color
+
     ! start typedef Alias
     ! typedef Alias
     ! splicer begin typedef.Alias
@@ -56,13 +63,6 @@ module typedefs_mod
 #endif
     ! splicer end typedef.IndexType2
     ! end typedef IndexType2
-
-    !  enum Color
-    integer, parameter :: color = C_INT
-    ! splicer begin enum.Color
-    integer(color), parameter :: &
-      red=10, blue=11, white=12
-    ! splicer end enum.Color
 
 
     ! start derived-type struct1_rename

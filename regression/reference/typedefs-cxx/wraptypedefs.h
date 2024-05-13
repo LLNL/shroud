@@ -32,6 +32,15 @@
 extern "C" {
 #endif
 
+//  Color
+enum TYP_Color {
+    // splicer begin enum.Color
+    TYP_RED = 10,
+    TYP_BLUE = 11,
+    TYP_WHITE = 12
+    // splicer end enum.Color
+};
+
 // start typedef Alias
 // typedef Alias
 // splicer begin typedef.Alias
@@ -74,15 +83,6 @@ typedef int32_t LOCAL_IndexType;
 #endif
 // splicer end typedef.IndexType2
 // end typedef IndexType2
-
-//  Color
-enum TYP_Color {
-    // splicer begin enum.Color
-    TYP_RED = 10,
-    TYP_BLUE = 11,
-    TYP_WHITE = 12
-    // splicer end enum.Color
-};
 
 #ifdef __cplusplus
 }

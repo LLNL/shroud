@@ -492,13 +492,13 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
 
-        if self.typedef_impl:
-            write_file = True
-            output.extend(self.typedef_impl)
-
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
+
+        if self.typedef_impl:
+            write_file = True
+            output.extend(self.typedef_impl)
 
         if self.struct_impl_c:
             write_file = True

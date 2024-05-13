@@ -2044,8 +2044,8 @@ rv = .false.
 
         output.extend(fileinfo.helper_derived_type)
 
-        output.extend(fileinfo.typedef_impl)
         output.extend(fileinfo.enum_impl)
+        output.extend(fileinfo.typedef_impl)
 
         # XXX output.append('! splicer push class')
         output.extend(fileinfo.f_type_decl)

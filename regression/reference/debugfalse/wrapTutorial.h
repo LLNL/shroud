@@ -28,6 +28,15 @@
 extern "C" {
 #endif
 
+//  tutorial::Color
+enum TUT_Color {
+    // splicer begin enum.Color
+    TUT_RED,
+    TUT_BLUE,
+    TUT_WHITE
+    // splicer end enum.Color
+};
+
 // typedef tutorial::TypeID
 // splicer begin typedef.TypeID
 typedef int TUT_TypeID;
@@ -37,15 +46,6 @@ typedef int TUT_TypeID;
 // splicer begin typedef.EnumTypeID
 typedef int TUT_EnumTypeID;
 // splicer end typedef.EnumTypeID
-
-//  tutorial::Color
-enum TUT_Color {
-    // splicer begin enum.Color
-    TUT_RED,
-    TUT_BLUE,
-    TUT_WHITE
-    // splicer end enum.Color
-};
 
 // splicer begin C_declarations
 // splicer end C_declarations
