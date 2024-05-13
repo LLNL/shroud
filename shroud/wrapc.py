@@ -178,8 +178,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 self.wrap_class(cls)
         else:
             if node.wrap.c:
-                self.wrap_typedefs(ns)
                 self.wrap_enums(ns)
+                self.wrap_typedefs(ns)
             self.wrap_functions(ns)
 
         c_header = fmt.C_header_filename
@@ -730,8 +730,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.compute_idtor(node)
         self.add_class_capsule_structs(node)
         if node.wrap.c:
-            self.wrap_typedefs(node)
             self.wrap_enums(node)
+            self.wrap_typedefs(node)
 
         self._push_splicer("method")
         for method in node.functions:

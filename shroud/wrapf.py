@@ -113,8 +113,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             fileinfo.begin_class()  # clear out old class info
             node.F_module_dependencies = []
 
-            self.wrap_typedefs(node, fileinfo)
             self.wrap_enums(node, fileinfo)
+            self.wrap_typedefs(node, fileinfo)
 
             self._push_splicer("function")
             self.wrap_functions(None, node.functions, fileinfo)
@@ -242,8 +242,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer("module_use", fileinfo.use_stmts)
 
-        self.wrap_typedefs(node, fileinfo)
         self.wrap_enums(node, fileinfo)
+        self.wrap_typedefs(node, fileinfo)
 
         if node.cpp_if:
             fileinfo.impl.append("#" + node.cpp_if)
