@@ -32,6 +32,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 //  Color
 enum TYP_Color {
     // splicer begin enum.Color
@@ -101,9 +104,6 @@ struct s_TYP_struct1rename {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 TYP_Alias TYP_typefunc(TYP_Alias arg);
 

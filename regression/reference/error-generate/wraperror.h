@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 // typedef none
 // splicer begin typedef.none
 typedef int ERR_none;
@@ -54,9 +57,6 @@ struct s_ERR_nested {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 int * ERR_struct1_get_arg2(ERR_struct1 * SH_this, ===>SHC_rv<===);
 

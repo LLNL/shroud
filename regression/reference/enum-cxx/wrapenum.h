@@ -27,6 +27,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 //  Color
 enum ENU_Color {
     // splicer begin enum.Color
@@ -49,9 +52,6 @@ enum ENU_val {
     ENU_h1 = 100
     // splicer end enum.val
 };
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 int ENU_convert_to_int(enum ENU_Color in);
 

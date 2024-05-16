@@ -32,13 +32,13 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.std.class.vector.C_declarations
+// splicer end namespace.std.class.vector.C_declarations
+
 // typedef std::vector<int>::size_type
 // splicer begin namespace.std.class.vector.typedef.size_type
 typedef size_t TEM_vector_int_size_type;
 // splicer end namespace.std.class.vector.typedef.size_type
-
-// splicer begin namespace.std.class.vector.C_declarations
-// splicer end namespace.std.class.vector.C_declarations
 
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv);
 

@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin class.Class1.C_declarations
+// splicer end class.Class1.C_declarations
+
 //  Class1::Color
 enum SCO_Class1_Color {
     // splicer begin class.Class1.enum.Color
@@ -33,9 +36,6 @@ enum SCO_Class1_Color {
     SCO_Class1_WHITE
     // splicer end class.Class1.enum.Color
 };
-
-// splicer begin class.Class1.C_declarations
-// splicer end class.Class1.C_declarations
 
 #ifdef __cplusplus
 }

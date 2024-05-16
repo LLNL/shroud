@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.ns0::inner.C_declarations
+// splicer end namespace.ns0::inner.C_declarations
+
 //  ns0::inner::Color2
 enum TES_ns0_inner_Color2 {
     // splicer begin namespace.ns0::inner.enum.Color2
@@ -33,9 +36,6 @@ enum TES_ns0_inner_Color2 {
     TES_ns0_inner_BLUE
     // splicer end namespace.ns0::inner.enum.Color2
 };
-
-// splicer begin namespace.ns0::inner.C_declarations
-// splicer end namespace.ns0::inner.C_declarations
 
 #ifdef __cplusplus
 }

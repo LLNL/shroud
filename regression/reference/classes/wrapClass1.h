@@ -30,6 +30,9 @@
 extern "C" {
 #endif
 
+// splicer begin class.Class1.C_declarations
+// splicer end class.Class1.C_declarations
+
 //  classes::Class1::DIRECTION
 enum CLA_Class1_DIRECTION {
     // splicer begin class.Class1.enum.DIRECTION
@@ -39,9 +42,6 @@ enum CLA_Class1_DIRECTION {
     CLA_Class1_RIGHT
     // splicer end class.Class1.enum.DIRECTION
 };
-
-// splicer begin class.Class1.C_declarations
-// splicer end class.Class1.C_declarations
 
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv);
 

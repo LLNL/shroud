@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.upper.C_declarations
+// splicer end namespace.upper.C_declarations
+
 //  upper::Color
 enum NS_upper_Color {
     // splicer begin namespace.upper.enum.Color
@@ -32,9 +35,6 @@ enum NS_upper_Color {
     NS_upper_WARN
     // splicer end namespace.upper.enum.Color
 };
-
-// splicer begin namespace.upper.C_declarations
-// splicer end namespace.upper.C_declarations
 
 #ifdef __cplusplus
 }

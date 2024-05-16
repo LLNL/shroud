@@ -267,6 +267,12 @@ f_c_type          i_type
    avoid having to dereference it in the Fortran wrapper via
    c_f_pointer. And in the simpliest case, eliminates the need
    for the Fortran wrapper entirely.
+
+* Moved the C wrapper's *C_declarations* splicer earlier in the file
+  before any other generated splicer code.
+  It is intended to contain code which is needed by any following splicers.
+  It was being written before the ``enum`` and ``typedef`` splicers,
+  which was too late.
   
 New Features
 ^^^^^^^^^^^^

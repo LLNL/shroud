@@ -31,6 +31,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 //  Color
 enum TES_Color {
     // splicer begin enum.Color
@@ -39,9 +42,6 @@ enum TES_Color {
     TES_WHITE
     // splicer end enum.Color
 };
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 void TES_getName(char * name);
 

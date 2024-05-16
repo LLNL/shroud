@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 #ifdef __cplusplus
 }
 #endif
@@ -79,9 +82,6 @@ struct s_STR_s_nested {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 int STR_passStructByValue(STR_cstruct1 arg);
 

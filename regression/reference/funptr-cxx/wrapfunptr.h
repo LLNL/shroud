@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 // typedef TypeID
 // splicer begin typedef.TypeID
 typedef int FUN_TypeID;
@@ -39,9 +42,6 @@ typedef void ( * FUN_incrtype)(int i, FUN_TypeID j);
 // splicer begin typedef.get
 typedef int ( * FUN_get)(double, int);
 // splicer end typedef.get
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 void FUN_callback1(void ( * incr)(void));
 

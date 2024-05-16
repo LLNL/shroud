@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.ns2.C_declarations
+// splicer end namespace.ns2.C_declarations
+
 //  ns2::Color
 enum SCO_ns2_Color {
     // splicer begin namespace.ns2.enum.Color
@@ -51,9 +54,6 @@ struct s_SCO_datapointer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin namespace.ns2.C_declarations
-// splicer end namespace.ns2.C_declarations
 
 void SCO_ns2_DataPointer_get_items(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc);

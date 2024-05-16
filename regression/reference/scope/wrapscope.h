@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 //  Color
 enum SCO_Color {
     // splicer begin enum.Color
@@ -69,9 +72,6 @@ struct s_SCO_datapointer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 void SCO_DataPointer_get_items(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc);
