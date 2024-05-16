@@ -27,6 +27,7 @@
 
 // splicer begin namespace.std.C_definition
 // splicer end namespace.std.C_definition
+
 // splicer begin namespace.std.additional_functions
 // splicer end namespace.std.additional_functions
 static PyMethodDef PY_methods[] = {

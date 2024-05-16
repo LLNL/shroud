@@ -11,11 +11,9 @@
 #ifndef TYPESLIBRARY_H
 #define TYPESLIBRARY_H
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 // helper capsule_data_helper
 struct s_LIB_SHROUD_capsule_data {

@@ -31,6 +31,7 @@
 
 // splicer begin namespace.example::nested.C_definition
 // splicer end namespace.example::nested.C_definition
+
 // splicer begin namespace.example::nested.additional_functions
 // splicer end namespace.example::nested.additional_functions
 

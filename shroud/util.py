@@ -224,24 +224,27 @@ class WrapperMixin(object):
         self.splicer_names[-1] = name
         self.splicer_path = ".".join(self.splicer_names) + "."
 
-    def _create_splicer(self, name, out, default=None, force=None):
+    def _create_splicer(self, name, output, default=None, force=None, blank=False):
         """Insert a splicer with *name* into list *out*.
-        If *force* is defined, use it for contents. Otherwise,
-        use the splicer from the splicer_stack if it exists.
+        If *force* is defined, use it for contents.
+        This is usually a splicer associated directly with a decl.
+        Otherwise, use the splicer from the splicer_stack if it exists.
         Finally, add *default* lines.
         Return True if code was added to out, else False.
 
         Args:
             name    - Name of splicer in current level.
-            out     - Output list.
+            output     - Output list.
             default - Default contents if no splicer is present.
             force   - Contents which are added instead of splicer or
                       default.
+            blank   - Add a blank line before any generated output.
         """
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
         # Creating methods and derived types together.
         show_splicer_comments = self.newlibrary.options.show_splicer_comments
+        out = []
         if show_splicer_comments:
             out.append(
                 "%s splicer begin %s%s"
@@ -261,6 +264,10 @@ class WrapperMixin(object):
             out.append(
                 "%s splicer end %s%s" % (self.comment, self.splicer_path, name)
             )
+        if out:
+            if blank:
+                output.append("")
+            output.extend(out)
         return added_code
 
     #####

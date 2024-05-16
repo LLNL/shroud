@@ -27,6 +27,7 @@
 
 // splicer begin namespace.inner1.C_definition
 // splicer end namespace.inner1.C_definition
+
 // splicer begin namespace.inner1.additional_functions
 // splicer end namespace.inner1.additional_functions
 

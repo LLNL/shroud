@@ -21,6 +21,7 @@ extern "C" {
 
 // splicer begin include
 // splicer end include
+
 // splicer begin C_definition
 // splicer end C_definition
 

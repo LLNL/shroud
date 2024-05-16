@@ -40,6 +40,7 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
     cdesc->rank = 0;  // scalar
 }
 // end helper string_to_cdesc
+
 // splicer begin class.Class2.C_definitions
 // splicer end class.Class2.C_definitions
 

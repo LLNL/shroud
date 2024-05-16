@@ -18,11 +18,9 @@
 // shroud
 #include "typeslibrary.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 // typedef CustomType
 typedef int LIB_CustomType;

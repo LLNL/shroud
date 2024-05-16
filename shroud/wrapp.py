@@ -2415,12 +2415,11 @@ return 1;""",
         self.header_impl.add_shroud_dict(hinclude)
         self.header_impl.write_headers(output)
 
-        output.append("")
-        self._create_splicer("include", output)
+        self._create_splicer("include", output, blank=True)
         output.append(cpp_boilerplate)
         output.extend(hsource)
-        self._create_splicer("C_definition", output)
-        self._create_splicer("additional_methods", output)
+        self._create_splicer("C_definition", output, blank=True)
+        self._create_splicer("additional_methods", output, blank=True)
         self._pop_splicer("impl")
 
         fmt_type = dict(
@@ -2619,8 +2618,7 @@ return 1;""",
 
         #        output.extend(self.define_arraydescr)
 
-        output.append("")
-        self._create_splicer("C_declaration", output)
+        self._create_splicer("C_declaration", output, blank=True)
         self._pop_splicer("header")
 
         append_format(
@@ -2672,18 +2670,16 @@ extern PyObject *{PY_prefix}error_obj;
 
         self.header_impl.add_shroud_dict(hinclude)
         self.header_impl.write_headers(output)
-        output.append("")
-        self._create_splicer("include", output)
+        self._create_splicer("include", output, blank=True)
         output.append(cpp_boilerplate)
         output.extend(hsource)
-        output.append("")
-        self._create_splicer("C_definition", output)
+        self._create_splicer("C_definition", output, blank=True)
 
         if top:
             output.extend(self.module_init_decls)
         output.extend(modinfo.define_arraydescr)
 
-        self._create_splicer("additional_functions", output)
+        self._create_splicer("additional_functions", output, blank=True)
         output.extend(fileinfo.MethodBody)
 
         append_format(

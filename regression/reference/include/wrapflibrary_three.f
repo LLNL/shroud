@@ -14,7 +14,6 @@ module library_three_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
-
     ! helper capsule_data_helper
     type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -56,7 +55,6 @@ module library_three_mod
         end subroutine c_class1_method1
     end interface
 
-
 contains
 
     ! ----------------------------------------
@@ -94,8 +92,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
-
-
 
     function class1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

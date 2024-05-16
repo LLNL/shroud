@@ -38,6 +38,7 @@ PyObject *PY_init_testnames_internal(void);
 PyObject *PY_init_testnames_std(void);
 PyArray_Descr *PY_Cstruct_as_class_array_descr;
 PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

@@ -33,6 +33,7 @@
 PyObject *PY_error_obj;
 PyObject *PY_init_templates_std(void);
 PyObject *PY_init_templates_internal(void);
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

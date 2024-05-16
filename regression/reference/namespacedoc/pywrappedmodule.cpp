@@ -31,6 +31,7 @@ PyObject *PY_error_obj;
 PyObject *PY_init_wrapped_inner1(void);
 PyObject *PY_init_wrapped_inner2(void);
 PyObject *PY_init_wrapped_inner4(void);
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

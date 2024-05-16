@@ -25,11 +25,9 @@
 // shroud
 #include "typeslibrary.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 void LIB_three_Class1_method1(LIB_three_Class1 * self,
     LIB_CustomType arg1);

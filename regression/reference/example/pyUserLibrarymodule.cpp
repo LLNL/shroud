@@ -33,6 +33,7 @@
 PyObject *PP_error_obj;
 PyObject *PP_init_userlibrary_example_nested(void);
 PyObject *PP_init_userlibrary_example(void);
+
 // splicer begin additional_functions
 // splicer end additional_functions
 static PyMethodDef PP_methods[] = {

@@ -71,6 +71,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
     cdesc->size = 1;
     cdesc->rank = 0;  // scalar
 }
+
 // splicer begin namespace.example::nested.class.ExClass1.C_definitions
 // splicer end namespace.example::nested.class.ExClass1.C_definitions
 

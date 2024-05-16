@@ -32,6 +32,7 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyArray_Descr *PY_Struct1Rename_array_descr;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

@@ -180,8 +180,7 @@ class Wrapl(util.WrapperMixin):
             "{LUA_userdata_var}->{LUA_userdata_member}->", fmt_class
         )
 
-        self.lua_type_structs.append("")
-        self._create_splicer("C_declaration", self.lua_type_structs)
+        self._create_splicer("C_declaration", self.lua_type_structs, blank=True)
         self.lua_type_structs.append("")
         self.lua_type_structs.append("typedef struct {+")
         append_format(
@@ -765,8 +764,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             name -
             lines -
         """
-        output.append("")
-        self._create_splicer("additional_functions", output)
+        self._create_splicer("additional_functions", output, blank=True)
         output.extend(
             ["", "static const struct luaL_Reg {} [] = {{".format(name), 1]
         )
@@ -797,10 +795,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.append('#include "lauxlib.h"')
         util.extern_C(output, "end")
 
-        output.append("")
-        self._create_splicer("include", output)
+        self._create_splicer("include", output, blank=True)
 
-        self._create_splicer("C_definition", output)
+        self._create_splicer("C_definition", output, blank=True)
 
         output.extend(hsource)
         output.extend(self.body_lines)

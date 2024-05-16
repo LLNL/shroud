@@ -122,10 +122,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         do_write = top or not node.options.F_flatten_namespace
         if do_write:
-            fileinfo.impl.append("")
-            self._create_splicer("additional_functions", fileinfo.impl)
-            fileinfo.user_declarations.append("")
-            self._create_splicer("additional_declarations", fileinfo.user_declarations)
+            self._create_splicer("additional_functions", fileinfo.impl, blank=True)
+            self._create_splicer("additional_declarations", fileinfo.user_declarations, blank=True)
 
         if top:
             # have one namespace level, then replace name each time
@@ -258,8 +256,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         if not node.baseclass:
             # subclasses share these functions.
             self.write_object_get_set(node, fileinfo)
-        fileinfo.impl.append("")
-        self._create_splicer("additional_functions", fileinfo.impl)
+        self._create_splicer("additional_functions", fileinfo.impl, blank=True)
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
@@ -2039,8 +2036,7 @@ rv = .false.
 
         self._create_splicer("module_use", output)
         output.append("implicit none")
-        output.append("")
-        self._create_splicer("module_top", output)
+        self._create_splicer("module_top", output, blank=True)
 
         output.extend(fileinfo.helper_derived_type)
 

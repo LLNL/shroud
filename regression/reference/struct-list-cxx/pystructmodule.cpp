@@ -36,6 +36,7 @@ PyArray_Descr *PY_Cstruct_ptr_array_descr;
 PyArray_Descr *PY_Cstruct_list_array_descr;
 PyArray_Descr *PY_Cstruct_numpy_array_descr;
 PyArray_Descr *PY_Arrays1_array_descr;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

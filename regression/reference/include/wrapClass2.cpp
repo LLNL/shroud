@@ -15,9 +15,7 @@
 // shroud
 #include "wrapClass2.h"
 
-
 extern "C" {
-
 
 // ----------------------------------------
 // Function:  void method1

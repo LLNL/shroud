@@ -12,9 +12,7 @@
 // shroud
 #include "wraplibrary_outer1.h"
 
-
 extern "C" {
-
 
 // ----------------------------------------
 // Function:  void outer_func

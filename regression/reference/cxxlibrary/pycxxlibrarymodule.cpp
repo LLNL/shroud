@@ -33,6 +33,7 @@
 PyObject *PY_error_obj;
 PyObject *PY_init_cxxlibrary_structns(void);
 PyArray_Descr *PY_nested_array_descr;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

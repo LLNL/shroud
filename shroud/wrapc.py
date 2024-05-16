@@ -409,14 +409,12 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
         headers.write_headers(output, is_header=True)
 
-        output.append("")
         self._push_splicer("types")
-        self._create_splicer('CXX_declarations', output)
+        self._create_splicer('CXX_declarations', output, blank=True)
         
         if self.language == "cxx":
             output.extend(cplusplus.start_extern_c)
-            output.append("")
-            self._create_splicer('C_declarations', output)
+            self._create_splicer('C_declarations', output, blank=True)
 
         output.extend(self.helper_summary["c"]["cwrap_include"])
         self.write_class_capsule_structs(output)
@@ -484,16 +482,14 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         headers.write_headers(output, is_header=True)
         
         if self.language == "cxx":
-            output.append("")
-            if self._create_splicer("CXX_declarations", output):
+            if self._create_splicer("CXX_declarations", output, blank=True):
                 write_file = True
         output.extend(cplusplus.start_extern_c)
 
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
 
-        output.append("")
-        if self._create_splicer("C_declarations", output):
+        if self._create_splicer("C_declarations", output, blank=True):
             write_file = True
 
         if self.enum_impl:
@@ -557,22 +553,21 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.header_impl.write_headers(output)
 
         if self.language == "cxx":
-            output.append("")
-            if self._create_splicer("CXX_definitions", output):
+            if self._create_splicer("CXX_definitions", output, blank=True):
                 write_file = True
             source = self.helper_summary["cxx"]["file"]
             if source:
                 write_file = True
                 output.extend(source)
             output.append('\nextern "C" {')
-        output.append("")
 
         source = self.helper_summary["c"]["file"]
         if source:
             write_file = True
+            output.append("")
             output.extend(source)
 
-        if self._create_splicer("C_definitions", output):
+        if self._create_splicer("C_definitions", output, blank=True):
             write_file = True
         if self.impl:
             write_file = True

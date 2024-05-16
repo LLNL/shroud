@@ -20,11 +20,9 @@
 // shroud
 #include "typeslibrary.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm);
 

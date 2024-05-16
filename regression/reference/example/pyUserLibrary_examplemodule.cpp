@@ -31,6 +31,7 @@
 
 // splicer begin namespace.example.C_definition
 // splicer end namespace.example.C_definition
+
 // splicer begin namespace.example.additional_functions
 // splicer end namespace.example.additional_functions
 static PyMethodDef PP_methods[] = {

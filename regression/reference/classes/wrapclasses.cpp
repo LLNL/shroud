@@ -36,6 +36,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
      if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
    }
 }
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

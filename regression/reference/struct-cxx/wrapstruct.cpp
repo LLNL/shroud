@@ -26,6 +26,7 @@ static void ShroudCharBlankFill(char *dest, int ndest)
    int nm = std::strlen(dest);
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

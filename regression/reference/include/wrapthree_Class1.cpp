@@ -12,9 +12,7 @@
 // shroud
 #include "wrapthree_Class1.h"
 
-
 extern "C" {
-
 
 // ----------------------------------------
 // Function:  void method1
