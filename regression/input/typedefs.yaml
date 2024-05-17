@@ -60,6 +60,22 @@ declarations:
 
 #####
 
+- decl: |
+      enum DataTypeID
+      {
+        NO_TYPE_ID = SHARED_NO_TYPE_ID,
+        INT_ID = SHARED_INT_ID,
+        LONG_ID = SHARED_LONG_ID,
+        FLOAT_ID = SHARED_FLOAT_ID,
+        DOUBLE_ID = SHARED_DOUBLE_ID
+      };
+
+- decl: typedef enum DataTypeID TypeID;
+
+- decl: TypeID returnTypeID(TypeID in);
+
+#####
+
 # struct typedef
 - decl: struct s_Struct1 {
           int i;
@@ -139,3 +155,11 @@ file_code:
       iso_c_binding:
       - C_INT32_T
       - C_INT64_T
+
+splicer_code:
+  c:
+    C_declarations: |
+      #include "shared.h"
+  f:
+    file_top: |
+      #include "shared.h"

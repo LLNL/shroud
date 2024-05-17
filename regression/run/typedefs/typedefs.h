@@ -10,6 +10,8 @@
 #ifndef TYPEDEFS_HPP
 #define TYPEDEFS_HPP
 
+#include "shared.h"
+
 typedef int Alias;
 Alias typefunc(Alias arg);
 Alias typefunc_wrap(Alias arg);
@@ -25,6 +27,21 @@ enum Color {
 typedef enum Color iColor;
 
 iColor returnEnum(iColor in);
+
+//-----
+
+enum DataTypeID
+{
+  NO_TYPE_ID = SHARED_NO_TYPE_ID,
+  INT_ID = SHARED_INT_ID,
+  LONG_ID = SHARED_LONG_ID,
+  FLOAT_ID = SHARED_FLOAT_ID,
+  DOUBLE_ID = SHARED_DOUBLE_ID
+};
+
+typedef enum DataTypeID TypeID;
+
+TypeID returnTypeID(TypeID in);
 
 //----------------------------------------------------------------------
 

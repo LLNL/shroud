@@ -11,6 +11,7 @@
 !! \brief Shroud generated wrapper for typedefs library
 !<
 ! splicer begin file_top
+#include "shared.h"
 ! splicer end file_top
 module typedefs_mod
     use iso_c_binding, only : C_DOUBLE, C_INT, C_INT32_T, C_INT64_T
@@ -28,6 +29,16 @@ module typedefs_mod
       red=10, blue=11, white=12
     ! splicer end enum.Color
 
+    !  enum DataTypeID
+    integer, parameter :: data_type_id = C_INT
+    ! splicer begin enum.DataTypeID
+    integer(data_type_id), parameter :: no_type_id = SHARED_NO_TYPE_ID
+    integer(data_type_id), parameter :: int_id = SHARED_INT_ID
+    integer(data_type_id), parameter :: long_id = SHARED_LONG_ID
+    integer(data_type_id), parameter :: float_id = SHARED_FLOAT_ID
+    integer(data_type_id), parameter :: double_id = SHARED_DOUBLE_ID
+    ! splicer end enum.DataTypeID
+
     ! start typedef Alias
     ! typedef Alias
     ! splicer begin typedef.Alias
@@ -41,6 +52,13 @@ module typedefs_mod
     integer, parameter :: i_color = C_INT
     ! splicer end typedef.iColor
     ! end typedef iColor
+
+    ! start typedef TypeID
+    ! typedef TypeID
+    ! splicer begin typedef.TypeID
+    integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
+    ! end typedef TypeID
 
     ! start typedef IndexType
     ! typedef IndexType
@@ -128,6 +146,25 @@ module typedefs_mod
         end function return_enum
     end interface
     ! end return_enum
+
+    ! ----------------------------------------
+    ! Function:  TypeID returnTypeID
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID in
+    ! Statement: f_in_enum_scalar
+    ! start return_type_id
+    interface
+        function return_type_id(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnTypeID_bufferify")
+            import :: type_id
+            implicit none
+            integer(type_id), value, intent(IN) :: in
+            integer(type_id) :: SHT_rv
+        end function return_type_id
+    end interface
+    ! end return_type_id
 
     ! ----------------------------------------
     ! Function:  void typestruct
@@ -303,6 +340,26 @@ contains
         ! splicer end function.return_enum
     end function return_enum
     ! end return_enum
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  TypeID returnTypeID
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID in
+    ! Statement: f_in_enum_scalar
+    ! start return_type_id
+    function return_type_id(in) &
+            result(SHT_rv)
+        integer(type_id), value, intent(IN) :: in
+        integer(type_id) :: SHT_rv
+        ! splicer begin function.return_type_id
+        SHT_rv = c_return_type_id_bufferify(in)
+        ! splicer end function.return_type_id
+    end function return_type_id
+    ! end return_type_id
 #endif
 
 #if 0

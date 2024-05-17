@@ -112,6 +112,45 @@ PY_returnEnum(
 }
 
 // ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: py_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: py_in_enum_scalar
+static char PY_returnTypeID__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnTypeID(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.returnTypeID
+    int in;
+    const char *SHT_kwlist[] = {
+        "in",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:returnTypeID",
+        const_cast<char **>(SHT_kwlist), &in))
+        return nullptr;
+
+    // post_declare
+    TypeID SH_in = static_cast<DataTypeID>(in);
+
+    TypeID SHCXX_rv = returnTypeID(SH_in);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.returnTypeID
+}
+
+// ----------------------------------------
 // Function:  void typestruct
 // Statement: py_default
 // ----------------------------------------
@@ -150,6 +189,8 @@ static PyMethodDef PY_methods[] = {
     PY_typefunc__doc__},
 {"returnEnum", (PyCFunction)PY_returnEnum, METH_VARARGS|METH_KEYWORDS,
     PY_returnEnum__doc__},
+{"returnTypeID", (PyCFunction)PY_returnTypeID,
+    METH_VARARGS|METH_KEYWORDS, PY_returnTypeID__doc__},
 {"typestruct", (PyCFunction)PY_typestruct, METH_VARARGS|METH_KEYWORDS,
     PY_typestruct__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
@@ -300,6 +341,13 @@ inittypedefs(void)
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
+
+    // enum DataTypeID
+    PyModule_AddIntConstant(m, "NO_TYPE_ID", NO_TYPE_ID);
+    PyModule_AddIntConstant(m, "INT_ID", INT_ID);
+    PyModule_AddIntConstant(m, "LONG_ID", LONG_ID);
+    PyModule_AddIntConstant(m, "FLOAT_ID", FLOAT_ID);
+    PyModule_AddIntConstant(m, "DOUBLE_ID", DOUBLE_ID);
 
     // Define PyArray_Descr for structs
     PY_Struct1Rename_array_descr = PY_Struct1Rename_create_array_descr();

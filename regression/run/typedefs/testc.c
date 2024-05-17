@@ -23,9 +23,19 @@ void test_alias(void)
     assert(rv == arg1 + 1 && "TYP_typefunc");
 }
 
+void test_enum(void)
+{
+    TYP_TypeID type1, type2;
+
+    type1 = TYP_INT_ID;
+    type2 = TYP_returnTypeID(type1);
+    assert(type1 == type2 && "returnTypeID");
+}
+
 int main(int argc, char *argv[])
 {
   test_alias();
+  test_enum();
 
   return 0;
 }

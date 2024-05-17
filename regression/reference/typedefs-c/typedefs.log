@@ -3,6 +3,7 @@ Close typedefs_types.yaml
 C f Alias typefunc(Alias arg)
 C f Alias typefunc_wrap(Alias arg)
 C f iColor returnEnum(iColor in)
+C f TypeID returnTypeID(TypeID in)
 C f void typestruct(Struct1Rename * arg1)
 C f int returnBytesForIndexType(IndexType arg)
 C f IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))
@@ -13,11 +14,13 @@ Close wraptypedefs.c
 class Struct1Rename
 typedef Alias
 typedef iColor
+typedef TypeID
 typedef IndexType
 typedef IndexType2
 Fortran Alias typefunc(Alias arg)
 Fortran Alias typefunc_wrap(Alias arg)
 Fortran iColor returnEnum(iColor in)
+Fortran TypeID returnTypeID(TypeID in)
 Fortran void typestruct(Struct1Rename * arg1)
 Fortran int returnBytesForIndexType(IndexType arg)
 Fortran IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))
@@ -26,6 +29,7 @@ Fortran IndexType2 returnShapeSize2(int ndims, const IndexType2 * shape +intent(
 C-interface f Alias typefunc(Alias arg)
 C-interface f Alias typefunc_wrap(Alias arg)
 C-interface f iColor returnEnum(iColor in)
+C-interface f TypeID returnTypeID(TypeID in)
 C-interface f void typestruct(Struct1Rename * arg1)
 C-interface f int returnBytesForIndexType(IndexType arg)
 C-interface f IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))
@@ -36,6 +40,7 @@ Close utiltypedefs.c
 Close typestypedefs.h
 Python function Alias typefunc(Alias arg)
 Python function iColor returnEnum(iColor in)
+Python function TypeID returnTypeID(TypeID in)
 Python function void typestruct(Struct1Rename * arg1)
 Close pytypedefsmodule.c
 Close pytypedefsmodule.h

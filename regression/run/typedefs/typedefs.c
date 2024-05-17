@@ -30,6 +30,11 @@ iColor returnEnum(iColor in)
     return in;
 }
 
+TypeID returnTypeID(TypeID in)
+{
+    return in;
+}
+
 //----------------------------------------------------------------------
 
 void typestruct(Struct1Rename *arg1)

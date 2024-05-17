@@ -95,6 +95,42 @@ int TYP_returnEnum_bufferify(int in)
 // end TYP_returnEnum_bufferify
 
 // ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: c_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: c_in_enum_scalar
+// start TYP_returnTypeID
+TYP_TypeID TYP_returnTypeID(TYP_TypeID in)
+{
+    // splicer begin function.returnTypeID
+    TypeID SHCXX_in = static_cast<DataTypeID>(in);
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnTypeID
+}
+// end TYP_returnTypeID
+
+// ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: f_in_enum_scalar
+// start TYP_returnTypeID_bufferify
+int TYP_returnTypeID_bufferify(int in)
+{
+    // splicer begin function.returnTypeID_bufferify
+    TypeID SHCXX_in = static_cast<DataTypeID>(in);
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnTypeID_bufferify
+}
+// end TYP_returnTypeID_bufferify
+
+// ----------------------------------------
 // Function:  void typestruct
 // Statement: c_subroutine
 // ----------------------------------------

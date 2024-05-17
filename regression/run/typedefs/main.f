@@ -53,12 +53,17 @@ contains
 
   subroutine test_enum
     integer(i_color) color1, color2
+    integer(Type_ID) type1, type2
 
     call set_case_name("test_enum")
 
     color1 = red
     color2 = return_enum(color1)
     call assert_equals(color1, color2, "returnColor")
+
+    type1 = INT_ID
+    type2 = return_type_id(type1)
+    call assert_equals(type1, type2, "returnTypeID")
 
   end subroutine test_enum
 

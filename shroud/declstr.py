@@ -102,10 +102,15 @@ class DeclStr(object):
             if declaration.storage:
                 parts.append(" ".join(declaration.storage))
                 parts.append(" ")
-            if self.in_params and self.arg_lang:
+
+            ntypemap = declaration.typemap
+            if ntypemap.is_enum and ntypemap.typedef and self.arg_lang:
+                ntypemap = ntypemap.typedef
+                parts.append(getattr(ntypemap, self.arg_lang))
+            elif self.in_params and self.arg_lang:
                 # typedefs in C wrapper must use c_type typedef for arguments.
                 # i.e. with function pointers
-                parts.append(getattr(declaration.typemap, self.arg_lang))
+                parts.append(getattr(ntypemap, self.arg_lang))
             else:
                 parts.append(" ".join(declaration.specifier))
         if declaration.template_arguments:

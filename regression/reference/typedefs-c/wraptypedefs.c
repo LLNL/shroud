@@ -54,3 +54,21 @@ int TYP_returnEnum_bufferify(int in)
     // splicer end function.returnEnum_bufferify
 }
 // end TYP_returnEnum_bufferify
+
+// ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: f_in_enum_scalar
+// start TYP_returnTypeID_bufferify
+int TYP_returnTypeID_bufferify(int in)
+{
+    // splicer begin function.returnTypeID_bufferify
+    TypeID SHCXX_in = (TypeID) in;
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    int SHC_rv = (int) SHCXX_rv;
+    return SHC_rv;
+    // splicer end function.returnTypeID_bufferify
+}
+// end TYP_returnTypeID_bufferify
