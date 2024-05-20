@@ -161,7 +161,7 @@ class FillFormat(object):
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
-        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
+        self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, fmt_result, meta, True)
 
     def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
         declarator = arg.declarator
@@ -173,7 +173,7 @@ class FillFormat(object):
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, meta, False)
+        self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, fmt_arg, meta, False)
         self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
@@ -322,12 +322,13 @@ class FillFormat(object):
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
-    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta, is_func):
+    def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            wlang    - 
             cls      - ast.ClassNode or None of enclosing class.
             fcn      - ast.FunctionNode of calling function.
             ast      - declast.Declaration
@@ -346,7 +347,7 @@ class FillFormat(object):
             else:
                 fmt.c_const = ""
             compute_c_deref(ast, None, fmt)
-            fmt.c_type = ntypemap.c_type
+            fmt.c_type = find_arg_type(wlang, ntypemap) #ntypemap.c_type + "xxx"
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.cfi_type = ntypemap.cfi_type
@@ -793,6 +794,12 @@ def compute_cxx_deref(arg, local_var, fmt):
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
 
+def find_arg_type(wlang, ntypemap):
+    if wlang == "f":
+        return ntypemap.ci_type or ntypemap.c_type
+    else:
+        return ntypemap.c_type
+        
 def find_arg_converter(wlang, language, ntypemap):
     """Find converter for an argument.
     Convert from the C wrapper to the C++ library type.

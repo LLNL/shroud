@@ -7254,7 +7254,7 @@
                             "c_deref": "",
                             "c_member": ".",
                             "c_proto_decl": "int arg",
-                            "c_type": "enum TUT_Color",
+                            "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_abstract_decl": "tutorial::Color",
