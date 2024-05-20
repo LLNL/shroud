@@ -24,3 +24,10 @@ void returnEnumOutArg(enum Color *out)
 {
     *out = BLUE;
 }
+
+enum Color returnEnumInOutArg(enum Color *inout)
+{
+    enum Color old = *inout;
+    *inout = BLUE;
+    return old;
+}

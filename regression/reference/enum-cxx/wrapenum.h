@@ -65,6 +65,10 @@ void ENU_returnEnumOutArg(enum ENU_Color * out);
 
 void ENU_returnEnumOutArg_bufferify(short * out);
 
+enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout);
+
+short ENU_returnEnumInOutArg_bufferify(short * inout);
+
 #ifdef __cplusplus
 }
 #endif

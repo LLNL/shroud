@@ -736,6 +736,157 @@
                     "F_name_impl": "return_enum_out_arg",
                     "function_name": "returnEnumOutArg"
                 }
+            },
+            {
+                "<FUNCTION>": "returnEnumInOutArg  3 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnEnumInOutArg",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "inout",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Color"
+                                },
+                                "specifier": [
+                                    "enum Color"
+                                ],
+                                "typemap_name": "Color"
+                            }
+                        ],
+                        "typemap_name": "Color"
+                    },
+                    "specifier": [
+                        "enum Color"
+                    ],
+                    "typemap_name": "Color"
+                },
+                "decl": "enum Color returnEnumInOutArg(enum Color *inout+intent(inout))",
+                "declgen": "enum Color returnEnumInOutArg(enum Color * inout +intent(inout))",
+                "name": "returnEnumInOutArg",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_enum_scalar"
+                        },
+                        "inout": {
+                            "meta": {
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_enum_*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "inout": {
+                            "meta": {
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "returnEnumInOutArg(\t&SHCXX_inout)",
+                            "C_call_list": "&SHCXX_inout",
+                            "C_name": "ENU_returnEnumInOutArg_bufferify",
+                            "C_prototype": "short * inout",
+                            "C_return_type": "short",
+                            "F_C_arguments": "inout",
+                            "F_C_call": "c_return_enum_in_out_arg_bufferify",
+                            "F_C_name": "return_enum_in_out_arg",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "inout",
+                            "F_arguments": "inout",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "enum Color",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "short SHC_rv",
+                            "c_type": "enum Color",
+                            "c_val": "(short) SHCXX_rv",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_short",
+                            "cxx_abstract_decl": "enum Color",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "enum Color SHCXX_rv",
+                            "cxx_type": "enum Color",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SHORT",
+                            "stmt_name": "f_function_enum_scalar"
+                        }
+                    },
+                    "inout": {
+                        "fmtf": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_proto_decl": "short * inout",
+                            "c_type": "short",
+                            "c_var": "inout",
+                            "cfi_type": "CFI_type_short",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_inout",
+                            "cxx_type": "enum Color",
+                            "cxx_var": "SHCXX_inout",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_SHORT",
+                            "f_type": "integer(C_SHORT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "inout",
+                            "fc_var": "inout",
+                            "i_var": "inout",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SHORT",
+                            "stmt_name": "f_inout_enum_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnEnumInOutArg",
+                    "F_name_api": "return_enum_in_out_arg",
+                    "F_name_function": "return_enum_in_out_arg",
+                    "F_name_generic": "return_enum_in_out_arg",
+                    "F_name_impl": "return_enum_in_out_arg",
+                    "function_name": "returnEnumInOutArg"
+                }
             }
         ],
         "language": "c",

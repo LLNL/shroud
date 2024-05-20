@@ -2672,6 +2672,23 @@ fc_statements = [
             ],
         ),
     ),
+    dict(
+        name="f_inout_enum_*",
+        base="f_out_enum_*",
+        alias=[
+            "c_inout_enum_*",
+        ],
+        lang_c=dict(
+            c_pre_call=[
+                "{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};",
+            ],
+        ),
+        lang_cxx=dict(
+            c_pre_call=[
+                "{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});",
+            ],
+        ),
+    ),
 
     ########################################
     # vector

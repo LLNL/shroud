@@ -5,17 +5,22 @@ C c enum Color returnEnum(enum Color in)
 C f enum Color returnEnum(enum Color in)
 C c void returnEnumOutArg(enum Color * out +intent(out))
 C f void returnEnumOutArg(enum Color * out +intent(out))
+C c enum Color returnEnumInOutArg(enum Color * inout +intent(inout))
+C f enum Color returnEnumInOutArg(enum Color * inout +intent(inout))
 Close wrapenum.h
 Close wrapenum.cpp
 Fortran int convert_to_int(enum Color in)
 Fortran enum Color returnEnum(enum Color in)
 Fortran void returnEnumOutArg(enum Color * out +intent(out))
+Fortran enum Color returnEnumInOutArg(enum Color * inout +intent(inout))
 C-interface c int convert_to_int(enum Color in)
 C-interface f int convert_to_int(enum Color in)
 C-interface c enum Color returnEnum(enum Color in)
 C-interface f enum Color returnEnum(enum Color in)
 C-interface c void returnEnumOutArg(enum Color * out +intent(out))
 C-interface f void returnEnumOutArg(enum Color * out +intent(out))
+C-interface c enum Color returnEnumInOutArg(enum Color * inout +intent(inout))
+C-interface f enum Color returnEnumInOutArg(enum Color * inout +intent(inout))
 Close wrapfenum.f
 Close utilenum.cpp
 Close typesenum.h

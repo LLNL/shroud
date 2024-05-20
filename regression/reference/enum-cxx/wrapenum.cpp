@@ -112,4 +112,38 @@ void ENU_returnEnumOutArg_bufferify(short * out)
     // splicer end function.returnEnumOutArg_bufferify
 }
 
+// ----------------------------------------
+// Function:  enum Color returnEnumInOutArg
+// Statement: c_function_enum_scalar
+// ----------------------------------------
+// Argument:  enum Color * inout +intent(inout)
+// Statement: c_inout_enum_*
+enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout)
+{
+    // splicer begin function.returnEnumInOutArg
+    Color SHCXX_inout = static_cast<Color>(*inout);
+    Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
+    *inout = static_cast<enum ENU_Color>(SHCXX_inout);
+    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnumInOutArg
+}
+
+// ----------------------------------------
+// Function:  enum Color returnEnumInOutArg
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  enum Color * inout +intent(inout)
+// Statement: f_inout_enum_*
+short ENU_returnEnumInOutArg_bufferify(short * inout)
+{
+    // splicer begin function.returnEnumInOutArg_bufferify
+    Color SHCXX_inout = static_cast<Color>(*inout);
+    Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
+    *inout = static_cast<short>(SHCXX_inout);
+    short SHC_rv = static_cast<short>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnumInOutArg_bufferify
+}
+
 }  // extern "C"

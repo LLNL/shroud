@@ -52,7 +52,7 @@ contains
     ! test functions which pass enums
 
     integer icol
-    integer(C_SHORT) outcolor
+    integer(C_SHORT) outcolor, rv
 
     call set_case_name("test_enum_functions")
 
@@ -63,7 +63,12 @@ contains
     call assert_true(RED == outcolor, "returnEnum")
 
     call return_enum_out_arg(outcolor)
-    call assert_true(BLUE == outcolor, "returnEnumAsArg")
+    call assert_true(BLUE == outcolor, "returnEnumOutArg")
+
+    outcolor = RED
+    rv = return_enum_in_out_arg(outcolor)
+    call assert_true(RED == rv, "returnEnumInOutArg result")
+    call assert_true(BLUE == outcolor, "returnEnumInOutArg arg")
     
   end subroutine test_enum_functions
   

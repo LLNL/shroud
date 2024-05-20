@@ -129,6 +129,36 @@ module enum_mod
             implicit none
             integer(C_SHORT), intent(OUT) :: out
         end subroutine return_enum_out_arg
+
+        ! ----------------------------------------
+        ! Function:  enum Color returnEnumInOutArg
+        ! Statement: c_function_enum_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color * inout +intent(inout)
+        ! Statement: c_inout_enum_*
+        function c_return_enum_in_out_arg(inout) &
+                result(SHT_rv) &
+                bind(C, name="ENU_returnEnumInOutArg")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(INOUT) :: inout
+            integer(C_SHORT) :: SHT_rv
+        end function c_return_enum_in_out_arg
+
+        ! ----------------------------------------
+        ! Function:  enum Color returnEnumInOutArg
+        ! Statement: f_function_enum_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color * inout +intent(inout)
+        ! Statement: f_inout_enum_*
+        function return_enum_in_out_arg(inout) &
+                result(SHT_rv) &
+                bind(C, name="ENU_returnEnumInOutArg_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(INOUT) :: inout
+            integer(C_SHORT) :: SHT_rv
+        end function return_enum_in_out_arg
     end interface
 
     ! splicer begin additional_declarations
@@ -189,6 +219,25 @@ contains
         call c_return_enum_out_arg_bufferify(out)
         ! splicer end function.return_enum_out_arg
     end subroutine return_enum_out_arg
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  enum Color returnEnumInOutArg
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  enum Color * inout +intent(inout)
+    ! Statement: f_inout_enum_*
+    function return_enum_in_out_arg(inout) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), intent(INOUT) :: inout
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.return_enum_in_out_arg
+        SHT_rv = c_return_enum_in_out_arg_bufferify(inout)
+        ! splicer end function.return_enum_in_out_arg
+    end function return_enum_in_out_arg
 #endif
 
     ! splicer begin additional_functions

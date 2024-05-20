@@ -60,3 +60,20 @@ void ENU_returnEnumOutArg_bufferify(short * out)
     *out = (short) SHCXX_out;
     // splicer end function.returnEnumOutArg_bufferify
 }
+
+// ----------------------------------------
+// Function:  enum Color returnEnumInOutArg
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  enum Color * inout +intent(inout)
+// Statement: f_inout_enum_*
+short ENU_returnEnumInOutArg_bufferify(short * inout)
+{
+    // splicer begin function.returnEnumInOutArg_bufferify
+    enum Color SHCXX_inout = (enum Color) *inout;
+    enum Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
+    *inout = (short) SHCXX_inout;
+    short SHC_rv = (short) SHCXX_rv;
+    return SHC_rv;
+    // splicer end function.returnEnumInOutArg_bufferify
+}

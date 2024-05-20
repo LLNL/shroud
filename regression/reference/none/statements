@@ -152,6 +152,8 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_inout_char_*_buf
+      enum
+        * -- f_inout_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -616,6 +618,8 @@ root
           buf -- f_inout_char_*_buf
           capi -- f_shared_native_scalar
           cfi -- f_inout_char_*_cfi
+      enum
+        * -- f_inout_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -2303,6 +2307,21 @@ c_inout_char_*_buf:
     - C_INT
   intent: inout
   name: c_inout_char_*_buf
+  owner: library
+c_inout_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  cxx_local_var: scalar
+  intent: inout
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};'
+  lang_cxx:
+    c_pre_call:
+    - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  name: c_inout_enum_*
   owner: library
 c_inout_native_&:
   intent: inout
@@ -8902,6 +8921,15 @@ f_inout_char_*_cfi:
   - ISO_Fortran_binding.h
   intent: inout
   name: f_inout_char_*_cfi
+  owner: library
+f_inout_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  cxx_local_var: scalar
+  intent: inout
+  name: f_inout_enum_*
   owner: library
 f_inout_native_&:
   intent: inout
