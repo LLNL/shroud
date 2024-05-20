@@ -4364,6 +4364,22 @@ py_statements = [
     ),
 
 ########################################
+# enum
+
+    dict(
+        name="py_out_enum_*",
+        cxx_local_var="scalar",
+        declare=[
+            "{cxx_type} {py_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        # XXX - This indirection is not correct
+        post_call=[
+            "*{c_var} = ({cxx_type}) {py_var};",
+        ],
+    ),
+    
+########################################
 # struct
 # "struct", intent, PY_struct_arg
 # numpy

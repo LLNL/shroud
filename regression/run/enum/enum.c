@@ -20,7 +20,7 @@ enum Color returnEnum(enum Color in)
     return in;
 }
 
-void returnEnumAsArg(enum Color *in)
+void returnEnumOutArg(enum Color *out)
 {
-    *in = BLUE;
+    *out = BLUE;
 }

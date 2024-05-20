@@ -82,4 +82,34 @@ short ENU_returnEnum_bufferify(short in)
     // splicer end function.returnEnum_bufferify
 }
 
+// ----------------------------------------
+// Function:  void returnEnumOutArg
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  enum Color * out +intent(out)
+// Statement: c_out_enum_*
+void ENU_returnEnumOutArg(enum ENU_Color * out)
+{
+    // splicer begin function.returnEnumOutArg
+    Color SHCXX_out;
+    returnEnumOutArg(&SHCXX_out);
+    *out = static_cast<enum ENU_Color>(SHCXX_out);
+    // splicer end function.returnEnumOutArg
+}
+
+// ----------------------------------------
+// Function:  void returnEnumOutArg
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  enum Color * out +intent(out)
+// Statement: f_out_enum_*
+void ENU_returnEnumOutArg_bufferify(short * out)
+{
+    // splicer begin function.returnEnumOutArg_bufferify
+    Color SHCXX_out;
+    returnEnumOutArg(&SHCXX_out);
+    *out = static_cast<short>(SHCXX_out);
+    // splicer end function.returnEnumOutArg_bufferify
+}
+
 }  // extern "C"

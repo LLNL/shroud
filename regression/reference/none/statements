@@ -267,6 +267,8 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_out_char_*_buf
+      enum
+        * -- f_out_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -733,6 +735,8 @@ root
           buf -- f_out_char_*_buf
           capi -- f_shared_native_scalar
           cfi -- f_out_char_*_cfi
+      enum
+        * -- f_out_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -3078,6 +3082,21 @@ c_out_char_*_buf:
     - C_INT
   intent: out
   name: c_out_char_*_buf
+  owner: library
+c_out_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  cxx_local_var: scalar
+  intent: out
+  lang_c:
+    c_post_call:
+    - '*{c_var} = ({c_type}) {cxx_var};'
+  lang_cxx:
+    c_post_call:
+    - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  name: c_out_enum_*
   owner: library
 c_out_native_&:
   intent: out
@@ -10180,6 +10199,15 @@ f_out_char_*_cfi:
   intent: out
   name: f_out_char_*_cfi
   owner: library
+f_out_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  cxx_local_var: scalar
+  intent: out
+  name: f_out_enum_*
+  owner: library
 f_out_native_&:
   intent: out
   name: f_out_native_&
@@ -11636,6 +11664,8 @@ root
       char
         *
           charlen -- py_out_char_*_charlen
+      enum
+        * -- py_out_enum_*
       native
         & -- py_out_native_&
         * -- py_out_native_*
@@ -13119,6 +13149,16 @@ py_out_char_*_charlen:
     ctor_expr: '{c_var}'
   intent: out
   name: py_out_char_*_charlen
+py_out_enum_*:
+  arg_call:
+  - '&{cxx_var}'
+  cxx_local_var: scalar
+  declare:
+  - '{cxx_type} {py_var};'
+  intent: out
+  name: py_out_enum_*
+  post_call:
+  - '*{c_var} = ({cxx_type}) {py_var};'
 py_out_native_&:
   arg_declare:
   - '{c_const}{c_type} {c_var};'

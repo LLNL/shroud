@@ -28,7 +28,7 @@ enum val {
 
 int convert_to_int(enum Color in);
 enum Color returnEnum(enum Color in);
-void returnEnumAsArg(enum Color *in);
+void returnEnumOutArg(enum Color *out);
 
 #endif // ENUM_H
 

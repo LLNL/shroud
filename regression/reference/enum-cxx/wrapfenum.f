@@ -103,6 +103,32 @@ module enum_mod
             integer(C_SHORT), value, intent(IN) :: in
             integer(C_SHORT) :: SHT_rv
         end function return_enum
+
+        ! ----------------------------------------
+        ! Function:  void returnEnumOutArg
+        ! Statement: c_subroutine
+        ! ----------------------------------------
+        ! Argument:  enum Color * out +intent(out)
+        ! Statement: c_out_enum_*
+        subroutine c_return_enum_out_arg(out) &
+                bind(C, name="ENU_returnEnumOutArg")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(OUT) :: out
+        end subroutine c_return_enum_out_arg
+
+        ! ----------------------------------------
+        ! Function:  void returnEnumOutArg
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  enum Color * out +intent(out)
+        ! Statement: f_out_enum_*
+        subroutine return_enum_out_arg(out) &
+                bind(C, name="ENU_returnEnumOutArg_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(OUT) :: out
+        end subroutine return_enum_out_arg
     end interface
 
     ! splicer begin additional_declarations
@@ -146,6 +172,23 @@ contains
         SHT_rv = c_return_enum_bufferify(in)
         ! splicer end function.return_enum
     end function return_enum
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void returnEnumOutArg
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  enum Color * out +intent(out)
+    ! Statement: f_out_enum_*
+    subroutine return_enum_out_arg(out)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), intent(OUT) :: out
+        ! splicer begin function.return_enum_out_arg
+        call c_return_enum_out_arg_bufferify(out)
+        ! splicer end function.return_enum_out_arg
+    end subroutine return_enum_out_arg
 #endif
 
     ! splicer begin additional_functions

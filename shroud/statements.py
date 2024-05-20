@@ -2650,6 +2650,30 @@ fc_statements = [
     ),
     
     ########################################
+    # enum
+
+    dict(
+        name="f_out_enum_*",
+        alias=[
+            "c_out_enum_*",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        lang_c=dict(
+            c_post_call=[
+                "*{c_var} = ({c_type}) {cxx_var};",
+            ],
+        ),
+        lang_cxx=dict(
+            c_post_call=[
+                "*{c_var} = static_cast<{c_type}>({cxx_var});",
+            ],
+        ),
+    ),
+
+    ########################################
     # vector
     # Specialize for std::vector<native>
     dict(
