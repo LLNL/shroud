@@ -146,7 +146,7 @@ There is no current way to add additional helper functions.
 cxx_local_var
 ^^^^^^^^^^^^^
 
-If a local C++ variable is created for an argument by pre_call,
+If a local C++ variable is created for an argument by *c_pre_call*,
 *cxx_local_var*
 indicates if the local variable is a **pointer**, **scalar** or **result**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
@@ -160,7 +160,7 @@ from the ``char *`` argument passed into the C API wrapper.
 
         name="c_inout_string",
         cxx_local_var="scalar",
-        pre_call=["{c_const}std::string {cxx_var}({c_var});"],
+        c_pre_call=["{c_const}std::string {cxx_var}({c_var});"],
 
  Set to **return** when the *c_var* is passed in as an argument and
  a C++ variable must be created.

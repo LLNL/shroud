@@ -13,7 +13,6 @@
 module library_one_two_mod
     implicit none
 
-
     interface
 
         ! ----------------------------------------
@@ -24,7 +23,6 @@ module library_one_two_mod
             implicit none
         end subroutine function1
     end interface
-
 
 contains
 
@@ -37,6 +35,5 @@ contains
         call c_function1()
     end subroutine function1
 #endif
-
 
 end module library_one_two_mod

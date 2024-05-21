@@ -334,27 +334,27 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "TES_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "blue",
+                        "F_name_api": "blue",
                         "F_value": 1,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "TES_RED",
+                        "C_name_api": "RED",
                         "F_enum_member": "red",
+                        "F_name_api": "red",
                         "F_value": 0,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "TES_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "white",
+                        "F_name_api": "white",
                         "F_value": 2,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -386,10 +386,12 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "TES_Color",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "C_enum_type": "TES_Color",
+                    "C_name_api": "Color",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             }
         ],
@@ -535,6 +537,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -563,6 +566,7 @@
                             "c_helper_char_copy": "ShroudCharCopy",
                             "c_helper_char_free": "ShroudCharFree",
                             "c_member": "->",
+                            "c_proto_decl": "char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
@@ -933,6 +937,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int i",
                             "c_type": "int",
                             "c_var": "i",
                             "cfi_type": "CFI_type_int",
@@ -950,6 +955,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int i",
                             "c_type": "int",
                             "c_var": "i",
                             "cfi_type": "CFI_type_int",
@@ -1129,6 +1135,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "long i",
                             "c_type": "long",
                             "c_var": "i",
                             "cfi_type": "CFI_type_long",
@@ -1146,6 +1153,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "long i",
                             "c_type": "long",
                             "c_var": "i",
                             "cfi_type": "CFI_type_long",
@@ -1389,6 +1397,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * rv",
                             "c_type": "char",
                             "c_var": "rv",
                             "cfi_type": "CFI_type_other",
@@ -1413,6 +1422,7 @@
                             "c_deref": "*",
                             "c_helper_char_len_trim": "ShroudCharLenTrim",
                             "c_member": "->",
+                            "c_proto_decl": "const char * rv",
                             "c_type": "char",
                             "c_var": "rv",
                             "c_var_len": "SHT_rv_len",
@@ -1754,6 +1764,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -1779,6 +1790,7 @@
                             "c_helper_char_copy": "ShroudCharCopy",
                             "c_helper_char_len_trim": "ShroudCharLenTrim",
                             "c_member": "->",
+                            "c_proto_decl": "char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
@@ -1827,6 +1839,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "int * value",
                             "c_type": "int",
                             "c_var": "value",
                             "cfi_type": "CFI_type_int",
@@ -1850,6 +1863,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "int * value",
                             "c_type": "int",
                             "c_var": "value",
                             "cfi_type": "CFI_type_int",
@@ -2249,6 +2263,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg1",
                             "c_type": "int",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_int",
@@ -2266,6 +2281,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg1",
                             "c_type": "int",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_int",
@@ -2310,6 +2326,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "long arg2",
                             "c_type": "long",
                             "c_var": "arg2",
                             "cfi_type": "CFI_type_long",
@@ -2327,6 +2344,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "long arg2",
                             "c_type": "long",
                             "c_var": "arg2",
                             "cfi_type": "CFI_type_long",
@@ -2608,6 +2626,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "float arg1",
                             "c_type": "float",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_float",
@@ -2625,6 +2644,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "float arg1",
                             "c_type": "float",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_float",
@@ -2669,6 +2689,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "double arg2",
                             "c_type": "double",
                             "c_var": "arg2",
                             "cfi_type": "CFI_type_double",
@@ -2686,6 +2707,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "double arg2",
                             "c_type": "double",
                             "c_var": "arg2",
                             "cfi_type": "CFI_type_double",
@@ -3147,6 +3169,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const TES_Cstruct_as_class * point",
                             "c_type": "TES_Cstruct_as_class",
                             "c_var": "point",
                             "cfi_type": "CFI_type_other",
@@ -3164,6 +3187,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const TES_Cstruct_as_class * point",
                             "c_type": "TES_Cstruct_as_class",
                             "c_var": "point",
                             "cfi_type": "CFI_type_other",
@@ -4414,6 +4438,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * afree)(\tdouble * arr)",
                             "c_type": "void",
                             "c_var": "afree",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4431,6 +4456,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * afree)(\tdouble * arr)",
                             "c_type": "void",
                             "c_var": "afree",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4456,6 +4482,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * alloc)(\tdouble * arr,\t int * err)",
                             "c_type": "void",
                             "c_var": "alloc",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4473,6 +4500,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * alloc)(\tdouble * arr,\t int * err)",
                             "c_type": "void",
                             "c_var": "alloc",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4498,6 +4526,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * assoc)(\tdouble * arr,\t int * err)",
                             "c_type": "void",
                             "c_var": "assoc",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4515,6 +4544,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "void ( * assoc)(\tdouble * arr,\t int * err)",
                             "c_type": "void",
                             "c_var": "assoc",
                             "cfi_type": "CFI_type_intptr_t",
@@ -4540,6 +4570,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -4557,6 +4588,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -4583,6 +4615,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * pkg",
                             "c_type": "char",
                             "c_var": "pkg",
                             "cfi_type": "CFI_type_other",
@@ -4600,6 +4633,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * pkg",
                             "c_type": "char",
                             "c_var": "pkg",
                             "cfi_type": "CFI_type_other",
@@ -4626,6 +4660,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * rdbase",
                             "c_type": "char",
                             "c_var": "rdbase",
                             "cfi_type": "CFI_type_other",
@@ -4643,6 +4678,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const char * rdbase",
                             "c_type": "char",
                             "c_var": "rdbase",
                             "cfi_type": "CFI_type_other",
@@ -4795,6 +4831,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg1",
                             "c_type": "int",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_int",
@@ -4812,6 +4849,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg1",
                             "c_type": "int",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_int",
@@ -5266,6 +5304,68 @@
                 "namespaces": [
                     {
                         "<NAMESPACE>": "inner ****************************************",
+                        "enums": [
+                            {
+                                "<ENUM>": "Color2 ****************************************",
+                                "_fmtmembers": {
+                                    "BLUE": {
+                                        "C_enum_member": "TES_ns0_inner_BLUE",
+                                        "C_name_api": "BLUE",
+                                        "F_enum_member": "blue",
+                                        "F_name_api": "blue",
+                                        "F_value": 2,
+                                        "enum_member_name": "BLUE"
+                                    },
+                                    "RED": {
+                                        "C_enum_member": "TES_ns0_inner_RED",
+                                        "C_name_api": "RED",
+                                        "F_enum_member": "red",
+                                        "F_name_api": "red",
+                                        "F_value": 0,
+                                        "enum_member_name": "RED"
+                                    },
+                                    "WHITE": {
+                                        "C_enum_member": "TES_ns0_inner_WHITE",
+                                        "C_name_api": "WHITE",
+                                        "F_enum_member": "white",
+                                        "F_name_api": "white",
+                                        "F_value": 1,
+                                        "enum_member_name": "WHITE"
+                                    }
+                                },
+                                "ast": {
+                                    "members": [
+                                        {
+                                            "name": "RED"
+                                        },
+                                        {
+                                            "name": "WHITE"
+                                        },
+                                        {
+                                            "name": "BLUE"
+                                        }
+                                    ],
+                                    "name": "Color2"
+                                },
+                                "decl": "enum Color2 { RED, WHITE, BLUE };",
+                                "name": "Color2",
+                                "options": {},
+                                "typemap_name": "ns0::inner::Color2",
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                },
+                                "zz_fmtdict": {
+                                    "C_enum_type": "TES_ns0_inner_Color2",
+                                    "C_name_api": "Color2",
+                                    "F_enum_kind": "C_INT",
+                                    "F_name_api": "color2",
+                                    "F_name_enum": "color2",
+                                    "enum_name": "Color2"
+                                }
+                            }
+                        ],
                         "name": "inner",
                         "options": {},
                         "scope": "ns0::inner::",
@@ -6364,7 +6464,11 @@
             "ImplWorker1": "internal::ImplWorker1"
         },
         "ns0": {
-            "Names": "ns0::Names"
+            "Names": "ns0::Names",
+            "inner": {
+                "Color2": "enum-Color2",
+                "enum-Color2": "ns0::inner::Color2"
+            }
         },
         "std": {
             "vector": "std::vector"
@@ -6415,10 +6519,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "top.h"
+            ],
             "c_to_cxx": "static_cast<Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum TES_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "top.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -6430,7 +6542,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "Cstruct_as_class": {
@@ -6614,6 +6727,42 @@
             "wrap_header": [
                 "typestestnames.hh"
             ]
+        },
+        "ns0::inner::Color2": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "wraptestnames_ns0_inner.hh"
+            ],
+            "c_to_cxx": "static_cast<ns0::inner::Color2>({c_var})",
+            "c_type": "enum TES_ns0_inner_Color2",
+            "cfi_type": "CFI_type_int",
+            "ci_type": "int",
+            "cxx_header": [
+                "wraptestnames_ns0_inner.hh"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
+            "cxx_type": "ns0::inner::Color2",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "is_enum": true,
+            "sgroup": "enum",
+            "sh_type": "SH_TYPE_INT"
         },
         "std::Vvv1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

@@ -28,8 +28,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin class.Cstruct_numpy.impl.C_definition
 // splicer end class.Cstruct_numpy.impl.C_definition
+
 // splicer begin class.Cstruct_numpy.impl.additional_methods
 // splicer end class.Cstruct_numpy.impl.additional_methods
 static void

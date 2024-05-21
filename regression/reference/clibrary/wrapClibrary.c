@@ -82,6 +82,7 @@ static void ShroudCharFree(char *src)
      free(src);
    }
 }
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

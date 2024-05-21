@@ -28,6 +28,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -36,7 +37,7 @@ PyObject *PY_error_obj;
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_convert_to_int__doc__[] =
 "documentation"
 ;
@@ -48,13 +49,13 @@ PY_convert_to_int(
   PyObject *kwds)
 {
 // splicer begin function.convert_to_int
-    int in;
+    short in;
     const char *SHT_kwlist[] = {
         "in",
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:convert_to_int",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:convert_to_int",
         const_cast<char **>(SHT_kwlist), &in))
         return nullptr;
 
@@ -69,9 +70,50 @@ PY_convert_to_int(
     return (PyObject *) SHTPy_rv;
 // splicer end function.convert_to_int
 }
+
+// ----------------------------------------
+// Function:  enum Color returnEnum
+// Statement: py_function_enum_scalar
+// ----------------------------------------
+// Argument:  enum Color in
+// Statement: py_in_enum_scalar
+static char PY_returnEnum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnEnum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.returnEnum
+    short in;
+    const char *SHT_kwlist[] = {
+        "in",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:returnEnum",
+        const_cast<char **>(SHT_kwlist), &in))
+        return nullptr;
+
+    // post_declare
+    Color SH_in = static_cast<Color>(in);
+
+    Color SHCXX_rv = returnEnum(SH_in);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.returnEnum
+}
 static PyMethodDef PY_methods[] = {
 {"convert_to_int", (PyCFunction)PY_convert_to_int,
     METH_VARARGS|METH_KEYWORDS, PY_convert_to_int__doc__},
+{"returnEnum", (PyCFunction)PY_returnEnum, METH_VARARGS|METH_KEYWORDS,
+    PY_returnEnum__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

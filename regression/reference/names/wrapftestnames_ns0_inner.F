@@ -14,12 +14,21 @@
 ! top of ns0::inner
 ! splicer end namespace.ns0::inner.file_top
 module testnames_ns0_inner_mod
+    use iso_c_binding, only : C_INT
     ! splicer begin namespace.ns0::inner.module_use
     ! splicer end namespace.ns0::inner.module_use
     implicit none
 
     ! splicer begin namespace.ns0::inner.module_top
     ! splicer end namespace.ns0::inner.module_top
+
+    !  enum ns0::inner::Color2
+    integer, parameter :: color2 = C_INT
+    ! splicer begin namespace.ns0::inner.enum.Color2
+    integer(color2), parameter :: red = 0
+    integer(color2), parameter :: white = 1
+    integer(color2), parameter :: blue = 2
+    ! splicer end namespace.ns0::inner.enum.Color2
 
     ! splicer begin namespace.ns0::inner.additional_declarations
     ! splicer end namespace.ns0::inner.additional_declarations

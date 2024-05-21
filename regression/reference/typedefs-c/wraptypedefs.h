@@ -21,8 +21,13 @@
 #include "typestypedefs.h"
 
 // splicer begin C_declarations
+#include "shared.h"
 // splicer end C_declarations
 
-TypeID TYP_typefunc_wrap_bufferify(TypeID arg);
+Alias TYP_typefunc_wrap_bufferify(Alias arg);
+
+int TYP_returnEnum_bufferify(int in);
+
+int TYP_returnTypeID_bufferify(int in);
 
 #endif  // WRAPTYPEDEFS_H

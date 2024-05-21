@@ -81,6 +81,7 @@ class Typemap(object):
         ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
+        ("cxx_to_ci", None), # convert from C++ to Fortran interface (ex. enums)
         (
             "cxx_header",
             [],
@@ -93,6 +94,7 @@ class Typemap(object):
         ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
+        ("ci_type", None),   # C interface type
         ("c_return_code", None),
         ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
@@ -144,6 +146,7 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
         ("__line__", None),
     )
@@ -216,8 +219,17 @@ class Typemap(object):
         ntypemap.update(self._to_dict())
         return ntypemap
 
-    def clone_as(self, name):
+    def copy_from_typemap(self, node):
+        """Copy default fields from node.
+        Used to update an existing Typemap.
         """
+        for key, defvalue in self.defaults.items():
+            value = getattr(node, key)
+            setattr(self, key, value)
+
+    def clone_as(self, name):
+        """Creates a new Typemap.
+
         Args:
             name - name of new instance.
         """
@@ -1006,45 +1018,65 @@ def fill_native_typemap_defaults(ntypemap, fmt):
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
-def fill_enum_typemap(node):
+def fill_enum_typemap(node, ftypemap):
     """Fill an enum typemap with wrapping fields.
     The typemap is created in declast.Enum.
 
 # XXX    Create a typemap similar to an int.
 # XXX    C++ enums are converted to a C int.
 
+    ftypemap is how the enum is represented in the Fortran wrapper.
+    Typically an 'int'.
+
     Args:
         node - EnumNode instance.
     """
+    # Using abstract_decl in the converters, maps to any typedef declaration.
     fmt_enum = node.fmtdict
 
     ntypemap = node.typemap
     if ntypemap is None:
         raise RuntimeError("Missing typemap on EnumNode")
     else:
+        ntypemap.copy_from_typemap(ftypemap)
+        ntypemap.is_enum = True
+        ntypemap.ci_type = ftypemap.c_type
+        ntypemap.sgroup = "enum"
+
+        # Include the generated C header file for the
+        # C declaration of the C++ enum.
+        ntypemap.c_header = [fmt_enum.C_header_filename]
+        ntypemap.cxx_header = [fmt_enum.C_header_filename]
+        
         language = node.get_language()
 
-##        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
-##        ntypemap = inttypemap.clone_as(type_name)
-#        ntypemap.sgroup = "enum"
         if language == "c":
-#            ntypemap.c_type = "enum {}".format(fmt_enum.enum_name)
-            ntypemap.c_type = "int"
+            ntypemap.c_type = "enum %s" % ntypemap.name
+            
+            # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
                 "enum {namespace_scope}{enum_name}", fmt_enum
             )
             ntypemap.c_to_cxx = util.wformat(
                 "(enum {namespace_scope}{enum_name}) {{c_var}}", fmt_enum
             )
-            ntypemap.cxx_to_c = "(int) {cxx_var}"
+            ntypemap.c_to_cxx = "({cxx_abstract_decl}) {c_var}"
+            ntypemap.cxx_to_c = "(%s) {cxx_var}" % ntypemap.c_type
+
+            ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
+
         else:
+            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
+
             ntypemap.cxx_type = util.wformat(
                 "{namespace_scope}{enum_name}", fmt_enum
             )
             ntypemap.c_to_cxx = util.wformat(
                 "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
             )
-            ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
+            ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
+            
+            ntypemap.cxx_to_ci = "static_cast<%s>({cxx_var})" % ntypemap.ci_type
         ntypemap.compute_flat_name()
     return ntypemap
 
@@ -1426,12 +1458,8 @@ def fill_typedef_typemap(node, fields={}):
         ntypemap.f_type = "type({})".format(f_name)
     elif ntypemap.base == "integer":
         ntypemap.f_cast = "int({f_var}, %s)" % f_name
-        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
-        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
     elif ntypemap.base == "real":
         ntypemap.f_cast = "real({f_var}, %s)" % f_name
-        ntypemap.c_to_cxx = "static_cast<{cxx_abstract_decl}>({c_var})"
-        ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
     
     # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules
@@ -1449,7 +1477,7 @@ def return_shadow_types(typemaps):  # typemaps -> dict
             continue
         elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
             dct[key] = ntypemap
-        elif hasattr(ntypemap, "is_enum"):
+        elif ntypemap.is_enum:
             dct[key] = ntypemap
         elif hasattr(ntypemap, "is_typedef"):
             dct[key] = ntypemap

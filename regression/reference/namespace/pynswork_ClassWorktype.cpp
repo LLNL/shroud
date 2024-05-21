@@ -24,8 +24,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin namespace.nswork.class.ClassWork.impl.C_definition
 // splicer end namespace.nswork.class.ClassWork.impl.C_definition
+
 // splicer begin namespace.nswork.class.ClassWork.impl.additional_methods
 // splicer end namespace.nswork.class.ClassWork.impl.additional_methods
 static void

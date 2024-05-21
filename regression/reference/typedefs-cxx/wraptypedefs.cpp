@@ -21,18 +21,16 @@ extern "C" {
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  TypeID typefunc
+// Function:  Alias typefunc
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: c_in_native_scalar
 // start TYP_typefunc
-TYP_TypeID TYP_typefunc(TYP_TypeID arg)
+TYP_Alias TYP_typefunc(TYP_Alias arg)
 {
     // splicer begin function.typefunc
-    TypeID SHCXX_arg = static_cast<TypeID>(arg);
-    TypeID SHCXX_rv = typefunc(SHCXX_arg);
-    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
+    Alias SHC_rv = typefunc(arg);
     return SHC_rv;
     // splicer end function.typefunc
 }
@@ -45,22 +43,92 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
  * in the C wrapper.
  */
 // ----------------------------------------
-// Function:  TypeID typefunc_wrap
+// Function:  Alias typefunc_wrap
 // Statement: c_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: c_in_native_scalar
 // start TYP_typefunc_wrap
-TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg)
+TYP_Alias TYP_typefunc_wrap(TYP_Alias arg)
 {
     // splicer begin function.typefunc_wrap
-    TypeID SHCXX_arg = static_cast<TypeID>(arg);
-    TypeID SHCXX_rv = typefunc_wrap(SHCXX_arg);
-    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
+    Alias SHC_rv = typefunc_wrap(arg);
     return SHC_rv;
     // splicer end function.typefunc_wrap
 }
 // end TYP_typefunc_wrap
+
+// ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: c_function_enum_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: c_in_enum_scalar
+// start TYP_returnEnum
+TYP_iColor TYP_returnEnum(TYP_iColor in)
+{
+    // splicer begin function.returnEnum
+    iColor SHCXX_in = static_cast<Color>(in);
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    TYP_iColor SHC_rv = static_cast<TYP_iColor>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum
+}
+// end TYP_returnEnum
+
+// ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: f_in_enum_scalar
+// start TYP_returnEnum_bufferify
+int TYP_returnEnum_bufferify(int in)
+{
+    // splicer begin function.returnEnum_bufferify
+    iColor SHCXX_in = static_cast<Color>(in);
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
+// end TYP_returnEnum_bufferify
+
+// ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: c_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: c_in_enum_scalar
+// start TYP_returnTypeID
+TYP_TypeID TYP_returnTypeID(TYP_TypeID in)
+{
+    // splicer begin function.returnTypeID
+    TypeID SHCXX_in = static_cast<DataTypeID>(in);
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    TYP_TypeID SHC_rv = static_cast<TYP_TypeID>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnTypeID
+}
+// end TYP_returnTypeID
+
+// ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: f_in_enum_scalar
+// start TYP_returnTypeID_bufferify
+int TYP_returnTypeID_bufferify(int in)
+{
+    // splicer begin function.returnTypeID_bufferify
+    TypeID SHCXX_in = static_cast<DataTypeID>(in);
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.returnTypeID_bufferify
+}
+// end TYP_returnTypeID_bufferify
 
 // ----------------------------------------
 // Function:  void typestruct
@@ -87,8 +155,7 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 int TYP_returnBytesForIndexType(TYP_IndexType arg)
 {
     // splicer begin function.returnBytesForIndexType
-    IndexType SHCXX_arg = static_cast<IndexType>(arg);
-    int SHC_rv = returnBytesForIndexType(SHCXX_arg);
+    int SHC_rv = returnBytesForIndexType(arg);
     return SHC_rv;
     // splicer end function.returnBytesForIndexType
 }
@@ -108,10 +175,7 @@ TYP_IndexType TYP_returnShapeSize(int ndims,
     const TYP_IndexType * shape)
 {
     // splicer begin function.returnShapeSize
-    const IndexType * SHCXX_shape =
-        static_cast<const IndexType *>(shape);
-    IndexType SHCXX_rv = returnShapeSize(ndims, SHCXX_shape);
-    TYP_IndexType SHC_rv = static_cast<TYP_IndexType>(SHCXX_rv);
+    IndexType SHC_rv = returnShapeSize(ndims, shape);
     return SHC_rv;
     // splicer end function.returnShapeSize
 }
@@ -127,8 +191,7 @@ TYP_IndexType TYP_returnShapeSize(int ndims,
 int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 {
     // splicer begin function.returnBytesForIndexType2
-    IndexType2 SHCXX_arg = static_cast<IndexType2>(arg);
-    int SHC_rv = returnBytesForIndexType2(SHCXX_arg);
+    int SHC_rv = returnBytesForIndexType2(arg);
     return SHC_rv;
     // splicer end function.returnBytesForIndexType2
 }
@@ -148,10 +211,7 @@ LOCAL_IndexType TYP_returnShapeSize2(int ndims,
     const LOCAL_IndexType * shape)
 {
     // splicer begin function.returnShapeSize2
-    const IndexType2 * SHCXX_shape =
-        static_cast<const IndexType2 *>(shape);
-    IndexType2 SHCXX_rv = returnShapeSize2(ndims, SHCXX_shape);
-    LOCAL_IndexType SHC_rv = static_cast<LOCAL_IndexType>(SHCXX_rv);
+    IndexType2 SHC_rv = returnShapeSize2(ndims, shape);
     return SHC_rv;
     // splicer end function.returnShapeSize2
 }

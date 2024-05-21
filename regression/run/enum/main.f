@@ -33,9 +33,9 @@ contains
     ! test values of enumerations
     call set_case_name("test_enums")
 
-    call assert_equals(10, red, "enum_color_red")
-    call assert_equals(11, blue, "enum_color_blue")
-    call assert_equals(12, white, "enum_color_white")
+    call assert_true(10 == red, "enum_color_red")
+    call assert_true(11 == blue, "enum_color_blue")
+    call assert_true(12 == white, "enum_color_white")
 
     call assert_equals(0, a1, "enum_val_a1")
     call assert_equals(3, b1, "enum_val_b1")
@@ -52,11 +52,23 @@ contains
     ! test functions which pass enums
 
     integer icol
+    integer(C_SHORT) outcolor, rv
 
     call set_case_name("test_enum_functions")
 
     icol = convert_to_int(RED)
-    call assert_equals(RED, icol, "convert_to_int")
+    call assert_true(RED == icol, "convert_to_int")
+
+    outcolor = return_enum(RED)
+    call assert_true(RED == outcolor, "returnEnum")
+
+    call return_enum_out_arg(outcolor)
+    call assert_true(BLUE == outcolor, "returnEnumOutArg")
+
+    outcolor = RED
+    rv = return_enum_in_out_arg(outcolor)
+    call assert_true(RED == rv, "returnEnumInOutArg result")
+    call assert_true(BLUE == outcolor, "returnEnumInOutArg arg")
     
   end subroutine test_enum_functions
   

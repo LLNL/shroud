@@ -76,8 +76,11 @@ module ns_mod
     end type NS_SHROUD_capsule_data
 
     !  enum upper::Color
-    integer(C_INT), parameter :: upper_error = 0
-    integer(C_INT), parameter :: upper_warn = 1
+    integer, parameter :: upper_color = C_INT
+    ! splicer begin namespace.XXX.enum.Color
+    integer(upper_color), parameter :: upper_error = 0
+    integer(upper_color), parameter :: upper_warn = 1
+    ! splicer end namespace.XXX.enum.Color
 
     type class_work
         type(NS_SHROUD_capsule_data) :: cxxmem

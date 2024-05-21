@@ -28,8 +28,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin namespace.std.class.vector.impl.C_definition
 // splicer end namespace.std.class.vector.impl.C_definition
+
 // splicer begin namespace.std.class.vector.impl.additional_methods
 // splicer end namespace.std.class.vector.impl.additional_methods
 static void
@@ -119,11 +121,7 @@ PY_at(
         const_cast<char **>(SHT_kwlist), &n))
         return nullptr;
 
-    // post_declare
-    std::vector<double>::size_type SH_n =
-        static_cast<std::vector<double>::size_type>(n);
-
-    double & SHCXX_rv = self->obj->at(SH_n);
+    double & SHCXX_rv = self->obj->at(n);
 
     // post_call
     SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_DOUBLE,

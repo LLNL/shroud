@@ -17,6 +17,8 @@ root
             arg -- f_function_char_*_arg
             copy -- f_function_char_*_buf_copy
         scalar -- f_function_char_scalar
+      enum
+        scalar -- f_function_native_scalar
       native
         & -- f_function_native_*_raw
         * -- f_function_native_*_raw
@@ -83,6 +85,8 @@ root
         ** -- f_in_char_**
           buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
+      enum
+        scalar -- f_shared_native_scalar
       native
         & -- f_shared_native_scalar
         * -- f_shared_native_scalar
@@ -148,6 +152,8 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_inout_char_*_buf
+      enum
+        * -- f_inout_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -263,6 +269,8 @@ root
       char
         * -- f_shared_native_scalar
           buf -- f_out_char_*_buf
+      enum
+        * -- f_out_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -396,6 +404,8 @@ root
           cfi
             allocatable -- f_function_char_*_cfi_allocatable
             pointer -- f_function_char_scalar_cfi_pointer
+      enum
+        scalar -- f_function_native_scalar
       native
         & -- f_function_native_&
           pointer -- f_function_native_&
@@ -536,6 +546,8 @@ root
           buf -- f_in_char_**_buf
           cfi -- f_in_char_**_cfi
         scalar -- f_in_char_scalar
+      enum
+        scalar -- f_shared_native_scalar
       native
         & -- f_shared_native_scalar
         * -- f_shared_native_scalar
@@ -606,6 +618,8 @@ root
           buf -- f_inout_char_*_buf
           capi -- f_shared_native_scalar
           cfi -- f_inout_char_*_cfi
+      enum
+        * -- f_inout_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -725,6 +739,8 @@ root
           buf -- f_out_char_*_buf
           capi -- f_shared_native_scalar
           cfi -- f_out_char_*_cfi
+      enum
+        * -- f_out_enum_*
       native
         & -- f_shared_native_scalar
           hidden -- f_out/inout_native_&_hidden
@@ -995,6 +1011,10 @@ c_function_char_scalar:
     - C_CHAR
   intent: function
   name: c_function_char_scalar
+  owner: library
+c_function_enum_scalar:
+  intent: function
+  name: c_function_enum_scalar
   owner: library
 c_function_native_&:
   i_module:
@@ -1721,6 +1741,10 @@ c_in_char_scalar:
   intent: in
   name: c_in_char_scalar
   owner: library
+c_in_enum_scalar:
+  intent: in
+  name: c_in_enum_scalar
+  owner: library
 c_in_native_&:
   intent: in
   name: c_in_native_&
@@ -2283,6 +2307,21 @@ c_inout_char_*_buf:
     - C_INT
   intent: inout
   name: c_inout_char_*_buf
+  owner: library
+c_inout_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  cxx_local_var: scalar
+  intent: inout
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};'
+  lang_cxx:
+    c_pre_call:
+    - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  name: c_inout_enum_*
   owner: library
 c_inout_native_&:
   intent: inout
@@ -3062,6 +3101,21 @@ c_out_char_*_buf:
     - C_INT
   intent: out
   name: c_out_char_*_buf
+  owner: library
+c_out_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  cxx_local_var: scalar
+  intent: out
+  lang_c:
+    c_post_call:
+    - '*{c_var} = ({c_type}) {cxx_var};'
+  lang_cxx:
+    c_post_call:
+    - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  name: c_out_enum_*
   owner: library
 c_out_native_&:
   intent: out
@@ -4437,6 +4491,10 @@ f_function_char_scalar_cfi_pointer:
   - ISO_Fortran_binding.h
   intent: function
   name: f_function_char_scalar_cfi_pointer
+  owner: library
+f_function_enum_scalar:
+  intent: function
+  name: f_function_enum_scalar
   owner: library
 f_function_native_&:
   c_need_wrapper: true
@@ -7986,6 +8044,10 @@ f_in_char_scalar:
   intent: in
   name: f_in_char_scalar
   owner: library
+f_in_enum_scalar:
+  intent: in
+  name: f_in_enum_scalar
+  owner: library
 f_in_native_&:
   intent: in
   name: f_in_native_&
@@ -8859,6 +8921,15 @@ f_inout_char_*_cfi:
   - ISO_Fortran_binding.h
   intent: inout
   name: f_inout_char_*_cfi
+  owner: library
+f_inout_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  cxx_local_var: scalar
+  intent: inout
+  name: f_inout_enum_*
   owner: library
 f_inout_native_&:
   intent: inout
@@ -10155,6 +10226,15 @@ f_out_char_*_cfi:
   - ISO_Fortran_binding.h
   intent: out
   name: f_out_char_*_cfi
+  owner: library
+f_out_enum_*:
+  c_post_call:
+  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  c_pre_call:
+  - '{cxx_type} {cxx_var};'
+  cxx_local_var: scalar
+  intent: out
+  name: f_out_enum_*
   owner: library
 f_out_native_&:
   intent: out
@@ -11503,6 +11583,8 @@ root
       char
         * -- py_function_char_*
         scalar -- py_function_char_scalar
+      enum
+        scalar -- py_defaulttmp
       native
         &
           numpy -- py_function_native_*/&_numpy
@@ -11541,6 +11623,8 @@ root
         * -- py_in_char_*
         ** -- py_in_char_**
         scalar -- py_in_char_scalar
+      enum
+        scalar -- py_defaulttmp
       native
         & -- py_in_native_&
         * -- py_in_native_*
@@ -11608,6 +11692,8 @@ root
       char
         *
           charlen -- py_out_char_*_charlen
+      enum
+        * -- py_out_enum_*
       native
         & -- py_out_native_&
         * -- py_out_native_*
@@ -12172,6 +12258,9 @@ py_function_char_scalar:
   object_created: true
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
+py_function_enum_scalar:
+  intent: function
+  name: py_function_enum_scalar
 py_function_native_&_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
@@ -12465,6 +12554,9 @@ py_in_char_scalar:
   parse_args:
   - '&{c_var}'
   parse_format: s
+py_in_enum_scalar:
+  intent: in
+  name: py_in_enum_scalar
 py_in_native_&:
   arg_declare:
   - '{c_type} {c_var};'
@@ -13085,6 +13177,16 @@ py_out_char_*_charlen:
     ctor_expr: '{c_var}'
   intent: out
   name: py_out_char_*_charlen
+py_out_enum_*:
+  arg_call:
+  - '&{cxx_var}'
+  cxx_local_var: scalar
+  declare:
+  - '{cxx_type} {py_var};'
+  intent: out
+  name: py_out_enum_*
+  post_call:
+  - '*{c_var} = ({cxx_type}) {py_var};'
 py_out_native_&:
   arg_declare:
   - '{c_const}{c_type} {c_var};'
@@ -13494,6 +13596,8 @@ root
     function
       bool
         scalar -- lua_function_bool_scalar
+      enum
+        scalar -- lua_function_native_scalar
       native
         scalar -- lua_function_native_scalar
       shadow
@@ -13506,6 +13610,8 @@ root
     in
       bool
         scalar -- lua_in_bool_scalar
+      enum
+        scalar -- lua_in_native_scalar
       native
         * -- lua_defaulttmp
         scalar -- lua_in_native_scalar
@@ -13556,6 +13662,13 @@ lua_function_bool_scalar:
   name: lua_function_bool_scalar
   post_call:
   - '{push_expr};'
+lua_function_enum_scalar:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
+  name: lua_function_enum_scalar
+  post_call:
+  - '{push_expr};'
 lua_function_native_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
@@ -13594,6 +13707,11 @@ lua_in_bool_scalar:
   name: lua_in_bool_scalar
   pre_call:
   - bool {c_var} = {pop_expr};
+lua_in_enum_scalar:
+  intent: in
+  name: lua_in_enum_scalar
+  pre_call:
+  - "{cxx_type} {cxx_var} =\t {pop_expr};"
 lua_in_native_*:
   intent: in
   name: lua_in_native_*

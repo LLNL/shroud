@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.structns.C_declarations
+// splicer end namespace.structns.C_declarations
+
 #ifdef __cplusplus
 }
 #endif
@@ -42,9 +45,6 @@ struct s_CXX_cstruct1 {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin namespace.structns.C_declarations
-// splicer end namespace.structns.C_declarations
 
 int CXX_structns_passStructByReference(CXX_cstruct1 * arg);
 

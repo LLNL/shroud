@@ -28,6 +28,8 @@ fortran_ranks = [
     "(:,:,:,:,:,:,:)",
 ]
 
+maplang = dict(f="ci_type", c="c_type")
+
 class FillFormat(object):
     """Loop over Nodes and fill fmt dictionaries.
     """
@@ -106,7 +108,7 @@ class FillFormat(object):
             
         cursor.pop_node(node)
 
-    def fill_c_result(self, cls, node, result_stmt, fmt_result, CXX_ast, meta):
+    def fill_c_result(self, wlang, cls, node, result_stmt, fmt_result, CXX_ast, meta):
         ast = node.ast
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
@@ -119,14 +121,14 @@ class FillFormat(object):
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
             fmt_result.cfi_type = result_typemap.cfi_type
+            converter, lang = find_result_converter(
+                wlang, self.language, result_typemap)
             if ast.template_arguments:
                 fmt_result.cxx_T = ast.gen_template_argument()
             if result_stmt.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            elif self.language == "c":
-                fmt_result.cxx_var = fmt_result.c_var
-            elif result_typemap.cxx_to_c is None:
+            elif converter is None:
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
             else:
@@ -153,17 +155,15 @@ class FillFormat(object):
             fmt_result.C_return_type = wformat(
                 result_stmt.c_return_type, fmt_result)
         else:
-            fmt_result.C_return_type = gen_arg_as_c(ast,
-                name=False, add_params=False
-            )
-           
+            fmt_result.C_return_type = gen_arg_as_c(
+                ast, name=False, add_params=False, lang=maplang[wlang])
         self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
         self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
         statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
-        self.set_fmt_fields_c(cls, node, ast, result_typemap, fmt_result, meta, True)
+        self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, fmt_result, meta, True)
 
-    def fill_c_arg(self, cls, node, arg, arg_stmt, fmt_arg, meta):
+    def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap  # XXX - look up vector
@@ -173,16 +173,18 @@ class FillFormat(object):
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
-        self.set_fmt_fields_c(cls, node, arg, arg_typemap, fmt_arg, meta, False)
+        self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, fmt_arg, meta, False)
         self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
         statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
 
+        # prototype:  vector<int> -> int *
+        converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
+        fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang=lang)
+        
         if arg_stmt.cxx_local_var:
             # Explicit conversion must be in pre_call.
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-        elif self.language == "c":
-            fmt_arg.cxx_var = fmt_arg.c_var
-        elif arg_typemap.c_to_cxx is None:
+        elif converter is None:
             # Compatible
             fmt_arg.cxx_var = fmt_arg.c_var
         else:
@@ -192,12 +194,16 @@ class FillFormat(object):
             fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
                 arg, name=False, add_params=False, as_ptr=True)
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-            fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+            fmt_arg.cxx_val = wformat(converter, fmt_arg)
             fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
                 name=fmt_arg.cxx_var,
                 add_params=False,
                 as_ptr=True
             )
+            append_format(
+                pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+            )
+
         compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
         self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt, meta)
@@ -316,12 +322,13 @@ class FillFormat(object):
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
 
-    def set_fmt_fields_c(self, cls, fcn, ast, ntypemap, fmt, meta, is_func):
+    def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
+            wlang    - 
             cls      - ast.ClassNode or None of enclosing class.
             fcn      - ast.FunctionNode of calling function.
             ast      - declast.Declaration
@@ -340,7 +347,7 @@ class FillFormat(object):
             else:
                 fmt.c_const = ""
             compute_c_deref(ast, None, fmt)
-            fmt.c_type = ntypemap.c_type
+            fmt.c_type = find_arg_type(wlang, ntypemap) #ntypemap.c_type + "xxx"
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.cfi_type = ntypemap.cfi_type
@@ -786,3 +793,42 @@ def compute_cxx_deref(arg, local_var, fmt):
 #        fmt.cxx_deref = ""
         fmt.cxx_member = "."
         fmt.cxx_addr = "&"
+
+def find_arg_type(wlang, ntypemap):
+    if wlang == "f":
+        return ntypemap.ci_type or ntypemap.c_type
+    else:
+        return ntypemap.c_type
+        
+def find_arg_converter(wlang, language, ntypemap):
+    """Find converter for an argument.
+    Convert from the C wrapper to the C++ library type.
+    The bufferify function (wlang == "f") will use ci_type.
+    There is no ci_to_cxx since it would be identical to c_to_cxx.
+    """
+    if wlang == "f":
+        converter = ntypemap.c_to_cxx
+        lang = "ci_type"
+    elif language == "c":
+        converter = None
+        lang = "c_type"
+    else:
+        converter = ntypemap.c_to_cxx
+        lang = "c_type"
+    return (converter, lang)
+
+def find_result_converter(wlang, language, ntypemap):
+    """Find converter for a result (or out argument).
+    Convert from the C++ library type to the C wrapper.
+    The bufferify function (wlang == "f") will use ci_type.
+    """
+    if wlang == "f":
+        converter = ntypemap.cxx_to_ci or ntypemap.cxx_to_c
+        lang = "ci_type"
+    elif language == "c":
+        converter = None
+        lang = "c_type"
+    else:
+        converter = ntypemap.cxx_to_c
+        lang = "c_type"
+    return (converter, lang)

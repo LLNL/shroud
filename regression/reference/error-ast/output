@@ -72,38 +72,42 @@ line 85
 Class1 returnThis2(void)
 return_this must return a pointer to the class
 --------------------
+Node: Color
+line 90
+Unknown type in F_enum_type: shorter
+--------------------
 Node: testattrs1
-line 91
+line 102
 Error in 'decl' field
 (+attr)
 ^
 Expected ID, found PLUS
 --------------------
 Node: testattrs2
-line 95
+line 106
 Error in 'decl' field
 ( name, )
        ^
 Expected ID, found RPAREN
 --------------------
 Node: testattrs3
-line 99
+line 110
 Error in 'decl' field
 ( name
 ^
 Expected RPAREN, found EOF
 --------------------
 Node: testattrs4
-line 103
+line 114
 Error in 'decl' field
 ( ) name
    ^
 Expected EOF, found ID
 --------------------
 Node: testattrs4
-line 103
+line 114
 Typemap IndexType: Unknown key 'no_such_keyword'
 --------------------
 Node: testattrs4
-line 103
+line 114
 Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'

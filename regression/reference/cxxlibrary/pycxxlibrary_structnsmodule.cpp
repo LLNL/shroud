@@ -32,6 +32,7 @@
 // splicer begin namespace.structns.C_definition
 // splicer end namespace.structns.C_definition
 PyArray_Descr *PY_Cstruct1_array_descr;
+
 // splicer begin namespace.structns.additional_functions
 // splicer end namespace.structns.additional_functions
 

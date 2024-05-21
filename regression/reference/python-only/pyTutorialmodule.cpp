@@ -28,6 +28,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -520,10 +521,7 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_declare
-    tutorial::TypeID SH_arg = static_cast<tutorial::TypeID>(arg);
-
-    tutorial::TypeID SHCXX_rv = tutorial::typefunc(SH_arg);
+    tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -574,10 +572,10 @@ PY_enumfunc(
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: py_function_native_scalar
+// Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: py_in_native_scalar
+// Statement: py_in_enum_scalar
 static char PY_colorfunc__doc__[] =
 "documentation"
 ;

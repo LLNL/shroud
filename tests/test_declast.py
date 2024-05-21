@@ -1678,7 +1678,7 @@ class CheckTypedef(unittest.TestCase):
         self.assertIsNotNone(ntypemap)
         self.assertEqual("TD2", ntypemap.name)
         self.assertEqual("TD2", ntypemap.cxx_type)
-        self.assertEqual("int", ntypemap.typedef)
+        self.assertEqual("int", ntypemap.typedef.name)
 
     def test_typedef_errors(self):
         symtab = declast.SymbolTable()

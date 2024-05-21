@@ -18,11 +18,9 @@
 // shroud
 #include "typeslibrary.h"
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 void LIB_outer1_class0_method(LIB_outer1_class0 * self);
 

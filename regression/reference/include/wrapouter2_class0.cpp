@@ -13,9 +13,7 @@
 // shroud
 #include "wrapouter2_class0.h"
 
-
 extern "C" {
-
 
 // ----------------------------------------
 // Function:  void method

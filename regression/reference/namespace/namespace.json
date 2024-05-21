@@ -306,19 +306,19 @@
                         "_fmtmembers": {
                             "ERROR": {
                                 "C_enum_member": "NS_upper_ERROR",
+                                "C_name_api": "ERROR",
                                 "F_enum_member": "upper_error",
+                                "F_name_api": "error",
                                 "F_value": 0,
-                                "enum_member_lower": "error",
-                                "enum_member_name": "ERROR",
-                                "enum_member_upper": "ERROR"
+                                "enum_member_name": "ERROR"
                             },
                             "WARN": {
                                 "C_enum_member": "NS_upper_WARN",
+                                "C_name_api": "WARN",
                                 "F_enum_member": "upper_warn",
+                                "F_name_api": "warn",
                                 "F_value": 1,
-                                "enum_member_lower": "warn",
-                                "enum_member_name": "WARN",
-                                "enum_member_upper": "WARN"
+                                "enum_member_name": "WARN"
                             }
                         },
                         "ast": {
@@ -341,10 +341,12 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "NS_upper_Color",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "C_enum_type": "NS_upper_Color",
+                            "C_name_api": "Color",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "color",
+                            "F_name_enum": "upper_color",
+                            "enum_name": "Color"
                         }
                     }
                 ],
@@ -973,10 +975,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapns_upper.h"
+            ],
             "c_to_cxx": "static_cast<upper::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum NS_upper_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapns_upper.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "upper::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -988,7 +998,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         }
     }

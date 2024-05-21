@@ -127,28 +127,28 @@
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_Class1_BLUE",
+                                "C_name_api": "BLUE",
                                 "F_enum_member": "class1_blue",
+                                "F_name_api": "blue",
                                 "F_value": 41,
-                                "enum_member_lower": "blue",
-                                "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE"
+                                "enum_member_name": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_Class1_RED",
+                                "C_name_api": "RED",
                                 "C_value": 40,
                                 "F_enum_member": "class1_red",
+                                "F_name_api": "red",
                                 "F_value": 40,
-                                "enum_member_lower": "red",
-                                "enum_member_name": "RED",
-                                "enum_member_upper": "RED"
+                                "enum_member_name": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_Class1_WHITE",
+                                "C_name_api": "WHITE",
                                 "F_enum_member": "class1_white",
+                                "F_name_api": "white",
                                 "F_value": 42,
-                                "enum_member_lower": "white",
-                                "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE"
+                                "enum_member_name": "WHITE"
                             }
                         },
                         "ast": {
@@ -177,10 +177,12 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_Class1_Color",
-                            "enum_lower": "color",
+                            "C_enum_type": "SCO_Class1_Color",
+                            "C_name_api": "Color",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "color",
+                            "F_name_enum": "class1_color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
                             "namespace_scope": "Class1::"
                         }
                     }
@@ -221,28 +223,28 @@
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_Class2_BLUE",
+                                "C_name_api": "BLUE",
                                 "F_enum_member": "class2_blue",
+                                "F_name_api": "blue",
                                 "F_value": 51,
-                                "enum_member_lower": "blue",
-                                "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE"
+                                "enum_member_name": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_Class2_RED",
+                                "C_name_api": "RED",
                                 "C_value": 50,
                                 "F_enum_member": "class2_red",
+                                "F_name_api": "red",
                                 "F_value": 50,
-                                "enum_member_lower": "red",
-                                "enum_member_name": "RED",
-                                "enum_member_upper": "RED"
+                                "enum_member_name": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_Class2_WHITE",
+                                "C_name_api": "WHITE",
                                 "F_enum_member": "class2_white",
+                                "F_name_api": "white",
                                 "F_value": 52,
-                                "enum_member_lower": "white",
-                                "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE"
+                                "enum_member_name": "WHITE"
                             }
                         },
                         "ast": {
@@ -271,10 +273,12 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_Class2_Color",
-                            "enum_lower": "color",
+                            "C_enum_type": "SCO_Class2_Color",
+                            "C_name_api": "Color",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "color",
+                            "F_name_enum": "class2_color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
                             "namespace_scope": "Class2::"
                         }
                     }
@@ -321,28 +325,28 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "blue",
+                        "F_name_api": "blue",
                         "F_value": 11,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_RED",
+                        "C_name_api": "RED",
                         "C_value": 10,
                         "F_enum_member": "red",
+                        "F_name_api": "red",
                         "F_value": 10,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "white",
+                        "F_name_api": "white",
                         "F_value": 12,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -371,10 +375,12 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_Color",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "C_enum_type": "SCO_Color",
+                    "C_name_api": "Color",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             },
             {
@@ -382,28 +388,28 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_ns3_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "ns3_blue",
+                        "F_name_api": "blue",
                         "F_value": 71,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_ns3_RED",
+                        "C_name_api": "RED",
                         "C_value": 70,
                         "F_enum_member": "ns3_red",
+                        "F_name_api": "red",
                         "F_value": 70,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_ns3_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "ns3_white",
+                        "F_name_api": "white",
                         "F_value": 72,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -432,10 +438,12 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_ns3_Color",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "C_enum_type": "SCO_ns3_Color",
+                    "C_name_api": "Color",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color",
+                    "F_name_enum": "ns3_color",
+                    "enum_name": "Color"
                 }
             },
             {
@@ -443,34 +451,34 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_ColorEnum_BLUE",
+                        "C_name_api": "BLUE",
                         "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_blue",
+                        "F_name_api": "blue",
                         "F_name_scope": "colorenum_",
                         "F_value": 61,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "SCO_ColorEnum_RED",
+                        "C_name_api": "RED",
                         "C_name_scope": "ColorEnum_",
                         "C_value": 60,
                         "F_enum_member": "colorenum_red",
+                        "F_name_api": "red",
                         "F_name_scope": "colorenum_",
                         "F_value": 60,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_ColorEnum_WHITE",
+                        "C_name_api": "WHITE",
                         "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_white",
+                        "F_name_api": "white",
                         "F_name_scope": "colorenum_",
                         "F_value": 62,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -500,10 +508,12 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum": "SCO_ColorEnum",
-                    "enum_lower": "colorenum",
-                    "enum_name": "ColorEnum",
-                    "enum_upper": "COLORENUM"
+                    "C_enum_type": "SCO_ColorEnum",
+                    "C_name_api": "ColorEnum",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color_enum",
+                    "F_name_enum": "color_enum",
+                    "enum_name": "ColorEnum"
                 }
             }
         ],
@@ -674,6 +684,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "SCO_datapointer * SH_this",
                             "c_type": "SCO_datapointer",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
@@ -840,6 +851,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "SCO_datapointer * SH_this",
                             "c_type": "SCO_datapointer",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
@@ -867,6 +879,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "int * val",
                             "c_type": "int",
                             "c_var": "val",
                             "cfi_type": "CFI_type_int",
@@ -1026,28 +1039,28 @@
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_ns1_BLUE",
+                                "C_name_api": "BLUE",
                                 "F_enum_member": "blue",
+                                "F_name_api": "blue",
                                 "F_value": 21,
-                                "enum_member_lower": "blue",
-                                "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE"
+                                "enum_member_name": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_ns1_RED",
+                                "C_name_api": "RED",
                                 "C_value": 20,
                                 "F_enum_member": "red",
+                                "F_name_api": "red",
                                 "F_value": 20,
-                                "enum_member_lower": "red",
-                                "enum_member_name": "RED",
-                                "enum_member_upper": "RED"
+                                "enum_member_name": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_ns1_WHITE",
+                                "C_name_api": "WHITE",
                                 "F_enum_member": "white",
+                                "F_name_api": "white",
                                 "F_value": 22,
-                                "enum_member_lower": "white",
-                                "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE"
+                                "enum_member_name": "WHITE"
                             }
                         },
                         "ast": {
@@ -1076,10 +1089,12 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_ns1_Color",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "C_enum_type": "SCO_ns1_Color",
+                            "C_name_api": "Color",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "color",
+                            "F_name_enum": "color",
+                            "enum_name": "Color"
                         }
                     }
                 ],
@@ -1250,6 +1265,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "SCO_datapointer * SH_this",
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
@@ -1416,6 +1432,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "SCO_datapointer * SH_this",
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
@@ -1443,6 +1460,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "int * val",
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
@@ -1629,28 +1647,28 @@
                         "_fmtmembers": {
                             "BLUE": {
                                 "C_enum_member": "SCO_ns2_BLUE",
+                                "C_name_api": "BLUE",
                                 "F_enum_member": "blue",
+                                "F_name_api": "blue",
                                 "F_value": 31,
-                                "enum_member_lower": "blue",
-                                "enum_member_name": "BLUE",
-                                "enum_member_upper": "BLUE"
+                                "enum_member_name": "BLUE"
                             },
                             "RED": {
                                 "C_enum_member": "SCO_ns2_RED",
+                                "C_name_api": "RED",
                                 "C_value": 30,
                                 "F_enum_member": "red",
+                                "F_name_api": "red",
                                 "F_value": 30,
-                                "enum_member_lower": "red",
-                                "enum_member_name": "RED",
-                                "enum_member_upper": "RED"
+                                "enum_member_name": "RED"
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_ns2_WHITE",
+                                "C_name_api": "WHITE",
                                 "F_enum_member": "white",
+                                "F_name_api": "white",
                                 "F_value": 32,
-                                "enum_member_lower": "white",
-                                "enum_member_name": "WHITE",
-                                "enum_member_upper": "WHITE"
+                                "enum_member_name": "WHITE"
                             }
                         },
                         "ast": {
@@ -1679,10 +1697,12 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "SCO_ns2_Color",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "C_enum_type": "SCO_ns2_Color",
+                            "C_name_api": "Color",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "color",
+                            "F_name_enum": "color",
+                            "enum_name": "Color"
                         }
                     }
                 ],
@@ -1853,6 +1873,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "SCO_datapointer * SH_this",
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
@@ -2019,6 +2040,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "SCO_datapointer * SH_this",
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
@@ -2046,6 +2068,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "int * val",
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
@@ -2190,10 +2213,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapClass1.h"
+            ],
             "c_to_cxx": "static_cast<Class1::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Class1_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapClass1.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Class1::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2205,7 +2236,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "Class2": {
@@ -2249,10 +2281,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapClass2.h"
+            ],
             "c_to_cxx": "static_cast<Class2::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Class2_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapClass2.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Class2::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2264,7 +2304,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "Color": {
@@ -2276,10 +2317,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope.h"
+            ],
             "c_to_cxx": "static_cast<Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapscope.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2291,7 +2340,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ColorEnum": {
@@ -2303,10 +2353,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope.h"
+            ],
             "c_to_cxx": "static_cast<ColorEnum>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ColorEnum",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapscope.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ColorEnum",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2318,7 +2376,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns1::Color": {
@@ -2330,10 +2389,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns1.h"
+            ],
             "c_to_cxx": "static_cast<ns1::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns1_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapscope_ns1.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns1::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2345,7 +2412,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns1::DataPointer": {
@@ -2384,10 +2452,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns2.h"
+            ],
             "c_to_cxx": "static_cast<ns2::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns2_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapscope_ns2.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns2::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2399,7 +2475,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns2::DataPointer": {
@@ -2438,10 +2515,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapscope_ns3.h"
+            ],
             "c_to_cxx": "static_cast<ns3::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum SCO_ns3_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapscope_ns3.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "ns3::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2453,7 +2538,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "ns3::DataPointer": {

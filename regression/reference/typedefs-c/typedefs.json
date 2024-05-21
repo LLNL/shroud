@@ -114,6 +114,183 @@
         "cxx_header": [
             "typedefs.h"
         ],
+        "enums": [
+            {
+                "<ENUM>": "Color ****************************************",
+                "_fmtmembers": {
+                    "BLUE": {
+                        "C_enum_member": "TYP_BLUE",
+                        "C_name_api": "BLUE",
+                        "F_enum_member": "blue",
+                        "F_name_api": "blue",
+                        "F_value": 11,
+                        "enum_member_name": "BLUE"
+                    },
+                    "RED": {
+                        "C_enum_member": "TYP_RED",
+                        "C_name_api": "RED",
+                        "C_value": 10,
+                        "F_enum_member": "red",
+                        "F_name_api": "red",
+                        "F_value": 10,
+                        "enum_member_name": "RED"
+                    },
+                    "WHITE": {
+                        "C_enum_member": "TYP_WHITE",
+                        "C_name_api": "WHITE",
+                        "F_enum_member": "white",
+                        "F_name_api": "white",
+                        "F_value": 12,
+                        "enum_member_name": "WHITE"
+                    }
+                },
+                "ast": {
+                    "members": [
+                        {
+                            "name": "RED",
+                            "value": {
+                                "constant": "10"
+                            }
+                        },
+                        {
+                            "name": "BLUE"
+                        },
+                        {
+                            "name": "WHITE"
+                        }
+                    ],
+                    "name": "Color"
+                },
+                "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
+                "name": "Color",
+                "options": {},
+                "splicer": {
+                    "c": [
+                        "TYP_RED = 10,",
+                        "TYP_BLUE = 11,",
+                        "TYP_WHITE = 12"
+                    ],
+                    "f": [
+                        "integer(color), parameter :: &",
+                        "  red=10, blue=11, white=12"
+                    ]
+                },
+                "typemap_name": "Color",
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_enum_type": "TYP_Color",
+                    "C_name_api": "Color",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
+                }
+            },
+            {
+                "<ENUM>": "DataTypeID ****************************************",
+                "_fmtmembers": {
+                    "DOUBLE_ID": {
+                        "C_enum_member": "TYP_DOUBLE_ID",
+                        "C_name_api": "DOUBLE_ID",
+                        "C_value": "SHARED_DOUBLE_ID",
+                        "F_enum_member": "double_id",
+                        "F_name_api": "double_id",
+                        "F_value": "SHARED_DOUBLE_ID",
+                        "enum_member_name": "DOUBLE_ID"
+                    },
+                    "FLOAT_ID": {
+                        "C_enum_member": "TYP_FLOAT_ID",
+                        "C_name_api": "FLOAT_ID",
+                        "C_value": "SHARED_FLOAT_ID",
+                        "F_enum_member": "float_id",
+                        "F_name_api": "float_id",
+                        "F_value": "SHARED_FLOAT_ID",
+                        "enum_member_name": "FLOAT_ID"
+                    },
+                    "INT_ID": {
+                        "C_enum_member": "TYP_INT_ID",
+                        "C_name_api": "INT_ID",
+                        "C_value": "SHARED_INT_ID",
+                        "F_enum_member": "int_id",
+                        "F_name_api": "int_id",
+                        "F_value": "SHARED_INT_ID",
+                        "enum_member_name": "INT_ID"
+                    },
+                    "LONG_ID": {
+                        "C_enum_member": "TYP_LONG_ID",
+                        "C_name_api": "LONG_ID",
+                        "C_value": "SHARED_LONG_ID",
+                        "F_enum_member": "long_id",
+                        "F_name_api": "long_id",
+                        "F_value": "SHARED_LONG_ID",
+                        "enum_member_name": "LONG_ID"
+                    },
+                    "NO_TYPE_ID": {
+                        "C_enum_member": "TYP_NO_TYPE_ID",
+                        "C_name_api": "NO_TYPE_ID",
+                        "C_value": "SHARED_NO_TYPE_ID",
+                        "F_enum_member": "no_type_id",
+                        "F_name_api": "no_type_id",
+                        "F_value": "SHARED_NO_TYPE_ID",
+                        "enum_member_name": "NO_TYPE_ID"
+                    }
+                },
+                "ast": {
+                    "members": [
+                        {
+                            "name": "NO_TYPE_ID",
+                            "value": {
+                                "name": "SHARED_NO_TYPE_ID"
+                            }
+                        },
+                        {
+                            "name": "INT_ID",
+                            "value": {
+                                "name": "SHARED_INT_ID"
+                            }
+                        },
+                        {
+                            "name": "LONG_ID",
+                            "value": {
+                                "name": "SHARED_LONG_ID"
+                            }
+                        },
+                        {
+                            "name": "FLOAT_ID",
+                            "value": {
+                                "name": "SHARED_FLOAT_ID"
+                            }
+                        },
+                        {
+                            "name": "DOUBLE_ID",
+                            "value": {
+                                "name": "SHARED_DOUBLE_ID"
+                            }
+                        }
+                    ],
+                    "name": "DataTypeID"
+                },
+                "decl": "enum DataTypeID\n{\n  NO_TYPE_ID = SHARED_NO_TYPE_ID,\n  INT_ID = SHARED_INT_ID,\n  LONG_ID = SHARED_LONG_ID,\n  FLOAT_ID = SHARED_FLOAT_ID,\n  DOUBLE_ID = SHARED_DOUBLE_ID\n};\n",
+                "name": "DataTypeID",
+                "options": {},
+                "typemap_name": "DataTypeID",
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_enum_type": "TYP_DataTypeID",
+                    "C_name_api": "DataTypeID",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "data_type_id",
+                    "F_name_enum": "data_type_id",
+                    "enum_name": "DataTypeID"
+                }
+            }
+        ],
         "functions": [
             {
                 "<FUNCTION>": "typefunc  0 ****************************************",
@@ -124,23 +301,23 @@
                             {
                                 "declarator": {
                                     "name": "arg",
-                                    "typemap_name": "TypeID"
+                                    "typemap_name": "Alias"
                                 },
                                 "specifier": [
-                                    "TypeID"
+                                    "Alias"
                                 ],
-                                "typemap_name": "TypeID"
+                                "typemap_name": "Alias"
                             }
                         ],
-                        "typemap_name": "TypeID"
+                        "typemap_name": "Alias"
                     },
                     "specifier": [
-                        "TypeID"
+                        "Alias"
                     ],
-                    "typemap_name": "TypeID"
+                    "typemap_name": "Alias"
                 },
-                "decl": "TypeID typefunc(TypeID arg);",
-                "declgen": "TypeID typefunc(TypeID arg)",
+                "decl": "Alias typefunc(Alias arg);",
+                "declgen": "Alias typefunc(Alias arg)",
                 "name": "typefunc",
                 "options": {},
                 "wrap": {
@@ -196,8 +373,8 @@
                             "C_call_function": "typefunc(\targ)",
                             "C_call_list": "arg",
                             "C_name": "typefunc",
-                            "C_prototype": "TypeID arg",
-                            "C_return_type": "TypeID",
+                            "C_prototype": "Alias arg",
+                            "C_return_type": "Alias",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc",
                             "F_C_name": "typefunc",
@@ -209,18 +386,18 @@
                             "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TypeID",
+                            "c_type": "Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
@@ -236,7 +413,7 @@
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHCXX_rv",
                             "data_var": "SHData_rv",
                             "numpy_type": "NPY_INT",
@@ -252,17 +429,18 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TypeID",
+                            "c_proto_decl": "Alias arg",
+                            "c_type": "Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -272,20 +450,16 @@
                             "stmt_name": "f_in_native_scalar"
                         },
                         "fmtpy": {
-                            "c_abstract_decl": "TypeID",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "TypeID",
+                            "c_type": "Alias",
                             "c_var": "arg",
                             "ctor_expr": "arg",
-                            "cxx_abstract_decl": "TypeID",
                             "cxx_addr": "&",
-                            "cxx_decl": "TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
-                            "cxx_val": "static_cast<TypeID>(arg)",
-                            "cxx_var": "SH_arg",
+                            "cxx_type": "Alias",
+                            "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -314,23 +488,23 @@
                             {
                                 "declarator": {
                                     "name": "arg",
-                                    "typemap_name": "TypeID"
+                                    "typemap_name": "Alias"
                                 },
                                 "specifier": [
-                                    "TypeID"
+                                    "Alias"
                                 ],
-                                "typemap_name": "TypeID"
+                                "typemap_name": "Alias"
                             }
                         ],
-                        "typemap_name": "TypeID"
+                        "typemap_name": "Alias"
                     },
                     "specifier": [
-                        "TypeID"
+                        "Alias"
                     ],
-                    "typemap_name": "TypeID"
+                    "typemap_name": "Alias"
                 },
-                "decl": "TypeID typefunc_wrap(TypeID arg);",
-                "declgen": "TypeID typefunc_wrap(TypeID arg)",
+                "decl": "Alias typefunc_wrap(Alias arg);",
+                "declgen": "Alias typefunc_wrap(Alias arg)",
                 "doxygen": {
                     "brief": "Use typedef with a C wrapper",
                     "description": "Use C_force_wrapper to ensure the typedef will be used\nin the C wrapper.\n"
@@ -380,8 +554,8 @@
                             "C_call_function": "typefunc_wrap(\targ)",
                             "C_call_list": "arg",
                             "C_name": "TYP_typefunc_wrap_bufferify",
-                            "C_prototype": "TypeID arg",
-                            "C_return_type": "TypeID",
+                            "C_prototype": "Alias arg",
+                            "C_return_type": "Alias",
                             "F_C_arguments": "arg",
                             "F_C_call": "c_typefunc_wrap_bufferify",
                             "F_C_name": "typefunc_wrap",
@@ -393,19 +567,19 @@
                             "F_subprogram": "function",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_type": "TypeID",
+                            "c_type": "Alias",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "TypeID SHC_rv",
-                            "cxx_type": "TypeID",
+                            "cxx_rv_decl": "Alias SHC_rv",
+                            "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
@@ -421,17 +595,18 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "TypeID",
+                            "c_proto_decl": "Alias arg",
+                            "c_type": "Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "TypeID",
+                            "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
-                            "f_kind": "type_id",
-                            "f_type": "integer(type_id)",
+                            "f_kind": "alias",
+                            "f_type": "integer(alias)",
                             "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -452,7 +627,407 @@
                 }
             },
             {
-                "<FUNCTION>": "typestruct  2 ****************************************",
+                "<FUNCTION>": "returnEnum  2 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnEnum",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "in",
+                                    "typemap_name": "iColor"
+                                },
+                                "specifier": [
+                                    "iColor"
+                                ],
+                                "typemap_name": "iColor"
+                            }
+                        ],
+                        "typemap_name": "iColor"
+                    },
+                    "specifier": [
+                        "iColor"
+                    ],
+                    "typemap_name": "iColor"
+                },
+                "decl": "iColor returnEnum(iColor in);",
+                "declgen": "iColor returnEnum(iColor in)",
+                "name": "returnEnum",
+                "options": {},
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_enum_scalar"
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_enum_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "returnEnum(\tSHCXX_in)",
+                            "C_call_list": "SHCXX_in",
+                            "C_name": "TYP_returnEnum_bufferify",
+                            "C_prototype": "int in",
+                            "C_return_type": "int",
+                            "F_C_arguments": "in",
+                            "F_C_call": "c_return_enum_bufferify",
+                            "F_C_name": "return_enum",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "in",
+                            "F_arguments": "in",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "iColor",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "int SHC_rv",
+                            "c_type": "iColor",
+                            "c_val": "(int) SHCXX_rv",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "iColor",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "iColor SHCXX_rv",
+                            "cxx_type": "iColor",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "i_color",
+                            "f_type": "integer(i_color)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_enum_scalar"
+                        },
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "iColor",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_enum_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
+                    "in": {
+                        "fmtf": {
+                            "c_abstract_decl": "iColor",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_proto_decl": "int in",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "iColor",
+                            "cxx_addr": "&",
+                            "cxx_decl": "iColor SHCXX_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
+                            "cxx_type": "iColor",
+                            "cxx_val": "(iColor) in",
+                            "cxx_var": "SHCXX_in",
+                            "f_intent": "IN",
+                            "f_kind": "i_color",
+                            "f_type": "integer(i_color)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "in",
+                            "fc_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_enum_scalar"
+                        },
+                        "fmtpy": {
+                            "c_abstract_decl": "iColor",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "iColor",
+                            "c_var": "in",
+                            "ctor_expr": "in",
+                            "cxx_abstract_decl": "iColor",
+                            "cxx_addr": "&",
+                            "cxx_decl": "iColor SH_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "iColor",
+                            "cxx_val": "(iColor) in",
+                            "cxx_var": "SH_in",
+                            "data_var": "SHData_in",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_in",
+                            "size_var": "SHSize_in",
+                            "stmt": "py_in_enum_scalar",
+                            "value_var": "SHValue_in"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnEnum",
+                    "F_name_api": "return_enum",
+                    "F_name_function": "return_enum",
+                    "F_name_generic": "return_enum",
+                    "F_name_impl": "return_enum",
+                    "PY_name_impl": "PY_returnEnum",
+                    "function_name": "returnEnum"
+                }
+            },
+            {
+                "<FUNCTION>": "returnTypeID  3 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnTypeID",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "in",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            }
+                        ],
+                        "typemap_name": "TypeID"
+                    },
+                    "specifier": [
+                        "TypeID"
+                    ],
+                    "typemap_name": "TypeID"
+                },
+                "decl": "TypeID returnTypeID(TypeID in);",
+                "declgen": "TypeID returnTypeID(TypeID in)",
+                "name": "returnTypeID",
+                "options": {},
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_enum_scalar"
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_enum_scalar"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "function"
+                            }
+                        },
+                        "in": {
+                            "meta": {
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtargs": {
+                    "+result": {
+                        "fmtf": {
+                            "C_call_function": "returnTypeID(\tSHCXX_in)",
+                            "C_call_list": "SHCXX_in",
+                            "C_name": "TYP_returnTypeID_bufferify",
+                            "C_prototype": "int in",
+                            "C_return_type": "int",
+                            "F_C_arguments": "in",
+                            "F_C_call": "c_return_type_id_bufferify",
+                            "F_C_name": "return_type_id",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "in",
+                            "F_arguments": "in",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "TypeID",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "int SHC_rv",
+                            "c_type": "TypeID",
+                            "c_val": "(int) SHCXX_rv",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "TypeID SHCXX_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "SHT_rv",
+                            "fc_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_function_enum_scalar"
+                        },
+                        "fmtpy": {
+                            "c_deref": "",
+                            "c_var": "SHCXX_rv",
+                            "ctor_expr": "SHCXX_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_type": "TypeID",
+                            "cxx_var": "SHCXX_rv",
+                            "data_var": "SHData_rv",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHTPy_rv",
+                            "size_var": "SHSize_rv",
+                            "stmt": "py_function_enum_scalar",
+                            "value_var": "SHValue_rv"
+                        }
+                    },
+                    "in": {
+                        "fmtf": {
+                            "c_abstract_decl": "TypeID",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_proto_decl": "int in",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "TypeID",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SHCXX_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "(TypeID) in",
+                            "cxx_var": "SHCXX_in",
+                            "f_intent": "IN",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
+                            "f_type_module": "typedefs_mod",
+                            "f_var": "in",
+                            "fc_var": "in",
+                            "i_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "f_in_enum_scalar"
+                        },
+                        "fmtpy": {
+                            "c_abstract_decl": "TypeID",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "TypeID",
+                            "c_var": "in",
+                            "ctor_expr": "in",
+                            "cxx_abstract_decl": "TypeID",
+                            "cxx_addr": "&",
+                            "cxx_decl": "TypeID SH_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "TypeID",
+                            "cxx_val": "(TypeID) in",
+                            "cxx_var": "SH_in",
+                            "data_var": "SHData_in",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_in",
+                            "size_var": "SHSize_in",
+                            "stmt": "py_in_enum_scalar",
+                            "value_var": "SHValue_in"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "returnTypeID",
+                    "F_name_api": "return_type_id",
+                    "F_name_function": "return_type_id",
+                    "F_name_generic": "return_type_id",
+                    "F_name_impl": "return_type_id",
+                    "PY_name_impl": "PY_returnTypeID",
+                    "function_name": "returnTypeID"
+                }
+            },
+            {
+                "<FUNCTION>": "typestruct  4 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "typestruct",
@@ -552,6 +1127,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "Struct1Rename * arg1",
                             "c_type": "Struct1Rename",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_struct",
@@ -607,7 +1183,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnBytesForIndexType  3 ****************************************",
+                "<FUNCTION>": "returnBytesForIndexType  5 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnBytesForIndexType",
@@ -715,6 +1291,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "IndexType arg",
                             "c_type": "IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
@@ -746,7 +1323,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnShapeSize  4 ****************************************",
+                "<FUNCTION>": "returnShapeSize  6 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnShapeSize",
@@ -887,6 +1464,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int ndims",
                             "c_type": "int",
                             "c_var": "ndims",
                             "cfi_type": "CFI_type_int",
@@ -913,6 +1491,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const IndexType * shape",
                             "c_type": "IndexType",
                             "c_var": "shape",
                             "cfi_type": "CFI_type_int32_t",
@@ -948,7 +1527,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnBytesForIndexType2  5 ****************************************",
+                "<FUNCTION>": "returnBytesForIndexType2  7 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnBytesForIndexType2",
@@ -1056,6 +1635,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "IndexType2 arg",
                             "c_type": "IndexType2",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
@@ -1087,7 +1667,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnShapeSize2  6 ****************************************",
+                "<FUNCTION>": "returnShapeSize2  8 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnShapeSize2",
@@ -1228,6 +1808,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int ndims",
                             "c_type": "int",
                             "c_var": "ndims",
                             "cfi_type": "CFI_type_int",
@@ -1254,6 +1835,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const IndexType2 * shape",
                             "c_type": "IndexType2",
                             "c_var": "shape",
                             "cfi_type": "CFI_type_int32_t",
@@ -1295,14 +1877,102 @@
         ],
         "typedefs": [
             {
-                "<TYPEDEF>": "TypeID ****************************************",
+                "<TYPEDEF>": "Alias ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
+                        "name": "Alias",
                         "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "Alias"
+                },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
+                "name": "Alias",
+                "options": {},
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "Alias": {}
+                    },
+                    "share": {
+                        "Alias": {}
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "Alias",
+                    "C_name_typedef": "Alias",
+                    "F_name_api": "alias",
+                    "F_name_typedef": "alias",
+                    "cxx_type": "Alias",
+                    "typedef_name": "Alias"
+                }
+            },
+            {
+                "<TYPEDEF>": "iColor ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "iColor",
+                        "typemap_name": "Color"
+                    },
+                    "specifier": [
+                        "enum Color"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "iColor"
+                },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
+                "name": "iColor",
+                "options": {},
+                "wrap": {
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "iColor": {}
+                    },
+                    "share": {
+                        "iColor": {}
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "iColor",
+                    "C_name_typedef": "iColor",
+                    "F_name_api": "i_color",
+                    "F_name_typedef": "i_color",
+                    "cxx_type": "iColor",
+                    "typedef_name": "iColor"
+                }
+            },
+            {
+                "<TYPEDEF>": "TypeID ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "TypeID",
+                        "typemap_name": "DataTypeID"
+                    },
+                    "specifier": [
+                        "enum DataTypeID"
                     ],
                     "storage": [
                         "typedef"
@@ -1405,6 +2075,22 @@
                 },
                 "name": "IndexType",
                 "options": {},
+                "splicer": {
+                    "c": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "typedef int64_t TYP_IndexType;",
+                        "#else",
+                        "typedef int32_t TYP_IndexType;",
+                        "#endif"
+                    ],
+                    "f": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "integer, parameter :: INDEX_TYPE = C_INT64_T",
+                        "#else",
+                        "integer, parameter :: INDEX_TYPE = C_INT32_T",
+                        "#endif"
+                    ]
+                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -1449,6 +2135,22 @@
                 },
                 "name": "IndexType2",
                 "options": {},
+                "splicer": {
+                    "c": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "typedef int64_t LOCAL_IndexType;",
+                        "#else",
+                        "typedef int32_t LOCAL_IndexType;",
+                        "#endif"
+                    ],
+                    "f": [
+                        "#if defined(USE_64BIT_INDEXTYPE)",
+                        "integer, parameter :: LOCAL_INDEX_TYPE = C_INT64_T",
+                        "#else",
+                        "integer, parameter :: LOCAL_INDEX_TYPE = C_INT32_T",
+                        "#endif"
+                    ]
+                },
                 "user_fmt": {
                     "C_name_typedef": "LOCAL_IndexType",
                     "F_name_typedef": "LOCAL_Index_Type"
@@ -1481,11 +2183,123 @@
         }
     },
     "symtab": {
+        "Color": "enum-Color",
+        "DataTypeID": "enum-DataTypeID",
         "Struct1Rename": "Struct1Rename",
+        "TypeID": "TypeID",
+        "enum-Color": "Color",
+        "enum-DataTypeID": "DataTypeID",
+        "iColor": "iColor",
         "s_Struct1": "struct-s_Struct1",
         "struct-s_Struct1": "s_Struct1"
     },
     "types": {
+        "Alias": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_type": "Alias",
+            "cfi_type": "CFI_type_int",
+            "cxx_type": "Alias",
+            "f_cast": "int({f_var}, alias)",
+            "f_kind": "alias",
+            "f_module": {
+                "typedefs_mod": [
+                    "alias"
+                ]
+            },
+            "f_module_name": "typedefs_mod",
+            "f_type": "integer(alias)",
+            "flat_name": "int",
+            "i_module": {
+                "typedefs_mod": [
+                    "alias"
+                ]
+            },
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wraptypedefs.h"
+            ]
+        },
+        "Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
+            "c_type": "enum Color",
+            "cfi_type": "CFI_type_int",
+            "ci_type": "int",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum Color) {cxx_var}",
+            "cxx_to_ci": "(int) {cxx_var}",
+            "cxx_type": "enum Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "is_enum": true,
+            "sgroup": "enum",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "DataTypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
+            "c_type": "enum DataTypeID",
+            "cfi_type": "CFI_type_int",
+            "ci_type": "int",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum DataTypeID) {cxx_var}",
+            "cxx_to_ci": "(int) {cxx_var}",
+            "cxx_type": "enum DataTypeID",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "is_enum": true,
+            "sgroup": "enum",
+            "sh_type": "SH_TYPE_INT"
+        },
         "IndexType": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
@@ -1498,13 +2312,11 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "IndexType",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "IndexType",
             "f_cast": "int({f_var}, index_type)",
             "f_kind": "index_type",
@@ -1540,13 +2352,11 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "IndexType2",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "IndexType2",
             "f_cast": "int({f_var}, LOCAL_Index_Type)",
             "f_kind": "LOCAL_Index_Type",
@@ -1613,10 +2423,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum DataTypeID) {cxx_var}",
+            "cxx_to_ci": "(int) {cxx_var}",
             "cxx_type": "TypeID",
             "f_cast": "int({f_var}, type_id)",
             "f_kind": "type_id",
@@ -1633,9 +2451,55 @@
                     "type_id"
                 ]
             },
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT",
-            "typedef": "int",
+            "typedef": "DataTypeID",
+            "wrap_header": [
+                "wraptypedefs.h"
+            ]
+        },
+        "iColor": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "wraptypedefs.h"
+            ],
+            "c_to_cxx": "({cxx_abstract_decl}) {c_var}",
+            "c_type": "iColor",
+            "cfi_type": "CFI_type_int",
+            "ci_type": "int",
+            "cxx_header": [
+                "wraptypedefs.h"
+            ],
+            "cxx_to_c": "(enum Color) {cxx_var}",
+            "cxx_to_ci": "(int) {cxx_var}",
+            "cxx_type": "iColor",
+            "f_cast": "int({f_var}, i_color)",
+            "f_kind": "i_color",
+            "f_module": {
+                "typedefs_mod": [
+                    "i_color"
+                ]
+            },
+            "f_module_name": "typedefs_mod",
+            "f_type": "integer(i_color)",
+            "flat_name": "int",
+            "i_module": {
+                "typedefs_mod": [
+                    "i_color"
+                ]
+            },
+            "is_enum": true,
+            "sgroup": "enum",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "Color",
             "wrap_header": [
                 "wraptypedefs.h"
             ]

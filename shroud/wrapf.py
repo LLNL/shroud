@@ -113,8 +113,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             fileinfo.begin_class()  # clear out old class info
             node.F_module_dependencies = []
 
-            self.wrap_typedefs(node, fileinfo)
             self.wrap_enums(node, fileinfo)
+            self.wrap_typedefs(node, fileinfo)
 
             self._push_splicer("function")
             self.wrap_functions(None, node.functions, fileinfo)
@@ -122,10 +122,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         do_write = top or not node.options.F_flatten_namespace
         if do_write:
-            fileinfo.impl.append("")
-            self._create_splicer("additional_functions", fileinfo.impl)
-            fileinfo.user_declarations.append("")
-            self._create_splicer("additional_declarations", fileinfo.user_declarations)
+            self._create_splicer("additional_functions", fileinfo.impl, blank=True)
+            self._create_splicer("additional_declarations", fileinfo.user_declarations, blank=True)
 
         if top:
             # have one namespace level, then replace name each time
@@ -242,8 +240,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer("module_use", fileinfo.use_stmts)
 
-        self.wrap_typedefs(node, fileinfo)
         self.wrap_enums(node, fileinfo)
+        self.wrap_typedefs(node, fileinfo)
 
         if node.cpp_if:
             fileinfo.impl.append("#" + node.cpp_if)
@@ -258,8 +256,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         if not node.baseclass:
             # subclasses share these functions.
             self.write_object_get_set(node, fileinfo)
-        fileinfo.impl.append("")
-        self._create_splicer("additional_functions", fileinfo.impl)
+        self._create_splicer("additional_functions", fileinfo.impl, blank=True)
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
@@ -485,14 +482,26 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             append_format(output, "!  enum " + node.ast.scope + " {namespace_scope}{enum_name}", fmt_enum)
         else:
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
-        for member in ast.members:
-            fmt_id = fmtmembers[member.name]
             append_format(
                 output,
-                "integer(C_INT), parameter :: {F_enum_member} = {F_value}",
-                fmt_id,
+                "integer, parameter :: {F_name_enum} = {F_enum_kind}",
+                fmt_enum
             )
-        self.set_f_module(fileinfo.module_use, "iso_c_binding", "C_INT")
+        if "f" in node.splicer:
+            F_code = None
+            F_force = node.splicer["f"]
+        else:
+            F_code = []
+            F_force = None
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                append_format(
+                    F_code,
+                    "integer({F_name_enum}), parameter :: {F_enum_member} = {F_value}",
+                    fmt_id,
+                )
+        self._create_splicer(node.name, output, F_code, F_force)
+        self.set_f_module(fileinfo.module_use, "iso_c_binding", fmt_enum.F_enum_kind)
 
     def write_object_get_set(self, node, fileinfo):
         """Write get and set methods for instance pointer.
@@ -2027,13 +2036,12 @@ rv = .false.
 
         self._create_splicer("module_use", output)
         output.append("implicit none")
-        output.append("")
-        self._create_splicer("module_top", output)
+        self._create_splicer("module_top", output, blank=True)
 
         output.extend(fileinfo.helper_derived_type)
 
-        output.extend(fileinfo.typedef_impl)
         output.extend(fileinfo.enum_impl)
+        output.extend(fileinfo.typedef_impl)
 
         # XXX output.append('! splicer push class')
         output.extend(fileinfo.f_type_decl)

@@ -21,10 +21,10 @@ options:
 declarations:
 
 # Using a typedef as an alias
-- decl: typedef int TypeID;
-- decl: TypeID typefunc(TypeID arg);
+- decl: typedef int Alias;
+- decl: Alias typefunc(Alias arg);
 
-- decl: TypeID typefunc_wrap(TypeID arg);
+- decl: Alias typefunc_wrap(Alias arg);
   options:
     C_force_wrapper: True
     wrap_python: False
@@ -34,6 +34,47 @@ declarations:
     description: |
       Use C_force_wrapper to ensure the typedef will be used
       in the C wrapper.
+
+#####
+# Pass an enum via a typedef
+# enum from enum.yaml
+
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+  splicer:
+    f: |
+       integer(color), parameter :: &
+         red=10, blue=11, white=12
+    c: |
+       TYP_RED = 10,
+       TYP_BLUE = 11,
+       TYP_WHITE = 12
+
+- decl: typedef enum Color iColor;
+
+- decl: iColor returnEnum(iColor in);
+
+#####
+
+- decl: |
+      enum DataTypeID
+      {
+        NO_TYPE_ID = SHARED_NO_TYPE_ID,
+        INT_ID = SHARED_INT_ID,
+        LONG_ID = SHARED_LONG_ID,
+        FLOAT_ID = SHARED_FLOAT_ID,
+        DOUBLE_ID = SHARED_DOUBLE_ID
+      };
+
+- decl: typedef enum DataTypeID TypeID;
+
+- decl: TypeID returnTypeID(TypeID in);
+
+#####
 
 # struct typedef
 - decl: struct s_Struct1 {
@@ -114,3 +155,11 @@ file_code:
       iso_c_binding:
       - C_INT32_T
       - C_INT64_T
+
+splicer_code:
+  c:
+    C_declarations: |
+      #include "shared.h"
+  f:
+    file_top: |
+      #include "shared.h"

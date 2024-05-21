@@ -27,6 +27,7 @@
 
 // splicer begin namespace.ns1.C_definition
 // splicer end namespace.ns1.C_definition
+
 // splicer begin namespace.ns1.additional_functions
 // splicer end namespace.ns1.additional_functions
 

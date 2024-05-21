@@ -24,8 +24,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin class.User1.impl.C_definition
 // splicer end class.User1.impl.C_definition
+
 // splicer begin class.User1.impl.additional_methods
 // splicer end class.User1.impl.additional_methods
 static void

@@ -18,27 +18,27 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "TUT_BLUE",
+                        "C_name_api": "BLUE",
                         "F_enum_member": "blue",
+                        "F_name_api": "blue",
                         "F_value": 1,
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE"
+                        "enum_member_name": "BLUE"
                     },
                     "RED": {
                         "C_enum_member": "TUT_RED",
+                        "C_name_api": "RED",
                         "F_enum_member": "red",
+                        "F_name_api": "red",
                         "F_value": 0,
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED"
+                        "enum_member_name": "RED"
                     },
                     "WHITE": {
                         "C_enum_member": "TUT_WHITE",
+                        "C_name_api": "WHITE",
                         "F_enum_member": "white",
+                        "F_name_api": "white",
                         "F_value": 2,
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE"
+                        "enum_member_name": "WHITE"
                     }
                 },
                 "ast": {
@@ -68,9 +68,12 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "C_enum_type": "TUT_Color",
+                    "C_name_api": "Color",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color",
+                    "F_name_enum": "color",
+                    "enum_name": "Color"
                 }
             }
         ],
@@ -2107,20 +2110,16 @@
                     },
                     "arg": {
                         "fmtpy": {
-                            "c_abstract_decl": "TypeID",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": "TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
-                            "cxx_abstract_decl": "tutorial::TypeID",
                             "cxx_addr": "&",
-                            "cxx_decl": "tutorial::TypeID SH_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "tutorial::TypeID",
-                            "cxx_val": "static_cast<tutorial::TypeID>(arg)",
-                            "cxx_var": "SH_arg",
+                            "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
@@ -2321,16 +2320,16 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_enum_scalar",
                             "value_var": "SHValue_rv"
                         }
                     },
                     "arg": {
                         "fmtpy": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum TUT_Color",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "enum TUT_Color",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_abstract_decl": "tutorial::Color",
@@ -2345,7 +2344,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_enum_scalar",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2893,10 +2892,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapTutorial.h"
+            ],
             "c_to_cxx": "static_cast<tutorial::Color>({c_var})",
-            "c_type": "int",
+            "c_type": "enum TUT_Color",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapTutorial.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "tutorial::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -2908,7 +2915,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "tutorial::EnumTypeID": {
@@ -2956,10 +2964,8 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<{cxx_abstract_decl}>({c_var})",
             "c_type": "TypeID",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_type": "tutorial::TypeID",
             "f_cast": "int({f_var}, )",
             "f_kind": "",

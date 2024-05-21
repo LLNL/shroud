@@ -24,8 +24,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin namespace.example::nested.class.ExClass1.impl.C_definition
 // splicer end namespace.example::nested.class.ExClass1.impl.C_definition
+
 // splicer begin namespace.example::nested.class.ExClass1.impl.additional_methods
 // splicer end namespace.example::nested.class.ExClass1.impl.additional_methods
 static PyObject *

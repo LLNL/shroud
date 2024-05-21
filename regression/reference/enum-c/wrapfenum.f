@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module enum_mod
-    use iso_c_binding, only : C_INT
+    use iso_c_binding, only : C_INT, C_SHORT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -22,19 +22,25 @@ module enum_mod
     ! splicer end module_top
 
     !  enum Color
-    integer(C_INT), parameter :: red = 10
-    integer(C_INT), parameter :: blue = 11
-    integer(C_INT), parameter :: white = 12
+    integer, parameter :: color = C_SHORT
+    ! splicer begin enum.Color
+    integer(color), parameter :: red = 10
+    integer(color), parameter :: blue = 11
+    integer(color), parameter :: white = 12
+    ! splicer end enum.Color
 
     !  enum val
-    integer(C_INT), parameter :: a1 = 0
-    integer(C_INT), parameter :: b1 = 3
-    integer(C_INT), parameter :: c1 = 4
-    integer(C_INT), parameter :: d1 = b1-a1
-    integer(C_INT), parameter :: e1 = d1
-    integer(C_INT), parameter :: f1 = d1+1
-    integer(C_INT), parameter :: g1 = d1+2
-    integer(C_INT), parameter :: h1 = 100
+    integer, parameter :: val = C_INT
+    ! splicer begin enum.val
+    integer(val), parameter :: a1 = 0
+    integer(val), parameter :: b1 = 3
+    integer(val), parameter :: c1 = 4
+    integer(val), parameter :: d1 = b1-a1
+    integer(val), parameter :: e1 = d1
+    integer(val), parameter :: f1 = d1+1
+    integer(val), parameter :: g1 = d1+2
+    integer(val), parameter :: h1 = 100
+    ! splicer end enum.val
 
     interface
 
@@ -43,15 +49,58 @@ module enum_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_enum_scalar
         function convert_to_int(in) &
                 result(SHT_rv) &
-                bind(C, name="convert_to_int")
-            use iso_c_binding, only : C_INT
+                bind(C, name="ENU_convert_to_int_bufferify")
+            use iso_c_binding, only : C_INT, C_SHORT
             implicit none
-            integer(C_INT), value, intent(IN) :: in
+            integer(C_SHORT), value, intent(IN) :: in
             integer(C_INT) :: SHT_rv
         end function convert_to_int
+
+        ! ----------------------------------------
+        ! Function:  enum Color returnEnum
+        ! Statement: f_function_enum_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color in
+        ! Statement: f_in_enum_scalar
+        function return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="ENU_returnEnum_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), value, intent(IN) :: in
+            integer(C_SHORT) :: SHT_rv
+        end function return_enum
+
+        ! ----------------------------------------
+        ! Function:  void returnEnumOutArg
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  enum Color * out +intent(out)
+        ! Statement: f_out_enum_*
+        subroutine return_enum_out_arg(out) &
+                bind(C, name="ENU_returnEnumOutArg_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(OUT) :: out
+        end subroutine return_enum_out_arg
+
+        ! ----------------------------------------
+        ! Function:  enum Color returnEnumInOutArg
+        ! Statement: f_function_enum_scalar
+        ! ----------------------------------------
+        ! Argument:  enum Color * inout +intent(inout)
+        ! Statement: f_inout_enum_*
+        function return_enum_in_out_arg(inout) &
+                result(SHT_rv) &
+                bind(C, name="ENU_returnEnumInOutArg_bufferify")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), intent(INOUT) :: inout
+            integer(C_SHORT) :: SHT_rv
+        end function return_enum_in_out_arg
     end interface
 
     ! splicer begin additional_declarations
@@ -66,16 +115,71 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function convert_to_int(in) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), value, intent(IN) :: in
+        use iso_c_binding, only : C_INT, C_SHORT
+        integer(C_SHORT), value, intent(IN) :: in
         integer(C_INT) :: SHT_rv
         ! splicer begin function.convert_to_int
-        SHT_rv = c_convert_to_int(in)
+        SHT_rv = c_convert_to_int_bufferify(in)
         ! splicer end function.convert_to_int
     end function convert_to_int
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  enum Color returnEnum
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  enum Color in
+    ! Statement: f_in_enum_scalar
+    function return_enum(in) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), value, intent(IN) :: in
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.return_enum
+        SHT_rv = c_return_enum_bufferify(in)
+        ! splicer end function.return_enum
+    end function return_enum
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void returnEnumOutArg
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  enum Color * out +intent(out)
+    ! Statement: f_out_enum_*
+    subroutine return_enum_out_arg(out)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), intent(OUT) :: out
+        ! splicer begin function.return_enum_out_arg
+        call c_return_enum_out_arg_bufferify(out)
+        ! splicer end function.return_enum_out_arg
+    end subroutine return_enum_out_arg
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  enum Color returnEnumInOutArg
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  enum Color * inout +intent(inout)
+    ! Statement: f_inout_enum_*
+    function return_enum_in_out_arg(inout) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_SHORT
+        integer(C_SHORT), intent(INOUT) :: inout
+        integer(C_SHORT) :: SHT_rv
+        ! splicer begin function.return_enum_in_out_arg
+        SHT_rv = c_return_enum_in_out_arg_bufferify(inout)
+        ! splicer end function.return_enum_in_out_arg
+    end function return_enum_in_out_arg
 #endif
 
     ! splicer begin additional_functions

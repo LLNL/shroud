@@ -28,6 +28,18 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
+//  tutorial::Color
+enum TUT_Color {
+    // splicer begin enum.Color
+    TUT_RED,
+    TUT_BLUE,
+    TUT_WHITE
+    // splicer end enum.Color
+};
+
 // typedef tutorial::TypeID
 // splicer begin typedef.TypeID
 typedef int TUT_TypeID;
@@ -37,16 +49,6 @@ typedef int TUT_TypeID;
 // splicer begin typedef.EnumTypeID
 typedef int TUT_EnumTypeID;
 // splicer end typedef.EnumTypeID
-
-//  tutorial::Color
-enum TUT_Color {
-    TUT_RED,
-    TUT_BLUE,
-    TUT_WHITE
-};
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 void TUT_NoReturnNoArguments(void);
 
@@ -105,7 +107,9 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg);
 
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg);
 
-int TUT_colorfunc(int arg);
+enum TUT_Color TUT_colorfunc(enum TUT_Color arg);
+
+int TUT_colorfunc_bufferify(int arg);
 
 void TUT_getMinMax(int * min, int * max);
 

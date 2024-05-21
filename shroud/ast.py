@@ -231,12 +231,15 @@ class NamespaceMixin(object):
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
                 # XXX - move arguments to caller
-                fmtdict = kwargs.get("format", {})
-                options = kwargs.get("options", {})
-                splicer = kwargs.get("splicer", {})
+                fmtdict = kwargs.pop("format", {})
+                options = kwargs.pop("options", {})
+                splicer = kwargs.pop("splicer", {})
                 node = self.add_typedef(decl, ast, fields, fmtdict, options, splicer)
             elif ast.enum_specifier:
-                node = self.add_enum(decl, ast=ast, **kwargs)
+                fmtdict = kwargs.pop("format", {})
+                options = kwargs.pop("options", {})
+                splicer = kwargs.pop("splicer", {})
+                node = self.add_enum(decl, ast, fmtdict, options, splicer, **kwargs)
             elif ast.class_specifier:
                 if isinstance(ast.class_specifier, declast.Struct):
                     node = self.add_struct(
@@ -278,12 +281,13 @@ class NamespaceMixin(object):
             )
         return node
 
-    def add_enum(self, decl, ast=None, **kwargs):
+    def add_enum(self, decl, ast=None,
+                    format={}, options={}, splicer={}, **kwargs):
         """Add an enumeration.
 
         Add as a type for C++ but not C.
         """
-        node = EnumNode(decl, parent=self, ast=ast, **kwargs)
+        node = EnumNode(decl, self, ast, format, options, splicer, **kwargs)
         self.enums.append(node)
         return node
 
@@ -525,6 +529,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_blanknull=False,
             F_create_bufferify_function=True,
             F_default_args="generic",  # "generic", "optional", "require"
+            F_enum_type="int",
             F_flatten_namespace=False,
             F_line_length=72,
             F_force_wrapper=False,
@@ -559,8 +564,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
-            C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
-            C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
+            C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
+            C_enum_member_template="{C_prefix}{C_name_scope}{C_name_api}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
@@ -580,12 +585,13 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
             ),
-            F_enum_member_template="{F_name_scope}{enum_member_lower}",
+            F_enum_member_template="{F_name_scope}{F_name_api}",
             F_name_impl_template=(
                 "{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
             F_name_function_template="{F_name_api}{function_suffix}{template_suffix}",
             F_name_generic_template="{F_name_api}",
+            F_name_enum_template="{F_name_scope}{F_name_api}",
             F_name_typedef_template="{F_name_scope}{F_name_api}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
@@ -715,6 +721,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_derived_member_base="",
             F_name_assign="assign",
             F_name_associated="associated",
+            F_name_enum="",
             F_name_instance_get="get_instance",
             F_name_instance_set="set_instance",
             F_name_final="final",
@@ -1752,6 +1759,9 @@ class EnumNode(AstNode):
              bar: 4
           format:
              baz: 4
+          splicer:
+            f: |
+              blah blah blah
 
     _fmtmembers = {
       'RED': Scope(_fmt_func)
@@ -1760,13 +1770,16 @@ class EnumNode(AstNode):
     """
 
     def __init__(
-        self, decl, parent, format={}, ast=None, options=None, **kwargs
+            self, decl, parent, ast=None,
+            format={}, options=None, splicer={}, **kwargs
     ):
 
         # From arguments
         self.parent = parent
         self.symtab = parent.symtab
+        self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
+        self.splicer = splicer
 
         self.options = util.Scope(parent.options)
         if options:
@@ -1776,6 +1789,7 @@ class EnumNode(AstNode):
         #        self.default_format(parent, format, kwargs)
         self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
+        error.cursor.push_node(self)
 
         if not decl:
             raise RuntimeError("EnumNode missing decl")
@@ -1794,12 +1808,14 @@ class EnumNode(AstNode):
         # format for enum
         fmt_enum = self.fmtdict
         fmt_enum.enum_name = self.name
-        fmt_enum.enum_lower = self.name.lower()
-        fmt_enum.enum_upper = self.name.upper()
         if fmt_enum.cxx_class:
             fmt_enum.namespace_scope = (
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
             )
+        fmt_enum.C_name_api = self.apply_C_API_option(self.name)
+        fmt_enum.F_name_api = self.apply_F_API_option(self.name)
+        self.eval_template("F_name_enum")
+        self.eval_template("C_enum_type")
 
         # Format for each enum member.
         # Compute all names first since any expression must be converted to 
@@ -1813,8 +1829,8 @@ class EnumNode(AstNode):
         for member in enum_specifier.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
-            fmt.enum_member_lower = member.name.lower()
-            fmt.enum_member_upper = member.name.upper()
+            fmt.C_name_api = self.apply_C_API_option(member.name)
+            fmt.F_name_api = self.apply_F_API_option(member.name)
             if enum_specifier.scope is not None:
                 fmt.C_name_scope = C_name_scope
                 fmt.F_name_scope = F_name_scope
@@ -1863,9 +1879,16 @@ class EnumNode(AstNode):
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"
+        ftypemap = self.symtab.lookup_typemap(options.F_enum_type)
+        if ftypemap is None:
+            error.cursor.ast(self.linenumber,
+                             "Unknown type in F_enum_type: %s" % options.F_enum_type)
+            ftypemap = self.symtab.lookup_typemap("int")  # recover from error
+        fmt_enum.F_enum_kind = ftypemap.f_kind
         self.typemap = ast.typemap
-        typemap.fill_enum_typemap(self)
+        typemap.fill_enum_typemap(self, ftypemap)
         # also 'enum class foo' will alter scope
+        error.cursor.pop_node(self)
 
 ######################################################################
 

@@ -27,6 +27,7 @@
 
 // splicer begin namespace.nswork.C_definition
 // splicer end namespace.nswork.C_definition
+
 // splicer begin namespace.nswork.additional_functions
 // splicer end namespace.nswork.additional_functions
 static PyMethodDef PY_methods[] = {

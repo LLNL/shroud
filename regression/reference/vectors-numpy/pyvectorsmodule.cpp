@@ -31,6 +31,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

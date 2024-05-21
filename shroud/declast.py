@@ -1636,6 +1636,9 @@ class Enum(Node):
     """An enumeration statement.
     enum Color { RED, BLUE, WHITE }
     enum class Color { RED, BLUE, WHITE }
+
+    For C and C++, the enum tag is registered.
+    For C++, it is registered as a type.
     """
 
     def __init__(self, name, symtab, scope=None):
@@ -1644,13 +1647,9 @@ class Enum(Node):
         self.members = []
 
         type_name = symtab.scopename + name
-        inttypemap = symtab.lookup_typemap("int")  # XXX - all enums are not ints
-        ntypemap = inttypemap.clone_as(type_name)
-#        ntypemap = typemap.Typemap( # GGG - do not assume enum is int
-#            type_name,
-#            base="enum",
-#            sgroup="enum",
-#        )
+        ntypemap = typemap.Typemap(
+            type_name,
+        )
         ntypemap.is_enum = True  # GGG kludge to identify enums
         symtab.add_tag_to_current("enum", self)
         if symtab.language == "cxx":
@@ -1675,6 +1674,8 @@ class Struct(Node):
     struct name { int i; double d; };
 
     Add a typemap to the symbol table.
+    For C and C++, the struct tag is registered.
+    For C++, it is registered as a type.
 
     members are populated by function struct_decl.
     children is populated by ast.py
@@ -2048,7 +2049,7 @@ def symtab_to_typemap(node):
         # Global and Namespace do not have typemaps.
         if node.typemap.sgroup in ["shadow", "struct", "template", "enum"]:
             return node.typemap.name
-        elif hasattr(node.typemap, "is_enum"):
+        elif node.typemap.is_enum:
             return node.typemap.name
         else:
             return None

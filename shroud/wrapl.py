@@ -12,6 +12,7 @@ from __future__ import absolute_import
 
 from . import error
 from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr
+from . import fcfmt
 from . import statements
 from . import typemap
 from . import util
@@ -179,8 +180,7 @@ class Wrapl(util.WrapperMixin):
             "{LUA_userdata_var}->{LUA_userdata_member}->", fmt_class
         )
 
-        self.lua_type_structs.append("")
-        self._create_splicer("C_declaration", self.lua_type_structs)
+        self._create_splicer("C_declaration", self.lua_type_structs, blank=True)
         self.lua_type_structs.append("")
         self.lua_type_structs.append("typedef struct {+")
         append_format(
@@ -531,11 +531,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 #                fmt_result.c_member = '.'
                 fmt_result.cxx_member = "."
                 fmt_result.cxx_addr = "&"
-            if result_typemap.cxx_to_c:
+            converter, lang = fcfmt.find_result_converter("f", self.language, result_typemap)
+            if converter is not None:
                 fmt_result.c_abstract_decl = gen_arg_as_c(
                     ast, name=False, add_params=False)
                 fmt_result.c_var = wformat(
-                    result_typemap.cxx_to_c, fmt_result
+                    converter, fmt_result
                 )  # if C++
             else:
                 fmt_result.c_var = fmt_result.cxx_var
@@ -763,8 +764,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             name -
             lines -
         """
-        output.append("")
-        self._create_splicer("additional_functions", output)
+        self._create_splicer("additional_functions", output, blank=True)
         output.extend(
             ["", "static const struct luaL_Reg {} [] = {{".format(name), 1]
         )
@@ -795,10 +795,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.append('#include "lauxlib.h"')
         util.extern_C(output, "end")
 
-        output.append("")
-        self._create_splicer("include", output)
+        self._create_splicer("include", output, blank=True)
 
-        self._create_splicer("C_definition", output)
+        self._create_splicer("C_definition", output, blank=True)
 
         output.extend(hsource)
         output.extend(self.body_lines)
@@ -1098,6 +1097,9 @@ lua_statements = [
     # native
     dict(
         name="lua_in_native_scalar",
+        alias=[
+            "lua_in_enum_scalar",
+        ],
         pre_call=[
             "{cxx_type} {cxx_var} =\t {pop_expr};",
         ],
@@ -1113,6 +1115,9 @@ lua_statements = [
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
+        ],
+        alias=[
+            "lua_function_enum_scalar",
         ],
     ),
     #####

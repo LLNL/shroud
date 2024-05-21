@@ -32,6 +32,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 // typedef LengthType
 // splicer begin typedef.LengthType
 typedef long CXX_LengthType;
@@ -57,9 +60,6 @@ struct s_CXX_nested {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 bool CXX_defaultPtrIsNULL_0(void);
 

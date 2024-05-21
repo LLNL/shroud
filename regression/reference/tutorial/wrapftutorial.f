@@ -79,6 +79,14 @@ module tutorial_mod
     end type TUT_SHROUD_capsule_data
     ! end helper capsule_data_helper
 
+    !  enum tutorial::Color
+    integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
+    integer(color), parameter :: red = 0
+    integer(color), parameter :: blue = 1
+    integer(color), parameter :: white = 2
+    ! splicer end enum.Color
+
     ! typedef tutorial::TypeID
     ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
@@ -88,11 +96,6 @@ module tutorial_mod
     ! splicer begin typedef.EnumTypeID
     integer, parameter :: enum_type_id = C_INT
     ! splicer end typedef.EnumTypeID
-
-    !  enum tutorial::Color
-    integer(C_INT), parameter :: red = 0
-    integer(C_INT), parameter :: blue = 1
-    integer(C_INT), parameter :: white = 2
 
     ! start abstract callback1_incr
     abstract interface
@@ -605,14 +608,31 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    ! Statement: f_function_native_scalar
+    ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
-    ! Statement: f_in_native_scalar
+    ! Statement: c_in_enum_scalar
+    interface
+        function c_colorfunc(arg) &
+                result(SHT_rv) &
+                bind(C, name="TUT_colorfunc")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function c_colorfunc
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Color colorfunc
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  Color arg
+    ! Statement: f_in_enum_scalar
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
-                bind(C, name="TUT_colorfunc")
+                bind(C, name="TUT_colorfunc_bufferify")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
@@ -1206,17 +1226,17 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Color arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_enum_scalar
     function colorfunc(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.colorfunc
-        SHT_rv = c_colorfunc(arg)
+        SHT_rv = c_colorfunc_bufferify(arg)
         ! splicer end function.colorfunc
     end function colorfunc
 #endif

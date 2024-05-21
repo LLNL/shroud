@@ -64,6 +64,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
    }
    std::free(src);
 }
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

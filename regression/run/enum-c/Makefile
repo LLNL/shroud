@@ -27,7 +27,8 @@ VPATH = \
     $(top)/regression/run/fruit
 
 C_OBJS = \
-    enum.o
+    enum.o \
+    wrapenum.o
 F_OBJS = \
     wrapfenum.o \
     fruit.o \
@@ -40,6 +41,7 @@ clean :
 	rm -f $(OBJS) *.mod enum-c
 
 main.o : fruit.o wrapfenum.o
+wrapenum.o : wrapenum.h
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o 

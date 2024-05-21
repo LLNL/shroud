@@ -86,6 +86,17 @@ declarations:
     return_this: True
 
 #####
+
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+  options:
+     F_enum_type: shorter
+
+#####
 # Test declast.check_attrs
 
 - decl: void testattrs1()

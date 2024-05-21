@@ -19,37 +19,37 @@
                         "_fmtmembers": {
                             "DOWN": {
                                 "C_enum_member": "CLA_Class1_DOWN",
+                                "C_name_api": "DOWN",
                                 "F_enum_member": "class1_down",
+                                "F_name_api": "down",
                                 "F_value": 3,
-                                "enum_member_lower": "down",
-                                "enum_member_name": "DOWN",
-                                "enum_member_upper": "DOWN"
+                                "enum_member_name": "DOWN"
                             },
                             "LEFT": {
                                 "C_enum_member": "CLA_Class1_LEFT",
+                                "C_name_api": "LEFT",
                                 "C_value": 100,
                                 "F_enum_member": "class1_left",
+                                "F_name_api": "left",
                                 "F_value": 100,
-                                "enum_member_lower": "left",
-                                "enum_member_name": "LEFT",
-                                "enum_member_upper": "LEFT"
+                                "enum_member_name": "LEFT"
                             },
                             "RIGHT": {
                                 "C_enum_member": "CLA_Class1_RIGHT",
+                                "C_name_api": "RIGHT",
                                 "F_enum_member": "class1_right",
+                                "F_name_api": "right",
                                 "F_value": 101,
-                                "enum_member_lower": "right",
-                                "enum_member_name": "RIGHT",
-                                "enum_member_upper": "RIGHT"
+                                "enum_member_name": "RIGHT"
                             },
                             "UP": {
                                 "C_enum_member": "CLA_Class1_UP",
+                                "C_name_api": "UP",
                                 "C_value": 2,
                                 "F_enum_member": "class1_up",
+                                "F_name_api": "up",
                                 "F_value": 2,
-                                "enum_member_lower": "up",
-                                "enum_member_name": "UP",
-                                "enum_member_upper": "UP"
+                                "enum_member_name": "UP"
                             }
                         },
                         "ast": {
@@ -86,10 +86,12 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "CLA_Class1_DIRECTION",
-                            "enum_lower": "direction",
+                            "C_enum_type": "CLA_Class1_DIRECTION",
+                            "C_name_api": "DIRECTION",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "direction",
+                            "F_name_enum": "class1_direction",
                             "enum_name": "DIRECTION",
-                            "enum_upper": "DIRECTION",
                             "namespace_scope": "classes::Class1::"
                         }
                     }
@@ -497,6 +499,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int flag",
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
@@ -514,6 +517,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int flag",
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
@@ -1057,6 +1061,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "const CLA_Class1 * obj2",
                                     "c_type": "CLA_Class1",
                                     "c_var": "obj2",
                                     "cfi_type": "CFI_type_other",
@@ -1074,6 +1079,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "const CLA_Class1 * obj2",
                                     "c_type": "CLA_Class1",
                                     "c_var": "obj2",
                                     "cfi_type": "CFI_type_other",
@@ -1479,6 +1485,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "bool flag",
                                     "c_type": "bool",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_Bool",
@@ -1502,6 +1509,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "bool flag",
                                     "c_type": "bool",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_Bool",
@@ -1529,6 +1537,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "char * name",
                                     "c_type": "char",
                                     "c_var": "name",
                                     "cfi_type": "CFI_type_other",
@@ -1553,6 +1562,7 @@
                                     "c_deref": "*",
                                     "c_helper_char_len_trim": "ShroudCharLenTrim",
                                     "c_member": "->",
+                                    "c_proto_decl": "char * name",
                                     "c_type": "char",
                                     "c_var": "name",
                                     "c_var_len": "SHT_name_len",
@@ -2018,14 +2028,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_enum_scalar"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_enum_scalar"
                                 }
                             },
                             "f": {
@@ -2033,14 +2043,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_enum_scalar"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_enum_scalar"
                                 }
                             },
                             "lua": {
@@ -2089,49 +2099,18 @@
                                     "C_call_function": "SH_this->directionFunc(\tSHCXX_arg)",
                                     "C_call_list": "SHCXX_arg",
                                     "C_name": "CLA_Class1_directionFunc",
-                                    "C_prototype": "CLA_Class1 * self,\t int arg",
-                                    "C_return_type": "int",
-                                    "F_C_name": "c_class1_direction_func",
-                                    "c_abstract_decl": "int",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_rv_decl": "int SHC_rv",
-                                    "c_type": "int",
-                                    "c_val": "static_cast<int>(SHCXX_rv)",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "classes::Class1::DIRECTION",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHCXX_rv",
-                                    "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
-                                    "cxx_type": "classes::Class1::DIRECTION",
-                                    "cxx_var": "SHCXX_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->directionFunc(\tSHCXX_arg)",
-                                    "C_call_list": "SHCXX_arg",
-                                    "C_name": "CLA_Class1_directionFunc",
-                                    "C_prototype": "CLA_Class1 * self,\t int arg",
-                                    "C_return_type": "int",
+                                    "C_prototype": "CLA_Class1 * self,\t enum CLA_Class1_DIRECTION arg",
+                                    "C_return_type": "enum CLA_Class1_DIRECTION",
                                     "F_C_arguments": "self,\t arg",
-                                    "F_C_call": "c_class1_direction_func",
                                     "F_C_name": "c_class1_direction_func",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
-                                    "F_arg_c_call": "obj%cxxmem,\t arg",
-                                    "F_arguments": "obj,\t arg",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_abstract_decl": "int",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_const": "",
                                     "c_get_value": "",
-                                    "c_rv_decl": "int SHC_rv",
-                                    "c_type": "int",
-                                    "c_val": "static_cast<int>(SHCXX_rv)",
+                                    "c_rv_decl": "enum CLA_Class1_DIRECTION SHC_rv",
+                                    "c_type": "enum CLA_Class1_DIRECTION",
+                                    "c_val": "static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv)",
                                     "c_var": "SHC_rv",
                                     "cfi_type": "CFI_type_int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -2146,21 +2125,62 @@
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
+                                    "i_var": "SHT_rv",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt_name": "c_function_enum_scalar"
+                                },
+                                "fmtf": {
+                                    "C_call_function": "SH_this->directionFunc(\tSHCXX_arg)",
+                                    "C_call_list": "SHCXX_arg",
+                                    "C_name": "CLA_Class1_directionFunc_bufferify",
+                                    "C_prototype": "CLA_Class1 * self,\t int arg",
+                                    "C_return_type": "int",
+                                    "F_C_arguments": "self,\t arg",
+                                    "F_C_call": "c_class1_direction_func_bufferify",
+                                    "F_C_name": "c_class1_direction_func_bufferify",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_arg_c_call": "obj%cxxmem,\t arg",
+                                    "F_arguments": "obj,\t arg",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                                    "c_const": "",
+                                    "c_get_value": "",
+                                    "c_rv_decl": "int SHC_rv",
+                                    "c_type": "enum CLA_Class1_DIRECTION",
+                                    "c_val": "static_cast<int>(SHCXX_rv)",
+                                    "c_var": "SHC_rv",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&SHCXX_rv",
+                                    "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
+                                    "cxx_type": "classes::Class1::DIRECTION",
+                                    "cxx_var": "SHCXX_rv",
+                                    "f_c_suffix": "_bufferify",
+                                    "f_intent": "OUT",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_enum_scalar"
                                 },
                                 "fmtl": {
-                                    "c_abstract_decl": "int",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_var": "static_cast<int>(SHCXX_rv)",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "static_cast<int>(SHCXX_rv)",
                                     "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                                    "stmt": "lua_function_native_scalar"
+                                    "stmt": "lua_function_enum_scalar"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -2175,18 +2195,19 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_enum_scalar",
                                     "value_var": "SHValue_rv"
                                 }
                             },
                             "arg": {
                                 "fmtc": {
-                                    "c_abstract_decl": "int",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
-                                    "c_type": "int",
+                                    "c_proto_decl": "enum CLA_Class1_DIRECTION arg",
+                                    "c_type": "enum CLA_Class1_DIRECTION",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -2197,16 +2218,23 @@
                                     "cxx_type": "classes::Class1::DIRECTION",
                                     "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_type_module": "iso_c_binding",
+                                    "f_var": "arg",
+                                    "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_enum_scalar"
                                 },
                                 "fmtf": {
-                                    "c_abstract_decl": "int",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int arg",
                                     "c_type": "int",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_int",
@@ -2227,7 +2255,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_enum_scalar"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -2241,13 +2269,13 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                                    "stmt": "lua_in_native_scalar"
+                                    "stmt": "lua_in_enum_scalar"
                                 },
                                 "fmtpy": {
-                                    "c_abstract_decl": "int",
+                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_const": "",
                                     "c_deref": "",
-                                    "c_type": "int",
+                                    "c_type": "enum CLA_Class1_DIRECTION",
                                     "c_var": "arg",
                                     "ctor_expr": "arg",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -2262,7 +2290,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_native_scalar",
+                                    "stmt": "py_in_enum_scalar",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -2590,6 +2618,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int val",
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
@@ -2830,6 +2859,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "bool val",
                                     "c_type": "bool",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_Bool",
@@ -3094,6 +3124,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "char val",
                                     "c_type": "char",
                                     "c_var": "val",
                                     "c_var_len": "SHT_val_len",
@@ -4567,6 +4598,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int n",
                                     "c_type": "int",
                                     "c_var": "n",
                                     "cfi_type": "CFI_type_int",
@@ -4584,6 +4616,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int n",
                                     "c_type": "int",
                                     "c_var": "n",
                                     "cfi_type": "CFI_type_int",
@@ -5123,6 +5156,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_proto_decl": "int val",
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
@@ -5411,6 +5445,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_proto_decl": "int * val",
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
@@ -5624,14 +5659,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_enum_scalar"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_enum_scalar"
                         }
                     },
                     "f": {
@@ -5639,14 +5674,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_enum_scalar"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_enum_scalar"
                         }
                     },
                     "lua": {
@@ -5695,49 +5730,18 @@
                             "C_call_function": "classes::directionFunc(\tSHCXX_arg)",
                             "C_call_list": "SHCXX_arg",
                             "C_name": "CLA_directionFunc",
-                            "C_prototype": "int arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_direction_func",
-                            "c_abstract_decl": "int",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_rv_decl": "int SHC_rv",
-                            "c_type": "int",
-                            "c_val": "static_cast<int>(SHCXX_rv)",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "classes::Class1::DIRECTION",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
-                            "cxx_type": "classes::Class1::DIRECTION",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
-                        },
-                        "fmtf": {
-                            "C_call_function": "classes::directionFunc(\tSHCXX_arg)",
-                            "C_call_list": "SHCXX_arg",
-                            "C_name": "CLA_directionFunc",
-                            "C_prototype": "int arg",
-                            "C_return_type": "int",
+                            "C_prototype": "enum CLA_Class1_DIRECTION arg",
+                            "C_return_type": "enum CLA_Class1_DIRECTION",
                             "F_C_arguments": "arg",
-                            "F_C_call": "c_direction_func",
-                            "F_C_name": "direction_func",
+                            "F_C_name": "c_direction_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg",
-                            "F_arguments": "arg",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_rv_decl": "int SHC_rv",
-                            "c_type": "int",
-                            "c_val": "static_cast<int>(SHCXX_rv)",
+                            "c_rv_decl": "enum CLA_Class1_DIRECTION SHC_rv",
+                            "c_type": "enum CLA_Class1_DIRECTION",
+                            "c_val": "static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -5752,21 +5756,62 @@
                             "f_type": "integer(C_INT)",
                             "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
+                            "i_var": "SHT_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt_name": "c_function_enum_scalar"
+                        },
+                        "fmtf": {
+                            "C_call_function": "classes::directionFunc(\tSHCXX_arg)",
+                            "C_call_list": "SHCXX_arg",
+                            "C_name": "CLA_directionFunc_bufferify",
+                            "C_prototype": "int arg",
+                            "C_return_type": "int",
+                            "F_C_arguments": "arg",
+                            "F_C_call": "c_direction_func_bufferify",
+                            "F_C_name": "direction_func",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "arg",
+                            "F_arguments": "arg",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                            "c_const": "",
+                            "c_get_value": "",
+                            "c_rv_decl": "int SHC_rv",
+                            "c_type": "enum CLA_Class1_DIRECTION",
+                            "c_val": "static_cast<int>(SHCXX_rv)",
+                            "c_var": "SHC_rv",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_rv",
+                            "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
+                            "cxx_type": "classes::Class1::DIRECTION",
+                            "cxx_var": "SHCXX_rv",
+                            "f_c_suffix": "_bufferify",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_enum_scalar"
                         },
                         "fmtl": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_var": "static_cast<int>(SHCXX_rv)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_var": "SHCXX_rv",
                             "push_arg": "static_cast<int>(SHCXX_rv)",
                             "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_native_scalar"
+                            "stmt": "lua_function_enum_scalar"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -5781,18 +5826,19 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_enum_scalar",
                             "value_var": "SHValue_rv"
                         }
                     },
                     "arg": {
                         "fmtc": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_proto_decl": "enum CLA_Class1_DIRECTION arg",
+                            "c_type": "enum CLA_Class1_DIRECTION",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -5803,16 +5849,23 @@
                             "cxx_type": "classes::Class1::DIRECTION",
                             "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_type_module": "iso_c_binding",
+                            "f_var": "arg",
+                            "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_enum_scalar"
                         },
                         "fmtf": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg",
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
@@ -5833,7 +5886,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_enum_scalar"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -5847,13 +5900,13 @@
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
                             "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_native_scalar"
+                            "stmt": "lua_in_enum_scalar"
                         },
                         "fmtpy": {
-                            "c_abstract_decl": "int",
+                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "enum CLA_Class1_DIRECTION",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
@@ -5868,7 +5921,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_enum_scalar",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -6028,6 +6081,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "CLA_Class1 arg",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
@@ -6045,6 +6099,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "CLA_Class1 arg",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
@@ -6290,6 +6345,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const CLA_Class1 * arg",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
@@ -6307,6 +6363,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_proto_decl": "const CLA_Class1 * arg",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
@@ -7370,6 +7427,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int flag",
                             "c_type": "int",
                             "c_var": "flag",
                             "cfi_type": "CFI_type_int",
@@ -7387,6 +7445,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int flag",
                             "c_type": "int",
                             "c_var": "flag",
                             "cfi_type": "CFI_type_int",
@@ -7558,6 +7617,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg",
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
@@ -7575,6 +7635,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_proto_decl": "int arg",
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
@@ -8113,10 +8174,18 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
+            "c_header": [
+                "wrapClass1.h"
+            ],
             "c_to_cxx": "static_cast<classes::Class1::DIRECTION>({c_var})",
-            "c_type": "int",
+            "c_type": "enum CLA_Class1_DIRECTION",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapClass1.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
             "cxx_type": "classes::Class1::DIRECTION",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -8128,7 +8197,8 @@
             "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         },
         "classes::Class2": {

@@ -15,6 +15,8 @@
 #ifndef WRAPENUM_H
 #define WRAPENUM_H
 
+// typemap
+#include "wrapenum.h"
 // shroud
 #include "typesenum.h"
 
@@ -25,15 +27,21 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 //  Color
 enum ENU_Color {
+    // splicer begin enum.Color
     ENU_RED = 10,
     ENU_BLUE,
     ENU_WHITE
+    // splicer end enum.Color
 };
 
 //  val
 enum ENU_val {
+    // splicer begin enum.val
     ENU_a1,
     ENU_b1 = 3,
     ENU_c1,
@@ -42,12 +50,24 @@ enum ENU_val {
     ENU_f1,
     ENU_g1,
     ENU_h1 = 100
+    // splicer end enum.val
 };
 
-// splicer begin C_declarations
-// splicer end C_declarations
+int ENU_convert_to_int(enum ENU_Color in);
 
-int ENU_convert_to_int(int in);
+int ENU_convert_to_int_bufferify(short in);
+
+enum ENU_Color ENU_returnEnum(enum ENU_Color in);
+
+short ENU_returnEnum_bufferify(short in);
+
+void ENU_returnEnumOutArg(enum ENU_Color * out);
+
+void ENU_returnEnumOutArg_bufferify(short * out);
+
+enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout);
+
+short ENU_returnEnumInOutArg_bufferify(short * inout);
 
 #ifdef __cplusplus
 }

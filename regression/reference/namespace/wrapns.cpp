@@ -38,6 +38,7 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
     cdesc->size = 1;
     cdesc->rank = 0;  // scalar
 }
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

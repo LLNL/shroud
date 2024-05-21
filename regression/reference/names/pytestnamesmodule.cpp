@@ -38,6 +38,7 @@ PyObject *PY_init_testnames_internal(void);
 PyObject *PY_init_testnames_std(void);
 PyArray_Descr *PY_Cstruct_as_class_array_descr;
 PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -719,6 +720,11 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_twoTs_instantiation4_Type);
     PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
+
+    // enum ns0::inner::Color2
+    PyModule_AddIntConstant(m, "RED", ns0::inner::RED);
+    PyModule_AddIntConstant(m, "WHITE", ns0::inner::WHITE);
+    PyModule_AddIntConstant(m, "BLUE", ns0::inner::BLUE);
 
     // enum Color
     PyModule_AddIntConstant(m, "RED", RED);

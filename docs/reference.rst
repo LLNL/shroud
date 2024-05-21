@@ -399,6 +399,10 @@ F_default_args
   require
       Require all arguments to be provided to the wrapper.
 
+F_enum_type
+  C type used to represent enumerations in the Fortran wrapper.
+  Defaults to ``int``.
+
 F_line_length
   Control length of output line for generated Fortran.
   This is not an exact line width, but is instead a hint of where
@@ -552,7 +556,7 @@ Option Templates
 Templates are set in options then expanded to assign to the format 
 dictionary to create names in the generated code.
 
-C_enum_template
+C_enum_type_template
     Name of enumeration in C wrapper.
     ``{C_prefix}{C_name_scope}{enum_name}``
 
@@ -639,6 +643,9 @@ F_module_name_library_template
 F_module_name_namespace_template
     ``{file_scope}_mod``
 
+F_name_enum_template
+    ``{F_name_scope}{F_name_api}``
+    
 F_name_function_template
     ``{F_name_api}{function_suffix}{template_suffix}``
 
@@ -968,7 +975,7 @@ F_name_api
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
-    **F_name_typedef_template**.
+    **F_name_enum_template**, **F_name_typedef_template**.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -1120,11 +1127,7 @@ Enumeration
 cxx_value
     Value of enum from YAML file.
 
-enum_lower
-
 enum_name
-
-enum_upper
 
 enum_member_lower
 
@@ -1140,6 +1143,10 @@ flat_name
 C_enum_member
     C name for enum member.
     Computed from option *C_enum_member_template*.
+
+C_enum_type
+    The name of the generated C_enum when wrapping a C++ library.
+    Used with *C_enum_type_template*.
 
 C_value
     Evalued value of enumeration.
@@ -1158,6 +1165,12 @@ F_scope_name
 F_enum_member
     Fortran name for enum member.
     Computed from option *F_enum_member_template*.
+
+F_enum_kind
+    Fortran ``INTEGER`` kind used to represent enumerations.
+
+F_name_typedef
+    Default from ``F_name_enum_template``.
 
 F_value
     Evalued value of enumeration.
@@ -1375,6 +1388,9 @@ c_abstract_decl
   For example, ``double *``.
 
 .. used with cxx_to_c static_cast
+
+c_proto_decl
+  Declaration used with function prototype.
 
 c_array_shape
 
@@ -1669,6 +1685,7 @@ f_to_c
     If this field is set, it will be used before f_cast.
     Defaults to *None*.
 
+    For example, to extract the *F_derived_member* before passing to C.
 
 
 Doxygen

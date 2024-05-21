@@ -33,6 +33,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
     return i + 1;
 }
 
+
 // splicer begin namespace.example::nested.C_definitions
 // splicer end namespace.example::nested.C_definitions
 

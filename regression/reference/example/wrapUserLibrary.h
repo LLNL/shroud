@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+// splicer end C_declarations
+
 // typedef SidreLength
 // splicer begin typedef.SidreLength
 typedef long AA_SidreLength;
@@ -34,9 +37,6 @@ typedef long AA_SidreLength;
 // splicer begin typedef.TypeID
 typedef int AA_TypeID;
 // splicer end typedef.TypeID
-
-// splicer begin C_declarations
-// splicer end C_declarations
 
 #ifdef __cplusplus
 }

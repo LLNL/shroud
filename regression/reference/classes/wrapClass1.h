@@ -16,6 +16,7 @@
 #define WRAPCLASS1_H
 
 // typemap
+#include "wrapClass1.h"
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
@@ -29,16 +30,18 @@
 extern "C" {
 #endif
 
+// splicer begin class.Class1.C_declarations
+// splicer end class.Class1.C_declarations
+
 //  classes::Class1::DIRECTION
 enum CLA_Class1_DIRECTION {
+    // splicer begin class.Class1.enum.DIRECTION
     CLA_Class1_UP = 2,
     CLA_Class1_DOWN,
     CLA_Class1_LEFT = 100,
     CLA_Class1_RIGHT
+    // splicer end class.Class1.enum.DIRECTION
 };
-
-// splicer begin class.Class1.C_declarations
-// splicer end class.Class1.C_declarations
 
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv);
 
@@ -67,7 +70,10 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc,
     CLA_SHROUD_capsule_data *SHT_rv_capsule);
 
-int CLA_Class1_directionFunc(CLA_Class1 * self, int arg);
+enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
+    enum CLA_Class1_DIRECTION arg);
+
+int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg);
 
 int CLA_Class1_get_m_flag(CLA_Class1 * self);
 

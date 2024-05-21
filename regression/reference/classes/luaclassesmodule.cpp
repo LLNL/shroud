@@ -21,6 +21,7 @@ extern "C" {
 
 // splicer begin include
 // splicer end include
+
 // splicer begin C_definition
 // splicer end C_definition
 
@@ -134,10 +135,10 @@ static int l_Class1_getName(lua_State *L)
 // DIRECTION directionFunc(DIRECTION arg)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_enum_scalar
 static int l_Class1_directionFunc(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
@@ -267,10 +268,10 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_enum_scalar
 static int l_directionFunc(lua_State *L)
 {
     // splicer begin function.directionFunc

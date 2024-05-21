@@ -72,6 +72,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
     cdesc->size = 1;
     cdesc->rank = 0;  // scalar
 }
+
 // splicer begin namespace.example::nested.class.ExClass2.C_definitions
 // splicer end namespace.example::nested.class.ExClass2.C_definitions
 
@@ -346,8 +347,7 @@ void AA_example_nested_ExClass2_declare_1(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.declare_1
     TypeID SHCXX_type = getTypeID(type);
-    SidreLength SHCXX_len = static_cast<SidreLength>(len);
-    SH_this->declare(SHCXX_type, SHCXX_len);
+    SH_this->declare(SHCXX_type, len);
     // splicer end namespace.example::nested.class.ExClass2.method.declare_1
 }
 

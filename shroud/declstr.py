@@ -102,10 +102,15 @@ class DeclStr(object):
             if declaration.storage:
                 parts.append(" ".join(declaration.storage))
                 parts.append(" ")
-            if self.in_params and self.arg_lang:
+
+            ntypemap = declaration.typemap
+            if ntypemap.is_enum and ntypemap.typedef and self.arg_lang:
+                ntypemap = ntypemap.typedef
+                parts.append(getattr(ntypemap, self.arg_lang))
+            elif self.in_params and self.arg_lang:
                 # typedefs in C wrapper must use c_type typedef for arguments.
                 # i.e. with function pointers
-                parts.append(getattr(declaration.typemap, self.arg_lang))
+                parts.append(getattr(ntypemap, self.arg_lang))
             else:
                 parts.append(" ".join(declaration.specifier))
         if declaration.template_arguments:
@@ -237,10 +242,12 @@ class DeclStr(object):
         return "".join(self.parts)
 
     def gen_arg_as_c(self, declaration, add_params=True, name=None,
-                     remove_const=False):
+                     remove_const=False, lang="c_type"):
         """Return a string of the unparsed declaration.
 
         Used to generate declarations in wrappers headers.
+
+        lang = "c_type" or "ci_type"
         """
         self.add_params = add_params
         self.as_ptr = False
@@ -249,7 +256,7 @@ class DeclStr(object):
         self.remove_const = remove_const
         self.with_template_args = False
         
-        self.lang = "c_type"
+        self.lang = lang
         self.parts = []
         self.gen_arg_as_lang(declaration)
         return "".join(self.parts)
@@ -301,7 +308,14 @@ class DeclStr(object):
                 ntypemap = declaration.template_arguments[0].typemap
             else:
                 ntypemap = declaration.typemap
-            typ = getattr(ntypemap, self.lang) or "--NOTYPE--"
+            if self.lang == "c_type":
+                typ = ntypemap.c_type or "--NOTYPE--"
+            elif self.lang == "cxx_type":
+                typ = ntypemap.cxx_type or "--NOTYPE--"
+            elif self.lang == "ci_type":
+                typ = ntypemap.ci_type or ntypemap.c_type or "--NOTYPE--"
+            else:
+                typ = "--NOTYPE--"
             parts.append(typ)
 
         declarator = declaration.declarator
@@ -309,14 +323,14 @@ class DeclStr(object):
         if self.remove_const and const_index is not None:
             parts[const_index] = ""
 
-        if self.lang == "c_type":
+        if self.lang == "cxx_type":
+            self.as_c = False
+            self.declarator(declarator)
+        else:  # c_type and ci_type
             self.as_c = True
             # The C wrapper wants a pointer to the type.
             if declaration.is_ctor:
                 self.force_ptr = True
-            self.declarator(declarator)
-        else:
-            self.as_c = False
             self.declarator(declarator)
 
 ######################################################################

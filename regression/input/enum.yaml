@@ -28,6 +28,8 @@ declarations:
         BLUE,
         WHITE
       };
+  options:
+    F_enum_type: short
 
 - decl: |
       enum val {
@@ -43,3 +45,11 @@ declarations:
 
 
 - decl: int convert_to_int(enum Color in)
+- decl: enum Color returnEnum(enum Color in)
+- decl: void returnEnumOutArg(enum Color *out+intent(out))
+  options:
+    wrap_python: False
+- decl: enum Color returnEnumInOutArg(enum Color *inout+intent(inout))
+  options:
+    wrap_python: False
+

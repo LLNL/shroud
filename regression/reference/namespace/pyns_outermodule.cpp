@@ -27,6 +27,7 @@
 
 // splicer begin namespace.outer.C_definition
 // splicer end namespace.outer.C_definition
+
 // splicer begin namespace.outer.additional_functions
 // splicer end namespace.outer.additional_functions
 

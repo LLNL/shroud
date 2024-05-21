@@ -14,7 +14,6 @@ module library_outer2_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
-
     ! helper capsule_data_helper
     type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -59,7 +58,6 @@ module library_outer2_mod
         end subroutine outer_func
     end interface
 
-
 contains
 
     ! ----------------------------------------
@@ -93,7 +91,6 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function class0_associated
 
-
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
@@ -103,7 +100,6 @@ contains
         call c_outer_func()
     end subroutine outer_func
 #endif
-
 
     function class0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

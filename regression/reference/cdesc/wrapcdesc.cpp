@@ -35,6 +35,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
     return i + 1;
 }
 
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

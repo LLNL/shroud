@@ -22,17 +22,53 @@
  * in the C wrapper.
  */
 // ----------------------------------------
-// Function:  TypeID typefunc_wrap
+// Function:  Alias typefunc_wrap
 // Statement: f_function_native_scalar
 // ----------------------------------------
-// Argument:  TypeID arg
+// Argument:  Alias arg
 // Statement: f_in_native_scalar
 // start TYP_typefunc_wrap_bufferify
-TypeID TYP_typefunc_wrap_bufferify(TypeID arg)
+Alias TYP_typefunc_wrap_bufferify(Alias arg)
 {
     // splicer begin function.typefunc_wrap_bufferify
-    TypeID SHC_rv = typefunc_wrap(arg);
+    Alias SHC_rv = typefunc_wrap(arg);
     return SHC_rv;
     // splicer end function.typefunc_wrap_bufferify
 }
 // end TYP_typefunc_wrap_bufferify
+
+// ----------------------------------------
+// Function:  iColor returnEnum
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  iColor in
+// Statement: f_in_enum_scalar
+// start TYP_returnEnum_bufferify
+int TYP_returnEnum_bufferify(int in)
+{
+    // splicer begin function.returnEnum_bufferify
+    iColor SHCXX_in = (iColor) in;
+    iColor SHCXX_rv = returnEnum(SHCXX_in);
+    int SHC_rv = (int) SHCXX_rv;
+    return SHC_rv;
+    // splicer end function.returnEnum_bufferify
+}
+// end TYP_returnEnum_bufferify
+
+// ----------------------------------------
+// Function:  TypeID returnTypeID
+// Statement: f_function_enum_scalar
+// ----------------------------------------
+// Argument:  TypeID in
+// Statement: f_in_enum_scalar
+// start TYP_returnTypeID_bufferify
+int TYP_returnTypeID_bufferify(int in)
+{
+    // splicer begin function.returnTypeID_bufferify
+    TypeID SHCXX_in = (TypeID) in;
+    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
+    int SHC_rv = (int) SHCXX_rv;
+    return SHC_rv;
+    // splicer end function.returnTypeID_bufferify
+}
+// end TYP_returnTypeID_bufferify

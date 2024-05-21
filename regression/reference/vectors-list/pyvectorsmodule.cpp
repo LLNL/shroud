@@ -130,6 +130,7 @@ static PyObject *SHROUD_to_PyList_vector_int(std::vector<int> & in)
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

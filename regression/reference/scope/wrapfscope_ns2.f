@@ -70,9 +70,12 @@ module scope_ns2_mod
     end type SCO_SHROUD_array
 
     !  enum ns2::Color
-    integer(C_INT), parameter :: red = 30
-    integer(C_INT), parameter :: blue = 31
-    integer(C_INT), parameter :: white = 32
+    integer, parameter :: color = C_INT
+    ! splicer begin namespace.ns2.enum.Color
+    integer(color), parameter :: red = 30
+    integer(color), parameter :: blue = 31
+    integer(color), parameter :: white = 32
+    ! splicer end namespace.ns2.enum.Color
 
 
     type, bind(C) :: data_pointer

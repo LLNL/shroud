@@ -178,8 +178,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 self.wrap_class(cls)
         else:
             if node.wrap.c:
-                self.wrap_typedefs(ns)
                 self.wrap_enums(ns)
+                self.wrap_typedefs(ns)
             self.wrap_functions(ns)
 
         c_header = fmt.C_header_filename
@@ -409,14 +409,12 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
         headers.write_headers(output, is_header=True)
 
-        output.append("")
         self._push_splicer("types")
-        self._create_splicer('CXX_declarations', output)
+        self._create_splicer('CXX_declarations', output, blank=True)
         
         if self.language == "cxx":
             output.extend(cplusplus.start_extern_c)
-            output.append("")
-            self._create_splicer('C_declarations', output)
+            self._create_splicer('C_declarations', output, blank=True)
 
         output.extend(self.helper_summary["c"]["cwrap_include"])
         self.write_class_capsule_structs(output)
@@ -484,21 +482,23 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         headers.write_headers(output, is_header=True)
         
         if self.language == "cxx":
-            output.append("")
-            if self._create_splicer("CXX_declarations", output):
+            if self._create_splicer("CXX_declarations", output, blank=True):
                 write_file = True
         output.extend(cplusplus.start_extern_c)
 
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
 
-        if self.typedef_impl:
+        if self._create_splicer("C_declarations", output, blank=True):
             write_file = True
-            output.extend(self.typedef_impl)
 
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
+
+        if self.typedef_impl:
+            write_file = True
+            output.extend(self.typedef_impl)
 
         if self.struct_impl_c:
             write_file = True
@@ -510,9 +510,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             output.extend(cplusplus.end_cxx)
             output.extend(cplusplus.start_extern_c)
 
-        output.append("")
-        if self._create_splicer("C_declarations", output):
-            write_file = True
         if self.header_proto_c:
             write_file = True
             output.extend(self.header_proto_c)
@@ -556,22 +553,21 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.header_impl.write_headers(output)
 
         if self.language == "cxx":
-            output.append("")
-            if self._create_splicer("CXX_definitions", output):
+            if self._create_splicer("CXX_definitions", output, blank=True):
                 write_file = True
             source = self.helper_summary["cxx"]["file"]
             if source:
                 write_file = True
                 output.extend(source)
             output.append('\nextern "C" {')
-        output.append("")
 
         source = self.helper_summary["c"]["file"]
         if source:
             write_file = True
+            output.append("")
             output.extend(source)
 
-        if self._create_splicer("C_definitions", output):
+        if self._create_splicer("C_definitions", output, blank=True):
             write_file = True
         if self.impl:
             write_file = True
@@ -730,8 +726,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         self.compute_idtor(node)
         self.add_class_capsule_structs(node)
         if node.wrap.c:
-            self.wrap_typedefs(node)
             self.wrap_enums(node)
+            self.wrap_typedefs(node)
 
         self._push_splicer("method")
         for method in node.functions:
@@ -817,31 +813,35 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         ast = node.ast
         output = self.enum_impl
 
-        node.eval_template("C_enum")
         fmt_enum = node.fmtdict
         fmtmembers = node._fmtmembers
 
         output.append("")
         append_format(output, "//  {namespace_scope}{enum_name}", fmt_enum)
-        append_format(output, "enum {C_enum} {{+", fmt_enum)
-        for member in ast.members:
-            fmt_id = fmtmembers[member.name]
-            if member.value is not None:
-                append_format(output, "{C_enum_member} = {C_value},", fmt_id)
-            else:
-                append_format(output, "{C_enum_member},", fmt_id)
-        output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
+        append_format(output, "enum {C_enum_type} {{+", fmt_enum)
+        if "c" in node.splicer:
+            C_code = None
+            C_force = node.splicer["c"]
+        else:
+            C_code = []
+            C_force = None
+            for member in ast.members:
+                fmt_id = fmtmembers[member.name]
+                if member.value is not None:
+                    append_format(C_code, "{C_enum_member} = {C_value},", fmt_id)
+                else:
+                    append_format(C_code, "{C_enum_member},", fmt_id)
+            C_code[-1] = C_code[-1][:-1]  # Avoid trailing comma for older compilers
+        self._create_splicer(node.name, output, C_code, C_force)
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast, stmts_blk, proto_list):
+    def build_proto_list(self, fmt, stmts_blk, proto_list):
         """Find prototype based on c_arg_decl in fc_statements.
 
         Parameters
         ----------
         fmt - util.Scope
             Format dictionary (fmt_arg or fmt_result).
-        ast - declast.Declaration
-            Abstract Syntax Tree from parser.
         stmts_blk  - typemap.CStmts or util.Scope.
         proto_list - list
             Prototypes are appended to list.
@@ -853,8 +853,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Functions do not pass an argument by default.
             pass
         else:
-            # vector<int> -> int *
-            proto_list.append(gen_arg_as_c(ast))
+            proto_list.append(fmt.c_proto_decl)
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -981,7 +980,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
-        self.fill_c_result(cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
+        self.fill_c_result(wlang, cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
 
         self.c_helper.update(node.helpers.get("c", {}))
         
@@ -1080,12 +1079,15 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             stmt_indexes.append(arg_stmt.index)
-            self.fill_c_arg(cls, node, arg, arg_stmt, fmt_arg, c_meta)
-            if fmt_arg.inlocal("cxx_val"):
-                append_format(
-                    pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
-                )
+
+            if arg_typemap.is_enum:
+                # enums use the ci_type field.
+                # make sure awrapper is written, and make sure a
+                # a C and C bufferify functions are created.
+                need_wrapper = True
+                stmt_indexes.append(wlang)
             
+            self.fill_c_arg(wlang, cls, node, arg, arg_stmt, fmt_arg, c_meta, pre_call)
             self.c_helper.update(node.helpers.get("c", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented
@@ -1099,7 +1101,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if not hidden:
                 self.build_proto_list(
                     fmt_arg,
-                    arg,
                     arg_stmt,
                     proto_list,
                 )
@@ -1139,7 +1140,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.build_proto_list(
             fmt_result,
-            ast,
             result_stmt,
             proto_list,
         )
@@ -1192,9 +1192,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             
             raw_call_code = ["{cxx_rv_decl} =\t {C_call_function};"]
             # Return result from function
-            if self.language == "c":
-                pass
-            elif result_stmt.c_return_type == "void":
+            converter, lang = fcfmt.find_result_converter(
+                wlang, self.language, result_typemap)
+            if result_stmt.c_return_type == "void":
                 # Do not return C++ result in C wrapper.
                 # Probably assigned to an argument.
                 pass
@@ -1203,15 +1203,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 # it may be passed in as an argument.
                 # For example, with struct and shadow.
                 pass
-            elif result_typemap.cxx_to_c is not None:
+            elif converter is not None:
                 # Make intermediate c_var value if a conversion
                 # is required i.e. not the same as cxx_var.
-                fmt_result.c_rv_decl = gen_arg_as_c(CXX_ast,
-                    name=fmt_result.c_var, add_params=False
-                )
-                fmt_result.c_val = wformat(
-                    result_typemap.cxx_to_c, fmt_result
-                )
+                fmt_result.c_rv_decl = gen_arg_as_c(
+                    CXX_ast, name=fmt_result.c_var, add_params=False, lang=lang)
+                fmt_result.c_val = wformat(converter, fmt_result)
                 append_format(
                     return_code, "{c_rv_decl} =\t {c_val};", fmt_result
                 )

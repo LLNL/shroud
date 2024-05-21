@@ -21,6 +21,7 @@ extern "C" {
 
 // splicer begin include
 // splicer end include
+
 // splicer begin C_definition
 // splicer end C_definition
 
@@ -455,10 +456,9 @@ static int l_UseDefaultOverload(lua_State *L)
 static int l_typefunc(lua_State *L)
 {
     // splicer begin function.typefunc
-    tutorial::TypeID arg =
-        static_cast<tutorial::TypeID>(lua_tointeger(L, 1));
+    tutorial::TypeID arg = lua_tointeger(L, 1);
     tutorial::TypeID SHCXX_rv = tutorial::typefunc(arg);
-    lua_pushinteger(L, static_cast<TUT_TypeID>(SHCXX_rv));
+    lua_pushinteger(L, SHCXX_rv);
     return 1;
     // splicer end function.typefunc
 }
@@ -484,10 +484,10 @@ static int l_enumfunc(lua_State *L)
 // Color colorfunc(Color arg)
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_enum_scalar
 static int l_colorfunc(lua_State *L)
 {
     // splicer begin function.colorfunc

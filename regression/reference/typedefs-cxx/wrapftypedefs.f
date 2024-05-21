@@ -11,6 +11,7 @@
 !! \brief Shroud generated wrapper for typedefs library
 !<
 ! splicer begin file_top
+#include "shared.h"
 ! splicer end file_top
 module typedefs_mod
     use iso_c_binding, only : C_DOUBLE, C_INT, C_INT32_T, C_INT64_T
@@ -20,6 +21,37 @@ module typedefs_mod
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    !  enum Color
+    integer, parameter :: color = C_INT
+    ! splicer begin enum.Color
+    integer(color), parameter :: &
+      red=10, blue=11, white=12
+    ! splicer end enum.Color
+
+    !  enum DataTypeID
+    integer, parameter :: data_type_id = C_INT
+    ! splicer begin enum.DataTypeID
+    integer(data_type_id), parameter :: no_type_id = SHARED_NO_TYPE_ID
+    integer(data_type_id), parameter :: int_id = SHARED_INT_ID
+    integer(data_type_id), parameter :: long_id = SHARED_LONG_ID
+    integer(data_type_id), parameter :: float_id = SHARED_FLOAT_ID
+    integer(data_type_id), parameter :: double_id = SHARED_DOUBLE_ID
+    ! splicer end enum.DataTypeID
+
+    ! start typedef Alias
+    ! typedef Alias
+    ! splicer begin typedef.Alias
+    integer, parameter :: alias = C_INT
+    ! splicer end typedef.Alias
+    ! end typedef Alias
+
+    ! start typedef iColor
+    ! typedef iColor
+    ! splicer begin typedef.iColor
+    integer, parameter :: i_color = C_INT
+    ! splicer end typedef.iColor
+    ! end typedef iColor
 
     ! start typedef TypeID
     ! typedef TypeID
@@ -59,42 +91,118 @@ module typedefs_mod
     ! end derived-type struct1_rename
 
     ! ----------------------------------------
-    ! Function:  TypeID typefunc
+    ! Function:  Alias typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_typefunc")
-            import :: type_id
+            import :: alias
             implicit none
-            integer(type_id), value, intent(IN) :: arg
-            integer(type_id) :: SHT_rv
+            integer(alias), value, intent(IN) :: arg
+            integer(alias) :: SHT_rv
         end function typefunc
     end interface
     ! end typefunc
 
     ! ----------------------------------------
-    ! Function:  TypeID typefunc_wrap
+    ! Function:  Alias typefunc_wrap
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc_wrap
     interface
         function typefunc_wrap(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_typefunc_wrap")
-            import :: type_id
+            import :: alias
             implicit none
-            integer(type_id), value, intent(IN) :: arg
-            integer(type_id) :: SHT_rv
+            integer(alias), value, intent(IN) :: arg
+            integer(alias) :: SHT_rv
         end function typefunc_wrap
     end interface
     ! end typefunc_wrap
+
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
+    ! Statement: c_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: c_in_enum_scalar
+    ! start c_return_enum
+    interface
+        function c_return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnEnum")
+            import :: i_color
+            implicit none
+            integer(i_color), value, intent(IN) :: in
+            integer(i_color) :: SHT_rv
+        end function c_return_enum
+    end interface
+    ! end c_return_enum
+
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: f_in_enum_scalar
+    ! start return_enum
+    interface
+        function return_enum(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnEnum_bufferify")
+            import :: i_color
+            implicit none
+            integer(i_color), value, intent(IN) :: in
+            integer(i_color) :: SHT_rv
+        end function return_enum
+    end interface
+    ! end return_enum
+
+    ! ----------------------------------------
+    ! Function:  TypeID returnTypeID
+    ! Statement: c_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID in
+    ! Statement: c_in_enum_scalar
+    ! start c_return_type_id
+    interface
+        function c_return_type_id(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnTypeID")
+            import :: type_id
+            implicit none
+            integer(type_id), value, intent(IN) :: in
+            integer(type_id) :: SHT_rv
+        end function c_return_type_id
+    end interface
+    ! end c_return_type_id
+
+    ! ----------------------------------------
+    ! Function:  TypeID returnTypeID
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID in
+    ! Statement: f_in_enum_scalar
+    ! start return_type_id
+    interface
+        function return_type_id(in) &
+                result(SHT_rv) &
+                bind(C, name="TYP_returnTypeID_bufferify")
+            import :: type_id
+            implicit none
+            integer(type_id), value, intent(IN) :: in
+            integer(type_id) :: SHT_rv
+        end function return_type_id
+    end interface
+    ! end return_type_id
 
     ! ----------------------------------------
     ! Function:  void typestruct
@@ -209,16 +317,16 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  TypeID typefunc
+    ! Function:  Alias typefunc
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     ! start typefunc
     function typefunc(arg) &
             result(SHT_rv)
-        integer(type_id), value, intent(IN) :: arg
-        integer(type_id) :: SHT_rv
+        integer(alias), value, intent(IN) :: arg
+        integer(alias) :: SHT_rv
         ! splicer begin function.typefunc
         SHT_rv = c_typefunc(arg)
         ! splicer end function.typefunc
@@ -229,10 +337,10 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  TypeID typefunc_wrap
+    ! Function:  Alias typefunc_wrap
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
-    ! Argument:  TypeID arg
+    ! Argument:  Alias arg
     ! Statement: f_in_native_scalar
     !>
     !! \brief Use typedef with a C wrapper
@@ -243,13 +351,53 @@ contains
     ! start typefunc_wrap
     function typefunc_wrap(arg) &
             result(SHT_rv)
-        integer(type_id), value, intent(IN) :: arg
-        integer(type_id) :: SHT_rv
+        integer(alias), value, intent(IN) :: arg
+        integer(alias) :: SHT_rv
         ! splicer begin function.typefunc_wrap
         SHT_rv = c_typefunc_wrap(arg)
         ! splicer end function.typefunc_wrap
     end function typefunc_wrap
     ! end typefunc_wrap
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  iColor returnEnum
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  iColor in
+    ! Statement: f_in_enum_scalar
+    ! start return_enum
+    function return_enum(in) &
+            result(SHT_rv)
+        integer(i_color), value, intent(IN) :: in
+        integer(i_color) :: SHT_rv
+        ! splicer begin function.return_enum
+        SHT_rv = c_return_enum_bufferify(in)
+        ! splicer end function.return_enum
+    end function return_enum
+    ! end return_enum
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  TypeID returnTypeID
+    ! Statement: f_function_enum_scalar
+    ! ----------------------------------------
+    ! Argument:  TypeID in
+    ! Statement: f_in_enum_scalar
+    ! start return_type_id
+    function return_type_id(in) &
+            result(SHT_rv)
+        integer(type_id), value, intent(IN) :: in
+        integer(type_id) :: SHT_rv
+        ! splicer begin function.return_type_id
+        SHT_rv = c_return_type_id_bufferify(in)
+        ! splicer end function.return_type_id
+    end function return_type_id
+    ! end return_type_id
 #endif
 
 #if 0

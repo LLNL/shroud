@@ -98,8 +98,7 @@ void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.declare_1
-    LengthType SHCXX_length = static_cast<LengthType>(length);
-    SH_this->declare(flag, SHCXX_length);
+    SH_this->declare(flag, length);
     // splicer end class.Class1.method.declare_1
 }
 

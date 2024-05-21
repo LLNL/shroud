@@ -937,6 +937,8 @@ fc_statements = [
     dict(
         name="f_function_native_scalar",
         alias=[
+            "f_function_enum_scalar",
+            "c_function_enum_scalar",
             "c_function_native_scalar",
         ],
     ),
@@ -1667,6 +1669,9 @@ fc_statements = [
             "f_in_char_*_capi",
             "f_out_char_*_capi",
             "f_inout_char_*_capi",
+
+            "f_in_enum_scalar",
+            "c_in_enum_scalar",
 
             "f_in_unknown_scalar",
             "c_in_unknown_scalar",
@@ -2644,6 +2649,47 @@ fc_statements = [
         ],
     ),
     
+    ########################################
+    # enum
+
+    dict(
+        name="f_out_enum_*",
+        alias=[
+            "c_out_enum_*",
+        ],
+        cxx_local_var="scalar",
+        c_pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        lang_c=dict(
+            c_post_call=[
+                "*{c_var} = ({c_type}) {cxx_var};",
+            ],
+        ),
+        lang_cxx=dict(
+            c_post_call=[
+                "*{c_var} = static_cast<{c_type}>({cxx_var});",
+            ],
+        ),
+    ),
+    dict(
+        name="f_inout_enum_*",
+        base="f_out_enum_*",
+        alias=[
+            "c_inout_enum_*",
+        ],
+        lang_c=dict(
+            c_pre_call=[
+                "{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};",
+            ],
+        ),
+        lang_cxx=dict(
+            c_pre_call=[
+                "{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});",
+            ],
+        ),
+    ),
+
     ########################################
     # vector
     # Specialize for std::vector<native>

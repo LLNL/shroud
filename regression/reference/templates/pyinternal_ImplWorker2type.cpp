@@ -28,8 +28,10 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
 // splicer begin namespace.internal.class.ImplWorker2.impl.C_definition
 // splicer end namespace.internal.class.ImplWorker2.impl.C_definition
+
 // splicer begin namespace.internal.class.ImplWorker2.impl.additional_methods
 // splicer end namespace.internal.class.ImplWorker2.impl.additional_methods
 static void

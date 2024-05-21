@@ -79,6 +79,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

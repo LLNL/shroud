@@ -13,9 +13,6 @@
 module library_one_mod
     implicit none
 
-
-
 contains
-
 
 end module library_one_mod

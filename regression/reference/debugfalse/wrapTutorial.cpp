@@ -69,6 +69,7 @@ static void ShroudStringToCdesc(TUT_SHROUD_array *cdesc,
     cdesc->rank = 0;  // scalar
 }
 // end helper string_to_cdesc
+
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -303,9 +304,7 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
-    tutorial::TypeID SHCXX_arg = static_cast<tutorial::TypeID>(arg);
-    tutorial::TypeID SHCXX_rv = tutorial::typefunc(SHCXX_arg);
-    TUT_TypeID SHC_rv = static_cast<TUT_TypeID>(SHCXX_rv);
+    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
     return SHC_rv;
     // splicer end function.typefunc
 }
@@ -321,14 +320,24 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
     // splicer end function.enumfunc
 }
 
-int TUT_colorfunc(int arg)
+enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 {
     // splicer begin function.colorfunc
     tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
     tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    enum TUT_Color SHC_rv = static_cast<enum TUT_Color>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.colorfunc
+}
+
+int TUT_colorfunc_bufferify(int arg)
+{
+    // splicer begin function.colorfunc_bufferify
+    tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
+    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHCXX_rv);
+    return SHC_rv;
+    // splicer end function.colorfunc_bufferify
 }
 
 /**

@@ -265,6 +265,7 @@ static PyObject *SHROUD_to_PyList_int(const int *in, size_t size)
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

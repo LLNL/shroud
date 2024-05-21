@@ -45,6 +45,7 @@ clean :
 main.o : fruit.o wrapfenum.o
 enum.o : enum.cpp enum.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+wrapenum.o : wrapenum.h
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o 

@@ -32,10 +32,48 @@
 extern "C" {
 #endif
 
+// splicer begin C_declarations
+#include "shared.h"
+// splicer end C_declarations
+
+//  Color
+enum TYP_Color {
+    // splicer begin enum.Color
+    TYP_RED = 10,
+    TYP_BLUE = 11,
+    TYP_WHITE = 12
+    // splicer end enum.Color
+};
+
+//  DataTypeID
+enum TYP_DataTypeID {
+    // splicer begin enum.DataTypeID
+    TYP_NO_TYPE_ID = SHARED_NO_TYPE_ID,
+    TYP_INT_ID = SHARED_INT_ID,
+    TYP_LONG_ID = SHARED_LONG_ID,
+    TYP_FLOAT_ID = SHARED_FLOAT_ID,
+    TYP_DOUBLE_ID = SHARED_DOUBLE_ID
+    // splicer end enum.DataTypeID
+};
+
+// start typedef Alias
+// typedef Alias
+// splicer begin typedef.Alias
+typedef int TYP_Alias;
+// splicer end typedef.Alias
+// end typedef Alias
+
+// start typedef iColor
+// typedef iColor
+// splicer begin typedef.iColor
+typedef enum TYP_Color TYP_iColor;
+// splicer end typedef.iColor
+// end typedef iColor
+
 // start typedef TypeID
 // typedef TypeID
 // splicer begin typedef.TypeID
-typedef int TYP_TypeID;
+typedef enum TYP_DataTypeID TYP_TypeID;
 // splicer end typedef.TypeID
 // end typedef TypeID
 
@@ -86,12 +124,17 @@ struct s_TYP_struct1rename {
 extern "C" {
 #endif
 
-// splicer begin C_declarations
-// splicer end C_declarations
+TYP_Alias TYP_typefunc(TYP_Alias arg);
 
-TYP_TypeID TYP_typefunc(TYP_TypeID arg);
+TYP_Alias TYP_typefunc_wrap(TYP_Alias arg);
 
-TYP_TypeID TYP_typefunc_wrap(TYP_TypeID arg);
+TYP_iColor TYP_returnEnum(TYP_iColor in);
+
+int TYP_returnEnum_bufferify(int in);
+
+TYP_TypeID TYP_returnTypeID(TYP_TypeID in);
+
+int TYP_returnTypeID_bufferify(int in);
 
 void TYP_typestruct(TYP_Struct1Rename * arg1);
 

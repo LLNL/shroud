@@ -25,6 +25,9 @@
 extern "C" {
 #endif
 
+// splicer begin namespace.outer.C_declarations
+// splicer end namespace.outer.C_declarations
+
 #ifdef __cplusplus
 }
 #endif
@@ -42,9 +45,6 @@ struct s_NS_cstruct1 {
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// splicer begin namespace.outer.C_declarations
-// splicer end namespace.outer.C_declarations
 
 void NS_outer_One(void);
 

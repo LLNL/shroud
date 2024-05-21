@@ -30,6 +30,7 @@
 PyObject *PY_error_obj;
 PyObject *PY_init_ns_outer(void);
 PyObject *PY_init_ns_nswork(void);
+
 // splicer begin additional_functions
 // splicer end additional_functions
 

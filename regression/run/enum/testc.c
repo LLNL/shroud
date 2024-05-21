@@ -14,6 +14,10 @@
 
 void test_enum(void)
 {
+  assert(ENU_RED   == 10 && "ENU_RED");
+  assert(ENU_BLUE  == 11 && "ENU_BLUE");
+  assert(ENU_WHITE == 12 && "ENU_WHITE");
+  
   assert(ENU_a1 == 0 && "enum a1");
   assert(ENU_b1 == 3 && "enum b1");
   assert(ENU_c1 == 4 && "enum c1");
@@ -25,9 +29,22 @@ void test_enum(void)
 
 }
 
+void test_enum_functions(void)
+{
+    int icol;
+    enum ENU_Color outcolor;
+
+    icol = ENU_convert_to_int(ENU_RED);
+    assert(ENU_RED == icol && "convert_to_int");
+
+    outcolor = ENU_returnEnum(ENU_RED);
+    assert(ENU_RED == outcolor && "returnEnum");
+}
+
 int main(int argc, char *argv[])
 {
   test_enum();
+  test_enum_functions();
 
   return 0;
 }
