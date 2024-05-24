@@ -10,17 +10,26 @@ from . import error
 from .util import wformat
 
 import collections
+import json
 import yaml
 
 try:
     # XXX - python 3.7
     import importlib.resources
+    def read_json_resource(name):
+        fp = importlib.resources.open_binary('shroud', name)
+        stmts = json.load(fp)
+        return stmts
     def read_yaml_resource(name):
         fp = importlib.resources.open_binary('shroud', name)
         stmts = yaml.safe_load(fp)
         return stmts
 except ImportError:
     from pkg_resources import resource_filename
+    def read_json_resource(name):
+        fp = open(resource_filename('shroud', name), 'rb')
+        stmts = json._load(fp)
+        return stmts
     def read_yaml_resource(name):
         fp = open(resource_filename('shroud', name), 'rb')
         stmts = yaml.safe_load(fp)
@@ -315,7 +324,7 @@ def update_fc_statements_for_language(language):
     language : str
         "c" or "c++"
     """
-    stmts = read_yaml_resource('fc-statements.yaml')
+    stmts = read_json_resource('fc-statements.json')
     fc_statements.extend(stmts)
 
     check_statements(fc_statements)
@@ -900,7 +909,8 @@ default_stmts = dict(
 # deref      "allocatable", "pointer", "raw"
 # owner      "caller"
 
-fc_statements = [
+fc_statements = []
+old_fc_statements = [
     dict(
         # No arguments. Set necessary fields as a group.
         name="c_mixin_noargs",

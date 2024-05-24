@@ -1,8 +1,0 @@
-
-- name: c_test
-  lang_c:
-    field2: [
-        "this is a test",
-        "more test",
-    ]
-- name: f_test
