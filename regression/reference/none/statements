@@ -365,7 +365,6 @@ root
       vector
         argument -- c_shared_vector_argument
     subroutine -- f_subroutine
-    test -- c_test
   f
     XXXin
       string
@@ -835,7 +834,6 @@ root
         scalar -- f_shared_native_scalar
       struct -- f_shared_struct
     subroutine -- f_subroutine
-    test -- f_test
 c_ctor_shadow_scalar_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -3764,14 +3762,6 @@ c_shared_vector_argument:
 c_subroutine:
   intent: subroutine
   name: c_subroutine
-  owner: library
-c_test:
-  intent: test
-  lang_c:
-    field2:
-    - this is a test
-    - more test
-  name: c_test
   owner: library
 f_XXXin_string_scalar:
   f_arg_call:
@@ -11526,10 +11516,6 @@ f_subroutine:
   - call {F_C_call}({F_arg_c_call})
   intent: subroutine
   name: f_subroutine
-  owner: library
-f_test:
-  intent: test
-  name: f_test
   owner: library
 ***** Python
 root

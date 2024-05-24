@@ -1,18 +1,5 @@
 [
     {
-        "name": "c_test",
-        "lang_c": {
-            "field2": [
-                "this is a test",
-                "more test"
-            ]
-        }
-    },
-    {
-        "name": "f_test"
-    },
-
-    {
         "name": "c_mixin_noargs",
         "c_arg_decl": [],
         "i_arg_decl": [],
