@@ -277,6 +277,8 @@ f_c_type          i_type
 New Features
 ^^^^^^^^^^^^
 
+* Expose default statements to users in the file ``fc-statements.json``.
+
 * Added *fmtdict* field to Fortran and C statement groups. Similar to
   *fmtdict* already in the Python statement groups. It allows format
   fields to be set explicitly in the statement group to override the

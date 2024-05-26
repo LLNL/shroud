@@ -94,7 +94,7 @@ setup(
 
 #    packages=find_packages(where="src"),
 #    package_dir={"": "src"},
-    package_data={"": ["*.yaml"]},
+    package_data={"": ["*.json"]},
 
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's

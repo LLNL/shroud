@@ -1,0 +1,67 @@
+copyright:
+- Copyright (c) 2017-2024, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error in statements
+
+library: error
+cxx_header: error.hpp
+
+statements:
+
+  fc:
+    extend:
+    - noname: missing
+    - name: short
+    - name: java_mixin
+
+    - name: f_mixin_with-base
+      base: nonexistent
+    - name: f_mixin_with-alias
+      alias: ["nonexistent"]
+    - name: f_mixin_with-append
+      append: nonexistent
+
+    - name: f_in_foo1
+      mixin:
+      - f_in_foo1mixin
+    - name: f_in_foo2
+      mixin:
+      - f_mixin_nonexistent
+
+
+    - name: f_mixin_good1
+    - name: f_mixin_good1
+
+    - name: f_mixin_good2
+    - name: f_mixin_good2/good3
+
+    - name: f/c_in_foo3
+
+    - name: f_in_foo4
+      base: nonexistent
+
+    - name: f_in_foo5
+      alias:
+      - f_in_foo5a
+      - f_in_foo5a
+
+    - name: f_badintent_foo6
+    - name: f_in/outer_foo6
+
+# statements.post_mixin_check_statement
+
+    - name: f_in_foo7
+      c_arg_decl: "{c_var}"
+    - name: f_in_foo8
+      c_arg_decl:
+      - one
+      i_arg_decl:
+      - one
+      i_arg_names:
+      - one
+      - two

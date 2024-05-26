@@ -34,12 +34,25 @@ class NodeCursor(object):
             print("Node:", self.node.name)
             if not linenumber:
                 linenumber = self.node.linenumber
-        if linenumber != "?":
+        if linenumber is not None and linenumber != "?":
             print("line", linenumber)
         if self.stmt:
             print("Statement:", self.stmt.name)
-        
 
+class StmtCursor(object):
+    """Keep track of statement dictionary from YAML file.
+    stmt is a dictionary before being converted into a Scope instance.
+    """
+    def __init__(self):
+        self.stmt = None
+
+    def print_context(self, linenumber=None):
+        linenumber = self.stmt.get("__line__")
+        if linenumber:
+            print("statement line", linenumber)
+        if "name" in self.stmt:
+            print("Statement:", self.stmt["name"])
+        
 class Cursor(object):
     def __init__(self):
         self.phase_list = []
@@ -60,7 +73,16 @@ class Cursor(object):
             raise RuntimeError("pop_phase: does not match: %s" % name)
         self.phase_list.pop()
         self.phase = self.phase_list[-1]
-        
+
+    def push_statement(self):
+        self.current = StmtCursor()
+        self.node_list.append(self.current)
+        return self.current
+
+    def pop_statement(self):
+        self.node_list.pop()
+        self.current = self.node_list[-1]
+
     def push_node(self, node):
 #        if node is None:
 #            import pdb;pdb.set_trace()
@@ -114,7 +136,7 @@ class Cursor(object):
         node.wrap.clear()
 
     def ast(self, linenumber, decl, err=None):
-        """Error from decl field in YAML file."""
+        """Print error from decl field in YAML file."""
         self.nwarning += 1
         self.context(linenumber)
         if err:

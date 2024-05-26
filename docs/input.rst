@@ -1083,6 +1083,24 @@ The splicer comments can be eliminated by setting the option
 eliminate the clutter of the splicer comments.
 
 
+statements
+----------
+
+Statements add control over how specific function and argument
+wrapping is controlled based on language, intent, and attributes.
+This section is not needed for causual use of Shroud since the
+defaults are sufficient for most cases.
+
+.. code-block:: yaml
+
+    statements:
+      fc:
+        file: [ ]
+        extend:
+        - name: f_...
+
+See :ref:`StatementsAnchor` for details.
+
 file_code
 ---------
 

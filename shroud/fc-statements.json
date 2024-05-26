@@ -1,0 +1,3814 @@
+[
+    {
+        "name": "c_mixin_noargs",
+        "comments": [
+            "No arguments to a function."
+        ],
+        "c_arg_decl": [],
+        "i_arg_decl": [],
+        "i_arg_names": []
+    },
+    {
+        "name": "f_subroutine",
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "alias": [
+            "c_subroutine"
+        ],
+        "f_arg_call": [],
+        "f_call": [
+            "call {F_C_call}({F_arg_c_call})"
+        ]
+    },
+    {
+        "name": "c_function"
+    },
+    {
+        "name": "f_mixin_function",
+        "comment": [
+            "Default code to call a function."
+        ],
+        "f_arg_call": [],
+        "f_call": [
+            "{F_result} = {F_C_call}({F_arg_c_call})"
+        ]
+    },
+    {
+        "name": "f_function_native_scalar",
+        "alias": [
+            "f_function_enum_scalar",
+            "c_function_enum_scalar",
+            "c_function_native_scalar"
+        ]
+    },
+    {
+        "name": "f_function_native_*_scalar",
+        "comments": [
+            "Return a scalar to avoid doing the deref in Fortran."
+        ],
+        "c_return_type": "{c_type}",
+        "c_return": [
+            "return *{cxx_var};"
+        ],
+        "c_need_wrapper": true
+    },
+    {
+        "name": "f_mixin_function-to-subroutine",
+        "comments": [
+            "Call the C wrapper as a subroutine."
+        ],
+        "f_call": [
+            "call {F_C_call}({F_arg_c_call})"
+        ],
+        "c_return_type": "void"
+    },
+    {
+        "name": "f_mixin_function_ptr",
+        "comment": [
+            "Return a C pointer directly as type(C_PTR)."
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "i_result_decl": [
+            "type(C_PTR) {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_function_c-ptr",
+        "comments": [
+            "Return a C pointer as a type(C_PTR)."
+        ],
+        "c_need_wrapper": true,
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR",
+                "c_f_pointer"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, pointer :: {f_var}"
+        ],
+        "f_declare": [
+            "type(C_PTR) :: {f_local_ptr}"
+        ],
+        "f_call": [
+            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
+        ],
+        "f_post_call": [
+            "call c_f_pointer({f_local_ptr}, {F_result})"
+        ],
+        "f_local": [
+            "ptr"
+        ],
+        "i_result_decl": [
+            "type(C_PTR) {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_pass_cdesc",
+        "comments": [
+            "Pass cdesc as argument to C wrapper."
+        ],
+        "f_helper": [
+            "array_context"
+        ],
+        "f_declare": [
+            "type({F_array_type}) :: {f_var_cdesc}"
+        ],
+        "f_arg_call": [
+            "{f_var_cdesc}"
+        ],
+        "f_temps": [
+            "cdesc"
+        ],
+        "f_need_wrapper": true,
+        "c_helper": [
+            "array_context"
+        ],
+        "c_arg_decl": [
+            "{C_array_type} *{c_var_cdesc}"
+        ],
+        "i_arg_decl": [
+            "type({F_array_type}), intent(OUT) :: {i_var_cdesc}"
+        ],
+        "i_arg_names": [
+            "{i_var_cdesc}"
+        ],
+        "i_import": [
+            "{F_array_type}"
+        ],
+        "c_temps": [
+            "cdesc"
+        ]
+    },
+    {
+        "name": "f_mixin_pass_capsule",
+        "comments": [
+            "Pass local capsule as argument to C wrapper."
+        ],
+        "f_helper": [
+            "array_context"
+        ],
+        "f_declare": [
+            "type({F_capsule_data_type}) :: {f_var_capsule}"
+        ],
+        "f_arg_call": [
+            "{f_var_capsule}"
+        ],
+        "f_temps": [
+            "capsule"
+        ],
+        "f_need_wrapper": true,
+        "c_arg_decl": [
+            "{C_capsule_data_type} *{c_var_capsule}"
+        ],
+        "i_arg_decl": [
+            "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
+        ],
+        "i_arg_names": [
+            "{i_var_capsule}"
+        ],
+        "i_import": [
+            "{F_capsule_data_type}"
+        ],
+        "c_temps": [
+            "capsule"
+        ]
+    },
+    {
+        "name": "f_mixin_arg_capsule",
+        "comments": [
+            "Add a capsule argument to the Fortran wrapper.",
+            "Pass the capsule as argument to C wrapper."
+        ],
+        "f_helper": [
+            "array_context",
+            "capsule_helper"
+        ],
+        "f_arg_name": [
+            "{f_var_capsule}"
+        ],
+        "f_arg_decl": [
+            "type({F_capsule_type}), intent(OUT) :: {f_var_capsule}"
+        ],
+        "f_arg_call": [
+            "{f_var_capsule}%mem"
+        ],
+        "f_temps": [
+            "capsule"
+        ],
+        "f_need_wrapper": true,
+        "c_temps": [
+            "capsule"
+        ],
+        "c_arg_decl": [
+            "{C_capsule_data_type} *{c_var_capsule}"
+        ],
+        "i_arg_decl": [
+            "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
+        ],
+        "i_arg_names": [
+            "{i_var_capsule}"
+        ],
+        "i_import": [
+            "{F_capsule_data_type}"
+        ],
+        "fmtdict": {
+            "f_var_capsule": "Crv"
+        }
+    },
+    {
+        "name": "f_mixin_native_cdesc_allocate",
+        "comments": [
+            "Allocate Fortran native array, then fill from cdesc",
+            "using helper copy_array."
+        ],
+        "c_helper": [
+            "copy_array"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "allocate({f_var}{f_array_allocate})",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "f_mixin_out_native_cdesc_allocate",
+        "comments": [
+            "Allocate Fortran native array for argument",
+            "then fill from cdesc using helper copy_array."
+        ],
+        "c_helper": [
+            "copy_array"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "allocate({f_var}{f_array_allocate})",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+        ]
+    },
+    {
+        "name": "f_mixin_native_cdesc_pointer",
+        "comments": [
+            "Set Fortran pointer to native array."
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "c_f_pointer"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+        ]
+    },
+    {
+        "name": "f_mixin_native_cdesc_raw",
+        "comments": [
+            "Set Fortran pointer to pointers to arrays.",
+            "'double **' function returns 'type(C_PTR), pointer :: array(:)'"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR",
+                "c_f_pointer"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_PTR), pointer :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+        ]
+    },
+    {
+        "name": "f_mixin_out_native_cdesc_pointer",
+        "comments": [
+            "Set Fortran pointer to native array."
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "c_f_pointer"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})"
+        ]
+    },
+    {
+        "name": "f_mixin_char_cdesc_allocate",
+        "comments": [
+            "Allocate Fortran CHARACTER scalar, then fill from cdesc.",
+            "using helper copy_string."
+        ],
+        "c_helper": [
+            "copy_string"
+        ],
+        "f_helper": [
+            "copy_string"
+        ],
+        "f_arg_decl": [
+            "character(len=:), allocatable :: {f_var}"
+        ],
+        "f_post_call": [
+            "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
+            "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+        ]
+    },
+    {
+        "name": "f_mixin_capsule_dtor",
+        "comments": [
+            "Release memory from capsule."
+        ],
+        "f_helper": [
+            "capsule_dtor"
+        ],
+        "f_post_call": [
+            "call {f_helper_capsule_dtor}({f_var_capsule})"
+        ]
+    },
+    {
+        "name": "f_mixin_char_cdesc_pointer",
+        "comments": [
+            "Assign Fortran pointer from cdesc using helper pointer_string."
+        ],
+        "f_helper": [
+            "pointer_string"
+        ],
+        "f_arg_decl": [
+            "character(len=:), pointer :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "c_f_pointer"
+            ]
+        },
+        "f_post_call": [
+            "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+        ]
+    },
+    {
+        "name": "c_mixin_native_cdesc_fill-cdesc",
+        "comments": [
+            "Fill cdesc from native in the C wrapper."
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
+            "{c_var_cdesc}->size = {c_array_size};"
+        ]
+    },
+    {
+        "name": "c_mixin_function_char_*_cdesc",
+        "comments": [
+            "Fill cdesc from char * in the C wrapper."
+        ],
+        "c_helper": [
+            "type_defines"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "c_mixin_function_string_cdesc",
+        "comments": [
+            "Fill cdesc from std::string using helper string_to_cdesc",
+            "in the C wrapper."
+        ],
+        "c_helper": [
+            "string_to_cdesc"
+        ],
+        "c_post_call": [
+            "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+        ]
+    },
+    {
+        "name": "c_mixin_native_capsule_fill",
+        "comments": [
+            "Assign to capsule in C wrapper."
+        ],
+        "c_post_call": [
+            "{c_var_capsule}->addr  = {cxx_nonconst_ptr};",
+            "{c_var_capsule}->idtor = {idtor};"
+        ]
+    },
+    {
+        "name": "f_mixin_use_capsule",
+        "mixin": [
+            "f_mixin_pass_capsule",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor"
+        ]
+    },
+    {
+        "name": "f_mixin_function_shadow_capsule",
+        "comments": [
+            "Pass function result as a capsule argument from Fortran to C."
+        ],
+        "f_arg_decl": [
+            "{f_type} :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}%{F_derived_member}"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "name": "f_mixin_function_shadow_capptr",
+        "comments": [
+            "Pass function result as a capsule field of shadow class",
+            "from Fortran to C."
+        ],
+        "f_arg_decl": [
+            "{f_type} :: {f_var}",
+            "type(C_PTR) :: {f_local_ptr}"
+        ],
+        "f_arg_call": [
+            "{f_var}%{F_derived_member}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "f_call": [
+            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
+        ],
+        "f_local": [
+            "ptr"
+        ],
+        "f_need_wrapper": true,
+        "fmtdict": {
+            "f_local_ptr": "{F_result_ptr}"
+        },
+        "i_result_var": "{F_result_ptr}",
+        "i_result_decl": [
+            "type(C_PTR) :: {F_result_ptr}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_destructor_new-string",
+        "destructor_name": "new_string",
+        "destructor": [
+            "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "c_mixin_destructor_new-vector",
+        "destructor_name": "std_vector_{cxx_T}",
+        "destructor": [
+            "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "f_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "c_arg_decl": [
+            "===>{c_var}<==="
+        ]
+    },
+    {
+        "name": "c_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "c_arg_decl": [
+            "===>{c_var}<==="
+        ]
+    },
+    {
+        "name": "f_mixin_in_array_buf",
+        "comments": [
+            "Pass argument and size by value to C."
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent(IN) :: {f_var}{f_assumed_shape}"
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T"
+            ]
+        },
+        "f_need_wrapper": true,
+        "c_arg_decl": [
+            "{cxx_type} *{c_var}",
+            "size_t {c_var_size}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_size}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent(IN) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {i_var_size}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "size"
+        ]
+    },
+    {
+        "name": "f_mixin_out_array_buf",
+        "comments": [
+            "Pass argument and size by reference to C."
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T"
+            ]
+        },
+        "f_need_wrapper": true,
+        "c_arg_decl": [
+            "{cxx_type} *{c_var}",
+            "size_t *{c_var_size}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_size}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "size"
+        ]
+    },
+    {
+        "name": "c_mixin_out_array_buf_malloc",
+        "comments": [
+            "Pass raw pointer and size by reference to C."
+        ],
+        "c_arg_decl": [
+            "{cxx_type} **{c_var}",
+            "size_t *{c_var_size}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_size}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent({f_intent}) :: {i_var}",
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "size"
+        ]
+    },
+    {
+        "name": "c_mixin_function_array_malloc",
+        "comments": [
+            "Return pointer to array type.",
+            "Add an argument to return the length of the array"
+        ],
+        "c_return_type": "{cxx_T} *",
+        "c_arg_decl": [
+            "size_t *{c_var_size}"
+        ],
+        "i_result_decl": [
+            "type(C_PTR) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var_size}"
+        ],
+        "i_arg_decl": [
+            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "size"
+        ]
+    },
+    {
+        "name": "f_mixin_in_2d_array_buf",
+        "comments": [
+            "Pass argument, len and size to C."
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {f_var}(:,:)"
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "size({f_var}, 1, kind=C_SIZE_T)",
+            "size({f_var}, 2, kind=C_SIZE_T)"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T"
+            ]
+        },
+        "f_need_wrapper": true,
+        "c_arg_decl": [
+            "{cxx_type} *{c_var}",
+            "size_t {c_var_len}",
+            "size_t {c_var_size}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_len}",
+            "{i_var_size}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent(IN) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {i_var_len}",
+            "integer(C_SIZE_T), intent(IN), value :: {i_var_size}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "len",
+            "size"
+        ]
+    },
+    {
+        "name": "f_mixin_inout_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
+        "f_helper": [
+            "array_context"
+        ],
+        "f_declare": [
+            "type({F_array_type}) :: {f_var_cdesc}"
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)",
+            "{f_var_cdesc}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T"
+            ]
+        },
+        "f_temps": [
+            "cdesc"
+        ]
+    },
+    {
+        "name": "c_mixin_inout_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
+        "c_helper": [
+            "array_context"
+        ],
+        "c_arg_decl": [
+            "{cxx_type} *{c_var}",
+            "size_t {c_var_size}",
+            "{C_array_type} *{c_var_cdesc}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_size}",
+            "{i_var_cdesc}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent(IN) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
+            "type({F_array_type}), intent(OUT) :: {i_var_cdesc}"
+        ],
+        "i_import": [
+            "{F_array_type}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}",
+                "C_SIZE_T"
+            ]
+        },
+        "c_temps": [
+            "size",
+            "cdesc"
+        ]
+    },
+    {
+        "name": "f_mixin_out_array_cdesc_allocatable",
+        "comments": [
+            "Allocate Fortran array from cdesc."
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "f_arg_decl": [
+            "character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})"
+        ]
+    },
+    {
+        "name": "f_mixin_in_string_array_buf",
+        "comments": [
+            "Pass argument, size and len to C."
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(IN) :: {f_var}(:)"
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)",
+            "len({f_var}, kind=C_INT)"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T",
+                "C_INT"
+            ]
+        },
+        "f_need_wrapper": true,
+        "c_arg_decl": [
+            "const char *{c_var}",
+            "size_t {c_var_size}",
+            "int {c_var_len}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_size}",
+            "{i_var_len}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent(IN) :: {i_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
+            "integer(C_INT), intent(IN), value :: {i_var_len}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR",
+                "C_SIZE_T",
+                "C_INT"
+            ]
+        },
+        "c_temps": [
+            "size",
+            "len"
+        ]
+    },
+    {
+        "name": "f_mixin_in_character_buf",
+        "comments": [
+            "Pass CHARACTER and LEN to C wrapper."
+        ],
+        "notes": [
+            "Do not use arg_decl here since it does not understand +len(30) on functions."
+        ],
+        "f_temps": [
+            "len"
+        ],
+        "f_declare": [
+            "integer(C_INT) {f_var_len}"
+        ],
+        "f_pre_call": [
+            "{f_var_len} = len({f_var}, kind=C_INT)"
+        ],
+        "f_arg_call": [
+            "{f_var}",
+            "{f_var_len}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_INT"
+            ]
+        },
+        "f_need_wrapper": true
+    },
+    {
+        "name": "c_mixin_in_character_buf",
+        "notes": [
+            "Used with function which pass in character argument.",
+            "Used with function which return a char *.",
+            "C wrapper will fill argument."
+        ],
+        "c_arg_decl": [
+            "char *{c_var}",
+            "int {c_var_len}"
+        ],
+        "i_arg_names": [
+            "{i_var}",
+            "{i_var_len}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)",
+            "integer(C_INT), value, intent(IN) :: {i_var_len}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR",
+                "C_INT"
+            ]
+        },
+        "c_temps": [
+            "len"
+        ]
+    },
+    {
+        "name": "f_defaulttmp",
+        "alias": [
+            "f_in_vector_&_cdesc_targ_native_scalar"
+        ]
+    },
+    {
+        "name": "c_defaulttmp",
+        "alias": [
+            "c_out_native_&*"
+        ]
+    },
+    {
+        "name": "f_shared_native_scalar",
+        "alias": [
+            "f_in_native_scalar",
+            "c_in_native_scalar",
+            "f_in_native_*",
+            "c_in_native_*",
+            "f_in_native_&",
+            "c_in_native_&",
+            "f_out_char_*",
+            "c_out_char_*",
+            "f_out_native_&",
+            "c_out_native_&",
+            "c_out_native_*&",
+            "f_inout_native_*",
+            "c_inout_native_*",
+            "f_inout_native_&",
+            "c_inout_native_&",
+            "f_out_native_***",
+            "c_out_native_***",
+            "f_in_char_*",
+            "c_in_char_*",
+            "f_inout_char_*",
+            "c_inout_char_*",
+            "f_in_void_scalar",
+            "c_in_void_scalar",
+            "f_out_void_*&",
+            "c_out_void_*&",
+            "f_in_char_*_capi",
+            "f_out_char_*_capi",
+            "f_inout_char_*_capi",
+            "f_in_enum_scalar",
+            "c_in_enum_scalar",
+            "f_in_unknown_scalar",
+            "c_in_unknown_scalar"
+        ]
+    },
+    {
+        "name": "f_mixin_local-logical-var",
+        "f_temps": [
+            "cxx"
+        ],
+        "f_declare": [
+            "logical(C_BOOL) :: {f_var_cxx}"
+        ],
+        "f_arg_call": [
+            "{f_var_cxx}"
+        ]
+    },
+    {
+        "name": "f_in_bool_scalar",
+        "mixin": [
+            "f_mixin_local-logical-var"
+        ],
+        "alias": [
+            "c_in_bool_scalar"
+        ],
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ]
+    },
+    {
+        "name": "f_out_bool_*",
+        "mixin": [
+            "f_mixin_local-logical-var"
+        ],
+        "alias": [
+            "c_out_bool_*"
+        ],
+        "f_post_call": [
+            "{f_var} = {f_var_cxx}  ! coerce to logical"
+        ]
+    },
+    {
+        "name": "f_inout_bool_*",
+        "mixin": [
+            "f_mixin_local-logical-var"
+        ],
+        "alias": [
+            "c_inout_bool_*"
+        ],
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ],
+        "f_post_call": [
+            "{f_var} = {f_var_cxx}  ! coerce to logical"
+        ]
+    },
+    {
+        "name": "f_function_bool_scalar",
+        "alias": [
+            "c_function_bool_scalar"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "name": "f_out_native_*",
+        "alias": [
+            "c_out_native_*"
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}"
+        ]
+    },
+    {
+        "name": "f_in_native_**",
+        "notes": [
+            "Any array of pointers.  Assumed to be non-contiguous memory.",
+            "All Fortran can do is treat as a type(C_PTR)."
+        ],
+        "alias": [
+            "c_in_native_**"
+        ],
+        "c_arg_decl": [
+            "{cxx_type} **{cxx_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent(IN), value :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_out_native_**",
+        "notes": [
+            "double **count +intent(out)+dimension(ncount)"
+        ],
+        "c_pre_call": [
+            "{c_const}{cxx_type} *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_out_native_*&_cdesc",
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_out_native_cdesc_pointer"
+        ],
+        "alias": [
+            "f_out_native_*&_cdesc_pointer"
+        ],
+        "c_pre_call": [
+            "{c_const}{cxx_type} *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_out_native_**_cdesc_allocatable",
+        "notes": [
+            "deref(allocatable)",
+            "A C function with a 'int **' argument associates it",
+            "with a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "c_mixin_out_native_**",
+            "f_mixin_out_native_cdesc_allocate",
+            "f_mixin_use_capsule"
+        ]
+    },
+    {
+        "name": "f_out_native_**_cdesc_pointer",
+        "notes": [
+            "deref(pointer)",
+            "A C function with a 'int **' argument associates it",
+            "with a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "c_mixin_out_native_**",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_out_native_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_out_native_**_raw",
+        "notes": [
+            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
+        ],
+        "alias": [
+            "c_out_native_**_raw",
+            "c_out_native_**"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR), intent({f_intent}) :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_in/out/inout_native_*_cdesc",
+        "mixin": [
+            "f_mixin_pass_cdesc"
+        ],
+        "alias": [
+            "c_in_native_*_cdesc",
+            "c_out_native_*_cdesc",
+            "c_inout_native_*_cdesc",
+            "c_in_void_*_cdesc",
+            "c_out_void_*_cdesc",
+            "c_inout_void_*_cdesc",
+            "f_in_void_*_cdesc",
+            "f_out_void_*_cdesc",
+            "f_inout_void_*_cdesc"
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = {sh_type}",
+            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
+            "{f_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
+        ],
+        "lang_c": {
+            "c_pre_call": [
+                "{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;"
+            ]
+        },
+        "lang_cxx": {
+            "c_pre_call": [
+                "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+            ]
+        }
+    },
+    {
+        "name": "f_out/inout_native_*_hidden",
+        "comments": [
+            "Declare a local variable and pass to C."
+        ],
+        "alias": [
+            "c_out/inout_native_*_hidden"
+        ],
+        "c_pre_call": [
+            "{cxx_type} {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_out/inout_native_&_hidden",
+        "comments": [
+            "Declare a local variable and pass to C."
+        ],
+        "alias": [
+            "c_out/inout_native_&_hidden"
+        ],
+        "c_pre_call": [
+            "{cxx_type} {cxx_var};"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_in_void_*",
+        "alias": [
+            "c_in_void_*"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_PTR), intent(IN) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_function_void_*",
+        "alias": [
+            "c_function_void_*"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_in/out/inout_void_**",
+        "notes": [
+            "Treat as an assumed length array in Fortran interface."
+        ],
+        "alias": [
+            "c_in/out/inout_void_**",
+            "f_in_void_**_cfi"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}"
+        ],
+        "c_arg_decl": [
+            "void **{c_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "c_function_native_*_scalar",
+        "i_result_decl": [
+            "{f_type} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}"
+            ]
+        }
+    },
+    {
+        "name": "f_function_native_*_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_native_cdesc_allocate",
+            "f_mixin_use_capsule"
+        ]
+    },
+    {
+        "name": "f_function_native_&",
+        "notes": [
+            "Pointer to scalar.",
+            "type(C_PTR) is returned instead of a cdesc argument."
+        ],
+        "mixin": [
+            "f_mixin_function_c-ptr"
+        ],
+        "alias": [
+            "f_function_native_*_pointer",
+            "f_function_native_*_pointer_caller",
+            "f_function_native_&_pointer"
+        ]
+    },
+    {
+        "name": "f_function_native_*_cdesc_pointer",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_native_cdesc_pointer"
+        ],
+        "alias": [
+            "f_function_struct_*_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_function_native_*_cdesc_pointer_caller",
+        "notes": [
+            "+deref(pointer) +owner(caller)",
+            "The capsule contains information used to delete the memory."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_arg_capsule",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_native_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_function_native_*_raw",
+        "mixin": [
+            "f_mixin_function_ptr"
+        ],
+        "alias": [
+            "c_function_native_*",
+            "c_function_native_&",
+            "c_function_native_*_caller",
+            "c_function_native_**",
+            "f_function_native_**"
+        ]
+    },
+    {
+        "name": "f_in_char_scalar",
+        "alias": [
+            "c_in_char_scalar"
+        ],
+        "f_arg_decl": [
+            "character, value, intent(IN) :: {f_var}"
+        ],
+        "c_arg_decl": [
+            "char {c_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), value, intent(IN) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
+    },
+    {
+        "name": "f_function_char_scalar",
+        "mixin": [
+            "f_mixin_function-to-subroutine"
+        ],
+        "alias": [
+            "c_function_char_scalar"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "c_call": [
+            "*{c_var} = {function_name}({C_call_list});"
+        ],
+        "c_arg_decl": [
+            "char *{c_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent(OUT) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
+    },
+    {
+        "name": "f_function_char_*",
+        "alias": [
+            "c_function_char_*",
+            "f_function_char_*_allocatable/copy/pointer/raw"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "i_result_decl": [
+            "type(C_PTR) {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_in_char_*_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_in_char_*_buf"
+        ],
+        "c_temps": [
+            "len",
+            "str"
+        ],
+        "c_helper": [
+            "char_alloc",
+            "char_free"
+        ],
+        "c_pre_call": [
+            "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+        ],
+        "c_arg_call": [
+            "{c_var_str}"
+        ],
+        "c_post_call": [
+            "{c_helper_char_free}({c_var_str});"
+        ]
+    },
+    {
+        "name": "f_out_char_*_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_out_char_*_buf"
+        ],
+        "c_helper": [
+            "char_blank_fill"
+        ],
+        "c_post_call": [
+            "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
+        ]
+    },
+    {
+        "name": "f_inout_char_*_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_inout_char_*_buf"
+        ],
+        "c_temps": [
+            "len",
+            "str"
+        ],
+        "c_helper": [
+            "char_alloc",
+            "char_copy",
+            "char_free"
+        ],
+        "c_pre_call": [
+            "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+        ],
+        "c_arg_call": [
+            "{c_var_str}"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_var_str},\t -1);",
+            "{c_helper_char_free}({c_var_str});"
+        ]
+    },
+    {
+        "name": "f_function_char_*_buf_copy",
+        "notes": [
+            "char *getname() +len(30)",
+            "Copy result into caller's buffer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_function_char_*_buf_copy"
+        ],
+        "cxx_local_var": "result",
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+        ]
+    },
+    {
+        "name": "f_function_char_*_arg",
+        "notes": [
+            "Change function result into an argument",
+            "Use F_string_result_as_arg as the argument name."
+        ],
+        "base": "f_function_char_*_buf_copy",
+        "alias": [
+            "c_function_char_*_arg",
+            "f_function_char_*_buf_arg",
+            "c_function_char_*_buf_arg"
+        ],
+        "fmtdict": {
+            "f_var": "{F_string_result_as_arg}",
+            "i_var": "{F_string_result_as_arg}",
+            "c_var": "{F_string_result_as_arg}",
+            "f_var_len": "n{F_string_result_as_arg}",
+            "i_var_len": "n{F_string_result_as_arg}",
+            "c_var_len": "n{F_string_result_as_arg}"
+        },
+        "f_result": "subroutine",
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_in_char_**",
+        "notes": [
+            "Treat as an assumed length array in Fortran interface."
+        ],
+        "alias": [
+            "c_in_char_**"
+        ],
+        "c_arg_decl": [
+            "char **{c_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent(IN) :: {i_var}(*)"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_in_char_**_buf",
+        "mixin": [
+            "f_mixin_in_string_array_buf"
+        ],
+        "alias": [
+            "c_in_char_**_buf"
+        ],
+        "c_helper": [
+            "char_array_alloc",
+            "char_array_free"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_array_free}({cxx_var}, {c_var_size});"
+        ]
+    },
+    {
+        "name": "f_function_char_scalar_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_char_cdesc_allocate",
+            "c_mixin_function_char_*_cdesc"
+        ],
+        "alias": [
+            "f_function_char_*_cdesc_allocatable"
+        ]
+    },
+    {
+        "name": "f_function_char_scalar_cdesc_pointer",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_function_char_*_cdesc",
+            "f_mixin_char_cdesc_pointer"
+        ],
+        "alias": [
+            "f_function_char_*_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_function_string_*_cdesc_pointer",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_function_string_cdesc",
+            "f_mixin_char_cdesc_pointer"
+        ],
+        "alias": [
+            "f_function_string_&_cdesc_pointer",
+            "f_function_string_*/&_cdesc_pointer_caller/library"
+        ]
+    },
+    {
+        "name": "f_in_string_*/&",
+        "alias": [
+            "c_in_string_*",
+            "c_in_string_&"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::string {cxx_var}({c_var});"
+        ]
+    },
+    {
+        "name": "f_out_string_*/&",
+        "alias": [
+            "c_out_string_*",
+            "c_out_string_&"
+        ],
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        },
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::string {cxx_var};"
+        ],
+        "c_post_call": [
+            "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
+        ]
+    },
+    {
+        "name": "f_inout_string_*/&",
+        "mixin": [
+            "f_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_inout_string_*/&"
+        ],
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        },
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::string {cxx_var}({c_var});"
+        ],
+        "c_post_call": [
+            "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
+        ]
+    },
+    {
+        "name": "f_in_string_*/&_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_in_string_*/&_buf"
+        ],
+        "c_helper": [
+            "char_len_trim"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+        ]
+    },
+    {
+        "name": "f_out_string_*/&_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_out_string_*/&_buf"
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "std::string {cxx_var};"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+        ]
+    },
+    {
+        "name": "f_inout_string_*/&_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_inout_string_*/&_buf"
+        ],
+        "c_helper": [
+            "char_copy",
+            "char_len_trim"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+        ]
+    },
+    {
+        "name": "f_shared_function_string_scalar",
+        "notes": [
+            "Fortran calling a C function without",
+            "any api argument - is this useful?"
+        ],
+        "alias": [
+            "c_function_string_*/&",
+            "c_function_string_*_caller/library",
+            "c_function_string_*_copy",
+            "c_function_string_&_copy"
+        ],
+        "c_return": [
+            "return {c_var};"
+        ],
+        "i_result_decl": [
+            "type(C_PTR) {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "c_function_string_scalar",
+        "notimplemented": true,
+        "comments": [
+            "Cannot return a char array by value."
+        ]
+    },
+    {
+        "name": "f_XXXin_string_scalar",
+        "f_need_wrapper": true,
+        "mixin": [
+            "f_mixin_in_character_buf"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(IN) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_in_string_scalar",
+        "alias": [
+            "c_in_string_scalar"
+        ],
+        "c_arg_decl": [
+            "char *{c_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent(IN) :: {i_var}(*)"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
+    },
+    {
+        "name": "f_in_string_scalar_buf",
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_in_string_scalar_buf"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent({f_intent}) :: {f_var}"
+        ],
+        "cxx_local_var": "scalar",
+        "c_helper": [
+            "char_len_trim"
+        ],
+        "c_pre_call": [
+            "int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});",
+            "std::string {cxx_var}({c_var}, {c_local_trim});"
+        ],
+        "c_call": [
+            "XXX{cxx_var}"
+        ],
+        "c_local": [
+            "trim"
+        ]
+    },
+    {
+        "name": "f_function_string_*_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "c_mixin_function_string_cdesc",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_char_cdesc_allocate",
+            "f_mixin_capsule_dtor"
+        ],
+        "alias": [
+            "f_function_string_&_cdesc_allocatable",
+            "f_function_string_*/&_cdesc_allocatable_caller/library"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_buf",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "f_function_string_*_buf",
+            "f_function_string_&_buf",
+            "f_function_string_scalar_buf_copy",
+            "f_function_string_*_buf_copy",
+            "f_function_string_&_buf_copy",
+            "c_function_string_scalar/*/&_buf_copy"
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_buf_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
+        "base": "f_function_string_scalar_buf",
+        "alias": [
+            "c_function_string_scalar_buf_arg",
+            "f_function_string_&_buf_arg",
+            "c_function_string_&_buf_arg"
+        ],
+        "fmtdict": {
+            "f_var": "{F_string_result_as_arg}",
+            "i_var": "{F_string_result_as_arg}",
+            "c_var": "{F_string_result_as_arg}",
+            "f_var_len": "n{F_string_result_as_arg}",
+            "i_var_len": "n{F_string_result_as_arg}",
+            "c_var_len": "n{F_string_result_as_arg}"
+        },
+        "f_result": "subroutine",
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_destructor_new-string",
+            "c_mixin_function_string_cdesc",
+            "f_mixin_char_cdesc_allocate",
+            "f_mixin_use_capsule"
+        ],
+        "alias": [
+            "f_function_string_scalar_cdesc_allocatable_caller/library"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "std::string * {cxx_var} = new std::string;"
+        ]
+    },
+    {
+        "name": "f_out_enum_*",
+        "alias": [
+            "c_out_enum_*"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{cxx_type} {cxx_var};"
+        ],
+        "lang_c": {
+            "c_post_call": [
+                "*{c_var} = ({c_type}) {cxx_var};"
+            ]
+        },
+        "lang_cxx": {
+            "c_post_call": [
+                "*{c_var} = static_cast<{c_type}>({cxx_var});"
+            ]
+        }
+    },
+    {
+        "name": "f_inout_enum_*",
+        "base": "f_out_enum_*",
+        "alias": [
+            "c_inout_enum_*"
+        ],
+        "lang_c": {
+            "c_pre_call": [
+                "{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};"
+            ]
+        },
+        "lang_cxx": {
+            "c_pre_call": [
+                "{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});"
+            ]
+        }
+    },
+    {
+        "name": "c_function_vector_scalar_targ_native_scalar",
+        "notimplemented": true,
+        "comments": [
+            "Cannot return a std::vector<native> by value."
+        ]
+    },
+    {
+        "name": "c_shared_vector_argument",
+        "notimplemented": true,
+        "comments": [
+            "Need to know the length of the vector from C"
+        ],
+        "alias": [
+            "c_in_vector_&_targ_native_scalar",
+            "c_out_vector_&_targ_native_scalar",
+            "c_inout_vector_&_targ_native_scalar",
+            "c_in_vector_&_targ_native_*",
+            "c_in_vector_&_targ_string_scalar",
+            "c_out_vector_&_targ_string_scalar"
+        ]
+    },
+    {
+        "name": "f_in_vector_scalar/*/&_buf_targ_native_scalar",
+        "mixin": [
+            "f_mixin_in_array_buf"
+        ],
+        "alias": [
+            "c_in_vector_scalar/*/&_buf_targ_native_scalar"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+        ]
+    },
+    {
+        "name": "c_out_vector_scalar/*/&_buf_copy_targ_native_scalar",
+        "mixin": [
+            "f_mixin_out_array_buf"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var};"
+        ],
+        "c_post_call": [
+            "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size} :\t {cxx_var}.size();",
+            "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));",
+            "*{c_var_size} = {c_local_size};"
+        ],
+        "c_local": [
+            "size"
+        ],
+        "impl_header": [
+            "<cstring>"
+        ]
+    },
+    {
+        "name": "c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar",
+        "mixin": [
+            "f_mixin_out_array_buf"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});"
+        ],
+        "c_post_call": [
+            "*{c_var_size} = {cxx_var}->size()"
+        ],
+        "notimplemented": true
+    },
+    {
+        "name": "c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        "comments": [
+            "Create empty local vector then copy result to",
+            "malloc allocated array."
+        ],
+        "mixin": [
+            "c_mixin_out_array_buf_malloc"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var};"
+        ],
+        "c_post_call": [
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();"
+        ],
+        "c_local": [
+            "bytes"
+        ],
+        "impl_header": [
+            "<cstdlib>",
+            "<cstring>"
+        ]
+    },
+    {
+        "name": "c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar",
+        "comments": [
+            "Create local vector from arguments then copy result to",
+            "malloc allocated array."
+        ],
+        "mixin": [
+            "c_mixin_out_array_buf_malloc"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});"
+        ],
+        "c_post_call": [
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));",
+            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();"
+        ],
+        "c_local": [
+            "bytes"
+        ],
+        "impl_header": [
+            "<cstdlib>",
+            "<cstring>"
+        ]
+    },
+    {
+        "name": "c_mixin_vector_cdesc_fill-cdesc",
+        "comments": [
+            "Fill cdesc with vector information,",
+            " Return address and size of vector data."
+        ],
+        "c_helper": [
+            "type_defines"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
+            "{c_var_cdesc}->size = {cxx_var}->size();",
+            "{c_var_cdesc}->rank = 1;",
+            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
+        ]
+    },
+    {
+        "name": "c_mixin_out_vector_cdesc_targ_native_scalar",
+        "mixin": [
+            "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+        ]
+    },
+    {
+        "name": "f_out_vector_*/&_cdesc_targ_native_scalar",
+        "comments": [
+            "copy into user's existing array."
+        ],
+        "notes": [
+            "cxx_var is always a pointer to a vector."
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "c_mixin_out_vector_cdesc_targ_native_scalar"
+        ],
+        "alias": [
+            "c_out_vector_*/&_cdesc_targ_native_scalar"
+        ],
+        "c_helper": [
+            "copy_array",
+            "type_defines"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_SIZE_T",
+                "C_LOC"
+            ]
+        },
+        "f_post_call": [
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "c_mixin_inout_vector_cdesc_targ_native_scalar",
+        "mixin": [
+            "f_mixin_inout_array_cdesc",
+            "c_mixin_inout_array_cdesc",
+            "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc"
+        ],
+        "c_helper": [
+            "copy_array"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
+        ]
+    },
+    {
+        "name": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+        "notes": [
+            "Almost same as intent_out_buf.",
+            "Similar to f_vector_out_allocatable but must declare result variable.",
+            "Always return a 1-d array."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc"
+        ],
+        "c_helper": [
+            "copy_array",
+            "type_defines"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+        ]
+    },
+    {
+        "name": "c_function_vector_scalar_malloc_targ_native_scalar",
+        "comments": [
+            "Create empty local vector then copy result to",
+            "malloc allocated array.",
+            "Add an argument with the length of the array."
+        ],
+        "mixin": [
+            "c_mixin_function_array_malloc"
+        ],
+        "cxx_local_var": "result",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}>\t {cxx_var};"
+        ],
+        "c_call": [
+            "{cxx_var} = {C_call_function};"
+        ],
+        "c_post_call": [
+            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "{cxx_T} *{c_var} =\t static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));",
+            "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {cxx_var}.size();"
+        ],
+        "c_local": [
+            "bytes"
+        ],
+        "impl_header": [
+            "<cstdlib>",
+            "<cstring>"
+        ]
+    },
+    {
+        "name": "f_in_vector_&_buf_targ_native_*",
+        "comments": [
+            "Create a vector for pointers."
+        ],
+        "notes": [
+            "Specialize for std::vector<native *>"
+        ],
+        "mixin": [
+            "f_mixin_in_2d_array_buf"
+        ],
+        "alias": [
+            "c_in_vector_&_buf_targ_native_*"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "std::vector<{cxx_T}> {cxx_var};",
+            "for (size_t i=0; i < {c_var_size}; ++i) {{+",
+            "{cxx_var}.push_back({c_var} + ({c_var_len}*i));",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_in_vector_scalar/*/&_buf_targ_string_scalar",
+        "mixin": [
+            "f_mixin_in_string_array_buf"
+        ],
+        "alias": [
+            "c_in_vector_scalar/*/&_buf_targ_string_scalar"
+        ],
+        "c_helper": [
+            "char_len_trim"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "std::vector<{cxx_T}> {cxx_var};",
+            "{{+",
+            "{c_const}char * {c_local_s} = {c_var};",
+            "std::vector<{cxx_T}>::size_type",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
+            "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s}, {c_var_len})));",
+            "{c_local_s} += {c_var_len};",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "i",
+            "n",
+            "s"
+        ]
+    },
+    {
+        "name": "c_out_vector_scalar/*/&_buf_copy_targ_string_scalar",
+        "notimplemented": true
+    },
+    {
+        "name": "f_out_vector_buf_targ_string_scalar",
+        "mixin": [
+            "f_mixin_in_string_array_buf"
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}> {cxx_var};"
+        ],
+        "c_post_call": [
+            "{{+",
+            "char * {c_local_s} = {c_var};",
+            "std::vector<{cxx_T}>::size_type",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
+            "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());",
+            "{c_local_s} += {c_var_len};",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "i",
+            "n",
+            "s"
+        ]
+    },
+    {
+        "name": "f_inout_vector_buf_targ_string_scalar",
+        "mixin": [
+            "f_mixin_in_string_array_buf"
+        ],
+        "cxx_local_var": "scalar",
+        "c_helper": [
+            "char_len_trim"
+        ],
+        "c_pre_call": [
+            "std::vector<{cxx_T}> {cxx_var};",
+            "{{+",
+            "{c_const}char * {c_local_s} = {c_var};",
+            "std::vector<{cxx_T}>::size_type",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
+            "{cxx_var}.push_back(std::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s}, {c_var_len})));",
+            "{c_local_s} += {c_var_len};",
+            "-}}",
+            "-}}"
+        ],
+        "c_post_call": [
+            "{{+",
+            "char * {c_local_s} = {c_var};",
+            "std::vector<{cxx_T}>::size_type",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
+            "for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
+            "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());",
+            "{c_local_s} += {c_var_len};",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "i",
+            "n",
+            "s"
+        ]
+    },
+    {
+        "name": "f_mixin_inout_char_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
+        "f_helper": [
+            "array_context"
+        ],
+        "f_declare": [
+            "type({F_array_type}) :: {f_var_cdesc}"
+        ],
+        "f_arg_call": [
+            "{f_var_cdesc}"
+        ],
+        "f_temps": [
+            "cdesc"
+        ]
+    },
+    {
+        "name": "f_mixin_str_array",
+        "comments": [
+            "Collect information about a string argument."
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = SH_TYPE_CHAR",
+            "{f_var_cdesc}%elem_len = len({f_var})",
+            "{f_var_cdesc}%size = size({f_var})",
+            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
+        ]
+    },
+    {
+        "name": "f_out_vector_&_cdesc_targ_string_scalar",
+        "mixin": [
+            "f_mixin_str_array",
+            "f_mixin_pass_cdesc"
+        ],
+        "alias": [
+            "c_out_vector_&_cdesc_targ_string_scalar"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "c_helper": [
+            "vector_string_out"
+        ],
+        "c_pre_call": [
+            "{c_const}std::vector<std::string> {cxx_var};"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
+        "c_post_call": [
+            "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+        ]
+    },
+    {
+        "name": "f_mixin_helper_vector_string_allocatable",
+        "comments": [
+            "Allocate a vector<string> variable.",
+            "Copy into Fortran allocated memory."
+        ],
+        "f_helper": [
+            "vector_string_allocatable"
+        ],
+        "c_helper": [
+            "vector_string_allocatable",
+            "vector_string_out_len"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "std::vector<std::string> *{cxx_var} = new std::vector<std::string>;"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
+        ],
+        "c_post_call": [
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{cxx_var});",
+            "-}}",
+            "{c_var_cdesc}->size      = {cxx_var}->size();"
+        ],
+        "f_post_call": [
+            "call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
+        ]
+    },
+    {
+        "name": "f_out_vector_&_cdesc_allocatable_targ_string_scalar",
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_helper_vector_string_allocatable",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor"
+        ],
+        "alias": [
+            "c_out_vector_&_cdesc_allocatable_targ_string_scalar"
+        ]
+    },
+    {
+        "name": "f_inout_vector_&_cdesc_targ_native_scalar",
+        "mixin": [
+            "c_mixin_inout_vector_cdesc_targ_native_scalar"
+        ],
+        "append": {
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LOC"
+                ]
+            }
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "f_function_vector_scalar_cdesc",
+        "c_helper": [
+            "copy_array"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
+        "notes": [
+            "Copy into allocated array."
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "c_mixin_out_vector_cdesc_targ_native_scalar"
+        ],
+        "c_helper": [
+            "copy_array"
+        ],
+        "f_helper": [
+            "copy_array"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar",
+        "mixin": [
+            "c_mixin_inout_vector_cdesc_targ_native_scalar"
+        ],
+        "append": {
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LOC"
+                ]
+            }
+        },
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "if (allocated({f_var})) deallocate({f_var})",
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ]
+    },
+    {
+        "name": "f_mixin_shadow-arg",
+        "comments": [
+            "Pass a shadow type to C wrapper."
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}%{F_derived_member}"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "name": "c_mixin_shadow",
+        "c_arg_decl": [
+            "{c_type} * {c_var}"
+        ],
+        "i_arg_decl": [
+            "type({f_capsule_data_type}), intent({f_intent}) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{f_type_module}": [
+                "{f_capsule_data_type}"
+            ]
+        }
+    },
+    {
+        "name": "f_in_shadow_scalar",
+        "mixin": [
+            "f_mixin_shadow-arg",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_in_shadow_scalar"
+        ],
+        "c_arg_decl": [
+            "{c_type} {c_var}"
+        ],
+        "i_arg_decl": [
+            "type({f_capsule_data_type}), intent({f_intent}), value :: {i_var}"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+        ]
+    },
+    {
+        "name": "f_in_shadow_*",
+        "mixin": [
+            "f_mixin_shadow-arg",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_in_shadow_*",
+            "f_inout_shadow_*",
+            "c_inout_shadow_*",
+            "f_inout_shadow_&",
+            "c_inout_shadow_&"
+        ],
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ]
+    },
+    {
+        "name": "f_function_shadow_*_capsule",
+        "comments": [
+            "Return a C_capsule_data_type."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_function_shadow_*_capsule"
+        ],
+        "cxx_local_var": "result",
+        "c_post_call": [
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};"
+        ]
+    },
+    {
+        "name": "f_function_shadow_*_this",
+        "notes": [
+            "Input set return_this.",
+            "Do not return anything."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine"
+        ],
+        "alias": [
+            "c_function_shadow_*_this"
+        ],
+        "f_result": "subroutine",
+        "c_call": [
+            "{CXX_this_call}{function_name}{CXX_template}({C_call_list});"
+        ]
+    },
+    {
+        "name": "f_in_shadow_&",
+        "mixin": [
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_in_shadow_&"
+        ],
+        "f_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}%{F_derived_member}"
+        ],
+        "f_need_wrapper": true,
+        "cxx_local_var": "pointer",
+        "c_pre_call": [
+            "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ]
+    },
+    {
+        "name": "f_function_shadow_*/&_capptr",
+        "comments": [
+            "Return a C_capsule_data_type."
+        ],
+        "mixin": [
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_function_shadow_*/&_capptr",
+            "f_function_shadow_*/&_capptr_caller/library",
+            "c_function_shadow_*/&_capptr_caller/library"
+        ],
+        "cxx_local_var": "result",
+        "c_post_call": [
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};"
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
+        "name": "f_function_shadow_scalar_capptr",
+        "comments": [
+            "Return a instance by value."
+        ],
+        "notes": [
+            "Create memory in c_pre_call so it will survive the return.",
+            "owner=caller sets idtor flag to release the memory.",
+            "c_local_var is passed in as argument."
+        ],
+        "mixin": [
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_function_shadow_scalar_capptr",
+            "f_function_shadow_scalar_capptr_targ_native_scalar",
+            "c_function_shadow_scalar_capptr_targ_native_scalar",
+            "f_function_shadow_scalar_capptr_caller/library"
+        ],
+        "cxx_local_var": "pointer",
+        "owner": "caller",
+        "c_pre_call": [
+            "{cxx_type} * {cxx_var} = new {cxx_type};"
+        ],
+        "c_post_call": [
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};"
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
+        "name": "f_ctor_shadow_scalar_capptr",
+        "mixin": [
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow"
+        ],
+        "alias": [
+            "c_ctor_shadow_scalar_capptr"
+        ],
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};"
+        ],
+        "owner": "caller"
+    },
+    {
+        "name": "f_dtor",
+        "mixin": [
+            "c_mixin_noargs",
+            "f_mixin_function-to-subroutine"
+        ],
+        "alias": [
+            "c_dtor"
+        ],
+        "lang_c": {
+            "impl_header": [
+                "<stddef.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstddef>"
+            ]
+        },
+        "f_arg_call": [],
+        "c_call": [
+            "delete {CXX_this};",
+            "{C_this}->addr = {nullptr};"
+        ]
+    },
+    {
+        "name": "f_shared_struct",
+        "notes": [
+            "Used with in, out, inout.",
+            "C pointer -> void pointer -> C++ pointer"
+        ],
+        "alias": [
+            "f_in_struct_scalar",
+            "f_in_struct_*",
+            "f_in_struct_&",
+            "f_out_struct_*",
+            "f_out_struct_&",
+            "f_inout_struct_*",
+            "f_inout_struct_&",
+            "c_in_struct_scalar",
+            "c_in_struct_*",
+            "c_in_struct_&",
+            "c_out_struct_*",
+            "c_out_struct_&",
+            "c_inout_struct_*",
+            "c_inout_struct_&"
+        ]
+    },
+    {
+        "start-after": "start function_struct_scalar",
+        "name": "f_function_struct_scalar",
+        "mixin": [
+            "f_mixin_function-to-subroutine"
+        ],
+        "alias": [
+            "c_function_struct_scalar"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "c_arg_decl": [
+            "{c_type} *{c_var}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent(OUT) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{f_type_module}": [
+                "{f_kind}"
+            ]
+        },
+        "c_call": [
+            "*{c_var} = {C_call_function};"
+        ],
+        "end-before": "end function_struct_scalar"
+    },
+    {
+        "name": "f_function_struct_*_pointer",
+        "comments": [
+            "C++ pointer -> void pointer -> C pointer"
+        ],
+        "mixin": [
+            "f_mixin_function_c-ptr"
+        ],
+        "alias": [
+            "c_function_struct_*"
+        ]
+    },
+    {
+        "name": "f_getter_struct_*_fapi_pointer",
+        "notes": [
+            "XXX - unused - the getter does not need a C wrapper if api(fapi)",
+            "The getter can be done totally from Fortran for a pointer to a scalar.",
+            "Return value a function result."
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "c_f_pointer"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}, pointer :: {F_result}"
+        ],
+        "f_call": [
+            "call c_f_pointer({CXX_this}%{field_name}, {F_result})"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "name": "f_setter_struct_*_pointer",
+        "alias": [
+            "f_setter_struct_*"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent(IN) :: {i_var}{i_dimension}"
+        ],
+        "c_post_call": [
+            "{CXX_this}->{field_name} = val;"
+        ]
+    },
+    {
+        "name": "f_setter_struct_**",
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent(IN) :: {i_var}{i_dimension}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "c_post_call": [
+            "{CXX_this}->{field_name} = val;"
+        ]
+    },
+    {
+        "name": "f_getter_bool_scalar",
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "f_arg_call": [],
+        "c_call": [
+            "// skip call c_getter"
+        ],
+        "c_return": [
+            "return {CXX_this}->{field_name};"
+        ]
+    },
+    {
+        "name": "f_setter_bool_scalar",
+        "mixin": [
+            "f_mixin_local-logical-var"
+        ],
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ],
+        "c_post_call": [
+            "{CXX_this}->{field_name} = val;"
+        ]
+    },
+    {
+        "name": "f_getter_native_scalar",
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "alias": [
+            "c_getter_native_scalar",
+            "f_getter_native_*_pointer",
+            "c_getter_native_*"
+        ],
+        "f_arg_call": [],
+        "c_call": [
+            "// skip call c_getter"
+        ],
+        "c_return": [
+            "return {CXX_this}->{field_name};"
+        ]
+    },
+    {
+        "name": "f_setter",
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "alias": [
+            "c_setter"
+        ],
+        "f_arg_call": [],
+        "f_call": [
+            "call {F_C_call}({F_arg_c_call})"
+        ],
+        "c_call": [
+            "// skip call c_setter"
+        ]
+    },
+    {
+        "name": "f_setter_native_scalar/*",
+        "alias": [
+            "c_setter_native_scalar",
+            "c_setter_native_*"
+        ],
+        "f_arg_call": [
+            "{fc_var}"
+        ],
+        "c_post_call": [
+            "{CXX_this}->{field_name} = val;"
+        ]
+    },
+    {
+        "name": "f_mixin_getter_cdesc",
+        "comments": [
+            "Save pointer struct members in a cdesc",
+            "along with shape information."
+        ],
+        "c_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
+            "{c_var_cdesc}->size = {c_array_size};"
+        ]
+    },
+    {
+        "name": "f_getter_native_*_cdesc_pointer",
+        "notes": [
+            "Similar to calling a function, but save field pointer instead."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_native_cdesc_pointer",
+            "f_mixin_getter_cdesc"
+        ],
+        "alias": [
+            "f_getter_struct_*_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_getter_struct_**_cdesc_raw",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_native_cdesc_raw",
+            "f_mixin_getter_cdesc"
+        ]
+    },
+    {
+        "name": "f_getter_string_scalar_cdesc_allocatable",
+        "comments": [
+            "Return argument meta data to Fortran."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_char_cdesc_allocate"
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());",
+            "{c_var_cdesc}->type = 0; // SH_CHAR;",
+            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
+            "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "f_setter_string_scalar_buf",
+        "comments": [
+            "Extract meta data and pass to C.",
+            "Create std::string from Fortran meta data."
+        ],
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "alias": [
+            "c_setter_string_scalar_buf"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent({f_intent}) :: {f_var}"
+        ],
+        "c_post_call": [
+            "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
+        ]
+    },
+    {
+        "name": "c_mixin_arg_cfi",
+        "comments": [
+            "Make the argument a CFI_desc_t."
+        ],
+        "iface_header": [
+            "ISO_Fortran_binding.h"
+        ],
+        "c_arg_decl": [
+            "CFI_cdesc_t *{c_var_cfi}"
+        ],
+        "c_temps": [
+            "cfi"
+        ]
+    },
+    {
+        "name": "f_function_char_*_cfi_allocatable",
+        "notes": [
+            "Add allocatable attribute to declaration."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_cfi"
+        ],
+        "alias": [
+            "f_function_char_scalar_cfi_allocatable"
+        ],
+        "f_need_wrapper": true,
+        "f_arg_decl": [
+            "character(len=:), allocatable :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+        ],
+        "cxx_local_var": null,
+        "c_pre_call": [],
+        "c_post_call": [
+            "if ({cxx_var} != {nullptr}) {{+",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_function_char_scalar_cfi_pointer",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_cfi"
+        ],
+        "alias": [
+            "f_function_char_*_cfi_pointer"
+        ],
+        "f_need_wrapper": true,
+        "f_arg_decl": [
+            "character(len=:), pointer :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=:), intent({f_intent}), pointer :: {i_var}"
+        ],
+        "cxx_local_var": null,
+        "c_pre_call": [],
+        "c_post_call": [
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
+            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "cptr",
+            "fptr",
+            "cdesc",
+            "len",
+            "err"
+        ]
+    },
+    {
+        "name": "c_mixin_arg_character_cfi",
+        "comments": [
+            "Local character argument passed as CFI_desc_t."
+        ],
+        "mixin": [
+            "c_mixin_arg_cfi"
+        ],
+        "cxx_local_var": "pointer",
+        "i_arg_decl": [
+            "character(len=*), intent({f_intent}) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "c_pre_call": [
+            "char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
+        "name": "c_mixin_arg_native_cfi",
+        "comments": [
+            "Native argument which use CFI_desc_t."
+        ],
+        "mixin": [
+            "c_mixin_arg_cfi"
+        ],
+        "cxx_local_var": "pointer",
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}) :: {i_var}{f_assumed_shape}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}"
+            ]
+        },
+        "i_arg_names": [
+            "{i_var}"
+        ]
+    },
+    {
+        "name": "c_mixin_native_cfi_allocatable",
+        "comments": [
+            "Allocate copy of C pointer (requires +dimension)."
+        ],
+        "c_temps": [
+            "extents",
+            "lower"
+        ],
+        "c_post_call": [
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
+        "name": "c_mixin_native_cfi_pointer",
+        "comments": [
+            "Convert C pointer to Fortran pointer."
+        ],
+        "c_temps": [
+            "extents",
+            "lower"
+        ],
+        "c_post_call": [
+            "{{+",
+            "CFI_CDESC_T({rank}) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});",
+            "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "cptr",
+            "fptr",
+            "cdesc",
+            "err"
+        ]
+    },
+    {
+        "name": "f_in/inout_native_*_cfi",
+        "mixin": [
+            "c_mixin_arg_native_cfi"
+        ],
+        "c_pre_call": [
+            "{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
+        "name": "f_in_char_*_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_alloc",
+            "char_free"
+        ],
+        "c_pre_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "char *{cxx_var} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_free}({cxx_var});"
+        ]
+    },
+    {
+        "name": "f_out_char_*_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_blank_fill"
+        ],
+        "c_post_call": [
+            "{c_helper_char_blank_fill}({cxx_var}, {c_var_cfi}->elem_len);"
+        ]
+    },
+    {
+        "name": "f_inout_char_*_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_alloc",
+            "char_copy",
+            "char_free"
+        ],
+        "c_pre_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "char *{cxx_var} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);",
+            "{c_helper_char_free}({cxx_var});"
+        ]
+    },
+    {
+        "name": "f_function_char_*_cfi_copy",
+        "comments": [
+            "Copy result into caller's buffer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_character_cfi"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "f_need_wrapper": true,
+        "cxx_local_var": "result",
+        "c_pre_call": [],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
+        ]
+    },
+    {
+        "name": "f_function_char_*_cfi_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
+        "base": "f_function_char_*_cfi_copy",
+        "fmtdict": {
+            "f_var": "{F_string_result_as_arg}",
+            "i_var": "{F_string_result_as_arg}",
+            "c_var": "{F_string_result_as_arg}"
+        },
+        "f_result": "subroutine",
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_in_char_**_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent({f_intent}) :: {f_var}(:)"
+        ],
+        "i_arg_decl": [
+            "character(len=*), intent({f_intent}) :: {i_var}(:)"
+        ],
+        "c_pre_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_var_len} = {c_var_cfi}->elem_len;",
+            "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
+            "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+        ],
+        "c_temps": [
+            "cfi",
+            "len",
+            "size"
+        ],
+        "c_helper": [
+            "char_array_alloc",
+            "char_array_free"
+        ],
+        "cxx_local_var": "pointer",
+        "c_post_call": [
+            "{c_helper_char_array_free}({cxx_var}, {c_var_size});"
+        ]
+    },
+    {
+        "name": "f_in_string_scalar/*/&_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_len_trim"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});"
+        ],
+        "c_local": [
+            "trim"
+        ]
+    },
+    {
+        "name": "f_out_string_*/&_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "std::string {cxx_var};",
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+        ]
+    },
+    {
+        "name": "f_inout_string_*/&_cfi",
+        "mixin": [
+            "c_mixin_arg_character_cfi"
+        ],
+        "c_helper": [
+            "char_copy",
+            "char_len_trim"
+        ],
+        "cxx_local_var": "scalar",
+        "c_pre_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+        ],
+        "c_local": [
+            "trim"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_cfi_copy",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_character_cfi"
+        ],
+        "alias": [
+            "f_function_string_*_cfi_copy",
+            "f_function_string_&_cfi_copy"
+        ],
+        "f_need_wrapper": true,
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "cxx_local_var": null,
+        "c_pre_call": [],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_cfi_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
+        "base": "f_function_string_scalar_cfi_copy",
+        "alias": [
+            "f_function_string_&_cfi_arg"
+        ],
+        "fmtdict": {
+            "f_var": "{F_string_result_as_arg}",
+            "i_var": "{F_string_result_as_arg}",
+            "c_var": "{F_string_result_as_arg}"
+        },
+        "f_result": "subroutine",
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
+        "name": "f_shared_function_string_*_cfi_pointer",
+        "notes": [
+            "XXX - consolidate with c_function_*_cfi_pointer?",
+            "XXX - via a helper to get address and length of string"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_cfi"
+        ],
+        "alias": [
+            "f_function_string_scalar/*/&_cfi_pointer",
+            "f_function_string_scalar/*/&_cfi_pointer_caller/library"
+        ],
+        "f_need_wrapper": true,
+        "f_arg_decl": [
+            "character(len=:), pointer :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=:), intent({f_intent}), pointer :: {i_var}"
+        ],
+        "cxx_local_var": null,
+        "c_pre_call": [],
+        "c_post_call": [
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());",
+            "size_t {c_local_len} = {cxx_var}{cxx_member}length();",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "cptr",
+            "fptr",
+            "cdesc",
+            "len",
+            "err"
+        ]
+    },
+    {
+        "name": "f_mixin_function_string_scalar_cfi_allocatable",
+        "notes": [
+            "similar to f_char_scalar_allocatable."
+        ],
+        "f_need_wrapper": true,
+        "f_arg_decl": [
+            "character(len=:), allocatable :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ]
+    },
+    {
+        "name": "f_function_string_*/&_cfi_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_string_scalar_cfi_allocatable",
+            "c_mixin_arg_cfi"
+        ],
+        "alias": [
+            "f_function_string_scalar/*/&_cfi_allocatable_caller/library"
+        ],
+        "i_arg_decl": [
+            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "lang_c": {
+            "impl_header": [
+                "<string.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        },
+        "c_post_call": [
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_function_string_scalar_cfi_allocatable",
+        "notes": [
+            "std::string & function()"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_string_scalar_cfi_allocatable",
+            "c_mixin_arg_cfi"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+        ],
+        "cxx_local_var": null,
+        "c_pre_call": [],
+        "c_post_call": [
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);",
+            "-}}"
+        ]
+    },
+    {
+        "name": "f_mixin_out_string_**_cfi",
+        "c_temps": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "std::string *{c_var_cxx};"
+        ],
+        "c_arg_call": [
+            "&{c_var_cxx}"
+        ]
+    },
+    {
+        "name": "f_out_string_**_cfi_allocatable",
+        "notes": [
+            "std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),",
+            "int *nstrs+intent(out)+hidden"
+        ],
+        "mixin": [
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}"
+        ],
+        "c_post_call": [
+            "// Allocate and copy into {c_var}"
+        ]
+    },
+    {
+        "name": "f_out_string_**_cfi_copy",
+        "mixin": [
+            "c_mixin_arg_cfi",
+            "f_mixin_out_string_**_cfi"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}"
+        ],
+        "c_post_call": [
+            "// Copy results into {c_var}"
+        ]
+    },
+    {
+        "name": "f_out_string_**_cdesc_copy",
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Copy into Fortran argument.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
+        ],
+        "mixin": [
+            "f_mixin_str_array",
+            "f_mixin_pass_cdesc"
+        ],
+        "alias": [
+            "c_out_string_**_cdesc_copy"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "c_helper": [
+            "array_string_out"
+        ],
+        "c_pre_call": [
+            "std::string *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ],
+        "c_post_call": [
+            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+        ]
+    },
+    {
+        "name": "f_out_string_**_copy",
+        "notes": [
+            "std::string **arg+intent(out)+dimension(size)",
+            "Returning a pointer to a string*. However, this needs additional",
+            "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
+        ],
+        "alias": [
+            "c_out_string_**"
+        ],
+        "notimplemented": true
+    },
+    {
+        "name": "f_mixin_helper_array_string_allocatable",
+        "comments": [
+            "Allocate a vector<string> variable.",
+            "Assign to std::string pointer from C++ function.",
+            "Copy into Fortran allocated memory."
+        ],
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Allocate in fortran, fill from C.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
+        ],
+        "f_helper": [
+            "array_string_allocatable"
+        ],
+        "c_helper": [
+            "array_string_allocatable",
+            "array_string_out_len"
+        ],
+        "c_pre_call": [
+            "std::string *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
+            "{c_var_cdesc}->size     = {c_array_size};",
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
+            "-}}"
+        ],
+        "f_post_call": [
+            "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
+        ]
+    },
+    {
+        "name": "f_out_string_**_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_helper_array_string_allocatable",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor"
+        ]
+    },
+    {
+        "name": "f_out_native_*_cfi_allocatable"
+    },
+    {
+        "name": "f_out_native_**_cfi_allocatable",
+        "comments": [
+            "Set Fortran pointer to point to cxx_var."
+        ],
+        "mixin": [
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_allocatable"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}"
+        ],
+        "c_pre_call": [
+            "{c_const}{c_type} * {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_out_native_**_cfi_pointer",
+        "comments": [
+            "Set Fortran pointer to point to cxx_var."
+        ],
+        "mixin": [
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_pointer"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}"
+        ],
+        "c_pre_call": [
+            "{c_const}{c_type} * {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ]
+    },
+    {
+        "name": "f_function_native_*_cfi_allocatable",
+        "comments": [
+            "Pass result as an argument to C wrapper.",
+            "Convert to subroutine and pass result as an argument.",
+            "Return an allocated copy of data."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_allocatable"
+        ],
+        "f_arg_decl": [
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}"
+        ],
+        "cxx_local_var": "result"
+    },
+    {
+        "name": "f_function_native_*_cfi_pointer",
+        "comments": [
+            "Pass result as an argument to C wrapper.",
+            "Convert to subroutine and pass result as an argument.",
+            "Return Fortran pointer to data."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_pointer"
+        ],
+        "f_arg_decl": [
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}"
+        ],
+        "f_pre_call": [
+            "nullify({f_var})"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_decl": [
+            "{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}"
+        ],
+        "cxx_local_var": "result"
+    },
+    {
+        "name": "f_in_procedure_scalar",
+        "alias": [
+            "c_in_procedure_scalar"
+        ],
+        "f_arg_decl": [
+            "{f_type} :: {f_var}"
+        ]
+    }
+]
