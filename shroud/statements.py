@@ -365,17 +365,18 @@ def post_mixin_check_statement(name, stmt):
                     missing.append(field)
                 elif not isinstance(fvalue, list):
                     err = True
-                    error.cursor.warning("{} must be a list in statement {}".format(field, name))
+                    error.cursor.warning("{} must be a list.".format(field))
             if missing:
-                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together\n" +
-                                     "Missing {} in statement {}".format(", ".join(missing), name))
+                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
+                                     "Missing {}.".format(", ".join(missing)))
                 err = True
             if not err:
                 length = len(c_arg_decl)
                 if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):
                     error.cursor.warning(
                         "c_arg_decl, i_arg_decl and i_arg_names "
-                        "must all be same length in {}".format(name))
+                        "must all be same length. Used {}, {}, {}."
+                        .format(len(c_arg_decl), len(i_arg_decl), len(i_arg_names)))
 
 ##-    if lang in ["f", "fc"]:
 ##-        # Default f_arg_name is often ok.
@@ -448,20 +449,22 @@ def process_mixin(stmts, defaults, stmtdict):
     # i.e. you can mixin a group which itself has a mixin.
     # Save by name permutations into mixins  (in/out/inout)
     cursor = error.cursor
+    cursor.push_phase("Check statements")
+    stmt_cursor = cursor.push_statement()
     mixins = OrderedDict()
     aliases = []
     index = 0
     for stmt in stmts:
+        stmt_cursor.stmt = stmt
         if "name" not in stmt:
-            cursor.warning("Missing name in statements: {}".
-                               format(str(stmt)))
+            cursor.warning("Missing name in statement")
             continue
         name = stmt["name"]
 #        print("XXXXX", name)
         node = {}
         parts = name.split("_")
         if len(parts) < 2:
-            cursor.warning("Statement name is too short: %s" % name)
+            cursor.warning("Statement name is too short, must include language and intent.")
             continue
         lang = parts[0]
         intent = parts[1]
@@ -470,14 +473,14 @@ def process_mixin(stmts, defaults, stmtdict):
             continue
         if intent == "mixin":
             if "base" in stmt:
-                cursor.warning("intent mixin group should not have 'base' field: %s" % name)
+                cursor.warning("Intent mixin group should not have 'base' field.")
                 continue
                 
             if "alias" in stmt:
-                cursor.warning("intent mixin group should not have 'alias' field: %s" % name)
+                cursor.warning("Intent mixin group should not have 'alias' field.")
                 continue
             if "append" in stmt:
-                cursor.warning("intent mixin group should not have 'append' field: %s" % name)
+                cursor.warning("Intent mixin group should not have 'append' field.")
                 continue
         if "mixin" in stmt:
             if "base" in stmt:
@@ -486,9 +489,9 @@ def process_mixin(stmts, defaults, stmtdict):
                 ### compute mixin permutations
                 mparts = mixin.split("_")
                 if mparts[1] != "mixin":
-                    cursor.warning("Mixin {} must have intent 'mixin' in {}".format(mixin, name))
+                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
-                    cursor.warning("Mixin {} not found in {}".format(mixin, name))
+                    cursor.warning("Mixin '{}' not found.".format(mixin))
 #                print("M    ", mixin)
                 else:
                     append_mixin(node, mixins[mixin])
@@ -518,16 +521,15 @@ def process_mixin(stmts, defaults, stmtdict):
                 to_add.append(anode)
             # Sanity check. Otherwise defaults[lang] would be wrong.
             if len(lparts) > 1:
-                cursor.warning("Only one language per group: {}".format(name))
+                cursor.warning("Only one language per group. Used {}".format(", ".join(lparts.keys())))
 
         for anode in to_add:
             aname = anode["name"]
             parts = aname.split("_", 2)
             lang = parts[0]
             intent = parts[1]
-            msg = None
             if aname in mixins:
-                msg = "Statement name already exists {}".format(name)
+                cursor.warning("Statement name '{}' already exists.".format(aname))
             elif intent not in [
                 "in", "out", "inout", "mixin",
                 "function", "subroutine",
@@ -536,12 +538,7 @@ def process_mixin(stmts, defaults, stmtdict):
                 "base", "descr",
                 "defaulttmp", "XXXin", "test", "shared",
             ]:
-                msg = "Invalid intent '{}' in statement {}".format(intent, aname)
-
-            if msg:
-                if aname != name:
-                    msg += " from name {}".format(name)
-                cursor.warning(msg)
+                cursor.warning("Invalid intent '{}'.".format(intent))
             else:
                 mixins[aname] = anode
 
@@ -550,18 +547,18 @@ def process_mixin(stmts, defaults, stmtdict):
 
     # Apply defaults.
     for stmt in mixins.values():
+        stmt_cursor.stmt = stmt
         name = stmt["name"]
         parts = name.split("_",2)
         lang = parts[0]
         intent = parts[1]
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
-                cursor.warning("Base not found for {}: {}".format(
-                    name, stmt["base"]))
+                cursor.warning("Base '{}' not found.".format(stmt["base"]))
             else:
                 node = util.Scope(stmtdict[stmt["base"]])
         elif lang not in defaults:
-            cursor.warning("Statement does not start with a language code: %s" % name)
+            cursor.warning("Statement does not start with a known language code: '%s'" % lang)
         else:
             node = util.Scope(defaults[lang])
         node.update(stmt)
@@ -571,6 +568,7 @@ def process_mixin(stmts, defaults, stmtdict):
     # Install with alias name.
     for name, aliases in aliases:
         node = stmtdict[name]
+        stmt_cursor.stmt = node
         for alias in aliases:
 #            print("AAAA ", alias)
             aout = compute_all_permutations(alias)
@@ -578,13 +576,15 @@ def process_mixin(stmts, defaults, stmtdict):
                 aname = "_".join(apart)
                 anode = util.Scope(node)
                 if aname in stmtdict:
-                    cursor.warning("Alias already exists: {}".format(aname))
+                    cursor.warning("Alias '{}' already exists.".format(aname))
                 else:
                     anode.name = aname
                     anode.intent = apart[1]
                     stmtdict[aname] = anode
 #                    print("A    ", aname)
-
+    cursor.pop_statement()
+    cursor.pop_phase("Check statements")
+#    cursor.check_for_warnings()
     
 def update_for_language(stmts, lang):
     """

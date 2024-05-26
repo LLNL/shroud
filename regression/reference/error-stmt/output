@@ -1,43 +1,78 @@
 
 ----------------------------------------
-Phase: initial
+Phase: Check statements
 ----------------------------------------
-Missing name in statements: {'noname': 'missing', '__line__': 18}
+statement line 18
+Missing name in statement
 --------------------
-Statement name is too short: short
+statement line 19
+Statement: short
+Statement name is too short, must include language and intent.
 --------------------
-intent mixin group should not have 'base' field: f_mixin_with-base
+statement line 22
+Statement: f_mixin_with-base
+Intent mixin group should not have 'base' field.
 --------------------
-intent mixin group should not have 'alias' field: f_mixin_with-alias
+statement line 24
+Statement: f_mixin_with-alias
+Intent mixin group should not have 'alias' field.
 --------------------
-intent mixin group should not have 'append' field: f_mixin_with-append
+statement line 26
+Statement: f_mixin_with-append
+Intent mixin group should not have 'append' field.
 --------------------
-Mixin f_in_foo1mixin must have intent 'mixin' in f_in_foo1
+statement line 29
+Statement: f_in_foo1
+Mixin 'f_in_foo1mixin' must have intent 'mixin'.
 --------------------
-Mixin f_mixin_nonexistent not found in f_in_foo2
+statement line 32
+Statement: f_in_foo2
+Mixin 'f_mixin_nonexistent' not found.
 --------------------
-Statement name already exists f_mixin_good1
+statement line 38
+Statement: f_mixin_good1
+Statement name 'f_mixin_good1' already exists.
 --------------------
-Statement name already exists f_mixin_good2/good3 from name f_mixin_good2/good3
+statement line 41
+Statement: f_mixin_good2/good3
+Statement name 'f_mixin_good2' already exists.
 --------------------
-Only one language per group: f/c_in_foo3
+statement line 43
+Statement: f/c_in_foo3
+Only one language per group. Used f, c
 --------------------
-Invalid intent 'badintent' in statement f_badintent_foo6
+statement line 53
+Statement: f_badintent_foo6
+Invalid intent 'badintent'.
 --------------------
-Invalid intent 'outer' in statement f_outer_foo6 from name f_in/outer_foo6
+statement line 54
+Statement: f_in/outer_foo6
+Invalid intent 'outer'.
 --------------------
-c_arg_decl must be a list in statement f_in_foo7
+statement line 58
+Statement: f_in_foo7
+c_arg_decl must be a list.
 --------------------
-c_arg_decl, i_arg_decl and i_arg_names must all exist together
-Missing i_arg_decl, i_arg_names in statement f_in_foo7
+statement line 58
+Statement: f_in_foo7
+c_arg_decl, i_arg_decl and i_arg_names must all exist together.
+Missing i_arg_decl, i_arg_names.
 --------------------
-c_arg_decl, i_arg_decl and i_arg_names must all be same length in f_in_foo8
+statement line 60
+Statement: f_in_foo8
+c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.
 --------------------
-Statement does not start with a language code: java_mixin
+statement line 20
+Statement: java_mixin
+Statement does not start with a known language code: 'java'
 --------------------
-Base not found for f_in_foo4: nonexistent
+statement line 45
+Statement: f_in_foo4
+Base 'nonexistent' not found.
 --------------------
-Alias already exists: f_in_foo5a
+statement line 48
+Statement: f_in_foo5
+Alias 'f_in_foo5a' already exists.
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h
