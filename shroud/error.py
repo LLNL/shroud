@@ -34,7 +34,7 @@ class NodeCursor(object):
             print("Node:", self.node.name)
             if not linenumber:
                 linenumber = self.node.linenumber
-        if linenumber != "?":
+        if linenumber is not None and linenumber != "?":
             print("line", linenumber)
         if self.stmt:
             print("Statement:", self.stmt.name)

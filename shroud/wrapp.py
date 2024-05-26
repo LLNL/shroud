@@ -3617,7 +3617,6 @@ def update_statements_for_language(language):
     language : str
         "c" or "c++"
     """
-    statements.check_statements(py_statements)
     statements.update_for_language(py_statements, language)
     statements.process_mixin(py_statements, default_stmts, py_dict)
     global default_scope

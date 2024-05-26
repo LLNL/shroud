@@ -578,6 +578,8 @@ if __name__ == "__main__":
         TestDesc("wrap"),
         TestDesc("error",
                  keywords=["err"]),
+        TestDesc("error-stmt",
+                 keywords=["err"]),
         TestDesc("error-ast",
                  keywords=["err"]),
         TestDesc("error-generate",

@@ -4,6 +4,7 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. _StatementsAnchor:
 
 Statements
 ==========
@@ -14,6 +15,8 @@ used to create the wrapper.
 Combinations of language, type and attributes are used to select
 a statement entry.
 
+
+Statement names which start with a `!` are ignored.
 
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.

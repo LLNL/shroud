@@ -598,8 +598,11 @@ def main_with_args(args):
     # Write out generated types
     TypeOut(newlibrary, config).write_class_types()
 
+    user_statements = allinput.get("statements", {})
+
     try:
-        statements.update_fc_statements_for_language(newlibrary.language)
+        statements.update_fc_statements_for_language(
+            newlibrary.language, user_statements.get("fc", {}))
         wrap = newlibrary.wrap
 
         metaattrs.process_metaattrs(newlibrary, "share")
