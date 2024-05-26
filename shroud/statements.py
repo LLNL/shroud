@@ -349,7 +349,7 @@ def post_mixin_check_statement(name, stmt):
     lang = parts[0]
     intent = parts[1]
 
-    if lang in ["c", "fc"] and intent != "mixin":
+    if lang == "f" and intent not in ["mixin", "setter"]:
         c_arg_decl = stmt.get("c_arg_decl", None)
         i_arg_decl = stmt.get("i_arg_decl", None)
         i_arg_names = stmt.get("i_arg_names", None)

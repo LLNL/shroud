@@ -26,12 +26,12 @@ Invalid intent 'badintent' in statement f_badintent_foo6
 --------------------
 Invalid intent 'outer' in statement f_outer_foo6 from name f_in/outer_foo6
 --------------------
-c_arg_decl must be a list in statement c_in_foo7
+c_arg_decl must be a list in statement f_in_foo7
 --------------------
 c_arg_decl, i_arg_decl and i_arg_names must all exist together
-Missing i_arg_decl, i_arg_names in statement c_in_foo7
+Missing i_arg_decl, i_arg_names in statement f_in_foo7
 --------------------
-c_arg_decl, i_arg_decl and i_arg_names must all be same length in c_in_foo8
+c_arg_decl, i_arg_decl and i_arg_names must all be same length in f_in_foo8
 --------------------
 Statement does not start with a language code: java_mixin
 --------------------

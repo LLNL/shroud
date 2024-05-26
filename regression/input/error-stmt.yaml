@@ -55,9 +55,9 @@ statements:
 
 # statements.post_mixin_check_statement
 
-    - name: c_in_foo7
+    - name: f_in_foo7
       c_arg_decl: "{c_var}"
-    - name: c_in_foo8
+    - name: f_in_foo8
       c_arg_decl:
       - one
       i_arg_decl:
