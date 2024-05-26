@@ -1096,7 +1096,7 @@ defaults are sufficient for most cases.
     statements:
       fc:
         file: [ ]
-        list:
+        extend:
         - name: f_...
 
 See :ref:`StatementsAnchor` for details.

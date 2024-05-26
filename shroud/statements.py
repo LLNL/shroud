@@ -332,8 +332,8 @@ def update_fc_statements_for_language(language, user):
     stmts = read_json_resource('fc-statements.json')
     fc_statements.extend(stmts)
 
-    if "list" in user:
-        fc_statements.extend(user["list"])
+    if "extend" in user:
+        fc_statements.extend(user["extend"])
 
     update_for_language(fc_statements, language)
     process_mixin(fc_statements, default_stmts, fc_dict)

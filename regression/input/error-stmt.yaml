@@ -14,7 +14,7 @@ cxx_header: error.hpp
 statements:
 
   fc:
-    list:
+    extend:
     - noname: missing
     - name: short
     - name: java_mixin
