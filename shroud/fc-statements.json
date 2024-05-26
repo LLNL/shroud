@@ -1,6 +1,9 @@
 [
     {
         "name": "c_mixin_noargs",
+        "comments": [
+            "No arguments to a function."
+        ],
         "c_arg_decl": [],
         "i_arg_decl": [],
         "i_arg_names": []
@@ -23,6 +26,9 @@
     },
     {
         "name": "f_mixin_function",
+        "comment": [
+            "Default code to call a function."
+        ],
         "f_arg_call": [],
         "f_call": [
             "{F_result} = {F_C_call}({F_arg_c_call})"
@@ -59,6 +65,9 @@
     },
     {
         "name": "f_mixin_function_ptr",
+        "comment": [
+            "Return a C pointer directly as type(C_PTR)."
+        ],
         "f_module": {
             "iso_c_binding": [
                 "C_PTR"
@@ -444,6 +453,9 @@
     },
     {
         "name": "f_mixin_function_shadow_capsule",
+        "comments": [
+            "Pass function result as a capsule argument from Fortran to C."
+        ],
         "f_arg_decl": [
             "{f_type} :: {f_var}"
         ],
@@ -454,6 +466,10 @@
     },
     {
         "name": "f_mixin_function_shadow_capptr",
+        "comments": [
+            "Pass function result as a capsule field of shadow class",
+            "from Fortran to C."
+        ],
         "f_arg_decl": [
             "{f_type} :: {f_var}",
             "type(C_PTR) :: {f_local_ptr}"
@@ -655,6 +671,9 @@
     },
     {
         "name": "f_mixin_in_2d_array_buf",
+        "comments": [
+            "Pass argument, len and size to C."
+        ],
         "f_arg_decl": [
             "{f_type}, intent({f_intent}) :: {f_var}(:,:)"
         ],
@@ -697,6 +716,10 @@
     },
     {
         "name": "f_mixin_inout_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
         "f_helper": [
             "array_context"
         ],
@@ -719,6 +742,10 @@
     },
     {
         "name": "c_mixin_inout_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
         "c_helper": [
             "array_context"
         ],
@@ -771,6 +798,9 @@
     },
     {
         "name": "f_mixin_in_string_array_buf",
+        "comments": [
+            "Pass argument, size and len to C."
+        ],
         "f_arg_decl": [
             "character(len=*), intent(IN) :: {f_var}(:)"
         ],
@@ -815,6 +845,12 @@
     },
     {
         "name": "f_mixin_in_character_buf",
+        "comments": [
+            "Pass CHARACTER and LEN to C wrapper."
+        ],
+        "notes": [
+            "Do not use arg_decl here since it does not understand +len(30) on functions."
+        ],
         "f_temps": [
             "len"
         ],
@@ -837,6 +873,11 @@
     },
     {
         "name": "c_mixin_in_character_buf",
+        "notes": [
+            "Used with function which pass in character argument.",
+            "Used with function which return a char *.",
+            "C wrapper will fill argument."
+        ],
         "c_arg_decl": [
             "char *{c_var}",
             "int {c_var_len}"
@@ -977,6 +1018,10 @@
     },
     {
         "name": "f_in_native_**",
+        "notes": [
+            "Any array of pointers.  Assumed to be non-contiguous memory.",
+            "All Fortran can do is treat as a type(C_PTR)."
+        ],
         "alias": [
             "c_in_native_**"
         ],
@@ -997,6 +1042,9 @@
     },
     {
         "name": "c_mixin_out_native_**",
+        "notes": [
+            "double **count +intent(out)+dimension(ncount)"
+        ],
         "c_pre_call": [
             "{c_const}{cxx_type} *{cxx_var};"
         ],
@@ -1023,6 +1071,11 @@
     },
     {
         "name": "f_out_native_**_cdesc_allocatable",
+        "notes": [
+            "deref(allocatable)",
+            "A C function with a 'int **' argument associates it",
+            "with a Fortran pointer."
+        ],
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
@@ -1033,6 +1086,11 @@
     },
     {
         "name": "f_out_native_**_cdesc_pointer",
+        "notes": [
+            "deref(pointer)",
+            "A C function with a 'int **' argument associates it",
+            "with a Fortran pointer."
+        ],
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_out_native_**",
@@ -1042,6 +1100,9 @@
     },
     {
         "name": "f_out_native_**_raw",
+        "notes": [
+            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
+        ],
         "alias": [
             "c_out_native_**_raw",
             "c_out_native_**"
@@ -1103,6 +1164,9 @@
     },
     {
         "name": "f_out/inout_native_*_hidden",
+        "comments": [
+            "Declare a local variable and pass to C."
+        ],
         "alias": [
             "c_out/inout_native_*_hidden"
         ],
@@ -1115,6 +1179,9 @@
     },
     {
         "name": "f_out/inout_native_&_hidden",
+        "comments": [
+            "Declare a local variable and pass to C."
+        ],
         "alias": [
             "c_out/inout_native_&_hidden"
         ],
@@ -1155,6 +1222,9 @@
     },
     {
         "name": "f_in/out/inout_void_**",
+        "notes": [
+            "Treat as an assumed length array in Fortran interface."
+        ],
         "alias": [
             "c_in/out/inout_void_**",
             "f_in_void_**_cfi"
@@ -1205,6 +1275,10 @@
     },
     {
         "name": "f_function_native_&",
+        "notes": [
+            "Pointer to scalar.",
+            "type(C_PTR) is returned instead of a cdesc argument."
+        ],
         "mixin": [
             "f_mixin_function_c-ptr"
         ],
@@ -1228,6 +1302,10 @@
     },
     {
         "name": "f_function_native_*_cdesc_pointer_caller",
+        "notes": [
+            "+deref(pointer) +owner(caller)",
+            "The capsule contains information used to delete the memory."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1394,6 +1472,10 @@
     },
     {
         "name": "f_function_char_*_buf_copy",
+        "notes": [
+            "char *getname() +len(30)",
+            "Copy result into caller's buffer."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_in_character_buf",
@@ -1412,6 +1494,10 @@
     },
     {
         "name": "f_function_char_*_arg",
+        "notes": [
+            "Change function result into an argument",
+            "Use F_string_result_as_arg as the argument name."
+        ],
         "base": "f_function_char_*_buf_copy",
         "alias": [
             "c_function_char_*_arg",
@@ -1436,6 +1522,9 @@
     },
     {
         "name": "f_in_char_**",
+        "notes": [
+            "Treat as an assumed length array in Fortran interface."
+        ],
         "alias": [
             "c_in_char_**"
         ],
@@ -1622,6 +1711,10 @@
     },
     {
         "name": "f_shared_function_string_scalar",
+        "notes": [
+            "Fortran calling a C function without",
+            "any api argument - is this useful?"
+        ],
         "alias": [
             "c_function_string_*/&",
             "c_function_string_*_caller/library",
@@ -1748,6 +1841,10 @@
     },
     {
         "name": "f_function_string_scalar_buf_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
         "base": "f_function_string_scalar_buf",
         "alias": [
             "c_function_string_scalar_buf_arg",
@@ -1951,6 +2048,10 @@
     },
     {
         "name": "c_mixin_vector_cdesc_fill-cdesc",
+        "comments": [
+            "Fill cdesc with vector information,",
+            " Return address and size of vector data."
+        ],
         "c_helper": [
             "type_defines"
         ],
@@ -1976,6 +2077,12 @@
     },
     {
         "name": "f_out_vector_*/&_cdesc_targ_native_scalar",
+        "comments": [
+            "copy into user's existing array."
+        ],
+        "notes": [
+            "cxx_var is always a pointer to a vector."
+        ],
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
@@ -2024,6 +2131,11 @@
     },
     {
         "name": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+        "notes": [
+            "Almost same as intent_out_buf.",
+            "Similar to f_vector_out_allocatable but must declare result variable.",
+            "Always return a 1-d array."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -2088,6 +2200,12 @@
     },
     {
         "name": "f_in_vector_&_buf_targ_native_*",
+        "comments": [
+            "Create a vector for pointers."
+        ],
+        "notes": [
+            "Specialize for std::vector<native *>"
+        ],
         "mixin": [
             "f_mixin_in_2d_array_buf"
         ],
@@ -2211,6 +2329,10 @@
     },
     {
         "name": "f_mixin_inout_char_array_cdesc",
+        "comments": [
+            "Pass argument and size to C.",
+            "Pass array_type to C which will fill it in."
+        ],
         "f_helper": [
             "array_context"
         ],
@@ -2226,6 +2348,9 @@
     },
     {
         "name": "f_mixin_str_array",
+        "comments": [
+            "Collect information about a string argument."
+        ],
         "f_arg_decl": [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
         ],
@@ -2360,6 +2485,9 @@
     },
     {
         "name": "f_out_vector_*/&_cdesc_allocatable_targ_native_scalar",
+        "notes": [
+            "Copy into allocated array."
+        ],
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector_cdesc_targ_native_scalar"
@@ -2407,6 +2535,9 @@
     },
     {
         "name": "f_mixin_shadow-arg",
+        "comments": [
+            "Pass a shadow type to C wrapper."
+        ],
         "f_arg_decl": [
             "{f_type}, intent({f_intent}) :: {f_var}"
         ],
@@ -2472,6 +2603,9 @@
     },
     {
         "name": "f_function_shadow_*_capsule",
+        "comments": [
+            "Return a C_capsule_data_type."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
@@ -2488,6 +2622,10 @@
     },
     {
         "name": "f_function_shadow_*_this",
+        "notes": [
+            "Input set return_this.",
+            "Do not return anything."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
@@ -2521,6 +2659,9 @@
     },
     {
         "name": "f_function_shadow_*/&_capptr",
+        "comments": [
+            "Return a C_capsule_data_type."
+        ],
         "mixin": [
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
@@ -2542,6 +2683,14 @@
     },
     {
         "name": "f_function_shadow_scalar_capptr",
+        "comments": [
+            "Return a instance by value."
+        ],
+        "notes": [
+            "Create memory in c_pre_call so it will survive the return.",
+            "owner=caller sets idtor flag to release the memory.",
+            "c_local_var is passed in as argument."
+        ],
         "mixin": [
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
@@ -2609,6 +2758,10 @@
     },
     {
         "name": "f_shared_struct",
+        "notes": [
+            "Used with in, out, inout.",
+            "C pointer -> void pointer -> C++ pointer"
+        ],
         "alias": [
             "f_in_struct_scalar",
             "f_in_struct_*",
@@ -2627,6 +2780,7 @@
         ]
     },
     {
+        "start-after": "start function_struct_scalar",
         "name": "f_function_struct_scalar",
         "mixin": [
             "f_mixin_function-to-subroutine"
@@ -2653,10 +2807,14 @@
         },
         "c_call": [
             "*{c_var} = {C_call_function};"
-        ]
+        ],
+        "end-before": "end function_struct_scalar"
     },
     {
         "name": "f_function_struct_*_pointer",
+        "comments": [
+            "C++ pointer -> void pointer -> C pointer"
+        ],
         "mixin": [
             "f_mixin_function_c-ptr"
         ],
@@ -2666,6 +2824,11 @@
     },
     {
         "name": "f_getter_struct_*_fapi_pointer",
+        "notes": [
+            "XXX - unused - the getter does not need a C wrapper if api(fapi)",
+            "The getter can be done totally from Fortran for a pointer to a scalar.",
+            "Return value a function result."
+        ],
         "f_module": {
             "iso_c_binding": [
                 "c_f_pointer"
@@ -2803,6 +2966,9 @@
     },
     {
         "name": "f_getter_native_*_cdesc_pointer",
+        "notes": [
+            "Similar to calling a function, but save field pointer instead."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -2824,6 +2990,9 @@
     },
     {
         "name": "f_getter_string_scalar_cdesc_allocatable",
+        "comments": [
+            "Return argument meta data to Fortran."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -2838,6 +3007,10 @@
     },
     {
         "name": "f_setter_string_scalar_buf",
+        "comments": [
+            "Extract meta data and pass to C.",
+            "Create std::string from Fortran meta data."
+        ],
         "mixin": [
             "f_mixin_in_character_buf",
             "c_mixin_in_character_buf"
@@ -2854,6 +3027,9 @@
     },
     {
         "name": "c_mixin_arg_cfi",
+        "comments": [
+            "Make the argument a CFI_desc_t."
+        ],
         "iface_header": [
             "ISO_Fortran_binding.h"
         ],
@@ -2866,6 +3042,9 @@
     },
     {
         "name": "f_function_char_*_cfi_allocatable",
+        "notes": [
+            "Add allocatable attribute to declaration."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_cfi"
@@ -2947,6 +3126,9 @@
     },
     {
         "name": "c_mixin_arg_character_cfi",
+        "comments": [
+            "Local character argument passed as CFI_desc_t."
+        ],
         "mixin": [
             "c_mixin_arg_cfi"
         ],
@@ -2963,6 +3145,9 @@
     },
     {
         "name": "c_mixin_arg_native_cfi",
+        "comments": [
+            "Native argument which use CFI_desc_t."
+        ],
         "mixin": [
             "c_mixin_arg_cfi"
         ],
@@ -2981,6 +3166,9 @@
     },
     {
         "name": "c_mixin_native_cfi_allocatable",
+        "comments": [
+            "Allocate copy of C pointer (requires +dimension)."
+        ],
         "c_temps": [
             "extents",
             "lower"
@@ -2996,6 +3184,9 @@
     },
     {
         "name": "c_mixin_native_cfi_pointer",
+        "comments": [
+            "Convert C pointer to Fortran pointer."
+        ],
         "c_temps": [
             "extents",
             "lower"
@@ -3077,6 +3268,9 @@
     },
     {
         "name": "f_function_char_*_cfi_copy",
+        "comments": [
+            "Copy result into caller's buffer."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_character_cfi"
@@ -3097,6 +3291,10 @@
     },
     {
         "name": "f_function_char_*_cfi_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
         "base": "f_function_char_*_cfi_copy",
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
@@ -3229,6 +3427,10 @@
     },
     {
         "name": "f_function_string_scalar_cfi_arg",
+        "comments": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name."
+        ],
         "base": "f_function_string_scalar_cfi_copy",
         "alias": [
             "f_function_string_&_cfi_arg"
@@ -3248,6 +3450,10 @@
     },
     {
         "name": "f_shared_function_string_*_cfi_pointer",
+        "notes": [
+            "XXX - consolidate with c_function_*_cfi_pointer?",
+            "XXX - via a helper to get address and length of string"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_cfi"
@@ -3297,6 +3503,9 @@
     },
     {
         "name": "f_mixin_function_string_scalar_cfi_allocatable",
+        "notes": [
+            "similar to f_char_scalar_allocatable."
+        ],
         "f_need_wrapper": true,
         "f_arg_decl": [
             "character(len=:), allocatable :: {f_var}"
@@ -3340,6 +3549,9 @@
     },
     {
         "name": "f_function_string_scalar_cfi_allocatable",
+        "notes": [
+            "std::string & function()"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
@@ -3374,6 +3586,10 @@
     },
     {
         "name": "f_out_string_**_cfi_allocatable",
+        "notes": [
+            "std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),",
+            "int *nstrs+intent(out)+hidden"
+        ],
         "mixin": [
             "c_mixin_arg_cfi",
             "f_mixin_out_string_**_cfi"
@@ -3406,6 +3622,11 @@
     },
     {
         "name": "f_out_string_**_cdesc_copy",
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Copy into Fortran argument.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
+        ],
         "mixin": [
             "f_mixin_str_array",
             "f_mixin_pass_cdesc"
@@ -3432,6 +3653,11 @@
     },
     {
         "name": "f_out_string_**_copy",
+        "notes": [
+            "std::string **arg+intent(out)+dimension(size)",
+            "Returning a pointer to a string*. However, this needs additional",
+            "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
+        ],
         "alias": [
             "c_out_string_**"
         ],
@@ -3443,6 +3669,11 @@
             "Allocate a vector<string> variable.",
             "Assign to std::string pointer from C++ function.",
             "Copy into Fortran allocated memory."
+        ],
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Allocate in fortran, fill from C.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
         ],
         "f_helper": [
             "array_string_allocatable"
@@ -3486,6 +3717,9 @@
     },
     {
         "name": "f_out_native_**_cfi_allocatable",
+        "comments": [
+            "Set Fortran pointer to point to cxx_var."
+        ],
         "mixin": [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable"
@@ -3502,6 +3736,9 @@
     },
     {
         "name": "f_out_native_**_cfi_pointer",
+        "comments": [
+            "Set Fortran pointer to point to cxx_var."
+        ],
         "mixin": [
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer"
@@ -3518,6 +3755,11 @@
     },
     {
         "name": "f_function_native_*_cfi_allocatable",
+        "comments": [
+            "Pass result as an argument to C wrapper.",
+            "Convert to subroutine and pass result as an argument.",
+            "Return an allocated copy of data."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
@@ -3536,6 +3778,11 @@
     },
     {
         "name": "f_function_native_*_cfi_pointer",
+        "comments": [
+            "Pass result as an argument to C wrapper.",
+            "Convert to subroutine and pass result as an argument.",
+            "Return Fortran pointer to data."
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",

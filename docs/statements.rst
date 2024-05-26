@@ -18,6 +18,12 @@ a statement entry.
 
 Statement names which start with a `!` are ignored.
 
+.. name
+
+.. comments
+
+.. notes
+
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.
           Cannot also have a *mixin* field.
@@ -51,7 +57,8 @@ Statement names which start with a `!` are ignored.
 
         fmtdict:
            copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
-   
+
+.. alias
 
 .. fmtdict - A dictionary to replace default values
 
@@ -92,8 +99,8 @@ returned.  To ensure portablity, some function results must be passed
 as an additional argument.  This is typically more complicated types
 such as struct or complex.
 
-.. literalinclude:: ../shroud/statements.py
-   :language: python
+.. literalinclude:: ../shroud/fc-statements.json
+   :language: json
    :start-after: start function_struct_scalar
    :end-before: end function_struct_scalar
 
