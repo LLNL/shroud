@@ -891,18 +891,11 @@ FStmts = util.Scope(
 # Fortran/C Statements - both sets of defaults.
 FStmts.update(CStmts._to_dict())
 
-# Allow a group to be 'commented out' by setting language to 'x'.
-XStmts = util.Scope(
-    None,
-    name="x-undefined",
-)
-
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
-    x=XStmts,
 )
                 
         
