@@ -138,12 +138,11 @@ def lookup_c_statements(arg):
     specialize = []
     if arg.template_arguments:
         specialize.append('targ')
-        # XXX currently only the first template argument is processed.
-        targ = arg.template_arguments[0]
-        arg_typemap = targ.typemap
-        specialize.append(arg_typemap.sgroup)
-        spointer = targ.declarator.get_indirect_stmt()
-        specialize.append(spointer)
+        for targ in arg.template_arguments:
+            arg_typemap = targ.typemap
+            specialize.append(arg_typemap.sgroup)
+            spointer = targ.declarator.get_indirect_stmt()
+            specialize.append(spointer)
     return arg_typemap, specialize
 
 def template_stmts(ast):
@@ -157,12 +156,11 @@ def template_stmts(ast):
     specialize = []
     if ast.template_arguments:
         specialize.append('targ')
-        # XXX currently only the first template argument is processed.
-        targ = ast.template_arguments[0]
-        arg_typemap = targ.typemap
-        specialize.append(arg_typemap.sgroup)
-        spointer = targ.declarator.get_indirect_stmt()
-        specialize.append(spointer)
+        for targ in ast.template_arguments:
+            arg_typemap = targ.typemap
+            specialize.append(arg_typemap.sgroup)
+            spointer = targ.declarator.get_indirect_stmt()
+            specialize.append(spointer)
     return specialize
 
 def lookup_fc_stmts(path):
