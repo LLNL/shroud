@@ -194,10 +194,10 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
         out["types"] = todict.to_dict(typemaps)
     elif newlibrary.options.debug_testsuite:
         # Add user defined types for debugging.
-        user_types = typemap.return_shadow_types(typemaps)
+        user_types = typemap.return_user_types(typemaps)
         if user_types:
             out["types"] = todict.to_dict(user_types)
-        user_types = declast.symtab_to_typemap(newlibrary.symtab.scope_stack[0])
+        user_types = declast.symtab_to_typemap(newlibrary.symtab.top)
         if user_types:
             out["symtab"] = todict.to_dict(user_types)
         # Clean out this info since it's the same for all tests.

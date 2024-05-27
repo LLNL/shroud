@@ -1803,10 +1803,10 @@ class SymbolTable(object):
         self.language = language
 
         # Create the global scope.
-        glb = Global()
-        self.scope_stack.append(glb)
+        self.top = Global()
+        self.scope_stack.append(self.top)
         self.scope_len.append(0)
-        self.current = glb
+        self.current = self.top
 
     def push_template_scope(self, node):
         """

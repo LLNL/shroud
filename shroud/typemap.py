@@ -1469,7 +1469,7 @@ def fill_typedef_typemap(node, fields={}):
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()
 
-def return_shadow_types(typemaps):  # typemaps -> dict
+def return_user_types(typemaps):  # typemaps -> dict
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in typemaps.items():
