@@ -1692,6 +1692,7 @@ class Struct(Node):
                 type_name,
                 base="struct",
                 sgroup="struct",
+                ntemplate_args = symtab.find_ntemplate_args()
             )
             symtab.add_tag_to_current("struct", self)
             if symtab.language == "cxx":
@@ -1719,6 +1720,7 @@ class Template(Node):
         self.name = "template-"
         self.is_class = False
         self.paramtypemap = symtab.lookup_typemap("--template-parameter--")
+        self.ntemplate_args = 0
 
         symtab.push_template_scope(self)
 
@@ -1729,6 +1731,7 @@ class Template(Node):
         node.typemap = self.paramtypemap
         self.parameters.append(node)
         self.symbols[name] = node
+        self.ntemplate_args += 1
 
     def add_child(self, name, node):
         """
@@ -2023,6 +2026,12 @@ class SymbolTable(object):
         self.add_typedef_by_name("string")
         self.add_typedef_by_name("vector")
         self.restore_depth(depth)
+
+    def find_ntemplate_args(self):
+        """If currently defining a template, return number of arguments."""
+        if isinstance(self.current, Template):
+            return self.current.ntemplate_args
+        return 0
 
 def symtab_to_dict(node):
     """Return SymbolTable as a dictionary.

@@ -6118,6 +6118,7 @@
             "impl_header": [
                 "templates.hpp"
             ],
+            "ntemplate_args": 1,
             "sgroup": "shadow",
             "wrap_header": [
                 "typestemplates.h"

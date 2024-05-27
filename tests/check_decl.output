@@ -1106,6 +1106,7 @@ symbols:
 XXXX Typemap
 twostruct:
   base: struct
+  ntemplate_args: 2
   sgroup: struct
 
 XXXXXXXXXXXXXXXXXXXX
