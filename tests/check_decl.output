@@ -933,6 +933,98 @@ symbols:
     typemap: user
 
 XXXXXXXXXXXXXXXXXXXX
+# template with two arguments
+XXXX CODE
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg);
+XXXX PRINT
+0 <T,U>
+1 <T,U>
+XXXX PRINT_NODE
+template<T, U>  struct twostruct{
+T * values;
+U length;
+}
+;
+template<T, U>  void process_twostruct(twostruct<T,U> arg);
+
+XXXX AST
+stmts:
+- _ast: Template
+  decl:
+    _ast: Declaration
+    class_specifier:
+      _ast: Struct
+      members:
+      - _ast: Declaration
+        declarator:
+          name: values
+          pointer:
+          - ptr: '*'
+        specifier:
+        - T
+        template_argument: T
+      - _ast: Declaration
+        declarator:
+          name: length
+        specifier:
+        - U
+        template_argument: U
+      name: twostruct
+      typemap_name: twostruct
+    declarator:
+      typemap_name: twostruct
+    specifier:
+    - struct twostruct
+    typemap_name: twostruct
+  parameters:
+  - name: T
+  - name: U
+- _ast: Template
+  decl:
+    _ast: Declaration
+    declarator:
+      name: process_twostruct
+      params:
+      - _ast: Declaration
+        declarator:
+          name: arg
+          typemap_name: twostruct
+        specifier:
+        - twostruct
+        template_arguments:
+        - _ast: Declaration
+          declarator: {}
+          specifier:
+          - T
+          template_argument: T
+        - _ast: Declaration
+          declarator: {}
+          specifier:
+          - U
+          template_argument: U
+        typemap_name: twostruct
+      typemap_name: void
+    specifier:
+    - void
+    typemap_name: void
+  parameters:
+  - name: T
+  - name: U
+XXXX SymbolTable
+cls: Global
+symbols:
+  twostruct:
+    cls: Struct
+    typemap: twostruct
+
+XXXXXXXXXXXXXXXXXXXX
 # nested namespace
 # XXX - fix printing
 XXXX CODE

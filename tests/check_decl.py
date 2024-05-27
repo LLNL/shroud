@@ -135,6 +135,16 @@ template<T> class user {
 };
 user<int> returnUserType(void);
 --------------------
+# template with two arguments
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg);
+--------------------
 # nested namespace
 # XXX - fix printing
 namespace ns1 {

@@ -530,7 +530,6 @@ class Parser(ExprParser):
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
-                self.error_msg("Only single template argument accepted")
             self.mustbe("GT")
 
     def top_level(self):
