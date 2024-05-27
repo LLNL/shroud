@@ -482,6 +482,7 @@ typemap:
   - type: std::vector
     fields:
       flat_name: std_vector_{cxx_T}
+      ntemplate_args: 1
       base: vector
       idtor: 0
       cxx_type: std::vector<{cxx_T}>

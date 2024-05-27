@@ -963,7 +963,82 @@
                 }
             },
             {
-                "<FUNCTION>": "func6b  13 ****************************************",
+                "<FUNCTION>": "func6a  13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "func6a",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void func6a(vector<int, int> *arg1)",
+                "declgen": "void func6a(vector<int,int> * arg1)",
+                "name": "func6a",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "func6a",
+                    "F_name_api": "func6a",
+                    "function_name": "func6a"
+                }
+            },
+            {
+                "<FUNCTION>": "func6b  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func6b",
@@ -1028,7 +1103,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func7  14 ****************************************",
+                "<FUNCTION>": "func7  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func7",
@@ -1086,7 +1161,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func8  15 ****************************************",
+                "<FUNCTION>": "func8  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func8",
@@ -1139,7 +1214,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func8a  16 ****************************************",
+                "<FUNCTION>": "func8a  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func8a",
@@ -1192,7 +1267,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9  17 ****************************************",
+                "<FUNCTION>": "func9  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9",
@@ -1275,7 +1350,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9b  18 ****************************************",
+                "<FUNCTION>": "func9b  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9b",
@@ -1359,7 +1434,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9c  19 ****************************************",
+                "<FUNCTION>": "func9c  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9c",
@@ -1447,7 +1522,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10  20 ****************************************",
+                "<FUNCTION>": "func10  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10",
@@ -1528,7 +1603,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10b  21 ****************************************",
+                "<FUNCTION>": "func10b  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10b",
@@ -1581,7 +1656,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  22 ****************************************",
+                "<FUNCTION>": "func10c  23 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1640,7 +1715,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  23 ****************************************",
+                "<FUNCTION>": "func10c  24 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1700,7 +1775,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  24 ****************************************",
+                "<FUNCTION>": "func11  25 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1755,7 +1830,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  25 ****************************************",
+                "<FUNCTION>": "func11  26 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1811,7 +1886,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  26 ****************************************",
+                "<FUNCTION>": "func11  27 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1868,7 +1943,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func12  27 ****************************************",
+                "<FUNCTION>": "func12  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func12",
@@ -1930,7 +2005,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13  28 ****************************************",
+                "<FUNCTION>": "func13  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13",
@@ -2008,7 +2083,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13b  29 ****************************************",
+                "<FUNCTION>": "func13b  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13b",
@@ -2086,7 +2161,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13c  30 ****************************************",
+                "<FUNCTION>": "func13c  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13c",
@@ -2179,7 +2254,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13d  31 ****************************************",
+                "<FUNCTION>": "func13d  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13d",
@@ -2272,7 +2347,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_set_alloc  32 ****************************************",
+                "<FUNCTION>": "callback_set_alloc  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_set_alloc",
@@ -2406,7 +2481,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  33 ****************************************",
+                "<FUNCTION>": "AssignValues  34 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2642,14 +2717,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  36 ****************************************",
+                "<FUNCTION>": "AssignValues  37 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "33",
+                "_PTR_C_CXX_index": "34",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 33,
+                "_orig_node_index": 34,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2765,14 +2840,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  37 ****************************************",
+                "<FUNCTION>": "AssignValues  38 ****************************************",
                 "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "33",
+                "_PTR_C_CXX_index": "34",
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 33,
+                "_orig_node_index": 34,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2916,7 +2991,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_get_arg2  34 ****************************************",
+                "<FUNCTION>": "struct1_get_arg2  35 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3101,7 +3176,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_set_arg2  35 ****************************************",
+                "<FUNCTION>": "struct1_set_arg2  36 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

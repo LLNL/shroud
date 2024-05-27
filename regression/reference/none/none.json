@@ -749,6 +749,7 @@
             "impl_header": [
                 "<vector>"
             ],
+            "ntemplate_args": 1,
             "sgroup": "vector"
         },
         "uint16_t": {

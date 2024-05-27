@@ -25,40 +25,45 @@ charlen attribute must have a value
 Node: func6
 line 44
 void func6(vector * arg1)
-std::vector must have template argument: vector * arg1
+Type 'std::vector' requires template argument: vector * arg1
+--------------------
+Node: func6a
+line 45
+void func6a(vector<int,int> * arg1)
+Type 'std::vector' may only have 1 template arguments: vector<int,int> * arg1
 --------------------
 Node: func6b
-line 45
+line 46
 void func6b(none<int> * arg1)
 Type 'none' may not supply template argument: none<int> * arg1
 --------------------
 Node: func13
-line 69
+line 70
 void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
 Too many arguments to 'size': size(in,2,3)
 --------------------
 Node: func13b
-line 71
+line 72
 void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))
 Unknown argument 'none': size(none)
 --------------------
 Node: func13c
-line 73
+line 74
 void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len': len(text,2)
 --------------------
 Node: func13c
-line 73
+line 74
 void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len_trim': len_trim(text,3)
 --------------------
 Node: func13d
-line 76
+line 77
 void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text2': len(text2)
 --------------------
 Node: func13d
-line 76
+line 77
 void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text3': len_trim(text3)
 
@@ -66,7 +71,7 @@ Unknown argument 'text3': len_trim(text3)
 Phase: generate functions
 ----------------------------------------
 Node: nested
-line 103
+line 104
 struct nested * parent
 process_class: class nested already exists in class_map
 Wrote error_types.yaml
@@ -75,13 +80,13 @@ Wrote error_types.yaml
 Phase: FillMeta class function
 ----------------------------------------
 Node: arg1
-line 87
+line 88
 int arg1 +badvar+dimension(10)
 Illegal attribute 'badvar' for variable 'arg1'
 only 'name', 'readonly', 'dimension' and 'deref' are allowed on variables
 --------------------
 Node: arg1
-line 87
+line 88
 int arg1 +badvar+dimension(10)
 dimension attribute can only be used on pointer and references
 
@@ -114,97 +119,97 @@ void func2(int arg1 +assumedtype+value)
 argument 'arg1' must not have value=True because it has the assumedtype attribute.
 --------------------
 Node: func7
-line 47
+line 48
 void func7(int * arg1 +dimension(n+=2))
 Unable to parse dimension: n+=2
 --------------------
 Node: func8
-line 49
+line 50
 void func8(int arg1 +intent(none))
 Bad value for argument arg1 intent: none
 --------------------
 Node: func8a
-line 50
+line 51
 void func8a(int arg1 +intent(out))
 Only pointer arguments may have intent of 'out' or 'inout'
 --------------------
 Node: func10b
-line 58
+line 59
 void func10b(int arg1 +rank)
 'rank' attribute must have an integer value
 --------------------
 Node: func10b
-line 58
+line 59
 void func10b(int arg1 +rank)
 rank attribute can only be used on pointer and references
 --------------------
 Node: func10c
-line 59
+line 60
 void func10c(int * arg1 +rank(nrank))
 rank attribute must have an integer value, not 'nrank'
 --------------------
 Node: func10c
-line 60
+line 61
 void func10c(int * arg1 +rank(30))
 'rank' attribute must be 0-7, not '30'
 --------------------
 Node: func11
-line 62
+line 63
 void func11(int arg1 +dimension)
 dimension attribute must have a value.
 --------------------
 Node: func11
-line 62
+line 63
 void func11(int arg1 +dimension)
 dimension attribute can only be used on pointer and references
 --------------------
 Node: func11
-line 63
+line 64
 void func11(int arg1 +dimension+value)
 dimension attribute must have a value.
 --------------------
 Node: func11
-line 63
+line 64
 void func11(int arg1 +dimension+value)
 argument may not have 'value' and 'dimension' attribute.
 --------------------
 Node: func11
-line 63
+line 64
 void func11(int arg1 +dimension+value)
 dimension attribute can only be used on pointer and references
 --------------------
 Node: func11
-line 64
+line 65
 void func11(int arg1 +dimension+rank(2))
 rank attribute can only be used on pointer and references
 --------------------
 Node: func11
-line 64
+line 65
 void func11(int arg1 +dimension+rank(2))
 dimension attribute must have a value.
 --------------------
 Node: func11
-line 64
+line 65
 void func11(int arg1 +dimension+rank(2))
 argument may not have 'rank' and 'dimension' attribute.
 --------------------
 Node: func11
-line 64
+line 65
 void func11(int arg1 +dimension+rank(2))
 dimension attribute can only be used on pointer and references
 --------------------
 Node: func12
-line 66
+line 67
 void func12(int * * arg1 +intent(out)+owner(none))
 Illegal value 'none' for owner attribute. Must be 'caller' or 'library'.
 --------------------
 Node: callback_set_alloc
-line 80
+line 81
 void callback_set_alloc(void ( * alloc)(int tc +intent(none)))
 Bad value for argument tc intent: none
 --------------------
 Node: AssignValues
-line 108
+line 109
 void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)
 'rank' attribute must be 0-7, not '8'
 --------------------
@@ -228,27 +233,27 @@ void func4(char * arg1 +blanknull)
 blanknull attribute can only be used on intent(in) 'char *'
 --------------------
 Node: func9
-line 52
+line 53
 void func9(int * arg1 +deref(none))
 Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 --------------------
 Node: func9b
-line 53
+line 54
 void func9b(int * arg1 +deref(pointer))
 Can only have attribute 'deref' on arguments which return a pointer: 'arg1'
 --------------------
 Node: func9c
-line 54
+line 55
 void func9c(int * * arg1 +deref(pointer)+intent(in))
 Cannot have attribute 'deref' on intent(in) argument 'arg1'
 --------------------
 Node: func10
-line 57
+line 58
 void func10(int arg1 +api(none))
 'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
 --------------------
 Node: AssignValues
-line 108
+line 109
 void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 --------------------
