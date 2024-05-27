@@ -17,7 +17,7 @@
 // explicitly instantiate template
 //template class std::vector<float>;
 
-void test_vector_int()
+void test_vector_int(void)
 {
   std::vector<int> vec;
 
@@ -27,14 +27,22 @@ void test_vector_int()
 
 }
 
-void test_pairs()
+void test_twostruct(void)
+{
+    double data[] = {1, 2, 3, 4, 5};
+    twostruct<double, int> value{data, 5};
+
+    process_twostruct(value);
+}
+
+void test_pairs(void)
 {
   mypair<int> myobject (100, 75);
   int big = myobject.getmax();
   assert(big == 100);
 }
 
-void test_structAsClass()
+void test_structAsClass(void)
 {
     structAsClass<double> mystruct = {2, 3.5};
 
@@ -57,6 +65,7 @@ void test_structAsClass()
 int main(int argc, char *argv[])
 {
   test_vector_int();
+  test_twostruct();
 
   test_pairs();
 
