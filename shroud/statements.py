@@ -125,6 +125,27 @@ def get_arg_bind(node, arg, wlang):
 
 ######################################################################
 
+def collect_arg_typemaps(arg):
+    """Collect the typemaps used by arguments.
+    Templates may provide multiple typemaps.
+    """
+    if arg.template_arguments:
+        typemaps = []
+        for targ in arg.template_arguments:
+            typemaps.append(targ.typemap)
+    else:
+        typemaps = [arg.typemap]
+    return typemaps
+
+def convert_vector_typemap(arg):
+    """Convert a single template typemaps.
+    XXX - this is only to support vector and should be removed.
+    """
+    if arg.template_arguments:
+        return arg.template_arguments[0].typemap
+    else:
+        return arg.typemap
+
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
@@ -133,17 +154,14 @@ def lookup_c_statements(arg):
     Args:
         arg -
     """
-    arg_typemap = arg.typemap
-
     specialize = []
     if arg.template_arguments:
         specialize.append('targ')
         for targ in arg.template_arguments:
-            arg_typemap = targ.typemap
-            specialize.append(arg_typemap.sgroup)
+            specialize.append(targ.typemap.sgroup)
             spointer = targ.declarator.get_indirect_stmt()
             specialize.append(spointer)
-    return arg_typemap, specialize
+    return specialize
 
 def template_stmts(ast):
     """Create statement labels for template arguments.
@@ -194,7 +212,7 @@ def lookup_c_function_stmt(node):
         result_typemap = ast.typemap
         spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        junk, specialize = lookup_c_statements(ast)
+        specialize = lookup_c_statements(ast)
         stmts = ["c", sintent, result_typemap.sgroup, spointer,
                  r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
@@ -216,7 +234,7 @@ def lookup_f_function_stmt(node):
         result_typemap = ast.typemap
         spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        junk, specialize = lookup_c_statements(ast)
+        specialize = lookup_c_statements(ast)
         stmts = ["f", sintent, result_typemap.sgroup, spointer,
                  r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
     result_stmt = lookup_fc_stmts(stmts)
@@ -229,7 +247,7 @@ def lookup_c_arg_stmt(node, arg):
     c_meta = get_arg_bind(node, arg, "c").meta
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
-    junk, specialize = lookup_c_statements(arg)
+    specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
     stmts = ["c", c_meta["intent"], sgroup, spointer,
@@ -244,7 +262,7 @@ def lookup_f_arg_stmt(node, arg):
     c_meta = get_arg_bind(node, arg, "f").meta
     arg_typemap = arg.typemap  # XXX - look up vector
     sgroup = arg_typemap.sgroup
-    junk, specialize = lookup_c_statements(arg)
+    specialize = lookup_c_statements(arg)
     spointer = declarator.get_indirect_stmt()
     sapi = c_meta["api"]
     if c_meta["hidden"]:

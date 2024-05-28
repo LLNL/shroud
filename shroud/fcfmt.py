@@ -167,7 +167,7 @@ class FillFormat(object):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap  # XXX - look up vector
-        arg_typemap, junk = statements.lookup_c_statements(arg)
+        arg_typemap = statements.convert_vector_typemap(arg)
            
         fmt_arg.c_var = arg_name
         # XXX - order issue - c_var must be set before name_temp_vars,
@@ -251,7 +251,7 @@ class FillFormat(object):
         arg_name = declarator.user_name
         arg_stmt = bind.stmt
 
-        arg_typemap, junk = statements.lookup_c_statements(arg)
+        arg_typemap = statements.convert_vector_typemap(arg)
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)

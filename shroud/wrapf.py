@@ -1008,9 +1008,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
-                    arg_typemap, specialize = statements.lookup_c_statements(
-                        param
-                    )
+                    arg_typemap = statements.convert_vector_typemap(param)
                     self.update_f_module(
                         modules,
                         arg_typemap.i_module or arg_typemap.f_module,
@@ -1706,7 +1704,7 @@ rv = .false.
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typemap, specialize = statements.lookup_c_statements(c_arg)
+            arg_typemap = statements.convert_vector_typemap(c_arg)
 
             # Create a local variable for C if necessary.
             # The local variable fc_var is used in fc_statements. 

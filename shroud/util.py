@@ -565,7 +565,7 @@ class Header(object):
             self.file_code[fname] = ntypemap
             
     def add_typemap_list(self, lst):
-        """Append list of headers."""
+        """Collect list of headers."""
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
